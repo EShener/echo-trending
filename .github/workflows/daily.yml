@@ -30,14 +30,14 @@ jobs:
           REPORT_RETENTION_DAYS: "90"
       - name: Publish static site to gh-pages
         run: |
-          git config user.name "github-actions[bot]"
-          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
           touch public/.nojekyll
           rm -rf /tmp/echo-trending-pages
           mkdir -p /tmp/echo-trending-pages
           cp -R public/. /tmp/echo-trending-pages/
           cd /tmp/echo-trending-pages
           git init -b gh-pages
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
           git add .
           git commit -m "Deploy echo-trending site"
           git remote add origin "https://x-access-token:${GITHUB_TOKEN}@github.com/${GITHUB_REPOSITORY}.git"
