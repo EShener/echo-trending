@@ -19,9 +19,16 @@ const frontierMeta = document.querySelector("#frontierMeta");
 const newsMeta = document.querySelector("#newsMeta");
 const newsBrief = document.querySelector("#newsBrief");
 const aiHotDigest = document.querySelector("#aiHotDigest");
+const pageProgress = document.querySelector("#pageProgress");
+const tocLinks = [...document.querySelectorAll("[data-toc-link]")];
+const scrollPrevBtn = document.querySelector("#scrollPrevBtn");
+const scrollNextBtn = document.querySelector("#scrollNextBtn");
+const scrollTopBtn = document.querySelector("#scrollTopBtn");
+const scrollBottomBtn = document.querySelector("#scrollBottomBtn");
 
 let currentReport = null;
 let revealObserver = null;
+let scrollFrame = 0;
 
 init();
 
@@ -39,6 +46,7 @@ async function init() {
 
     reportSelect.addEventListener("change", () => loadReport(reportSelect.value));
     searchInput.addEventListener("input", () => renderReport(currentReport));
+    setupFloatingToc();
     await loadReport(index.reports[0].path);
   } catch (error) {
     console.error(error);
@@ -650,6 +658,98 @@ function observeMotion() {
     { threshold: 0.12 },
   );
   targets.forEach((target) => revealObserver.observe(target));
+}
+
+function setupFloatingToc() {
+  if (!tocLinks.length) return;
+
+  for (const link of tocLinks) {
+    link.addEventListener("click", (event) => {
+      event.preventDefault();
+      const target = document.querySelector(link.getAttribute("href"));
+      if (target) scrollToElement(target);
+    });
+  }
+
+  scrollPrevBtn?.addEventListener("click", () => scrollToRelativeSection(-1));
+  scrollNextBtn?.addEventListener("click", () => scrollToRelativeSection(1));
+  scrollTopBtn?.addEventListener("click", () => window.scrollTo({ top: 0, behavior: "smooth" }));
+  scrollBottomBtn?.addEventListener("click", () =>
+    window.scrollTo({ top: document.documentElement.scrollHeight, behavior: "smooth" }),
+  );
+
+  window.addEventListener("scroll", scheduleFloatingTocUpdate, { passive: true });
+  window.addEventListener("resize", scheduleFloatingTocUpdate);
+  updateFloatingToc();
+}
+
+function scheduleFloatingTocUpdate() {
+  if (scrollFrame) return;
+  scrollFrame = window.requestAnimationFrame(() => {
+    scrollFrame = 0;
+    updateFloatingToc();
+  });
+}
+
+function updateFloatingToc() {
+  const targets = getTocTargets();
+  const activeIndex = getCurrentTocIndex(targets);
+  const activeId = targets[activeIndex]?.id || "";
+
+  for (const link of tocLinks) {
+    const isActive = link.dataset.tocLink === activeId;
+    link.classList.toggle("is-active", isActive);
+    if (isActive) link.setAttribute("aria-current", "true");
+    else link.removeAttribute("aria-current");
+  }
+
+  const maxScroll = Math.max(1, document.documentElement.scrollHeight - window.innerHeight);
+  const progress = Math.min(100, Math.max(0, (window.scrollY / maxScroll) * 100));
+  if (pageProgress) pageProgress.style.setProperty("--progress", `${progress}%`);
+
+  setControlState(scrollPrevBtn, activeIndex <= 0 && window.scrollY < 24);
+  setControlState(scrollNextBtn, activeIndex >= targets.length - 1 && window.scrollY + window.innerHeight >= document.documentElement.scrollHeight - 24);
+}
+
+function scrollToRelativeSection(direction) {
+  const targets = getTocTargets();
+  if (!targets.length) return;
+  const currentIndex = getCurrentTocIndex(targets);
+  const nextIndex = Math.min(targets.length - 1, Math.max(0, currentIndex + direction));
+  if (nextIndex === currentIndex && direction > 0) {
+    window.scrollTo({ top: document.documentElement.scrollHeight, behavior: "smooth" });
+    return;
+  }
+  if (nextIndex === currentIndex && direction < 0) {
+    window.scrollTo({ top: 0, behavior: "smooth" });
+    return;
+  }
+  scrollToElement(targets[nextIndex]);
+}
+
+function getTocTargets() {
+  return [...document.querySelectorAll("[data-toc-target]")].filter((target) => target.offsetParent !== null);
+}
+
+function getCurrentTocIndex(targets) {
+  const anchor = Math.min(window.innerHeight * 0.38, 280);
+  let currentIndex = 0;
+  targets.forEach((target, index) => {
+    if (target.getBoundingClientRect().top <= anchor) currentIndex = index;
+  });
+  return currentIndex;
+}
+
+function scrollToElement(target) {
+  const offset = window.innerWidth <= 1180 ? 96 : 22;
+  const top = target.getBoundingClientRect().top + window.scrollY - offset;
+  window.scrollTo({ top: Math.max(0, top), behavior: "smooth" });
+}
+
+function setControlState(button, disabled) {
+  if (!button) return;
+  button.classList.toggle("is-disabled", disabled);
+  button.setAttribute("aria-disabled", disabled ? "true" : "false");
 }
 
 function renderEmpty() {

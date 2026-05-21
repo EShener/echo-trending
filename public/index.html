@@ -51,7 +51,7 @@
       </aside>
 
       <main class="content">
-        <header class="topbar">
+        <header id="topSection" class="topbar" data-toc-target>
           <div>
             <p class="eyebrow">Daily Technology Intelligence</p>
             <h2 id="reportTitle">加载中</h2>
@@ -65,7 +65,7 @@
           </div>
         </header>
 
-        <section class="briefing" aria-label="今日简报">
+        <section id="briefingSection" class="briefing" aria-label="今日简报" data-toc-target>
           <div>
             <span>今日判断</span>
             <strong id="briefHeadline">等待加载</strong>
@@ -74,7 +74,7 @@
           <ul id="briefBullets"></ul>
         </section>
 
-        <section class="metrics" aria-label="日报指标">
+        <section id="metricsSection" class="metrics" aria-label="日报指标" data-toc-target>
           <div>
             <span>平均热度</span>
             <strong id="avgScore">-</strong>
@@ -93,7 +93,7 @@
           </div>
         </section>
 
-        <section id="repoSection" class="section-block">
+        <section id="repoSection" class="section-block" data-toc-target>
           <div class="section-head">
             <div>
               <p class="eyebrow">Open Source Radar</p>
@@ -104,7 +104,7 @@
           <section id="repoGrid" class="repo-grid" aria-live="polite"></section>
         </section>
 
-        <section id="frontierSection" class="section-block">
+        <section id="frontierSection" class="section-block" data-toc-target>
           <div class="section-head">
             <div>
               <p class="eyebrow">Search · Ads · Recommendation</p>
@@ -115,7 +115,7 @@
           <section id="frontierGrid" class="insight-grid"></section>
         </section>
 
-        <section id="newsSection" class="section-block">
+        <section id="newsSection" class="section-block" data-toc-target>
           <div class="section-head">
             <div>
               <p class="eyebrow">AI Industry Watch</p>
@@ -134,6 +134,25 @@
         </section>
       </main>
     </div>
+
+    <nav class="floating-toc" aria-label="快速目录">
+      <div class="toc-progress" aria-hidden="true"><span id="pageProgress"></span></div>
+      <div class="toc-label">RADAR INDEX</div>
+      <div class="toc-links">
+        <a href="#topSection" data-toc-link="topSection">总览</a>
+        <a href="#briefingSection" data-toc-link="briefingSection">简报</a>
+        <a href="#metricsSection" data-toc-link="metricsSection">指标</a>
+        <a href="#repoSection" data-toc-link="repoSection">项目</a>
+        <a href="#frontierSection" data-toc-link="frontierSection">搜广推</a>
+        <a href="#newsSection" data-toc-link="newsSection">AI</a>
+      </div>
+      <div class="toc-controls" aria-label="滚动控制">
+        <button id="scrollPrevBtn" class="toc-button" type="button" title="上一段" aria-label="上一段">&#8593;</button>
+        <button id="scrollNextBtn" class="toc-button" type="button" title="下一段" aria-label="下一段">&#8595;</button>
+        <button id="scrollTopBtn" class="toc-button toc-button-secondary" type="button" title="回到顶部" aria-label="回到顶部">&#8679;</button>
+        <button id="scrollBottomBtn" class="toc-button toc-button-secondary" type="button" title="到底部" aria-label="到底部">&#8681;</button>
+      </div>
+    </nav>
 
     <script>
       (() => {
