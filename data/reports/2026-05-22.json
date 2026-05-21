@@ -1,0 +1,2812 @@
+{
+  "date": "2026-05-22",
+  "generatedAt": "2026-05-21T17:08:04.323Z",
+  "source": {
+    "provider": "GitTrend live page + Anthropic official News/Research/Engineering + AIHOT/可信新闻汇总 + Big Tech engineering blogs + Codex web research",
+    "query": "GitTrend 2026-05-21 UTC / 2026-05-22 Asia-Shanghai + Anthropic official + Google Search/Ads + Meta/Pinterest/Amazon/Spotify/Dropbox/Meituan/Tencent recsys sources",
+    "since": "2026-01-01",
+    "limit": 10,
+    "language": "all",
+    "notes": [
+      "运行环境日期为 2026-05-22 Asia/Shanghai；GitTrend 页面当前按 UTC 标注 Ranked by engagement · May 21, 2026。",
+      "A 社覆盖 Anthropic 官方 News、Research、Engineering 页面；外部新闻仅用于补充发现与行业背景。",
+      "搜广推覆盖 Google Search/Ads、Meta Engineering、Amazon Science、Pinterest Engineering、Spotify Engineering、Dropbox Tech、美团技术、腾讯云技术文章。",
+      "报告保留最近 90 天；本次新增 2026-05-22，保留 2026-05-21。"
+    ],
+    "retentionDays": 90
+  },
+  "summary": {
+    "headline": "今日技术雷达主线：Agent 工程继续霸榜，搜广推进入“AI 搜索商业化 + 大模型排序系统化”阶段。",
+    "bullets": [
+      "GitHub 热榜前十由 codegraph、Claude/Codex skills、hermes-agent、openhuman 和 agency-agents 主导，说明开发者正在把 Agent 能力拆成上下文层、技能层、工具层和流程层。",
+      "搜广推重点信号来自 Google Search/Ads I/O 2026、Meta Adaptive Ranking/REA/KernelEvolve、Pinterest 转化召回与去重扩展、Amazon LLM reranking、Dropbox Dash 相关性标注、美团 MTGR 和腾讯广告推荐。",
+      "A 社 Anthropic 覆盖 KPMG、Stainless、PwC、金融 Agent、Teaching Claude why、Managed Agents 和 Claude Code 质量复盘，主线是企业集成、Agent 工程化和安全治理并进。"
+    ]
+  },
+  "items": [
+    {
+      "rank": 1,
+      "repo": {
+        "fullName": "colbymchenry/codegraph",
+        "name": "codegraph",
+        "owner": "colbymchenry",
+        "avatarUrl": "https://github.com/colbymchenry.png",
+        "visualUrl": "https://opengraph.githubassets.com/echo-trending-2026-05-22/colbymchenry/codegraph",
+        "url": "https://github.com/colbymchenry/codegraph",
+        "description": "Pre-indexed code knowledge graph for Claude Code, Codex, Cursor, and OpenCode — fewer tokens, fewer tool calls, 100% local",
+        "stars": 11400,
+        "forks": 689,
+        "openIssues": 0,
+        "language": "TypeScript",
+        "topics": [
+          "ai-agents",
+          "claude-code",
+          "codex",
+          "tool-use",
+          "workflow"
+        ],
+        "license": "Unknown",
+        "pushedAt": "2026-05-21T00:00:00Z",
+        "createdAt": "2026-01-01T00:00:00Z",
+        "languages": {
+          "TypeScript": 1
+        },
+        "starsToday": 211,
+        "updatedAt": "2026-05-21T17:08:04.323Z",
+        "trendingDailyStars": 211,
+        "trendingSource": "GitTrend live page"
+      },
+      "analysis": {
+        "method": "codex-web-research",
+        "category": "AI Agent / LLM 工程",
+        "oneLiner": "Pre-indexed code knowledge graph for Claude Code, Codex, Cursor, and OpenCode — fewer tokens, fewer tool calls, 100% local",
+        "whyItMatters": "colbymchenry/codegraph 在 GitTrend 2026-05-21 实时榜排名 #1，约 11.4K stars、今日新增 +211。它的热度说明开发者正在把 AI 工程的关注点从“模型会不会写代码”转向上下文、技能、工具和可治理流程。",
+        "engineeringRead": "TypeScript · GitTrend daily trending · 11.4K stars / 689 forks。采用判断要拆成架构机制、适用团队、落地路径、生产风险、决策问题和观察信号。",
+        "architectureSignals": [
+          "架构机制：本地预索引符号、文件、依赖和调用关系，给 agent 提供可查询代码图谱。",
+          "适用团队：大型代码库中 coding agent 重复读文件、跨模块关系定位慢 已经在日常任务中反复出现，并且有能力维护额外工具层。",
+          "接入边界：先作为只读上下文服务接入 Claude Code/Codex/Cursor 类工具。",
+          "生产约束：索引陈旧会误导 agent，必须绑定 git 状态、增量刷新和敏感信息扫描。"
+        ],
+        "valueHypothesis": [
+          "核心收益来自 减少工具调用、降低 token 成本、提升定位准确率，不是 star 数本身。",
+          "适合有明确任务回放集、能对比 agent 前后效果的团队。",
+          "验证指标应包括任务完成时间、人工纠偏次数、失败恢复成本和安全审计结果。"
+        ],
+        "technicalTakeaways": [
+          "代码知识图谱 / Agent 上下文层 的关键不在包装形式，而在是否把高频经验变成可复用、可审查的工程资产。",
+          "先做旁路试点，记录输入、输出、失败原因和人工接管点。",
+          "把安全和质量门槛写入试点定义，而不是等用户开始依赖后再补。"
+        ],
+        "adoptionRisks": [
+          "索引陈旧会误导 agent，必须绑定 git 状态、增量刷新和敏感信息扫描",
+          "如果只因为热榜导入，容易增加上下文噪声和维护负担。",
+          "缺少明确 license 或企业合规结论时，不应进入客户数据和生产权限范围。"
+        ],
+        "suggestedUseCases": [
+          "选择一个历史任务重放，和现有流程做 A/B 对比。",
+          "先限制为只读或草稿模式，人工确认后再允许写入。",
+          "把效果记录沉淀到团队技术雷达，连续观察 2-3 周再扩大范围。"
+        ],
+        "watchSignals": [
+          "是否出现真实大型团队案例和失败复盘。",
+          "是否支持权限、日志、版本和回滚。",
+          "社区是否从提示词热度转向可维护工程实现。"
+        ],
+        "deepDive": {
+          "strategicValue": "代码知识图谱 / Agent 上下文层 代表当前开源热榜的主线：Agent 能力正在被拆成上下文层、技能层、工具层和流程层。团队应判断它能否降低真实工程摩擦，而不是只增加 AI 工具数量。",
+          "implementationPath": [
+            "选一个非核心仓库或低风险流程建立基线。",
+            "先作为只读上下文服务接入 Claude Code/Codex/Cursor 类工具",
+            "用 减少工具调用、降低 token 成本、提升定位准确率 对比原流程，保留失败样本。",
+            "通过安全、合规和 owner 评审后再扩大到团队级使用。"
+          ],
+          "productionConcerns": [
+            "索引陈旧会误导 agent，必须绑定 git 状态、增量刷新和敏感信息扫描",
+            "需要记录 agent 输入输出、工具调用和人工批准链路。",
+            "一旦接入公司代码或数据，必须有 secrets 扫描和最小权限策略。"
+          ],
+          "decisionQuestions": [
+            "这个项目解决的是“大型代码库中 coding agent 重复读文件、跨模块关系定位慢”，还是只是增加一个新工具？",
+            "团队是否有足够样本衡量前后效果？",
+            "如果 不适合缺少 owner、权限边界和可回滚任务定义的团队。，是否应只收藏观察？"
+          ],
+          "recommendedAction": "进入重点试点：用一周历史任务回放验证收益。"
+        },
+        "diagram": {
+          "title": "工业化落地图解",
+          "caption": "colbymchenry/codegraph · 代码知识图谱 / Agent 上下文层",
+          "summary": "把“大型代码库中 coding agent 重复读文件、跨模块关系定位慢”通过“本地预索引符号、文件、依赖和调用关系，给 agent 提供可查询代码图谱”转成“减少工具调用、降低 token 成本、提升定位准确率”。",
+          "nodes": [
+            {
+              "label": "业务/工程痛点",
+              "detail": "大型代码库中 coding agent 重复读文件、跨模块关系定位慢",
+              "type": "input"
+            },
+            {
+              "label": "核心机制",
+              "detail": "本地预索引符号、文件、依赖和调用关系，给 agent 提供可查询代码图谱",
+              "type": "core"
+            },
+            {
+              "label": "接入路径",
+              "detail": "先作为只读上下文服务接入 Claude Code/Codex/Cursor 类工具",
+              "type": "integration"
+            },
+            {
+              "label": "产出价值",
+              "detail": "减少工具调用、降低 token 成本、提升定位准确率",
+              "type": "output"
+            }
+          ],
+          "links": [
+            "识别任务",
+            "封装机制",
+            "验证收益"
+          ],
+          "poster": {
+            "eyebrow": "Project Blueprint",
+            "headline": "代码知识图谱 / Agent 上下文层",
+            "subhead": "colbymchenry/codegraph",
+            "thesis": "把“大型代码库中 coding agent 重复读文件、跨模块关系定位慢”通过“本地预索引符号、文件、依赖和调用关系，给 agent 提供可查询代码图谱”转成“减少工具调用、降低 token 成本、提升定位准确率”。",
+            "metrics": [
+              {
+                "label": "入口",
+                "value": "Spike",
+                "note": "先旁路验证"
+              },
+              {
+                "label": "指标",
+                "value": "A/B",
+                "note": "对照任务"
+              },
+              {
+                "label": "风险",
+                "value": "Audit",
+                "note": "权限与日志"
+              },
+              {
+                "label": "周期",
+                "value": "1w",
+                "note": "最小评估"
+              }
+            ],
+            "lanes": [
+              {
+                "label": "业务/工程痛点",
+                "detail": "大型代码库中 coding agent 重复读文件、跨模块关系定位慢",
+                "type": "input",
+                "step": "01",
+                "signal": "大型代码库中 coding agent 重复读文件、跨模块关系定位慢"
+              },
+              {
+                "label": "核心机制",
+                "detail": "本地预索引符号、文件、依赖和调用关系，给 agent 提供可查询代码图谱",
+                "type": "core",
+                "step": "02",
+                "signal": "本地预索引符号、文件、依赖和调用关系，给 agent 提供可查询代码图谱"
+              },
+              {
+                "label": "接入路径",
+                "detail": "先作为只读上下文服务接入 Claude Code/Codex/Cursor 类工具",
+                "type": "integration",
+                "step": "03",
+                "signal": "先作为只读上下文服务接入 Claude Code/Codex/Cursor 类工具"
+              },
+              {
+                "label": "产出价值",
+                "detail": "减少工具调用、降低 token 成本、提升定位准确率",
+                "type": "output",
+                "step": "04",
+                "signal": "减少工具调用、降低 token 成本、提升定位准确率"
+              }
+            ],
+            "adoption": [
+              {
+                "label": "试点入口",
+                "detail": "先作为只读上下文服务接入 Claude Code/Codex/Cursor 类工具"
+              },
+              {
+                "label": "验收指标",
+                "detail": "减少工具调用、降低 token 成本、提升定位准确率"
+              },
+              {
+                "label": "生产检查",
+                "detail": "索引陈旧会误导 agent，必须绑定 git 状态、增量刷新和敏感信息扫描"
+              },
+              {
+                "label": "采用边界",
+                "detail": "无 owner、无评测集、无权限边界时不扩大使用。"
+              }
+            ],
+            "warning": "无 owner、无评测集、无权限边界时不扩大使用。"
+          }
+        },
+        "maturity": {
+          "community": 70,
+          "maintenance": 92,
+          "production": 78,
+          "complexity": 62
+        },
+        "score": 98
+      },
+      "evidence": {
+        "readmeExcerpt": "Pre-indexed code knowledge graph for Claude Code, Codex, Cursor, and OpenCode — fewer tokens, fewer tool calls, 100% local",
+        "githubUrl": "https://github.com/colbymchenry/codegraph",
+        "trendingSnapshot": "GitTrend daily, 2026-05-21 UTC / 2026-05-22 Asia-Shanghai run",
+        "trendingSource": "https://gittrend.io/",
+        "observedAt": "2026-05-21T17:08:04.323Z"
+      }
+    },
+    {
+      "rank": 2,
+      "repo": {
+        "fullName": "multica-ai/andrej-karpathy-skills",
+        "name": "andrej-karpathy-skills",
+        "owner": "multica-ai",
+        "avatarUrl": "https://github.com/multica-ai.png",
+        "visualUrl": "https://opengraph.githubassets.com/echo-trending-2026-05-22/multica-ai/andrej-karpathy-skills",
+        "url": "https://github.com/multica-ai/andrej-karpathy-skills",
+        "description": "A single CLAUDE.md file to improve Claude Code behavior, derived from Andrej Karpathy observations on LLM coding pitfalls.",
+        "stars": 142500,
+        "forks": 14600,
+        "openIssues": 7,
+        "language": "Markdown",
+        "topics": [
+          "ai-agents",
+          "claude-code",
+          "codex",
+          "tool-use",
+          "workflow"
+        ],
+        "license": "Unknown",
+        "pushedAt": "2026-05-21T00:00:00Z",
+        "createdAt": "2026-01-01T00:00:00Z",
+        "languages": {
+          "Markdown": 1
+        },
+        "starsToday": 153,
+        "updatedAt": "2026-05-21T17:08:04.323Z",
+        "trendingDailyStars": 153,
+        "trendingSource": "GitTrend live page"
+      },
+      "analysis": {
+        "method": "codex-web-research",
+        "category": "AI Skills / Agent 规范",
+        "oneLiner": "A single CLAUDE.md file to improve Claude Code behavior, derived from Andrej Karpathy observations on LLM coding pitfalls.",
+        "whyItMatters": "multica-ai/andrej-karpathy-skills 在 GitTrend 2026-05-21 实时榜排名 #2，约 142.5K stars、今日新增 +153。它的热度说明开发者正在把 AI 工程的关注点从“模型会不会写代码”转向上下文、技能、工具和可治理流程。",
+        "engineeringRead": "Markdown · GitTrend daily trending · 142.5K stars / 14.6K forks。采用判断要拆成架构机制、适用团队、落地路径、生产风险、决策问题和观察信号。",
+        "architectureSignals": [
+          "架构机制：把经验规则沉淀成可复用 CLAUDE.md，约束测试、提交、代码阅读和交付方式。",
+          "适用团队：团队使用 Claude Code 时常见失败来自上下文缺失、过度自信和不一致工程习惯 已经在日常任务中反复出现，并且有能力维护额外工具层。",
+          "接入边界：先拷贝到非核心仓库，按团队语言栈删改规则。",
+          "生产约束：规则文件容易过拟合个人偏好，需要通过任务回放验证是否真的减少返工。"
+        ],
+        "valueHypothesis": [
+          "核心收益来自 减少无效改动、提升代码审查一致性、沉淀团队 agent 操作规范，不是 star 数本身。",
+          "适合有明确任务回放集、能对比 agent 前后效果的团队。",
+          "验证指标应包括任务完成时间、人工纠偏次数、失败恢复成本和安全审计结果。"
+        ],
+        "technicalTakeaways": [
+          "CLAUDE.md 行为规约 的关键不在包装形式，而在是否把高频经验变成可复用、可审查的工程资产。",
+          "先做旁路试点，记录输入、输出、失败原因和人工接管点。",
+          "把安全和质量门槛写入试点定义，而不是等用户开始依赖后再补。"
+        ],
+        "adoptionRisks": [
+          "规则文件容易过拟合个人偏好，需要通过任务回放验证是否真的减少返工",
+          "如果只因为热榜导入，容易增加上下文噪声和维护负担。",
+          "缺少明确 license 或企业合规结论时，不应进入客户数据和生产权限范围。"
+        ],
+        "suggestedUseCases": [
+          "选择一个历史任务重放，和现有流程做 A/B 对比。",
+          "先限制为只读或草稿模式，人工确认后再允许写入。",
+          "把效果记录沉淀到团队技术雷达，连续观察 2-3 周再扩大范围。"
+        ],
+        "watchSignals": [
+          "是否出现真实大型团队案例和失败复盘。",
+          "是否支持权限、日志、版本和回滚。",
+          "社区是否从提示词热度转向可维护工程实现。"
+        ],
+        "deepDive": {
+          "strategicValue": "CLAUDE.md 行为规约 代表当前开源热榜的主线：Agent 能力正在被拆成上下文层、技能层、工具层和流程层。团队应判断它能否降低真实工程摩擦，而不是只增加 AI 工具数量。",
+          "implementationPath": [
+            "选一个非核心仓库或低风险流程建立基线。",
+            "先拷贝到非核心仓库，按团队语言栈删改规则",
+            "用 减少无效改动、提升代码审查一致性、沉淀团队 agent 操作规范 对比原流程，保留失败样本。",
+            "通过安全、合规和 owner 评审后再扩大到团队级使用。"
+          ],
+          "productionConcerns": [
+            "规则文件容易过拟合个人偏好，需要通过任务回放验证是否真的减少返工",
+            "需要记录 agent 输入输出、工具调用和人工批准链路。",
+            "一旦接入公司代码或数据，必须有 secrets 扫描和最小权限策略。"
+          ],
+          "decisionQuestions": [
+            "这个项目解决的是“团队使用 Claude Code 时常见失败来自上下文缺失、过度自信和不一致工程习惯”，还是只是增加一个新工具？",
+            "团队是否有足够样本衡量前后效果？",
+            "如果 不适合缺少 owner、权限边界和可回滚任务定义的团队。，是否应只收藏观察？"
+          ],
+          "recommendedAction": "进入重点试点：用一周历史任务回放验证收益。"
+        },
+        "diagram": {
+          "title": "工业化落地图解",
+          "caption": "multica-ai/andrej-karpathy-skills · CLAUDE.md 行为规约",
+          "summary": "把“团队使用 Claude Code 时常见失败来自上下文缺失、过度自信和不一致工程习惯”通过“把经验规则沉淀成可复用 CLAUDE.md，约束测试、提交、代码阅读和交付方式”转成“减少无效改动、提升代码审查一致性、沉淀团队 agent 操作规范”。",
+          "nodes": [
+            {
+              "label": "业务/工程痛点",
+              "detail": "团队使用 Claude Code 时常见失败来自上下文缺失、过度自信和不一致工程习惯",
+              "type": "input"
+            },
+            {
+              "label": "核心机制",
+              "detail": "把经验规则沉淀成可复用 CLAUDE.md，约束测试、提交、代码阅读和交付方式",
+              "type": "core"
+            },
+            {
+              "label": "接入路径",
+              "detail": "先拷贝到非核心仓库，按团队语言栈删改规则",
+              "type": "integration"
+            },
+            {
+              "label": "产出价值",
+              "detail": "减少无效改动、提升代码审查一致性、沉淀团队 agent 操作规范",
+              "type": "output"
+            }
+          ],
+          "links": [
+            "识别任务",
+            "封装机制",
+            "验证收益"
+          ],
+          "poster": {
+            "eyebrow": "Project Blueprint",
+            "headline": "CLAUDE.md 行为规约",
+            "subhead": "multica-ai/andrej-karpathy-skills",
+            "thesis": "把“团队使用 Claude Code 时常见失败来自上下文缺失、过度自信和不一致工程习惯”通过“把经验规则沉淀成可复用 CLAUDE.md，约束测试、提交、代码阅读和交付方式”转成“减少无效改动、提升代码审查一致性、沉淀团队 agent 操作规范”。",
+            "metrics": [
+              {
+                "label": "入口",
+                "value": "Spike",
+                "note": "先旁路验证"
+              },
+              {
+                "label": "指标",
+                "value": "A/B",
+                "note": "对照任务"
+              },
+              {
+                "label": "风险",
+                "value": "Audit",
+                "note": "权限与日志"
+              },
+              {
+                "label": "周期",
+                "value": "1w",
+                "note": "最小评估"
+              }
+            ],
+            "lanes": [
+              {
+                "label": "业务/工程痛点",
+                "detail": "团队使用 Claude Code 时常见失败来自上下文缺失、过度自信和不一致工程习惯",
+                "type": "input",
+                "step": "01",
+                "signal": "团队使用 Claude Code 时常见失败来自上下文缺失、过度自信和不一致工程习惯"
+              },
+              {
+                "label": "核心机制",
+                "detail": "把经验规则沉淀成可复用 CLAUDE.md，约束测试、提交、代码阅读和交付方式",
+                "type": "core",
+                "step": "02",
+                "signal": "把经验规则沉淀成可复用 CLAUDE.md，约束测试、提交、代码阅读和交付方式"
+              },
+              {
+                "label": "接入路径",
+                "detail": "先拷贝到非核心仓库，按团队语言栈删改规则",
+                "type": "integration",
+                "step": "03",
+                "signal": "先拷贝到非核心仓库，按团队语言栈删改规则"
+              },
+              {
+                "label": "产出价值",
+                "detail": "减少无效改动、提升代码审查一致性、沉淀团队 agent 操作规范",
+                "type": "output",
+                "step": "04",
+                "signal": "减少无效改动、提升代码审查一致性、沉淀团队 agent 操作规范"
+              }
+            ],
+            "adoption": [
+              {
+                "label": "试点入口",
+                "detail": "先拷贝到非核心仓库，按团队语言栈删改规则"
+              },
+              {
+                "label": "验收指标",
+                "detail": "减少无效改动、提升代码审查一致性、沉淀团队 agent 操作规范"
+              },
+              {
+                "label": "生产检查",
+                "detail": "规则文件容易过拟合个人偏好，需要通过任务回放验证是否真的减少返工"
+              },
+              {
+                "label": "采用边界",
+                "detail": "无 owner、无评测集、无权限边界时不扩大使用。"
+              }
+            ],
+            "warning": "无 owner、无评测集、无权限边界时不扩大使用。"
+          }
+        },
+        "maturity": {
+          "community": 72,
+          "maintenance": 91,
+          "production": 78,
+          "complexity": 63
+        },
+        "score": 96
+      },
+      "evidence": {
+        "readmeExcerpt": "A single CLAUDE.md file to improve Claude Code behavior, derived from Andrej Karpathy observations on LLM coding pitfalls.",
+        "githubUrl": "https://github.com/multica-ai/andrej-karpathy-skills",
+        "trendingSnapshot": "GitTrend daily, 2026-05-21 UTC / 2026-05-22 Asia-Shanghai run",
+        "trendingSource": "https://gittrend.io/",
+        "observedAt": "2026-05-21T17:08:04.323Z"
+      }
+    },
+    {
+      "rank": 3,
+      "repo": {
+        "fullName": "Imbad0202/academic-research-skills",
+        "name": "academic-research-skills",
+        "owner": "Imbad0202",
+        "avatarUrl": "https://github.com/Imbad0202.png",
+        "visualUrl": "https://opengraph.githubassets.com/echo-trending-2026-05-22/Imbad0202/academic-research-skills",
+        "url": "https://github.com/Imbad0202/academic-research-skills",
+        "description": "Academic Research Skills for Claude Code: research → write → review → revise → finalize",
+        "stars": 17400,
+        "forks": 1500,
+        "openIssues": 14,
+        "language": "Python",
+        "topics": [
+          "developer-tools",
+          "ai",
+          "workflow",
+          "engineering"
+        ],
+        "license": "Unknown",
+        "pushedAt": "2026-05-21T00:00:00Z",
+        "createdAt": "2026-01-01T00:00:00Z",
+        "languages": {
+          "Python": 1
+        },
+        "starsToday": 120,
+        "updatedAt": "2026-05-21T17:08:04.323Z",
+        "trendingDailyStars": 120,
+        "trendingSource": "GitTrend live page"
+      },
+      "analysis": {
+        "method": "codex-web-research",
+        "category": "研究工作流 / Skill 工程",
+        "oneLiner": "Academic Research Skills for Claude Code: research → write → review → revise → finalize",
+        "whyItMatters": "Imbad0202/academic-research-skills 在 GitTrend 2026-05-21 实时榜排名 #3，约 17.4K stars、今日新增 +120。它的热度说明开发者正在把 AI 工程的关注点从“模型会不会写代码”转向上下文、技能、工具和可治理流程。",
+        "engineeringRead": "Python · GitTrend daily trending · 17.4K stars / 1.5K forks。采用判断要拆成架构机制、适用团队、落地路径、生产风险、决策问题和观察信号。",
+        "architectureSignals": [
+          "架构机制：把研究流程拆成检索、精读、写作、审稿、修订等可复用技能。",
+          "适用团队：论文检索、综述、写作和修订很容易散落在一次性提示词里 已经在日常任务中反复出现，并且有能力维护额外工具层。",
+          "接入边界：先用于内部研究备忘录和论文精读，不直接产出最终学术结论。",
+          "生产约束：学术场景对来源准确性要求高，必须保留引用、原文链接和人工复核。"
+        ],
+        "valueHypothesis": [
+          "核心收益来自 提升文献处理节奏，并把引用、证据和修订记录结构化，不是 star 数本身。",
+          "适合有明确任务回放集、能对比 agent 前后效果的团队。",
+          "验证指标应包括任务完成时间、人工纠偏次数、失败恢复成本和安全审计结果。"
+        ],
+        "technicalTakeaways": [
+          "学术研究 Agent 技能链 的关键不在包装形式，而在是否把高频经验变成可复用、可审查的工程资产。",
+          "先做旁路试点，记录输入、输出、失败原因和人工接管点。",
+          "把安全和质量门槛写入试点定义，而不是等用户开始依赖后再补。"
+        ],
+        "adoptionRisks": [
+          "学术场景对来源准确性要求高，必须保留引用、原文链接和人工复核",
+          "如果只因为热榜导入，容易增加上下文噪声和维护负担。",
+          "缺少明确 license 或企业合规结论时，不应进入客户数据和生产权限范围。"
+        ],
+        "suggestedUseCases": [
+          "选择一个历史任务重放，和现有流程做 A/B 对比。",
+          "先限制为只读或草稿模式，人工确认后再允许写入。",
+          "把效果记录沉淀到团队技术雷达，连续观察 2-3 周再扩大范围。"
+        ],
+        "watchSignals": [
+          "是否出现真实大型团队案例和失败复盘。",
+          "是否支持权限、日志、版本和回滚。",
+          "社区是否从提示词热度转向可维护工程实现。"
+        ],
+        "deepDive": {
+          "strategicValue": "学术研究 Agent 技能链 代表当前开源热榜的主线：Agent 能力正在被拆成上下文层、技能层、工具层和流程层。团队应判断它能否降低真实工程摩擦，而不是只增加 AI 工具数量。",
+          "implementationPath": [
+            "选一个非核心仓库或低风险流程建立基线。",
+            "先用于内部研究备忘录和论文精读，不直接产出最终学术结论",
+            "用 提升文献处理节奏，并把引用、证据和修订记录结构化 对比原流程，保留失败样本。",
+            "通过安全、合规和 owner 评审后再扩大到团队级使用。"
+          ],
+          "productionConcerns": [
+            "学术场景对来源准确性要求高，必须保留引用、原文链接和人工复核",
+            "需要记录 agent 输入输出、工具调用和人工批准链路。",
+            "一旦接入公司代码或数据，必须有 secrets 扫描和最小权限策略。"
+          ],
+          "decisionQuestions": [
+            "这个项目解决的是“论文检索、综述、写作和修订很容易散落在一次性提示词里”，还是只是增加一个新工具？",
+            "团队是否有足够样本衡量前后效果？",
+            "如果 不适合缺少 owner、权限边界和可回滚任务定义的团队。，是否应只收藏观察？"
+          ],
+          "recommendedAction": "进入重点试点：用一周历史任务回放验证收益。"
+        },
+        "diagram": {
+          "title": "工业化落地图解",
+          "caption": "Imbad0202/academic-research-skills · 学术研究 Agent 技能链",
+          "summary": "把“论文检索、综述、写作和修订很容易散落在一次性提示词里”通过“把研究流程拆成检索、精读、写作、审稿、修订等可复用技能”转成“提升文献处理节奏，并把引用、证据和修订记录结构化”。",
+          "nodes": [
+            {
+              "label": "业务/工程痛点",
+              "detail": "论文检索、综述、写作和修订很容易散落在一次性提示词里",
+              "type": "input"
+            },
+            {
+              "label": "核心机制",
+              "detail": "把研究流程拆成检索、精读、写作、审稿、修订等可复用技能",
+              "type": "core"
+            },
+            {
+              "label": "接入路径",
+              "detail": "先用于内部研究备忘录和论文精读，不直接产出最终学术结论",
+              "type": "integration"
+            },
+            {
+              "label": "产出价值",
+              "detail": "提升文献处理节奏，并把引用、证据和修订记录结构化",
+              "type": "output"
+            }
+          ],
+          "links": [
+            "识别任务",
+            "封装机制",
+            "验证收益"
+          ],
+          "poster": {
+            "eyebrow": "Project Blueprint",
+            "headline": "学术研究 Agent 技能链",
+            "subhead": "Imbad0202/academic-research-skills",
+            "thesis": "把“论文检索、综述、写作和修订很容易散落在一次性提示词里”通过“把研究流程拆成检索、精读、写作、审稿、修订等可复用技能”转成“提升文献处理节奏，并把引用、证据和修订记录结构化”。",
+            "metrics": [
+              {
+                "label": "入口",
+                "value": "Spike",
+                "note": "先旁路验证"
+              },
+              {
+                "label": "指标",
+                "value": "A/B",
+                "note": "对照任务"
+              },
+              {
+                "label": "风险",
+                "value": "Audit",
+                "note": "权限与日志"
+              },
+              {
+                "label": "周期",
+                "value": "1w",
+                "note": "最小评估"
+              }
+            ],
+            "lanes": [
+              {
+                "label": "业务/工程痛点",
+                "detail": "论文检索、综述、写作和修订很容易散落在一次性提示词里",
+                "type": "input",
+                "step": "01",
+                "signal": "论文检索、综述、写作和修订很容易散落在一次性提示词里"
+              },
+              {
+                "label": "核心机制",
+                "detail": "把研究流程拆成检索、精读、写作、审稿、修订等可复用技能",
+                "type": "core",
+                "step": "02",
+                "signal": "把研究流程拆成检索、精读、写作、审稿、修订等可复用技能"
+              },
+              {
+                "label": "接入路径",
+                "detail": "先用于内部研究备忘录和论文精读，不直接产出最终学术结论",
+                "type": "integration",
+                "step": "03",
+                "signal": "先用于内部研究备忘录和论文精读，不直接产出最终学术结论"
+              },
+              {
+                "label": "产出价值",
+                "detail": "提升文献处理节奏，并把引用、证据和修订记录结构化",
+                "type": "output",
+                "step": "04",
+                "signal": "提升文献处理节奏，并把引用、证据和修订记录结构化"
+              }
+            ],
+            "adoption": [
+              {
+                "label": "试点入口",
+                "detail": "先用于内部研究备忘录和论文精读，不直接产出最终学术结论"
+              },
+              {
+                "label": "验收指标",
+                "detail": "提升文献处理节奏，并把引用、证据和修订记录结构化"
+              },
+              {
+                "label": "生产检查",
+                "detail": "学术场景对来源准确性要求高，必须保留引用、原文链接和人工复核"
+              },
+              {
+                "label": "采用边界",
+                "detail": "无 owner、无评测集、无权限边界时不扩大使用。"
+              }
+            ],
+            "warning": "无 owner、无评测集、无权限边界时不扩大使用。"
+          }
+        },
+        "maturity": {
+          "community": 74,
+          "maintenance": 90,
+          "production": 77,
+          "complexity": 64
+        },
+        "score": 94
+      },
+      "evidence": {
+        "readmeExcerpt": "Academic Research Skills for Claude Code: research → write → review → revise → finalize",
+        "githubUrl": "https://github.com/Imbad0202/academic-research-skills",
+        "trendingSnapshot": "GitTrend daily, 2026-05-21 UTC / 2026-05-22 Asia-Shanghai run",
+        "trendingSource": "https://gittrend.io/",
+        "observedAt": "2026-05-21T17:08:04.323Z"
+      }
+    },
+    {
+      "rank": 4,
+      "repo": {
+        "fullName": "mattpocock/skills",
+        "name": "skills",
+        "owner": "mattpocock",
+        "avatarUrl": "https://github.com/mattpocock.png",
+        "visualUrl": "https://opengraph.githubassets.com/echo-trending-2026-05-22/mattpocock/skills",
+        "url": "https://github.com/mattpocock/skills",
+        "description": "Skills for Real Engineers. Straight from my .claude directory.",
+        "stars": 98000,
+        "forks": 8700,
+        "openIssues": 0,
+        "language": "Shell",
+        "topics": [
+          "developer-tools",
+          "ai",
+          "workflow",
+          "engineering"
+        ],
+        "license": "Unknown",
+        "pushedAt": "2026-05-21T00:00:00Z",
+        "createdAt": "2026-01-01T00:00:00Z",
+        "languages": {
+          "Shell": 1
+        },
+        "starsToday": 99,
+        "updatedAt": "2026-05-21T17:08:04.323Z",
+        "trendingDailyStars": 99,
+        "trendingSource": "GitTrend live page"
+      },
+      "analysis": {
+        "method": "codex-web-research",
+        "category": "开发者工具 / Skill 生态",
+        "oneLiner": "Skills for Real Engineers. Straight from my .claude directory.",
+        "whyItMatters": "mattpocock/skills 在 GitTrend 2026-05-21 实时榜排名 #4，约 98K stars、今日新增 +99。它的热度说明开发者正在把 AI 工程的关注点从“模型会不会写代码”转向上下文、技能、工具和可治理流程。",
+        "engineeringRead": "Shell · GitTrend daily trending · 98K stars / 8.7K forks。采用判断要拆成架构机制、适用团队、落地路径、生产风险、决策问题和观察信号。",
+        "architectureSignals": [
+          "架构机制：用可组合 skill 把调试、迁移、测试、文档等工程动作标准化。",
+          "适用团队：开发者把 AI 工具当通用聊天入口，导致任务上下文和工程习惯无法复用 已经在日常任务中反复出现，并且有能力维护额外工具层。",
+          "接入边界：选择 2-3 个高频流程先试，不要整包导入。",
+          "生产约束：技能目录缺少质量门槛时会变成提示词垃圾堆，需要定期淘汰。"
+        ],
+        "valueHypothesis": [
+          "核心收益来自 让团队把最佳实践变成可执行工作流，而不是只写在 wiki，不是 star 数本身。",
+          "适合有明确任务回放集、能对比 agent 前后效果的团队。",
+          "验证指标应包括任务完成时间、人工纠偏次数、失败恢复成本和安全审计结果。"
+        ],
+        "technicalTakeaways": [
+          "工程师技能目录 的关键不在包装形式，而在是否把高频经验变成可复用、可审查的工程资产。",
+          "先做旁路试点，记录输入、输出、失败原因和人工接管点。",
+          "把安全和质量门槛写入试点定义，而不是等用户开始依赖后再补。"
+        ],
+        "adoptionRisks": [
+          "技能目录缺少质量门槛时会变成提示词垃圾堆，需要定期淘汰",
+          "如果只因为热榜导入，容易增加上下文噪声和维护负担。",
+          "缺少明确 license 或企业合规结论时，不应进入客户数据和生产权限范围。"
+        ],
+        "suggestedUseCases": [
+          "选择一个历史任务重放，和现有流程做 A/B 对比。",
+          "先限制为只读或草稿模式，人工确认后再允许写入。",
+          "把效果记录沉淀到团队技术雷达，连续观察 2-3 周再扩大范围。"
+        ],
+        "watchSignals": [
+          "是否出现真实大型团队案例和失败复盘。",
+          "是否支持权限、日志、版本和回滚。",
+          "社区是否从提示词热度转向可维护工程实现。"
+        ],
+        "deepDive": {
+          "strategicValue": "工程师技能目录 代表当前开源热榜的主线：Agent 能力正在被拆成上下文层、技能层、工具层和流程层。团队应判断它能否降低真实工程摩擦，而不是只增加 AI 工具数量。",
+          "implementationPath": [
+            "选一个非核心仓库或低风险流程建立基线。",
+            "选择 2-3 个高频流程先试，不要整包导入",
+            "用 让团队把最佳实践变成可执行工作流，而不是只写在 wiki 对比原流程，保留失败样本。",
+            "通过安全、合规和 owner 评审后再扩大到团队级使用。"
+          ],
+          "productionConcerns": [
+            "技能目录缺少质量门槛时会变成提示词垃圾堆，需要定期淘汰",
+            "需要记录 agent 输入输出、工具调用和人工批准链路。",
+            "一旦接入公司代码或数据，必须有 secrets 扫描和最小权限策略。"
+          ],
+          "decisionQuestions": [
+            "这个项目解决的是“开发者把 AI 工具当通用聊天入口，导致任务上下文和工程习惯无法复用”，还是只是增加一个新工具？",
+            "团队是否有足够样本衡量前后效果？",
+            "如果 不适合缺少 owner、权限边界和可回滚任务定义的团队。，是否应只收藏观察？"
+          ],
+          "recommendedAction": "进入重点试点：用一周历史任务回放验证收益。"
+        },
+        "diagram": {
+          "title": "工业化落地图解",
+          "caption": "mattpocock/skills · 工程师技能目录",
+          "summary": "把“开发者把 AI 工具当通用聊天入口，导致任务上下文和工程习惯无法复用”通过“用可组合 skill 把调试、迁移、测试、文档等工程动作标准化”转成“让团队把最佳实践变成可执行工作流，而不是只写在 wiki”。",
+          "nodes": [
+            {
+              "label": "业务/工程痛点",
+              "detail": "开发者把 AI 工具当通用聊天入口，导致任务上下文和工程习惯无法复用",
+              "type": "input"
+            },
+            {
+              "label": "核心机制",
+              "detail": "用可组合 skill 把调试、迁移、测试、文档等工程动作标准化",
+              "type": "core"
+            },
+            {
+              "label": "接入路径",
+              "detail": "选择 2-3 个高频流程先试，不要整包导入",
+              "type": "integration"
+            },
+            {
+              "label": "产出价值",
+              "detail": "让团队把最佳实践变成可执行工作流，而不是只写在 wiki",
+              "type": "output"
+            }
+          ],
+          "links": [
+            "识别任务",
+            "封装机制",
+            "验证收益"
+          ],
+          "poster": {
+            "eyebrow": "Project Blueprint",
+            "headline": "工程师技能目录",
+            "subhead": "mattpocock/skills",
+            "thesis": "把“开发者把 AI 工具当通用聊天入口，导致任务上下文和工程习惯无法复用”通过“用可组合 skill 把调试、迁移、测试、文档等工程动作标准化”转成“让团队把最佳实践变成可执行工作流，而不是只写在 wiki”。",
+            "metrics": [
+              {
+                "label": "入口",
+                "value": "Spike",
+                "note": "先旁路验证"
+              },
+              {
+                "label": "指标",
+                "value": "A/B",
+                "note": "对照任务"
+              },
+              {
+                "label": "风险",
+                "value": "Audit",
+                "note": "权限与日志"
+              },
+              {
+                "label": "周期",
+                "value": "1w",
+                "note": "最小评估"
+              }
+            ],
+            "lanes": [
+              {
+                "label": "业务/工程痛点",
+                "detail": "开发者把 AI 工具当通用聊天入口，导致任务上下文和工程习惯无法复用",
+                "type": "input",
+                "step": "01",
+                "signal": "开发者把 AI 工具当通用聊天入口，导致任务上下文和工程习惯无法复用"
+              },
+              {
+                "label": "核心机制",
+                "detail": "用可组合 skill 把调试、迁移、测试、文档等工程动作标准化",
+                "type": "core",
+                "step": "02",
+                "signal": "用可组合 skill 把调试、迁移、测试、文档等工程动作标准化"
+              },
+              {
+                "label": "接入路径",
+                "detail": "选择 2-3 个高频流程先试，不要整包导入",
+                "type": "integration",
+                "step": "03",
+                "signal": "选择 2-3 个高频流程先试，不要整包导入"
+              },
+              {
+                "label": "产出价值",
+                "detail": "让团队把最佳实践变成可执行工作流，而不是只写在 wiki",
+                "type": "output",
+                "step": "04",
+                "signal": "让团队把最佳实践变成可执行工作流，而不是只写在 wiki"
+              }
+            ],
+            "adoption": [
+              {
+                "label": "试点入口",
+                "detail": "选择 2-3 个高频流程先试，不要整包导入"
+              },
+              {
+                "label": "验收指标",
+                "detail": "让团队把最佳实践变成可执行工作流，而不是只写在 wiki"
+              },
+              {
+                "label": "生产检查",
+                "detail": "技能目录缺少质量门槛时会变成提示词垃圾堆，需要定期淘汰"
+              },
+              {
+                "label": "采用边界",
+                "detail": "无 owner、无评测集、无权限边界时不扩大使用。"
+              }
+            ],
+            "warning": "无 owner、无评测集、无权限边界时不扩大使用。"
+          }
+        },
+        "maturity": {
+          "community": 76,
+          "maintenance": 89,
+          "production": 77,
+          "complexity": 65
+        },
+        "score": 92
+      },
+      "evidence": {
+        "readmeExcerpt": "Skills for Real Engineers. Straight from my .claude directory.",
+        "githubUrl": "https://github.com/mattpocock/skills",
+        "trendingSnapshot": "GitTrend daily, 2026-05-21 UTC / 2026-05-22 Asia-Shanghai run",
+        "trendingSource": "https://gittrend.io/",
+        "observedAt": "2026-05-21T17:08:04.323Z"
+      }
+    },
+    {
+      "rank": 5,
+      "repo": {
+        "fullName": "NousResearch/hermes-agent",
+        "name": "hermes-agent",
+        "owner": "NousResearch",
+        "avatarUrl": "https://github.com/NousResearch.png",
+        "visualUrl": "https://opengraph.githubassets.com/echo-trending-2026-05-22/NousResearch/hermes-agent",
+        "url": "https://github.com/NousResearch/hermes-agent",
+        "description": "The agent that grows with you",
+        "stars": 160300,
+        "forks": 26000,
+        "openIssues": 28,
+        "language": "Python",
+        "topics": [
+          "ai-agents",
+          "claude-code",
+          "codex",
+          "tool-use",
+          "workflow"
+        ],
+        "license": "Unknown",
+        "pushedAt": "2026-05-21T00:00:00Z",
+        "createdAt": "2026-01-01T00:00:00Z",
+        "languages": {
+          "Python": 1
+        },
+        "starsToday": 89,
+        "updatedAt": "2026-05-21T17:08:04.323Z",
+        "trendingDailyStars": 89,
+        "trendingSource": "GitTrend live page"
+      },
+      "analysis": {
+        "method": "codex-web-research",
+        "category": "AI Agent / 长期助手",
+        "oneLiner": "The agent that grows with you",
+        "whyItMatters": "NousResearch/hermes-agent 在 GitTrend 2026-05-21 实时榜排名 #5，约 160.3K stars、今日新增 +89。它的热度说明开发者正在把 AI 工程的关注点从“模型会不会写代码”转向上下文、技能、工具和可治理流程。",
+        "engineeringRead": "Python · GitTrend daily trending · 160.3K stars / 26K forks。采用判断要拆成架构机制、适用团队、落地路径、生产风险、决策问题和观察信号。",
+        "architectureSignals": [
+          "架构机制：通过 agent 记忆、工具调用和自适应工作流扩展能力边界。",
+          "适用团队：个人助手要跨会话保留偏好、工具和任务历史，否则每次都从零开始 已经在日常任务中反复出现，并且有能力维护额外工具层。",
+          "接入边界：先用于低风险个人自动化和研究助理，不碰生产权限。",
+          "生产约束：记忆污染、权限扩张和不可解释动作是进入生产前的主要障碍。"
+        ],
+        "valueHypothesis": [
+          "核心收益来自 验证长期任务连续性、工具成功率和人工接管率，不是 star 数本身。",
+          "适合有明确任务回放集、能对比 agent 前后效果的团队。",
+          "验证指标应包括任务完成时间、人工纠偏次数、失败恢复成本和安全审计结果。"
+        ],
+        "technicalTakeaways": [
+          "可成长个人 Agent 的关键不在包装形式，而在是否把高频经验变成可复用、可审查的工程资产。",
+          "先做旁路试点，记录输入、输出、失败原因和人工接管点。",
+          "把安全和质量门槛写入试点定义，而不是等用户开始依赖后再补。"
+        ],
+        "adoptionRisks": [
+          "记忆污染、权限扩张和不可解释动作是进入生产前的主要障碍",
+          "如果只因为热榜导入，容易增加上下文噪声和维护负担。",
+          "缺少明确 license 或企业合规结论时，不应进入客户数据和生产权限范围。"
+        ],
+        "suggestedUseCases": [
+          "选择一个历史任务重放，和现有流程做 A/B 对比。",
+          "先限制为只读或草稿模式，人工确认后再允许写入。",
+          "把效果记录沉淀到团队技术雷达，连续观察 2-3 周再扩大范围。"
+        ],
+        "watchSignals": [
+          "是否出现真实大型团队案例和失败复盘。",
+          "是否支持权限、日志、版本和回滚。",
+          "社区是否从提示词热度转向可维护工程实现。"
+        ],
+        "deepDive": {
+          "strategicValue": "可成长个人 Agent 代表当前开源热榜的主线：Agent 能力正在被拆成上下文层、技能层、工具层和流程层。团队应判断它能否降低真实工程摩擦，而不是只增加 AI 工具数量。",
+          "implementationPath": [
+            "选一个非核心仓库或低风险流程建立基线。",
+            "先用于低风险个人自动化和研究助理，不碰生产权限",
+            "用 验证长期任务连续性、工具成功率和人工接管率 对比原流程，保留失败样本。",
+            "通过安全、合规和 owner 评审后再扩大到团队级使用。"
+          ],
+          "productionConcerns": [
+            "记忆污染、权限扩张和不可解释动作是进入生产前的主要障碍",
+            "需要记录 agent 输入输出、工具调用和人工批准链路。",
+            "一旦接入公司代码或数据，必须有 secrets 扫描和最小权限策略。"
+          ],
+          "decisionQuestions": [
+            "这个项目解决的是“个人助手要跨会话保留偏好、工具和任务历史，否则每次都从零开始”，还是只是增加一个新工具？",
+            "团队是否有足够样本衡量前后效果？",
+            "如果 不适合缺少 owner、权限边界和可回滚任务定义的团队。，是否应只收藏观察？"
+          ],
+          "recommendedAction": "进入观察池：先记录适用场景和失败边界。"
+        },
+        "diagram": {
+          "title": "工业化落地图解",
+          "caption": "NousResearch/hermes-agent · 可成长个人 Agent",
+          "summary": "把“个人助手要跨会话保留偏好、工具和任务历史，否则每次都从零开始”通过“通过 agent 记忆、工具调用和自适应工作流扩展能力边界”转成“验证长期任务连续性、工具成功率和人工接管率”。",
+          "nodes": [
+            {
+              "label": "业务/工程痛点",
+              "detail": "个人助手要跨会话保留偏好、工具和任务历史，否则每次都从零开始",
+              "type": "input"
+            },
+            {
+              "label": "核心机制",
+              "detail": "通过 agent 记忆、工具调用和自适应工作流扩展能力边界",
+              "type": "core"
+            },
+            {
+              "label": "接入路径",
+              "detail": "先用于低风险个人自动化和研究助理，不碰生产权限",
+              "type": "integration"
+            },
+            {
+              "label": "产出价值",
+              "detail": "验证长期任务连续性、工具成功率和人工接管率",
+              "type": "output"
+            }
+          ],
+          "links": [
+            "识别任务",
+            "封装机制",
+            "验证收益"
+          ],
+          "poster": {
+            "eyebrow": "Project Blueprint",
+            "headline": "可成长个人 Agent",
+            "subhead": "NousResearch/hermes-agent",
+            "thesis": "把“个人助手要跨会话保留偏好、工具和任务历史，否则每次都从零开始”通过“通过 agent 记忆、工具调用和自适应工作流扩展能力边界”转成“验证长期任务连续性、工具成功率和人工接管率”。",
+            "metrics": [
+              {
+                "label": "入口",
+                "value": "Spike",
+                "note": "先旁路验证"
+              },
+              {
+                "label": "指标",
+                "value": "A/B",
+                "note": "对照任务"
+              },
+              {
+                "label": "风险",
+                "value": "Audit",
+                "note": "权限与日志"
+              },
+              {
+                "label": "周期",
+                "value": "1w",
+                "note": "最小评估"
+              }
+            ],
+            "lanes": [
+              {
+                "label": "业务/工程痛点",
+                "detail": "个人助手要跨会话保留偏好、工具和任务历史，否则每次都从零开始",
+                "type": "input",
+                "step": "01",
+                "signal": "个人助手要跨会话保留偏好、工具和任务历史，否则每次都从零开始"
+              },
+              {
+                "label": "核心机制",
+                "detail": "通过 agent 记忆、工具调用和自适应工作流扩展能力边界",
+                "type": "core",
+                "step": "02",
+                "signal": "通过 agent 记忆、工具调用和自适应工作流扩展能力边界"
+              },
+              {
+                "label": "接入路径",
+                "detail": "先用于低风险个人自动化和研究助理，不碰生产权限",
+                "type": "integration",
+                "step": "03",
+                "signal": "先用于低风险个人自动化和研究助理，不碰生产权限"
+              },
+              {
+                "label": "产出价值",
+                "detail": "验证长期任务连续性、工具成功率和人工接管率",
+                "type": "output",
+                "step": "04",
+                "signal": "验证长期任务连续性、工具成功率和人工接管率"
+              }
+            ],
+            "adoption": [
+              {
+                "label": "试点入口",
+                "detail": "先用于低风险个人自动化和研究助理，不碰生产权限"
+              },
+              {
+                "label": "验收指标",
+                "detail": "验证长期任务连续性、工具成功率和人工接管率"
+              },
+              {
+                "label": "生产检查",
+                "detail": "记忆污染、权限扩张和不可解释动作是进入生产前的主要障碍"
+              },
+              {
+                "label": "采用边界",
+                "detail": "无 owner、无评测集、无权限边界时不扩大使用。"
+              }
+            ],
+            "warning": "无 owner、无评测集、无权限边界时不扩大使用。"
+          }
+        },
+        "maturity": {
+          "community": 78,
+          "maintenance": 88,
+          "production": 76,
+          "complexity": 66
+        },
+        "score": 90
+      },
+      "evidence": {
+        "readmeExcerpt": "The agent that grows with you",
+        "githubUrl": "https://github.com/NousResearch/hermes-agent",
+        "trendingSnapshot": "GitTrend daily, 2026-05-21 UTC / 2026-05-22 Asia-Shanghai run",
+        "trendingSource": "https://gittrend.io/",
+        "observedAt": "2026-05-21T17:08:04.323Z"
+      }
+    },
+    {
+      "rank": 6,
+      "repo": {
+        "fullName": "tinyhumansai/openhuman",
+        "name": "openhuman",
+        "owner": "tinyhumansai",
+        "avatarUrl": "https://github.com/tinyhumansai.png",
+        "visualUrl": "https://opengraph.githubassets.com/echo-trending-2026-05-22/tinyhumansai/openhuman",
+        "url": "https://github.com/tinyhumansai/openhuman",
+        "description": "Your Personal AI super intelligence. Private, Simple and extremely powerful.",
+        "stars": 23400,
+        "forks": 2100,
+        "openIssues": 35,
+        "language": "Rust",
+        "topics": [
+          "developer-tools",
+          "ai",
+          "workflow",
+          "engineering"
+        ],
+        "license": "Unknown",
+        "pushedAt": "2026-05-21T00:00:00Z",
+        "createdAt": "2026-01-01T00:00:00Z",
+        "languages": {
+          "Rust": 1
+        },
+        "starsToday": 69,
+        "updatedAt": "2026-05-21T17:08:04.323Z",
+        "trendingDailyStars": 69,
+        "trendingSource": "GitTrend live page"
+      },
+      "analysis": {
+        "method": "codex-web-research",
+        "category": "本地 AI / 隐私助手",
+        "oneLiner": "Your Personal AI super intelligence. Private, Simple and extremely powerful.",
+        "whyItMatters": "tinyhumansai/openhuman 在 GitTrend 2026-05-21 实时榜排名 #6，约 23.4K stars、今日新增 +69。它的热度说明开发者正在把 AI 工程的关注点从“模型会不会写代码”转向上下文、技能、工具和可治理流程。",
+        "engineeringRead": "Rust · GitTrend daily trending · 23.4K stars / 2.1K forks。采用判断要拆成架构机制、适用团队、落地路径、生产风险、决策问题和观察信号。",
+        "architectureSignals": [
+          "架构机制：Rust 本地应用承载私有数据索引、推理入口和工具编排。",
+          "适用团队：个人 AI 工具正在从云端聊天转向本地数据、隐私和多端工作流 已经在日常任务中反复出现，并且有能力维护额外工具层。",
+          "接入边界：先接入个人知识库或本地文件，关闭外部写权限。",
+          "生产约束：本地模型能力、跨平台兼容和权限隔离决定能否长期使用。"
+        ],
+        "valueHypothesis": [
+          "核心收益来自 在隐私、响应速度和可控性之间取得更好平衡，不是 star 数本身。",
+          "适合有明确任务回放集、能对比 agent 前后效果的团队。",
+          "验证指标应包括任务完成时间、人工纠偏次数、失败恢复成本和安全审计结果。"
+        ],
+        "technicalTakeaways": [
+          "本地优先个人 AI 的关键不在包装形式，而在是否把高频经验变成可复用、可审查的工程资产。",
+          "先做旁路试点，记录输入、输出、失败原因和人工接管点。",
+          "把安全和质量门槛写入试点定义，而不是等用户开始依赖后再补。"
+        ],
+        "adoptionRisks": [
+          "本地模型能力、跨平台兼容和权限隔离决定能否长期使用",
+          "如果只因为热榜导入，容易增加上下文噪声和维护负担。",
+          "缺少明确 license 或企业合规结论时，不应进入客户数据和生产权限范围。"
+        ],
+        "suggestedUseCases": [
+          "选择一个历史任务重放，和现有流程做 A/B 对比。",
+          "先限制为只读或草稿模式，人工确认后再允许写入。",
+          "把效果记录沉淀到团队技术雷达，连续观察 2-3 周再扩大范围。"
+        ],
+        "watchSignals": [
+          "是否出现真实大型团队案例和失败复盘。",
+          "是否支持权限、日志、版本和回滚。",
+          "社区是否从提示词热度转向可维护工程实现。"
+        ],
+        "deepDive": {
+          "strategicValue": "本地优先个人 AI 代表当前开源热榜的主线：Agent 能力正在被拆成上下文层、技能层、工具层和流程层。团队应判断它能否降低真实工程摩擦，而不是只增加 AI 工具数量。",
+          "implementationPath": [
+            "选一个非核心仓库或低风险流程建立基线。",
+            "先接入个人知识库或本地文件，关闭外部写权限",
+            "用 在隐私、响应速度和可控性之间取得更好平衡 对比原流程，保留失败样本。",
+            "通过安全、合规和 owner 评审后再扩大到团队级使用。"
+          ],
+          "productionConcerns": [
+            "本地模型能力、跨平台兼容和权限隔离决定能否长期使用",
+            "需要记录 agent 输入输出、工具调用和人工批准链路。",
+            "一旦接入公司代码或数据，必须有 secrets 扫描和最小权限策略。"
+          ],
+          "decisionQuestions": [
+            "这个项目解决的是“个人 AI 工具正在从云端聊天转向本地数据、隐私和多端工作流”，还是只是增加一个新工具？",
+            "团队是否有足够样本衡量前后效果？",
+            "如果 不适合缺少 owner、权限边界和可回滚任务定义的团队。，是否应只收藏观察？"
+          ],
+          "recommendedAction": "进入观察池：先记录适用场景和失败边界。"
+        },
+        "diagram": {
+          "title": "工业化落地图解",
+          "caption": "tinyhumansai/openhuman · 本地优先个人 AI",
+          "summary": "把“个人 AI 工具正在从云端聊天转向本地数据、隐私和多端工作流”通过“Rust 本地应用承载私有数据索引、推理入口和工具编排”转成“在隐私、响应速度和可控性之间取得更好平衡”。",
+          "nodes": [
+            {
+              "label": "业务/工程痛点",
+              "detail": "个人 AI 工具正在从云端聊天转向本地数据、隐私和多端工作流",
+              "type": "input"
+            },
+            {
+              "label": "核心机制",
+              "detail": "Rust 本地应用承载私有数据索引、推理入口和工具编排",
+              "type": "core"
+            },
+            {
+              "label": "接入路径",
+              "detail": "先接入个人知识库或本地文件，关闭外部写权限",
+              "type": "integration"
+            },
+            {
+              "label": "产出价值",
+              "detail": "在隐私、响应速度和可控性之间取得更好平衡",
+              "type": "output"
+            }
+          ],
+          "links": [
+            "识别任务",
+            "封装机制",
+            "验证收益"
+          ],
+          "poster": {
+            "eyebrow": "Project Blueprint",
+            "headline": "本地优先个人 AI",
+            "subhead": "tinyhumansai/openhuman",
+            "thesis": "把“个人 AI 工具正在从云端聊天转向本地数据、隐私和多端工作流”通过“Rust 本地应用承载私有数据索引、推理入口和工具编排”转成“在隐私、响应速度和可控性之间取得更好平衡”。",
+            "metrics": [
+              {
+                "label": "入口",
+                "value": "Spike",
+                "note": "先旁路验证"
+              },
+              {
+                "label": "指标",
+                "value": "A/B",
+                "note": "对照任务"
+              },
+              {
+                "label": "风险",
+                "value": "Audit",
+                "note": "权限与日志"
+              },
+              {
+                "label": "周期",
+                "value": "1w",
+                "note": "最小评估"
+              }
+            ],
+            "lanes": [
+              {
+                "label": "业务/工程痛点",
+                "detail": "个人 AI 工具正在从云端聊天转向本地数据、隐私和多端工作流",
+                "type": "input",
+                "step": "01",
+                "signal": "个人 AI 工具正在从云端聊天转向本地数据、隐私和多端工作流"
+              },
+              {
+                "label": "核心机制",
+                "detail": "Rust 本地应用承载私有数据索引、推理入口和工具编排",
+                "type": "core",
+                "step": "02",
+                "signal": "Rust 本地应用承载私有数据索引、推理入口和工具编排"
+              },
+              {
+                "label": "接入路径",
+                "detail": "先接入个人知识库或本地文件，关闭外部写权限",
+                "type": "integration",
+                "step": "03",
+                "signal": "先接入个人知识库或本地文件，关闭外部写权限"
+              },
+              {
+                "label": "产出价值",
+                "detail": "在隐私、响应速度和可控性之间取得更好平衡",
+                "type": "output",
+                "step": "04",
+                "signal": "在隐私、响应速度和可控性之间取得更好平衡"
+              }
+            ],
+            "adoption": [
+              {
+                "label": "试点入口",
+                "detail": "先接入个人知识库或本地文件，关闭外部写权限"
+              },
+              {
+                "label": "验收指标",
+                "detail": "在隐私、响应速度和可控性之间取得更好平衡"
+              },
+              {
+                "label": "生产检查",
+                "detail": "本地模型能力、跨平台兼容和权限隔离决定能否长期使用"
+              },
+              {
+                "label": "采用边界",
+                "detail": "无 owner、无评测集、无权限边界时不扩大使用。"
+              }
+            ],
+            "warning": "无 owner、无评测集、无权限边界时不扩大使用。"
+          }
+        },
+        "maturity": {
+          "community": 80,
+          "maintenance": 87,
+          "production": 76,
+          "complexity": 67
+        },
+        "score": 88
+      },
+      "evidence": {
+        "readmeExcerpt": "Your Personal AI super intelligence. Private, Simple and extremely powerful.",
+        "githubUrl": "https://github.com/tinyhumansai/openhuman",
+        "trendingSnapshot": "GitTrend daily, 2026-05-21 UTC / 2026-05-22 Asia-Shanghai run",
+        "trendingSource": "https://gittrend.io/",
+        "observedAt": "2026-05-21T17:08:04.323Z"
+      }
+    },
+    {
+      "rank": 7,
+      "repo": {
+        "fullName": "rohitg00/ai-engineering-from-scratch",
+        "name": "ai-engineering-from-scratch",
+        "owner": "rohitg00",
+        "avatarUrl": "https://github.com/rohitg00.png",
+        "visualUrl": "https://opengraph.githubassets.com/echo-trending-2026-05-22/rohitg00/ai-engineering-from-scratch",
+        "url": "https://github.com/rohitg00/ai-engineering-from-scratch",
+        "description": "Learn it. Build it. Ship it for others.",
+        "stars": 9800,
+        "forks": 2000,
+        "openIssues": 0,
+        "language": "Python",
+        "topics": [
+          "developer-tools",
+          "ai",
+          "workflow",
+          "engineering"
+        ],
+        "license": "Unknown",
+        "pushedAt": "2026-05-21T00:00:00Z",
+        "createdAt": "2026-01-01T00:00:00Z",
+        "languages": {
+          "Python": 1
+        },
+        "starsToday": 64,
+        "updatedAt": "2026-05-21T17:08:04.323Z",
+        "trendingDailyStars": 64,
+        "trendingSource": "GitTrend live page"
+      },
+      "analysis": {
+        "method": "codex-web-research",
+        "category": "AI 工程教育 / 从零实现",
+        "oneLiner": "Learn it. Build it. Ship it for others.",
+        "whyItMatters": "rohitg00/ai-engineering-from-scratch 在 GitTrend 2026-05-21 实时榜排名 #7，约 9.8K stars、今日新增 +64。它的热度说明开发者正在把 AI 工程的关注点从“模型会不会写代码”转向上下文、技能、工具和可治理流程。",
+        "engineeringRead": "Python · GitTrend daily trending · 9.8K stars / 2K forks。采用判断要拆成架构机制、适用团队、落地路径、生产风险、决策问题和观察信号。",
+        "architectureSignals": [
+          "架构机制：用从零实现的项目拆解模型调用、检索、工具、评估和上线流程。",
+          "适用团队：AI 应用团队需要理解 RAG、Agent、评测和部署，而不是只调用 API 已经在日常任务中反复出现，并且有能力维护额外工具层。",
+          "接入边界：适合培训和原型，不适合直接进入生产链路。",
+          "生产约束：课程型项目容易滞后于真实平台变化，需要持续更新依赖和案例。"
+        ],
+        "valueHypothesis": [
+          "核心收益来自 降低团队对黑盒框架的依赖，提升问题定位能力，不是 star 数本身。",
+          "适合有明确任务回放集、能对比 agent 前后效果的团队。",
+          "验证指标应包括任务完成时间、人工纠偏次数、失败恢复成本和安全审计结果。"
+        ],
+        "technicalTakeaways": [
+          "AI 工程训练营 的关键不在包装形式，而在是否把高频经验变成可复用、可审查的工程资产。",
+          "先做旁路试点，记录输入、输出、失败原因和人工接管点。",
+          "把安全和质量门槛写入试点定义，而不是等用户开始依赖后再补。"
+        ],
+        "adoptionRisks": [
+          "课程型项目容易滞后于真实平台变化，需要持续更新依赖和案例",
+          "如果只因为热榜导入，容易增加上下文噪声和维护负担。",
+          "缺少明确 license 或企业合规结论时，不应进入客户数据和生产权限范围。"
+        ],
+        "suggestedUseCases": [
+          "选择一个历史任务重放，和现有流程做 A/B 对比。",
+          "先限制为只读或草稿模式，人工确认后再允许写入。",
+          "把效果记录沉淀到团队技术雷达，连续观察 2-3 周再扩大范围。"
+        ],
+        "watchSignals": [
+          "是否出现真实大型团队案例和失败复盘。",
+          "是否支持权限、日志、版本和回滚。",
+          "社区是否从提示词热度转向可维护工程实现。"
+        ],
+        "deepDive": {
+          "strategicValue": "AI 工程训练营 代表当前开源热榜的主线：Agent 能力正在被拆成上下文层、技能层、工具层和流程层。团队应判断它能否降低真实工程摩擦，而不是只增加 AI 工具数量。",
+          "implementationPath": [
+            "选一个非核心仓库或低风险流程建立基线。",
+            "适合培训和原型，不适合直接进入生产链路",
+            "用 降低团队对黑盒框架的依赖，提升问题定位能力 对比原流程，保留失败样本。",
+            "通过安全、合规和 owner 评审后再扩大到团队级使用。"
+          ],
+          "productionConcerns": [
+            "课程型项目容易滞后于真实平台变化，需要持续更新依赖和案例",
+            "需要记录 agent 输入输出、工具调用和人工批准链路。",
+            "一旦接入公司代码或数据，必须有 secrets 扫描和最小权限策略。"
+          ],
+          "decisionQuestions": [
+            "这个项目解决的是“AI 应用团队需要理解 RAG、Agent、评测和部署，而不是只调用 API”，还是只是增加一个新工具？",
+            "团队是否有足够样本衡量前后效果？",
+            "如果 不适合直接替代生产框架或学术事实核验。，是否应只收藏观察？"
+          ],
+          "recommendedAction": "进入观察池：先记录适用场景和失败边界。"
+        },
+        "diagram": {
+          "title": "工业化落地图解",
+          "caption": "rohitg00/ai-engineering-from-scratch · AI 工程训练营",
+          "summary": "把“AI 应用团队需要理解 RAG、Agent、评测和部署，而不是只调用 API”通过“用从零实现的项目拆解模型调用、检索、工具、评估和上线流程”转成“降低团队对黑盒框架的依赖，提升问题定位能力”。",
+          "nodes": [
+            {
+              "label": "业务/工程痛点",
+              "detail": "AI 应用团队需要理解 RAG、Agent、评测和部署，而不是只调用 API",
+              "type": "input"
+            },
+            {
+              "label": "核心机制",
+              "detail": "用从零实现的项目拆解模型调用、检索、工具、评估和上线流程",
+              "type": "core"
+            },
+            {
+              "label": "接入路径",
+              "detail": "适合培训和原型，不适合直接进入生产链路",
+              "type": "integration"
+            },
+            {
+              "label": "产出价值",
+              "detail": "降低团队对黑盒框架的依赖，提升问题定位能力",
+              "type": "output"
+            }
+          ],
+          "links": [
+            "识别任务",
+            "封装机制",
+            "验证收益"
+          ],
+          "poster": {
+            "eyebrow": "Project Blueprint",
+            "headline": "AI 工程训练营",
+            "subhead": "rohitg00/ai-engineering-from-scratch",
+            "thesis": "把“AI 应用团队需要理解 RAG、Agent、评测和部署，而不是只调用 API”通过“用从零实现的项目拆解模型调用、检索、工具、评估和上线流程”转成“降低团队对黑盒框架的依赖，提升问题定位能力”。",
+            "metrics": [
+              {
+                "label": "入口",
+                "value": "Spike",
+                "note": "先旁路验证"
+              },
+              {
+                "label": "指标",
+                "value": "A/B",
+                "note": "对照任务"
+              },
+              {
+                "label": "风险",
+                "value": "Audit",
+                "note": "权限与日志"
+              },
+              {
+                "label": "周期",
+                "value": "1w",
+                "note": "最小评估"
+              }
+            ],
+            "lanes": [
+              {
+                "label": "业务/工程痛点",
+                "detail": "AI 应用团队需要理解 RAG、Agent、评测和部署，而不是只调用 API",
+                "type": "input",
+                "step": "01",
+                "signal": "AI 应用团队需要理解 RAG、Agent、评测和部署，而不是只调用 API"
+              },
+              {
+                "label": "核心机制",
+                "detail": "用从零实现的项目拆解模型调用、检索、工具、评估和上线流程",
+                "type": "core",
+                "step": "02",
+                "signal": "用从零实现的项目拆解模型调用、检索、工具、评估和上线流程"
+              },
+              {
+                "label": "接入路径",
+                "detail": "适合培训和原型，不适合直接进入生产链路",
+                "type": "integration",
+                "step": "03",
+                "signal": "适合培训和原型，不适合直接进入生产链路"
+              },
+              {
+                "label": "产出价值",
+                "detail": "降低团队对黑盒框架的依赖，提升问题定位能力",
+                "type": "output",
+                "step": "04",
+                "signal": "降低团队对黑盒框架的依赖，提升问题定位能力"
+              }
+            ],
+            "adoption": [
+              {
+                "label": "试点入口",
+                "detail": "适合培训和原型，不适合直接进入生产链路"
+              },
+              {
+                "label": "验收指标",
+                "detail": "降低团队对黑盒框架的依赖，提升问题定位能力"
+              },
+              {
+                "label": "生产检查",
+                "detail": "课程型项目容易滞后于真实平台变化，需要持续更新依赖和案例"
+              },
+              {
+                "label": "采用边界",
+                "detail": "无 owner、无评测集、无权限边界时不扩大使用。"
+              }
+            ],
+            "warning": "无 owner、无评测集、无权限边界时不扩大使用。"
+          }
+        },
+        "maturity": {
+          "community": 82,
+          "maintenance": 86,
+          "production": 75,
+          "complexity": 68
+        },
+        "score": 86
+      },
+      "evidence": {
+        "readmeExcerpt": "Learn it. Build it. Ship it for others.",
+        "githubUrl": "https://github.com/rohitg00/ai-engineering-from-scratch",
+        "trendingSnapshot": "GitTrend daily, 2026-05-21 UTC / 2026-05-22 Asia-Shanghai run",
+        "trendingSource": "https://gittrend.io/",
+        "observedAt": "2026-05-21T17:08:04.323Z"
+      }
+    },
+    {
+      "rank": 8,
+      "repo": {
+        "fullName": "obra/superpowers",
+        "name": "superpowers",
+        "owner": "obra",
+        "avatarUrl": "https://github.com/obra.png",
+        "visualUrl": "https://opengraph.githubassets.com/echo-trending-2026-05-22/obra/superpowers",
+        "url": "https://github.com/obra/superpowers",
+        "description": "An agentic skills framework & software development methodology that works.",
+        "stars": 200100,
+        "forks": 17800,
+        "openIssues": 49,
+        "language": "Shell",
+        "topics": [
+          "ai-agents",
+          "claude-code",
+          "codex",
+          "tool-use",
+          "workflow"
+        ],
+        "license": "Unknown",
+        "pushedAt": "2026-05-21T00:00:00Z",
+        "createdAt": "2026-01-01T00:00:00Z",
+        "languages": {
+          "Shell": 1
+        },
+        "starsToday": 69,
+        "updatedAt": "2026-05-21T17:08:04.323Z",
+        "trendingDailyStars": 69,
+        "trendingSource": "GitTrend live page"
+      },
+      "analysis": {
+        "method": "codex-web-research",
+        "category": "Agentic SDLC / 方法论",
+        "oneLiner": "An agentic skills framework & software development methodology that works.",
+        "whyItMatters": "obra/superpowers 在 GitTrend 2026-05-21 实时榜排名 #8，约 200.1K stars、今日新增 +69。它的热度说明开发者正在把 AI 工程的关注点从“模型会不会写代码”转向上下文、技能、工具和可治理流程。",
+        "engineeringRead": "Shell · GitTrend daily trending · 200.1K stars / 17.8K forks。采用判断要拆成架构机制、适用团队、落地路径、生产风险、决策问题和观察信号。",
+        "architectureSignals": [
+          "架构机制：用技能、角色、检查点和产物约束构建 agentic 软件开发流程。",
+          "适用团队：AI 编码从单次补全进入多 agent 协作后，需要新的计划、校验和交付协议 已经在日常任务中反复出现，并且有能力维护额外工具层。",
+          "接入边界：先用于小型功能交付，记录每个阶段的人工干预点。",
+          "生产约束：过度流程化会拖慢简单任务，适合中大型变更和多人协作。"
+        ],
+        "valueHypothesis": [
+          "核心收益来自 把 agent 产出从“能跑”推进到“可审查、可交接、可复盘”，不是 star 数本身。",
+          "适合有明确任务回放集、能对比 agent 前后效果的团队。",
+          "验证指标应包括任务完成时间、人工纠偏次数、失败恢复成本和安全审计结果。"
+        ],
+        "technicalTakeaways": [
+          "软件开发方法与技能框架 的关键不在包装形式，而在是否把高频经验变成可复用、可审查的工程资产。",
+          "先做旁路试点，记录输入、输出、失败原因和人工接管点。",
+          "把安全和质量门槛写入试点定义，而不是等用户开始依赖后再补。"
+        ],
+        "adoptionRisks": [
+          "过度流程化会拖慢简单任务，适合中大型变更和多人协作",
+          "如果只因为热榜导入，容易增加上下文噪声和维护负担。",
+          "缺少明确 license 或企业合规结论时，不应进入客户数据和生产权限范围。"
+        ],
+        "suggestedUseCases": [
+          "选择一个历史任务重放，和现有流程做 A/B 对比。",
+          "先限制为只读或草稿模式，人工确认后再允许写入。",
+          "把效果记录沉淀到团队技术雷达，连续观察 2-3 周再扩大范围。"
+        ],
+        "watchSignals": [
+          "是否出现真实大型团队案例和失败复盘。",
+          "是否支持权限、日志、版本和回滚。",
+          "社区是否从提示词热度转向可维护工程实现。"
+        ],
+        "deepDive": {
+          "strategicValue": "软件开发方法与技能框架 代表当前开源热榜的主线：Agent 能力正在被拆成上下文层、技能层、工具层和流程层。团队应判断它能否降低真实工程摩擦，而不是只增加 AI 工具数量。",
+          "implementationPath": [
+            "选一个非核心仓库或低风险流程建立基线。",
+            "先用于小型功能交付，记录每个阶段的人工干预点",
+            "用 把 agent 产出从“能跑”推进到“可审查、可交接、可复盘” 对比原流程，保留失败样本。",
+            "通过安全、合规和 owner 评审后再扩大到团队级使用。"
+          ],
+          "productionConcerns": [
+            "过度流程化会拖慢简单任务，适合中大型变更和多人协作",
+            "需要记录 agent 输入输出、工具调用和人工批准链路。",
+            "一旦接入公司代码或数据，必须有 secrets 扫描和最小权限策略。"
+          ],
+          "decisionQuestions": [
+            "这个项目解决的是“AI 编码从单次补全进入多 agent 协作后，需要新的计划、校验和交付协议”，还是只是增加一个新工具？",
+            "团队是否有足够样本衡量前后效果？",
+            "如果 不适合缺少 owner、权限边界和可回滚任务定义的团队。，是否应只收藏观察？"
+          ],
+          "recommendedAction": "进入观察池：先记录适用场景和失败边界。"
+        },
+        "diagram": {
+          "title": "工业化落地图解",
+          "caption": "obra/superpowers · 软件开发方法与技能框架",
+          "summary": "把“AI 编码从单次补全进入多 agent 协作后，需要新的计划、校验和交付协议”通过“用技能、角色、检查点和产物约束构建 agentic 软件开发流程”转成“把 agent 产出从“能跑”推进到“可审查、可交接、可复盘””。",
+          "nodes": [
+            {
+              "label": "业务/工程痛点",
+              "detail": "AI 编码从单次补全进入多 agent 协作后，需要新的计划、校验和交付协议",
+              "type": "input"
+            },
+            {
+              "label": "核心机制",
+              "detail": "用技能、角色、检查点和产物约束构建 agentic 软件开发流程",
+              "type": "core"
+            },
+            {
+              "label": "接入路径",
+              "detail": "先用于小型功能交付，记录每个阶段的人工干预点",
+              "type": "integration"
+            },
+            {
+              "label": "产出价值",
+              "detail": "把 agent 产出从“能跑”推进到“可审查、可交接、可复盘”",
+              "type": "output"
+            }
+          ],
+          "links": [
+            "识别任务",
+            "封装机制",
+            "验证收益"
+          ],
+          "poster": {
+            "eyebrow": "Project Blueprint",
+            "headline": "软件开发方法与技能框架",
+            "subhead": "obra/superpowers",
+            "thesis": "把“AI 编码从单次补全进入多 agent 协作后，需要新的计划、校验和交付协议”通过“用技能、角色、检查点和产物约束构建 agentic 软件开发流程”转成“把 agent 产出从“能跑”推进到“可审查、可交接、可复盘””。",
+            "metrics": [
+              {
+                "label": "入口",
+                "value": "Spike",
+                "note": "先旁路验证"
+              },
+              {
+                "label": "指标",
+                "value": "A/B",
+                "note": "对照任务"
+              },
+              {
+                "label": "风险",
+                "value": "Audit",
+                "note": "权限与日志"
+              },
+              {
+                "label": "周期",
+                "value": "1w",
+                "note": "最小评估"
+              }
+            ],
+            "lanes": [
+              {
+                "label": "业务/工程痛点",
+                "detail": "AI 编码从单次补全进入多 agent 协作后，需要新的计划、校验和交付协议",
+                "type": "input",
+                "step": "01",
+                "signal": "AI 编码从单次补全进入多 agent 协作后，需要新的计划、校验和交付协议"
+              },
+              {
+                "label": "核心机制",
+                "detail": "用技能、角色、检查点和产物约束构建 agentic 软件开发流程",
+                "type": "core",
+                "step": "02",
+                "signal": "用技能、角色、检查点和产物约束构建 agentic 软件开发流程"
+              },
+              {
+                "label": "接入路径",
+                "detail": "先用于小型功能交付，记录每个阶段的人工干预点",
+                "type": "integration",
+                "step": "03",
+                "signal": "先用于小型功能交付，记录每个阶段的人工干预点"
+              },
+              {
+                "label": "产出价值",
+                "detail": "把 agent 产出从“能跑”推进到“可审查、可交接、可复盘”",
+                "type": "output",
+                "step": "04",
+                "signal": "把 agent 产出从“能跑”推进到“可审查、可交接、可复盘”"
+              }
+            ],
+            "adoption": [
+              {
+                "label": "试点入口",
+                "detail": "先用于小型功能交付，记录每个阶段的人工干预点"
+              },
+              {
+                "label": "验收指标",
+                "detail": "把 agent 产出从“能跑”推进到“可审查、可交接、可复盘”"
+              },
+              {
+                "label": "生产检查",
+                "detail": "过度流程化会拖慢简单任务，适合中大型变更和多人协作"
+              },
+              {
+                "label": "采用边界",
+                "detail": "无 owner、无评测集、无权限边界时不扩大使用。"
+              }
+            ],
+            "warning": "无 owner、无评测集、无权限边界时不扩大使用。"
+          }
+        },
+        "maturity": {
+          "community": 84,
+          "maintenance": 85,
+          "production": 75,
+          "complexity": 69
+        },
+        "score": 84
+      },
+      "evidence": {
+        "readmeExcerpt": "An agentic skills framework & software development methodology that works.",
+        "githubUrl": "https://github.com/obra/superpowers",
+        "trendingSnapshot": "GitTrend daily, 2026-05-21 UTC / 2026-05-22 Asia-Shanghai run",
+        "trendingSource": "https://gittrend.io/",
+        "observedAt": "2026-05-21T17:08:04.323Z"
+      }
+    },
+    {
+      "rank": 9,
+      "repo": {
+        "fullName": "D4Vinci/Scrapling",
+        "name": "Scrapling",
+        "owner": "D4Vinci",
+        "avatarUrl": "https://github.com/D4Vinci.png",
+        "visualUrl": "https://opengraph.githubassets.com/echo-trending-2026-05-22/D4Vinci/Scrapling",
+        "url": "https://github.com/D4Vinci/Scrapling",
+        "description": "An adaptive Web Scraping framework that handles everything from a single request to a full-scale crawl.",
+        "stars": 52100,
+        "forks": 5000,
+        "openIssues": 56,
+        "language": "Python",
+        "topics": [
+          "developer-tools",
+          "ai",
+          "workflow",
+          "engineering"
+        ],
+        "license": "Unknown",
+        "pushedAt": "2026-05-21T00:00:00Z",
+        "createdAt": "2026-01-01T00:00:00Z",
+        "languages": {
+          "Python": 1
+        },
+        "starsToday": 56,
+        "updatedAt": "2026-05-21T17:08:04.323Z",
+        "trendingDailyStars": 56,
+        "trendingSource": "GitTrend live page"
+      },
+      "analysis": {
+        "method": "codex-web-research",
+        "category": "数据采集 / Web 自动化",
+        "oneLiner": "An adaptive Web Scraping framework that handles everything from a single request to a full-scale crawl.",
+        "whyItMatters": "D4Vinci/Scrapling 在 GitTrend 2026-05-21 实时榜排名 #9，约 52.1K stars、今日新增 +56。它的热度说明开发者正在把 AI 工程的关注点从“模型会不会写代码”转向上下文、技能、工具和可治理流程。",
+        "engineeringRead": "Python · GitTrend daily trending · 52.1K stars / 5K forks。采用判断要拆成架构机制、适用团队、落地路径、生产风险、决策问题和观察信号。",
+        "architectureSignals": [
+          "架构机制：通过自适应请求、浏览器渲染和解析策略提升抓取稳定性。",
+          "适用团队：企业数据采集面对动态页面、反爬和结构变化，传统脚本维护成本高 已经在日常任务中反复出现，并且有能力维护额外工具层。",
+          "接入边界：先用于公开页面监测和研究采集，严格遵守 robots、频率和合规要求。",
+          "生产约束：抓取工具的法律、隐私、IP 风控和数据质量成本不能被技术便利掩盖。"
+        ],
+        "valueHypothesis": [
+          "核心收益来自 减少页面结构变化导致的数据断流，支撑趋势监控和竞品研究，不是 star 数本身。",
+          "适合有明确任务回放集、能对比 agent 前后效果的团队。",
+          "验证指标应包括任务完成时间、人工纠偏次数、失败恢复成本和安全审计结果。"
+        ],
+        "technicalTakeaways": [
+          "自适应网页抓取 的关键不在包装形式，而在是否把高频经验变成可复用、可审查的工程资产。",
+          "先做旁路试点，记录输入、输出、失败原因和人工接管点。",
+          "把安全和质量门槛写入试点定义，而不是等用户开始依赖后再补。"
+        ],
+        "adoptionRisks": [
+          "抓取工具的法律、隐私、IP 风控和数据质量成本不能被技术便利掩盖",
+          "如果只因为热榜导入，容易增加上下文噪声和维护负担。",
+          "缺少明确 license 或企业合规结论时，不应进入客户数据和生产权限范围。"
+        ],
+        "suggestedUseCases": [
+          "选择一个历史任务重放，和现有流程做 A/B 对比。",
+          "先限制为只读或草稿模式，人工确认后再允许写入。",
+          "把效果记录沉淀到团队技术雷达，连续观察 2-3 周再扩大范围。"
+        ],
+        "watchSignals": [
+          "是否出现真实大型团队案例和失败复盘。",
+          "是否支持权限、日志、版本和回滚。",
+          "社区是否从提示词热度转向可维护工程实现。"
+        ],
+        "deepDive": {
+          "strategicValue": "自适应网页抓取 代表当前开源热榜的主线：Agent 能力正在被拆成上下文层、技能层、工具层和流程层。团队应判断它能否降低真实工程摩擦，而不是只增加 AI 工具数量。",
+          "implementationPath": [
+            "选一个非核心仓库或低风险流程建立基线。",
+            "先用于公开页面监测和研究采集，严格遵守 robots、频率和合规要求",
+            "用 减少页面结构变化导致的数据断流，支撑趋势监控和竞品研究 对比原流程，保留失败样本。",
+            "通过安全、合规和 owner 评审后再扩大到团队级使用。"
+          ],
+          "productionConcerns": [
+            "抓取工具的法律、隐私、IP 风控和数据质量成本不能被技术便利掩盖",
+            "需要记录 agent 输入输出、工具调用和人工批准链路。",
+            "一旦接入公司代码或数据，必须有 secrets 扫描和最小权限策略。"
+          ],
+          "decisionQuestions": [
+            "这个项目解决的是“企业数据采集面对动态页面、反爬和结构变化，传统脚本维护成本高”，还是只是增加一个新工具？",
+            "团队是否有足够样本衡量前后效果？",
+            "如果 不适合绕过访问控制、采集敏感数据或高频冲击第三方服务。，是否应只收藏观察？"
+          ],
+          "recommendedAction": "进入观察池：先记录适用场景和失败边界。"
+        },
+        "diagram": {
+          "title": "工业化落地图解",
+          "caption": "D4Vinci/Scrapling · 自适应网页抓取",
+          "summary": "把“企业数据采集面对动态页面、反爬和结构变化，传统脚本维护成本高”通过“通过自适应请求、浏览器渲染和解析策略提升抓取稳定性”转成“减少页面结构变化导致的数据断流，支撑趋势监控和竞品研究”。",
+          "nodes": [
+            {
+              "label": "业务/工程痛点",
+              "detail": "企业数据采集面对动态页面、反爬和结构变化，传统脚本维护成本高",
+              "type": "input"
+            },
+            {
+              "label": "核心机制",
+              "detail": "通过自适应请求、浏览器渲染和解析策略提升抓取稳定性",
+              "type": "core"
+            },
+            {
+              "label": "接入路径",
+              "detail": "先用于公开页面监测和研究采集，严格遵守 robots、频率和合规要求",
+              "type": "integration"
+            },
+            {
+              "label": "产出价值",
+              "detail": "减少页面结构变化导致的数据断流，支撑趋势监控和竞品研究",
+              "type": "output"
+            }
+          ],
+          "links": [
+            "识别任务",
+            "封装机制",
+            "验证收益"
+          ],
+          "poster": {
+            "eyebrow": "Project Blueprint",
+            "headline": "自适应网页抓取",
+            "subhead": "D4Vinci/Scrapling",
+            "thesis": "把“企业数据采集面对动态页面、反爬和结构变化，传统脚本维护成本高”通过“通过自适应请求、浏览器渲染和解析策略提升抓取稳定性”转成“减少页面结构变化导致的数据断流，支撑趋势监控和竞品研究”。",
+            "metrics": [
+              {
+                "label": "入口",
+                "value": "Spike",
+                "note": "先旁路验证"
+              },
+              {
+                "label": "指标",
+                "value": "A/B",
+                "note": "对照任务"
+              },
+              {
+                "label": "风险",
+                "value": "Audit",
+                "note": "权限与日志"
+              },
+              {
+                "label": "周期",
+                "value": "1w",
+                "note": "最小评估"
+              }
+            ],
+            "lanes": [
+              {
+                "label": "业务/工程痛点",
+                "detail": "企业数据采集面对动态页面、反爬和结构变化，传统脚本维护成本高",
+                "type": "input",
+                "step": "01",
+                "signal": "企业数据采集面对动态页面、反爬和结构变化，传统脚本维护成本高"
+              },
+              {
+                "label": "核心机制",
+                "detail": "通过自适应请求、浏览器渲染和解析策略提升抓取稳定性",
+                "type": "core",
+                "step": "02",
+                "signal": "通过自适应请求、浏览器渲染和解析策略提升抓取稳定性"
+              },
+              {
+                "label": "接入路径",
+                "detail": "先用于公开页面监测和研究采集，严格遵守 robots、频率和合规要求",
+                "type": "integration",
+                "step": "03",
+                "signal": "先用于公开页面监测和研究采集，严格遵守 robots、频率和合规要求"
+              },
+              {
+                "label": "产出价值",
+                "detail": "减少页面结构变化导致的数据断流，支撑趋势监控和竞品研究",
+                "type": "output",
+                "step": "04",
+                "signal": "减少页面结构变化导致的数据断流，支撑趋势监控和竞品研究"
+              }
+            ],
+            "adoption": [
+              {
+                "label": "试点入口",
+                "detail": "先用于公开页面监测和研究采集，严格遵守 robots、频率和合规要求"
+              },
+              {
+                "label": "验收指标",
+                "detail": "减少页面结构变化导致的数据断流，支撑趋势监控和竞品研究"
+              },
+              {
+                "label": "生产检查",
+                "detail": "抓取工具的法律、隐私、IP 风控和数据质量成本不能被技术便利掩盖"
+              },
+              {
+                "label": "采用边界",
+                "detail": "无 owner、无评测集、无权限边界时不扩大使用。"
+              }
+            ],
+            "warning": "无 owner、无评测集、无权限边界时不扩大使用。"
+          }
+        },
+        "maturity": {
+          "community": 86,
+          "maintenance": 84,
+          "production": 74,
+          "complexity": 70
+        },
+        "score": 82
+      },
+      "evidence": {
+        "readmeExcerpt": "An adaptive Web Scraping framework that handles everything from a single request to a full-scale crawl.",
+        "githubUrl": "https://github.com/D4Vinci/Scrapling",
+        "trendingSnapshot": "GitTrend daily, 2026-05-21 UTC / 2026-05-22 Asia-Shanghai run",
+        "trendingSource": "https://gittrend.io/",
+        "observedAt": "2026-05-21T17:08:04.323Z"
+      }
+    },
+    {
+      "rank": 10,
+      "repo": {
+        "fullName": "msitarzewski/agency-agents",
+        "name": "agency-agents",
+        "owner": "msitarzewski",
+        "avatarUrl": "https://github.com/msitarzewski.png",
+        "visualUrl": "https://opengraph.githubassets.com/echo-trending-2026-05-22/msitarzewski/agency-agents",
+        "url": "https://github.com/msitarzewski/agency-agents",
+        "description": "A complete AI agency at your fingertips - specialized agents for delivery workflows.",
+        "stars": 103200,
+        "forks": 17000,
+        "openIssues": 0,
+        "language": "Shell",
+        "topics": [
+          "ai-agents",
+          "claude-code",
+          "codex",
+          "tool-use",
+          "workflow"
+        ],
+        "license": "Unknown",
+        "pushedAt": "2026-05-21T00:00:00Z",
+        "createdAt": "2026-01-01T00:00:00Z",
+        "languages": {
+          "Shell": 1
+        },
+        "starsToday": 54,
+        "updatedAt": "2026-05-21T17:08:04.323Z",
+        "trendingDailyStars": 54,
+        "trendingSource": "GitTrend live page"
+      },
+      "analysis": {
+        "method": "codex-web-research",
+        "category": "多 Agent / 工作室自动化",
+        "oneLiner": "A complete AI agency at your fingertips - specialized agents for delivery workflows.",
+        "whyItMatters": "msitarzewski/agency-agents 在 GitTrend 2026-05-21 实时榜排名 #10，约 103.2K stars、今日新增 +54。它的热度说明开发者正在把 AI 工程的关注点从“模型会不会写代码”转向上下文、技能、工具和可治理流程。",
+        "engineeringRead": "Shell · GitTrend daily trending · 103.2K stars / 17K forks。采用判断要拆成架构机制、适用团队、落地路径、生产风险、决策问题和观察信号。",
+        "architectureSignals": [
+          "架构机制：把角色、输入输出和审查动作封装成 agency 式 agent 集合。",
+          "适用团队：营销、前端、社区和内容工作流需要多个专长 agent 协同，而不是单个万能提示词 已经在日常任务中反复出现，并且有能力维护额外工具层。",
+          "接入边界：先挑一个非核心工作流做端到端演练，如落地页草稿或社区摘要。",
+          "生产约束：角色越多越容易产生责任不清和质量漂移，需要最终 owner 审核。"
+        ],
+        "valueHypothesis": [
+          "核心收益来自 提升跨职能任务的起稿速度和结构一致性，不是 star 数本身。",
+          "适合有明确任务回放集、能对比 agent 前后效果的团队。",
+          "验证指标应包括任务完成时间、人工纠偏次数、失败恢复成本和安全审计结果。"
+        ],
+        "technicalTakeaways": [
+          "角色化 Agent 团队 的关键不在包装形式，而在是否把高频经验变成可复用、可审查的工程资产。",
+          "先做旁路试点，记录输入、输出、失败原因和人工接管点。",
+          "把安全和质量门槛写入试点定义，而不是等用户开始依赖后再补。"
+        ],
+        "adoptionRisks": [
+          "角色越多越容易产生责任不清和质量漂移，需要最终 owner 审核",
+          "如果只因为热榜导入，容易增加上下文噪声和维护负担。",
+          "缺少明确 license 或企业合规结论时，不应进入客户数据和生产权限范围。"
+        ],
+        "suggestedUseCases": [
+          "选择一个历史任务重放，和现有流程做 A/B 对比。",
+          "先限制为只读或草稿模式，人工确认后再允许写入。",
+          "把效果记录沉淀到团队技术雷达，连续观察 2-3 周再扩大范围。"
+        ],
+        "watchSignals": [
+          "是否出现真实大型团队案例和失败复盘。",
+          "是否支持权限、日志、版本和回滚。",
+          "社区是否从提示词热度转向可维护工程实现。"
+        ],
+        "deepDive": {
+          "strategicValue": "角色化 Agent 团队 代表当前开源热榜的主线：Agent 能力正在被拆成上下文层、技能层、工具层和流程层。团队应判断它能否降低真实工程摩擦，而不是只增加 AI 工具数量。",
+          "implementationPath": [
+            "选一个非核心仓库或低风险流程建立基线。",
+            "先挑一个非核心工作流做端到端演练，如落地页草稿或社区摘要",
+            "用 提升跨职能任务的起稿速度和结构一致性 对比原流程，保留失败样本。",
+            "通过安全、合规和 owner 评审后再扩大到团队级使用。"
+          ],
+          "productionConcerns": [
+            "角色越多越容易产生责任不清和质量漂移，需要最终 owner 审核",
+            "需要记录 agent 输入输出、工具调用和人工批准链路。",
+            "一旦接入公司代码或数据，必须有 secrets 扫描和最小权限策略。"
+          ],
+          "decisionQuestions": [
+            "这个项目解决的是“营销、前端、社区和内容工作流需要多个专长 agent 协同，而不是单个万能提示词”，还是只是增加一个新工具？",
+            "团队是否有足够样本衡量前后效果？",
+            "如果 不适合缺少 owner、权限边界和可回滚任务定义的团队。，是否应只收藏观察？"
+          ],
+          "recommendedAction": "进入观察池：先记录适用场景和失败边界。"
+        },
+        "diagram": {
+          "title": "工业化落地图解",
+          "caption": "msitarzewski/agency-agents · 角色化 Agent 团队",
+          "summary": "把“营销、前端、社区和内容工作流需要多个专长 agent 协同，而不是单个万能提示词”通过“把角色、输入输出和审查动作封装成 agency 式 agent 集合”转成“提升跨职能任务的起稿速度和结构一致性”。",
+          "nodes": [
+            {
+              "label": "业务/工程痛点",
+              "detail": "营销、前端、社区和内容工作流需要多个专长 agent 协同，而不是单个万能提示词",
+              "type": "input"
+            },
+            {
+              "label": "核心机制",
+              "detail": "把角色、输入输出和审查动作封装成 agency 式 agent 集合",
+              "type": "core"
+            },
+            {
+              "label": "接入路径",
+              "detail": "先挑一个非核心工作流做端到端演练，如落地页草稿或社区摘要",
+              "type": "integration"
+            },
+            {
+              "label": "产出价值",
+              "detail": "提升跨职能任务的起稿速度和结构一致性",
+              "type": "output"
+            }
+          ],
+          "links": [
+            "识别任务",
+            "封装机制",
+            "验证收益"
+          ],
+          "poster": {
+            "eyebrow": "Project Blueprint",
+            "headline": "角色化 Agent 团队",
+            "subhead": "msitarzewski/agency-agents",
+            "thesis": "把“营销、前端、社区和内容工作流需要多个专长 agent 协同，而不是单个万能提示词”通过“把角色、输入输出和审查动作封装成 agency 式 agent 集合”转成“提升跨职能任务的起稿速度和结构一致性”。",
+            "metrics": [
+              {
+                "label": "入口",
+                "value": "Spike",
+                "note": "先旁路验证"
+              },
+              {
+                "label": "指标",
+                "value": "A/B",
+                "note": "对照任务"
+              },
+              {
+                "label": "风险",
+                "value": "Audit",
+                "note": "权限与日志"
+              },
+              {
+                "label": "周期",
+                "value": "1w",
+                "note": "最小评估"
+              }
+            ],
+            "lanes": [
+              {
+                "label": "业务/工程痛点",
+                "detail": "营销、前端、社区和内容工作流需要多个专长 agent 协同，而不是单个万能提示词",
+                "type": "input",
+                "step": "01",
+                "signal": "营销、前端、社区和内容工作流需要多个专长 agent 协同，而不是单个万能提示词"
+              },
+              {
+                "label": "核心机制",
+                "detail": "把角色、输入输出和审查动作封装成 agency 式 agent 集合",
+                "type": "core",
+                "step": "02",
+                "signal": "把角色、输入输出和审查动作封装成 agency 式 agent 集合"
+              },
+              {
+                "label": "接入路径",
+                "detail": "先挑一个非核心工作流做端到端演练，如落地页草稿或社区摘要",
+                "type": "integration",
+                "step": "03",
+                "signal": "先挑一个非核心工作流做端到端演练，如落地页草稿或社区摘要"
+              },
+              {
+                "label": "产出价值",
+                "detail": "提升跨职能任务的起稿速度和结构一致性",
+                "type": "output",
+                "step": "04",
+                "signal": "提升跨职能任务的起稿速度和结构一致性"
+              }
+            ],
+            "adoption": [
+              {
+                "label": "试点入口",
+                "detail": "先挑一个非核心工作流做端到端演练，如落地页草稿或社区摘要"
+              },
+              {
+                "label": "验收指标",
+                "detail": "提升跨职能任务的起稿速度和结构一致性"
+              },
+              {
+                "label": "生产检查",
+                "detail": "角色越多越容易产生责任不清和质量漂移，需要最终 owner 审核"
+              },
+              {
+                "label": "采用边界",
+                "detail": "无 owner、无评测集、无权限边界时不扩大使用。"
+              }
+            ],
+            "warning": "无 owner、无评测集、无权限边界时不扩大使用。"
+          }
+        },
+        "maturity": {
+          "community": 88,
+          "maintenance": 83,
+          "production": 74,
+          "complexity": 71
+        },
+        "score": 82
+      },
+      "evidence": {
+        "readmeExcerpt": "A complete AI agency at your fingertips - specialized agents for delivery workflows.",
+        "githubUrl": "https://github.com/msitarzewski/agency-agents",
+        "trendingSnapshot": "GitTrend daily, 2026-05-21 UTC / 2026-05-22 Asia-Shanghai run",
+        "trendingSource": "https://gittrend.io/",
+        "observedAt": "2026-05-21T17:08:04.323Z"
+      }
+    }
+  ],
+  "frontier": {
+    "title": "搜广推技术前沿",
+    "subtitle": "搜索、广告、推荐、排序、召回、竞价、个性化、向量检索和实验平台的近期大厂实践。",
+    "source": "Google + Meta + Amazon + Pinterest + Spotify + Dropbox + 美团 + 腾讯",
+    "items": [
+      {
+        "rank": 1,
+        "title": "Google Search I/O 2026: AI agents and intelligent Search box",
+        "source": "Google Search",
+        "publishedAt": "2026-05-19",
+        "url": "https://blog.google/products-and-platforms/products/search/search-io-2026/",
+        "summary": "搜索入口从关键词框升级为 AI Mode、搜索 Agent、生成式 UI 和个人智能，AI Mode 月活已超过 10 亿。",
+        "interpretation": "业务问题 -> 传统搜索难覆盖长、多步、含个人上下文的需求；系统机制 -> Gemini 驱动 AI Mode、Agent、Antigravity mini apps 与 Search index/Shopping Graph 结合；指标/实验 -> Google 披露 AI Mode 查询季度翻倍、月活过 10 亿；可借鉴点 -> 搜索产品要把查询理解、任务执行、答案引用和商业化分层设计；不适用边界 -> 高频事实检索和强监管场景仍需保留可审计来源与传统结果。",
+        "tags": [
+          "search",
+          "AI Mode",
+          "agent",
+          "query understanding"
+        ],
+        "sourceType": "industry",
+        "imageUrl": "https://www.google.com/s2/favicons?domain=blog.google&sz=128"
+      },
+      {
+        "rank": 2,
+        "title": "Google Ads: A new generation of ads for the AI era of Search",
+        "source": "Google Ads",
+        "publishedAt": "2026-05-20",
+        "url": "https://blog.google/products/ads-commerce/google-marketing-live-search-ads/",
+        "summary": "Google 把 Gemini 引入 Search 广告，推出 Conversational Discovery、Highlighted Answers、AI-powered Shopping ads 和 native checkout。",
+        "interpretation": "业务问题 -> AI 搜索压缩传统广告位和落地页路径；系统机制 -> 对话式广告、答案高亮、Shopping Graph、UCP 商户原生结账；指标/实验 -> Direct Offers pilot 已有 Chewy、Gap、L’Oreal 等品牌参与；可借鉴点 -> 广告排序要从单次点击转向任务会话中的意图理解、优惠匹配和交易闭环；不适用边界 -> 低信任品类和强披露行业不能让生成式推荐模糊赞助关系。",
+        "tags": [
+          "ads",
+          "commerce",
+          "bidding",
+          "personalization"
+        ],
+        "sourceType": "industry",
+        "imageUrl": "https://www.google.com/s2/favicons?domain=blog.google&sz=128"
+      },
+      {
+        "rank": 3,
+        "title": "Meta Adaptive Ranking Model: LLM-scale models for Ads",
+        "source": "Meta Engineering",
+        "publishedAt": "2026-03-31",
+        "url": "https://engineering.fb.com/2026/03/31/ml-applications/meta-adaptive-ranking-model-bending-the-inference-scaling-curve-to-serve-llm-scale-models-for-ads/",
+        "summary": "Meta Ads 将推荐模型扩展到 O(1T) 参数量级，通过 FP8、硬件协同和多卡 serving 维持 O(100ms) 延迟。",
+        "interpretation": "业务问题 -> 广告排序想用更大模型理解兴趣和意图，但低延迟与 ROI 不允许暴力堆算力；系统机制 -> 选择性 FP8、模型-系统-硬件协同、多卡 GPU serving、MFU 优化；指标/实验 -> 文中披露 MFU 达 35%、延迟保持 O(100ms)；可借鉴点 -> 大模型排序应先设计推理预算、分层 serving 和精度退化监控；不适用边界 -> 流量规模不足或硬件栈不可控的团队不宜直接追 1T 模型。",
+        "tags": [
+          "ads",
+          "ranking",
+          "inference",
+          "FP8"
+        ],
+        "sourceType": "industry",
+        "imageUrl": "https://www.google.com/s2/favicons?domain=engineering.fb.com&sz=128"
+      },
+      {
+        "rank": 4,
+        "title": "Ranking Engineer Agent (REA) for Ads Ranking Innovation",
+        "source": "Meta Engineering",
+        "publishedAt": "2026-03-17",
+        "url": "https://engineering.fb.com/2026/03/17/developer-tools/ranking-engineer-agent-rea-autonomous-ai-system-accelerating-meta-ads-ranking-innovation/",
+        "summary": "REA 自动生成假设、启动训练、调试失败并跨天迭代广告排序模型。",
+        "interpretation": "业务问题 -> 排序实验从假设到训练到分析周期长，人工串行成为瓶颈；系统机制 -> hibernate-and-wake 长周期 agent、历史实验库、ML research agent、三阶段计划；指标/实验 -> 首轮生产 rollout 披露 2x model accuracy、5x engineering output；可借鉴点 -> 搜广推实验平台可引入“受预算约束的自动实验 agent”；不适用边界 -> 缺少实验审计、预算门槛和模型 owner 时不能放开自动上线。",
+        "tags": [
+          "ads",
+          "experimentation",
+          "agent",
+          "ranking"
+        ],
+        "sourceType": "industry",
+        "imageUrl": "https://www.google.com/s2/favicons?domain=engineering.fb.com&sz=128"
+      },
+      {
+        "rank": 5,
+        "title": "KernelEvolve optimizes AI infrastructure for ranking models",
+        "source": "Meta Engineering",
+        "publishedAt": "2026-04-02",
+        "url": "https://engineering.fb.com/2026/04/02/developer-tools/kernelevolve-how-metas-ranking-engineer-agent-optimizes-ai-infrastructure/",
+        "summary": "Meta 用 agentic kernel authoring 为推荐/广告模型自动生成异构硬件 kernel，文中称 hours 内提升 ads inference throughput 60%。",
+        "interpretation": "业务问题 -> 推荐模型和硬件同时演进，人工 kernel 优化跟不上模型迭代；系统机制 -> 把 kernel 开发变成搜索问题，结合硬件约束检索、编译、benchmark 和迭代；指标/实验 -> 广告模型推理吞吐提升 60%，服务 trillions daily inference requests；可借鉴点 -> 排序模型优化不只看模型结构，也要把 kernel、编译和 serving 纳入实验闭环；不适用边界 -> 小规模业务或没有异构硬件瓶颈时，收益低于维护成本。",
+        "tags": [
+          "ranking",
+          "infrastructure",
+          "kernel",
+          "serving"
+        ],
+        "sourceType": "industry",
+        "imageUrl": "https://www.google.com/s2/favicons?domain=engineering.fb.com&sz=128"
+      },
+      {
+        "rank": 6,
+        "title": "Pinterest Shopping Conversion Candidate Generation",
+        "source": "Pinterest Engineering",
+        "publishedAt": "2026-04-27",
+        "url": "https://medium.com/pinterest-engineering/from-clicks-to-conversions-architecting-shopping-conversion-candidate-generation-at-pinterest-04cae5e1455b",
+        "summary": "Pinterest 为购物广告建立转化导向 candidate generation，用多 surface、双正样本、hard negatives 和双塔/DCN v2 改善下游 RoAS。",
+        "interpretation": "业务问题 -> 点击信号密集但转化稀疏、延迟且噪声大，传统 engagement retrieval 不服务下游购买目标；系统机制 -> 多 surface 训练、click 辅助任务、hard negative、two-tower + parallel DCN v2/MLP；指标/实验 -> offline recall@1000 +11%，线上提升 conversion value 与 RoAS；可借鉴点 -> 广告召回应按漏斗目标重构样本和 loss，而不只是改排序头；不适用边界 -> 没有稳定归因和转化回传时，转化召回会被噪声牵引。",
+        "tags": [
+          "ads",
+          "retrieval",
+          "conversion",
+          "RoAS"
+        ],
+        "sourceType": "industry",
+        "imageUrl": "https://www.google.com/s2/favicons?domain=medium.com&sz=128"
+      },
+      {
+        "rank": 7,
+        "title": "Pinterest Request-Level Deduplication for RecSys Scaling",
+        "source": "Pinterest Engineering",
+        "publishedAt": "2026-04",
+        "url": "https://medium.com/pinterest-engineering/scaling-recommendation-systems-with-request-level-deduplication-93bd514142d9",
+        "summary": "Pinterest 用 request-level deduplication 同时优化存储、训练和 serving，文中披露 retrieval 训练 4x、ranking serving 7x throughput。",
+        "interpretation": "业务问题 -> 用户上下文在一个 request 内被重复加载和计算，模型越大浪费越严重；系统机制 -> 请求级去重、Iceberg 排序压缩、DCAT cross-attention、KV cache 与 Triton kernel；指标/实验 -> 存储 10-50x 压缩、retrieval 训练 4x、ranking 训练 2.8x、serving 7x；可借鉴点 -> 大模型推荐的第一优先级可能是消除系统冗余，而不是继续堆特征；不适用边界 -> 请求上下文很短或候选量很小的业务收益有限。",
+        "tags": [
+          "recommendation",
+          "ranking",
+          "serving",
+          "KV cache"
+        ],
+        "sourceType": "industry",
+        "imageUrl": "https://www.google.com/s2/favicons?domain=medium.com&sz=128"
+      },
+      {
+        "rank": 8,
+        "title": "Spotify separates personalization and experimentation stacks",
+        "source": "Spotify Engineering",
+        "publishedAt": "2026-01-07",
+        "url": "https://engineering.atspotify.com/2026/01/why-we-use-separate-tech-stacks-for-personalization-and-experimentation",
+        "summary": "Spotify 明确把个性化 ML stack 与 Confidence 实验平台分离，用简单、规模化 A/B 来评估推荐系统。",
+        "interpretation": "业务问题 -> 个性化系统和实验平台目标不同，混用 bandit 容易让评估、部署、特征服务复杂化；系统机制 -> ML stack 负责推荐和低延迟特征，experiment stack 负责 A/B、rollout 和大规模协同；指标/实验 -> 58 个团队一年在移动首页跑 520 个实验；可借鉴点 -> 搜广推平台应让模型迭代和实验治理解耦，通过统一接口连接；不适用边界 -> 早期团队实验量少时，不必过早拆成两套平台。",
+        "tags": [
+          "personalization",
+          "experimentation",
+          "A/B",
+          "platform"
+        ],
+        "sourceType": "industry",
+        "imageUrl": "https://www.google.com/s2/favicons?domain=engineering.atspotify.com&sz=128"
+      },
+      {
+        "rank": 9,
+        "title": "Dropbox Dash improves search relevance with LLM-assisted labeling",
+        "source": "Dropbox Tech",
+        "publishedAt": "2026-02-26",
+        "url": "https://dropbox.tech/machine-learning/llm-human-labeling-improving-search-relevance-dropbox-dash",
+        "summary": "Dropbox Dash 用 LLM 扩增人工相关性标注，改进企业搜索/RAG 的 ranking 数据质量。",
+        "interpretation": "业务问题 -> 企业 RAG 答案质量被搜索 ranking 和相关性标注上限限制；系统机制 -> 搜索候选、LLM relevance judge、人审校准、带上下文的 relevance evaluation；指标/实验 -> 文章强调将 LLM 判断与 human review 结合以提高标签质量；可借鉴点 -> RAG 搜索应先投资标注与评估集，而不是只换 embedding 模型；不适用边界 -> 高风险合规场景不能让 LLM 标注未经人审直接成为训练真值。",
+        "tags": [
+          "search",
+          "RAG",
+          "labeling",
+          "relevance"
+        ],
+        "sourceType": "industry",
+        "imageUrl": "https://www.google.com/s2/favicons?domain=dropbox.tech&sz=128"
+      },
+      {
+        "rank": 10,
+        "title": "Amazon iterative reranking for LLM-based rankers",
+        "source": "Amazon Science",
+        "publishedAt": "2026",
+        "url": "https://www.amazon.science/publications/iterative-reranking-as-a-compute-scaling-method-for-llm-based-rankers",
+        "summary": "Amazon Science 提出对 LLM listwise ranker 反复 rerank，用推理时计算换 nDCG@40。",
+        "interpretation": "业务问题 -> 电商搜索中多属性、隐式意图和多跳推理让传统 ranker 泛化不足；系统机制 -> 利用 LLM 非确定性反复 listwise reranking，作为 inference-time scaling；指标/实验 -> 在 DL19、FutureQueryEval 和困难 Amazon query types 上提升 nDCG@40；可借鉴点 -> 对高价值 query 可设置分层 rerank 预算，低价值 query 仍走轻模型；不适用边界 -> 全量请求使用会放大成本与延迟，必须按意图价值 gating。",
+        "tags": [
+          "search",
+          "reranking",
+          "LLM",
+          "nDCG"
+        ],
+        "sourceType": "industry",
+        "imageUrl": "https://www.google.com/s2/favicons?domain=www.amazon.science&sz=128"
+      },
+      {
+        "rank": 11,
+        "title": "Meituan MTGR: generative recommendation scaling law for food delivery",
+        "source": "美团技术团队",
+        "publishedAt": "2025-05-19",
+        "url": "https://tech.meituan.com/tags/%E6%90%9C%E7%B4%A2%E6%8E%A8%E8%8D%90.html",
+        "summary": "美团外卖推荐基于 HSTU 提出 MTGR，在传统特征体系上统一多条序列，2025 年 4 月底全量。",
+        "interpretation": "业务问题 -> 外卖推荐需要在强实时、多序列、多目标下继续吃到模型 scaling 收益；系统机制 -> HSTU/Transformer 统一序列建模、对齐传统特征、极致推理优化；指标/实验 -> 样本前向 FLOPs +65 倍、推理成本 -12%、训练成本持平，并称取得近两年最大收益；可借鉴点 -> 生成式推荐必须同步做特征兼容和 serving 优化；不适用边界 -> 没有足够序列数据或推理平台能力时，直接放大模型可能只增加成本。",
+        "tags": [
+          "推荐",
+          "生成式推荐",
+          "排序",
+          "HSTU"
+        ],
+        "sourceType": "industry",
+        "imageUrl": "https://www.google.com/s2/favicons?domain=tech.meituan.com&sz=128"
+      },
+      {
+        "rank": 12,
+        "title": "Tencent Ads algorithm contest: multimodal generative recommendation",
+        "source": "腾讯云开发者社区",
+        "publishedAt": "2026-05-12",
+        "url": "https://cloud.tencent.com/developer/article/2667955",
+        "summary": "腾讯广告算法大赛高分方案围绕 TencentGR-10M 的广告序列推荐噪声问题，用 FiLM、Gated Fusion、Attention Biasing 解耦行为语义。",
+        "interpretation": "业务问题 -> 曝光噪声占 94%+，点击/转化稀疏，高价值信号被淹没；系统机制 -> 行为条件调制、多模态融合、attention bias 让不同行为语义影响生成推荐；指标/实验 -> 赛题数据含 1000 万用户行为，文章披露曝光 94.63%、点击 2.85%、转化 2.52%；可借鉴点 -> 广告推荐要显式区分曝光、点击、转化的语义强度；不适用边界 -> 竞赛方案上线前还需验证在线延迟、样本偏差和归因稳定性。",
+        "tags": [
+          "广告",
+          "推荐",
+          "CVR",
+          "多模态"
+        ],
+        "sourceType": "industry",
+        "imageUrl": "https://www.google.com/s2/favicons?domain=cloud.tencent.com&sz=128"
+      }
+    ]
+  },
+  "aiNews": {
+    "title": "AI 新闻",
+    "subtitle": "AIHOT/官方 AI 资讯与 A 社 Anthropic 新闻、研究、工程动态。",
+    "source": "Anthropic official + AIHOT/credible news + Google official",
+    "sourceBrief": {
+      "kicker": "Source Playbook",
+      "title": "本次以官方页面优先，外部新闻仅作补充信号",
+      "url": "https://www.anthropic.com/news",
+      "summary": "Anthropic News/Research/Engineering 页面可访问，本次没有依赖非官方镜像作为主来源。",
+      "takeaways": [
+        "A 社主线：企业合作、SDK/MCP 连接、Managed Agents、Claude Code 质量治理。",
+        "Google 主线：AI Mode、Search agents、Gemini-powered ads。",
+        "外部新闻用于补充算力、科研成果和行业影响。",
+        "所有新闻卡片按“信号 -> 影响 -> 动作”写作。"
+      ]
+    },
+    "aihot": {
+      "title": "AIHOT 内容抓取",
+      "source": "AIHOT/可信新闻补充",
+      "date": "2026-05-22",
+      "generatedAt": "2026-05-21T17:08:04.323Z",
+      "summary": "本次结合 AIHOT 类聚合信号与官方页面，优先保留会改变模型选型、Agent 落地、搜索商业化和安全治理的动态。",
+      "stats": [
+        {
+          "label": "AI 条目",
+          "value": 12
+        },
+        {
+          "label": "A社条目",
+          "value": 8
+        },
+        {
+          "label": "官方来源",
+          "value": 10
+        }
+      ],
+      "sections": [
+        {
+          "label": "A社 Anthropic",
+          "count": 8,
+          "items": [
+            {
+              "title": "KPMG integrates Claude across 276,000+ workforce",
+              "url": "https://www.anthropic.com/news/anthropic-kpmg",
+              "source": "A社 Anthropic",
+              "signal": "信号 -> Claude 正进入大型专业服务公司的核心业务系统"
+            },
+            {
+              "title": "Anthropic acquires Stainless",
+              "url": "https://www.anthropic.com/news/anthropic-acquires-stainless",
+              "source": "A社 Anthropic",
+              "signal": "信号 -> A 社把 API/SDK/MCP 连接层视为 Claude Platform 的战略资产"
+            },
+            {
+              "title": "PwC expands strategic alliance with Claude Code and Cowork",
+              "url": "https://www.anthropic.com/news/pwc-expanded-partnership",
+              "source": "A社 Anthropic",
+              "signal": "信号 -> Claude Code/Cowork 正被包装成咨询交付和企业职能重塑工具"
+            }
+          ]
+        },
+        {
+          "label": "搜索与广告 AI",
+          "count": 2,
+          "items": [
+            {
+              "title": "Google Search I/O 2026 AI agents and AI Mode",
+              "url": "https://blog.google/products-and-platforms/products/search/search-io-2026/",
+              "source": "Google",
+              "signal": "信号 -> AI 搜索入口开始承接任务执行，而不只是答案摘要"
+            },
+            {
+              "title": "Google Gemini-powered ad formats in Search",
+              "url": "https://blog.google/products/ads-commerce/google-marketing-live-search-ads/",
+              "source": "Google Ads",
+              "signal": "信号 -> 广告正在嵌入 AI 答案和购物对话"
+            }
+          ]
+        }
+      ],
+      "selected": [
+        {
+          "title": "KPMG integrates Claude across 276,000+ workforce",
+          "url": "https://www.anthropic.com/news/anthropic-kpmg",
+          "source": "A社 Anthropic",
+          "publishedAt": "2026-05-19",
+          "summary": "KPMG 将 Claude 嵌入 Digital Gateway，并向全球 276,000+ 员工开放，双方还会共建 PE 产品和安全漏洞修复能力。",
+          "signal": "信号 -> Claude 正进入大型专业服务公司的核心业务系统",
+          "tags": [
+            "Anthropic",
+            "enterprise",
+            "Claude"
+          ],
+          "category": "精选"
+        },
+        {
+          "title": "Anthropic acquires Stainless",
+          "url": "https://www.anthropic.com/news/anthropic-acquires-stainless",
+          "source": "A社 Anthropic",
+          "publishedAt": "2026-05-18",
+          "summary": "Anthropic 收购 SDK 与 MCP server tooling 公司 Stainless，强调 agent 只有能连接系统才有价值。",
+          "signal": "信号 -> A 社把 API/SDK/MCP 连接层视为 Claude Platform 的战略资产",
+          "tags": [
+            "Anthropic",
+            "MCP",
+            "developer platform"
+          ],
+          "category": "精选"
+        },
+        {
+          "title": "PwC expands strategic alliance with Claude Code and Cowork",
+          "url": "https://www.anthropic.com/news/pwc-expanded-partnership",
+          "source": "A社 Anthropic",
+          "publishedAt": "2026-05-14",
+          "summary": "PwC 将从美国团队开始推广 Claude Code 和 Claude Cowork，并计划培训认证 30,000 名员工。",
+          "signal": "信号 -> Claude Code/Cowork 正被包装成咨询交付和企业职能重塑工具",
+          "tags": [
+            "Anthropic",
+            "Claude Code",
+            "Cowork"
+          ],
+          "category": "精选"
+        },
+        {
+          "title": "Agents for financial services",
+          "url": "https://www.anthropic.com/news/finance-agents",
+          "source": "A社 Anthropic",
+          "publishedAt": "2026-05-05",
+          "summary": "Anthropic 发布 10 个金融服务 agent 模板，可作为 Claude Cowork/Claude Code 插件或 Managed Agents cookbook。",
+          "signal": "信号 -> A 社开始把垂直行业任务产品化为可运行 agent 模板",
+          "tags": [
+            "Anthropic",
+            "financial services",
+            "Managed Agents"
+          ],
+          "category": "精选"
+        },
+        {
+          "title": "Anthropic Research: Teaching Claude why",
+          "url": "https://alignment.anthropic.com/2026/teaching-claude-why/",
+          "source": "A社 Anthropic Research",
+          "publishedAt": "2026-05-08",
+          "summary": "Anthropic 解释如何通过让模型理解“为什么”来降低 agentic misalignment，并关联 Claude 4 后的安全训练改进。",
+          "signal": "信号 -> 安全训练从规则服从转向因果解释和理由学习",
+          "tags": [
+            "alignment",
+            "safety",
+            "research"
+          ],
+          "category": "精选"
+        },
+        {
+          "title": "Natural Language Autoencoders translate Claude thoughts into text",
+          "url": "https://www.anthropic.com/research",
+          "source": "A社 Anthropic Research",
+          "publishedAt": "2026-05-07",
+          "summary": "Anthropic 研究页最新 Interpretability 文章聚焦把 Claude 的内部表示转成自然语言。",
+          "signal": "信号 -> 可解释性研究继续逼近模型内部表征的可读化",
+          "tags": [
+            "interpretability",
+            "Claude",
+            "research"
+          ],
+          "category": "精选"
+        },
+        {
+          "title": "Anthropic Engineering: Scaling Managed Agents",
+          "url": "https://www.anthropic.com/engineering",
+          "source": "A社 Anthropic Engineering",
+          "publishedAt": "2026-04-08",
+          "summary": "Anthropic 工程页将 Scaling Managed Agents 列为近期重点，主题是 decoupling the brain from the hands。",
+          "signal": "信号 -> Managed Agents 正把推理主体和工具执行环境解耦",
+          "tags": [
+            "Managed Agents",
+            "engineering",
+            "agent platform"
+          ],
+          "category": "精选"
+        },
+        {
+          "title": "Claude Code quality reports postmortem featured by Anthropic Engineering",
+          "url": "https://www.anthropic.com/engineering",
+          "source": "A社 Anthropic Engineering",
+          "publishedAt": "2026-05",
+          "summary": "Anthropic Engineering featured 更新提到追踪 Claude Code quality reports 到三个变更，并说明改进方向。",
+          "signal": "信号 -> Coding Agent 质量问题开始以工程事故复盘方式公开处理",
+          "tags": [
+            "Claude Code",
+            "quality",
+            "engineering"
+          ],
+          "category": "精选"
+        }
+      ],
+      "recentDailies": [
+        {
+          "date": "2026-05-22",
+          "title": "2026-05-22 Echo Trending AI 日报",
+          "url": "reports/2026-05-22.json"
+        }
+      ],
+      "entrypoints": [
+        {
+          "label": "Anthropic News",
+          "detail": "官方新闻",
+          "url": "https://www.anthropic.com/news"
+        },
+        {
+          "label": "Anthropic Research",
+          "detail": "官方研究",
+          "url": "https://www.anthropic.com/research"
+        },
+        {
+          "label": "Anthropic Engineering",
+          "detail": "官方工程",
+          "url": "https://www.anthropic.com/engineering"
+        }
+      ]
+    },
+    "items": [
+      {
+        "rank": 1,
+        "title": "KPMG integrates Claude across 276,000+ workforce",
+        "source": "A社 Anthropic",
+        "sourceDetail": "A社 Anthropic",
+        "publishedAt": "2026-05-19",
+        "url": "https://www.anthropic.com/news/anthropic-kpmg",
+        "summary": "KPMG 将 Claude 嵌入 Digital Gateway，并向全球 276,000+ 员工开放，双方还会共建 PE 产品和安全漏洞修复能力。",
+        "interpretation": "信号 -> Claude 正进入大型专业服务公司的核心业务系统",
+        "impact": "企业采用从单点助手转向税务、法律、审计和安全工作流",
+        "action": "评估 Claude 接入时优先设计数据边界、审计日志和业务 owner。",
+        "tags": [
+          "Anthropic",
+          "enterprise",
+          "Claude"
+        ],
+        "imageUrl": "https://www.google.com/s2/favicons?domain=www.anthropic.com&sz=128"
+      },
+      {
+        "rank": 2,
+        "title": "Anthropic acquires Stainless",
+        "source": "A社 Anthropic",
+        "sourceDetail": "A社 Anthropic",
+        "publishedAt": "2026-05-18",
+        "url": "https://www.anthropic.com/news/anthropic-acquires-stainless",
+        "summary": "Anthropic 收购 SDK 与 MCP server tooling 公司 Stainless，强调 agent 只有能连接系统才有价值。",
+        "interpretation": "信号 -> A 社把 API/SDK/MCP 连接层视为 Claude Platform 的战略资产",
+        "impact": "开发者体验、工具连接和企业 Agent 集成会更深绑定",
+        "action": "内部 API 应补齐 OpenAPI 质量、SDK 生成和 MCP 暴露策略。",
+        "tags": [
+          "Anthropic",
+          "MCP",
+          "developer platform"
+        ],
+        "imageUrl": "https://www.google.com/s2/favicons?domain=www.anthropic.com&sz=128"
+      },
+      {
+        "rank": 3,
+        "title": "PwC expands strategic alliance with Claude Code and Cowork",
+        "source": "A社 Anthropic",
+        "sourceDetail": "A社 Anthropic",
+        "publishedAt": "2026-05-14",
+        "url": "https://www.anthropic.com/news/pwc-expanded-partnership",
+        "summary": "PwC 将从美国团队开始推广 Claude Code 和 Claude Cowork，并计划培训认证 30,000 名员工。",
+        "interpretation": "信号 -> Claude Code/Cowork 正被包装成咨询交付和企业职能重塑工具",
+        "impact": "AI 落地会更依赖服务商把流程拆成可训练模板",
+        "action": "对照自家高频流程建立 agent 模板库和认证机制。",
+        "tags": [
+          "Anthropic",
+          "Claude Code",
+          "Cowork"
+        ],
+        "imageUrl": "https://www.google.com/s2/favicons?domain=www.anthropic.com&sz=128"
+      },
+      {
+        "rank": 4,
+        "title": "Agents for financial services",
+        "source": "A社 Anthropic",
+        "sourceDetail": "A社 Anthropic",
+        "publishedAt": "2026-05-05",
+        "url": "https://www.anthropic.com/news/finance-agents",
+        "summary": "Anthropic 发布 10 个金融服务 agent 模板，可作为 Claude Cowork/Claude Code 插件或 Managed Agents cookbook。",
+        "interpretation": "信号 -> A 社开始把垂直行业任务产品化为可运行 agent 模板",
+        "impact": "金融场景会更快从 PoC 进入 pitchbook、KYC、month-end close 等具体流程",
+        "action": "选择一个强审计、低外部风险流程做模板化试点。",
+        "tags": [
+          "Anthropic",
+          "financial services",
+          "Managed Agents"
+        ],
+        "imageUrl": "https://www.google.com/s2/favicons?domain=www.anthropic.com&sz=128"
+      },
+      {
+        "rank": 5,
+        "title": "Anthropic Research: Teaching Claude why",
+        "source": "A社 Anthropic Research",
+        "sourceDetail": "A社 Anthropic Research",
+        "publishedAt": "2026-05-08",
+        "url": "https://alignment.anthropic.com/2026/teaching-claude-why/",
+        "summary": "Anthropic 解释如何通过让模型理解“为什么”来降低 agentic misalignment，并关联 Claude 4 后的安全训练改进。",
+        "interpretation": "信号 -> 安全训练从规则服从转向因果解释和理由学习",
+        "impact": "Agent 治理要评估模型在冲突目标下的行动倾向",
+        "action": "为内部 agent 建立“错误但看似合理”的红队场景和拒绝理由评测。",
+        "tags": [
+          "alignment",
+          "safety",
+          "research"
+        ],
+        "imageUrl": "https://www.google.com/s2/favicons?domain=alignment.anthropic.com&sz=128"
+      },
+      {
+        "rank": 6,
+        "title": "Natural Language Autoencoders translate Claude thoughts into text",
+        "source": "A社 Anthropic Research",
+        "sourceDetail": "A社 Anthropic Research",
+        "publishedAt": "2026-05-07",
+        "url": "https://www.anthropic.com/research",
+        "summary": "Anthropic 研究页最新 Interpretability 文章聚焦把 Claude 的内部表示转成自然语言。",
+        "interpretation": "信号 -> 可解释性研究继续逼近模型内部表征的可读化",
+        "impact": "高风险模型审计未来可能不只看输出，还看中间思维表征",
+        "action": "跟踪是否出现可用于企业模型评估的轻量解释工具。",
+        "tags": [
+          "interpretability",
+          "Claude",
+          "research"
+        ],
+        "imageUrl": "https://www.google.com/s2/favicons?domain=www.anthropic.com&sz=128"
+      },
+      {
+        "rank": 7,
+        "title": "Anthropic Engineering: Scaling Managed Agents",
+        "source": "A社 Anthropic Engineering",
+        "sourceDetail": "A社 Anthropic Engineering",
+        "publishedAt": "2026-04-08",
+        "url": "https://www.anthropic.com/engineering",
+        "summary": "Anthropic 工程页将 Scaling Managed Agents 列为近期重点，主题是 decoupling the brain from the hands。",
+        "interpretation": "信号 -> Managed Agents 正把推理主体和工具执行环境解耦",
+        "impact": "企业部署需要单独管理 agent brain、执行沙箱、凭证和观察性",
+        "action": "设计 agent 平台时分离 planner、executor、credential broker 和 audit log。",
+        "tags": [
+          "Managed Agents",
+          "engineering",
+          "agent platform"
+        ],
+        "imageUrl": "https://www.google.com/s2/favicons?domain=www.anthropic.com&sz=128"
+      },
+      {
+        "rank": 8,
+        "title": "Claude Code quality reports postmortem featured by Anthropic Engineering",
+        "source": "A社 Anthropic Engineering",
+        "sourceDetail": "A社 Anthropic Engineering",
+        "publishedAt": "2026-05",
+        "url": "https://www.anthropic.com/engineering",
+        "summary": "Anthropic Engineering featured 更新提到追踪 Claude Code quality reports 到三个变更，并说明改进方向。",
+        "interpretation": "信号 -> Coding Agent 质量问题开始以工程事故复盘方式公开处理",
+        "impact": "企业采用需要将模型/工具版本变化纳入变更管理",
+        "action": "固定 agent 版本、记录质量回归样本，并建立回滚策略。",
+        "tags": [
+          "Claude Code",
+          "quality",
+          "engineering"
+        ],
+        "imageUrl": "https://www.google.com/s2/favicons?domain=www.anthropic.com&sz=128"
+      },
+      {
+        "rank": 9,
+        "title": "Google Search I/O 2026 AI agents and AI Mode",
+        "source": "Google",
+        "sourceDetail": "Google",
+        "publishedAt": "2026-05-19",
+        "url": "https://blog.google/products-and-platforms/products/search/search-io-2026/",
+        "summary": "Google 宣布 Search 进入 AI agent 阶段，AI Mode 月活超过 10 亿，并引入更智能的搜索框和 Antigravity mini apps。",
+        "interpretation": "信号 -> AI 搜索入口开始承接任务执行，而不只是答案摘要",
+        "impact": "内容、SEO、广告和站内搜索都要适配对话式、多步查询",
+        "action": "梳理自家内容的结构化数据、可引用证据和 agent 可执行接口。",
+        "tags": [
+          "Google",
+          "AI Search",
+          "agent"
+        ],
+        "imageUrl": "https://www.google.com/s2/favicons?domain=blog.google&sz=128"
+      },
+      {
+        "rank": 10,
+        "title": "Google Gemini-powered ad formats in Search",
+        "source": "Google Ads",
+        "sourceDetail": "Google Ads",
+        "publishedAt": "2026-05-20",
+        "url": "https://blog.google/products/ads-commerce/google-marketing-live-search-ads/",
+        "summary": "Google 发布 AI 时代 Search 广告格式，强调 conversational discovery、highlighted answers 和 AI Shopping ads。",
+        "interpretation": "信号 -> 广告正在嵌入 AI 答案和购物对话",
+        "impact": "品牌投放从关键词匹配转向意图解释、优惠和原生结账",
+        "action": "检查商品 feed、优惠策略、结构化内容和 UCP/checkout 能力。",
+        "tags": [
+          "Google Ads",
+          "commerce",
+          "AI Mode"
+        ],
+        "imageUrl": "https://www.google.com/s2/favicons?domain=blog.google&sz=128"
+      },
+      {
+        "rank": 11,
+        "title": "OpenAI model reportedly cracks long-standing geometry problem",
+        "source": "AIHOT/可信新闻汇总",
+        "sourceDetail": "AIHOT/可信新闻汇总",
+        "publishedAt": "2026-05-21",
+        "url": "https://www.axios.com/2026/05/21/ai-news-cycle-openai-anthropic-spacex",
+        "summary": "Axios 汇总称 OpenAI 通用推理模型自主破解一个 80 年离散几何难题，引发 AI 科研能力讨论。",
+        "interpretation": "信号 -> 通用推理模型开始进入可验证科研成果叙事",
+        "impact": "科研 agent 的评估重点会转向证明链、复现和专家协作",
+        "action": "内部科研/算法任务应保留可复现 notebook、证据链和专家验收。",
+        "tags": [
+          "OpenAI",
+          "research",
+          "reasoning"
+        ],
+        "imageUrl": "https://www.google.com/s2/favicons?domain=www.axios.com&sz=128"
+      },
+      {
+        "rank": 12,
+        "title": "Anthropic expands compute partnership with SpaceX Colossus",
+        "source": "可信新闻汇总",
+        "sourceDetail": "可信新闻汇总",
+        "publishedAt": "2026-05-21",
+        "url": "https://www.axios.com/2026/05/21/ai-news-cycle-openai-anthropic-spacex",
+        "summary": "Axios 报道 Anthropic 扩大与 SpaceX 的 compute partnership，以应对基础模型和 Claude 需求增长。",
+        "interpretation": "信号 -> Frontier 模型竞争继续被算力供给和长期合同约束",
+        "impact": "模型价格、可用性和速率限制会受基础设施扩张节奏影响",
+        "action": "关键业务要保留多模型路由、预算阈值和降级模型。",
+        "tags": [
+          "Anthropic",
+          "compute",
+          "infrastructure"
+        ],
+        "imageUrl": "https://www.google.com/s2/favicons?domain=www.axios.com&sz=128"
+      }
+    ]
+  }
+}
