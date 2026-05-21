@@ -1,27 +1,26 @@
 {
   "date": "2026-05-21",
-  "generatedAt": "2026-05-21T14:59:43.452Z",
+  "generatedAt": "2026-05-21T16:11:52.042Z",
   "source": {
-    "provider": "GitTrend + Codex web research + AIHOT + official engineering/news sources",
-    "query": "GitTrend daily ranking, Anthropic official News/Research/Engineering, AIHOT, OpenAI/Google official feeds, Big Tech and Chinese search/ads/recsys engineering blogs",
-    "since": "2026-05-14",
+    "provider": "GitTrend live page + official AI/news pages + Big Tech engineering blogs + Codex web research",
+    "query": "GitTrend May 21 2026 + Anthropic/OpenAI/Google official + Meta/Pinterest/Amazon/Spotify/Airbnb/Chinese recsys sources",
+    "since": "2026-03-01",
     "limit": 16,
     "language": "all",
     "notes": [
-      "2026-05-21 hourly refresh: GitTrend live page, AIHOT public API/RSS, Anthropic official News/Research/Engineering pages, and large-company engineering blogs were cross-checked by Codex web research.",
-      "Shell SSH access to GitHub is blocked in the current sandbox, so git fetch/push were attempted but could not reach github.com; local report artifacts and commit are still prepared.",
-      "Anthropic official RSS was not assumed; official website pages were used first, with public mirrors only as secondary context.",
-      "Search/ads/recsys coverage explicitly includes Google, Meta, Amazon, Netflix, Pinterest, Airbnb, Spotify, Salesforce, Dropbox, and accessible Chinese engineering sources such as Alibaba Cloud developer articles."
+      "GitTrend live page was checked at 2026-05-21 16:07Z; top ranking and daily star deltas were updated from the live page.",
+      "Anthropic official News/Research/Engineering pages were used first for A社 coverage; external snippets were only used to discover official pages.",
+      "Search/ads/recsys coverage prioritizes big-tech engineering blogs and research pages: Google Search/Ads/Research, Meta Engineering, Amazon Science, Pinterest Engineering, Spotify Engineering, Airbnb Engineering/Data Science, plus Chinese recsys/arXiv signals for Alibaba/Meituan/Tencent.",
+      "Report retention policy remains 90 days; only the current 2026-05-21 report exists in this public snapshot."
     ],
-    "observedAt": "2026-05-21T12:56:18.861Z",
     "retentionDays": 90
   },
   "summary": {
-    "headline": "今日 GitHub 热点继续由 Agent 技能、代码上下文和个人智能体主导；搜广推侧重点转向实时上下文、广告排序 Agent、搜索广告商业化、搜索可观测性和中文召回工程实践。",
+    "headline": "今日技术雷达主线：Agent 工程走向平台化，搜广推进入大模型排序与生成式搜索并行阶段。",
     "bullets": [
-      "GitTrend 2026-05-21 实时页显示 #1 colbymchenry/codegraph、#2 andrej-karpathy-skills、#3 hermes-agent、#4 academic-research-skills、#5 streambert，Agent 工程仍是最强主线。",
-      "搜广推保留 Pinterest 实时上下文广告召回、Google Marketing Live 2026 AI 搜索广告/竞价、Meta REA/Adaptive Ranking、Amazon BFS/PROBES、Dropbox Dash、Airbnb marketplace ranking，并补入阿里云 PAI-Rec 召回引擎作为中文工程样本。",
-      "A 社板块覆盖 Stainless 收购、Claude Opus 4.7、Claude Code/Cowork、Managed Agents、KPMG/PwC 企业合作、安全研究与技术评估；AI 新闻继续按“信号 -> 影响 -> 动作”组织，并新增开放 Agent 评测信号。"
+      "GitHub 热榜由 codegraph、andrej-karpathy-skills、academic-research-skills、mattpocock/skills、hermes-agent 领跑，说明开发者关注点集中在 coding agent 上下文、技能和可复用流程。",
+      "搜广推部分新增 Google Search I/O 2026、Meta Adaptive Ranking/REA/KernelEvolve、Pinterest 转化召回、Amazon LLM reranking、Spotify 实验与广告 agent，重点从单模型指标转向系统机制和在线实验闭环。",
+      "A 社部分覆盖 KPMG、Stainless、PwC、Gates、Small Business、SpaceX limits、Managed Agents、Opus 4.7、Project Glasswing，主线是 Claude 从模型能力扩展到企业工作流、工具连接和安全防守。"
     ]
   },
   "items": [
@@ -35,8 +34,8 @@
         "visualUrl": "https://opengraph.githubassets.com/echo-trending-2026-05-21/colbymchenry/codegraph",
         "url": "https://github.com/colbymchenry/codegraph",
         "description": "Pre-indexed code knowledge graph for Claude Code, Codex, Cursor, and OpenCode — fewer tokens, fewer tool calls, 100% local",
-        "stars": 8900,
-        "forks": 558,
+        "stars": 11400,
+        "forks": 689,
         "openIssues": 0,
         "language": "TypeScript",
         "topics": [
@@ -52,17 +51,17 @@
         "languages": {
           "TypeScript": 1
         },
-        "starsToday": 64,
-        "updatedAt": "2026-05-21T00:00:00Z",
-        "trendingDailyStars": 64,
+        "starsToday": 211,
+        "updatedAt": "2026-05-21T16:07:00Z",
+        "trendingDailyStars": 211,
         "trendingSource": "GitTrend live page"
       },
       "analysis": {
         "method": "codex-web-research",
         "category": "AI Agent / LLM 工程",
         "oneLiner": "codegraph 把代码库预先索引成可本地查询的知识图谱，目标是让 coding agent 少读文件、少耗 token、少走弯路。",
-        "whyItMatters": "colbymchenry/codegraph 在 GitTrend 2026-05-21 实时日榜排名 #1，今日新增约 +64。它击中了当前 coding agent 的关键瓶颈：如何把代码库上下文从反复读文件，前移到本地可查询的结构化索引。",
-        "engineeringRead": "TypeScript · GitTrend daily trending · 8.9K stars / 558 forks。阅读时先看架构边界和失败模式，再看 README 的安装路径。",
+        "whyItMatters": "colbymchenry/codegraph 在 GitTrend 2026-05-21 实时日榜排名 #1，当前约 11.4K stars、今日新增 +211。它击中了 coding agent 的硬瓶颈：大型代码库上下文不能只靠反复读文件，必须前移到本地、可查询、可审计的结构化索引层。",
+        "engineeringRead": "TypeScript · GitTrend daily trending · 11.4K stars / 689 forks。采用判断要分开看架构机制、适用团队、落地路径、生产风险、决策问题和后续观察信号。",
         "architectureSignals": [
           "本地预索引：先离线构建代码实体和依赖关系，再让 agent 查询。",
           "面向多 Agent 客户端：Claude Code、Codex、Cursor、OpenCode 都是目标消费端。",
@@ -233,9 +232,9 @@
       "evidence": {
         "readmeExcerpt": "Pre-indexed code knowledge graph for Claude Code, Codex, Cursor, and OpenCode — fewer tokens, fewer tool calls, 100% local",
         "githubUrl": "https://github.com/colbymchenry/codegraph",
-        "trendingSnapshot": "GitHub Trending daily, 2026-05-21",
+        "trendingSnapshot": "GitTrend daily, 2026-05-21 16:07Z",
         "trendingSource": "https://gittrend.io/",
-        "observedAt": "2026-05-21T11:56:00.049Z"
+        "observedAt": "2026-05-21T16:10:46.761Z"
       }
     },
     {
@@ -248,8 +247,8 @@
         "visualUrl": "https://opengraph.githubassets.com/echo-trending-2026-05-21/multica-ai/andrej-karpathy-skills",
         "url": "https://github.com/multica-ai/andrej-karpathy-skills",
         "description": "A single CLAUDE.md file to improve Claude Code behavior, derived from Andrej Karpathy's observations on LLM coding pitfalls.",
-        "stars": 141100,
-        "forks": 14500,
+        "stars": 142500,
+        "forks": 14600,
         "openIssues": 0,
         "language": "Markdown",
         "topics": [
@@ -265,17 +264,17 @@
         "languages": {
           "Markdown": 1
         },
-        "starsToday": 51,
-        "updatedAt": "2026-05-21T00:00:00Z",
-        "trendingDailyStars": 51,
+        "starsToday": 148,
+        "updatedAt": "2026-05-21T16:07:00Z",
+        "trendingDailyStars": 148,
         "trendingSource": "GitTrend live page"
       },
       "analysis": {
         "method": "codex-web-research",
         "category": "AI Agent / LLM 工程",
         "oneLiner": "andrej-karpathy-skills 用一个 CLAUDE.md 把常见 LLM 编码失误转成项目级行为约束。",
-        "whyItMatters": "multica-ai/andrej-karpathy-skills 在 GitTrend 2026-05-21 实时日榜排名 #2，今日新增约 +51。它说明开发者正在把“如何约束 coding agent”沉淀为项目级行为规范，而不是只靠临场提示词。",
-        "engineeringRead": "Markdown · GitTrend daily trending · 141.1K stars / 14.5K forks。阅读时先看规则覆盖的失败模式、适配成本和团队能否持续维护。",
+        "whyItMatters": "multica-ai/andrej-karpathy-skills 在 GitTrend 2026-05-21 实时日榜排名 #2，当前约 142.5K stars、今日新增 +148。它说明团队正在把 coding agent 的失败经验沉淀为项目级行为规范，CLAUDE.md 正从提示词技巧变成工程治理文件。",
+        "engineeringRead": "Markdown · GitTrend daily trending · 142.5K stars / 14.6K forks。采用判断要分开看架构机制、适用团队、落地路径、生产风险、决策问题和后续观察信号。",
         "architectureSignals": [
           "规则即接口：把团队偏好写进 agent 启动上下文。",
           "低成本分发：一个文件即可复制到项目。",
@@ -446,222 +445,13 @@
       "evidence": {
         "readmeExcerpt": "A single CLAUDE.md file to improve Claude Code behavior, derived from Andrej Karpathy's observations on LLM coding pitfalls.",
         "githubUrl": "https://github.com/multica-ai/andrej-karpathy-skills",
-        "trendingSnapshot": "GitHub Trending daily, 2026-05-21",
+        "trendingSnapshot": "GitTrend daily, 2026-05-21 16:07Z",
         "trendingSource": "https://gittrend.io/",
-        "observedAt": "2026-05-21T11:56:00.049Z"
+        "observedAt": "2026-05-21T16:10:46.761Z"
       }
     },
     {
       "rank": 3,
-      "repo": {
-        "fullName": "NousResearch/hermes-agent",
-        "name": "hermes-agent",
-        "owner": "NousResearch",
-        "avatarUrl": "https://github.com/NousResearch.png",
-        "visualUrl": "https://opengraph.githubassets.com/20260521/NousResearch/hermes-agent",
-        "url": "https://github.com/NousResearch/hermes-agent",
-        "description": "The agent that grows with you",
-        "stars": 158400,
-        "forks": 25700,
-        "openIssues": 0,
-        "language": "Python",
-        "topics": [
-          "ai-agents",
-          "llm",
-          "memory"
-        ],
-        "license": "",
-        "pushedAt": "2026-05-21T11:56:00.049Z",
-        "createdAt": "2026-01-01T00:00:00.000Z",
-        "languages": {
-          "Python": 100000
-        },
-        "trendingDailyStars": 35,
-        "trendingSource": "GitTrend live page",
-        "starsToday": 35
-      },
-      "analysis": {
-        "method": "codex-web-research",
-        "category": "AI Agent / 个人智能体",
-        "oneLiner": "hermes-agent 主打“会成长的 agent”，值得从记忆、工具、权限和长期任务治理角度拆解。",
-        "whyItMatters": "NousResearch/hermes-agent 在 GitTrend 2026-05-21 实时日榜排名 #3，今日新增约 +35。Agent 项目继续占据增长榜，说明开发者关注点已从模型 API 调用转向可持续执行、个人化记忆和长期任务治理。",
-        "engineeringRead": "Python · GitTrend daily trending · 158.4K stars / 25.7K forks。先看状态管理、工具协议、记忆写入策略和用户可控边界。",
-        "architectureSignals": [
-          "核心应围绕长期记忆、任务状态和工具调用闭环。",
-          "个人 agent 的难点是“能学会”与“可撤销”之间的平衡。",
-          "若支持多工具执行，权限和审计要比 demo 效果更早验证。",
-          "适合与本地知识库、浏览器、文件系统集成做小范围试点。"
-        ],
-        "valueHypothesis": [
-          "适合个人知识工作者或研发团队做长期任务助理。",
-          "如果没有明确任务队列和权限边界，会退化成聊天机器人。",
-          "价值要用跨会话任务延续率、接管次数和错误恢复率验证。"
-        ],
-        "technicalTakeaways": [
-          "记忆层必须可查看、可编辑、可删除。",
-          "工具执行要有 dry-run 或确认机制。",
-          "长任务需要 checkpoint，否则失败成本过高。"
-        ],
-        "adoptionRisks": [
-          "记忆污染会导致持续性错误。",
-          "工具权限过宽会带来安全和合规风险。",
-          "个人化越强，团队共享和审计越难。"
-        ],
-        "suggestedUseCases": [
-          "用个人研究助理或代码库维护助理做旁路试点。",
-          "只开放只读文件和浏览器检索能力。",
-          "记录每次记忆写入的理由和回滚方式。"
-        ],
-        "watchSignals": [
-          "是否公开 memory schema 和审计界面。",
-          "是否支持工具权限分级。",
-          "是否有真实长任务 benchmark。"
-        ],
-        "deepDive": {
-          "strategicValue": "它代表 agent 从一次性执行向持续协作迁移，但真正价值取决于记忆治理和失败接管。",
-          "implementationPath": [
-            "先限定在低风险个人工作流。",
-            "开启日志、记忆审计和手工确认。",
-            "用连续三天任务观察它是否减少重复上下文输入。"
-          ],
-          "productionConcerns": [
-            "记忆与隐私要分层存储。",
-            "工具调用需要最小权限和人工确认。",
-            "要定义“忘记”和“纠错”的产品入口。"
-          ],
-          "decisionQuestions": [
-            "团队是否真的需要长期个人化 agent？",
-            "错误记忆如何发现和清理？",
-            "权限升级由谁批准、如何审计？"
-          ],
-          "recommendedAction": "重点观察：适合做低权限个人助理试验，不宜直接进入企业主流程。"
-        },
-        "diagram": {
-          "title": "工业化落地图解",
-          "caption": "NousResearch/hermes-agent · Python",
-          "summary": "AI Agent / 个人智能体：从「核心应围绕长期记忆、任务状态和工具调用闭环」切入，用「个人 agent 的难点是“能学会”与“可撤销”之间的平衡」换取「价值要用跨会话任务延续率、接管次数和错误恢复率验证」。",
-          "nodes": [
-            {
-              "label": "场景痛点",
-              "detail": "核心应围绕长期记忆、任务状态和工具调用闭环",
-              "type": "input"
-            },
-            {
-              "label": "核心机制",
-              "detail": "个人 agent 的难点是“能学会”与“可撤销”之间的平衡",
-              "type": "core"
-            },
-            {
-              "label": "接入方式",
-              "detail": "用个人研究助理或代码库维护助理做旁路试点",
-              "type": "integration"
-            },
-            {
-              "label": "产出价值",
-              "detail": "价值要用跨会话任务延续率、接管次数和错误恢复率验证",
-              "type": "output"
-            }
-          ],
-          "links": [
-            "识别高频摩擦",
-            "封装可复用能力",
-            "进入小范围生产验证"
-          ],
-          "poster": {
-            "eyebrow": "Project Blueprint",
-            "headline": "AI Agent / 个人智能体",
-            "subhead": "NousResearch/hermes-agent · GitTrend 2026-05-21",
-            "thesis": "AI Agent / 个人智能体 的价值不在热度本身，而在它是否能把 核心应围绕长期记忆、任务状态和工具调用闭环 变成可度量、可回滚、可审计的工程流程。",
-            "metrics": [
-              {
-                "label": "Stars",
-                "value": "160.3K",
-                "note": "社区关注"
-              },
-              {
-                "label": "Daily",
-                "value": "+82",
-                "note": "今日新增"
-              },
-              {
-                "label": "Stack",
-                "value": "Python",
-                "note": "主技术栈"
-              },
-              {
-                "label": "Forks",
-                "value": "26K",
-                "note": "二次采用"
-              }
-            ],
-            "lanes": [
-              {
-                "step": "01",
-                "label": "痛点定位",
-                "detail": "核心应围绕长期记忆、任务状态和工具调用闭环",
-                "signal": "先证明这是真问题，不是榜单驱动",
-                "type": "input"
-              },
-              {
-                "step": "02",
-                "label": "机制拆解",
-                "detail": "个人 agent 的难点是“能学会”与“可撤销”之间的平衡",
-                "signal": "看状态、权限、失败恢复和可观测性",
-                "type": "core"
-              },
-              {
-                "step": "03",
-                "label": "试点接入",
-                "detail": "用个人研究助理或代码库维护助理做旁路试点",
-                "signal": "只读或旁路优先，避免一开始改主链路",
-                "type": "integration"
-              },
-              {
-                "step": "04",
-                "label": "验收信号",
-                "detail": "价值要用跨会话任务延续率、接管次数和错误恢复率验证",
-                "signal": "用成本、质量和人工接管率评估",
-                "type": "output"
-              }
-            ],
-            "adoption": [
-              {
-                "label": "试点入口",
-                "detail": "用个人研究助理或代码库维护助理做旁路试点"
-              },
-              {
-                "label": "验收指标",
-                "detail": "任务完成率、人工纠偏次数、成本和失败可恢复性"
-              },
-              {
-                "label": "观察信号",
-                "detail": "真实案例、issue 收敛、插件生态和版本节奏"
-              },
-              {
-                "label": "主要风险",
-                "detail": "记忆污染会导致持续性错误"
-              }
-            ],
-            "warning": "记忆污染会导致持续性错误"
-          }
-        },
-        "maturity": {
-          "community": 100,
-          "maintenance": 84,
-          "production": 88,
-          "complexity": 74
-        },
-        "score": 85
-      },
-      "evidence": {
-        "readmeExcerpt": "The agent that grows with you",
-        "githubUrl": "https://github.com/NousResearch/hermes-agent",
-        "trendingSource": "https://gittrend.io/",
-        "observedAt": "2026-05-21T11:56:00.049Z"
-      }
-    },
-    {
-      "rank": 4,
       "repo": {
         "fullName": "Imbad0202/academic-research-skills",
         "name": "academic-research-skills",
@@ -670,8 +460,8 @@
         "visualUrl": "https://opengraph.githubassets.com/echo-trending-2026-05-21/Imbad0202/academic-research-skills",
         "url": "https://github.com/Imbad0202/academic-research-skills",
         "description": "Academic Research Skills for Claude Code: research → write → review → revise → finalize",
-        "stars": 15800,
-        "forks": 1400,
+        "stars": 17400,
+        "forks": 1500,
         "openIssues": 0,
         "language": "Python",
         "topics": [
@@ -687,17 +477,17 @@
         "languages": {
           "Python": 1
         },
-        "starsToday": 31,
-        "updatedAt": "2026-05-21T00:00:00Z",
-        "trendingDailyStars": 31,
+        "starsToday": 119,
+        "updatedAt": "2026-05-21T16:07:00Z",
+        "trendingDailyStars": 119,
         "trendingSource": "GitTrend live page"
       },
       "analysis": {
         "method": "codex-web-research",
         "category": "AI Agent / LLM 工程",
         "oneLiner": "academic-research-skills 把论文检索、写作、审稿、修订封装成 Claude Code 可调用的技能链。",
-        "whyItMatters": "Imbad0202/academic-research-skills 在 GitTrend 2026-05-21 实时日榜排名 #4，今日新增约 +31。它把论文检索、写作、审稿、修订做成可复用技能链，说明 Agent 技能开始进入高结构化知识工作流。",
-        "engineeringRead": "Python · GitTrend daily trending · 15.8K stars / 1.4K forks。阅读时先看每个 skill 的输入输出、引用校验和人工复核点。",
+        "whyItMatters": "Imbad0202/academic-research-skills 在 GitTrend 2026-05-21 实时日榜排名 #3，当前约 17.4K stars、今日新增 +119。研究写作类 skill 上榜，说明 agent 工作流不只服务写代码，也开始覆盖检索、综述、写作、审稿和修订的完整知识生产链。",
+        "engineeringRead": "Python · GitTrend daily trending · 17.4K stars / 1.5K forks。采用判断要分开看架构机制、适用团队、落地路径、生产风险、决策问题和后续观察信号。",
         "architectureSignals": [
           "多阶段研究流水线：research/write/review/revise/finalize。",
           "以 Claude Code skill 形态复用，降低单次提示词手写成本。",
@@ -868,234 +658,23 @@
       "evidence": {
         "readmeExcerpt": "Academic Research Skills for Claude Code: research → write → review → revise → finalize",
         "githubUrl": "https://github.com/Imbad0202/academic-research-skills",
-        "trendingSnapshot": "GitHub Trending daily, 2026-05-21",
+        "trendingSnapshot": "GitTrend daily, 2026-05-21 16:07Z",
         "trendingSource": "https://gittrend.io/",
-        "observedAt": "2026-05-21T11:56:00.049Z"
+        "observedAt": "2026-05-21T16:10:46.761Z"
       }
     },
     {
-      "rank": 5,
-      "repo": {
-        "fullName": "truelockmc/streambert",
-        "name": "streambert",
-        "owner": "truelockmc",
-        "avatarUrl": "https://github.com/truelockmc.png",
-        "visualUrl": "https://opengraph.githubassets.com/echo-trending-2026-05-21/truelockmc/streambert",
-        "url": "https://github.com/truelockmc/streambert",
-        "description": "A cross-platform Electron Desktop App to stream and download any Movie, TV Series or Anime in the World. Zero Ads and Tracking",
-        "stars": 1600,
-        "forks": 136,
-        "openIssues": 0,
-        "language": "JavaScript",
-        "topics": [
-          "electron",
-          "desktop-app",
-          "streaming",
-          "media",
-          "cross-platform"
-        ],
-        "license": "Unknown",
-        "pushedAt": "2026-05-21T00:00:00Z",
-        "createdAt": "2025-01-01T00:00:00Z",
-        "languages": {
-          "JavaScript": 1
-        },
-        "starsToday": 27,
-        "updatedAt": "2026-05-21T00:00:00Z",
-        "trendingDailyStars": 27,
-        "trendingSource": "GitTrend live page"
-      },
-      "analysis": {
-        "method": "codex-web-research",
-        "category": "前端 / 产品体验",
-        "oneLiner": "streambert 是一个跨平台 Electron 媒体聚合客户端，热度来自“无广告、可下载、跨平台”的强用户诉求。",
-        "whyItMatters": "truelockmc/streambert 在 GitTrend 2026-05-21 实时日榜排名 #5，今日新增约 +27。它不是 AI 主线，但反映用户对跨平台、无广告、可下载媒体客户端的强烈产品诉求。",
-        "engineeringRead": "JavaScript/Electron · GitTrend daily trending · 1.6K stars / 136 forks。阅读时先看数据源合规、插件边界、下载链路和桌面端安全模型。",
-        "architectureSignals": [
-          "Electron 壳承载跨平台桌面体验。",
-          "媒体搜索、播放、下载队列是核心交互面。",
-          "用户增长靠低摩擦体验，但也伴随版权和安全审查压力。",
-          "桌面应用必须处理自动更新、签名和依赖安全。"
-        ],
-        "valueHypothesis": [
-          "适合研究 Electron 桌面产品的轻量体验和打包方式。",
-          "不适合商业团队复制其内容聚合模式。",
-          "价值应用在播放器 UX、下载任务管理和跨平台分发经验。"
-        ],
-        "technicalTakeaways": [
-          "媒体类桌面应用的关键不是页面，而是播放状态和本地任务可靠性。",
-          "Electron 能快速覆盖 Win/Mac/Linux，但包体积、自动更新和权限提示要治理。",
-          "热门不等于可采用，合规和供应链扫描是第一门槛。"
-        ],
-        "adoptionRisks": [
-          "内容来源可能触及版权和平台条款风险。",
-          "下载能力会扩大恶意文件和供应链风险。",
-          "桌面端自动更新若无签名与校验，会成为攻击面。"
-        ],
-        "suggestedUseCases": [
-          "只借鉴 Electron 打包、任务队列和播放器交互。",
-          "对依赖、自动更新和下载路径做安全审计。",
-          "商业场景应替换为授权内容源或内部媒体资产。"
-        ],
-        "watchSignals": [
-          "是否明确 license 和内容来源边界。",
-          "是否有签名发布、自动更新校验和安全说明。",
-          "issue 区是否出现平台封禁或法律风险反馈。"
-        ],
-        "deepDive": {
-          "strategicValue": "streambert 的战略价值不在内容本身，而在提醒团队：高摩擦内容消费场景仍存在强烈桌面端需求，体验创新要和合规边界同步设计。",
-          "implementationPath": [
-            "拆出播放器、下载队列和跨平台打包模式做技术学习。",
-            "在内部授权媒体或自有内容上复现体验。",
-            "上线前完成 license、内容授权、依赖和自动更新审计。"
-          ],
-          "productionConcerns": [
-            "版权来源、下载行为、自动更新签名和沙箱权限必须逐项过审。",
-            "跨平台系统 API 差异会影响下载路径、缓存和通知。",
-            "不要让第三方内容脚本获得本机高权限。"
-          ],
-          "decisionQuestions": [
-            "你要借鉴的是桌面体验，还是不可控内容聚合？",
-            "是否有合法稳定的内容源支撑产品化？",
-            "自动更新与下载文件如何防篡改？"
-          ],
-          "recommendedAction": "作为桌面体验案例观察；除非有授权内容源，否则不进入产品试点。"
-        },
-        "diagram": {
-          "title": "工业化落地图解",
-          "caption": "truelockmc/streambert · JavaScript",
-          "summary": "用户希望一站式搜索、播放和下载媒体 -> Electron 桌面壳 + 媒体检索 + 播放/下载任务管理 -> 仅复用授权内容源下的桌面体验模式 -> 降低跨平台媒体消费和本地任务管理摩擦",
-          "nodes": [
-            {
-              "label": "场景痛点",
-              "detail": "用户希望一站式搜索、播放和下载媒体",
-              "type": "input"
-            },
-            {
-              "label": "核心机制",
-              "detail": "Electron 桌面壳 + 媒体检索 + 播放/下载任务管理",
-              "type": "core"
-            },
-            {
-              "label": "接入方式",
-              "detail": "仅复用授权内容源下的桌面体验模式",
-              "type": "integration"
-            },
-            {
-              "label": "产出价值",
-              "detail": "降低跨平台媒体消费和本地任务管理摩擦",
-              "type": "output"
-            }
-          ],
-          "links": [
-            "聚合入口",
-            "控制任务",
-            "治理风险"
-          ],
-          "poster": {
-            "eyebrow": "Project Blueprint",
-            "headline": "桌面媒体聚合 / Electron 应用",
-            "subhead": "truelockmc/streambert · JavaScript",
-            "thesis": "streambert 的战略价值不在内容本身，而在提醒团队：高摩擦内容消费场景仍存在强烈桌面端需求，体验创新要和合规边界同步设计。",
-            "metrics": [
-              {
-                "label": "入口",
-                "value": "Spike",
-                "note": "先旁路验证"
-              },
-              {
-                "label": "指标",
-                "value": "质量",
-                "note": "验收口径"
-              },
-              {
-                "label": "风险",
-                "value": "Review",
-                "note": "上线前审计"
-              },
-              {
-                "label": "周期",
-                "value": "1-2w",
-                "note": "最小评估"
-              }
-            ],
-            "lanes": [
-              {
-                "label": "场景痛点",
-                "detail": "用户希望一站式搜索、播放和下载媒体",
-                "type": "input",
-                "step": "01",
-                "signal": "用户希望一站式搜索、播放和下载媒体"
-              },
-              {
-                "label": "核心机制",
-                "detail": "Electron 桌面壳 + 媒体检索 + 播放/下载任务管理",
-                "type": "core",
-                "step": "02",
-                "signal": "Electron 桌面壳 + 媒体检索 + 播放/下载任务管理"
-              },
-              {
-                "label": "接入方式",
-                "detail": "仅复用授权内容源下的桌面体验模式",
-                "type": "integration",
-                "step": "03",
-                "signal": "仅复用授权内容源下的桌面体验模式"
-              },
-              {
-                "label": "产出价值",
-                "detail": "降低跨平台媒体消费和本地任务管理摩擦",
-                "type": "output",
-                "step": "04",
-                "signal": "降低跨平台媒体消费和本地任务管理摩擦"
-              }
-            ],
-            "adoption": [
-              {
-                "label": "试点入口",
-                "detail": "仅复用授权内容源下的桌面体验模式"
-              },
-              {
-                "label": "验收指标",
-                "detail": "降低跨平台媒体消费和本地任务管理摩擦"
-              },
-              {
-                "label": "生产检查",
-                "detail": "Electron 桌面壳 + 媒体检索 + 播放/下载任务管理"
-              },
-              {
-                "label": "采用边界",
-                "detail": "内容来源可能触及版权和平台条款风险。"
-              }
-            ],
-            "warning": "内容来源可能触及版权和平台条款风险。"
-          }
-        },
-        "maturity": {
-          "community": 55,
-          "maintenance": 62,
-          "production": 34,
-          "complexity": 58
-        },
-        "score": 72
-      },
-      "evidence": {
-        "readmeExcerpt": "A cross-platform Electron Desktop App to stream and download any Movie, TV Series or Anime in the World. Zero Ads and Tracking",
-        "githubUrl": "https://github.com/truelockmc/streambert",
-        "trendingSnapshot": "GitHub Trending daily, 2026-05-21"
-      }
-    },
-    {
-      "rank": 6,
+      "rank": 4,
       "repo": {
         "fullName": "mattpocock/skills",
         "name": "skills",
         "owner": "mattpocock",
         "avatarUrl": "https://github.com/mattpocock.png",
-        "visualUrl": "https://opengraph.githubassets.com/20260521/mattpocock/skills",
+        "visualUrl": "https://opengraph.githubassets.com/echo-trending-2026-05-21/mattpocock/skills",
         "url": "https://github.com/mattpocock/skills",
         "description": "Skills for Real Engineers. Straight from my .claude directory.",
-        "stars": 96700,
-        "forks": 8500,
+        "stars": 98000,
+        "forks": 8700,
         "openIssues": 0,
         "language": "Shell",
         "topics": [
@@ -1109,15 +688,17 @@
         "languages": {
           "Shell": 100000
         },
-        "trendingDailyStars": 85,
-        "trendingSource": "GitTrend"
+        "trendingDailyStars": 96,
+        "trendingSource": "GitTrend live page",
+        "starsToday": 96,
+        "updatedAt": "2026-05-21T16:07:00Z"
       },
       "analysis": {
         "method": "codex-web-research",
         "category": "AI Skills / 开发者工作流",
         "oneLiner": "mattpocock/skills 把个人工程经验沉淀为可复用的 agent skill 包，更像轻量流程库而不是传统代码依赖。",
-        "whyItMatters": "mattpocock/skills 在 GitTrend 2026-05-21 日榜排名 #4，约 96.7K stars / 8.5K forks，今日新增 +85。它说明开发者正在把“如何让 coding agent 稳定工作”产品化为可复制的目录、命令和约束。",
-        "engineeringRead": "Shell · GitTrend daily trending · 96.7K stars / 8.5K forks。重点读技能边界、触发条件和失败恢复，而不是只复制提示词文本。",
+        "whyItMatters": "mattpocock/skills 在 GitTrend 2026-05-21 实时日榜排名 #4，当前约 98K stars、今日新增 +96。真实工程师的技能目录上榜，信号不是“又一个 prompt 集”，而是开发者想把隐性操作经验打包成可复用、可版本化的 agent 能力。",
+        "engineeringRead": "Shell · GitTrend daily trending · 98K stars / 8.7K forks。采用判断要分开看架构机制、适用团队、落地路径、生产风险、决策问题和后续观察信号。",
         "architectureSignals": [
           "以文件和脚本组织技能，接入成本低。",
           "把隐性工程习惯显式化，方便团队复制。",
@@ -1289,224 +870,223 @@
         "readmeExcerpt": "Skills for Real Engineers. Straight from my .claude directory.",
         "githubUrl": "https://github.com/mattpocock/skills",
         "trendingSource": "https://gittrend.io/",
-        "observedAt": "2026-05-21T11:56:00.049Z"
+        "observedAt": "2026-05-21T16:10:46.761Z",
+        "trendingSnapshot": "GitTrend daily, 2026-05-21 16:07Z"
       }
     },
     {
-      "rank": 7,
+      "rank": 5,
       "repo": {
-        "fullName": "rohitg00/ai-engineering-from-scratch",
-        "name": "ai-engineering-from-scratch",
-        "owner": "rohitg00",
-        "avatarUrl": "https://github.com/rohitg00.png",
-        "visualUrl": "https://opengraph.githubassets.com/echo-trending-2026-05-21/rohitg00/ai-engineering-from-scratch",
-        "url": "https://github.com/rohitg00/ai-engineering-from-scratch",
-        "description": "Learn it. Build it. Ship it for others.",
-        "stars": 9800,
-        "forks": 2000,
+        "fullName": "NousResearch/hermes-agent",
+        "name": "hermes-agent",
+        "owner": "NousResearch",
+        "avatarUrl": "https://github.com/NousResearch.png",
+        "visualUrl": "https://opengraph.githubassets.com/echo-trending-2026-05-21/NousResearch/hermes-agent",
+        "url": "https://github.com/NousResearch/hermes-agent",
+        "description": "The agent that grows with you",
+        "stars": 160300,
+        "forks": 26000,
         "openIssues": 0,
         "language": "Python",
         "topics": [
-          "ai-engineering",
-          "learning",
+          "ai-agents",
           "llm",
-          "mlops",
-          "from-scratch"
+          "memory"
         ],
-        "license": "Unknown",
-        "pushedAt": "2026-05-21T00:00:00Z",
-        "createdAt": "2025-01-01T00:00:00Z",
+        "license": "",
+        "pushedAt": "2026-05-21T11:56:00.049Z",
+        "createdAt": "2026-01-01T00:00:00.000Z",
         "languages": {
-          "Python": 1
+          "Python": 100000
         },
-        "starsToday": 765,
-        "updatedAt": "2026-05-21T00:00:00Z",
-        "trendingDailyStars": 61,
-        "trendingSource": "GitTrend"
+        "trendingDailyStars": 87,
+        "trendingSource": "GitTrend live page",
+        "starsToday": 87,
+        "updatedAt": "2026-05-21T16:07:00Z"
       },
       "analysis": {
         "method": "codex-web-research",
-        "category": "学习平台 / 内容社区",
-        "oneLiner": "ai-engineering-from-scratch 更像一套从学习到交付的 AI 工程课程资产，而不是可直接上线的库。",
-        "whyItMatters": "rohitg00/ai-engineering-from-scratch 在 GitTrend 2026-05-21 日榜排名 #6，今日新增 +61，说明它击中了当前开发者最急的议题：学习平台 / 内容社区 如何从个人尝鲜进入可复用工作流。",
-        "engineeringRead": "Python · GitTrend daily trending · 9.8K stars / 2K forks。阅读时先看架构边界和失败模式，再看 README 的安装路径。",
+        "category": "AI Agent / 个人智能体",
+        "oneLiner": "hermes-agent 主打“会成长的 agent”，值得从记忆、工具、权限和长期任务治理角度拆解。",
+        "whyItMatters": "NousResearch/hermes-agent 在 GitTrend 2026-05-21 实时日榜排名 #5，当前约 160.3K stars、今日新增 +87。个人化 agent 的热度继续上升，关键不在演示能执行任务，而在记忆、工具、权限和长期状态能否被用户理解和接管。",
+        "engineeringRead": "Python · GitTrend daily trending · 160.3K stars / 26K forks。采用判断要分开看架构机制、适用团队、落地路径、生产风险、决策问题和后续观察信号。",
         "architectureSignals": [
-          "课程化结构：从概念、实现到交付。",
-          "强调从零搭建，适合补齐底层理解。",
-          "可能覆盖 LLM/RAG/MLOps 等多个模块。",
-          "风险在内容广而不深、更新跟不上模型生态。"
+          "核心应围绕长期记忆、任务状态和工具调用闭环。",
+          "个人 agent 的难点是“能学会”与“可撤销”之间的平衡。",
+          "若支持多工具执行，权限和审计要比 demo 效果更早验证。",
+          "适合与本地知识库、浏览器、文件系统集成做小范围试点。"
         ],
         "valueHypothesis": [
-          "适合培训新入职 AI 工程师或建立内部学习路径。",
-          "不适合作为生产框架直接依赖。",
-          "验收看学习任务完成率、能否产出可运行 demo 和是否理解失败模式。"
+          "适合个人知识工作者或研发团队做长期任务助理。",
+          "如果没有明确任务队列和权限边界，会退化成聊天机器人。",
+          "价值要用跨会话任务延续率、接管次数和错误恢复率验证。"
         ],
         "technicalTakeaways": [
-          "AI 工程培训应以可运行产物为中心。",
-          "从 scratch 的价值在理解机制，不在重复造轮子上线。",
-          "要补充企业自己的安全、成本和评测标准。"
+          "记忆层必须可查看、可编辑、可删除。",
+          "工具执行要有 dry-run 或确认机制。",
+          "长任务需要 checkpoint，否则失败成本过高。"
         ],
         "adoptionRisks": [
-          "课程样例可能忽略生产鉴权、监控和成本。",
-          "模型 API 变化会让材料迅速过期。",
-          "学员容易停留在 demo 层。"
+          "记忆污染会导致持续性错误。",
+          "工具权限过宽会带来安全和合规风险。",
+          "个人化越强，团队共享和审计越难。"
         ],
         "suggestedUseCases": [
-          "作为 2-4 周内部 AI 工程训练营材料。",
-          "每个模块要求交付一个可运行小服务和评测报告。",
-          "补充公司内部模型网关、数据合规和上线流程。"
+          "用个人研究助理或代码库维护助理做旁路试点。",
+          "只开放只读文件和浏览器检索能力。",
+          "记录每次记忆写入的理由和回滚方式。"
         ],
         "watchSignals": [
-          "是否持续更新到最新模型/工具链。",
-          "是否有项目式作业和评测。",
-          "社区 issue 是否集中在环境不可复现。"
+          "是否公开 memory schema 和审计界面。",
+          "是否支持工具权限分级。",
+          "是否有真实长任务 benchmark。"
         ],
         "deepDive": {
-          "strategicValue": "它适合作为人才培养底座，让团队形成共同的 AI 工程词汇和最小实践。",
+          "strategicValue": "它代表 agent 从一次性执行向持续协作迁移，但真正价值取决于记忆治理和失败接管。",
           "implementationPath": [
-            "挑选 3 个模块做内部试课。",
-            "把示例改接内部模型网关。",
-            "用交付物质量决定是否纳入 onboarding。"
+            "先限定在低风险个人工作流。",
+            "开启日志、记忆审计和手工确认。",
+            "用连续三天任务观察它是否减少重复上下文输入。"
           ],
           "productionConcerns": [
-            "不能把教学代码直接放生产。",
-            "需要补齐 secrets 管理、日志、评测和限流。",
-            "依赖版本要锁定。"
+            "记忆与隐私要分层存储。",
+            "工具调用需要最小权限和人工确认。",
+            "要定义“忘记”和“纠错”的产品入口。"
           ],
           "decisionQuestions": [
-            "团队缺的是基础理解还是生产经验？",
-            "课程是否覆盖失败模式？",
-            "学完后能否独立设计评测？"
+            "团队是否真的需要长期个人化 agent？",
+            "错误记忆如何发现和清理？",
+            "权限升级由谁批准、如何审计？"
           ],
-          "recommendedAction": "进入培训资料池：适合 onboarding，不适合直接生产依赖。"
+          "recommendedAction": "重点观察：适合做低权限个人助理试验，不宜直接进入企业主流程。"
         },
         "diagram": {
           "title": "工业化落地图解",
-          "caption": "rohitg00/ai-engineering-from-scratch · Python",
-          "summary": "把 AI 工程拆成可学习、可运行、可交付的路径，帮助团队补齐从 demo 到系统的能力。",
+          "caption": "NousResearch/hermes-agent · Python",
+          "summary": "AI Agent / 个人智能体：从「核心应围绕长期记忆、任务状态和工具调用闭环」切入，用「个人 agent 的难点是“能学会”与“可撤销”之间的平衡」换取「价值要用跨会话任务延续率、接管次数和错误恢复率验证」。",
           "nodes": [
             {
               "label": "场景痛点",
-              "detail": "AI 工程新人知道概念但缺少完整落地路径",
+              "detail": "核心应围绕长期记忆、任务状态和工具调用闭环",
               "type": "input"
             },
             {
               "label": "核心机制",
-              "detail": "课程化代码与练习覆盖模型、数据、评测和部署",
+              "detail": "个人 agent 的难点是“能学会”与“可撤销”之间的平衡",
               "type": "core"
             },
             {
               "label": "接入方式",
-              "detail": "改造成内部训练营，接入公司模型与数据规范",
+              "detail": "用个人研究助理或代码库维护助理做旁路试点",
               "type": "integration"
             },
             {
               "label": "产出价值",
-              "detail": "统一团队 AI 工程基本功和交付标准",
+              "detail": "价值要用跨会话任务延续率、接管次数和错误恢复率验证",
               "type": "output"
             }
           ],
           "links": [
-            "定义边界",
-            "验证机制",
-            "规模化落地"
+            "识别高频摩擦",
+            "封装可复用能力",
+            "进入小范围生产验证"
           ],
           "poster": {
             "eyebrow": "Project Blueprint",
-            "headline": "AI 工程学习 / 训练营资产",
-            "subhead": "rohitg00/ai-engineering-from-scratch · Python",
-            "thesis": "把 AI 工程拆成可学习、可运行、可交付的路径，帮助团队补齐从 demo 到系统的能力。",
+            "headline": "AI Agent / 个人智能体",
+            "subhead": "NousResearch/hermes-agent · GitTrend 2026-05-21",
+            "thesis": "AI Agent / 个人智能体 的价值不在热度本身，而在它是否能把 核心应围绕长期记忆、任务状态和工具调用闭环 变成可度量、可回滚、可审计的工程流程。",
             "metrics": [
               {
-                "label": "入口",
-                "value": "Spike",
-                "note": "先旁路验证"
+                "label": "Stars",
+                "value": "160.3K",
+                "note": "社区关注"
               },
               {
-                "label": "指标",
-                "value": "完成率",
-                "note": "验收口径"
+                "label": "Daily",
+                "value": "+82",
+                "note": "今日新增"
               },
               {
-                "label": "风险",
-                "value": "Review",
-                "note": "上线前审计"
+                "label": "Stack",
+                "value": "Python",
+                "note": "主技术栈"
               },
               {
-                "label": "周期",
-                "value": "1-2w",
-                "note": "最小评估"
+                "label": "Forks",
+                "value": "26K",
+                "note": "二次采用"
               }
             ],
             "lanes": [
               {
-                "label": "场景痛点",
-                "detail": "AI 工程新人知道概念但缺少完整落地路径",
-                "type": "input",
                 "step": "01",
-                "signal": "AI 工程新人知道概念但缺少完整落地路径"
+                "label": "痛点定位",
+                "detail": "核心应围绕长期记忆、任务状态和工具调用闭环",
+                "signal": "先证明这是真问题，不是榜单驱动",
+                "type": "input"
               },
               {
-                "label": "核心机制",
-                "detail": "课程化代码与练习覆盖模型、数据、评测和部署",
-                "type": "core",
                 "step": "02",
-                "signal": "课程化代码与练习覆盖模型、数据、评测和部署"
+                "label": "机制拆解",
+                "detail": "个人 agent 的难点是“能学会”与“可撤销”之间的平衡",
+                "signal": "看状态、权限、失败恢复和可观测性",
+                "type": "core"
               },
               {
-                "label": "接入方式",
-                "detail": "改造成内部训练营，接入公司模型与数据规范",
-                "type": "integration",
                 "step": "03",
-                "signal": "改造成内部训练营，接入公司模型与数据规范"
+                "label": "试点接入",
+                "detail": "用个人研究助理或代码库维护助理做旁路试点",
+                "signal": "只读或旁路优先，避免一开始改主链路",
+                "type": "integration"
               },
               {
-                "label": "产出价值",
-                "detail": "统一团队 AI 工程基本功和交付标准",
-                "type": "output",
                 "step": "04",
-                "signal": "统一团队 AI 工程基本功和交付标准"
+                "label": "验收信号",
+                "detail": "价值要用跨会话任务延续率、接管次数和错误恢复率验证",
+                "signal": "用成本、质量和人工接管率评估",
+                "type": "output"
               }
             ],
             "adoption": [
               {
                 "label": "试点入口",
-                "detail": "改造成内部训练营，接入公司模型与数据规范"
+                "detail": "用个人研究助理或代码库维护助理做旁路试点"
               },
               {
                 "label": "验收指标",
-                "detail": "完成率"
+                "detail": "任务完成率、人工纠偏次数、成本和失败可恢复性"
               },
               {
-                "label": "生产检查",
-                "detail": "教学代码"
+                "label": "观察信号",
+                "detail": "真实案例、issue 收敛、插件生态和版本节奏"
               },
               {
-                "label": "采用边界",
-                "detail": "不适合直接当生产框架或替代企业 MLOps 平台。"
+                "label": "主要风险",
+                "detail": "记忆污染会导致持续性错误"
               }
             ],
-            "warning": "不适合直接当生产框架或替代企业 MLOps 平台。"
+            "warning": "记忆污染会导致持续性错误"
           }
         },
         "maturity": {
-          "community": 88,
-          "maintenance": 82,
-          "production": 80,
-          "complexity": 42
+          "community": 100,
+          "maintenance": 84,
+          "production": 88,
+          "complexity": 74
         },
-        "score": 82
+        "score": 85
       },
       "evidence": {
-        "readmeExcerpt": "Learn it. Build it. Ship it for others.",
-        "githubUrl": "https://github.com/rohitg00/ai-engineering-from-scratch",
-        "trendingSnapshot": "GitHub Trending daily, 2026-05-21",
+        "readmeExcerpt": "The agent that grows with you",
+        "githubUrl": "https://github.com/NousResearch/hermes-agent",
         "trendingSource": "https://gittrend.io/",
-        "observedAt": "2026-05-21T11:56:00.049Z"
+        "observedAt": "2026-05-21T16:10:46.761Z",
+        "trendingSnapshot": "GitTrend daily, 2026-05-21 16:07Z"
       }
     },
     {
-      "rank": 8,
+      "rank": 6,
       "repo": {
         "id": "manual-tinyhumansai/openhuman",
         "fullName": "tinyhumansai/openhuman",
@@ -1516,7 +1096,7 @@
         "language": "Rust",
         "stars": 23400,
         "forks": 2100,
-        "starsToday": 3394,
+        "starsToday": 68,
         "openIssues": 0,
         "license": "Unknown",
         "topics": [
@@ -1528,18 +1108,18 @@
         "avatarUrl": "https://github.com/tinyhumansai.png",
         "visualUrl": "https://opengraph.githubassets.com/echo-trending-2026-05-21/tinyhumansai/openhuman",
         "pushedAt": "2026-05-21T00:00:00Z",
-        "updatedAt": "2026-05-21T00:00:00Z",
+        "updatedAt": "2026-05-21T16:07:00Z",
         "createdAt": "",
         "reportDate": "2026-05-21",
-        "trendingDailyStars": 63,
-        "trendingSource": "GitTrend"
+        "trendingDailyStars": 68,
+        "trendingSource": "GitTrend live page"
       },
       "analysis": {
         "method": "codex-web-research",
         "category": "AI Agent / LLM 工程",
         "oneLiner": "Your Personal AI super intelligence. Private, Simple and extremely powerful.",
-        "whyItMatters": "tinyhumansai/openhuman 在 GitTrend 2026-05-21 日榜排名 #7，今日新增 +63，说明它击中了当前开发者最急的议题：AI Agent / LLM 工程 如何从个人尝鲜进入可复用工作流。",
-        "engineeringRead": "Rust · GitTrend daily trending · 23.4K stars / 2.1K forks。阅读时先看架构边界和失败模式，再看 README 的安装路径。",
+        "whyItMatters": "tinyhumansai/openhuman 在 GitTrend 2026-05-21 实时日榜排名 #6，当前约 23.4K stars、今日新增 +68。本地优先个人 AI 继续吸引关注，说明隐私、简单部署和个人数据控制正在成为 assistant/agent 产品的重要差异点。",
+        "engineeringRead": "Rust · GitTrend daily trending · 23.4K stars / 2.1K forks。采用判断要分开看架构机制、适用团队、落地路径、生产风险、决策问题和后续观察信号。",
         "architectureSignals": [
           "架构机制：围绕 coding agent 的上下文、技能、记忆或工具执行面做封装，机制重点是把人类经验转成可复用的代理行为约束。",
           "接入面：Rust 生态，优先确认 CLI/API/桌面/插件边界。",
@@ -1710,13 +1290,226 @@
       "evidence": {
         "readmeExcerpt": "Your Personal AI super intelligence. Private, Simple and extremely powerful.",
         "githubUrl": "https://github.com/tinyhumansai/openhuman",
-        "trendingSnapshot": "GitHub Trending daily, 2026-05-21",
+        "trendingSnapshot": "GitTrend daily, 2026-05-21 16:07Z",
         "trendingSource": "https://gittrend.io/",
-        "observedAt": "2026-05-21T11:56:00.049Z"
+        "observedAt": "2026-05-21T16:10:46.761Z"
       }
     },
     {
-      "rank": 9,
+      "rank": 7,
+      "repo": {
+        "fullName": "rohitg00/ai-engineering-from-scratch",
+        "name": "ai-engineering-from-scratch",
+        "owner": "rohitg00",
+        "avatarUrl": "https://github.com/rohitg00.png",
+        "visualUrl": "https://opengraph.githubassets.com/echo-trending-2026-05-21/rohitg00/ai-engineering-from-scratch",
+        "url": "https://github.com/rohitg00/ai-engineering-from-scratch",
+        "description": "Learn it. Build it. Ship it for others.",
+        "stars": 9800,
+        "forks": 2000,
+        "openIssues": 0,
+        "language": "Python",
+        "topics": [
+          "ai-engineering",
+          "learning",
+          "llm",
+          "mlops",
+          "from-scratch"
+        ],
+        "license": "Unknown",
+        "pushedAt": "2026-05-21T00:00:00Z",
+        "createdAt": "2025-01-01T00:00:00Z",
+        "languages": {
+          "Python": 1
+        },
+        "starsToday": 64,
+        "updatedAt": "2026-05-21T16:07:00Z",
+        "trendingDailyStars": 64,
+        "trendingSource": "GitTrend live page"
+      },
+      "analysis": {
+        "method": "codex-web-research",
+        "category": "学习平台 / 内容社区",
+        "oneLiner": "ai-engineering-from-scratch 更像一套从学习到交付的 AI 工程课程资产，而不是可直接上线的库。",
+        "whyItMatters": "rohitg00/ai-engineering-from-scratch 在 GitTrend 2026-05-21 实时日榜排名 #7，当前约 9.8K stars、今日新增 +64。从零构建 AI 工程栈的学习型项目上榜，说明团队不再满足于调用模型 API，而是想理解数据、评测、RAG、agent 和部署的底层机制。",
+        "engineeringRead": "Python · GitTrend daily trending · 9.8K stars / 2K forks。采用判断要分开看架构机制、适用团队、落地路径、生产风险、决策问题和后续观察信号。",
+        "architectureSignals": [
+          "课程化结构：从概念、实现到交付。",
+          "强调从零搭建，适合补齐底层理解。",
+          "可能覆盖 LLM/RAG/MLOps 等多个模块。",
+          "风险在内容广而不深、更新跟不上模型生态。"
+        ],
+        "valueHypothesis": [
+          "适合培训新入职 AI 工程师或建立内部学习路径。",
+          "不适合作为生产框架直接依赖。",
+          "验收看学习任务完成率、能否产出可运行 demo 和是否理解失败模式。"
+        ],
+        "technicalTakeaways": [
+          "AI 工程培训应以可运行产物为中心。",
+          "从 scratch 的价值在理解机制，不在重复造轮子上线。",
+          "要补充企业自己的安全、成本和评测标准。"
+        ],
+        "adoptionRisks": [
+          "课程样例可能忽略生产鉴权、监控和成本。",
+          "模型 API 变化会让材料迅速过期。",
+          "学员容易停留在 demo 层。"
+        ],
+        "suggestedUseCases": [
+          "作为 2-4 周内部 AI 工程训练营材料。",
+          "每个模块要求交付一个可运行小服务和评测报告。",
+          "补充公司内部模型网关、数据合规和上线流程。"
+        ],
+        "watchSignals": [
+          "是否持续更新到最新模型/工具链。",
+          "是否有项目式作业和评测。",
+          "社区 issue 是否集中在环境不可复现。"
+        ],
+        "deepDive": {
+          "strategicValue": "它适合作为人才培养底座，让团队形成共同的 AI 工程词汇和最小实践。",
+          "implementationPath": [
+            "挑选 3 个模块做内部试课。",
+            "把示例改接内部模型网关。",
+            "用交付物质量决定是否纳入 onboarding。"
+          ],
+          "productionConcerns": [
+            "不能把教学代码直接放生产。",
+            "需要补齐 secrets 管理、日志、评测和限流。",
+            "依赖版本要锁定。"
+          ],
+          "decisionQuestions": [
+            "团队缺的是基础理解还是生产经验？",
+            "课程是否覆盖失败模式？",
+            "学完后能否独立设计评测？"
+          ],
+          "recommendedAction": "进入培训资料池：适合 onboarding，不适合直接生产依赖。"
+        },
+        "diagram": {
+          "title": "工业化落地图解",
+          "caption": "rohitg00/ai-engineering-from-scratch · Python",
+          "summary": "把 AI 工程拆成可学习、可运行、可交付的路径，帮助团队补齐从 demo 到系统的能力。",
+          "nodes": [
+            {
+              "label": "场景痛点",
+              "detail": "AI 工程新人知道概念但缺少完整落地路径",
+              "type": "input"
+            },
+            {
+              "label": "核心机制",
+              "detail": "课程化代码与练习覆盖模型、数据、评测和部署",
+              "type": "core"
+            },
+            {
+              "label": "接入方式",
+              "detail": "改造成内部训练营，接入公司模型与数据规范",
+              "type": "integration"
+            },
+            {
+              "label": "产出价值",
+              "detail": "统一团队 AI 工程基本功和交付标准",
+              "type": "output"
+            }
+          ],
+          "links": [
+            "定义边界",
+            "验证机制",
+            "规模化落地"
+          ],
+          "poster": {
+            "eyebrow": "Project Blueprint",
+            "headline": "AI 工程学习 / 训练营资产",
+            "subhead": "rohitg00/ai-engineering-from-scratch · Python",
+            "thesis": "把 AI 工程拆成可学习、可运行、可交付的路径，帮助团队补齐从 demo 到系统的能力。",
+            "metrics": [
+              {
+                "label": "入口",
+                "value": "Spike",
+                "note": "先旁路验证"
+              },
+              {
+                "label": "指标",
+                "value": "完成率",
+                "note": "验收口径"
+              },
+              {
+                "label": "风险",
+                "value": "Review",
+                "note": "上线前审计"
+              },
+              {
+                "label": "周期",
+                "value": "1-2w",
+                "note": "最小评估"
+              }
+            ],
+            "lanes": [
+              {
+                "label": "场景痛点",
+                "detail": "AI 工程新人知道概念但缺少完整落地路径",
+                "type": "input",
+                "step": "01",
+                "signal": "AI 工程新人知道概念但缺少完整落地路径"
+              },
+              {
+                "label": "核心机制",
+                "detail": "课程化代码与练习覆盖模型、数据、评测和部署",
+                "type": "core",
+                "step": "02",
+                "signal": "课程化代码与练习覆盖模型、数据、评测和部署"
+              },
+              {
+                "label": "接入方式",
+                "detail": "改造成内部训练营，接入公司模型与数据规范",
+                "type": "integration",
+                "step": "03",
+                "signal": "改造成内部训练营，接入公司模型与数据规范"
+              },
+              {
+                "label": "产出价值",
+                "detail": "统一团队 AI 工程基本功和交付标准",
+                "type": "output",
+                "step": "04",
+                "signal": "统一团队 AI 工程基本功和交付标准"
+              }
+            ],
+            "adoption": [
+              {
+                "label": "试点入口",
+                "detail": "改造成内部训练营，接入公司模型与数据规范"
+              },
+              {
+                "label": "验收指标",
+                "detail": "完成率"
+              },
+              {
+                "label": "生产检查",
+                "detail": "教学代码"
+              },
+              {
+                "label": "采用边界",
+                "detail": "不适合直接当生产框架或替代企业 MLOps 平台。"
+              }
+            ],
+            "warning": "不适合直接当生产框架或替代企业 MLOps 平台。"
+          }
+        },
+        "maturity": {
+          "community": 88,
+          "maintenance": 82,
+          "production": 80,
+          "complexity": 42
+        },
+        "score": 82
+      },
+      "evidence": {
+        "readmeExcerpt": "Learn it. Build it. Ship it for others.",
+        "githubUrl": "https://github.com/rohitg00/ai-engineering-from-scratch",
+        "trendingSnapshot": "GitTrend daily, 2026-05-21 16:07Z",
+        "trendingSource": "https://gittrend.io/",
+        "observedAt": "2026-05-21T16:10:46.761Z"
+      }
+    },
+    {
+      "rank": 8,
       "repo": {
         "fullName": "obra/superpowers",
         "name": "superpowers",
@@ -1742,17 +1535,17 @@
         "languages": {
           "Shell": 1
         },
-        "starsToday": 1743,
-        "updatedAt": "2026-05-21T00:00:00Z",
-        "trendingDailyStars": 59,
-        "trendingSource": "GitTrend"
+        "starsToday": 65,
+        "updatedAt": "2026-05-21T16:07:00Z",
+        "trendingDailyStars": 65,
+        "trendingSource": "GitTrend live page"
       },
       "analysis": {
         "method": "codex-web-research",
         "category": "AI Agent / LLM 工程",
         "oneLiner": "superpowers 把 agentic development 包装成 skills 框架和软件开发方法论，核心是让团队可复用工作方式。",
-        "whyItMatters": "obra/superpowers 在 GitTrend 2026-05-21 日榜排名 #8，今日新增 +59，说明它击中了当前开发者最急的议题：AI Agent / LLM 工程 如何从个人尝鲜进入可复用工作流。",
-        "engineeringRead": "Shell · GitTrend daily trending · 200.1K stars / 17.8K forks。阅读时先看架构边界和失败模式，再看 README 的安装路径。",
+        "whyItMatters": "obra/superpowers 在 GitTrend 2026-05-21 实时日榜排名 #8，当前约 200.1K stars、今日新增 +65。agentic skills 方法论进入热榜，说明软件开发流程正在从“人写步骤”变成“人维护可执行协作协议”。",
+        "engineeringRead": "Shell · GitTrend daily trending · 200.1K stars / 17.8K forks。采用判断要分开看架构机制、适用团队、落地路径、生产风险、决策问题和后续观察信号。",
         "architectureSignals": [
           "技能层：把常见工程行为封装成可调用流程。",
           "方法层：定义 agent 与人类协作顺序。",
@@ -1923,19 +1716,19 @@
       "evidence": {
         "readmeExcerpt": "An agentic skills framework & software development methodology that works.",
         "githubUrl": "https://github.com/obra/superpowers",
-        "trendingSnapshot": "GitHub Trending daily, 2026-05-21",
+        "trendingSnapshot": "GitTrend daily, 2026-05-21 16:07Z",
         "trendingSource": "https://gittrend.io/",
-        "observedAt": "2026-05-21T11:56:00.049Z"
+        "observedAt": "2026-05-21T16:10:46.761Z"
       }
     },
     {
-      "rank": 10,
+      "rank": 9,
       "repo": {
         "fullName": "D4Vinci/Scrapling",
         "name": "Scrapling",
         "owner": "D4Vinci",
         "avatarUrl": "https://github.com/D4Vinci.png",
-        "visualUrl": "https://opengraph.githubassets.com/20260521/D4Vinci/Scrapling",
+        "visualUrl": "https://opengraph.githubassets.com/echo-trending-2026-05-21/D4Vinci/Scrapling",
         "url": "https://github.com/D4Vinci/Scrapling",
         "description": "An adaptive Web Scraping framework that handles everything from a single request to a full-scale crawl.",
         "stars": 52100,
@@ -1953,15 +1746,17 @@
         "languages": {
           "Python": 100000
         },
-        "trendingDailyStars": 52,
-        "trendingSource": "GitTrend"
+        "trendingDailyStars": 56,
+        "trendingSource": "GitTrend live page",
+        "starsToday": 56,
+        "updatedAt": "2026-05-21T16:07:00Z"
       },
       "analysis": {
         "method": "codex-web-research",
         "category": "数据采集 / Web 自动化",
         "oneLiner": "Scrapling 是面向现代网页的自适应抓取框架，价值在于降低动态页面、反爬和结构变化带来的维护成本。",
-        "whyItMatters": "D4Vinci/Scrapling 在 GitTrend 2026-05-21 日榜排名 #9，约 52.1K stars / 5K forks，今日新增 +52。AI 应用和搜索/RAG 数据源需求上升，让稳定采集能力重新成为基础设施问题。",
-        "engineeringRead": "Python · GitTrend daily trending · 52.1K stars / 5K forks。先看选择器恢复、浏览器执行、重试策略和合规限流能力。",
+        "whyItMatters": "D4Vinci/Scrapling 在 GitTrend 2026-05-21 实时日榜排名 #9，当前约 52.1K stars、今日新增 +56。自适应爬虫框架保持热度，说明数据获取仍是 AI/RAG 产品的上游瓶颈，稳定反爬、结构化抽取和规模化抓取是硬需求。",
+        "engineeringRead": "Python · GitTrend daily trending · 52.1K stars / 5K forks。采用判断要分开看架构机制、适用团队、落地路径、生产风险、决策问题和后续观察信号。",
         "architectureSignals": [
           "把请求级抓取和浏览器级抓取放在同一框架。",
           "自适应选择器适合页面结构频繁变化的来源。",
@@ -2133,11 +1928,12 @@
         "readmeExcerpt": "An adaptive Web Scraping framework that handles everything from a single request to a full-scale crawl.",
         "githubUrl": "https://github.com/D4Vinci/Scrapling",
         "trendingSource": "https://gittrend.io/",
-        "observedAt": "2026-05-21T11:56:00.049Z"
+        "observedAt": "2026-05-21T16:10:46.761Z",
+        "trendingSnapshot": "GitTrend daily, 2026-05-21 16:07Z"
       }
     },
     {
-      "rank": 11,
+      "rank": 10,
       "repo": {
         "fullName": "msitarzewski/agency-agents",
         "name": "agency-agents",
@@ -2163,17 +1959,17 @@
         "languages": {
           "Shell": 1
         },
-        "starsToday": 1636,
-        "updatedAt": "2026-05-21T00:00:00Z",
-        "trendingDailyStars": 53,
-        "trendingSource": "GitTrend"
+        "starsToday": 54,
+        "updatedAt": "2026-05-21T16:07:00Z",
+        "trendingDailyStars": 54,
+        "trendingSource": "GitTrend live page"
       },
       "analysis": {
         "method": "codex-web-research",
         "category": "AI Agent / LLM 工程",
         "oneLiner": "agency-agents 把一组专业角色和交付流程打包，适合观察多 Agent 模板化生产。",
-        "whyItMatters": "msitarzewski/agency-agents 在 GitTrend 2026-05-21 日榜排名 #10，今日新增 +53，说明它击中了当前开发者最急的议题：AI Agent / LLM 工程 如何从个人尝鲜进入可复用工作流。",
-        "engineeringRead": "Shell · GitTrend daily trending · 103.2K stars / 17K forks。阅读时先看架构边界和失败模式，再看 README 的安装路径。",
+        "whyItMatters": "msitarzewski/agency-agents 在 GitTrend 2026-05-21 实时日榜排名 #10，当前约 103.2K stars、今日新增 +54。多角色 agency agents 热度说明用户在探索把营销、社区、前端、运营等专业流程拆成可编排角色，但生产风险也最高。",
+        "engineeringRead": "Shell · GitTrend daily trending · 103.2K stars / 17K forks。采用判断要分开看架构机制、适用团队、落地路径、生产风险、决策问题和后续观察信号。",
         "architectureSignals": [
           "角色层：多个专门 agent 覆盖不同业务任务。",
           "流程层：把交付物结构模板化。",
@@ -2344,9 +2140,222 @@
       "evidence": {
         "readmeExcerpt": "A complete AI agency at your fingertips - specialized agents with processes and deliverables.",
         "githubUrl": "https://github.com/msitarzewski/agency-agents",
-        "trendingSnapshot": "GitHub Trending daily, 2026-05-21",
+        "trendingSnapshot": "GitTrend daily, 2026-05-21 16:07Z",
         "trendingSource": "https://gittrend.io/",
-        "observedAt": "2026-05-21T11:56:00.049Z"
+        "observedAt": "2026-05-21T16:10:46.761Z"
+      }
+    },
+    {
+      "rank": 11,
+      "repo": {
+        "fullName": "truelockmc/streambert",
+        "name": "streambert",
+        "owner": "truelockmc",
+        "avatarUrl": "https://github.com/truelockmc.png",
+        "visualUrl": "https://opengraph.githubassets.com/echo-trending-2026-05-21/truelockmc/streambert",
+        "url": "https://github.com/truelockmc/streambert",
+        "description": "A cross-platform Electron Desktop App to stream and download any Movie, TV Series or Anime in the World. Zero Ads and Tracking",
+        "stars": 1600,
+        "forks": 120,
+        "openIssues": 0,
+        "language": "JavaScript",
+        "topics": [
+          "electron",
+          "desktop-app",
+          "streaming",
+          "media",
+          "cross-platform"
+        ],
+        "license": "Unknown",
+        "pushedAt": "2026-05-21T00:00:00Z",
+        "createdAt": "2025-01-01T00:00:00Z",
+        "languages": {
+          "JavaScript": 1
+        },
+        "starsToday": 27,
+        "updatedAt": "2026-05-21T16:07:00Z",
+        "trendingDailyStars": 27,
+        "trendingSource": "GitTrend live page"
+      },
+      "analysis": {
+        "method": "codex-web-research",
+        "category": "前端 / 产品体验",
+        "oneLiner": "streambert 是一个跨平台 Electron 媒体聚合客户端，热度来自“无广告、可下载、跨平台”的强用户诉求。",
+        "whyItMatters": "truelockmc/streambert 在 GitTrend 2026-05-21 实时日榜排名 #11，当前约 1.6K stars、今日新增 +27。它值得进入观察池，但采用判断要回到架构机制、适用团队、落地路径、生产风险和可验证指标。",
+        "engineeringRead": "JavaScript · GitTrend daily trending · 1.6K stars / 120 forks。采用判断要分开看架构机制、适用团队、落地路径、生产风险、决策问题和后续观察信号。",
+        "architectureSignals": [
+          "Electron 壳承载跨平台桌面体验。",
+          "媒体搜索、播放、下载队列是核心交互面。",
+          "用户增长靠低摩擦体验，但也伴随版权和安全审查压力。",
+          "桌面应用必须处理自动更新、签名和依赖安全。"
+        ],
+        "valueHypothesis": [
+          "适合研究 Electron 桌面产品的轻量体验和打包方式。",
+          "不适合商业团队复制其内容聚合模式。",
+          "价值应用在播放器 UX、下载任务管理和跨平台分发经验。"
+        ],
+        "technicalTakeaways": [
+          "媒体类桌面应用的关键不是页面，而是播放状态和本地任务可靠性。",
+          "Electron 能快速覆盖 Win/Mac/Linux，但包体积、自动更新和权限提示要治理。",
+          "热门不等于可采用，合规和供应链扫描是第一门槛。"
+        ],
+        "adoptionRisks": [
+          "内容来源可能触及版权和平台条款风险。",
+          "下载能力会扩大恶意文件和供应链风险。",
+          "桌面端自动更新若无签名与校验，会成为攻击面。"
+        ],
+        "suggestedUseCases": [
+          "只借鉴 Electron 打包、任务队列和播放器交互。",
+          "对依赖、自动更新和下载路径做安全审计。",
+          "商业场景应替换为授权内容源或内部媒体资产。"
+        ],
+        "watchSignals": [
+          "是否明确 license 和内容来源边界。",
+          "是否有签名发布、自动更新校验和安全说明。",
+          "issue 区是否出现平台封禁或法律风险反馈。"
+        ],
+        "deepDive": {
+          "strategicValue": "streambert 的战略价值不在内容本身，而在提醒团队：高摩擦内容消费场景仍存在强烈桌面端需求，体验创新要和合规边界同步设计。",
+          "implementationPath": [
+            "拆出播放器、下载队列和跨平台打包模式做技术学习。",
+            "在内部授权媒体或自有内容上复现体验。",
+            "上线前完成 license、内容授权、依赖和自动更新审计。"
+          ],
+          "productionConcerns": [
+            "版权来源、下载行为、自动更新签名和沙箱权限必须逐项过审。",
+            "跨平台系统 API 差异会影响下载路径、缓存和通知。",
+            "不要让第三方内容脚本获得本机高权限。"
+          ],
+          "decisionQuestions": [
+            "你要借鉴的是桌面体验，还是不可控内容聚合？",
+            "是否有合法稳定的内容源支撑产品化？",
+            "自动更新与下载文件如何防篡改？"
+          ],
+          "recommendedAction": "作为桌面体验案例观察；除非有授权内容源，否则不进入产品试点。"
+        },
+        "diagram": {
+          "title": "工业化落地图解",
+          "caption": "truelockmc/streambert · JavaScript",
+          "summary": "用户希望一站式搜索、播放和下载媒体 -> Electron 桌面壳 + 媒体检索 + 播放/下载任务管理 -> 仅复用授权内容源下的桌面体验模式 -> 降低跨平台媒体消费和本地任务管理摩擦",
+          "nodes": [
+            {
+              "label": "场景痛点",
+              "detail": "用户希望一站式搜索、播放和下载媒体",
+              "type": "input"
+            },
+            {
+              "label": "核心机制",
+              "detail": "Electron 桌面壳 + 媒体检索 + 播放/下载任务管理",
+              "type": "core"
+            },
+            {
+              "label": "接入方式",
+              "detail": "仅复用授权内容源下的桌面体验模式",
+              "type": "integration"
+            },
+            {
+              "label": "产出价值",
+              "detail": "降低跨平台媒体消费和本地任务管理摩擦",
+              "type": "output"
+            }
+          ],
+          "links": [
+            "聚合入口",
+            "控制任务",
+            "治理风险"
+          ],
+          "poster": {
+            "eyebrow": "Project Blueprint",
+            "headline": "桌面媒体聚合 / Electron 应用",
+            "subhead": "truelockmc/streambert · JavaScript",
+            "thesis": "streambert 的战略价值不在内容本身，而在提醒团队：高摩擦内容消费场景仍存在强烈桌面端需求，体验创新要和合规边界同步设计。",
+            "metrics": [
+              {
+                "label": "入口",
+                "value": "Spike",
+                "note": "先旁路验证"
+              },
+              {
+                "label": "指标",
+                "value": "质量",
+                "note": "验收口径"
+              },
+              {
+                "label": "风险",
+                "value": "Review",
+                "note": "上线前审计"
+              },
+              {
+                "label": "周期",
+                "value": "1-2w",
+                "note": "最小评估"
+              }
+            ],
+            "lanes": [
+              {
+                "label": "场景痛点",
+                "detail": "用户希望一站式搜索、播放和下载媒体",
+                "type": "input",
+                "step": "01",
+                "signal": "用户希望一站式搜索、播放和下载媒体"
+              },
+              {
+                "label": "核心机制",
+                "detail": "Electron 桌面壳 + 媒体检索 + 播放/下载任务管理",
+                "type": "core",
+                "step": "02",
+                "signal": "Electron 桌面壳 + 媒体检索 + 播放/下载任务管理"
+              },
+              {
+                "label": "接入方式",
+                "detail": "仅复用授权内容源下的桌面体验模式",
+                "type": "integration",
+                "step": "03",
+                "signal": "仅复用授权内容源下的桌面体验模式"
+              },
+              {
+                "label": "产出价值",
+                "detail": "降低跨平台媒体消费和本地任务管理摩擦",
+                "type": "output",
+                "step": "04",
+                "signal": "降低跨平台媒体消费和本地任务管理摩擦"
+              }
+            ],
+            "adoption": [
+              {
+                "label": "试点入口",
+                "detail": "仅复用授权内容源下的桌面体验模式"
+              },
+              {
+                "label": "验收指标",
+                "detail": "降低跨平台媒体消费和本地任务管理摩擦"
+              },
+              {
+                "label": "生产检查",
+                "detail": "Electron 桌面壳 + 媒体检索 + 播放/下载任务管理"
+              },
+              {
+                "label": "采用边界",
+                "detail": "内容来源可能触及版权和平台条款风险。"
+              }
+            ],
+            "warning": "内容来源可能触及版权和平台条款风险。"
+          }
+        },
+        "maturity": {
+          "community": 55,
+          "maintenance": 62,
+          "production": 34,
+          "complexity": 58
+        },
+        "score": 72
+      },
+      "evidence": {
+        "readmeExcerpt": "A cross-platform Electron Desktop App to stream and download any Movie, TV Series or Anime in the World. Zero Ads and Tracking",
+        "githubUrl": "https://github.com/truelockmc/streambert",
+        "trendingSnapshot": "GitTrend daily, 2026-05-21 16:07Z",
+        "trendingSource": "https://gittrend.io/",
+        "observedAt": "2026-05-21T16:10:46.761Z"
       }
     },
     {
@@ -2360,7 +2369,7 @@
         "url": "https://github.com/can1357/oh-my-pi",
         "description": "AI Coding agent for the terminal — hash-anchored edits, optimized tool harness, LSP, Python, browser, subagents, and more",
         "stars": 5540,
-        "forks": 612,
+        "forks": 410,
         "openIssues": 0,
         "language": "Python",
         "topics": [
@@ -2377,14 +2386,16 @@
           "TypeScript": 1
         },
         "starsToday": 614,
-        "updatedAt": "2026-05-21T00:00:00Z"
+        "updatedAt": "2026-05-21T16:07:00Z",
+        "trendingDailyStars": 614,
+        "trendingSource": "GitTrend live page"
       },
       "analysis": {
         "method": "codex-web-research",
         "category": "AI Agent / LLM 工程",
         "oneLiner": "oh-my-pi 把终端 agent 做成带 hash-anchored edits、LSP、浏览器和子任务能力的工程工具。",
-        "whyItMatters": "can1357/oh-my-pi 今天在 GitHub Trending 获得约 614 stars/day，说明它击中了当前开发者最急的议题：AI Agent / LLM 工程 如何从个人尝鲜进入可复用工作流。",
-        "engineeringRead": "Python · GitHub daily trending · 5.5K stars / 612 forks。阅读时先看架构边界和失败模式，再看 README 的安装路径。",
+        "whyItMatters": "can1357/oh-my-pi 在 GitTrend 2026-05-21 实时日榜排名 #12，当前约 5.5K stars、今日新增 +614。它值得进入观察池，但采用判断要回到架构机制、适用团队、落地路径、生产风险和可验证指标。",
+        "engineeringRead": "Python · GitTrend daily trending · 5.5K stars / 410 forks。采用判断要分开看架构机制、适用团队、落地路径、生产风险、决策问题和后续观察信号。",
         "architectureSignals": [
           "编辑层：通过 hash anchoring 降低补丁错位。",
           "工具层：LSP、browser、subagents 组成执行环境。",
@@ -2555,7 +2566,9 @@
       "evidence": {
         "readmeExcerpt": "AI Coding agent for the terminal — hash-anchored edits, optimized tool harness, LSP, Python, browser, subagents, and more",
         "githubUrl": "https://github.com/can1357/oh-my-pi",
-        "trendingSnapshot": "GitHub Trending daily, 2026-05-21"
+        "trendingSnapshot": "GitTrend daily, 2026-05-21 16:07Z",
+        "trendingSource": "https://gittrend.io/",
+        "observedAt": "2026-05-21T16:10:46.761Z"
       }
     },
     {
@@ -2569,7 +2582,7 @@
         "url": "https://github.com/anthropics/claude-plugins-official",
         "description": "Official, Anthropic-managed directory of high quality Claude Code Plugins.",
         "stars": 20923,
-        "forks": 2558,
+        "forks": 1800,
         "openIssues": 0,
         "language": "Python",
         "topics": [
@@ -2586,14 +2599,16 @@
           "Python": 1
         },
         "starsToday": 674,
-        "updatedAt": "2026-05-21T00:00:00Z"
+        "updatedAt": "2026-05-21T16:07:00Z",
+        "trendingDailyStars": 674,
+        "trendingSource": "GitTrend live page"
       },
       "analysis": {
         "method": "codex-web-research",
         "category": "AI Agent / LLM 工程",
         "oneLiner": "claude-plugins-official 是 Anthropic 官方管理的 Claude Code 插件目录，意味着插件分发正在进入治理阶段。",
-        "whyItMatters": "anthropics/claude-plugins-official 今天在 GitHub Trending 获得约 674 stars/day，说明它击中了当前开发者最急的议题：AI Agent / LLM 工程 如何从个人尝鲜进入可复用工作流。",
-        "engineeringRead": "Python · GitHub daily trending · 20.9K stars / 2.6K forks。阅读时先看架构边界和失败模式，再看 README 的安装路径。",
+        "whyItMatters": "anthropics/claude-plugins-official 在 GitTrend 2026-05-21 实时日榜排名 #13，当前约 20.9K stars、今日新增 +674。它值得进入观察池，但采用判断要回到架构机制、适用团队、落地路径、生产风险和可验证指标。",
+        "engineeringRead": "Python · GitTrend daily trending · 20.9K stars / 1.8K forks。采用判断要分开看架构机制、适用团队、落地路径、生产风险、决策问题和后续观察信号。",
         "architectureSignals": [
           "目录层：集中发现和管理高质量插件。",
           "治理层：官方维护意味着有质量和安全预期。",
@@ -2764,7 +2779,9 @@
       "evidence": {
         "readmeExcerpt": "Official, Anthropic-managed directory of high quality Claude Code Plugins.",
         "githubUrl": "https://github.com/anthropics/claude-plugins-official",
-        "trendingSnapshot": "GitHub Trending daily, 2026-05-21"
+        "trendingSnapshot": "GitTrend daily, 2026-05-21 16:07Z",
+        "trendingSource": "https://gittrend.io/",
+        "observedAt": "2026-05-21T16:10:46.761Z"
       }
     },
     {
@@ -2777,7 +2794,7 @@
         "description": "Free, Open Source, Self-Hosted WhatsApp API Gateway",
         "language": "TypeScript",
         "stars": 4985,
-        "forks": 1001,
+        "forks": 620,
         "starsToday": 741,
         "openIssues": 0,
         "license": "Unknown",
@@ -2789,16 +2806,18 @@
         "avatarUrl": "https://github.com/rmyndharis.png",
         "visualUrl": "https://opengraph.githubassets.com/echo-trending-2026-05-21/rmyndharis/OpenWA",
         "pushedAt": "2026-05-21T00:00:00Z",
-        "updatedAt": "2026-05-21T00:00:00Z",
+        "updatedAt": "2026-05-21T16:07:00Z",
         "createdAt": "",
-        "reportDate": "2026-05-21"
+        "reportDate": "2026-05-21",
+        "trendingDailyStars": 741,
+        "trendingSource": "GitTrend live page"
       },
       "analysis": {
         "method": "codex-web-research",
         "category": "API / 集成网关",
         "oneLiner": "Free, Open Source, Self-Hosted WhatsApp API Gateway",
-        "whyItMatters": "rmyndharis/OpenWA 今天在 GitHub Trending 获得约 741 stars/day，说明它击中了当前开发者最急的议题：API / 集成网关 如何从个人尝鲜进入可复用工作流。",
-        "engineeringRead": "TypeScript · GitHub daily trending · 5K stars / 1K forks。阅读时先看架构边界和失败模式，再看 README 的安装路径。",
+        "whyItMatters": "rmyndharis/OpenWA 在 GitTrend 2026-05-21 实时日榜排名 #14，当前约 5K stars、今日新增 +741。它值得进入观察池，但采用判断要回到架构机制、适用团队、落地路径、生产风险和可验证指标。",
+        "engineeringRead": "TypeScript · GitTrend daily trending · 5K stars / 620 forks。采用判断要分开看架构机制、适用团队、落地路径、生产风险、决策问题和后续观察信号。",
         "architectureSignals": [
           "架构机制：把 WhatsApp 连接封装为自托管 API 网关，核心是会话保持、消息队列、鉴权、webhook 回调和失败重试。",
           "接入面：TypeScript 生态，优先确认 CLI/API/桌面/插件边界。",
@@ -2969,7 +2988,9 @@
       "evidence": {
         "readmeExcerpt": "Free, Open Source, Self-Hosted WhatsApp API Gateway",
         "githubUrl": "https://github.com/rmyndharis/OpenWA",
-        "trendingSnapshot": "GitHub Trending daily, 2026-05-21"
+        "trendingSnapshot": "GitTrend daily, 2026-05-21 16:07Z",
+        "trendingSource": "https://gittrend.io/",
+        "observedAt": "2026-05-21T16:10:46.761Z"
       }
     },
     {
@@ -2982,7 +3003,7 @@
         "description": "OpenToonz - An open-source full-featured 2D animation creation software",
         "language": "C++",
         "stars": 6451,
-        "forks": 739,
+        "forks": 900,
         "starsToday": 236,
         "openIssues": 0,
         "license": "BSD-3-Clause",
@@ -2994,16 +3015,18 @@
         "avatarUrl": "https://github.com/opentoonz.png",
         "visualUrl": "https://opengraph.githubassets.com/echo-trending-2026-05-21/opentoonz/opentoonz",
         "pushedAt": "2026-05-21T00:00:00Z",
-        "updatedAt": "2026-05-21T00:00:00Z",
+        "updatedAt": "2026-05-21T16:07:00Z",
         "createdAt": "",
-        "reportDate": "2026-05-21"
+        "reportDate": "2026-05-21",
+        "trendingDailyStars": 236,
+        "trendingSource": "GitTrend live page"
       },
       "analysis": {
         "method": "codex-web-research",
         "category": "创意工具 / 桌面软件",
         "oneLiner": "OpenToonz - An open-source full-featured 2D animation creation software",
-        "whyItMatters": "opentoonz/opentoonz 今天在 GitHub Trending 获得约 236 stars/day，说明它击中了当前开发者最急的议题：创意工具 / 桌面软件 如何从个人尝鲜进入可复用工作流。",
-        "engineeringRead": "C++ · GitHub daily trending · 6.5K stars / 739 forks。阅读时先看架构边界和失败模式，再看 README 的安装路径。",
+        "whyItMatters": "opentoonz/opentoonz 在 GitTrend 2026-05-21 实时日榜排名 #15，当前约 6.5K stars、今日新增 +236。它值得进入观察池，但采用判断要回到架构机制、适用团队、落地路径、生产风险和可验证指标。",
+        "engineeringRead": "C++ · GitTrend daily trending · 6.5K stars / 900 forks。采用判断要分开看架构机制、适用团队、落地路径、生产风险、决策问题和后续观察信号。",
         "architectureSignals": [
           "架构机制：成熟 C++ 桌面创作软件，机制包含时间轴、矢量/位图绘制、合成、特效、插件和跨平台渲染管线。",
           "接入面：C++ 生态，优先确认 CLI/API/桌面/插件边界。",
@@ -3174,7 +3197,9 @@
       "evidence": {
         "readmeExcerpt": "OpenToonz - An open-source full-featured 2D animation creation software",
         "githubUrl": "https://github.com/opentoonz/opentoonz",
-        "trendingSnapshot": "GitHub Trending daily, 2026-05-21"
+        "trendingSnapshot": "GitTrend daily, 2026-05-21 16:07Z",
+        "trendingSource": "https://gittrend.io/",
+        "observedAt": "2026-05-21T16:10:46.761Z"
       }
     },
     {
@@ -3187,7 +3212,7 @@
         "description": "Private, quiet space for thinking. A simple app for your .md files.",
         "language": "Go",
         "stars": 2319,
-        "forks": 51,
+        "forks": 240,
         "starsToday": 429,
         "openIssues": 0,
         "license": "Unknown",
@@ -3197,16 +3222,18 @@
         "avatarUrl": "https://github.com/zakirullin.png",
         "visualUrl": "https://opengraph.githubassets.com/echo-trending-2026-05-21/zakirullin/files.md",
         "pushedAt": "2026-05-21T00:00:00Z",
-        "updatedAt": "2026-05-21T00:00:00Z",
+        "updatedAt": "2026-05-21T16:07:00Z",
         "createdAt": "",
-        "reportDate": "2026-05-21"
+        "reportDate": "2026-05-21",
+        "trendingDailyStars": 429,
+        "trendingSource": "GitTrend live page"
       },
       "analysis": {
         "method": "codex-web-research",
         "category": "开发者工具 / 知识管理",
         "oneLiner": "Private, quiet space for thinking. A simple app for your .md files.",
-        "whyItMatters": "zakirullin/files.md 今天在 GitHub Trending 获得约 429 stars/day，说明它击中了当前开发者最急的议题：开发者工具 / 知识管理 如何从个人尝鲜进入可复用工作流。",
-        "engineeringRead": "Go · GitHub daily trending · 2.3K stars / 51 forks。阅读时先看架构边界和失败模式，再看 README 的安装路径。",
+        "whyItMatters": "zakirullin/files.md 在 GitTrend 2026-05-21 实时日榜排名 #16，当前约 2.3K stars、今日新增 +429。它值得进入观察池，但采用判断要回到架构机制、适用团队、落地路径、生产风险和可验证指标。",
+        "engineeringRead": "Go · GitTrend daily trending · 2.3K stars / 240 forks。采用判断要分开看架构机制、适用团队、落地路径、生产风险、决策问题和后续观察信号。",
         "architectureSignals": [
           "架构机制：以本地 Markdown 文件为核心资产，Go 应用把文件浏览、编辑、私有知识空间和轻量同步组织成低干扰工作台。",
           "接入面：Go 生态，优先确认 CLI/API/桌面/插件边界。",
@@ -3377,314 +3404,309 @@
       "evidence": {
         "readmeExcerpt": "Private, quiet space for thinking. A simple app for your .md files.",
         "githubUrl": "https://github.com/zakirullin/files.md",
-        "trendingSnapshot": "GitHub Trending daily, 2026-05-21"
+        "trendingSnapshot": "GitTrend daily, 2026-05-21 16:07Z",
+        "trendingSource": "https://gittrend.io/",
+        "observedAt": "2026-05-21T16:10:46.761Z"
       }
     }
   ],
   "frontier": {
     "title": "搜广推技术前沿",
-    "subtitle": "混合跟踪搜索、广告、推荐、排序、召回相关的新论文、大厂工程实践和中文可落地系统文章。",
-    "source": "Big Tech Engineering/RSS + Amazon Science + Google Research + Chinese engineering blogs + Codex web research",
+    "subtitle": "覆盖搜索、广告、推荐、排序、召回、重排、向量检索、实验平台和生成式搜索的最新大厂工程实践。",
+    "source": "Google Search/Ads + Meta Engineering + Amazon Science + Pinterest Engineering + Spotify Engineering + Airbnb/Chinese recsys sources + Codex web research",
     "items": [
       {
-        "title": "Pinterest: real-time context for sequential ads candidate generation",
-        "url": "https://medium.com/pinterest-engineering/enhancing-ad-relevance-integrating-real-time-context-into-sequential-recommender-models-bc3a2f9b682e",
-        "source": "Pinterest Engineering",
-        "publishedAt": "2026-05-08",
-        "summary": "业务问题：离线用户序列 embedding 缺少当前 Pin/search query 上下文，Related Pins 候选很难通过后续排序和 auction。系统机制：在 query tower 增加 context layer，训练时注入 synthetic context，服务时离线 Transformer 表征 + 在线 context/MLP 混合推理。指标/实验：Recall@K 提升 3x-10x，候选相关性中位数提升约 275%-300%，ads relevance +1.08%，ROAS 约 +0.7%，头部国家约 +1.4%。",
-        "interpretation": "可借鉴点：把长期兴趣和当前意图拆成离线/在线两层，适合高 QPS 广告召回；不适用边界：上下文特征质量差、线上特征延迟不可控或无法做离线-在线一致性校准时，不应直接上主召回。",
-        "tags": [
-          "ads retrieval",
-          "two-tower",
-          "real-time context",
-          "ROAS"
-        ],
-        "imageUrl": "https://www.google.com/s2/favicons?domain=medium.com&sz=128",
-        "sourceType": "industry",
-        "rank": 1
-      },
-      {
-        "rank": 2,
-        "title": "Google Marketing Live 2026: Gemini Search ads, UCP checkout, AI bidding and pacing",
-        "url": "https://blog.google/products/ads-commerce/google-marketing-live-2026-collection/",
-        "publishedAt": "2026-05-20",
-        "source": "Google Ads & Commerce",
+        "rank": 1,
+        "title": "Google Search I/O 2026: AI Mode, Search agents and intelligent search box",
+        "url": "https://blog.google/products-and-platforms/products/search/search-io-2026/",
+        "source": "Google Search",
+        "publishedAt": "2026-05-19",
         "sourceType": "industry",
         "imageUrl": "https://www.google.com/s2/favicons?domain=blog.google&sz=128",
         "tags": [
-          "ads",
-          "bidding",
-          "budgeting",
-          "Search",
-          "Shopping",
-          "agentic commerce"
+          "search",
+          "AI Mode",
+          "agents",
+          "personalization"
         ],
-        "summary": "业务问题：AI Mode/AI Overviews 改变用户发现商品和服务的入口，Search/Shopping 广告既要回答更长链路的研究型意图，又要在需求波动时控制预算节奏。系统机制：Google 把 Gemini-powered ad formats、Conversational Discovery/Highlighted Answers、Direct Offers + UCP native checkout、journey-aware bidding、Smart Bidding Exploration 和 demand-led pacing 组合成“发现-解释-成交-预算”闭环。指标/实验：官方披露 AI Mode 购物用户中 75% 反馈决策更快更有信心，Search/Shopping bid strategies 在 2025-2026 有 20+ 项改进，campaign total budgets 让手动预算调整平均减少 66%。可借鉴点：广告系统应把查询理解、商品解释、转化质量、预算节奏和探索流量放进同一实验框架，而不是只局部优化 CTR/CVR。不适用边界：归因链路断裂、CRM 回传质量差、商家库存/价格不同步或预算审批强依赖人工时，AI 自动竞价和 agentic checkout 会放大错误信号。",
-        "interpretation": "业务问题：AI Mode/AI Overviews 改变用户发现商品和服务的入口，Search/Shopping 广告既要回答更长链路的研究型意图，又要在需求波动时控制预算节奏。系统机制：Google 把 Gemini-powered ad formats、Conversational Discovery/Highlighted Answers、Direct Offers + UCP native checkout、journey-aware bidding、Smart Bidding Exploration 和 demand-led pacing 组合成“发现-解释-成交-预算”闭环。指标/实验：官方披露 AI Mode 购物用户中 75% 反馈决策更快更有信心，Search/Shopping bid strategies 在 2025-2026 有 20+ 项改进，campaign total budgets 让手动预算调整平均减少 66%。可借鉴点：广告系统应把查询理解、商品解释、转化质量、预算节奏和探索流量放进同一实验框架，而不是只局部优化 CTR/CVR。不适用边界：归因链路断裂、CRM 回传质量差、商家库存/价格不同步或预算审批强依赖人工时，AI 自动竞价和 agentic checkout 会放大错误信号。"
+        "summary": "业务问题：传统关键词框难以承载长问题、多模态输入和任务型查询，搜索入口需要从“给链接”升级为“组织任务”。。系统机制：Gemini 3.5 Flash 成为 AI Mode 默认模型，搜索框支持文本/图片/文件/视频/Chrome tab，AI Overview 可无缝续问，并引入信息 agents 与 Personal Intelligence。。指标/实验：官方称 AI Mode 已超过 10 亿月活，查询量按季度翻倍；新搜索框已在 AI Mode 可用地区 rollout。。",
+        "interpretation": "可借鉴点：搜索产品要把查询理解、上下文压缩、个性化权限、链接可解释性和 agent 任务状态放进同一架构，而不是把生成答案当展示层。。不适用边界：监管、出版商分发、隐私授权和广告归因未稳定前，不适合把生成式答案作为唯一入口。。"
       },
       {
-        "rank": 3,
-        "title": "Meta REA: ads ranking experiments run by autonomous agent",
-        "url": "https://engineering.fb.com/2026/03/17/developer-tools/ranking-engineer-agent-rea-autonomous-ai-system-accelerating-meta-ads-ranking-innovation/",
-        "publishedAt": "2026-03-17",
-        "source": "Meta Engineering",
-        "sourceType": "industry",
-        "imageUrl": "https://www.google.com/s2/favicons?domain=engineering.fb.com&sz=128",
-        "tags": [
-          "ads",
-          "ranking",
-          "agent",
-          "experiment",
-          "automation"
-        ],
-        "summary": "业务问题：广告排序模型的实验周期以天/周计，工程师需要反复提出假设、启动训练、排错和复盘，成熟模型上手工找增益越来越慢。系统机制：REA 用持久状态、hibernate-and-wake、多源假设生成和三阶段规划，自动推进 ads ranking 模型实验，并在人类批准的算力预算和关键决策点内运行。指标/实验：Meta 披露首次生产 rollout 中，REA 迭代让六个模型平均 accuracy 相对基线翻倍，三名工程师完成八个模型改进方案，工程产出约 5x。可借鉴点：搜广推团队可以把“实验假设生成、训练失败排查、结果归因、下一轮计划”封装成 agent 工作流，而不是只把 LLM 当日志问答助手。不适用边界：如果实验平台缺少可审计配置、预算 guardrail、离线/在线指标映射和人工审批节点，自治 agent 会扩大坏实验的半径。",
-        "interpretation": "业务问题：广告排序模型的实验周期以天/周计，工程师需要反复提出假设、启动训练、排错和复盘，成熟模型上手工找增益越来越慢。系统机制：REA 用持久状态、hibernate-and-wake、多源假设生成和三阶段规划，自动推进 ads ranking 模型实验，并在人类批准的算力预算和关键决策点内运行。指标/实验：Meta 披露首次生产 rollout 中，REA 迭代让六个模型平均 accuracy 相对基线翻倍，三名工程师完成八个模型改进方案，工程产出约 5x。可借鉴点：搜广推团队可以把“实验假设生成、训练失败排查、结果归因、下一轮计划”封装成 agent 工作流，而不是只把 LLM 当日志问答助手。不适用边界：如果实验平台缺少可审计配置、预算 guardrail、离线/在线指标映射和人工审批节点，自治 agent 会扩大坏实验的半径。"
-      },
-      {
-        "rank": 4,
-        "title": "Meta Adaptive Ranking Model: Serving LLM-scale models for ads",
+        "rank": 2,
+        "title": "Meta Adaptive Ranking Model: LLM-scale ads ranking under sub-second latency",
         "url": "https://engineering.fb.com/2026/03/31/ml-applications/meta-adaptive-ranking-model-bending-the-inference-scaling-curve-to-serve-llm-scale-models-for-ads/",
-        "publishedAt": "2026-03-31",
         "source": "Meta Engineering",
+        "publishedAt": "2026-03-31",
         "sourceType": "industry",
         "imageUrl": "https://www.google.com/s2/favicons?domain=engineering.fb.com&sz=128",
         "tags": [
           "ads",
           "ranking",
           "LLM-scale",
-          "CTR/CVR"
+          "serving"
         ],
-        "summary": "业务问题：广告排序想吃到更大模型的意图理解能力，但广告请求必须亚秒返回且 ROI 要成立。系统机制：请求级计算共享、硬件感知架构、选择性 FP8、融合 kernel、多卡 embedding sharding，把模型复杂度从线性成本压到亚线性。指标/实验：Instagram Q4 2025 上线后目标用户广告转化 +3%、CTR +5%，MFU 多硬件到 35%。可借鉴点：把用户侧高密度信号按 request 计算一次，并用路由决定模型复杂度。不适用边界：流量小、候选少或缺少硬件团队时，先别追 T 级参数。",
-        "interpretation": "业务问题：广告排序想吃到更大模型的意图理解能力，但广告请求必须亚秒返回且 ROI 要成立。系统机制：请求级计算共享、硬件感知架构、选择性 FP8、融合 kernel、多卡 embedding sharding，把模型复杂度从线性成本压到亚线性。指标/实验：Instagram Q4 2025 上线后目标用户广告转化 +3%、CTR +5%，MFU 多硬件到 35%。可借鉴点：把用户侧高密度信号按 request 计算一次，并用路由决定模型复杂度。不适用边界：流量小、候选少或缺少硬件团队时，先别追 T 级参数。"
+        "summary": "业务问题：广告排序想引入更大模型理解用户意图，但必须守住全球流量下的亚秒级延迟和正 ROI 成本。。系统机制：请求级计算共享、Wukong Turbo、选择性 FP8、图/Kernel 专化、多卡 embedding sharding 与运行时弹性共同组成 adaptive routing。。指标/实验：Instagram Q4 2025 上线后，目标用户广告转化 +3%、CTR +5%；MFU 达 35%，模型复杂度到 O(1T) 参数级。。",
+        "interpretation": "可借鉴点：把大模型排序的核心拆成“请求级共享 + 模型系统协同 + 异构硬件利用”，适合高 QPS 商业化链路学习。。不适用边界：候选量小、特征稀疏或硬件/平台团队不足时，照搬只会把延迟和运维成本放大。。"
+      },
+      {
+        "rank": 3,
+        "title": "Meta REA: autonomous agent for ads ranking experimentation",
+        "url": "https://engineering.fb.com/2026/03/17/developer-tools/ranking-engineer-agent-rea-autonomous-ai-system-accelerating-meta-ads-ranking-innovation/",
+        "source": "Meta Engineering",
+        "publishedAt": "2026-03-17",
+        "sourceType": "industry",
+        "imageUrl": "https://www.google.com/s2/favicons?domain=engineering.fb.com&sz=128",
+        "tags": [
+          "ads",
+          "ranking",
+          "experiment platform",
+          "agent"
+        ],
+        "summary": "业务问题：广告排序实验周期长，工程师需要反复生成假设、开训练、查失败、分析结果，创新吞吐被流程拖慢。。系统机制：REA Planner/Executor、历史实验库、ML research agent、hibernate-and-wake、预算前置审批和失败 runbook 组成长周期实验 agent。。指标/实验：首轮生产验证中 6 个模型平均 accuracy 翻倍，3 名工程师给 8 个模型提出上线改进，产出约 5x。。",
+        "interpretation": "可借鉴点：实验平台可以从“记录实验”升级为“主动提出/执行/复盘实验”，但人仍要控制预算、方向和最终上线。。不适用边界：没有稳定训练平台、指标治理和失败分类体系时，agent 会把错误假设自动化扩散。。"
+      },
+      {
+        "rank": 4,
+        "title": "Meta KernelEvolve: agentic kernel optimization for ranking infrastructure",
+        "url": "https://engineering.fb.com/2026/04/02/developer-tools/kernelevolve-how-metas-ranking-engineer-agent-optimizes-ai-infrastructure/",
+        "source": "Meta Engineering",
+        "publishedAt": "2026-04-02",
+        "sourceType": "industry",
+        "imageUrl": "https://www.google.com/s2/favicons?domain=engineering.fb.com&sz=128",
+        "tags": [
+          "ads",
+          "inference",
+          "kernel",
+          "hardware"
+        ],
+        "summary": "业务问题：推荐/广告模型代际变化让 kernel 优化矩阵爆炸，人肉适配 NVIDIA、AMD、MTIA、CPU 速度跟不上。。系统机制：把 kernel 优化定义为搜索问题：LLM 生成候选，job harness 编译评测，诊断回流，再持续探索跨 DSL/底层语言实现。。指标/实验：Andromeda Ads 模型 NVIDIA GPU 推理吞吐提升 60%+，MTIA 训练吞吐提升 25%+。。",
+        "interpretation": "可借鉴点：高性能系统的 agent 不应只写业务代码，也可以围绕 profile-compile-benchmark 闭环做低层优化。。不适用边界：缺少确定性 benchmark、硬件隔离和回滚策略时，自动 kernel 搜索存在正确性和稳定性风险。。"
       },
       {
         "rank": 5,
-        "title": "Modernizing Facebook Groups Search with hybrid retrieval",
-        "url": "https://engineering.fb.com/2026/04/21/ml-applications/modernizing-the-facebook-groups-search-to-unlock-the-power-of-community-knowledge/",
-        "publishedAt": "2026-04-21",
-        "source": "Meta Engineering",
+        "title": "Pinterest shopping conversion candidate generation",
+        "url": "https://medium.com/pinterest-engineering/from-clicks-to-conversions-architecting-shopping-conversion-candidate-generation-at-pinterest-04cae5e1455b",
+        "source": "Pinterest Engineering",
+        "publishedAt": "2026-04-27",
         "sourceType": "industry",
-        "imageUrl": "https://www.google.com/s2/favicons?domain=engineering.fb.com&sz=128",
+        "imageUrl": "https://www.google.com/s2/favicons?domain=medium.com&sz=128",
         "tags": [
-          "search",
-          "retrieval",
-          "ranking",
-          "LLM eval"
+          "ads retrieval",
+          "conversion",
+          "two-tower",
+          "DCN v2"
         ],
-        "summary": "业务问题：社区内容搜索中，用户自然语言和帖子词面不一致，发现、消费、验证都有摩擦。系统机制：Unicorn 倒排索引和 SSR 语义检索并行召回，Faiss ANN 取高维语义相似，候选合并后用 MTML L2 ranker 排序，并引入模型化评估。指标/实验：官方称搜索 engagement 和 relevance 有实质提升且 error rate 不升。可借鉴点：关键词召回保精度，向量召回补意图，再让 ranker 融合两种证据。不适用边界：内容规模小或标注闭环不足时，混合检索复杂度可能超过收益。",
-        "interpretation": "业务问题：社区内容搜索中，用户自然语言和帖子词面不一致，发现、消费、验证都有摩擦。系统机制：Unicorn 倒排索引和 SSR 语义检索并行召回，Faiss ANN 取高维语义相似，候选合并后用 MTML L2 ranker 排序，并引入模型化评估。指标/实验：官方称搜索 engagement 和 relevance 有实质提升且 error rate 不升。可借鉴点：关键词召回保精度，向量召回补意图，再让 ranker 融合两种证据。不适用边界：内容规模小或标注闭环不足时，混合检索复杂度可能超过收益。"
+        "summary": "业务问题：购物广告的 offsite conversion 稀疏、噪声大、延迟高，纯 engagement 召回无法优化真实购买意图。。系统机制：跨 Homefeed/Related Pins/Search 统一模型、转化+点击时长双正样本、hard negatives、两塔检索、Parallel DCN v2+MLP、统一多任务 loss。。指标/实验：2023 首版带来购物转化量 +2.3%、impression-to-conversion +2.7%、CTR +1.5%；2025 迭代 US shopping RoAS +3.1%。。",
+        "interpretation": "可借鉴点：稀疏转化任务要通过跨场景合并标签、辅助 engagement、硬负样本和漏斗生存率一起稳住训练。。不适用边界：如果广告主回传质量差或转化延迟不可控，模型会学习到错误购买意图。。"
       },
       {
         "rank": 6,
-        "title": "KernelEvolve: Ranking Engineer Agent for AI infrastructure",
-        "url": "https://engineering.fb.com/2026/04/02/developer-tools/kernelevolve-how-metas-ranking-engineer-agent-optimizes-ai-infrastructure/",
-        "publishedAt": "2026-04-02",
-        "source": "Meta Engineering",
+        "title": "Pinterest Homefeed multi-objective optimization evolution",
+        "url": "https://medium.com/pinterest-engineering/evolution-of-multi-objective-optimization-at-pinterest-home-feed-06657e33cd10",
+        "source": "Pinterest Engineering",
+        "publishedAt": "2026-04-07",
         "sourceType": "industry",
-        "imageUrl": "https://www.google.com/s2/favicons?domain=engineering.fb.com&sz=128",
+        "imageUrl": "https://www.google.com/s2/favicons?domain=medium.com&sz=128",
         "tags": [
-          "ranking",
-          "agent",
-          "kernel",
-          "infra"
+          "feed",
+          "reranking",
+          "diversity",
+          "experiment"
         ],
-        "summary": "业务问题：推荐/广告模型演化太快，异构 GPU/MTIA/CPU 上的自定义 kernel 人工调优跟不上。系统机制：Ranking Engineer Agent 使用结构化推理、检索增强知识和闭环评测来生成并优化 chip-specific kernels。指标/实验：ISCA 2026 论文方向，重点是跨硬件和跨算子的优化吞吐。可借鉴点：把性能工程任务变成可评测 agent loop，而不是让专家手写所有 kernel。不适用边界：没有稳定 benchmark 和硬件 profiling 数据的团队不该盲目自动生成底层优化。",
-        "interpretation": "业务问题：推荐/广告模型演化太快，异构 GPU/MTIA/CPU 上的自定义 kernel 人工调优跟不上。系统机制：Ranking Engineer Agent 使用结构化推理、检索增强知识和闭环评测来生成并优化 chip-specific kernels。指标/实验：ISCA 2026 论文方向，重点是跨硬件和跨算子的优化吞吐。可借鉴点：把性能工程任务变成可评测 agent loop，而不是让专家手写所有 kernel。不适用边界：没有稳定 benchmark 和硬件 profiling 数据的团队不该盲目自动生成底层优化。"
+        "summary": "业务问题：信息流不能只优化即时 save/click，内容重复会在数天内侵蚀 session time 和长期满意度。。系统机制：级联漏斗后置多目标层，从 DPP 多样性升级到 Sliding Spectrum Decomposition，再把 soft spacing 质量约束迁入 PyTorch serving。。指标/实验：去掉 DPP 后第一周 time spent impression 下降超过 2%；SSD 降低 serving 复杂度并支持更多视觉/文本/GraphSAGE embedding。。",
+        "interpretation": "可借鉴点：重排层应独立承接多样性、质量、业务策略和长期目标，避免把所有目标塞进精排分数。。不适用边界：库存不足、内容质量标签不稳或没有长期 guardrail 时，多样性约束可能只是在牺牲短期核心指标。。"
       },
       {
         "rank": 7,
-        "title": "Pinterest Homefeed multi-objective optimization evolution",
-        "url": "https://medium.com/pinterest-engineering/evolution-of-multi-objective-optimization-at-pinterest-home-feed-06657e33cd10",
-        "publishedAt": "2026-04-07",
-        "source": "Pinterest Engineering",
-        "sourceType": "industry",
-        "imageUrl": "https://www.google.com/s2/favicons?domain=medium.com&sz=128",
+        "title": "Amazon: iterative reranking as compute scaling for LLM rankers",
+        "url": "https://www.amazon.science/publications/iterative-reranking-as-a-compute-scaling-method-for-llm-based-rankers",
+        "source": "Amazon Science",
+        "publishedAt": "2026",
+        "sourceType": "paper/industry",
+        "imageUrl": "https://www.google.com/s2/favicons?domain=www.amazon.science&sz=128",
         "tags": [
-          "recommendation",
-          "feed",
-          "rerank",
-          "experiment"
+          "search",
+          "reranking",
+          "LLM ranker",
+          "nDCG"
         ],
-        "summary": "业务问题：首页推荐需要同时平衡短期互动、长期满意度、新场景 adoption 和业务约束。系统机制：在 retrieval/pre-ranking/ranking/re-ranking 级联漏斗末层做多目标优化，DPP/SSD 多样性和视觉、文本、GraphSage embedding 共同定义相似性。指标/实验：文章强调服务延迟下降让 SSD 能容纳更多信号，并支持 soft-spacing。可借鉴点：多目标不要全塞进主 ranker，可在末层重排显式治理多样性和业务约束。不适用边界：候选质量低时，重排不能弥补召回和排序主模型缺陷。",
-        "interpretation": "业务问题：首页推荐需要同时平衡短期互动、长期满意度、新场景 adoption 和业务约束。系统机制：在 retrieval/pre-ranking/ranking/re-ranking 级联漏斗末层做多目标优化，DPP/SSD 多样性和视觉、文本、GraphSage embedding 共同定义相似性。指标/实验：文章强调服务延迟下降让 SSD 能容纳更多信号，并支持 soft-spacing。可借鉴点：多目标不要全塞进主 ranker，可在末层重排显式治理多样性和业务约束。不适用边界：候选质量低时，重排不能弥补召回和排序主模型缺陷。"
+        "summary": "业务问题：电商搜索存在多属性、多跳推理和隐式意图，单次 LLM listwise ranker 对困难查询不稳定。。系统机制：在推理时多轮应用 listwise ranker，利用 LLM 非确定性迭代 refine 结果，把额外算力换成排序质量。。指标/实验：在 DL19、FutureQueryEval 和困难 Amazon query types 上取得稳定 nDCG@40 提升。。",
+        "interpretation": "可借鉴点：可把 LLM ranker 作为高价值查询/尾部查询的弹性重排层，按查询价值动态分配计算。。不适用边界：高 QPS 主链路或低毛利查询无法承受多轮推理成本，需要 query gating。。"
       },
       {
         "rank": 8,
-        "title": "Pinterest shopping conversion candidate generation",
-        "url": "https://medium.com/pinterest-engineering/from-clicks-to-conversions-architecting-shopping-conversion-candidate-generation-at-pinterest-04cae5e1455b",
-        "publishedAt": "2026-04-27",
-        "source": "Pinterest Engineering",
-        "sourceType": "industry",
-        "imageUrl": "https://www.google.com/s2/favicons?domain=medium.com&sz=128",
-        "tags": [
-          "ads",
-          "candidate generation",
-          "CVR",
-          "shopping"
-        ],
-        "summary": "业务问题：购物广告下游转化稀疏且噪声高，传统 engagement 候选生成无法优化 lower-funnel conversion。系统机制：跨 Homefeed、Related Pins、Search 训练单一多表面模型，融合实时上下文、长期偏好、Transformer 用户历史 embedding、商品多模态特征和表现特征。指标/实验：目标是把更高意图商品送入后续复杂排序/竞价。可借鉴点：稀疏 CVR 标签要靠跨表面共享和多模态特征补信号。不适用边界：如果转化回传质量差或归因延迟大，模型会学到错误目标。",
-        "interpretation": "业务问题：购物广告下游转化稀疏且噪声高，传统 engagement 候选生成无法优化 lower-funnel conversion。系统机制：跨 Homefeed、Related Pins、Search 训练单一多表面模型，融合实时上下文、长期偏好、Transformer 用户历史 embedding、商品多模态特征和表现特征。指标/实验：目标是把更高意图商品送入后续复杂排序/竞价。可借鉴点：稀疏 CVR 标签要靠跨表面共享和多模态特征补信号。不适用边界：如果转化回传质量差或归因延迟大，模型会学到错误目标。"
-      },
-      {
-        "rank": 9,
-        "title": "Amazon BFS for cold-start e-commerce search",
+        "title": "Amazon BFS: substitute relationships for cold-start e-commerce search",
         "url": "https://www.amazon.science/publications/behavioral-feature-boosting-via-substitute-relationships-for-e-commerce-search",
-        "publishedAt": "2026-01-01",
         "source": "Amazon Science",
-        "sourceType": "industry",
+        "publishedAt": "2026",
+        "sourceType": "paper/industry",
         "imageUrl": "https://www.google.com/s2/favicons?domain=www.amazon.science&sz=128",
         "tags": [
           "search",
           "cold-start",
-          "ranking",
-          "e-commerce"
+          "behavior features",
+          "ranking"
         ],
-        "summary": "业务问题：电商新品缺少交互行为，搜索排序可见性低。系统机制：用 substitute relationships 找到能满足相似需求的替代商品，把替代品行为特征聚合给冷启动商品。指标/实验：SIGIR 2026 论文方向，关注搜索排名中的行为特征补强。可借鉴点：冷启动不只靠内容相似，还可以借同需求替代品的行为信号。不适用边界：替代关系质量低或商品需求不可替代时，会把错误人群行为迁移给新品。",
-        "interpretation": "业务问题：电商新品缺少交互行为，搜索排序可见性低。系统机制：用 substitute relationships 找到能满足相似需求的替代商品，把替代品行为特征聚合给冷启动商品。指标/实验：SIGIR 2026 论文方向，关注搜索排名中的行为特征补强。可借鉴点：冷启动不只靠内容相似，还可以借同需求替代品的行为信号。不适用边界：替代关系质量低或商品需求不可替代时，会把错误人群行为迁移给新品。"
+        "summary": "业务问题：新品交互少导致搜索可见性低，行为特征缺失会让相关性排序系统天然偏向老品。。系统机制：利用 substitute relationships 找到满足相似需求的商品，将替代品行为信号聚合到冷启动商品特征中。。指标/实验：SIGIR 2026 论文，目标是提升新商品 visibility 与 relevance ranking。。",
+        "interpretation": "可借鉴点：冷启动不一定只靠内容 embedding，可把业务上的替代/相似关系转成行为特征补全。。不适用边界：替代关系质量差、品类变化快或商品不可替代时，行为迁移会引入错误偏置。。"
       },
       {
-        "rank": 10,
-        "title": "Amazon PROBES: Performance and relevance observation for better search",
-        "url": "https://www.amazon.science/publications/probes-performance-and-relevance-observation-for-better-search",
-        "publishedAt": "2026-01-01",
-        "source": "Amazon Science",
-        "sourceType": "industry",
-        "imageUrl": "https://www.google.com/s2/favicons?domain=www.amazon.science&sz=128",
-        "tags": [
-          "search",
-          "evaluation",
-          "relevance",
-          "observability"
-        ],
-        "summary": "业务问题：高质量搜索需要同时看 relevance 和 serving performance，单一离线指标无法发现线上体验退化。系统机制：PROBES 将性能与相关性观察合并到搜索质量监控框架。指标/实验：面向电商、社交、内容发现和企业搜索的通用观测。可借鉴点：搜索平台应把延迟、召回、排序质量和用户行为放入同一观测面板。不适用边界：没有统一 query/document 事件链路时，观测框架会只剩报表。",
-        "interpretation": "业务问题：高质量搜索需要同时看 relevance 和 serving performance，单一离线指标无法发现线上体验退化。系统机制：PROBES 将性能与相关性观察合并到搜索质量监控框架。指标/实验：面向电商、社交、内容发现和企业搜索的通用观测。可借鉴点：搜索平台应把延迟、召回、排序质量和用户行为放入同一观测面板。不适用边界：没有统一 query/document 事件链路时，观测框架会只剩报表。"
-      },
-      {
-        "rank": 11,
-        "title": "Spotify: Better experiments with LLM evals",
+        "rank": 9,
+        "title": "Spotify: LLM evals as a funnel before online experiments",
         "url": "https://engineering.atspotify.com/2026/5/better-experiments-with-llm-evals-a-funnel-not-a-fork",
-        "publishedAt": "2026-05-18",
         "source": "Spotify Engineering",
+        "publishedAt": "2026-05-18",
         "sourceType": "industry",
         "imageUrl": "https://www.google.com/s2/favicons?domain=engineering.atspotify.com&sz=128",
         "tags": [
           "experiment",
           "LLM eval",
-          "recommendation",
-          "guardrail"
+          "recommendation quality"
         ],
-        "summary": "业务问题：推荐/AI 产品实验命中率低，许多质量问题等到线上 A/B 才暴露。系统机制：把 LLM eval 放在实验前做 verification，再用线上实验做 validation，并用实验结果校准 judge。指标/实验：Spotify 透露约 12% A/B tests 最终正向发布，约 64% 产生有效学习，42% launched experiments 因二级指标回滚。可借鉴点：LLM judge 不是替代实验，而是过滤候选和发现质量模式。不适用边界：业务结果依赖长期留存时，离线 judge 不能单独决策。",
-        "interpretation": "业务问题：推荐/AI 产品实验命中率低，许多质量问题等到线上 A/B 才暴露。系统机制：把 LLM eval 放在实验前做 verification，再用线上实验做 validation，并用实验结果校准 judge。指标/实验：Spotify 透露约 12% A/B tests 最终正向发布，约 64% 产生有效学习，42% launched experiments 因二级指标回滚。可借鉴点：LLM judge 不是替代实验，而是过滤候选和发现质量模式。不适用边界：业务结果依赖长期留存时，离线 judge 不能单独决策。"
+        "summary": "业务问题：推荐、AI 体验和内容质量问题很多无法靠人工标注规模化预筛，但离线 eval 又不能替代真实用户实验。。系统机制：把 LLM judge 放在实验漏斗上游做 verification，线上 A/B 负责 validation，并用实验结果持续校准 judge。。指标/实验：Spotify 仅约 12% A/B 测试最终正向上线，约 64% 产生有效学习；约 42% launched experiments 因 guardrail 回滚。。",
+        "interpretation": "可借鉴点：LLM eval 应用于提升实验命中率和发现质量问题，而不是替代 guardrail、长期留存和商业指标。。不适用边界：eval 与线上结果未校准时，judge 分数可能优化成“看起来更好”而非真实用户价值。。"
+      },
+      {
+        "rank": 10,
+        "title": "Spotify Ads AI: multi-agent architecture for media planning",
+        "url": "https://engineering.atspotify.com/2026/2/our-multi-agent-architecture-for-smarter-advertising",
+        "source": "Spotify Engineering",
+        "publishedAt": "2026-02-19",
+        "sourceType": "industry",
+        "imageUrl": "https://www.google.com/s2/favicons?domain=engineering.atspotify.com&sz=128",
+        "tags": [
+          "ads",
+          "agent",
+          "budget optimization",
+          "workflow"
+        ],
+        "summary": "业务问题：广告购买渠道共享后端但决策逻辑分散，预算、库存和优化建议在 Ads Manager、Salesforce、Slack 中重复实现。。系统机制：用模块化 agents 消费统一信号，调用现有 Ads APIs；MediaPlannerAgent 根据历史表现做预算、时长、目标、format/goal 多规则优化。。指标/实验：媒体计划从人工 15-30 分钟降到 5-10 秒，输入从 20+ 表单字段降到 1-3 条自然语言，响应约 3-5 秒。。",
+        "interpretation": "可借鉴点：广告业务的 agent 价值在统一决策层和可解释工具调用，不只是聊天 UI。。不适用边界：规则、历史数据和责任边界不清时，agent 会让跨渠道口径不一致更难排查。。"
+      },
+      {
+        "rank": 11,
+        "title": "Google Marketing Live 2026: Search ads, AI bidding and agentic commerce",
+        "url": "https://blog.google/products/ads-commerce/google-marketing-live-2026-collection/",
+        "source": "Google Ads & Commerce",
+        "publishedAt": "2026-05-20",
+        "sourceType": "industry",
+        "imageUrl": "https://www.google.com/s2/favicons?domain=blog.google&sz=128",
+        "tags": [
+          "ads",
+          "bidding",
+          "Search",
+          "Shopping"
+        ],
+        "summary": "业务问题：AI Mode/AI Overviews 改变用户发现商品路径，广告系统要覆盖研究型查询、解释、成交与预算节奏。。系统机制：Gemini ad formats、Conversational Discovery、Direct Offers/UCP checkout、journey-aware bidding、Smart Bidding Exploration 和 demand-led pacing 组成闭环。。指标/实验：官方披露 AI Mode 购物用户中 75% 反馈决策更快更有信心；Search/Shopping bidding 2025-2026 有 20+ 项改进；campaign total budgets 让手动预算调整平均减少 66%。。",
+        "interpretation": "可借鉴点：广告系统要把查询理解、商品解释、转化质量、探索流量和预算控制放进同一实验框架。。不适用边界：归因链路断裂、库存价格不同步或预算审批高度人工化时，自动竞价会放大错误信号。。"
       },
       {
         "rank": 12,
-        "title": "Dropbox Dash search relevance with LLM-assisted labels",
-        "url": "https://dropbox.tech/machine-learning/llm-human-labeling-improving-search-relevance-dropbox-dash",
-        "publishedAt": "2026-02-26",
-        "source": "Dropbox Tech",
-        "sourceType": "industry",
-        "imageUrl": "https://www.google.com/s2/favicons?domain=dropbox.tech&sz=128",
+        "title": "Amazon: keyword search is all you need for agentic retrieval",
+        "url": "https://www.amazon.science/publications/keyword-search-is-all-you-need-achieving-rag-level-performance-without-vector-databases-using-agentic-tool-use",
+        "source": "Amazon Science",
+        "publishedAt": "2026",
+        "sourceType": "paper/industry",
+        "imageUrl": "https://www.google.com/s2/favicons?domain=www.amazon.science&sz=128",
         "tags": [
-          "enterprise search",
+          "retrieval",
           "RAG",
-          "ranking",
-          "labeling"
+          "keyword search",
+          "agent"
         ],
-        "summary": "业务问题：企业 RAG 只能把少量文档送给 LLM，搜索排序质量直接决定答案质量，但人工相关性标注太贵。系统机制：用少量内部人工标注启动，再用 LLM 扩大 relevance labels，并结合额外上下文评估 query-document 相关性。指标/实验：目标是提升 Dash 搜索 ranking model 的训练数据规模和质量。可借鉴点：企业搜索可以用 LLM 放大标注，但必须用人类基准校准。不适用边界：权限隔离复杂或文档敏感时，标注生成链路要先过数据治理。",
-        "interpretation": "业务问题：企业 RAG 只能把少量文档送给 LLM，搜索排序质量直接决定答案质量，但人工相关性标注太贵。系统机制：用少量内部人工标注启动，再用 LLM 扩大 relevance labels，并结合额外上下文评估 query-document 相关性。指标/实验：目标是提升 Dash 搜索 ranking model 的训练数据规模和质量。可借鉴点：企业搜索可以用 LLM 放大标注，但必须用人类基准校准。不适用边界：权限隔离复杂或文档敏感时，标注生成链路要先过数据治理。"
+        "summary": "业务问题：团队常默认 RAG 必须上向量库，但很多企业知识检索已有成熟关键词搜索和权限体系。。系统机制：比较 RAG 系统与只用基础关键词工具的 tool-augmented LLM agents，评估检索机制与回答质量。。指标/实验：2026 Amazon Science publication，强调在特定任务下 keyword tools 可接近 RAG 级表现。。",
+        "interpretation": "可借鉴点：先榨干现有搜索/索引/权限系统，再决定是否引入向量数据库，适合企业内搜和支持知识库。。不适用边界：语义改写、跨语言、多模态或召回缺口明显时，单纯关键词搜索仍会漏召回。。"
       },
       {
         "rank": 13,
-        "title": "Airbnb search ranking: interleaving, counterfactuals, BiListing, LTCS",
-        "url": "https://medium.com/airbnb-engineering/academic-publications-airbnb-tech-2025-year-in-review-7d79f57d3b52",
-        "publishedAt": "2026-02-24",
-        "source": "Airbnb Engineering",
-        "sourceType": "industry",
-        "imageUrl": "https://www.google.com/s2/favicons?domain=medium.com&sz=128",
+        "title": "Airbnb 2025 search ranking papers: interleaving, counterfactuals and marketplace LTR",
+        "url": "https://airbnb.tech/research/academic-papers/",
+        "source": "Airbnb Engineering & Data Science",
+        "publishedAt": "2025-2026",
+        "sourceType": "paper/industry",
+        "imageUrl": "https://www.google.com/s2/favicons?domain=airbnb.tech&sz=128",
         "tags": [
           "marketplace",
-          "ranking",
-          "counterfactual",
-          "NDCG"
+          "search ranking",
+          "experiment"
         ],
-        "summary": "业务问题：住宿搜索转化周期长，A/B 测试慢，且用户在结果页会比较多个 listing。系统机制：Interleaving 和 counterfactual evaluation 加速 ranking 评估；BiListing 用文本/图片多模态 embedding 增强 listing 表征；LTCS 显式建模 comparison-shopping。指标/实验：BiListing 带来 0.425% NDCB gain 和千万美元级增量收入；LTCS NDCG +1.7%、booking conversion +0.6%。可借鉴点：Marketplace ranking 要建模“比较上下文”，不能只给 item 独立打分。不适用边界：缺少稳定曝光和点击/预订日志时，反事实评估会失真。",
-        "interpretation": "业务问题：住宿搜索转化周期长，A/B 测试慢，且用户在结果页会比较多个 listing。系统机制：Interleaving 和 counterfactual evaluation 加速 ranking 评估；BiListing 用文本/图片多模态 embedding 增强 listing 表征；LTCS 显式建模 comparison-shopping。指标/实验：BiListing 带来 0.425% NDCB gain 和千万美元级增量收入；LTCS NDCG +1.7%、booking conversion +0.6%。可借鉴点：Marketplace ranking 要建模“比较上下文”，不能只给 item 独立打分。不适用边界：缺少稳定曝光和点击/预订日志时，反事实评估会失真。"
+        "summary": "业务问题：双边旅行市场的搜索排序既要提高客人转化，也要兼顾供给、地图、推荐插入和长期市场动态。。系统机制：Airbnb 公开论文线覆盖 interleaving/counterfactual evaluation、listing modality alignment、beyond pairwise LTR、maps ranking、长期 ranking dynamics。。指标/实验：KDD/CIKM/MIT CODE 2025 多篇论文，说明搜索排序评估从单次 A/B 扩展到反事实和长期动态。。",
+        "interpretation": "可借鉴点：市场型搜索应把实验设计、反事实评估和长期供需影响纳入排序平台，而不是只优化当前 query conversion。。不适用边界：如果供需约束、价格和库存变化未建模，离线排序指标可能与市场健康相反。。"
       },
       {
         "rank": 14,
-        "title": "Netflix foundation model for personalized recommendation",
-        "url": "https://netflixtechblog.com/foundation-model-for-personalized-recommendation-1a0bd8e02d39",
-        "publishedAt": "2025-03-21",
-        "source": "Netflix TechBlog",
-        "sourceType": "industry",
-        "imageUrl": "https://www.google.com/s2/favicons?domain=netflixtechblog.com&sz=128",
+        "title": "Recsys Frontier: Alibaba OneSearch-V2 / KARMA and generative recommendation",
+        "url": "https://www.recsys-frontier.com/article/rec-weekly-2026-W13",
+        "source": "Recsys Frontier / Chinese RecSys digest",
+        "publishedAt": "2026-04",
+        "sourceType": "paper/industry",
+        "imageUrl": "https://www.google.com/s2/favicons?domain=www.recsys-frontier.com&sz=128",
         "tags": [
-          "recommendation",
-          "foundation model",
-          "personalization",
-          "embedding"
+          "召回",
+          "粗排",
+          "精排",
+          "生成式推荐"
         ],
-        "summary": "业务问题：多个专用推荐模型维护成本高，创新难迁移，短窗口行为无法表达长期偏好。系统机制：用大规模用户交互 token 序列做 next-token/multi-token 训练，结合稀疏注意力、滑窗采样、KV cache、ID embedding 与 metadata embedding 混合，输出用户/内容 embedding 和下游 fine-tuning 能力。指标/实验：Netflix 以 scaling law 和下游集成为验证框架。可借鉴点：推荐 foundation model 的核心是统一偏好表征和稳定 embedding 供下游复用。不适用边界：没有海量高质量交互、低延迟 serving 和冷启动策略时，大模型推荐会变成成本陷阱。",
-        "interpretation": "业务问题：多个专用推荐模型维护成本高，创新难迁移，短窗口行为无法表达长期偏好。系统机制：用大规模用户交互 token 序列做 next-token/multi-token 训练，结合稀疏注意力、滑窗采样、KV cache、ID embedding 与 metadata embedding 混合，输出用户/内容 embedding 和下游 fine-tuning 能力。指标/实验：Netflix 以 scaling law 和下游集成为验证框架。可借鉴点：推荐 foundation model 的核心是统一偏好表征和稳定 embedding 供下游复用。不适用边界：没有海量高质量交互、低延迟 serving 和冷启动策略时，大模型推荐会变成成本陷阱。"
+        "summary": "业务问题：电商推荐从判别式匹配进入生成式推荐后，冷启动、广告变现兼容、鲁棒性和推理注入成为落地瓶颈。。系统机制：OneSearch-V2、KARMA 等工作覆盖语义 ID、召回/粗排/精排全链路、线上部署和生成式推荐范式迁移。。指标/实验：摘要披露 OneSearch-V2 线上 CTR +3.98%、转化率 +3.05%；KARMA 覆盖淘宝搜索全链路验证。。",
+        "interpretation": "可借鉴点：中文搜广推团队应重点跟踪 semantic ID、生成式召回与传统级联链路的混合部署模式。。不适用边界：二级技术摘要需回查原论文/官方材料；指标不应直接迁移到非电商场景。。"
       },
       {
         "rank": 15,
-        "title": "Google Research Sequential Attention for leaner models",
-        "url": "https://research.google/blog/sequential-attention-making-ai-models-leaner-and-faster-without-sacrificing-accuracy/",
-        "publishedAt": "2026-02-04",
-        "source": "Google Research",
-        "sourceType": "industry",
-        "imageUrl": "https://www.google.com/s2/favicons?domain=research.google&sz=128",
+        "title": "Meituan MBGR: multi-business prediction for generative recommendation",
+        "url": "https://arxiv.org/abs/2604.02684",
+        "source": "arXiv / Meituan",
+        "publishedAt": "2026-04-03",
+        "sourceType": "paper/industry",
+        "imageUrl": "https://www.google.com/s2/favicons?domain=arxiv.org&sz=128",
         "tags": [
-          "feature",
-          "embedding",
-          "efficiency",
+          "美团",
+          "生成式推荐",
+          "multi-business",
           "ranking"
         ],
-        "summary": "业务问题：大规模 ML/排序模型有大量异构特征和 embedding tables，特征选择、交叉搜索、embedding 维度优化成本高。系统机制：Sequential Attention 用子集选择算法降低模型冗余，在保持准确率时削减无效特征。指标/实验：文章定位为让模型更瘦更快，尤其适合大规模特征系统。可借鉴点：搜广推特征治理不能只靠人工经验，应把特征价值和交互价值系统化评估。不适用边界：如果特征 pipeline 缺少稳定统计和回放数据，自动剪枝可能误删长尾信号。",
-        "interpretation": "业务问题：大规模 ML/排序模型有大量异构特征和 embedding tables，特征选择、交叉搜索、embedding 维度优化成本高。系统机制：Sequential Attention 用子集选择算法降低模型冗余，在保持准确率时削减无效特征。指标/实验：文章定位为让模型更瘦更快，尤其适合大规模特征系统。可借鉴点：搜广推特征治理不能只靠人工经验，应把特征价值和交互价值系统化评估。不适用边界：如果特征 pipeline 缺少稳定统计和回放数据，自动剪枝可能误删长尾信号。"
+        "summary": "业务问题：本地生活平台多业务目标差异大，统一生成式推荐需要同时处理不同业务的兴趣、供给和转化目标。。系统机制：MBGR 以 multi-business prediction 支撑生成式推荐，在共享表达和业务特定目标之间做建模。。指标/实验：arXiv 2026-04 论文，作为美团生成式推荐路线信号。。",
+        "interpretation": "可借鉴点：多业务推荐平台要尽早设计业务标识、目标解耦和迁移边界，避免一个模型吃掉全部目标差异。。不适用边界：业务定义频繁变化或数据治理不统一时，共享生成式模型会把业务噪声互相传播。。"
       },
       {
         "rank": 16,
-        "title": "Salesforce real-time search at 30B monthly queries",
-        "url": "https://engineering.salesforce.com/scaling-real-time-search-to-30-billion-queries-with-sub-second-latency-and-0-downtime/",
-        "publishedAt": "2026-04-08",
-        "source": "Salesforce Engineering",
-        "sourceType": "industry",
-        "imageUrl": "https://www.google.com/s2/favicons?domain=engineering.salesforce.com&sz=128",
+        "title": "Tencent Advertising Algorithm Challenge 2025: all-modality generative recommendation",
+        "url": "https://arxiv.org/abs/2604.04976",
+        "source": "arXiv / Tencent Advertising",
+        "publishedAt": "2026-04-04",
+        "sourceType": "paper/industry",
+        "imageUrl": "https://www.google.com/s2/favicons?domain=arxiv.org&sz=128",
         "tags": [
-          "enterprise search",
-          "hybrid search",
-          "latency",
-          "index"
+          "腾讯广告",
+          "多模态",
+          "生成式推荐",
+          "ads"
         ],
-        "summary": "业务问题：CRM 结构化搜索要在多租户、海量索引和不可预测流量下保持低延迟与零停机。系统机制：围绕 6.9PB 索引、月 29.4B 查询、Data Cloud/hybrid search 工作流做弹性、迁移和多工作负载隔离。指标/实验：2024-2025 月查询从 22B 到 29.4B，增长 34%，目标是 sub-second latency 和 0 downtime。可借鉴点：企业搜索的相关性必须和多租户隔离、迁移机制、容量治理一起设计。不适用边界：单租户小规模系统不必过早引入复杂迁移平台。",
-        "interpretation": "业务问题：CRM 结构化搜索要在多租户、海量索引和不可预测流量下保持低延迟与零停机。系统机制：围绕 6.9PB 索引、月 29.4B 查询、Data Cloud/hybrid search 工作流做弹性、迁移和多工作负载隔离。指标/实验：2024-2025 月查询从 22B 到 29.4B，增长 34%，目标是 sub-second latency 和 0 downtime。可借鉴点：企业搜索的相关性必须和多租户隔离、迁移机制、容量治理一起设计。不适用边界：单租户小规模系统不必过早引入复杂迁移平台。"
+        "summary": "业务问题：广告推荐需要从图文视频等全模态素材中学习用户-广告匹配，传统稀疏 ID 特征难以覆盖内容泛化。。系统机制：挑战赛围绕 all-modality generative recommendation，推动图文视频语义、用户行为和广告目标的统一建模。。指标/实验：arXiv 2026-04 论文，代表腾讯广告公开评测与工业数据问题设置。。",
+        "interpretation": "可借鉴点：广告团队可借鉴公开 challenge 的任务定义、评测协议和多模态特征组织方式。。不适用边界：挑战赛数据与真实线上 auction、预算和风控约束不同，不能把 leaderboard 直接等同线上收益。。"
       },
       {
-        "title": "阿里云 PAI-Rec 召回引擎：毫秒级多路召回与曝光过滤",
-        "url": "https://developer.aliyun.com/article/1724024",
-        "source": "阿里云开发者社区",
-        "publishedAt": "2026-04-04",
-        "summary": "业务问题：推荐链路第一层要在千万级物料中快速找候选，同时处理用户刚曝光/刚点击后的实时去重。系统机制：PAI-Rec 召回引擎组合 U2I、I2I、向量召回、热门/规则召回和在线曝光过滤表，把毫秒级候选生成、近似最近邻和业务规则放在同一召回服务里。指标/实验：文章强调阿里巴巴大规模推荐场景验证、毫秒级高性能和曝光过滤表毫秒级更新。",
-        "interpretation": "可借鉴点：中文业务团队可把召回层拆成“多路候选 + 向量索引 + 实时过滤 + 统一监控”，先治理召回覆盖和重复曝光，再上更重的精排；不适用边界：物料规模小、实时行为少或缺少统一特征/曝光事件时，PAI-Rec 式召回平台会过度工程化。",
+        "rank": 17,
+        "title": "Google Research REGEN: natural-language personalized recommendations",
+        "url": "https://research.google/blog/regen-empowering-personalized-recommendations-with-natural-language/",
+        "source": "Google Research",
+        "publishedAt": "2025-06-27",
+        "sourceType": "paper/industry",
+        "imageUrl": "https://www.google.com/s2/favicons?domain=research.google&sz=128",
         "tags": [
-          "召回",
-          "推荐系统",
-          "向量检索",
-          "曝光过滤",
-          "PAI-Rec"
+          "recommendation",
+          "natural language",
+          "benchmark"
         ],
-        "imageUrl": "https://www.google.com/s2/favicons?domain=developer.aliyun.com&sz=128",
-        "sourceType": "industry",
-        "rank": 17
+        "summary": "业务问题：传统推荐擅长 next-item prediction，但难以通过自然语言理解用户偏好、解释推荐并吸收反馈。。系统机制：REGEN 构建带 synthetic critiques、purchase reasons 和 product endorsements 的 benchmark，连接 sequential recommender 与 LLM 对话式推荐。。指标/实验：Google Research 公开 benchmark/dataset/paper，用于研究自然语言增强个性化推荐。。",
+        "interpretation": "可借鉴点：对话式推荐要把协同过滤、内容理解和可解释自然语言反馈放在同一评测框架。。不适用边界：合成叙事可能与真实用户意图有偏差，不能替代线上反馈。。"
       }
     ]
   },
   "aiNews": {
     "title": "AI 新闻",
     "subtitle": "覆盖 AIHOT、官方 AI 新闻、Anthropic News/Research/Engineering、Claude 模型/Claude Code/Agent/Computer Use、企业合作与安全研究。",
-    "source": "AIHOT Public API/RSS + Official OpenAI/Google/Hugging Face feeds + Anthropic official pages",
+    "source": "AIHOT Public API/RSS + OpenAI/Google/Hugging Face official pages + Anthropic official News/Research/Engineering",
     "sourceBrief": {
       "kicker": "Source Playbook",
       "title": "AIHOT 今日精选作为高频行业信号源",
@@ -3702,8 +3724,8 @@
       "title": "AIHOT 内容抓取",
       "source": "AIHOT Public API",
       "date": "2026-05-21",
-      "generatedAt": "2026-05-21T14:59:43.452Z",
-      "summary": "日报收录 28 条结构化内容，重点分布在 产品发布/更新 8 条、行业动态 8 条、技巧与观点 7 条。今日优先关注「腾讯开源Hy-MT2多语言翻译模型」，它会进入下方 AI 新闻流做进一步信号、影响和动作拆解。本站新闻流仍优先保留已交叉验证的官方模型、企业合作和 Agent 工程信号。",
+      "generatedAt": "2026-05-21T16:11:52.042Z",
+      "summary": "本轮用 AIHOT 作为中文高频线索源，同时以 Anthropic/OpenAI/Google/Hugging Face 官方页面交叉验证重点条目。AIHOT 今日继续保留腾讯 Hy-MT2、模型发布、产品更新和行业动态线索，但主新闻流优先放入可核验官方信号。",
       "stats": [
         {
           "label": "精选条目",
@@ -3988,59 +4010,18 @@
     },
     "items": [
       {
-        "source": "AIHOT 精选",
-        "sourceDetail": "AIHOT 2026-05-21",
-        "domain": "aihot.virxact.com",
-        "title": "AIHOT: Tencent Hy-MT2 open-source multilingual translation models",
-        "url": "https://aihot.virxact.com/",
-        "publishedAt": "2026-05-21T16:56:00+08:00",
-        "summary": "腾讯开源 Hy-MT2 多语言翻译模型，覆盖 33 种语言；AIHOT 摘要强调 7B/30B-A3B 版本达到开源 SOTA，1.8B 版本通过 AngelSlim 1.25-bit 量化压到约 440MB，可在手机芯片本地运行。",
-        "interpretation": "信号：中文大厂开始把“端侧可跑的小模型”作为模型发布亮点，而不是只卷大参数。",
-        "impact": "影响：企业翻译、客服、本地化和隐私场景会更关注模型体积、端侧延迟和离线能力，云 API 替代不再是唯一方案。",
-        "action": "动作：端侧团队应建立本地翻译基准，比较准确率、延迟、内存、功耗和术语一致性，再决定是否替代商业 API。",
-        "tags": [
-          "Tencent",
-          "open models",
-          "edge AI",
-          "translation"
-        ],
-        "imageUrl": "https://www.google.com/s2/favicons?domain=aihot.virxact.com&sz=128",
-        "priority": 4,
-        "rank": 1
-      },
-      {
-        "source": "A社 Anthropic",
-        "sourceDetail": "Anthropic 官方安全 webinar",
-        "domain": "www.anthropic.com",
-        "title": "Claude Security: putting Claude to work for defenders",
-        "url": "https://www.anthropic.com/webinars/claude-security-putting-claude-to-work-for-defenders",
-        "publishedAt": "2026-05-19",
-        "summary": "Anthropic 官方安全 webinar 把 Claude Security 描述为面向防守方的代码扫描、发现验证和补丁生成工作流，并把结果接入 Claude Code。",
-        "interpretation": "信号：A 社把安全研究和 Claude Code 产品化连接起来，强调“先给防守者”的能力释放路径。",
-        "impact": "影响：安全团队会从一次性漏洞扫描转向 agent 参与的验证与修复闭环，但误报、权限和补丁责任边界会更关键。",
-        "action": "动作：安全平台应先选低风险 repo 做旁路评估，记录有效漏洞率、误报率、补丁可合并率和人工复核耗时。",
-        "tags": [
-          "Anthropic",
-          "Claude Code",
-          "security",
-          "defenders"
-        ],
-        "imageUrl": "https://www.google.com/s2/favicons?domain=www.anthropic.com&sz=128",
-        "priority": 4,
-        "rank": 2
-      },
-      {
-        "rank": 3,
+        "rank": 1,
         "title": "Anthropic: KPMG integrates Claude across 276,000+ workforce",
         "url": "https://www.anthropic.com/news/anthropic-kpmg",
-        "publishedAt": "2026-05-19",
         "source": "A社 Anthropic",
-        "sourceDetail": "Anthropic 官方",
+        "sourceDetail": "A社 Anthropic",
+        "domain": "www.anthropic.com",
+        "publishedAt": "2026-05-19",
+        "summary": "KPMG 将 Claude 嵌入 Digital Gateway，面向 138 个国家和地区、276,000+ 员工开放，并与 Anthropic 共建面向私募股权客户的 Claude 产品。",
         "imageUrl": "https://www.google.com/s2/favicons?domain=www.anthropic.com&sz=128",
-        "summary": "信号：Claude 进入 KPMG Digital Gateway，并覆盖 276,000+ 员工。影响：A 社企业路线从 API 供给转向工作台/行业产品共建，税务、法律、PE 工作流会成为高价值样板。动作：关注是否公布具体审计、权限和行业模板，企业评估 Claude 时应把“流程改造能力”放到模型分数之前。",
-        "interpretation": "Claude 进入 KPMG Digital Gateway，并覆盖 276,000+ 员工。",
-        "impact": "A 社企业路线从 API 供给转向工作台/行业产品共建，税务、法律、PE 工作流会成为高价值样板。",
-        "action": "关注是否公布具体审计、权限和行业模板，企业评估 Claude 时应把“流程改造能力”放到模型分数之前。",
+        "interpretation": "信号：Claude 的企业合作正在从采购 seat 转向嵌入核心业务平台。",
+        "impact": "影响：咨询、税务、法务、PE 投后等知识密集流程会成为 Agent 工作流验证场。",
+        "action": "动作：跟踪 KPMG Blaze、Digital Gateway 的 Claude Code/Managed Agents 形态，关注权限、审计和交付责任。",
         "tags": [
           "A社/Claude",
           "企业合作",
@@ -4048,36 +4029,75 @@
         ]
       },
       {
-        "rank": 4,
-        "title": "Anthropic acquires Stainless",
-        "url": "https://www.anthropic.com/news/anthropic-acquires-stainless?guides=image-generation-social-good",
-        "publishedAt": "2026-05-18",
+        "rank": 2,
+        "title": "Anthropic acquires Stainless for SDKs and MCP server tooling",
+        "url": "https://www.anthropic.com/news/anthropic-acquires-stainless",
         "source": "A社 Anthropic",
-        "sourceDetail": "Anthropic 官方",
+        "sourceDetail": "A社 Anthropic",
+        "domain": "www.anthropic.com",
+        "publishedAt": "2026-05-18",
+        "summary": "Anthropic 收购 Stainless；Stainless 自 2022 年起支撑 Anthropic 官方 SDK，并为数百家公司生成 SDK、CLI 和 MCP server。",
         "imageUrl": "https://www.google.com/s2/favicons?domain=www.anthropic.com&sz=128",
-        "summary": "信号：Anthropic 收购 SDK 与 MCP tooling 公司 Stainless。影响：Claude 平台正在强化“agent 连接 API”的底座，官方 SDK、CLI、MCP server 生成能力会影响开发者体验。动作：跟踪 Anthropic SDK/MCP 生成链路是否统一，内部 API 若要被 agent 调用，应提前规范 OpenAPI 和权限模型。",
-        "interpretation": "Anthropic 收购 SDK 与 MCP tooling 公司 Stainless。",
-        "impact": "Claude 平台正在强化“agent 连接 API”的底座，官方 SDK、CLI、MCP server 生成能力会影响开发者体验。",
-        "action": "跟踪 Anthropic SDK/MCP 生成链路是否统一，内部 API 若要被 agent 调用，应提前规范 OpenAPI 和权限模型。",
+        "interpretation": "信号：A 社把 agent 能连接的 API/工具层视为平台核心，而不是外围开发者体验。",
+        "impact": "影响：MCP、SDK、CLI 生成和 agent connectivity 会进入更强的一体化平台竞争。",
+        "action": "动作：审查内部 API spec 质量，优先把高价值 API 变成可治理 SDK/MCP server。",
         "tags": [
           "A社/Claude",
           "MCP",
-          "SDK",
-          "Agent"
+          "开发者平台"
+        ]
+      },
+      {
+        "rank": 3,
+        "title": "OpenAI and Dell bring Codex to hybrid and on-prem enterprise environments",
+        "url": "https://openai.com/news/company-announcements/",
+        "source": "OpenAI",
+        "sourceDetail": "OpenAI",
+        "domain": "openai.com",
+        "publishedAt": "2026-05-18",
+        "summary": "OpenAI 新闻页显示 OpenAI 与 Dell Technologies 合作，把 Codex 带入混合与本地部署企业环境。",
+        "imageUrl": "https://www.google.com/s2/favicons?domain=openai.com&sz=128",
+        "interpretation": "信号：coding agent 正从云端个人工具进入受控企业基础设施。",
+        "impact": "影响：金融、政企和制造团队会要求代码、凭据、审计和执行环境可本地治理。",
+        "action": "动作：把 Codex/Claude Code 类工具纳入企业开发环境矩阵，比较远程执行、数据驻留和审计能力。",
+        "tags": [
+          "Codex",
+          "企业部署",
+          "工程/基础设施"
+        ]
+      },
+      {
+        "rank": 4,
+        "title": "OpenAI: Work with Codex from anywhere",
+        "url": "https://openai.com/index/work-with-codex-from-anywhere/",
+        "source": "OpenAI",
+        "sourceDetail": "OpenAI",
+        "domain": "openai.com",
+        "publishedAt": "2026-05-14",
+        "summary": "Codex 进入 ChatGPT 手机 app 预览版，支持从移动端查看进度、回答问题、改方向、审批动作；OpenAI 称 Codex 周活超过 400 万。",
+        "imageUrl": "https://www.google.com/s2/favicons?domain=openai.com&sz=128",
+        "interpretation": "信号：coding agent 的协作节奏从桌面长会话扩展到移动端远程接管。",
+        "impact": "影响：异步开发会更像任务队列管理，关键问题是权限审批、上下文同步和误操作防护。",
+        "action": "动作：评估移动审批是否适合内部研发流程，并定义哪些命令必须桌面/CI 复核。",
+        "tags": [
+          "Codex",
+          "Agent",
+          "移动端"
         ]
       },
       {
         "rank": 5,
-        "title": "PwC deploying Claude, Claude Code and Cowork",
+        "title": "PwC deploys Claude, Claude Cowork and Claude Code",
         "url": "https://www.anthropic.com/news/pwc-expanded-partnership",
-        "publishedAt": "2026-05-14",
         "source": "A社 Anthropic",
-        "sourceDetail": "Anthropic 官方",
+        "sourceDetail": "A社 Anthropic",
+        "domain": "www.anthropic.com",
+        "publishedAt": "2026-05-14",
+        "summary": "PwC 扩大与 Anthropic 的战略联盟，先在美国团队推广 Claude Code 和 Cowork，并计划培训认证 30,000 名专业人员。",
         "imageUrl": "https://www.google.com/s2/favicons?domain=www.anthropic.com&sz=128",
-        "summary": "信号：PwC 将在美国团队开始部署 Claude Code 和 Cowork，并计划培训认证 30,000 名专业人员。影响：Claude Code 正从工程师工具进入咨询、交易、企业职能重塑。动作：观察 PwC 如何设置 CoE、培训和交付治理，团队内部推广 coding agent 也应先建立认证和示范项目。",
-        "interpretation": "PwC 将在美国团队开始部署 Claude Code 和 Cowork，并计划培训认证 30,000 名专业人员。",
-        "impact": "Claude Code 正从工程师工具进入咨询、交易、企业职能重塑。",
-        "action": "观察 PwC 如何设置 CoE、培训和交付治理，团队内部推广 coding agent 也应先建立认证和示范项目。",
+        "interpretation": "信号：Claude Code 正进入大型咨询交付与企业流程重构。",
+        "impact": "影响：AI 交付不再只靠模型 API，而需要方法论、培训、认证和跨行业模板。",
+        "action": "动作：观察 PwC 如何定义 Claude Code 的交付边界、质量验收和客户数据隔离。",
         "tags": [
           "A社/Claude",
           "Claude Code",
@@ -4086,34 +4106,55 @@
       },
       {
         "rank": 6,
-        "title": "Anthropic forms $200M partnership with Gates Foundation",
+        "title": "Anthropic and Gates Foundation form $200M beneficial deployment partnership",
         "url": "https://www.anthropic.com/news/gates-foundation-partnership",
-        "publishedAt": "2026-05-14",
         "source": "A社 Anthropic",
-        "sourceDetail": "Anthropic 官方",
+        "sourceDetail": "A社 Anthropic",
+        "domain": "www.anthropic.com",
+        "publishedAt": "2026-05-14",
+        "summary": "Anthropic 与 Gates Foundation 承诺未来四年投入 2 亿美元 grant、Claude credits 和技术支持，覆盖全球健康、生命科学、教育和经济流动性。",
         "imageUrl": "https://www.google.com/s2/favicons?domain=www.anthropic.com&sz=128",
-        "summary": "信号：Anthropic 与 Gates Foundation 提供 2 亿美元 grant、Claude credits 和技术支持。影响：A 社在全球健康、生命科学、教育、经济流动性上强化“beneficial deployments”叙事。动作：关注公共部门和非营利场景的评测、数据治理和安全案例，可借鉴到高影响但低商业回报场景。",
-        "interpretation": "Anthropic 与 Gates Foundation 提供 2 亿美元 grant、Claude credits 和技术支持。",
-        "impact": "A 社在全球健康、生命科学、教育、经济流动性上强化“beneficial deployments”叙事。",
-        "action": "关注公共部门和非营利场景的评测、数据治理和安全案例，可借鉴到高影响但低商业回报场景。",
+        "interpretation": "信号：前沿模型厂商开始用 credits+工程支持塑造公益和公共部门落地。",
+        "impact": "影响：公共利益场景会推动低资源语言、公共健康数据集、评测 benchmark 和治理框架。",
+        "action": "动作：跟进 Beneficial Deployments 团队产出的数据集、评测和非营利折扣政策。",
         "tags": [
           "A社/Claude",
-          "公益",
-          "安全/治理"
+          "社会影响",
+          "公共部门"
         ]
       },
       {
         "rank": 7,
-        "title": "Higher Claude limits and SpaceX compute deal",
-        "url": "https://www.anthropic.com/news/higher-limits-spacex?_bhlid=5574cb0f97aec7e5cd8e524fa7aa47230bcac306",
-        "publishedAt": "2026-05-06",
+        "title": "Introducing Claude for Small Business",
+        "url": "https://www.anthropic.com/news/claude-for-small-business",
         "source": "A社 Anthropic",
-        "sourceDetail": "Anthropic 官方",
+        "sourceDetail": "A社 Anthropic",
+        "domain": "www.anthropic.com",
+        "publishedAt": "2026-05-13",
+        "summary": "Claude for Small Business 以 toggle install 把 Claude 接入 QuickBooks、PayPal、HubSpot、Canva、Docusign、Google Workspace、Microsoft 365 等 SMB 工具。",
         "imageUrl": "https://www.google.com/s2/favicons?domain=www.anthropic.com&sz=128",
-        "summary": "信号：Claude Code 五小时 rate limits 翻倍，并通过 SpaceX Colossus 1 获得 300MW/220,000+ NVIDIA GPU 级新增容量。影响：Agent 工具体验强依赖算力供给，限额变化会直接影响企业采用。动作：把模型能力评估和容量/限额评估合并，试点 Claude Code 时记录排队、限流和任务中断情况。",
-        "interpretation": "Claude Code 五小时 rate limits 翻倍，并通过 SpaceX Colossus 1 获得 300MW/220,000+ NVIDIA GPU 级新增容量。",
-        "impact": "Agent 工具体验强依赖算力供给，限额变化会直接影响企业采用。",
-        "action": "把模型能力评估和容量/限额评估合并，试点 Claude Code 时记录排队、限流和任务中断情况。",
+        "interpretation": "信号：Claude 的增长策略从大企业 seat 向 SMB 工具连接和 ready-to-run workflows 扩展。",
+        "impact": "影响：中小企业 AI 采用会更多围绕现有 SaaS 操作，而不是单独聊天窗口。",
+        "action": "动作：把 SMB 场景拆成财务、销售、合同、营销四类 workflow，观察连接器成熟度。",
+        "tags": [
+          "A社/Claude",
+          "SMB",
+          "连接器"
+        ]
+      },
+      {
+        "rank": 8,
+        "title": "Anthropic: higher Claude limits and SpaceX compute deal",
+        "url": "https://www.anthropic.com/news/higher-limits-spacex",
+        "source": "A社 Anthropic",
+        "sourceDetail": "A社 Anthropic",
+        "domain": "www.anthropic.com",
+        "publishedAt": "2026-05-06",
+        "summary": "Anthropic 宣布与 SpaceX 的算力合作，并提升 Claude Code/API limits：Pro/Max/Team/Enterprise 的 Claude Code 五小时限额翻倍，移除 Pro/Max 峰值限流。",
+        "imageUrl": "https://www.google.com/s2/favicons?domain=www.anthropic.com&sz=128",
+        "interpretation": "信号：Claude Code 采用瓶颈正在从功能转向算力与配额。",
+        "impact": "影响：更多长任务和并行 agent 工作流会变得可用，但也会放大成本和滥用风险。",
+        "action": "动作：重新测算团队 Claude Code 并发、预算和长任务队列策略。",
         "tags": [
           "A社/Claude",
           "Claude Code",
@@ -4121,148 +4162,136 @@
         ]
       },
       {
-        "rank": 8,
-        "title": "Introducing Claude Opus 4.7",
-        "url": "https://www.anthropic.com/news",
-        "publishedAt": "2026-04-16",
-        "source": "A社 Anthropic",
-        "sourceDetail": "Anthropic Newsroom",
-        "imageUrl": "https://www.google.com/s2/favicons?domain=www.anthropic.com&sz=128",
-        "summary": "信号：Anthropic Newsroom 显示 Claude Opus 4.7 强调 coding、agents、vision 和 multi-step tasks。影响：A 社模型路线继续围绕长任务可靠性和 agent 执行。动作：内部模型评测不要只测单题能力，应加入长链路编码、多工具调用和视觉输入一致性。",
-        "interpretation": "Anthropic Newsroom 显示 Claude Opus 4.7 强调 coding、agents、vision 和 multi-step tasks。",
-        "impact": "A 社模型路线继续围绕长任务可靠性和 agent 执行。",
-        "action": "内部模型评测不要只测单题能力，应加入长链路编码、多工具调用和视觉输入一致性。",
-        "tags": [
-          "A社/Claude",
-          "模型",
-          "Claude Code"
-        ]
-      },
-      {
         "rank": 9,
-        "title": "Anthropic Economic Index: Learning curves",
-        "url": "https://www.anthropic.com/research/economic-index-march-2026-report?_bhlid=6f871d8b4233ba74f65adc5c09615c5944fdc405",
-        "publishedAt": "2026-03-24",
-        "source": "A社 Anthropic Research",
-        "sourceDetail": "Anthropic Research 官方",
+        "title": "Anthropic Engineering: Scaling Managed Agents",
+        "url": "https://www.anthropic.com/engineering/managed-agents",
+        "source": "A社 Anthropic Engineering",
+        "sourceDetail": "A社 Anthropic Engineering",
+        "domain": "www.anthropic.com",
+        "publishedAt": "2026-04-08",
+        "summary": "Anthropic 把 Managed Agents 拆成 session、harness、sandbox 等稳定接口，强调 brain/hands 解耦、durable session log、vault/MCP proxy 和可恢复长任务。",
         "imageUrl": "https://www.google.com/s2/favicons?domain=www.anthropic.com&sz=128",
-        "summary": "信号：Anthropic 用隐私保护数据分析 Claude.ai 和 API 使用，指出 Claude Code 在 API traffic 中占重要份额，coding 仍是常见用途。影响：企业 AI 影响正在从聊天使用迁移到 API/工具化工作流。动作：跟踪岗位任务层面变化，而不是只看账号活跃；内部应用也要区分 augmentation 与 automation。",
-        "interpretation": "Anthropic 用隐私保护数据分析 Claude.ai 和 API 使用，指出 Claude Code 在 API traffic 中占重要份额，coding 仍是常见用途。",
-        "impact": "企业 AI 影响正在从聊天使用迁移到 API/工具化工作流。",
-        "action": "跟踪岗位任务层面变化，而不是只看账号活跃；内部应用也要区分 augmentation 与 automation。",
+        "interpretation": "信号：A 社 Agent 工程重点从“会不会调用工具”转向长周期可靠性、状态恢复和安全边界。",
+        "impact": "影响：企业 Agent 平台需要像操作系统一样抽象执行环境、会话日志和凭据隔离。",
+        "action": "动作：按 session/harness/sandbox/credential 四层审视内部 Agent 架构，补齐审计和恢复接口。",
         "tags": [
           "A社/Claude",
-          "研究",
-          "经济影响"
+          "Engineering",
+          "Managed Agents"
         ]
       },
       {
         "rank": 10,
-        "title": "Designing AI-resistant technical evaluations",
-        "url": "https://www.anthropic.com/engineering/AI-resistant-technical-evaluations",
-        "publishedAt": "2026-01-21",
-        "source": "A社 Anthropic Engineering",
-        "sourceDetail": "Anthropic Engineering 官方",
+        "title": "Introducing Claude Opus 4.7",
+        "url": "https://www.anthropic.com/news/claude-opus-4-7",
+        "source": "A社 Anthropic",
+        "sourceDetail": "A社 Anthropic",
+        "domain": "www.anthropic.com",
+        "publishedAt": "2026-04-16",
+        "summary": "Opus 4.7 GA，主打高级软件工程、长任务、指令遵循、视觉分辨率和文件系统记忆；官方称可接受长边 2,576px 图像。",
         "imageUrl": "https://www.google.com/s2/favicons?domain=www.anthropic.com&sz=128",
-        "summary": "信号：Anthropic 性能工程团队分享如何重新设计 Claude 持续攻破的技术 take-home。影响：招聘、测评和内部技能认证都要面对模型快速提升导致的评估失效。动作：把“AI 可用/不可用”规则、隐藏测试、真实调试链路和口头追问纳入技术评估。",
-        "interpretation": "Anthropic 性能工程团队分享如何重新设计 Claude 持续攻破的技术 take-home。",
-        "impact": "招聘、测评和内部技能认证都要面对模型快速提升导致的评估失效。",
-        "action": "把“AI 可用/不可用”规则、隐藏测试、真实调试链路和口头追问纳入技术评估。",
+        "interpretation": "信号：Claude 模型更新继续围绕 coding agent、computer use 视觉和长上下文记忆优化。",
+        "impact": "影响：旧 prompt/harness 可能因更严格指令遵循而需要重调；高分辨率截图理解会提升电脑操作类任务。",
+        "action": "动作：用内部 coding、文档、视觉截图和长任务基准重跑 Opus 4.6/4.7 对比。",
         "tags": [
           "A社/Claude",
-          "工程",
-          "评测"
+          "模型",
+          "Computer Use"
         ]
       },
       {
         "rank": 11,
-        "title": "OpenAI: Work with Codex from anywhere",
-        "url": "https://openai.com/index/work-with-codex-from-anywhere/",
-        "publishedAt": "2026-05-14",
-        "source": "OpenAI",
-        "sourceDetail": "OpenAI 官方",
-        "imageUrl": "https://www.google.com/s2/favicons?domain=openai.com&sz=128",
-        "summary": "信号：OpenAI 官方确认 Codex 进入 ChatGPT 移动端预览，可连接 Mac/Remote SSH 环境，查看终端输出、diff、测试结果、审批动作，并引入 hooks 与 programmatic access tokens。影响：Coding Agent 的协作形态从单机 IDE 扩展为“长任务 + 人在环 + 多设备接管 + 企业受控环境”，权限、审计、密钥边界和远程开发环境会成为采购前置项。动作：把移动审批、hooks、access tokens、Remote SSH 和本地权限策略纳入研发合规评估，不要只按模型编程能力打分。",
-        "interpretation": "Codex 进入 ChatGPT 移动端预览，可连接 Mac/Remote SSH 环境，查看终端输出、diff、测试结果、审批动作，并引入 hooks 与 programmatic access tokens。",
-        "impact": "Coding Agent 的协作形态从单机 IDE 扩展为“长任务 + 人在环 + 多设备接管 + 企业受控环境”，权限、审计、密钥边界和远程开发环境会成为采购前置项。",
-        "action": "把移动审批、hooks、access tokens、Remote SSH 和本地权限策略纳入研发合规评估，不要只按模型编程能力打分。",
+        "title": "Project Glasswing and Claude Mythos Preview for critical software security",
+        "url": "https://www.anthropic.com/project/glasswing",
+        "source": "A社 Anthropic Safety",
+        "sourceDetail": "A社 Anthropic Safety",
+        "domain": "www.anthropic.com",
+        "publishedAt": "2026-04-07",
+        "summary": "Project Glasswing 联合 AWS、Apple、Cisco、Google、Microsoft、NVIDIA 等伙伴，用 Claude Mythos Preview 帮助防守关键软件基础设施，Anthropic 承诺 1 亿美元模型 credits。",
+        "imageUrl": "https://www.google.com/s2/favicons?domain=www.anthropic.com&sz=128",
+        "interpretation": "信号：A 社安全研究开始把高能力模型优先交给防守方。",
+        "impact": "影响：AI 安全能力会同时改变漏洞发现、补丁生成和关键基础设施协同。",
+        "action": "动作：关注 Mythos system card、Claude Security demo 和防守优先访问机制，避免只看进攻能力叙事。",
         "tags": [
-          "Codex",
-          "Agent",
-          "移动协作"
+          "A社/Claude",
+          "安全/可信",
+          "Claude Security"
         ]
       },
       {
         "rank": 12,
-        "title": "OpenAI and Dell bring Codex to hybrid and on-prem enterprise environments",
-        "url": "https://openai.com/index/dell-codex-enterprise-partnership/",
-        "publishedAt": "2026-05-18",
-        "source": "OpenAI",
-        "sourceDetail": "OpenAI 官方",
-        "imageUrl": "https://www.google.com/s2/favicons?domain=openai.com&sz=128",
-        "summary": "信号：OpenAI 与 Dell 合作，把 Codex 连接到混合云和本地企业数据平台。影响：Agent 生产化的竞争焦点转向“贴近受管数据和系统记录”，而不是只在云端聊天窗口完成代码任务。动作：有本地数据合规要求的团队应优先梳理代码库、文档、运行记录和审批系统的接入边界。",
-        "interpretation": "OpenAI 与 Dell 合作，把 Codex 连接到混合云和本地企业数据平台。",
-        "impact": "Agent 生产化的竞争焦点转向“贴近受管数据和系统记录”，而不是只在云端聊天窗口完成代码任务。",
-        "action": "有本地数据合规要求的团队应优先梳理代码库、文档、运行记录和审批系统的接入边界。",
+        "title": "Google Search I/O 2026: AI Search becomes agentic",
+        "url": "https://blog.google/products-and-platforms/products/search/search-io-2026/",
+        "source": "Google Search",
+        "sourceDetail": "Google Search",
+        "domain": "blog.google",
+        "publishedAt": "2026-05-19",
+        "summary": "Google 在 I/O 宣布 AI Mode 默认升级到 Gemini 3.5 Flash，搜索框支持多模态输入、续问、Search agents 和 Personal Intelligence。",
+        "imageUrl": "https://www.google.com/s2/favicons?domain=blog.google&sz=128",
+        "interpretation": "信号：搜索入口正在从查询框变成带个人上下文的任务型 agent 层。",
+        "impact": "影响：内容分发、搜索广告和 RAG 产品都要重新理解“查询”与“答案链接”的关系。",
+        "action": "动作：将 AI Mode 作为搜广推观察样本，跟踪查询长度、链接曝光、广告入口和个人数据授权。",
         "tags": [
-          "Codex",
-          "企业部署",
-          "混合云"
+          "搜索",
+          "Agent",
+          "Google"
         ]
       },
       {
         "rank": 13,
-        "title": "Google I/O 2026 AI announcements",
-        "url": "https://blog.google/innovation-and-ai/technology/developers-tools/google-io-2026-collection/",
-        "publishedAt": "2026-05-19",
-        "source": "Google",
-        "sourceDetail": "Google 官方",
-        "imageUrl": "https://www.google.com/s2/favicons?domain=blog.google&sz=128",
-        "summary": "信号：Google I/O 2026 发布 Gemini Omni、Gemini 3.5、Antigravity agent-first platform、Gemini Spark 和 Universal Cart。影响：Google 把模型、开发平台、搜索、购物和设备体验一起推向 agentic。动作：拆成模型评测、开发者工具、搜索入口、购物闭环四条线跟踪，不要只看一个发布标题。",
-        "interpretation": "Google I/O 2026 发布 Gemini Omni、Gemini 3.5、Antigravity agent-first platform、Gemini Spark 和 Universal Cart。",
-        "impact": "Google 把模型、开发平台、搜索、购物和设备体验一起推向 agentic。",
-        "action": "拆成模型评测、开发者工具、搜索入口、购物闭环四条线跟踪，不要只看一个发布标题。",
+        "title": "OpenAI Deployment Company launches with Tomoro acquisition",
+        "url": "https://openai.com/index/openai-launches-the-deployment-company/",
+        "source": "OpenAI",
+        "sourceDetail": "OpenAI",
+        "domain": "openai.com",
+        "publishedAt": "2026-05-11",
+        "summary": "OpenAI 设立 OpenAI Deployment Company，并通过收购 Tomoro 引入 Forward Deployed Engineers，帮助企业围绕业务流程构建可靠 AI 系统。",
+        "imageUrl": "https://www.google.com/s2/favicons?domain=openai.com&sz=128",
+        "interpretation": "信号：模型厂商正在把 FDE/交付工程变成产品化能力。",
+        "impact": "影响：企业 AI 竞争会从模型 API 扩展到业务流程重构、数据连接和运行治理。",
+        "action": "动作：评估供应商是否能提供 deployment 方法论，而不只是模型调用额度。",
         "tags": [
-          "模型",
-          "Agent",
-          "多模态"
+          "企业部署",
+          "FDE",
+          "OpenAI"
         ]
       },
       {
         "rank": 14,
-        "title": "Google Search I/O: a new era for AI Search",
-        "url": "https://blog.google/products-and-platforms/products/search/search-io-2026/",
-        "publishedAt": "2026-05-19",
-        "source": "Google Search",
-        "sourceDetail": "Google 官方",
-        "imageUrl": "https://www.google.com/s2/favicons?domain=blog.google&sz=128",
-        "summary": "信号：Google I/O 2026 宣布 AI Mode 月活级别扩大、Search agents、agentic booking、Personal Intelligence 和 Antigravity/Gemini 3.5 Flash 驱动的生成式 UI/mini apps。影响：Search 从“返回链接”走向“理解意图、执行任务、生成工作台”，会重塑 SEO、广告库存、内容归因和垂直搜索入口。动作：内容和广告团队应重新定义 AI Search 可见性指标：被引用、被解释、被交易、被 agent 调用，比传统排名位置更重要。",
-        "interpretation": "Google I/O 2026 宣布 AI Mode 月活级别扩大、Search agents、agentic booking、Personal Intelligence 和 Antigravity/Gemini 3.5 Flash 驱动的生成式 UI/mini apps。",
-        "impact": "Search 从“返回链接”走向“理解意图、执行任务、生成工作台”，会重塑 SEO、广告库存、内容归因和垂直搜索入口。",
-        "action": "内容和广告团队应重新定义 AI Search 可见性指标：被引用、被解释、被交易、被 agent 调用，比传统排名位置更重要。",
+        "title": "OpenAI tests ads in ChatGPT",
+        "url": "https://help.openai.com/en/articles/20001047-ads-in-chatgpt",
+        "source": "OpenAI Help Center",
+        "sourceDetail": "OpenAI Help Center",
+        "domain": "help.openai.com",
+        "publishedAt": "2026-05-20",
+        "summary": "OpenAI Help Center 显示 ChatGPT ads 正在美国测试，Free/Go 计划可能看到 clearly labeled sponsored ads，Plus/Pro/Business/Enterprise/Edu 不展示。",
+        "imageUrl": "https://www.google.com/s2/favicons?domain=help.openai.com&sz=128",
+        "interpretation": "信号：AI 助手商业化开始引入广告，但强调广告系统不影响回答。",
+        "impact": "影响：AI 原生广告会带来新的标注、分离、归因、未成年人保护和信任问题。",
+        "action": "动作：搜广推团队应研究“答案与广告隔离”的产品规范和竞价/召回边界。",
         "tags": [
-          "搜索",
-          "Agent",
-          "Gemini"
+          "广告",
+          "AI 助手",
+          "可信"
         ]
       },
       {
         "rank": 15,
-        "title": "Hugging Face / IBM Research: The Open Agent Leaderboard",
+        "title": "Hugging Face / IBM Research: Open Agent Leaderboard",
         "url": "https://huggingface.co/blog/ibm-research/open-agent-leaderboard",
+        "source": "Hugging Face / IBM Research",
+        "sourceDetail": "Hugging Face / IBM Research",
+        "domain": "huggingface.co",
         "publishedAt": "2026-05-18",
-        "source": "Hugging Face",
-        "sourceDetail": "Hugging Face Blog / IBM Research",
+        "summary": "Open Agent Leaderboard 强调 agent 表现取决于模型、框架、工具和 benchmark 组合，新增 DeepSeek V3.2、Kimi K2.5 等 open-weight models。",
         "imageUrl": "https://www.google.com/s2/favicons?domain=huggingface.co&sz=128",
-        "summary": "信号：开放 Agent 评测开始把“模型分数”拆成系统能力，关注工具、规划、记忆、恢复和成本。影响：企业选择 Agent 不应只看底座模型，而要评估完整执行系统在跨任务、长流程和失败恢复中的表现。动作：把内部 Agent PoC 拆成工具可用性、状态保持、错误恢复、单任务成本和人工接管率五个维度，和公开 leaderboard 口径做映射。",
-        "interpretation": "开放 Agent 评测开始把“模型分数”拆成系统能力，关注工具、规划、记忆、恢复和成本。",
-        "impact": "企业选择 Agent 不应只看底座模型，而要评估完整执行系统在跨任务、长流程和失败恢复中的表现。",
-        "action": "把内部 Agent PoC 拆成工具可用性、状态保持、错误恢复、单任务成本和人工接管率五个维度，和公开 leaderboard 口径做映射。",
+        "interpretation": "信号：Agent 评测从单模型排名转向系统级 harness 对比。",
+        "impact": "影响：企业选型不能只看模型榜，要看同一模型在不同 agent 架构中的任务完成率与成本。",
+        "action": "动作：建立内部 agent benchmark，固定工具集、权限和任务集后再比较模型。",
         "tags": [
-          "Agent eval",
-          "benchmark",
-          "Hugging Face",
-          "IBM Research"
+          "Agent",
+          "评测",
+          "开源"
         ]
       }
     ]
