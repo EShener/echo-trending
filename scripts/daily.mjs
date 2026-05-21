@@ -16,8 +16,8 @@ const reportDate = args.date || today;
 const limit = Number(args.limit || process.env.TRENDING_LIMIT || 12);
 const days = Number(args.days || process.env.TRENDING_DAYS || 7);
 const language = args.language || process.env.TRENDING_LANGUAGE || "";
-const frontierLimit = Number(process.env.FRONTIER_LIMIT || 6);
-const newsLimit = Number(process.env.AI_NEWS_LIMIT || 10);
+const frontierLimit = Number(process.env.FRONTIER_LIMIT || 10);
+const newsLimit = Number(process.env.AI_NEWS_LIMIT || 12);
 const reportRetentionDays = Number(args.retentionDays || process.env.REPORT_RETENTION_DAYS || 90);
 
 await fs.mkdir(publicReportsDir, { recursive: true });
@@ -791,6 +791,38 @@ function clampScore(value) {
 }
 
 async function buildFrontierSection(maxItems) {
+  const arxivPromise = fetchArxivFrontierItems(maxItems);
+  const industryPromise = fetchIndustryFrontierItems(maxItems * 2);
+  const [arxivResult, industryResult] = await Promise.allSettled([arxivPromise, industryPromise]);
+
+  const arxivItems = arxivResult.status === "fulfilled" ? arxivResult.value : [];
+  const industryItems = industryResult.status === "fulfilled" ? industryResult.value : [];
+  const industryTarget = Math.min(maxItems, Math.max(4, Math.ceil(maxItems * 0.6)));
+  const selected = pickUniqueItems(
+    [
+      ...industryItems.slice(0, industryTarget),
+      ...arxivItems.slice(0, Math.max(0, maxItems - industryTarget)),
+      ...industryItems,
+      ...arxivItems,
+    ],
+    maxItems,
+  ).map((item, index) => ({ ...item, rank: index + 1 }));
+
+  const sourceNotes = [];
+  if (industryItems.length) sourceNotes.push("Big Tech Engineering/RSS");
+  if (arxivItems.length) sourceNotes.push("arXiv API");
+  if (arxivResult.status === "rejected") sourceNotes.push(`arXiv fallback: ${String(arxivResult.reason?.message || arxivResult.reason).slice(0, 80)}`);
+  if (industryResult.status === "rejected") sourceNotes.push(`industry fallback: ${String(industryResult.reason?.message || industryResult.reason).slice(0, 80)}`);
+
+  return {
+    title: "搜广推技术前沿",
+    subtitle: "混合跟踪搜索、广告、推荐、排序、召回相关的新论文和大厂工程实践。",
+    source: sourceNotes.length ? sourceNotes.join(" + ") : "fallback",
+    items: selected.length ? selected : fallbackFrontierItems(),
+  };
+}
+
+async function fetchArxivFrontierItems(maxItems) {
   try {
     const query = [
       'all:"recommender systems"',
@@ -801,52 +833,151 @@ async function buildFrontierSection(maxItems) {
     ].join("+OR+");
     const url = `https://export.arxiv.org/api/query?search_query=${query}&start=0&max_results=${maxItems}&sortBy=submittedDate&sortOrder=descending`;
     const xml = await fetchText(url);
-    const items = parseAtomEntries(xml, maxItems).map((item, index) => ({
+    return parseAtomEntries(xml, maxItems).map((item, index) => ({
       rank: index + 1,
       title: item.title,
       url: item.url,
       publishedAt: item.publishedAt,
       source: "arXiv",
+      sourceType: "paper",
       imageUrl: `https://dummyimage.com/960x540/eef2ff/1f2a44.png&text=${encodeURIComponent("Search Ads RecSys")}`,
       tags: inferFrontierTags(`${item.title} ${item.summary}`),
       summary: item.summary,
       interpretation: interpretFrontier(item),
     }));
-    return {
-      title: "搜广推技术前沿",
-      subtitle: "跟踪搜索、广告、推荐、排序、召回相关的新论文和工程趋势。",
-      source: "arXiv API",
-      items: items.length ? items : fallbackFrontierItems(),
-    };
   } catch (error) {
-    return {
-      title: "搜广推技术前沿",
-      subtitle: "跟踪搜索、广告、推荐、排序、召回相关的新论文和工程趋势。",
-      source: `fallback: ${String(error.message || error).slice(0, 120)}`,
-      items: fallbackFrontierItems(),
-    };
+    throw error;
   }
+}
+
+async function fetchIndustryFrontierItems(maxItems) {
+  const feeds = [
+    { source: "Google Research", url: "https://research.google/blog/rss/", domain: "research.google", priority: 5 },
+    { source: "Meta Engineering", url: "https://engineering.fb.com/feed/", domain: "engineering.fb.com", priority: 4 },
+    { source: "Amazon Science", url: "https://www.amazon.science/index.rss", domain: "amazon.science", priority: 4 },
+    { source: "Netflix TechBlog", url: "https://netflixtechblog.com/feed", domain: "netflixtechblog.com", priority: 3 },
+    { source: "Pinterest Engineering", url: "https://medium.com/feed/pinterest-engineering", domain: "medium.com", priority: 4 },
+    { source: "Airbnb Engineering", url: "https://medium.com/feed/airbnb-engineering", domain: "medium.com", priority: 3 },
+    { source: "Spotify Engineering", url: "https://engineering.atspotify.com/feed/", domain: "engineering.atspotify.com", priority: 3 },
+    { source: "Salesforce Engineering", url: "https://engineering.salesforce.com/feed/", domain: "engineering.salesforce.com", priority: 3 },
+    { source: "Dropbox Tech", url: "https://dropbox.tech/feed", domain: "dropbox.tech", priority: 2 },
+  ];
+
+  const results = await Promise.allSettled(
+    feeds.map(async (feed) => {
+      const xml = await fetchText(feed.url);
+      return parseFeedItems(xml, feed)
+        .slice(0, 12)
+        .map((item) => ({ ...item, sourceType: "industry", frontierScore: scoreIndustryFrontierItem(item, feed) }))
+        .filter((item) => item.frontierScore >= 7);
+    }),
+  );
+
+  return results
+    .flatMap((result) => (result.status === "fulfilled" ? result.value : []))
+    .filter(dedupeByTitle)
+    .sort((a, b) => b.frontierScore - a.frontierScore || new Date(b.publishedAt || 0) - new Date(a.publishedAt || 0))
+    .slice(0, maxItems)
+    .map((item, index) => ({
+      rank: index + 1,
+      title: item.title,
+      url: item.url,
+      publishedAt: item.publishedAt,
+      source: item.source,
+      sourceType: item.sourceType,
+      imageUrl: `https://www.google.com/s2/favicons?domain=${item.domain}&sz=128`,
+      tags: inferFrontierTags(`${item.title} ${item.summary}`),
+      summary: item.summary,
+      interpretation: interpretFrontier(item),
+    }));
+}
+
+function scoreIndustryFrontierItem(item, feed) {
+  const text = `${item.title} ${item.summary}`.toLowerCase();
+  const weightedSignals = [
+    ["recommender", 8],
+    ["recommendation", 8],
+    ["personalization", 7],
+    ["ranking", 8],
+    ["learning to rank", 9],
+    ["search ranking", 9],
+    ["search", 5],
+    ["retrieval", 7],
+    ["information retrieval", 9],
+    ["ads", 8],
+    ["advertising", 8],
+    ["auction", 7],
+    ["bidding", 7],
+    ["ctr", 7],
+    ["conversion", 5],
+    ["marketplace", 6],
+    ["feed", 4],
+    ["relevance", 7],
+    ["candidate", 5],
+    ["candidate generation", 8],
+    ["embedding", 5],
+    ["vector", 4],
+    ["semantic", 4],
+    ["query", 5],
+    ["indexing", 5],
+    ["feature store", 5],
+    ["real-time ml", 6],
+    ["experimentation", 4],
+    ["a/b", 4],
+    ["搜索", 8],
+    ["推荐", 8],
+    ["广告", 8],
+    ["排序", 8],
+    ["召回", 8],
+    ["个性化", 7],
+  ];
+  const signalScore = weightedSignals.reduce((sum, [term, weight]) => sum + (frontierTermHit(text, term) ? weight : 0), 0);
+  if (signalScore < 5) return 0;
+  const age = item.publishedAt ? daysBetween(new Date(item.publishedAt), new Date()) : 999;
+  const recency = age <= 14 ? 5 : age <= 45 ? 3 : age <= 120 ? 1 : 0;
+  return signalScore + (feed.priority || 0) + recency;
+}
+
+function frontierTermHit(text, term) {
+  if (/[\u4e00-\u9fff]/.test(term)) return text.includes(term);
+  return new RegExp(`(^|[^a-z0-9])${escapeRegExp(term.toLowerCase())}([^a-z0-9]|$)`, "i").test(text);
+}
+
+function pickUniqueItems(items, maxItems) {
+  const seen = new Set();
+  const selected = [];
+  for (const item of items) {
+    const key = normalizeTitle(item.title || item.url || "");
+    if (!key || seen.has(key)) continue;
+    seen.add(key);
+    selected.push(item);
+    if (selected.length >= maxItems) break;
+  }
+  return selected;
 }
 
 async function buildAiNewsSection(maxItems) {
   const feeds = [
     { source: "AIHOT 精选", url: "https://aihot.virxact.com/feed.xml", domain: "aihot.virxact.com", priority: 3 },
     { source: "OpenAI", url: "https://openai.com/news/rss.xml", domain: "openai.com" },
-    { source: "Anthropic", url: "https://www.anthropic.com/news/rss.xml", domain: "anthropic.com" },
     { source: "Google AI", url: "https://blog.google/technology/ai/rss/", domain: "blog.google" },
     { source: "Hugging Face", url: "https://huggingface.co/blog/feed.xml", domain: "huggingface.co" },
   ];
 
-  const results = await Promise.allSettled(
+  const [feedResults, anthropicResult] = await Promise.all([
+    Promise.allSettled(
     feeds.map(async (feed) => {
       const xml = await fetchText(feed.url);
       return parseFeedItems(xml, feed).slice(0, 4);
     }),
-  );
+    ),
+    fetchAnthropicNewsItems(5).catch(() => []),
+  ]);
   const aiHotDigest = await buildAiHotDigest();
 
-  const items = results
+  const items = feedResults
     .flatMap((result) => (result.status === "fulfilled" ? result.value : []))
+    .concat(anthropicResult)
     .sort((a, b) => (b.priority || 0) - (a.priority || 0) || new Date(b.publishedAt || 0) - new Date(a.publishedAt || 0))
     .filter(dedupeByTitle)
     .sort((a, b) => new Date(b.publishedAt || 0) - new Date(a.publishedAt || 0))
@@ -859,12 +990,80 @@ async function buildAiNewsSection(maxItems) {
 
   return {
     title: "AI 新闻",
-    subtitle: "汇总 AIHOT 精选、官方博客与技术社区动态，并提炼信号、影响和行动建议。",
-    source: "AIHOT RSS + Official RSS feeds",
+    subtitle: "汇总 AIHOT 精选、官方博客、A 社 Anthropic 动态与技术社区更新，并提炼信号、影响和行动建议。",
+    source: "AIHOT RSS + Official RSS feeds + A社 Anthropic",
     sourceBrief: buildAiHotSourceBrief(),
     aihot: aiHotDigest,
     items: items.length ? items : fallbackAiNewsItems(),
   };
+}
+
+async function fetchAnthropicNewsItems(maxItems) {
+  try {
+    const html = await fetchText("https://www.anthropic.com/news");
+    const paths = uniqueList([...html.matchAll(/href=["'](\/news\/[^"'?#]+)["']/g)].map((match) => match[1])).slice(0, maxItems + 3);
+    const results = await Promise.allSettled(
+      paths.slice(0, maxItems).map(async (pathname) => {
+        const url = `https://www.anthropic.com${pathname}`;
+        const page = await fetchText(url);
+        const title = extractMeta(page, "og:title") || extractTitle(page) || pathname.split("/").pop();
+        const summary = extractMeta(page, "og:description") || extractMeta(page, "description") || extractFirstParagraph(page);
+        const imageUrl = extractMeta(page, "og:image") || "https://www.google.com/s2/favicons?domain=anthropic.com&sz=128";
+        const publishedAt = parseAnthropicPublishedAt(page) || new Date().toISOString();
+        return {
+          source: "A社 Anthropic",
+          sourceDetail: "Anthropic 官方",
+          domain: "anthropic.com",
+          title: cleanupXml(title).replace(/\s+\\ Anthropic$/, ""),
+          url,
+          publishedAt,
+          summary: trimText(cleanupXml(summary), 300),
+          imageUrl,
+          priority: 4,
+        };
+      }),
+    );
+    const items = results
+      .flatMap((result) => (result.status === "fulfilled" ? [result.value] : []))
+      .filter((item) => item.title && item.url);
+    if (items.length) return items;
+  } catch {
+    // Fall through to community-maintained feed mirrors when the official site blocks or changes markup.
+  }
+
+  const mirrorFeeds = [
+    {
+      source: "A社 Anthropic",
+      sourceDetail: "Anthropic News 镜像",
+      url: "https://raw.githubusercontent.com/Olshansk/rss-feeds/main/feeds/feed_anthropic_news.xml",
+      domain: "anthropic.com",
+      priority: 4,
+    },
+    {
+      source: "A社 Anthropic Research",
+      sourceDetail: "Anthropic Research 镜像",
+      url: "https://raw.githubusercontent.com/Olshansk/rss-feeds/main/feeds/feed_anthropic_research.xml",
+      domain: "anthropic.com",
+      priority: 4,
+    },
+    {
+      source: "A社 Anthropic Engineering",
+      sourceDetail: "Anthropic Engineering 镜像",
+      url: "https://raw.githubusercontent.com/Olshansk/rss-feeds/main/feeds/feed_anthropic_engineering.xml",
+      domain: "anthropic.com",
+      priority: 4,
+    },
+  ];
+  const results = await Promise.allSettled(
+    mirrorFeeds.map(async (feed) => {
+      const xml = await fetchText(feed.url);
+      return parseFeedItems(xml, feed).slice(0, 3);
+    }),
+  );
+  return results
+    .flatMap((result) => (result.status === "fulfilled" ? result.value : []))
+    .filter(dedupeByTitle)
+    .slice(0, maxItems);
 }
 
 async function buildAiHotDigest() {
@@ -1093,6 +1292,24 @@ function extractSourceDetail(author = "") {
 
 function interpretFrontier(item) {
   const text = `${item.title} ${item.summary}`.toLowerCase();
+  if (item.sourceType === "industry") {
+    if (frontierTermHit(text, "ads") || frontierTermHit(text, "advertising") || frontierTermHit(text, "auction") || frontierTermHit(text, "bidding")) {
+      return "大厂广告工程信号：重点看它如何把预估、竞价、预算和平台收益拆成可观测模块，可借鉴到广告排序和商业化实验设计。";
+    }
+    if (frontierTermHit(text, "recommend") || frontierTermHit(text, "recommendation") || frontierTermHit(text, "personalization") || frontierTermHit(text, "feed")) {
+      return "大厂推荐工程信号：优先拆用户兴趣建模、候选生成、排序目标和在线反馈闭环，比单看模型结构更有迁移价值。";
+    }
+    if (frontierTermHit(text, "search") || frontierTermHit(text, "retrieval") || frontierTermHit(text, "query") || frontierTermHit(text, "index")) {
+      return "大厂搜索工程信号：关注查询理解、召回索引、相关性排序和延迟预算之间的工程权衡，适合进入搜索/RAG 共同评估池。";
+    }
+    if (frontierTermHit(text, "embedding") || frontierTermHit(text, "vector") || frontierTermHit(text, "semantic")) {
+      return "向量检索工程信号：重点验证向量质量、索引刷新、召回延迟和线上评测闭环，避免只把它当模型特征。";
+    }
+    if (frontierTermHit(text, "experiment") || frontierTermHit(text, "a/b")) {
+      return "实验平台信号：搜广推迭代最终靠在线实验收敛，值得观察指标归因、流量切分和长期效应监控。";
+    }
+    return "大厂工程实践信号：先抽取它的系统边界、指标口径和上线约束，再判断是否能迁移到自家搜广推链路。";
+  }
   if (text.includes("negative sampling")) {
     return "推荐训练信号：负采样策略会直接影响长尾泛化和在线探索，适合看它是否能缓解热门物品过拟合。";
   }
@@ -1122,6 +1339,12 @@ function interpretFrontier(item) {
 
 function interpretAiNews(item) {
   const text = `${item.title} ${item.summary}`.toLowerCase();
+  if (item.source?.includes("Anthropic") || item.sourceDetail?.includes("Anthropic") || text.includes("claude") || text.includes("anthropic")) {
+    if (text.includes("opus") || text.includes("sonnet") || text.includes("model")) return "A 社模型信号：Claude 系列更新需要重点拆编码能力、长任务稳定性、上下文管理和企业成本边界。";
+    if (text.includes("research") || text.includes("alignment") || text.includes("safety")) return "A 社安全研究信号：值得跟进其评测、可解释性和对齐方法是否能转化为内部模型治理清单。";
+    if (text.includes("agent") || text.includes("computer") || text.includes("tool")) return "A 社 Agent 信号：Claude 正在把工具使用、电脑操作和企业流程连接起来，重点看权限、审计和失败接管。";
+    return "A 社生态信号：Anthropic 的产品、研究和企业合作会影响 Claude 生态、模型选型和 Agent 工作流落地节奏。";
+  }
   if (text.includes("openclaw") || text.includes("grok")) return "开源 Agent 生态信号：模型厂商正在把能力接入本地优先的个人助理和多端通讯入口。";
   if (text.includes("ai results") || text.includes("操纵")) return "AI 搜索安全信号：生成式搜索开始面对 SEO 式操纵，可信排序和反作弊会成为基础能力。";
   if (text.includes("搜索框") || text.includes("ai overviews") || /\bai mode\b/i.test(text)) return "搜索产品信号：AI 搜索正在把多模态输入、对话式查询和答案生成合并成新的入口形态。";
@@ -1166,6 +1389,7 @@ function enrichAiNews(item) {
 function inferAiNewsTags(item) {
   const text = `${item.title} ${item.summary} ${item.sourceDetail || ""}`.toLowerCase();
   const tags = [];
+  if (item.source?.includes("Anthropic") || text.includes("anthropic") || text.includes("claude")) tags.push("A社/Claude");
   if (text.includes("agent") || text.includes("智能体") || text.includes("openclaw") || text.includes("codex")) tags.push("Agent");
   if (text.includes("model") || text.includes("模型") || text.includes("grok") || text.includes("gemini") || text.includes("claude")) tags.push("模型");
   if (hasSearchSignal(text)) tags.push("搜索");
@@ -1455,11 +1679,13 @@ function fallbackAiNewsItems() {
 function inferFrontierTags(text) {
   const lower = text.toLowerCase();
   const tags = [];
-  if (lower.includes("recommend")) tags.push("recsys");
-  if (lower.includes("rank")) tags.push("ranking");
-  if (lower.includes("retrieval") || lower.includes("search")) tags.push("retrieval");
-  if (lower.includes("advertis") || lower.includes("ads")) tags.push("ads");
-  if (lower.includes("llm") || lower.includes("language model")) tags.push("llm");
+  if (frontierTermHit(lower, "recommend") || frontierTermHit(lower, "recommendation") || frontierTermHit(lower, "recommender") || frontierTermHit(lower, "personalization") || frontierTermHit(lower, "feed") || frontierTermHit(lower, "candidate generation")) tags.push("recsys");
+  if (frontierTermHit(lower, "rank") || frontierTermHit(lower, "ranking")) tags.push("ranking");
+  if (frontierTermHit(lower, "retrieval") || frontierTermHit(lower, "search") || frontierTermHit(lower, "query") || frontierTermHit(lower, "index")) tags.push("retrieval");
+  if (frontierTermHit(lower, "advertising") || frontierTermHit(lower, "ads") || frontierTermHit(lower, "auction") || frontierTermHit(lower, "bidding") || frontierTermHit(lower, "conversion")) tags.push("ads");
+  if (frontierTermHit(lower, "embedding") || frontierTermHit(lower, "vector") || frontierTermHit(lower, "semantic")) tags.push("vector");
+  if (frontierTermHit(lower, "experiment") || frontierTermHit(lower, "a/b")) tags.push("experiment");
+  if (frontierTermHit(lower, "llm") || frontierTermHit(lower, "language model")) tags.push("llm");
   return tags.length ? tags.slice(0, 4) : ["frontier"];
 }
 
@@ -1476,6 +1702,36 @@ function extractTag(block, tag) {
 function extractAttr(block, tag, attr) {
   const match = block.match(new RegExp(`<${tag}[^>]*\\s${attr}=["']([^"']+)["'][^>]*>`, "i"));
   return match?.[1] || "";
+}
+
+function extractMeta(html, name) {
+  const escaped = escapeRegExp(name);
+  const propertyMatch = html.match(new RegExp(`<meta[^>]+property=["']${escaped}["'][^>]+content=["']([^"']+)["'][^>]*>`, "i"));
+  if (propertyMatch) return decodeEntities(propertyMatch[1]);
+  const nameMatch = html.match(new RegExp(`<meta[^>]+name=["']${escaped}["'][^>]+content=["']([^"']+)["'][^>]*>`, "i"));
+  if (nameMatch) return decodeEntities(nameMatch[1]);
+  const reversedPropertyMatch = html.match(new RegExp(`<meta[^>]+content=["']([^"']+)["'][^>]+property=["']${escaped}["'][^>]*>`, "i"));
+  if (reversedPropertyMatch) return decodeEntities(reversedPropertyMatch[1]);
+  const reversedNameMatch = html.match(new RegExp(`<meta[^>]+content=["']([^"']+)["'][^>]+name=["']${escaped}["'][^>]*>`, "i"));
+  return reversedNameMatch ? decodeEntities(reversedNameMatch[1]) : "";
+}
+
+function extractTitle(html) {
+  return cleanupXml(extractTag(html, "title"));
+}
+
+function extractFirstParagraph(html) {
+  const match = html.match(/<p[^>]*>([\s\S]*?)<\/p>/i);
+  return cleanupXml(match?.[1] || "");
+}
+
+function parseAnthropicPublishedAt(html) {
+  const dateText = cleanupXml(html.match(/<div[^>]*agate[^>]*>([\s\S]*?)<\/div>/i)?.[1] || "");
+  const parsed = dateText ? new Date(dateText) : null;
+  if (parsed && Number.isFinite(parsed.getTime())) return parsed.toISOString();
+  const published = html.match(/"datePublished"\s*:\s*"([^"]+)"/i)?.[1] || html.match(/publishedAt["']?\s*:\s*["']([^"']+)/i)?.[1];
+  const fallback = published ? new Date(published) : null;
+  return fallback && Number.isFinite(fallback.getTime()) ? fallback.toISOString() : "";
 }
 
 function cleanupXml(value) {

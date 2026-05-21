@@ -1,6 +1,6 @@
 # Echo Trending
 
-一个每小时更新的 GitHub 热门项目情报站：抓取近期热门仓库，生成中文深度解读，并发布到 GitHub Pages 静态网站。
+一个每小时更新的 GitHub 热门项目情报站：抓取近期热门仓库、搜广推大厂工程文章、AIHOT 与 A 社 Anthropic 等 AI 动态，生成中文深度解读，并发布到 GitHub Pages 静态网站。
 
 ## 本地运行
 
@@ -45,7 +45,9 @@ OPENAI_API_KEY=xxx OPENAI_MODEL=你的模型名 npm run daily
 ## 数据流
 
 ```text
-GitHub Search API -> README/Languages -> structured analysis -> JSON report -> static site
+GitHub Search API -> README/Languages
+RSS/HTML -> 大厂搜广推工程文章 + arXiv 前沿 + AIHOT/A社/官方 AI 动态
+structured analysis -> JSON report -> static site
 ```
 
 报告文件会同时写入：
@@ -65,6 +67,8 @@ REPORT_RETENTION_DAYS=180 npm run daily
 内容更新由 Codex 定时任务负责：每小时调研 GitHub 热门项目、搜广推前沿和 AI 资讯，生成更深的中文解读并提交到 `main`。GitHub Actions 只负责把 `public/` 发布到 GitHub Pages，避免自动脚本覆盖 Codex 生成的深度内容。
 
 - Codex 定时任务：每小时生成一次最新日报
+- 搜广推来源：arXiv + Google Research、Meta Engineering、Amazon Science、Netflix、Pinterest、Airbnb、Spotify、Salesforce、Dropbox 等大厂工程博客
+- AI 来源：AIHOT、OpenAI、Google AI、Hugging Face、A 社 Anthropic 官方新闻/研究/工程动态
 - GitHub Actions：`main` 有新提交时发布静态站
 - 当天报告会覆盖同一个 `YYYY-MM-DD.json`，不会每小时新增一个历史文件
 - 默认保留最近 90 天日报
