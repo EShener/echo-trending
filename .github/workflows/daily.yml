@@ -1,0 +1,47 @@
+name: Daily GitHub Trending Insights
+
+on:
+  push:
+    branches:
+      - main
+  schedule:
+    - cron: "17 * * * *"
+  workflow_dispatch:
+
+permissions:
+  contents: read
+  pages: write
+  id-token: write
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    timeout-minutes: 30
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+      - uses: actions/configure-pages@v5
+      - run: npm run daily
+        env:
+          GITHUB_TOKEN: ${{ github.token }}
+          OPENAI_API_KEY: ${{ secrets.OPENAI_API_KEY }}
+          OPENAI_MODEL: ${{ secrets.OPENAI_MODEL }}
+          OPENAI_BASE_URL: ${{ secrets.OPENAI_BASE_URL }}
+          REPORT_TIMEZONE: Asia/Shanghai
+          REPORT_RETENTION_DAYS: "90"
+      - uses: actions/upload-pages-artifact@v3
+        with:
+          path: public
+
+  deploy:
+    needs: build
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    steps:
+      - id: deployment
+        uses: actions/deploy-pages@v4

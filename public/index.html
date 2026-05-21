@@ -1,0 +1,140 @@
+<!doctype html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>技术雷达日报</title>
+    <link rel="icon" href="assets/wxy-logo.svg" type="image/svg+xml" />
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <div class="app-shell">
+      <aside class="sidebar">
+        <div class="brand">
+          <img class="brand-mark" src="assets/wxy-logo.svg" alt="WXY logo" />
+          <div>
+            <h1>技术雷达日报</h1>
+            <p>GitHub · 搜广推 · AI 新闻</p>
+            <span class="brand-signature">by wxy</span>
+          </div>
+        </div>
+
+        <label class="field">
+          <span>日报日期</span>
+          <select id="reportSelect"></select>
+        </label>
+
+        <label class="field">
+          <span>关键词过滤</span>
+          <input id="searchInput" type="search" placeholder="agent, rust, database..." />
+        </label>
+
+        <div class="summary-panel">
+          <span class="summary-label">今日样本</span>
+          <strong id="repoCount">0</strong>
+          <span id="sourceInfo">等待加载</span>
+        </div>
+
+        <nav class="section-nav" aria-label="页面导航">
+          <a href="#repoSection">热门项目</a>
+          <a href="#frontierSection">搜广推前沿</a>
+          <a href="#newsSection">AI 新闻</a>
+        </nav>
+
+        <div class="creator-card">
+          <img src="assets/wxy-logo.svg" alt="" aria-hidden="true" />
+          <div>
+            <span>Personal radar</span>
+            <strong>by wxy</strong>
+          </div>
+        </div>
+      </aside>
+
+      <main class="content">
+        <header class="topbar">
+          <div>
+            <p class="eyebrow">Daily Technology Intelligence</p>
+            <h2 id="reportTitle">加载中</h2>
+          </div>
+          <div class="top-actions">
+            <span class="signature-pill">
+              <img src="assets/wxy-logo.svg" alt="" aria-hidden="true" />
+              by wxy
+            </span>
+            <a class="github-link" href="https://github.com/trending" target="_blank" rel="noreferrer">GitHub Trending</a>
+          </div>
+        </header>
+
+        <section class="briefing" aria-label="今日简报">
+          <div>
+            <span>今日判断</span>
+            <strong id="briefHeadline">等待加载</strong>
+          </div>
+          <div id="heroVisual" class="hero-visual" aria-label="今日热点视觉摘要"></div>
+          <ul id="briefBullets"></ul>
+        </section>
+
+        <section class="metrics" aria-label="日报指标">
+          <div>
+            <span>平均热度</span>
+            <strong id="avgScore">-</strong>
+          </div>
+          <div>
+            <span>最高 Stars</span>
+            <strong id="maxStars">-</strong>
+          </div>
+          <div>
+            <span>主要语言</span>
+            <strong id="topLanguage">-</strong>
+          </div>
+          <div>
+            <span>情报来源</span>
+            <strong id="intelSources">-</strong>
+          </div>
+        </section>
+
+        <section id="repoSection" class="section-block">
+          <div class="section-head">
+            <div>
+              <p class="eyebrow">Open Source Radar</p>
+              <h3>GitHub 热门项目深度解读</h3>
+            </div>
+            <span id="repoSectionMeta">-</span>
+          </div>
+          <section id="repoGrid" class="repo-grid" aria-live="polite"></section>
+        </section>
+
+        <section id="frontierSection" class="section-block">
+          <div class="section-head">
+            <div>
+              <p class="eyebrow">Search · Ads · Recommendation</p>
+              <h3>搜广推技术前沿</h3>
+            </div>
+            <span id="frontierMeta">-</span>
+          </div>
+          <section id="frontierGrid" class="insight-grid"></section>
+        </section>
+
+        <section id="newsSection" class="section-block">
+          <div class="section-head">
+            <div>
+              <p class="eyebrow">AI Industry Watch</p>
+              <h3>AI 新闻</h3>
+            </div>
+            <span id="newsMeta">-</span>
+          </div>
+          <section id="newsBrief" class="source-brief" hidden></section>
+          <section id="aiHotDigest" class="aihot-digest" hidden></section>
+          <section id="newsGrid" class="news-grid"></section>
+        </section>
+
+        <section id="emptyState" class="empty-state" hidden>
+          <h3>暂无可展示日报</h3>
+          <p>先运行 <code>npm run sample</code> 或 <code>npm run daily</code> 生成报告数据。</p>
+        </section>
+      </main>
+    </div>
+
+    <script src="app.js" type="module"></script>
+  </body>
+</html>

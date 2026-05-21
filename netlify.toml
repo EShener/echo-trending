@@ -1,0 +1,18 @@
+[build]
+  command = "npm run build"
+  publish = "public"
+
+[build.environment]
+  NODE_VERSION = "22"
+  REPORT_TIMEZONE = "Asia/Shanghai"
+
+[[headers]]
+  for = "/reports/*"
+  [headers.values]
+    Cache-Control = "public, max-age=300, stale-while-revalidate=3600"
+
+[[headers]]
+  for = "/*"
+  [headers.values]
+    X-Content-Type-Options = "nosniff"
+    X-Frame-Options = "DENY"
