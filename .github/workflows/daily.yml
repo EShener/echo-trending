@@ -1,4 +1,4 @@
-name: Daily GitHub Trending Insights
+name: Echo Trending Hourly Update
 
 on:
   push:
@@ -9,12 +9,10 @@ on:
   workflow_dispatch:
 
 permissions:
-  contents: read
-  pages: write
-  id-token: write
+  contents: write
 
 jobs:
-  build:
+  build-and-publish:
     runs-on: ubuntu-latest
     timeout-minutes: 30
     steps:
@@ -22,7 +20,6 @@ jobs:
       - uses: actions/setup-node@v4
         with:
           node-version: 22
-      - uses: actions/configure-pages@v5
       - run: npm run daily
         env:
           GITHUB_TOKEN: ${{ github.token }}
@@ -31,17 +28,19 @@ jobs:
           OPENAI_BASE_URL: ${{ secrets.OPENAI_BASE_URL }}
           REPORT_TIMEZONE: Asia/Shanghai
           REPORT_RETENTION_DAYS: "90"
-      - uses: actions/upload-pages-artifact@v3
-        with:
-          path: public
-
-  deploy:
-    needs: build
-    runs-on: ubuntu-latest
-    timeout-minutes: 10
-    environment:
-      name: github-pages
-      url: ${{ steps.deployment.outputs.page_url }}
-    steps:
-      - id: deployment
-        uses: actions/deploy-pages@v4
+      - name: Publish static site to gh-pages
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          touch public/.nojekyll
+          rm -rf /tmp/echo-trending-pages
+          mkdir -p /tmp/echo-trending-pages
+          cp -R public/. /tmp/echo-trending-pages/
+          cd /tmp/echo-trending-pages
+          git init -b gh-pages
+          git add .
+          git commit -m "Deploy echo-trending site"
+          git remote add origin "https://x-access-token:${GITHUB_TOKEN}@github.com/${GITHUB_REPOSITORY}.git"
+          git push --force origin gh-pages
+        env:
+          GITHUB_TOKEN: ${{ github.token }}

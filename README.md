@@ -67,14 +67,15 @@ REPORT_RETENTION_DAYS=180 npm run daily
 - 每小时自动生成并发布一次最新日报，cron 使用 `17 * * * *` 错峰运行
 - 当天报告会覆盖同一个 `YYYY-MM-DD.json`，不会每小时新增一个历史文件
 - 默认保留最近 90 天日报
-- 手动触发入口：GitHub Actions -> GitHub Trending Insights -> Run workflow
-- 发布目录：`public`
+- 手动触发入口：GitHub Actions -> Echo Trending Hourly Update -> Run workflow
+- 发布分支：`gh-pages`
 
 在 GitHub 仓库设置里启用 Pages：
 
 1. Settings -> Pages
-2. Build and deployment -> Source 选择 `GitHub Actions`
-3. 保存后，运行一次 workflow 即可拿到公开链接
+2. Build and deployment -> Source 选择 `Deploy from a branch`
+3. Branch 选择 `gh-pages`，目录选择 `/ (root)`
+4. 保存后，运行一次 workflow 即可拿到公开链接
 
 当前仓库按 GitHub Pages 默认规则，公开地址通常是：
 
