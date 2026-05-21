@@ -1,28 +1,70 @@
 {
   "date": "2026-05-22",
-  "generatedAt": "2026-05-21T20:11:29.258Z",
+  "generatedAt": "2026-05-21T21:08:54.119Z",
   "source": {
-    "provider": "GitTrend live page + Anthropic official News/Research/Engineering + AIHOT public entry + official AI blogs + Big Tech engineering blogs + Codex web research",
-    "query": "GitTrend Ranked by engagement May 21 2026 observed 2026-05-22 CST + Anthropic official + OpenAI official + Google Search/Ads + Meta/Pinterest/Amazon/Airbnb/Spotify/Tencent recsys sources",
+    "provider": "GitTrend live page + Anthropic official News/Research/Engineering + AIHOT public entry/API docs + Google official Search/Ads blogs + Big Tech engineering blogs + Codex web research",
+    "query": "GitTrend Ranked by engagement May 21 2026 observed 2026-05-22 CST + Anthropic official + Google Search/Ads official + Pinterest/Meta/Amazon/Airbnb/Spotify/Tencent recsys sources + AIHOT public API entry",
     "since": "2026-01-01",
     "limit": 10,
     "language": "all",
     "retentionDays": 90,
     "notes": [
-      "运行环境日期为 2026-05-22 Asia/Shanghai；GitTrend 当前页仍按 UTC 标注 Ranked by engagement · May 21, 2026。",
-      "GitHub 热榜按 GitTrend 当前可见页面刷新：codegraph、andrej-karpathy-skills、academic-research-skills、mattpocock/skills、hermes-agent 为前五。",
-      "A 社覆盖 Anthropic 官方 News/Research/Engineering：KPMG、Stainless、PwC、Claude for Small Business、金融 Agents、Teaching Claude why、Natural Language Autoencoders、Managed Agents。",
-      "搜广推覆盖 Google Search/Ads、Meta Adaptive Ranking/REA/KernelEvolve、Pinterest contextual sequential recommenders/request dedup、Amazon e-commerce search、Airbnb Maps ranking、Spotify experimentation-personalization、腾讯广告推荐。",
-      "AIHOT virxact 日报页面本轮搜索入口可见但正文抓取不稳定，因此沿用 2026-05-21 公共日报 URL 作为中文生态补充，并以官方来源交叉校验主新闻。",
-      "报告保留最近 90 天；本次覆盖 2026-05-22，保留 2026-05-21。"
+      "本次小时级更新运行时间：2026-05-22 05:08:54 CST；远端 main 同步和外部 API 直连在执行环境内因 DNS/SSH 限制失败，改用 Codex Web 核验可访问官方页面。",
+      "GitTrend 官网当前仍显示 Ranked by engagement · May 21, 2026；前十项目与本地报告一致，未盲目替换为 GitHub Search API 结果。",
+      "A 社本轮重点核验 Anthropic 官方 News/Research/Engineering 链路：KPMG 企业落地、Stainless/MCP 工具链、PwC/Small Business/Financial Services、Teaching Claude why、Natural Language Autoencoders、Managed Agents。",
+      "搜广推核验 Pinterest contextual sequential two-tower、Google AI Search/Ads 官方发布；Meta/Amazon/Airbnb/Spotify/Tencent 条目继续作为大厂工程观察池保留。",
+      "AIHOT API 文档显示 public items/daily 可匿名访问但需要浏览器 User-Agent；本地 curl 因 DNS 无法解析，报告保留入口和状态说明，不伪造未抓到的新增条目。",
+      "报告保留最近 90 天；本次覆盖 2026-05-22，索引包含 2026-05-22 与 2026-05-21。"
+    ],
+    "lastRunAt": "2026-05-21T21:08:54.119Z",
+    "observedAtCst": "2026-05-22 05:08:54 CST",
+    "verification": {
+      "gitPull": "blocked: execution environment cannot resolve github.com / SSH control socket denied",
+      "push": "blocked until network/DNS is available in execution environment",
+      "webResearch": "completed with Codex web access; official pages and GitTrend live page were readable",
+      "localApiFetch": "blocked: curl cannot resolve external hosts from sandbox; AIHOT status recorded from public API docs/search result"
+    },
+    "researchSources": [
+      {
+        "label": "GitTrend live trending repositories",
+        "url": "https://gittrend.io/"
+      },
+      {
+        "label": "Anthropic KPMG alliance",
+        "url": "https://www.anthropic.com/news/anthropic-kpmg?939688b5_page=1"
+      },
+      {
+        "label": "Anthropic Teaching Claude why",
+        "url": "https://www.anthropic.com/research/teaching-claude-why"
+      },
+      {
+        "label": "Anthropic Natural Language Autoencoders",
+        "url": "https://www.anthropic.com/research/natural-language-autoencoders"
+      },
+      {
+        "label": "Google Search I/O 2026 AI Search update",
+        "url": "https://blog.google/products-and-platforms/products/search/search-io-2026/?pubDate=20260520"
+      },
+      {
+        "label": "Google Ads Gemini ad formats",
+        "url": "https://blog.google/products/ads-commerce/google-marketing-live-search-ads/"
+      },
+      {
+        "label": "Pinterest contextual sequential recommender",
+        "url": "https://medium.com/pinterest-engineering/enhancing-ad-relevance-integrating-real-time-context-into-sequential-recommender-models-bc3a2f9b682e"
+      },
+      {
+        "label": "AIHOT public API/skill documentation",
+        "url": "https://aihot.virxact.com/"
+      }
     ]
   },
   "summary": {
-    "headline": "今日技术雷达主线：Agent 工程继续拆成上下文、技能和执行框架，AI 搜索广告进入“答案即商业化”的新阶段。",
+    "headline": "今日技术雷达主线：Agent 上下文层继续升温，AI 搜索与广告开始合并成可解释的商业行动层。",
     "bullets": [
-      "GitTrend 当前前五为 codegraph、andrej-karpathy-skills、academic-research-skills、mattpocock/skills、hermes-agent；相较上轮，mattpocock/skills 进入前五，说明技能库和方法论资产持续升温。",
-      "搜广推新增最强信号来自 Pinterest 2026-05-08 contextual sequential recommender：把实时上下文并入两塔召回后，Recall@K 提升 3x-10x，并带来 ROAS lift。",
-      "A 社 Anthropic 官方最新主线仍是企业合作、连接层和安全研究：KPMG/PwC/Small Business 扩落地面，Stainless/MCP 补工具连接，Teaching Claude why/NLA 补治理与解释。"
+      "GitTrend 当前前十与本地快照一致：codegraph 继续第一，andrej-karpathy-skills、academic-research-skills、mattpocock/skills、hermes-agent 构成 Agent 技能/框架主线。",
+      "搜广推最强工程信号仍是 Pinterest 实时上下文两塔召回与 Google AI Mode 广告：一个解决即时意图召回，一个把广告嵌入对话式答案和购买决策。",
+      "A 社 Anthropic 官方信号聚焦企业部署、MCP/SDK 工具链和安全研究；采用 Claude Code/Cowork/Managed Agents 时，权限、审计和人类判断角色要前置设计。"
     ]
   },
   "items": [
@@ -2198,7 +2240,7 @@
         "publishedAt": "2026-05-08",
         "url": "https://medium.com/pinterest-engineering/enhancing-ad-relevance-integrating-real-time-context-into-sequential-recommender-models-bc3a2f9b682e",
         "summary": "Pinterest 把实时 Pin/query 上下文接入顺序广告召回，在 user tower 中加入 context layer，并采用离线 Transformer + 在线 MLP 的混合推理。",
-        "interpretation": "业务问题 -> 离线用户序列无法感知当前浏览/搜索意图，Related Pins 和 Search 候选难以进入后续排序与竞价；系统机制 -> Contextual Sequential Two Tower、训练时注入 synthetic context、离线缓存用户序列表示、在线融合当前上下文；指标/实验 -> Recall@K 提升 3x-10x，候选相关性中位数提升约 275%-300%，Related Pins ads relevance +1.08%，ROAS +0.7%，重点国家 +1.4%；可借鉴点 -> 搜广推召回要把长期兴趣和即时意图分层融合；不适用边界 -> 若实时上下文质量低或归因链路混乱，在线融合会放大噪声。",
+        "interpretation": "业务问题 -> 离线用户序列无法感知当前浏览/搜索意图，Related Pins 和 Search 的高意图候选难以进入后续排序与竞价；系统机制 -> Contextual Sequential Two Tower、synthetic context 训练、高 dropout 保留长期兴趣、离线缓存 Transformer 序列表示、在线融合当前上下文；指标/实验 -> Recall@K 提升 3x-10x，候选相关性中位数提升约 275%-300%，候选 delivery 约 2x，Related Pins ads relevance +1.08%，ROAS +0.7%，重点国家 +1.4%；可借鉴点 -> 搜广推召回要把长期兴趣和即时意图分层融合，并把离线/在线计算边界明确化；不适用边界 -> 若实时上下文质量低、样本归因混乱或在线延迟预算不足，context layer 会放大噪声和成本。",
         "tags": [
           "ads retrieval",
           "real-time context",
@@ -2214,8 +2256,8 @@
         "source": "Google Ads",
         "publishedAt": "2026-05-20",
         "url": "https://blog.google/products/ads-commerce/google-marketing-live-search-ads/",
-        "summary": "Google 在 AI Mode 中测试 Conversational Discovery ads、Highlighted Answers 和 AI-powered Shopping ads，并扩展 Direct Offers。",
-        "interpretation": "业务问题 -> 搜索从关键词点击变成对话式决策，广告需要成为答案流中的可解释商品/服务建议；系统机制 -> Gemini 生成独立产品解释，结合购物上下文、广告素材、商品图谱和 Direct Offers；指标/实验 -> 关注 AI Mode 广告曝光、解释点击、转化率、CPC、信任反馈和合规投诉；可借鉴点 -> 广告相关性、解释性、出价预算和商品结构化数据必须一起设计；不适用边界 -> 医疗、金融等高风险品类不能把生成式解释当合规替代品。",
+        "summary": "Google 在 AI Mode 中测试 Conversational Discovery ads、Highlighted Answers、AI-powered Shopping ads 和 Business Agent for Leads，并扩展 Direct Offers。",
+        "interpretation": "业务问题 -> 搜索广告从关键词竞价转成对话式决策支持，广告必须回答“为什么适合我”；系统机制 -> Gemini 根据查询、商品图谱、广告素材和商家数据生成独立解释，配合 Sponsored 标识、Direct Offers、UCP native checkout 与品牌 agent；指标/实验 -> 关注 AI Mode 广告曝光、解释点击、线索质量、CVR、ROAS、投诉率和合规审核；可借鉴点 -> 广告相关性、解释性、出价预算、商品结构化数据和交易闭环要一起设计；不适用边界 -> 医疗、金融、法律等高风险品类不能把生成式解释当作合规替代。",
         "tags": [
           "ads",
           "AI Mode",
@@ -2230,9 +2272,9 @@
         "title": "Google Search I/O 2026: agents, AI Mode, personal intelligence",
         "source": "Google Search",
         "publishedAt": "2026-05-19",
-        "url": "https://blog.google/products-and-platforms/products/search/search-io-2026/",
-        "summary": "Google 宣布 AI Mode 默认升级到 Gemini 3.5 Flash，并把信息 agents、Personal Intelligence 和更智能的搜索框推向全球。",
-        "interpretation": "业务问题 -> 用户查询变成长、多模态、多步任务，传统 query->links 不能完整承接；系统机制 -> Gemini 3.5 Flash、AI Mode、信息 agent、个人应用连接和传统 Search index 分层协同；指标/实验 -> Google 披露 AI Mode 月活超 10 亿、查询季度翻倍，应继续观察引用点击、任务完成率和搜索增长；可借鉴点 -> 搜索产品要把查询理解、任务执行、证据引用和商业化拆成可治理模块；不适用边界 -> 高频事实检索、监管查询和低容错任务仍需传统结果与审计来源。",
+        "url": "https://blog.google/products-and-platforms/products/search/search-io-2026/?pubDate=20260520",
+        "summary": "Google 在 I/O 2026 宣布 AI Mode 超过 10 亿月活，Gemini 3.5 Flash 成为 AI Mode 默认模型，并推出 Search information agents、agentic booking、generative UI 与 Personal Intelligence。",
+        "interpretation": "业务问题 -> 关键词搜索难以承接持续任务、个人上下文和多模态输入；系统机制 -> AI Mode 默认模型、后台 information agents、实时网页/金融/购物/体育数据监控、个人应用连接与生成式 UI；指标/实验 -> 关注 AI Mode 月活、查询增长、agent 完成率、转化/留存、经典链接点击与信任反馈；可借鉴点 -> 搜索产品要把召回、摘要、行动和长期监控拆成可审计模块；不适用边界 -> 高风险决策不能只靠自动代理和个性化上下文。",
         "tags": [
           "search",
           "agent",
@@ -2399,8 +2441,8 @@
   },
   "aiNews": {
     "title": "AI 新闻",
-    "subtitle": "汇总 AIHOT、官方博客、A 社 Anthropic 动态与技术社区更新，并提炼信号、影响和行动建议。",
-    "source": "Anthropic official + OpenAI official + Google official + AIHOT public entry",
+    "subtitle": "汇总 AIHOT 入口、官方博客、A 社 Anthropic 动态与技术社区更新，并提炼信号、影响和行动建议。",
+    "source": "AIHOT public entry/API docs + Official AI RSS/pages + A社 Anthropic official pages + Google official AI/Search/Ads pages",
     "sourceBrief": {
       "kicker": "AIHOT Source",
       "title": "AIHOT 公共入口作为中文 AI 上游补充",
@@ -2414,27 +2456,27 @@
       ]
     },
     "aihot": {
-      "title": "AIHOT 内容抓取",
-      "source": "AIHOT public entry + official source cross-check",
+      "title": "AIHOT 内容抓取状态",
+      "source": "AIHOT public API docs verified; sandbox DNS blocked live fetch",
       "date": "2026-05-21",
-      "generatedAt": "2026-05-21T20:11:29.258Z",
-      "summary": "本轮无法稳定抓取 AIHOT virxact 日报正文，因此以公共日报 URL 保留入口，并用 Anthropic/OpenAI/Google 官方来源承接主新闻。",
+      "generatedAt": "2026-05-21T21:08:54.119Z",
+      "summary": "AIHOT public API 文档确认支持 selected/daily/dailies/items 等匿名端点，但本地执行环境无法解析 aihot.virxact.com；本轮不伪造新增 AIHOT 条目，保留入口作为下次网络恢复后的首要抓取源。",
       "stats": [
         {
-          "label": "A社条目",
-          "value": 8
+          "label": "接口状态",
+          "value": "DNS blocked"
         },
         {
-          "label": "官方来源",
-          "value": 12
+          "label": "默认模式",
+          "value": "selected"
         },
         {
-          "label": "补充来源",
-          "value": "AIHOT"
+          "label": "最长窗口",
+          "value": "7d"
         },
         {
-          "label": "抓取状态",
-          "value": "入口可见"
+          "label": "接入方式",
+          "value": "API/RSS/Skill"
         }
       ],
       "sections": [
@@ -2574,10 +2616,10 @@
         "sourceDetail": "Anthropic 官方 News",
         "publishedAt": "2026-05-19T00:00:00Z",
         "url": "https://www.anthropic.com/news/anthropic-kpmg",
-        "summary": "KPMG 将 Claude 嵌入 Digital Gateway，并向全球 276,000+ 员工开放，双方还会共建 PE、税务、法律和安全相关产品。",
-        "interpretation": "信号 -> Claude 正进入大型专业服务公司的核心工作系统，而不是停留在通用聊天入口。",
-        "impact": "影响 -> 企业采用会从个人效率扩展到税务、法律、审计、安全漏洞修复和客户交付流程。",
-        "action": "动作 -> 评估 Claude 接入时优先定义数据边界、审计日志、业务 owner 和人工接管点。",
+        "summary": "Anthropic 与 KPMG 建立全球联盟，Claude 将进入 KPMG Digital Gateway，覆盖 276,000+ 员工，并用于税务、法律、私募股权和网络安全工作。",
+        "interpretation": "信号 -> Claude 正进入高责任专业服务的核心工作平台；影响 -> 企业采用不再是单个聊天工具，而是 Cowork、Managed Agents、Claude Code、Azure 平台和治理框架的组合；动作 -> 评估企业 Agent 时应把平台嵌入、权限边界、客户数据治理和 human-in-the-loop 职责写进试点方案。",
+        "impact": "专业服务场景把 AI 价值从个人效率推向客户交付，失败成本、审计和责任划分也同步上升。",
+        "action": "建议把 Claude 企业落地拆成平台集成、知识/数据边界、人工判断点和安全红线四张清单。",
         "tags": [
           "A社/Claude",
           "enterprise",
@@ -2664,10 +2706,10 @@
         "sourceDetail": "Anthropic 官方 Research",
         "publishedAt": "2026-05-08T00:00:00Z",
         "url": "https://www.anthropic.com/research/teaching-claude-why",
-        "summary": "Anthropic 用 agentic misalignment 作为案例，说明训练 Claude 理解为什么某些行动更好，比只教正确答案更能泛化。",
-        "interpretation": "信号 -> 安全训练从规则服从转向理由学习和 constitution understanding。",
-        "impact": "影响 -> Agent 安全评估会更关注模型在长任务、工具权限和伦理冲突中的泛化行为。",
-        "action": "动作 -> 企业评测集应加入“为什么拒绝/为什么升级人工”的解释质量，而不仅看最终答案。",
+        "summary": "Anthropic 研究显示，仅训练正确行为不足，训练模型解释为什么某些行为更符合价值原则，并引入多样环境，可显著降低 agentic misalignment。",
+        "interpretation": "信号 -> A 社安全训练从“答对样本”走向“学习理由、宪法原则和多环境泛化”；影响 -> Agent 安全评估要覆盖工具定义、系统提示、OOD 场景和价值推理；动作 -> 内部模型治理可加入“理由质量”和“危险代理场景”评测，而不只看拒答率。",
+        "impact": "对齐训练的重点转向泛化和持久性，适合影响企业 Agent 的发布门槛和安全评测设计。",
+        "action": "建议把 agentic misalignment、OOD honeypot、工具环境多样性纳入模型验收基线。",
         "tags": [
           "A社/Claude",
           "safety",
@@ -2682,8 +2724,8 @@
         "sourceDetail": "Anthropic 官方 Research",
         "publishedAt": "2026-05-07T00:00:00Z",
         "url": "https://www.anthropic.com/research/natural-language-autoencoders",
-        "summary": "Anthropic 研究用自然语言 autoencoder 将 Claude 中间 activations 转成更可读文本，辅助理解模型内部表征。",
-        "interpretation": "信号 -> 解释性研究正尝试把复杂激活空间转换成研究人员可读的自然语言对象。",
+        "summary": "Anthropic 提出 Natural Language Autoencoders，把 Claude 内部 activation 转成可读文本，并用于安全测试、异常行为解释和模型调试。",
+        "interpretation": "信号 -> 可解释性从研究可视化走向模型安全诊断工具；影响 -> 未来高风险 Agent 可能需要内部状态解释、行为归因和训练数据问题定位；动作 -> 关注 NLA 是否能形成可复现工具链，并评估其误解释和隐私边界。",
         "impact": "影响 -> 模型审计未来可能结合 sparse autoencoders、attribution graphs 和自然语言解释。",
         "action": "动作 -> 高风险 AI 评估应关注解释工具成熟度，但不能把解释文本直接等同真实思维。",
         "tags": [
@@ -2713,15 +2755,15 @@
       {
         "rank": 9,
         "imageUrl": "https://www.google.com/s2/favicons?domain=deepmind.google&sz=128",
-        "title": "Gemini 3.5 Flash model card published",
-        "source": "Google DeepMind",
+        "title": "Google Search: Gemini 3.5 Flash becomes AI Mode default",
+        "source": "Google Search",
         "sourceDetail": "官方 Model Card",
         "publishedAt": "2026-05-19T00:00:00Z",
-        "url": "https://deepmind.google/models/model-cards/gemini-3-5-flash",
-        "summary": "Google DeepMind 发布 Gemini 3.5 Flash model card，并说明其作为 AI Mode 默认模型的安全评估门槛。",
-        "interpretation": "信号 -> 大厂发布新默认模型时同步披露 model card，模型升级与产品默认入口绑定。",
-        "impact": "影响 -> 搜索、广告和 agent 产品将更快吸收 Flash 级模型的吞吐与成本收益。",
-        "action": "动作 -> 选型时同时看延迟、成本、产品默认入口和安全评估，不只看 benchmark。",
+        "url": "https://blog.google/products-and-platforms/products/search/search-io-2026/?pubDate=20260520",
+        "summary": "Google 宣布 AI Mode 已超过 10 亿月活，并把 Gemini 3.5 Flash 设为全球 AI Mode 默认模型，叠加 Search agents、agentic coding 与 Personal Intelligence。",
+        "interpretation": "信号 -> 搜索入口正在从答案页升级为持续代理和生成式界面；影响 -> SEO、广告、RAG、个人数据权限和 agent 评估会被同一入口拉到一起；动作 -> 搜索/推荐团队应拆解上下文接入、结果解释、链接分发和 agent 成功率指标。",
+        "impact": "AI 搜索的默认模型和代理能力会改变用户提出需求、比较结果和完成动作的路径，商业化链路也会更贴近答案本身。",
+        "action": "建议纳入搜广推观察清单，重点跟踪 AI Mode 引流、个性化授权、agent 任务完成率和广告解释合规。",
         "tags": [
           "Gemini",
           "model card",
@@ -2735,9 +2777,9 @@
         "source": "Google Search",
         "sourceDetail": "Google 官方 Blog",
         "publishedAt": "2026-05-19T00:00:00Z",
-        "url": "https://blog.google/products-and-platforms/products/search/search-io-2026/",
-        "summary": "Google 称 AI Mode 月活超过 10 亿，查询季度翻倍，并发布信息 agents 与 Personal Intelligence 扩展。",
-        "interpretation": "信号 -> AI 搜索已成为高频入口，搜索框正在变成任务执行层。",
+        "url": "https://blog.google/products-and-platforms/products/search/search-io-2026/?pubDate=20260520",
+        "summary": "Google 官方称 AI Mode 上线一年后超过 10 亿月活，查询量按季度翻倍，并引入后台 information agents 和多模态 AI Search box。",
+        "interpretation": "信号 -> AI 搜索不是边缘实验，而是主入口改造；影响 -> 搜索广告、内容可见性和推荐流量归因都会变复杂；动作 -> 建议建立 AI 搜索曝光、引用、行动转化和负反馈的专项监控。",
         "impact": "影响 -> 内容、SEO、广告和产品分发都要适配答案流、引用和 agent 行动。",
         "action": "动作 -> 建立 AI Search 可见性监控，追踪品牌是否被正确引用、解释和转化。",
         "tags": [
