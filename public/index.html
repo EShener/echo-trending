@@ -135,6 +135,41 @@
       </main>
     </div>
 
+    <script>
+      (() => {
+        const reportPayloads = {
+          "reports/2026-05-21.json": "reports/payloads/2026-05-21.json.gz.b64.part",
+        };
+        const nativeFetch = window.fetch.bind(window);
+
+        window.fetch = async (input, init) => {
+          const requestUrl = typeof input === "string" ? input : input.url;
+          const payloadPrefix = Object.entries(reportPayloads).find(([reportPath]) => requestUrl.endsWith(reportPath))?.[1];
+          if (!payloadPrefix || !("DecompressionStream" in window)) return nativeFetch(input, init);
+
+          const chunks = [];
+          for (let index = 0; index < 100; index += 1) {
+            const partPath = `${payloadPrefix}${String(index).padStart(2, "0")}`;
+            const response = await nativeFetch(partPath, { cache: "no-store" });
+            if (response.status === 404) break;
+            if (!response.ok) return nativeFetch(input, init);
+            chunks.push(await response.text());
+          }
+          if (!chunks.length) return nativeFetch(input, init);
+
+          const encoded = chunks.join("").replace(/\s+/g, "");
+          const compressed = Uint8Array.from(atob(encoded), (char) => char.charCodeAt(0));
+          const stream = new Blob([compressed]).stream().pipeThrough(new DecompressionStream("gzip"));
+          const reportText = await new Response(stream).text();
+          return new Response(reportText, {
+            headers: {
+              "content-type": "application/json; charset=utf-8",
+              "x-echo-trending-payload": "compressed",
+            },
+          });
+        };
+      })();
+    </script>
     <script src="app.js" type="module"></script>
   </body>
 </html>
