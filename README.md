@@ -60,14 +60,15 @@ GitHub Search API -> README/Languages -> structured analysis -> JSON report -> s
 REPORT_RETENTION_DAYS=180 npm run daily
 ```
 
-## 定时发布
+## 定时更新与发布
 
-当前仓库的 `.github/workflows/daily.yml` 已提供 GitHub Pages 定时任务：
+内容更新由 Codex 定时任务负责：每小时调研 GitHub 热门项目、搜广推前沿和 AI 资讯，生成更深的中文解读并提交到 `main`。GitHub Actions 只负责把 `public/` 发布到 GitHub Pages，避免自动脚本覆盖 Codex 生成的深度内容。
 
-- 每小时自动生成并发布一次最新日报，cron 使用 `17 * * * *` 错峰运行
+- Codex 定时任务：每小时生成一次最新日报
+- GitHub Actions：`main` 有新提交时发布静态站
 - 当天报告会覆盖同一个 `YYYY-MM-DD.json`，不会每小时新增一个历史文件
 - 默认保留最近 90 天日报
-- 手动触发入口：GitHub Actions -> Echo Trending Hourly Update -> Run workflow
+- 手动发布入口：GitHub Actions -> Echo Trending Deploy -> Run workflow
 - 发布分支：`gh-pages`
 
 在 GitHub 仓库设置里启用 Pages：
@@ -83,11 +84,7 @@ REPORT_RETENTION_DAYS=180 npm run daily
 https://eshener.github.io/echo-trending/
 ```
 
-仓库 Secrets 中可配置：
-
-- `GITHUB_TOKEN`：Actions 默认自带，也可不额外配置
-- `OPENAI_API_KEY`：可选
-- `OPENAI_MODEL`：可选
+仓库不需要额外配置 OpenAI Secrets；深度解读由 Codex 定时任务生成。
 
 ## Netlify 发布
 
