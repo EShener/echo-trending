@@ -1,4 +1,4 @@
-# GitHub Trending Insights
+# Echo Trending
 
 一个每小时更新的 GitHub 热门项目情报站：抓取近期热门仓库，生成中文深度解读，并发布到 GitHub Pages 静态网站。
 
@@ -79,7 +79,7 @@ REPORT_RETENTION_DAYS=180 npm run daily
 当前仓库按 GitHub Pages 默认规则，公开地址通常是：
 
 ```text
-https://eshener.github.io/github-trending-insights/
+https://eshener.github.io/echo-trending/
 ```
 
 仓库 Secrets 中可配置：

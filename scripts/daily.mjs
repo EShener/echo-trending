@@ -111,7 +111,7 @@ async function buildReport({ reportDate, limit, days, language }) {
 async function githubJson(url) {
   const headers = {
     Accept: "application/vnd.github+json",
-    "User-Agent": "github-trending-insights",
+    "User-Agent": "echo-trending",
   };
   if (process.env.GITHUB_TOKEN) headers.Authorization = `Bearer ${process.env.GITHUB_TOKEN}`;
 
@@ -126,7 +126,7 @@ async function githubJson(url) {
 async function fetchText(url) {
   const response = await fetch(url, {
     headers: {
-      "User-Agent": "github-trending-insights",
+      "User-Agent": "echo-trending",
       Accept: "application/rss+xml, application/atom+xml, text/xml, text/plain, */*",
     },
   });
