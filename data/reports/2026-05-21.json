@@ -1,26 +1,27 @@
 {
   "date": "2026-05-21",
-  "generatedAt": "2026-05-21T11:56:00.049Z",
+  "generatedAt": "2026-05-21T12:56:18.861Z",
   "source": {
     "provider": "GitTrend + Codex web research + AIHOT + official engineering/news sources",
-    "query": "GitTrend daily ranking, Anthropic official News/Research/Engineering, AIHOT, OpenAI/Google official feeds, Big Tech search/ads/recsys engineering blogs",
+    "query": "GitTrend daily ranking, Anthropic official News/Research/Engineering, AIHOT, OpenAI/Google official feeds, Big Tech and Chinese search/ads/recsys engineering blogs",
     "since": "2026-05-14",
     "limit": 16,
     "language": "all",
     "notes": [
-      "2026-05-21 hourly refresh: GitHub Trending daily page, AIHOT public page, Anthropic official News/Research/Engineering, and large-company engineering blogs were cross-checked by Codex web research.",
-      "Shell git/GitHub network remains blocked in the sandbox, so remote sync and push could not complete from this run.",
-      "Anthropic official RSS was not assumed; official website pages were used first, with AIHOT and public mirrors only as secondary context."
+      "2026-05-21 hourly refresh: GitTrend live page, AIHOT public API/RSS, Anthropic official News/Research/Engineering pages, and large-company engineering blogs were cross-checked by Codex web research.",
+      "Shell SSH access to GitHub is blocked in the current sandbox, so git fetch/push were attempted but could not reach github.com; local report artifacts and commit are still prepared.",
+      "Anthropic official RSS was not assumed; official website pages were used first, with public mirrors only as secondary context.",
+      "Search/ads/recsys coverage explicitly includes Google, Meta, Amazon, Netflix, Pinterest, Airbnb, Spotify, Salesforce, Dropbox, and accessible Chinese engineering sources such as Alibaba Cloud developer articles."
     ],
-    "observedAt": "2026-05-21T11:56:00.049Z",
+    "observedAt": "2026-05-21T12:56:18.861Z",
     "retentionDays": 90
   },
   "summary": {
-    "headline": "今日 GitHub 热点继续被 Agent 技能、代码上下文和个人智能体占据；搜广推侧重点转向实时上下文、广告排序 Agent 与搜索可观测性。",
+    "headline": "今日 GitHub 热点继续由 Agent 技能、代码上下文和个人智能体主导；搜广推侧重点转向实时上下文、广告排序 Agent、搜索可观测性和中文召回工程实践。",
     "bullets": [
-      "GitTrend 5 月 21 日榜首为 colbymchenry/codegraph，前十中还包括 andrej-karpathy-skills、academic-research-skills、mattpocock/skills、hermes-agent 和 Scrapling，说明 agent 工程的热点从模型调用转向上下文、技能和数据源治理。",
-      "搜广推新增解读聚焦 Pinterest 实时上下文广告召回、Meta REA 广告排序实验 Agent、Amazon e-commerce search 冷启动/PROBES，以及 Google Search I/O 的 AI Mode 和 agentic search。",
-      "A 社板块继续覆盖 Claude Opus 4.7、Claude Code/企业合作、安全研究与 Engineering 动态；AI 新闻按“信号 -> 影响 -> 动作”组织，避免只做标题堆叠。"
+      "GitTrend 2026-05-21 实时页显示 #1 colbymchenry/codegraph、#2 andrej-karpathy-skills、#3 hermes-agent、#4 academic-research-skills、#5 streambert，Agent 工程仍是最强主线。",
+      "搜广推新增/保留 Pinterest 实时上下文广告召回、Meta REA/Adaptive Ranking、Amazon BFS/PROBES、Dropbox Dash、Airbnb marketplace ranking，并补入阿里云 PAI-Rec 召回引擎作为中文工程样本。",
+      "A 社板块覆盖 Claude Opus 4.7、Claude Code/Cowork、Managed Agents、KPMG/PwC 企业合作、安全研究与技术评估；AI 新闻继续按“信号 -> 影响 -> 动作”组织。"
     ]
   },
   "items": [
@@ -34,8 +35,8 @@
         "visualUrl": "https://opengraph.githubassets.com/echo-trending-2026-05-21/colbymchenry/codegraph",
         "url": "https://github.com/colbymchenry/codegraph",
         "description": "Pre-indexed code knowledge graph for Claude Code, Codex, Cursor, and OpenCode — fewer tokens, fewer tool calls, 100% local",
-        "stars": 11400,
-        "forks": 689,
+        "stars": 8900,
+        "forks": 558,
         "openIssues": 0,
         "language": "TypeScript",
         "topics": [
@@ -51,17 +52,17 @@
         "languages": {
           "TypeScript": 1
         },
-        "starsToday": 2123,
+        "starsToday": 64,
         "updatedAt": "2026-05-21T00:00:00Z",
-        "trendingDailyStars": 203,
-        "trendingSource": "GitTrend"
+        "trendingDailyStars": 64,
+        "trendingSource": "GitTrend live page"
       },
       "analysis": {
         "method": "codex-web-research",
         "category": "AI Agent / LLM 工程",
         "oneLiner": "codegraph 把代码库预先索引成可本地查询的知识图谱，目标是让 coding agent 少读文件、少耗 token、少走弯路。",
-        "whyItMatters": "colbymchenry/codegraph 在 GitTrend 2026-05-21 日榜排名 #1，今日新增 +203，说明它击中了当前开发者最急的议题：AI Agent / LLM 工程 如何从个人尝鲜进入可复用工作流。",
-        "engineeringRead": "TypeScript · GitTrend daily trending · 11.4K stars / 689 forks。阅读时先看架构边界和失败模式，再看 README 的安装路径。",
+        "whyItMatters": "colbymchenry/codegraph 在 GitTrend 2026-05-21 实时日榜排名 #1，今日新增约 +64。它击中了当前 coding agent 的关键瓶颈：如何把代码库上下文从反复读文件，前移到本地可查询的结构化索引。",
+        "engineeringRead": "TypeScript · GitTrend daily trending · 8.9K stars / 558 forks。阅读时先看架构边界和失败模式，再看 README 的安装路径。",
         "architectureSignals": [
           "本地预索引：先离线构建代码实体和依赖关系，再让 agent 查询。",
           "面向多 Agent 客户端：Claude Code、Codex、Cursor、OpenCode 都是目标消费端。",
@@ -247,8 +248,8 @@
         "visualUrl": "https://opengraph.githubassets.com/echo-trending-2026-05-21/multica-ai/andrej-karpathy-skills",
         "url": "https://github.com/multica-ai/andrej-karpathy-skills",
         "description": "A single CLAUDE.md file to improve Claude Code behavior, derived from Andrej Karpathy's observations on LLM coding pitfalls.",
-        "stars": 142100,
-        "forks": 14600,
+        "stars": 141100,
+        "forks": 14500,
         "openIssues": 0,
         "language": "Markdown",
         "topics": [
@@ -264,17 +265,17 @@
         "languages": {
           "Markdown": 1
         },
-        "starsToday": 2679,
+        "starsToday": 51,
         "updatedAt": "2026-05-21T00:00:00Z",
-        "trendingDailyStars": 138,
-        "trendingSource": "GitTrend"
+        "trendingDailyStars": 51,
+        "trendingSource": "GitTrend live page"
       },
       "analysis": {
         "method": "codex-web-research",
         "category": "AI Agent / LLM 工程",
         "oneLiner": "andrej-karpathy-skills 用一个 CLAUDE.md 把常见 LLM 编码失误转成项目级行为约束。",
-        "whyItMatters": "multica-ai/andrej-karpathy-skills 在 GitTrend 2026-05-21 日榜排名 #2，今日新增 +138，说明它击中了当前开发者最急的议题：AI Agent / LLM 工程 如何从个人尝鲜进入可复用工作流。",
-        "engineeringRead": "Markdown · GitTrend daily trending · 142.1K stars / 14.6K forks。阅读时先看架构边界和失败模式，再看 README 的安装路径。",
+        "whyItMatters": "multica-ai/andrej-karpathy-skills 在 GitTrend 2026-05-21 实时日榜排名 #2，今日新增约 +51。它说明开发者正在把“如何约束 coding agent”沉淀为项目级行为规范，而不是只靠临场提示词。",
+        "engineeringRead": "Markdown · GitTrend daily trending · 141.1K stars / 14.5K forks。阅读时先看规则覆盖的失败模式、适配成本和团队能否持续维护。",
         "architectureSignals": [
           "规则即接口：把团队偏好写进 agent 启动上下文。",
           "低成本分发：一个文件即可复制到项目。",
@@ -453,6 +454,215 @@
     {
       "rank": 3,
       "repo": {
+        "fullName": "NousResearch/hermes-agent",
+        "name": "hermes-agent",
+        "owner": "NousResearch",
+        "avatarUrl": "https://github.com/NousResearch.png",
+        "visualUrl": "https://opengraph.githubassets.com/20260521/NousResearch/hermes-agent",
+        "url": "https://github.com/NousResearch/hermes-agent",
+        "description": "The agent that grows with you",
+        "stars": 158400,
+        "forks": 25700,
+        "openIssues": 0,
+        "language": "Python",
+        "topics": [
+          "ai-agents",
+          "llm",
+          "memory"
+        ],
+        "license": "",
+        "pushedAt": "2026-05-21T11:56:00.049Z",
+        "createdAt": "2026-01-01T00:00:00.000Z",
+        "languages": {
+          "Python": 100000
+        },
+        "trendingDailyStars": 35,
+        "trendingSource": "GitTrend live page",
+        "starsToday": 35
+      },
+      "analysis": {
+        "method": "codex-web-research",
+        "category": "AI Agent / 个人智能体",
+        "oneLiner": "hermes-agent 主打“会成长的 agent”，值得从记忆、工具、权限和长期任务治理角度拆解。",
+        "whyItMatters": "NousResearch/hermes-agent 在 GitTrend 2026-05-21 实时日榜排名 #3，今日新增约 +35。Agent 项目继续占据增长榜，说明开发者关注点已从模型 API 调用转向可持续执行、个人化记忆和长期任务治理。",
+        "engineeringRead": "Python · GitTrend daily trending · 158.4K stars / 25.7K forks。先看状态管理、工具协议、记忆写入策略和用户可控边界。",
+        "architectureSignals": [
+          "核心应围绕长期记忆、任务状态和工具调用闭环。",
+          "个人 agent 的难点是“能学会”与“可撤销”之间的平衡。",
+          "若支持多工具执行，权限和审计要比 demo 效果更早验证。",
+          "适合与本地知识库、浏览器、文件系统集成做小范围试点。"
+        ],
+        "valueHypothesis": [
+          "适合个人知识工作者或研发团队做长期任务助理。",
+          "如果没有明确任务队列和权限边界，会退化成聊天机器人。",
+          "价值要用跨会话任务延续率、接管次数和错误恢复率验证。"
+        ],
+        "technicalTakeaways": [
+          "记忆层必须可查看、可编辑、可删除。",
+          "工具执行要有 dry-run 或确认机制。",
+          "长任务需要 checkpoint，否则失败成本过高。"
+        ],
+        "adoptionRisks": [
+          "记忆污染会导致持续性错误。",
+          "工具权限过宽会带来安全和合规风险。",
+          "个人化越强，团队共享和审计越难。"
+        ],
+        "suggestedUseCases": [
+          "用个人研究助理或代码库维护助理做旁路试点。",
+          "只开放只读文件和浏览器检索能力。",
+          "记录每次记忆写入的理由和回滚方式。"
+        ],
+        "watchSignals": [
+          "是否公开 memory schema 和审计界面。",
+          "是否支持工具权限分级。",
+          "是否有真实长任务 benchmark。"
+        ],
+        "deepDive": {
+          "strategicValue": "它代表 agent 从一次性执行向持续协作迁移，但真正价值取决于记忆治理和失败接管。",
+          "implementationPath": [
+            "先限定在低风险个人工作流。",
+            "开启日志、记忆审计和手工确认。",
+            "用连续三天任务观察它是否减少重复上下文输入。"
+          ],
+          "productionConcerns": [
+            "记忆与隐私要分层存储。",
+            "工具调用需要最小权限和人工确认。",
+            "要定义“忘记”和“纠错”的产品入口。"
+          ],
+          "decisionQuestions": [
+            "团队是否真的需要长期个人化 agent？",
+            "错误记忆如何发现和清理？",
+            "权限升级由谁批准、如何审计？"
+          ],
+          "recommendedAction": "重点观察：适合做低权限个人助理试验，不宜直接进入企业主流程。"
+        },
+        "diagram": {
+          "title": "工业化落地图解",
+          "caption": "NousResearch/hermes-agent · Python",
+          "summary": "AI Agent / 个人智能体：从「核心应围绕长期记忆、任务状态和工具调用闭环」切入，用「个人 agent 的难点是“能学会”与“可撤销”之间的平衡」换取「价值要用跨会话任务延续率、接管次数和错误恢复率验证」。",
+          "nodes": [
+            {
+              "label": "场景痛点",
+              "detail": "核心应围绕长期记忆、任务状态和工具调用闭环",
+              "type": "input"
+            },
+            {
+              "label": "核心机制",
+              "detail": "个人 agent 的难点是“能学会”与“可撤销”之间的平衡",
+              "type": "core"
+            },
+            {
+              "label": "接入方式",
+              "detail": "用个人研究助理或代码库维护助理做旁路试点",
+              "type": "integration"
+            },
+            {
+              "label": "产出价值",
+              "detail": "价值要用跨会话任务延续率、接管次数和错误恢复率验证",
+              "type": "output"
+            }
+          ],
+          "links": [
+            "识别高频摩擦",
+            "封装可复用能力",
+            "进入小范围生产验证"
+          ],
+          "poster": {
+            "eyebrow": "Project Blueprint",
+            "headline": "AI Agent / 个人智能体",
+            "subhead": "NousResearch/hermes-agent · GitTrend 2026-05-21",
+            "thesis": "AI Agent / 个人智能体 的价值不在热度本身，而在它是否能把 核心应围绕长期记忆、任务状态和工具调用闭环 变成可度量、可回滚、可审计的工程流程。",
+            "metrics": [
+              {
+                "label": "Stars",
+                "value": "160.3K",
+                "note": "社区关注"
+              },
+              {
+                "label": "Daily",
+                "value": "+82",
+                "note": "今日新增"
+              },
+              {
+                "label": "Stack",
+                "value": "Python",
+                "note": "主技术栈"
+              },
+              {
+                "label": "Forks",
+                "value": "26K",
+                "note": "二次采用"
+              }
+            ],
+            "lanes": [
+              {
+                "step": "01",
+                "label": "痛点定位",
+                "detail": "核心应围绕长期记忆、任务状态和工具调用闭环",
+                "signal": "先证明这是真问题，不是榜单驱动",
+                "type": "input"
+              },
+              {
+                "step": "02",
+                "label": "机制拆解",
+                "detail": "个人 agent 的难点是“能学会”与“可撤销”之间的平衡",
+                "signal": "看状态、权限、失败恢复和可观测性",
+                "type": "core"
+              },
+              {
+                "step": "03",
+                "label": "试点接入",
+                "detail": "用个人研究助理或代码库维护助理做旁路试点",
+                "signal": "只读或旁路优先，避免一开始改主链路",
+                "type": "integration"
+              },
+              {
+                "step": "04",
+                "label": "验收信号",
+                "detail": "价值要用跨会话任务延续率、接管次数和错误恢复率验证",
+                "signal": "用成本、质量和人工接管率评估",
+                "type": "output"
+              }
+            ],
+            "adoption": [
+              {
+                "label": "试点入口",
+                "detail": "用个人研究助理或代码库维护助理做旁路试点"
+              },
+              {
+                "label": "验收指标",
+                "detail": "任务完成率、人工纠偏次数、成本和失败可恢复性"
+              },
+              {
+                "label": "观察信号",
+                "detail": "真实案例、issue 收敛、插件生态和版本节奏"
+              },
+              {
+                "label": "主要风险",
+                "detail": "记忆污染会导致持续性错误"
+              }
+            ],
+            "warning": "记忆污染会导致持续性错误"
+          }
+        },
+        "maturity": {
+          "community": 100,
+          "maintenance": 84,
+          "production": 88,
+          "complexity": 74
+        },
+        "score": 85
+      },
+      "evidence": {
+        "readmeExcerpt": "The agent that grows with you",
+        "githubUrl": "https://github.com/NousResearch/hermes-agent",
+        "trendingSource": "https://gittrend.io/",
+        "observedAt": "2026-05-21T11:56:00.049Z"
+      }
+    },
+    {
+      "rank": 4,
+      "repo": {
         "fullName": "Imbad0202/academic-research-skills",
         "name": "academic-research-skills",
         "owner": "Imbad0202",
@@ -460,8 +670,8 @@
         "visualUrl": "https://opengraph.githubassets.com/echo-trending-2026-05-21/Imbad0202/academic-research-skills",
         "url": "https://github.com/Imbad0202/academic-research-skills",
         "description": "Academic Research Skills for Claude Code: research → write → review → revise → finalize",
-        "stars": 17400,
-        "forks": 1500,
+        "stars": 15800,
+        "forks": 1400,
         "openIssues": 0,
         "language": "Python",
         "topics": [
@@ -477,17 +687,17 @@
         "languages": {
           "Python": 1
         },
-        "starsToday": 1667,
+        "starsToday": 31,
         "updatedAt": "2026-05-21T00:00:00Z",
-        "trendingDailyStars": 117,
-        "trendingSource": "GitTrend"
+        "trendingDailyStars": 31,
+        "trendingSource": "GitTrend live page"
       },
       "analysis": {
         "method": "codex-web-research",
         "category": "AI Agent / LLM 工程",
         "oneLiner": "academic-research-skills 把论文检索、写作、审稿、修订封装成 Claude Code 可调用的技能链。",
-        "whyItMatters": "Imbad0202/academic-research-skills 在 GitTrend 2026-05-21 日榜排名 #3，今日新增 +117，说明它击中了当前开发者最急的议题：AI Agent / LLM 工程 如何从个人尝鲜进入可复用工作流。",
-        "engineeringRead": "Python · GitTrend daily trending · 17.4K stars / 1.5K forks。阅读时先看架构边界和失败模式，再看 README 的安装路径。",
+        "whyItMatters": "Imbad0202/academic-research-skills 在 GitTrend 2026-05-21 实时日榜排名 #4，今日新增约 +31。它把论文检索、写作、审稿、修订做成可复用技能链，说明 Agent 技能开始进入高结构化知识工作流。",
+        "engineeringRead": "Python · GitTrend daily trending · 15.8K stars / 1.4K forks。阅读时先看每个 skill 的输入输出、引用校验和人工复核点。",
         "architectureSignals": [
           "多阶段研究流水线：research/write/review/revise/finalize。",
           "以 Claude Code skill 形态复用，降低单次提示词手写成本。",
@@ -664,7 +874,218 @@
       }
     },
     {
-      "rank": 4,
+      "rank": 5,
+      "repo": {
+        "fullName": "truelockmc/streambert",
+        "name": "streambert",
+        "owner": "truelockmc",
+        "avatarUrl": "https://github.com/truelockmc.png",
+        "visualUrl": "https://opengraph.githubassets.com/echo-trending-2026-05-21/truelockmc/streambert",
+        "url": "https://github.com/truelockmc/streambert",
+        "description": "A cross-platform Electron Desktop App to stream and download any Movie, TV Series or Anime in the World. Zero Ads and Tracking",
+        "stars": 1600,
+        "forks": 136,
+        "openIssues": 0,
+        "language": "JavaScript",
+        "topics": [
+          "electron",
+          "desktop-app",
+          "streaming",
+          "media",
+          "cross-platform"
+        ],
+        "license": "Unknown",
+        "pushedAt": "2026-05-21T00:00:00Z",
+        "createdAt": "2025-01-01T00:00:00Z",
+        "languages": {
+          "JavaScript": 1
+        },
+        "starsToday": 27,
+        "updatedAt": "2026-05-21T00:00:00Z",
+        "trendingDailyStars": 27,
+        "trendingSource": "GitTrend live page"
+      },
+      "analysis": {
+        "method": "codex-web-research",
+        "category": "前端 / 产品体验",
+        "oneLiner": "streambert 是一个跨平台 Electron 媒体聚合客户端，热度来自“无广告、可下载、跨平台”的强用户诉求。",
+        "whyItMatters": "truelockmc/streambert 在 GitTrend 2026-05-21 实时日榜排名 #5，今日新增约 +27。它不是 AI 主线，但反映用户对跨平台、无广告、可下载媒体客户端的强烈产品诉求。",
+        "engineeringRead": "JavaScript/Electron · GitTrend daily trending · 1.6K stars / 136 forks。阅读时先看数据源合规、插件边界、下载链路和桌面端安全模型。",
+        "architectureSignals": [
+          "Electron 壳承载跨平台桌面体验。",
+          "媒体搜索、播放、下载队列是核心交互面。",
+          "用户增长靠低摩擦体验，但也伴随版权和安全审查压力。",
+          "桌面应用必须处理自动更新、签名和依赖安全。"
+        ],
+        "valueHypothesis": [
+          "适合研究 Electron 桌面产品的轻量体验和打包方式。",
+          "不适合商业团队复制其内容聚合模式。",
+          "价值应用在播放器 UX、下载任务管理和跨平台分发经验。"
+        ],
+        "technicalTakeaways": [
+          "媒体类桌面应用的关键不是页面，而是播放状态和本地任务可靠性。",
+          "Electron 能快速覆盖 Win/Mac/Linux，但包体积、自动更新和权限提示要治理。",
+          "热门不等于可采用，合规和供应链扫描是第一门槛。"
+        ],
+        "adoptionRisks": [
+          "内容来源可能触及版权和平台条款风险。",
+          "下载能力会扩大恶意文件和供应链风险。",
+          "桌面端自动更新若无签名与校验，会成为攻击面。"
+        ],
+        "suggestedUseCases": [
+          "只借鉴 Electron 打包、任务队列和播放器交互。",
+          "对依赖、自动更新和下载路径做安全审计。",
+          "商业场景应替换为授权内容源或内部媒体资产。"
+        ],
+        "watchSignals": [
+          "是否明确 license 和内容来源边界。",
+          "是否有签名发布、自动更新校验和安全说明。",
+          "issue 区是否出现平台封禁或法律风险反馈。"
+        ],
+        "deepDive": {
+          "strategicValue": "streambert 的战略价值不在内容本身，而在提醒团队：高摩擦内容消费场景仍存在强烈桌面端需求，体验创新要和合规边界同步设计。",
+          "implementationPath": [
+            "拆出播放器、下载队列和跨平台打包模式做技术学习。",
+            "在内部授权媒体或自有内容上复现体验。",
+            "上线前完成 license、内容授权、依赖和自动更新审计。"
+          ],
+          "productionConcerns": [
+            "版权来源、下载行为、自动更新签名和沙箱权限必须逐项过审。",
+            "跨平台系统 API 差异会影响下载路径、缓存和通知。",
+            "不要让第三方内容脚本获得本机高权限。"
+          ],
+          "decisionQuestions": [
+            "你要借鉴的是桌面体验，还是不可控内容聚合？",
+            "是否有合法稳定的内容源支撑产品化？",
+            "自动更新与下载文件如何防篡改？"
+          ],
+          "recommendedAction": "作为桌面体验案例观察；除非有授权内容源，否则不进入产品试点。"
+        },
+        "diagram": {
+          "title": "工业化落地图解",
+          "caption": "truelockmc/streambert · JavaScript",
+          "summary": "用户希望一站式搜索、播放和下载媒体 -> Electron 桌面壳 + 媒体检索 + 播放/下载任务管理 -> 仅复用授权内容源下的桌面体验模式 -> 降低跨平台媒体消费和本地任务管理摩擦",
+          "nodes": [
+            {
+              "label": "场景痛点",
+              "detail": "用户希望一站式搜索、播放和下载媒体",
+              "type": "input"
+            },
+            {
+              "label": "核心机制",
+              "detail": "Electron 桌面壳 + 媒体检索 + 播放/下载任务管理",
+              "type": "core"
+            },
+            {
+              "label": "接入方式",
+              "detail": "仅复用授权内容源下的桌面体验模式",
+              "type": "integration"
+            },
+            {
+              "label": "产出价值",
+              "detail": "降低跨平台媒体消费和本地任务管理摩擦",
+              "type": "output"
+            }
+          ],
+          "links": [
+            "聚合入口",
+            "控制任务",
+            "治理风险"
+          ],
+          "poster": {
+            "eyebrow": "Project Blueprint",
+            "headline": "桌面媒体聚合 / Electron 应用",
+            "subhead": "truelockmc/streambert · JavaScript",
+            "thesis": "streambert 的战略价值不在内容本身，而在提醒团队：高摩擦内容消费场景仍存在强烈桌面端需求，体验创新要和合规边界同步设计。",
+            "metrics": [
+              {
+                "label": "入口",
+                "value": "Spike",
+                "note": "先旁路验证"
+              },
+              {
+                "label": "指标",
+                "value": "质量",
+                "note": "验收口径"
+              },
+              {
+                "label": "风险",
+                "value": "Review",
+                "note": "上线前审计"
+              },
+              {
+                "label": "周期",
+                "value": "1-2w",
+                "note": "最小评估"
+              }
+            ],
+            "lanes": [
+              {
+                "label": "场景痛点",
+                "detail": "用户希望一站式搜索、播放和下载媒体",
+                "type": "input",
+                "step": "01",
+                "signal": "用户希望一站式搜索、播放和下载媒体"
+              },
+              {
+                "label": "核心机制",
+                "detail": "Electron 桌面壳 + 媒体检索 + 播放/下载任务管理",
+                "type": "core",
+                "step": "02",
+                "signal": "Electron 桌面壳 + 媒体检索 + 播放/下载任务管理"
+              },
+              {
+                "label": "接入方式",
+                "detail": "仅复用授权内容源下的桌面体验模式",
+                "type": "integration",
+                "step": "03",
+                "signal": "仅复用授权内容源下的桌面体验模式"
+              },
+              {
+                "label": "产出价值",
+                "detail": "降低跨平台媒体消费和本地任务管理摩擦",
+                "type": "output",
+                "step": "04",
+                "signal": "降低跨平台媒体消费和本地任务管理摩擦"
+              }
+            ],
+            "adoption": [
+              {
+                "label": "试点入口",
+                "detail": "仅复用授权内容源下的桌面体验模式"
+              },
+              {
+                "label": "验收指标",
+                "detail": "降低跨平台媒体消费和本地任务管理摩擦"
+              },
+              {
+                "label": "生产检查",
+                "detail": "Electron 桌面壳 + 媒体检索 + 播放/下载任务管理"
+              },
+              {
+                "label": "采用边界",
+                "detail": "内容来源可能触及版权和平台条款风险。"
+              }
+            ],
+            "warning": "内容来源可能触及版权和平台条款风险。"
+          }
+        },
+        "maturity": {
+          "community": 55,
+          "maintenance": 62,
+          "production": 34,
+          "complexity": 58
+        },
+        "score": 72
+      },
+      "evidence": {
+        "readmeExcerpt": "A cross-platform Electron Desktop App to stream and download any Movie, TV Series or Anime in the World. Zero Ads and Tracking",
+        "githubUrl": "https://github.com/truelockmc/streambert",
+        "trendingSnapshot": "GitHub Trending daily, 2026-05-21"
+      }
+    },
+    {
+      "rank": 6,
       "repo": {
         "fullName": "mattpocock/skills",
         "name": "skills",
@@ -872,215 +1293,7 @@
       }
     },
     {
-      "rank": 5,
-      "repo": {
-        "fullName": "NousResearch/hermes-agent",
-        "name": "hermes-agent",
-        "owner": "NousResearch",
-        "avatarUrl": "https://github.com/NousResearch.png",
-        "visualUrl": "https://opengraph.githubassets.com/20260521/NousResearch/hermes-agent",
-        "url": "https://github.com/NousResearch/hermes-agent",
-        "description": "The agent that grows with you",
-        "stars": 160300,
-        "forks": 26000,
-        "openIssues": 0,
-        "language": "Python",
-        "topics": [
-          "ai-agents",
-          "llm",
-          "memory"
-        ],
-        "license": "",
-        "pushedAt": "2026-05-21T11:56:00.049Z",
-        "createdAt": "2026-01-01T00:00:00.000Z",
-        "languages": {
-          "Python": 100000
-        },
-        "trendingDailyStars": 82,
-        "trendingSource": "GitTrend"
-      },
-      "analysis": {
-        "method": "codex-web-research",
-        "category": "AI Agent / 个人智能体",
-        "oneLiner": "hermes-agent 主打“会成长的 agent”，值得从记忆、工具、权限和长期任务治理角度拆解。",
-        "whyItMatters": "NousResearch/hermes-agent 在 GitTrend 2026-05-21 日榜排名 #5，约 160.3K stars / 26K forks，今日新增 +82。Agent 项目继续占据 GitHub 增长榜，说明开发者关注点已从模型 API 调用转向可持续执行和个人化记忆。",
-        "engineeringRead": "Python · GitTrend daily trending · 160.3K stars / 26K forks。先看状态管理、工具协议、记忆写入策略和用户可控边界。",
-        "architectureSignals": [
-          "核心应围绕长期记忆、任务状态和工具调用闭环。",
-          "个人 agent 的难点是“能学会”与“可撤销”之间的平衡。",
-          "若支持多工具执行，权限和审计要比 demo 效果更早验证。",
-          "适合与本地知识库、浏览器、文件系统集成做小范围试点。"
-        ],
-        "valueHypothesis": [
-          "适合个人知识工作者或研发团队做长期任务助理。",
-          "如果没有明确任务队列和权限边界，会退化成聊天机器人。",
-          "价值要用跨会话任务延续率、接管次数和错误恢复率验证。"
-        ],
-        "technicalTakeaways": [
-          "记忆层必须可查看、可编辑、可删除。",
-          "工具执行要有 dry-run 或确认机制。",
-          "长任务需要 checkpoint，否则失败成本过高。"
-        ],
-        "adoptionRisks": [
-          "记忆污染会导致持续性错误。",
-          "工具权限过宽会带来安全和合规风险。",
-          "个人化越强，团队共享和审计越难。"
-        ],
-        "suggestedUseCases": [
-          "用个人研究助理或代码库维护助理做旁路试点。",
-          "只开放只读文件和浏览器检索能力。",
-          "记录每次记忆写入的理由和回滚方式。"
-        ],
-        "watchSignals": [
-          "是否公开 memory schema 和审计界面。",
-          "是否支持工具权限分级。",
-          "是否有真实长任务 benchmark。"
-        ],
-        "deepDive": {
-          "strategicValue": "它代表 agent 从一次性执行向持续协作迁移，但真正价值取决于记忆治理和失败接管。",
-          "implementationPath": [
-            "先限定在低风险个人工作流。",
-            "开启日志、记忆审计和手工确认。",
-            "用连续三天任务观察它是否减少重复上下文输入。"
-          ],
-          "productionConcerns": [
-            "记忆与隐私要分层存储。",
-            "工具调用需要最小权限和人工确认。",
-            "要定义“忘记”和“纠错”的产品入口。"
-          ],
-          "decisionQuestions": [
-            "团队是否真的需要长期个人化 agent？",
-            "错误记忆如何发现和清理？",
-            "权限升级由谁批准、如何审计？"
-          ],
-          "recommendedAction": "重点观察：适合做低权限个人助理试验，不宜直接进入企业主流程。"
-        },
-        "diagram": {
-          "title": "工业化落地图解",
-          "caption": "NousResearch/hermes-agent · Python",
-          "summary": "AI Agent / 个人智能体：从「核心应围绕长期记忆、任务状态和工具调用闭环」切入，用「个人 agent 的难点是“能学会”与“可撤销”之间的平衡」换取「价值要用跨会话任务延续率、接管次数和错误恢复率验证」。",
-          "nodes": [
-            {
-              "label": "场景痛点",
-              "detail": "核心应围绕长期记忆、任务状态和工具调用闭环",
-              "type": "input"
-            },
-            {
-              "label": "核心机制",
-              "detail": "个人 agent 的难点是“能学会”与“可撤销”之间的平衡",
-              "type": "core"
-            },
-            {
-              "label": "接入方式",
-              "detail": "用个人研究助理或代码库维护助理做旁路试点",
-              "type": "integration"
-            },
-            {
-              "label": "产出价值",
-              "detail": "价值要用跨会话任务延续率、接管次数和错误恢复率验证",
-              "type": "output"
-            }
-          ],
-          "links": [
-            "识别高频摩擦",
-            "封装可复用能力",
-            "进入小范围生产验证"
-          ],
-          "poster": {
-            "eyebrow": "Project Blueprint",
-            "headline": "AI Agent / 个人智能体",
-            "subhead": "NousResearch/hermes-agent · GitTrend 2026-05-21",
-            "thesis": "AI Agent / 个人智能体 的价值不在热度本身，而在它是否能把 核心应围绕长期记忆、任务状态和工具调用闭环 变成可度量、可回滚、可审计的工程流程。",
-            "metrics": [
-              {
-                "label": "Stars",
-                "value": "160.3K",
-                "note": "社区关注"
-              },
-              {
-                "label": "Daily",
-                "value": "+82",
-                "note": "今日新增"
-              },
-              {
-                "label": "Stack",
-                "value": "Python",
-                "note": "主技术栈"
-              },
-              {
-                "label": "Forks",
-                "value": "26K",
-                "note": "二次采用"
-              }
-            ],
-            "lanes": [
-              {
-                "step": "01",
-                "label": "痛点定位",
-                "detail": "核心应围绕长期记忆、任务状态和工具调用闭环",
-                "signal": "先证明这是真问题，不是榜单驱动",
-                "type": "input"
-              },
-              {
-                "step": "02",
-                "label": "机制拆解",
-                "detail": "个人 agent 的难点是“能学会”与“可撤销”之间的平衡",
-                "signal": "看状态、权限、失败恢复和可观测性",
-                "type": "core"
-              },
-              {
-                "step": "03",
-                "label": "试点接入",
-                "detail": "用个人研究助理或代码库维护助理做旁路试点",
-                "signal": "只读或旁路优先，避免一开始改主链路",
-                "type": "integration"
-              },
-              {
-                "step": "04",
-                "label": "验收信号",
-                "detail": "价值要用跨会话任务延续率、接管次数和错误恢复率验证",
-                "signal": "用成本、质量和人工接管率评估",
-                "type": "output"
-              }
-            ],
-            "adoption": [
-              {
-                "label": "试点入口",
-                "detail": "用个人研究助理或代码库维护助理做旁路试点"
-              },
-              {
-                "label": "验收指标",
-                "detail": "任务完成率、人工纠偏次数、成本和失败可恢复性"
-              },
-              {
-                "label": "观察信号",
-                "detail": "真实案例、issue 收敛、插件生态和版本节奏"
-              },
-              {
-                "label": "主要风险",
-                "detail": "记忆污染会导致持续性错误"
-              }
-            ],
-            "warning": "记忆污染会导致持续性错误"
-          }
-        },
-        "maturity": {
-          "community": 100,
-          "maintenance": 84,
-          "production": 88,
-          "complexity": 74
-        },
-        "score": 85
-      },
-      "evidence": {
-        "readmeExcerpt": "The agent that grows with you",
-        "githubUrl": "https://github.com/NousResearch/hermes-agent",
-        "trendingSource": "https://gittrend.io/",
-        "observedAt": "2026-05-21T11:56:00.049Z"
-      }
-    },
-    {
-      "rank": 6,
+      "rank": 7,
       "repo": {
         "fullName": "rohitg00/ai-engineering-from-scratch",
         "name": "ai-engineering-from-scratch",
@@ -1293,7 +1506,7 @@
       }
     },
     {
-      "rank": 7,
+      "rank": 8,
       "repo": {
         "id": "manual-tinyhumansai/openhuman",
         "fullName": "tinyhumansai/openhuman",
@@ -1503,7 +1716,7 @@
       }
     },
     {
-      "rank": 8,
+      "rank": 9,
       "repo": {
         "fullName": "obra/superpowers",
         "name": "superpowers",
@@ -1716,7 +1929,7 @@
       }
     },
     {
-      "rank": 9,
+      "rank": 10,
       "repo": {
         "fullName": "D4Vinci/Scrapling",
         "name": "Scrapling",
@@ -1924,7 +2137,7 @@
       }
     },
     {
-      "rank": 10,
+      "rank": 11,
       "repo": {
         "fullName": "msitarzewski/agency-agents",
         "name": "agency-agents",
@@ -2137,7 +2350,7 @@
       }
     },
     {
-      "rank": 11,
+      "rank": 12,
       "repo": {
         "fullName": "can1357/oh-my-pi",
         "name": "oh-my-pi",
@@ -2346,7 +2559,7 @@
       }
     },
     {
-      "rank": 12,
+      "rank": 13,
       "repo": {
         "fullName": "anthropics/claude-plugins-official",
         "name": "claude-plugins-official",
@@ -2555,7 +2768,7 @@
       }
     },
     {
-      "rank": 13,
+      "rank": 14,
       "repo": {
         "id": "manual-rmyndharis/OpenWA",
         "fullName": "rmyndharis/OpenWA",
@@ -2756,215 +2969,6 @@
       "evidence": {
         "readmeExcerpt": "Free, Open Source, Self-Hosted WhatsApp API Gateway",
         "githubUrl": "https://github.com/rmyndharis/OpenWA",
-        "trendingSnapshot": "GitHub Trending daily, 2026-05-21"
-      }
-    },
-    {
-      "rank": 14,
-      "repo": {
-        "fullName": "truelockmc/streambert",
-        "name": "streambert",
-        "owner": "truelockmc",
-        "avatarUrl": "https://github.com/truelockmc.png",
-        "visualUrl": "https://opengraph.githubassets.com/echo-trending-2026-05-21/truelockmc/streambert",
-        "url": "https://github.com/truelockmc/streambert",
-        "description": "A cross-platform Electron Desktop App to stream and download any Movie, TV Series or Anime in the World. Zero Ads and Tracking",
-        "stars": 3268,
-        "forks": 258,
-        "openIssues": 0,
-        "language": "JavaScript",
-        "topics": [
-          "electron",
-          "desktop-app",
-          "streaming",
-          "media",
-          "cross-platform"
-        ],
-        "license": "Unknown",
-        "pushedAt": "2026-05-21T00:00:00Z",
-        "createdAt": "2025-01-01T00:00:00Z",
-        "languages": {
-          "JavaScript": 1
-        },
-        "starsToday": 582,
-        "updatedAt": "2026-05-21T00:00:00Z"
-      },
-      "analysis": {
-        "method": "codex-web-research",
-        "category": "前端 / 产品体验",
-        "oneLiner": "streambert 是一个跨平台 Electron 媒体聚合客户端，热度来自“无广告、可下载、跨平台”的强用户诉求。",
-        "whyItMatters": "truelockmc/streambert 今天在 GitHub Trending 获得约 582 stars/day，说明它击中了当前开发者最急的议题：前端 / 产品体验 如何从个人尝鲜进入可复用工作流。",
-        "engineeringRead": "JavaScript · GitHub daily trending · 3.3K stars / 258 forks。阅读时先看架构边界和失败模式，再看 README 的安装路径。",
-        "architectureSignals": [
-          "Electron 壳承载跨平台桌面体验。",
-          "媒体搜索、播放、下载队列是核心交互面。",
-          "用户增长靠低摩擦体验，但也伴随版权和安全审查压力。",
-          "桌面应用必须处理自动更新、签名和依赖安全。"
-        ],
-        "valueHypothesis": [
-          "适合研究 Electron 桌面产品的轻量体验和打包方式。",
-          "不适合商业团队复制其内容聚合模式。",
-          "价值应用在播放器 UX、下载任务管理和跨平台分发经验。"
-        ],
-        "technicalTakeaways": [
-          "媒体类桌面应用的关键不是页面，而是播放状态和本地任务可靠性。",
-          "Electron 能快速覆盖 Win/Mac/Linux，但包体积、自动更新和权限提示要治理。",
-          "热门不等于可采用，合规和供应链扫描是第一门槛。"
-        ],
-        "adoptionRisks": [
-          "内容来源可能触及版权和平台条款风险。",
-          "下载能力会扩大恶意文件和供应链风险。",
-          "桌面端自动更新若无签名与校验，会成为攻击面。"
-        ],
-        "suggestedUseCases": [
-          "只借鉴 Electron 打包、任务队列和播放器交互。",
-          "对依赖、自动更新和下载路径做安全审计。",
-          "商业场景应替换为授权内容源或内部媒体资产。"
-        ],
-        "watchSignals": [
-          "是否明确 license 和内容来源边界。",
-          "是否有签名发布、自动更新校验和安全说明。",
-          "issue 区是否出现平台封禁或法律风险反馈。"
-        ],
-        "deepDive": {
-          "strategicValue": "streambert 的战略价值不在内容本身，而在提醒团队：高摩擦内容消费场景仍存在强烈桌面端需求，体验创新要和合规边界同步设计。",
-          "implementationPath": [
-            "拆出播放器、下载队列和跨平台打包模式做技术学习。",
-            "在内部授权媒体或自有内容上复现体验。",
-            "上线前完成 license、内容授权、依赖和自动更新审计。"
-          ],
-          "productionConcerns": [
-            "版权来源、下载行为、自动更新签名和沙箱权限必须逐项过审。",
-            "跨平台系统 API 差异会影响下载路径、缓存和通知。",
-            "不要让第三方内容脚本获得本机高权限。"
-          ],
-          "decisionQuestions": [
-            "你要借鉴的是桌面体验，还是不可控内容聚合？",
-            "是否有合法稳定的内容源支撑产品化？",
-            "自动更新与下载文件如何防篡改？"
-          ],
-          "recommendedAction": "作为桌面体验案例观察；除非有授权内容源，否则不进入产品试点。"
-        },
-        "diagram": {
-          "title": "工业化落地图解",
-          "caption": "truelockmc/streambert · JavaScript",
-          "summary": "用户希望一站式搜索、播放和下载媒体 -> Electron 桌面壳 + 媒体检索 + 播放/下载任务管理 -> 仅复用授权内容源下的桌面体验模式 -> 降低跨平台媒体消费和本地任务管理摩擦",
-          "nodes": [
-            {
-              "label": "场景痛点",
-              "detail": "用户希望一站式搜索、播放和下载媒体",
-              "type": "input"
-            },
-            {
-              "label": "核心机制",
-              "detail": "Electron 桌面壳 + 媒体检索 + 播放/下载任务管理",
-              "type": "core"
-            },
-            {
-              "label": "接入方式",
-              "detail": "仅复用授权内容源下的桌面体验模式",
-              "type": "integration"
-            },
-            {
-              "label": "产出价值",
-              "detail": "降低跨平台媒体消费和本地任务管理摩擦",
-              "type": "output"
-            }
-          ],
-          "links": [
-            "聚合入口",
-            "控制任务",
-            "治理风险"
-          ],
-          "poster": {
-            "eyebrow": "Project Blueprint",
-            "headline": "桌面媒体聚合 / Electron 应用",
-            "subhead": "truelockmc/streambert · JavaScript",
-            "thesis": "streambert 的战略价值不在内容本身，而在提醒团队：高摩擦内容消费场景仍存在强烈桌面端需求，体验创新要和合规边界同步设计。",
-            "metrics": [
-              {
-                "label": "入口",
-                "value": "Spike",
-                "note": "先旁路验证"
-              },
-              {
-                "label": "指标",
-                "value": "质量",
-                "note": "验收口径"
-              },
-              {
-                "label": "风险",
-                "value": "Review",
-                "note": "上线前审计"
-              },
-              {
-                "label": "周期",
-                "value": "1-2w",
-                "note": "最小评估"
-              }
-            ],
-            "lanes": [
-              {
-                "label": "场景痛点",
-                "detail": "用户希望一站式搜索、播放和下载媒体",
-                "type": "input",
-                "step": "01",
-                "signal": "用户希望一站式搜索、播放和下载媒体"
-              },
-              {
-                "label": "核心机制",
-                "detail": "Electron 桌面壳 + 媒体检索 + 播放/下载任务管理",
-                "type": "core",
-                "step": "02",
-                "signal": "Electron 桌面壳 + 媒体检索 + 播放/下载任务管理"
-              },
-              {
-                "label": "接入方式",
-                "detail": "仅复用授权内容源下的桌面体验模式",
-                "type": "integration",
-                "step": "03",
-                "signal": "仅复用授权内容源下的桌面体验模式"
-              },
-              {
-                "label": "产出价值",
-                "detail": "降低跨平台媒体消费和本地任务管理摩擦",
-                "type": "output",
-                "step": "04",
-                "signal": "降低跨平台媒体消费和本地任务管理摩擦"
-              }
-            ],
-            "adoption": [
-              {
-                "label": "试点入口",
-                "detail": "仅复用授权内容源下的桌面体验模式"
-              },
-              {
-                "label": "验收指标",
-                "detail": "降低跨平台媒体消费和本地任务管理摩擦"
-              },
-              {
-                "label": "生产检查",
-                "detail": "Electron 桌面壳 + 媒体检索 + 播放/下载任务管理"
-              },
-              {
-                "label": "采用边界",
-                "detail": "内容来源可能触及版权和平台条款风险。"
-              }
-            ],
-            "warning": "内容来源可能触及版权和平台条款风险。"
-          }
-        },
-        "maturity": {
-          "community": 55,
-          "maintenance": 62,
-          "production": 34,
-          "complexity": 58
-        },
-        "score": 72
-      },
-      "evidence": {
-        "readmeExcerpt": "A cross-platform Electron Desktop App to stream and download any Movie, TV Series or Anime in the World. Zero Ads and Tracking",
-        "githubUrl": "https://github.com/truelockmc/streambert",
         "trendingSnapshot": "GitHub Trending daily, 2026-05-21"
       }
     },
@@ -3379,8 +3383,8 @@
   ],
   "frontier": {
     "title": "搜广推技术前沿",
-    "subtitle": "聚焦推荐、排序、召回、搜索、广告、实验平台和 LLM 评估进入工业系统的最新大厂工程实践。",
-    "source": "Codex web research over Big Tech engineering blogs + Amazon Science + Google Research + arXiv",
+    "subtitle": "混合跟踪搜索、广告、推荐、排序、召回相关的新论文、大厂工程实践和中文可落地系统文章。",
+    "source": "Big Tech Engineering/RSS + Amazon Science + Google Research + Chinese engineering blogs + Codex web research",
     "items": [
       {
         "title": "Pinterest: real-time context for sequential ads candidate generation",
@@ -3656,13 +3660,31 @@
         ],
         "summary": "业务问题：CRM 结构化搜索要在多租户、海量索引和不可预测流量下保持低延迟与零停机。系统机制：围绕 6.9PB 索引、月 29.4B 查询、Data Cloud/hybrid search 工作流做弹性、迁移和多工作负载隔离。指标/实验：2024-2025 月查询从 22B 到 29.4B，增长 34%，目标是 sub-second latency 和 0 downtime。可借鉴点：企业搜索的相关性必须和多租户隔离、迁移机制、容量治理一起设计。不适用边界：单租户小规模系统不必过早引入复杂迁移平台。",
         "interpretation": "业务问题：CRM 结构化搜索要在多租户、海量索引和不可预测流量下保持低延迟与零停机。系统机制：围绕 6.9PB 索引、月 29.4B 查询、Data Cloud/hybrid search 工作流做弹性、迁移和多工作负载隔离。指标/实验：2024-2025 月查询从 22B 到 29.4B，增长 34%，目标是 sub-second latency 和 0 downtime。可借鉴点：企业搜索的相关性必须和多租户隔离、迁移机制、容量治理一起设计。不适用边界：单租户小规模系统不必过早引入复杂迁移平台。"
+      },
+      {
+        "title": "阿里云 PAI-Rec 召回引擎：毫秒级多路召回与曝光过滤",
+        "url": "https://developer.aliyun.com/article/1724024",
+        "source": "阿里云开发者社区",
+        "publishedAt": "2026-04-04",
+        "summary": "业务问题：推荐链路第一层要在千万级物料中快速找候选，同时处理用户刚曝光/刚点击后的实时去重。系统机制：PAI-Rec 召回引擎组合 U2I、I2I、向量召回、热门/规则召回和在线曝光过滤表，把毫秒级候选生成、近似最近邻和业务规则放在同一召回服务里。指标/实验：文章强调阿里巴巴大规模推荐场景验证、毫秒级高性能和曝光过滤表毫秒级更新。",
+        "interpretation": "可借鉴点：中文业务团队可把召回层拆成“多路候选 + 向量索引 + 实时过滤 + 统一监控”，先治理召回覆盖和重复曝光，再上更重的精排；不适用边界：物料规模小、实时行为少或缺少统一特征/曝光事件时，PAI-Rec 式召回平台会过度工程化。",
+        "tags": [
+          "召回",
+          "推荐系统",
+          "向量检索",
+          "曝光过滤",
+          "PAI-Rec"
+        ],
+        "imageUrl": "https://www.google.com/s2/favicons?domain=developer.aliyun.com&sz=128",
+        "sourceType": "industry",
+        "rank": 17
       }
     ]
   },
   "aiNews": {
     "title": "AI 新闻",
     "subtitle": "覆盖 AIHOT、官方 AI 新闻、Anthropic News/Research/Engineering、Claude 模型/Claude Code/Agent/Computer Use、企业合作与安全研究。",
-    "source": "AIHOT + Anthropic official/mirror + OpenAI/Google official sources",
+    "source": "AIHOT Public API/RSS + Official OpenAI/Google/Hugging Face feeds + Anthropic official pages",
     "sourceBrief": {
       "kicker": "Source Playbook",
       "title": "AIHOT 今日精选作为高频行业信号源",
@@ -3673,30 +3695,290 @@
         "官方产品/研究页仍是模型、企业合作、安全研究的主证据。",
         "社媒来源只作为观察信号，不能单独作为事实定论。",
         "对 IPO、财务、裁员类条目应标注非官方来源。"
-      ]
+      ],
+      "note": "AIHOT 用作高频中文镜像和线索入口；Anthropic 事实优先来自 anthropic.com 官方 News/Research/Engineering 页面。"
     },
     "aihot": {
-      "title": "AIHOT 5月21日精选",
-      "source": "AIHOT public page, refreshed by Codex web research on 2026-05-21",
+      "title": "AIHOT 内容抓取",
+      "source": "AIHOT Public API",
       "date": "2026-05-21",
-      "generatedAt": "2026-05-21T11:56:00.049Z",
-      "summary": "今日 AIHOT 高分条目集中在编码代理评测、系统级助手、推理网络和 AI 组织重构；本轮仅作为高频镜像/观察信号，关键事实已优先用官方来源交叉验证。",
+      "generatedAt": "2026-05-21T00:00:12.163Z",
+      "summary": "日报收录 28 条结构化内容，重点分布在 产品发布/更新 8 条、行业动态 8 条、技巧与观点 7 条。今日优先关注「在OpenClaw中使用Grok」，它会进入下方 AI 新闻流做进一步信号、影响和动作拆解。 本站新闻流仍优先保留已交叉验证的官方模型、企业合作和 Agent 工程信号。",
       "stats": [
         {
-          "label": "精选观察",
-          "value": "8"
+          "label": "精选条目",
+          "value": 12
         },
         {
-          "label": "A社相关",
-          "value": "2"
+          "label": "日报条目",
+          "value": 28
         },
         {
-          "label": "Agent/编码",
-          "value": "4"
+          "label": "日报分区",
+          "value": 5
         },
         {
-          "label": "工程基础设施",
-          "value": "3"
+          "label": "近期日报",
+          "value": 5
+        }
+      ],
+      "sections": [
+        {
+          "label": "模型发布/更新",
+          "count": 3,
+          "items": [
+            {
+              "title": "Qwen3.7：智能体前沿",
+              "url": "https://qwen.ai/blog?id=qwen3.7",
+              "source": "Qwen：Blog Retrieval（API）",
+              "summary": "Qwen Studio推出Qwen3.7模型，提供覆盖聊天机器人、图像与视频理解、图像生成、文档处理、网页搜索集成、工具调用及工件生成等功能。该模型整合了当前AI智能体的关键能力，旨在推动多模态交互与实际任务执行向更综合、自主的方向发展。",
+              "signal": "Agent 可靠性信号：小模型能否稳定完成复杂任务，越来越依赖重试、防护、上下文管理和步骤约束。"
+            },
+            {
+              "title": "Kling AI推出全球首个原生4K视频生成模型",
+              "url": "https://x.com/Kling_ai/status/2056950317712101599",
+              "source": "X：可灵 Kling AI (@Kling_ai)",
+              "summary": "4月23日，Kling AI正式推出全球首个原生4K视频生成模型，专为专业内容创作设计。该功能支持一键生成真4K画质视频，显著提升画面细节与制作效率。模型已获得好莱坞团队、动画工作室等多方采用。好莱坞制片人指出，这是其工作流中首个使用的原生4K基础模型；Wonder Studios强调，原生4K从底层生成避免了传统放大技术的角色变形问题，保持了画面一致性；动...",
+              "signal": "多模态产品信号：模型正在从单一生成走向图文视频一体化和可编辑工作流，重点看一致性、成本和版权边界。"
+            },
+            {
+              "title": "SenseNova U1：同时思考文本与图像的AI",
+              "url": "https://x.com/SenseTime_AI/status/2057049434782097851",
+              "source": "X：商汤 SenseTime (@SenseTime_AI)",
+              "summary": "将你的想法转化为激发故事的视觉画面 🧨 [引用 @Adamaestr0_]：大多数AI工具可以写作或生成图像。 但这个能同时做这两件事。 向你介绍 SenseNova U1。 一个能同时思考文本和图像的AI。 这改变了一切 🧵",
+              "signal": "多模态产品信号：模型正在从单一生成走向图文视频一体化和可编辑工作流，重点看一致性、成本和版权边界。"
+            }
+          ]
+        },
+        {
+          "label": "产品发布/更新",
+          "count": 8,
+          "items": [
+            {
+              "title": "GPT-5即将发布",
+              "url": "https://x.com/ChatGPTapp/status/2057178633249394819",
+              "source": "X：ChatGPT (@ChatGPTapp)",
+              "summary": "GPT-5即将发布 🚢",
+              "signal": "行业动态信号，适合纳入周度技术雷达观察。"
+            },
+            {
+              "title": "腾讯张军官宣操作系统层级 AI 助手“马维斯”正式上工，Windows、Mac、安卓端同步上线",
+              "url": "https://www.ithome.com/0/953/096.htm",
+              "source": "IT之家（RSS）",
+              "summary": "腾讯于5月21日发布了操作系统层级AI助手“马维斯”，支持Windows、Mac和安卓平台同步上线。该助手具备文档归类解析、图片智能识别处理、系统维护等功能，并强调与操作系统深度集成，可调度不同模型处理任务，部分功能可在离线状态下使用。腾讯表示“马维斯”能完成市面主流Agent的大部分工作，并具备桌面操控手机应用等能力。这是继3月WorkBuddy和“龙虾”...",
+              "signal": "Agent/工具调用方向，适合评估能否进入研发工作流或数据分析流程。"
+            },
+            {
+              "title": "Google Stitch更新：AI设计助手实现全流程构建",
+              "url": "https://x.com/googleaidevs/status/2057209295763300785",
+              "source": "X：Google AI for Developers (@googleaidevs)",
+              "summary": "Google推出了其AI设计伙伴Stitch的多项重要更新。新功能支持实时流式构建设计，允许用户在不中断流程的情况下直接进行编辑和互动反馈。Stitch现已能够导入现有代码库或Design.md文件，基于实际生产组件进行设计以保持品牌一致性。同时，工具新增了动态界面生成功能，并可将设计项目直接导出为可分享的线上URL，简化了从原型到生产的部署流程。该工具现已...",
+              "signal": "行业动态信号，适合纳入周度技术雷达观察。"
+            }
+          ]
+        },
+        {
+          "label": "行业动态",
+          "count": 8,
+          "items": [
+            {
+              "title": "SpaceX与Anthropic合作提供大规模AI算力服务",
+              "url": "https://x.com/elonmusk/status/2057228707606196434",
+              "source": "X：Elon Musk (@elonmusk, xAI)",
+              "summary": "正如最近与@AnthropicAI扩大合作所展示的，@SpaceX正在大规模提供AI算力服务。 我们正在与其他公司进行类似合作的讨论。 随着时间的推移，特别是通过轨道数据中心，我们预计将以极高的规模提供AI服务。",
+              "signal": "A 社生态信号：Anthropic 的产品、研究和企业合作会影响 Claude 生态、模型选型和 Agent 工作流落地节奏。"
+            },
+            {
+              "title": "OpenAI向所有YC创业公司提供200万美元API投资",
+              "url": "https://x.com/gdb/status/2056948285038887255",
+              "source": "X：Greg Brockman (@gdb)",
+              "summary": "OpenAI宣布向Y Combinator当前批次的每家创业公司提供价值200万美元的API信用额度投资，以换取股权。此举旨在为初创公司提供AI算力资源，支持下一代创新。这让人联想到Sam Altman在YC合伙人时期，Yuri Milner向每家创业公司提供投资的先例。OpenAI希望通过此举释放创业者潜力，推动AI应用创新。",
+              "signal": "Agent 集成信号：外部 API 连接正在从逐个适配走向通用技能层，集成成本会决定 Agent 的业务覆盖面。"
+            },
+            {
+              "title": "欧盟委员会发布《欧盟人工智能法》高风险AI系统分类指导草案并开启公众咨询",
+              "url": "https://www.dataguidance.com/news/eu-commission-publishes-draft-guidelines-classifying",
+              "source": "DataGuidance：Artificial Intelligence（网页）",
+              "summary": "欧盟委员会于2026年5月19日发布了关于《欧盟人工智能法》第六条项下高风险AI系统分类的指导草案。该草案旨在为AI系统的提供商、部署者及市场监管机构提供明确的分类标准，以确保在欧盟范围内执法的一致性。分类主要依据AI系统的预期用途，例如作为受监管产品的组件或用于特定高风险场景。草案也规定了部分豁免条件，例如仅执行辅助性任务时可能不被视为高风险。公众咨询期至...",
+              "signal": "AI 安全与合规信号：模型行为、监管分类和滥用边界正在进入可测试、可审计、可追责阶段。"
+            }
+          ]
+        },
+        {
+          "label": "论文研究",
+          "count": 2,
+          "items": [
+            {
+              "title": "OpenAI模型证伪了离散几何中的一个核心猜想",
+              "url": "https://openai.com/index/model-disproves-discrete-geometry-conjecture",
+              "source": "OpenAI：官网动态（RSS · 排除企业/客户案例）",
+              "summary": "OpenAI开发的人工智能模型成功解决了数学界悬而未决逾80年的“单元距离问题”，并由此推翻了离散几何领域的一个核心猜想。这一突破被视作人工智能驱动数学研究的里程碑事件，标志着AI在基础科学理论探索中取得了实质性进展。该模型通过创新算法处理复杂的几何问题，展示了机器在自动化发现与验证数学猜想方面的巨大潜力。",
+              "signal": "行业动态信号，适合纳入周度技术雷达观察。"
+            },
+            {
+              "title": "ZCube:超大规模大模型推理的网络优化",
+              "url": "https://www.zhipuai.cn/zh/research/160",
+              "source": "智谱：研究（网页内嵌数据）",
+              "summary": "针对超大规模大模型推理，ZCube网络架构通过取消Spine层、将Leaf交换机分组并全互联等创新设计，有效解决了推理网络的拥塞问题。该架构在集群实测中，实现了交换机与光模块资本支出减少33%、GPU平均推理吞吐提升15%，同时将首token延迟的P99值大幅降低40.6%，在降低成本的同时显著提升了推理性能。",
+              "signal": "推理基础设施信号：量化、缓存和并行化继续把长上下文、多模态和视频生成推向可部署。"
+            }
+          ]
+        },
+        {
+          "label": "技巧与观点",
+          "count": 7,
+          "items": [
+            {
+              "title": "开源油猴脚本实现多平台截图上传与内容处理",
+              "url": "https://x.com/vista8/status/2056982823169568779",
+              "source": "X：Vista (@vista8)",
+              "summary": "开源油猴脚本实现小红书、抖音、微信公众号的截图粘贴自动上传，并支持YouTube字幕复制、倍速调节及内容导出至NotebookLM、ChatGPT等工具。主推文作者表示，该工具增强了将X平台内容同步至国内平台的意愿，尽管部分平台体验欠佳。",
+              "signal": "行业动态信号，适合纳入周度技术雷达观察。"
+            },
+            {
+              "title": "开源插件为Codex App增添高级功能",
+              "url": "https://x.com/vista8/status/2057124658927812758",
+              "source": "X：Vista (@vista8)",
+              "summary": "一个开源项目允许用户增强Codex App的功能。即使通过API登录，也能通过安装插件的方式启用Computer Use特性并添加Goal指令。项目还支持界面自定义，例如调整为类似Chrome浏览器的顶部Tab样式，并可设置任务开始和完成的提醒音效。相关开源项目地址已在评论区提供。",
+              "signal": "移动编码信号：Coding Agent 正从桌面 IDE 扩展到手机端连续会话，远程协作和碎片时间处理会变重要。"
+            },
+            {
+              "title": "OpenRouter自动路由缓存机制说明",
+              "url": "https://x.com/OpenRouter/status/2057128446300737702",
+              "source": "X：OpenRouter (@OpenRouter)",
+              "summary": "提示💡 你无需担心自动路由（以及所有单独模型）的缓存未命中问题 OpenRouter会将你的会话固定在一个模型/提供商上，直到缓存过期",
+              "signal": "模型路由工程信号：缓存命中、会话粘滞和供应商切换正在变成多模型基础设施关键点。"
+            }
+          ]
+        }
+      ],
+      "selected": [
+        {
+          "title": "在OpenClaw中使用Grok",
+          "url": "https://x.ai/news/grok-openclaw",
+          "source": "xAI：News（网页）",
+          "publishedAt": "2026-05-22T00:00:00.000Z",
+          "summary": "5月22日，xAI宣布，其用户现可在开源个人助理OpenClaw中直接使用Grok模型。所有持有SuperGrok或X Premium订阅的用户均可使用该功能。OpenClaw是一个开源的、本地优先的智能助手，可在多种硬件上运行并保持跨会话记忆，同时能接入WhatsApp、Telegram等多款主流通讯平台。用户通过简单安装和登录，即可在自有设备上运行OpenClaw，并通过其界面或关联的聊天工具与Grok交互。此举...",
+          "category": "产品更新",
+          "signal": "开源 Agent 生态信号：模型厂商正在把能力接入本地优先的个人助理和多端通讯入口。",
+          "tags": [
+            "Agent",
+            "模型"
+          ]
+        },
+        {
+          "title": "腾讯开源Hy-MT2多语言翻译模型",
+          "url": "https://x.com/TencentHunyuan/status/2057384034544804136",
+          "source": "X：腾讯混元 (@TencentHunyuan)",
+          "publishedAt": "2026-05-21T08:52:32.000Z",
+          "summary": "腾讯正式开源Hy-MT2多语言翻译模型，支持33种语言间的无缝互译。其7B与30B-A3B版本在开源模型中达到最先进的翻译性能，超越了许多参数规模大数十倍的模型。更具突破性的是，1.8B轻量级版本性能超越微软等主流商业API，并凭借腾讯AngelSlim 1.25-bit极量化技术，仅需440MB存储空间，即可在主流手机芯片上本地运行，推理速度较前代提升1.5倍，显著降低了高质量AI翻译的部署门槛。",
+          "category": "模型发布",
+          "signal": "推理基础设施信号：量化、缓存和并行化继续把长上下文、多模态和视频生成推向可部署。",
+          "tags": [
+            "模型",
+            "工程/基础设施"
+          ]
+        },
+        {
+          "title": "游戏开发门槛被AI大幅降低",
+          "url": "https://x.com/AYi_AInotes/status/2057371332359201103",
+          "source": "X：阿易 AI Notes (@AYi_AInotes)",
+          "publishedAt": "2026-05-21T08:02:04.000Z",
+          "summary": "Grok展示了AI深度介入游戏开发的全新工作流。通过\"提示词生成角色图→图片转动画视频→自动拼接成Spritesheet→导入引擎\"四步流程，将传统需要美术与动画师耗时数天的工作，在几分钟内完成。这标志着AI不再仅生成静态内容，而是能实时生成可直接导入Unity或Godot等游戏引擎的可运行资产。该技术极大压缩了游戏原型的迭代周期，将反馈循环从\"天\"缩短至\"秒\"，使得独立开发者也能快速实现创意，显著降低了游戏创作的门...",
+          "category": "技巧观点",
+          "signal": "开源 Agent 生态信号：模型厂商正在把能力接入本地优先的个人助理和多端通讯入口。",
+          "tags": [
+            "模型",
+            "多模态"
+          ]
+        },
+        {
+          "title": "谷歌高级副总裁曼尼卡：AI短期内不会摧毁就业市场",
+          "url": "https://www.ithome.com/0/953/469.htm",
+          "source": "IT之家（RSS）",
+          "publishedAt": "2026-05-21T07:33:40.000Z",
+          "summary": "谷歌高级副总裁詹姆斯·曼尼卡近日表示，AI短期内不会摧毁就业市场，也不同意\"大规模失业\"的激进预测。他援引其2017年参与的麦肯锡报告指出，自动化将同时导致岗位减少、新岗位出现以及现有岗位被重新定义。他认为当前争议在于这三种情况的占比，而非是否发生。曼尼卡批评AI行业放大了公众焦虑，这种恐慌可能削弱技术价值。他强调，AI最大的影响是改变工作内容与方式，而非让职业消失。",
+          "category": "技巧观点",
+          "signal": "行业动态信号，适合纳入周度技术雷达观察。",
+          "tags": [
+            "AI"
+          ]
+        },
+        {
+          "title": "Intuit将裁员逾3000人，以重新聚焦人工智能",
+          "url": "https://techcrunch.com/2026/05/20/intuit-to-lay-off-over-3000-employees-to-refocus-on-ai",
+          "source": "Hacker News 热门（buzzing.cc 中文翻译）",
+          "publishedAt": "2026-05-21T04:35:50.680Z",
+          "summary": "软件公司Intuit宣布将裁员超过3000人，作为其战略重组的一部分。此次裁员旨在将公司资源重新聚焦于人工智能（AI）领域的发展，以适应技术趋势并提升长期竞争力。裁员规模约占其全球员工总数的10%。",
+          "category": "行业动态",
+          "signal": "行业动态信号，适合纳入周度技术雷达观察。",
+          "tags": [
+            "AI"
+          ]
+        },
+        {
+          "title": "首部100%AI生成电影亮相戛纳，剑指2026院线",
+          "url": "https://x.com/Kling_ai/status/2057295321831539054",
+          "source": "X：可灵 Kling AI (@Kling_ai)",
+          "publishedAt": "2026-05-21T03:00:02.000Z",
+          "summary": "AI电影项目RAPHAEL在戛纳亮相。该片由Mateo AI Studio与韩国MBC C&I的AI内容实验室联合开发，全程使用Kling AI视频模型进行制作，旨在实现独特的视觉效果与差异化的观影体验。项目计划于2026年登陆院线，其大规模制作旨在证明纯AI电影制作的工业可行性，标志着AI原生院线电影新趋势的开端。",
+          "category": "行业动态",
+          "signal": "多模态产品信号：模型正在从单一生成走向图文视频一体化和可编辑工作流，重点看一致性、成本和版权边界。",
+          "tags": [
+            "模型",
+            "多模态"
+          ]
+        },
+        {
+          "title": "商汤连续十年领跑中国计算机视觉市场",
+          "url": "https://x.com/SenseTime_AI/status/2057289342654300586",
+          "source": "X：商汤 SenseTime (@SenseTime_AI)",
+          "publishedAt": "2026-05-21T02:36:16.000Z",
+          "summary": "商汤科技被IDC连续十年评为中国计算机视觉市场第一。其关键驱动因素包括：主导推进CV 2.0架构演进，原生嵌入生成式AI能力；海外市场扩展至12个国际区域，服务超500家企业客户并保持高留存率；以年度经常性收入增长为锚点实现盈利性增长；并从项目制交付转型为高度可扩展的AI平台。这一十年市场领导地位为其引领计算机视觉与生成式AI的融合浪潮奠定了基础。",
+          "category": "行业动态",
+          "signal": "行业动态信号，适合纳入周度技术雷达观察。",
+          "tags": [
+            "AI"
+          ]
+        },
+        {
+          "title": "开源Suno技能：一键生成任意风格AI音乐",
+          "url": "https://x.com/vista8/status/2057287459759698400",
+          "source": "X：Vista (@vista8)",
+          "publishedAt": "2026-05-21T02:28:47.000Z",
+          "summary": "这是基于Suno AI音乐生成工具的技能实现，可通过简单指令按用户需求生成不同风格的歌曲（例如德语空灵风格）。该技能订阅费用为每月10美元，支持高度自定义的风格生成。技术层面已优化，新增近6000个音乐风格检索以提升准确性，并可通过谷歌CDP免登录直接调用。项目已开源，提供GitHub仓库地址与安装指令，降低了创作门槛。目前AI生成音乐在艺术性上仍与人工制作存在差距，但实现了快速、灵活的创作可能。",
+          "category": "技巧观点",
+          "signal": "行业动态信号，适合纳入周度技术雷达观察。",
+          "tags": [
+            "AI"
+          ]
+        }
+      ],
+      "recentDailies": [
+        {
+          "date": "2026-05-21",
+          "title": "Qwen3.7：智能体前沿",
+          "url": "https://aihot.virxact.com/daily/2026-05-21"
+        },
+        {
+          "date": "2026-05-20",
+          "title": "I/O 2026: 欢迎来到自主的 Gemini 时代",
+          "url": "https://aihot.virxact.com/daily/2026-05-20"
+        },
+        {
+          "date": "2026-05-19",
+          "title": "阿里云推出HappyHorse视频生成模型",
+          "url": "https://aihot.virxact.com/daily/2026-05-19"
+        },
+        {
+          "date": "2026-05-18",
+          "title": "Grok Imagine图像生成功能正式发布",
+          "url": "https://aihot.virxact.com/daily/2026-05-18"
+        },
+        {
+          "date": "2026-05-17",
+          "title": "社区协作再创佳绩，vLLM支持万亿级模型",
+          "url": "https://aihot.virxact.com/daily/2026-05-17"
         }
       ],
       "entrypoints": [
@@ -3707,69 +3989,15 @@
         },
         {
           "label": "AI 日报",
-          "detail": "分类聚合",
+          "detail": "按五类整理",
           "url": "https://aihot.virxact.com/daily"
         },
         {
           "label": "Agent 接入",
-          "detail": "RSS/API/Skill",
+          "detail": "Skill / RSS / API",
           "url": "https://aihot.virxact.com/agent"
         }
-      ],
-      "sections": [],
-      "selected": [
-        {
-          "title": "SpecBench：测量长期编码代理中的奖励黑客行为",
-          "url": "https://arxiv.org",
-          "source": "HuggingFace Daily Papers",
-          "category": "智能体 / 安全",
-          "publishedAt": "2026-05-21",
-          "summary": "长期编码代理在可见测试上饱和但隐藏测试持续落后，提醒团队不要只用公开测试评估 agent。",
-          "signal": "长期编码代理在可见测试上饱和但隐藏测试持续落后，提醒团队不要只用公开测试评估 agent。"
-        },
-        {
-          "title": "腾讯操作系统层级 AI 助手“马维斯”上线",
-          "url": "https://www.ithome.com",
-          "source": "IT之家",
-          "category": "Agent / 端侧",
-          "publishedAt": "2026-05-21",
-          "summary": "系统级助手从应用层下沉到 OS 层，权限和本地模型会成为差异点。",
-          "signal": "系统级助手从应用层下沉到 OS 层，权限和本地模型会成为差异点。"
-        },
-        {
-          "title": "ZCube：超大规模大模型推理网络优化",
-          "url": "https://www.zhipuai.cn",
-          "source": "智谱研究",
-          "category": "推理 / 工程",
-          "publishedAt": "2026-05-21",
-          "summary": "推理网络从训练集群复用走向专门拓扑设计，尾延迟和交换机成本同时受关注。",
-          "signal": "推理网络从训练集群复用走向专门拓扑设计，尾延迟和交换机成本同时受关注。"
-        },
-        {
-          "title": "Intuit 裁员并重聚焦 AI",
-          "url": "https://techcrunch.com",
-          "source": "TechCrunch via AIHOT",
-          "category": "行业动态",
-          "publishedAt": "2026-05-21",
-          "summary": "SaaS 公司组织结构开始围绕 AI 重新配置，不能只看模型发布。",
-          "signal": "SaaS 公司组织结构开始围绕 AI 重新配置，不能只看模型发布。"
-        },
-        {
-          "title": "腾讯开源 Hy-MT2 多语言翻译模型",
-          "url": "https://aihot.virxact.com/",
-          "source": "AIHOT",
-          "category": "模型发布",
-          "reason": "端侧 1.25-bit 量化和 440MB 本地运行能力值得端侧 AI 团队关注。"
-        },
-        {
-          "title": "游戏开发门槛被 AI 大幅降低",
-          "url": "https://aihot.virxact.com/",
-          "source": "AIHOT",
-          "category": "多模态工作流",
-          "reason": "Grok 资产链把生成图、视频动画、spritesheet 和引擎导入连成可试错流程。"
-        }
-      ],
-      "recentDailies": []
+      ]
     },
     "items": [
       {
