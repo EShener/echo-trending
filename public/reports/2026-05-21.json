@@ -1,24 +1,26 @@
 {
   "date": "2026-05-21",
-  "generatedAt": "2026-05-21T09:15:33.000Z",
+  "generatedAt": "2026-05-21T09:57:29.640Z",
   "source": {
-    "provider": "GitTrend/GitHub Trending snapshots + official company blogs + AIHOT/API/RSS mirrors",
-    "query": "GitHub Trending daily snapshot; AIHOT selected feed; official Anthropic/OpenAI/Google pages; Big Tech search/ads/recsys engineering blogs",
+    "provider": "GitHub Trending snapshots + official company blogs + AIHOT/API/RSS mirrors + Codex web research",
+    "query": "GitHub Trending daily snapshot; AIHOT selected feed; Anthropic/OpenAI/Google official pages; Big Tech search/ads/recsys engineering blogs",
     "since": "2026-05-14",
     "limit": 12,
     "language": "all",
     "notes": [
-      "Shell network blocked git/GitHub API; web research used for latest evidence.",
-      "Remote pull/push could not complete in this sandbox."
+      "2026-05-21 hourly refresh: shell network blocked git/GitHub API; web research used for latest evidence.",
+      "Git remote sync/push failed in sandbox because github.com SSH/DNS is unavailable.",
+      "Official sources verified this run: Anthropic News, OpenAI News/Help, Google Ads/Search blogs, Meta Engineering, Pinterest Engineering, Amazon Science, Spotify Engineering, Dropbox Tech, Salesforce Engineering, Meituan Tech, Alibaba Cloud docs.",
+      "AIHOT kept as a fast Chinese mirror signal; official product/research pages remain primary evidence for factual claims."
     ]
   },
   "summary": {
-    "headline": "今日技术雷达主线是“Agent 工程化进入生产环境”：上下文层、长期记忆、企业部署和搜广推自动化同时升温。",
+    "headline": "今日技术雷达主线是“Agent 工程化进入生产闭环”：代码上下文、企业部署、AI Search 广告和搜广推实验自动化同时升温。",
     "bullets": [
-      "GitHub 热门榜由 colbymchenry/codegraph 领跑，multica-ai/andrej-karpathy-skills、NousResearch/hermes-agent、Imbad0202/academic-research-skills 紧随，说明 coding agent 的上下文供给、技能治理和长期记忆是当天开源主线。",
+      "GitHub 热门榜仍由 colbymchenry/codegraph 领跑，multica-ai/andrej-karpathy-skills、NousResearch/hermes-agent、Imbad0202/academic-research-skills 紧随，说明 coding agent 的上下文供给、技能治理和长期记忆是当天开源主线。",
       "A 社官方最新动态覆盖 KPMG 276,000+ 员工部署、Stainless 收购、PwC Claude Code/Cowork 落地、Gates Foundation 合作和 Opus 4.7，企业合作、工具连接和模型更新形成同一条商业化路径。",
-      "搜广推部分补入 Google Marketing Live 2026 的 Search/Shopping 智能竞价与预算节奏信号，并继续跟踪 Meta Ads Ranking、Pinterest 转化召回、Amazon 冷启动搜索、Dropbox Dash 相关性标注和 Spotify 实验平台。",
-      "AI 新闻按“信号 -> 影响 -> 动作”重写：Codex 移动端/远程环境、Dell 混合部署、Google I/O AI Search 与 Gemini 3.5 都指向 Agent 从工具入口走向受控生产系统。"
+      "搜广推部分补强 Google Marketing Live 2026 的 Gemini Search ads、Direct Offers/UCP、journey-aware bidding 与 demand-led pacing，并新增 Meta REA，用大厂工程博客解释广告排序实验如何从人工迭代走向可控 agent 自动化。",
+      "AI 新闻按“信号 -> 影响 -> 动作”组织：Codex 移动端/远程环境、Dell 混合部署、Google I/O AI Search 与 AIHOT 工程信号都指向 Agent 从工具入口走向受控生产系统。"
     ]
   },
   "items": [
@@ -2497,13 +2499,13 @@
   ],
   "frontier": {
     "title": "搜广推技术前沿",
-    "subtitle": "专门跟踪搜索、广告、推荐、排序、召回、竞价、个性化、实验平台与向量检索的大厂工程实践。",
+    "subtitle": "Big Tech engineering blogs and research signals for search, ads, recommendation, ranking, retrieval, marketplace and experimentation.",
     "source": "Google Ads & Commerce + Meta Engineering + Pinterest Engineering + Amazon Science + Dropbox Tech + Spotify Engineering + Airbnb Engineering + Netflix TechBlog + Google Research",
     "items": [
       {
         "rank": 1,
-        "title": "Google Marketing Live 2026: AI bidding, budgeting and AI Search ads",
-        "url": "https://blog.google/products/ads-commerce/bidding-budgeting-google-marketing-live-2026/",
+        "title": "Google Marketing Live 2026: Gemini Search ads, UCP checkout, AI bidding and pacing",
+        "url": "https://blog.google/products/ads-commerce/google-marketing-live-2026-collection/",
         "publishedAt": "2026-05-20",
         "source": "Google Ads & Commerce",
         "sourceType": "industry",
@@ -2513,13 +2515,32 @@
           "bidding",
           "budgeting",
           "Search",
-          "Shopping"
+          "Shopping",
+          "agentic commerce"
         ],
-        "summary": "业务问题：Search/Shopping 广告在 AI 搜索和消费波动下，人工调价与日预算越来越追不上需求变化。系统机制：journey-aware bidding 把非直接竞价转化也纳入学习，Smart Bidding Exploration 扩展到 PMax/Shopping，demand-led pacing 按需求预测动态调节日消耗但约束在月预算内。指标/实验：Google 披露 2025-2026 对 Search/Shopping bid strategies 做了 20+ 项改进，campaign total budgets 让广告主手动预算调整平均减少 66%。可借鉴点：广告系统应把“转化质量、预算节奏、探索流量”做成闭环，而不是只优化单次 CTR/CVR。不适用边界：归因链路断裂、CRM 回传质量差或预算审核强依赖人工时，自动竞价会放大错误信号。",
-        "interpretation": "业务问题：Search/Shopping 广告在 AI 搜索和消费波动下，人工调价与日预算越来越追不上需求变化。系统机制：journey-aware bidding 把非直接竞价转化也纳入学习，Smart Bidding Exploration 扩展到 PMax/Shopping，demand-led pacing 按需求预测动态调节日消耗但约束在月预算内。指标/实验：Google 披露 2025-2026 对 Search/Shopping bid strategies 做了 20+ 项改进，campaign total budgets 让广告主手动预算调整平均减少 66%。可借鉴点：广告系统应把“转化质量、预算节奏、探索流量”做成闭环，而不是只优化单次 CTR/CVR。不适用边界：归因链路断裂、CRM 回传质量差或预算审核强依赖人工时，自动竞价会放大错误信号。"
+        "summary": "业务问题：AI Mode/AI Overviews 改变用户发现商品和服务的入口，Search/Shopping 广告既要回答更长链路的研究型意图，又要在需求波动时控制预算节奏。系统机制：Google 把 Gemini-powered ad formats、Conversational Discovery/Highlighted Answers、Direct Offers + UCP native checkout、journey-aware bidding、Smart Bidding Exploration 和 demand-led pacing 组合成“发现-解释-成交-预算”闭环。指标/实验：官方披露 AI Mode 购物用户中 75% 反馈决策更快更有信心，Search/Shopping bid strategies 在 2025-2026 有 20+ 项改进，campaign total budgets 让手动预算调整平均减少 66%。可借鉴点：广告系统应把查询理解、商品解释、转化质量、预算节奏和探索流量放进同一实验框架，而不是只局部优化 CTR/CVR。不适用边界：归因链路断裂、CRM 回传质量差、商家库存/价格不同步或预算审批强依赖人工时，AI 自动竞价和 agentic checkout 会放大错误信号。",
+        "interpretation": "业务问题：AI Mode/AI Overviews 改变用户发现商品和服务的入口，Search/Shopping 广告既要回答更长链路的研究型意图，又要在需求波动时控制预算节奏。系统机制：Google 把 Gemini-powered ad formats、Conversational Discovery/Highlighted Answers、Direct Offers + UCP native checkout、journey-aware bidding、Smart Bidding Exploration 和 demand-led pacing 组合成“发现-解释-成交-预算”闭环。指标/实验：官方披露 AI Mode 购物用户中 75% 反馈决策更快更有信心，Search/Shopping bid strategies 在 2025-2026 有 20+ 项改进，campaign total budgets 让手动预算调整平均减少 66%。可借鉴点：广告系统应把查询理解、商品解释、转化质量、预算节奏和探索流量放进同一实验框架，而不是只局部优化 CTR/CVR。不适用边界：归因链路断裂、CRM 回传质量差、商家库存/价格不同步或预算审批强依赖人工时，AI 自动竞价和 agentic checkout 会放大错误信号。"
       },
       {
         "rank": 2,
+        "title": "Meta REA: ads ranking experiments run by autonomous agent",
+        "url": "https://engineering.fb.com/2026/03/17/developer-tools/ranking-engineer-agent-rea-autonomous-ai-system-accelerating-meta-ads-ranking-innovation/",
+        "publishedAt": "2026-03-17",
+        "source": "Meta Engineering",
+        "sourceType": "industry",
+        "imageUrl": "https://www.google.com/s2/favicons?domain=engineering.fb.com&sz=128",
+        "tags": [
+          "ads",
+          "ranking",
+          "agent",
+          "experiment",
+          "automation"
+        ],
+        "summary": "业务问题：广告排序模型的实验周期以天/周计，工程师需要反复提出假设、启动训练、排错和复盘，成熟模型上手工找增益越来越慢。系统机制：REA 用持久状态、hibernate-and-wake、多源假设生成和三阶段规划，自动推进 ads ranking 模型实验，并在人类批准的算力预算和关键决策点内运行。指标/实验：Meta 披露首次生产 rollout 中，REA 迭代让六个模型平均 accuracy 相对基线翻倍，三名工程师完成八个模型改进方案，工程产出约 5x。可借鉴点：搜广推团队可以把“实验假设生成、训练失败排查、结果归因、下一轮计划”封装成 agent 工作流，而不是只把 LLM 当日志问答助手。不适用边界：如果实验平台缺少可审计配置、预算 guardrail、离线/在线指标映射和人工审批节点，自治 agent 会扩大坏实验的半径。",
+        "interpretation": "业务问题：广告排序模型的实验周期以天/周计，工程师需要反复提出假设、启动训练、排错和复盘，成熟模型上手工找增益越来越慢。系统机制：REA 用持久状态、hibernate-and-wake、多源假设生成和三阶段规划，自动推进 ads ranking 模型实验，并在人类批准的算力预算和关键决策点内运行。指标/实验：Meta 披露首次生产 rollout 中，REA 迭代让六个模型平均 accuracy 相对基线翻倍，三名工程师完成八个模型改进方案，工程产出约 5x。可借鉴点：搜广推团队可以把“实验假设生成、训练失败排查、结果归因、下一轮计划”封装成 agent 工作流，而不是只把 LLM 当日志问答助手。不适用边界：如果实验平台缺少可审计配置、预算 guardrail、离线/在线指标映射和人工审批节点，自治 agent 会扩大坏实验的半径。"
+      },
+      {
+        "rank": 3,
         "title": "Meta Adaptive Ranking Model: Serving LLM-scale models for ads",
         "url": "https://engineering.fb.com/2026/03/31/ml-applications/meta-adaptive-ranking-model-bending-the-inference-scaling-curve-to-serve-llm-scale-models-for-ads/",
         "publishedAt": "2026-03-31",
@@ -2536,7 +2557,7 @@
         "interpretation": "业务问题：广告排序想吃到更大模型的意图理解能力，但广告请求必须亚秒返回且 ROI 要成立。系统机制：请求级计算共享、硬件感知架构、选择性 FP8、融合 kernel、多卡 embedding sharding，把模型复杂度从线性成本压到亚线性。指标/实验：Instagram Q4 2025 上线后目标用户广告转化 +3%、CTR +5%，MFU 多硬件到 35%。可借鉴点：把用户侧高密度信号按 request 计算一次，并用路由决定模型复杂度。不适用边界：流量小、候选少或缺少硬件团队时，先别追 T 级参数。"
       },
       {
-        "rank": 3,
+        "rank": 4,
         "title": "Modernizing Facebook Groups Search with hybrid retrieval",
         "url": "https://engineering.fb.com/2026/04/21/ml-applications/modernizing-the-facebook-groups-search-to-unlock-the-power-of-community-knowledge/",
         "publishedAt": "2026-04-21",
@@ -2553,7 +2574,7 @@
         "interpretation": "业务问题：社区内容搜索中，用户自然语言和帖子词面不一致，发现、消费、验证都有摩擦。系统机制：Unicorn 倒排索引和 SSR 语义检索并行召回，Faiss ANN 取高维语义相似，候选合并后用 MTML L2 ranker 排序，并引入模型化评估。指标/实验：官方称搜索 engagement 和 relevance 有实质提升且 error rate 不升。可借鉴点：关键词召回保精度，向量召回补意图，再让 ranker 融合两种证据。不适用边界：内容规模小或标注闭环不足时，混合检索复杂度可能超过收益。"
       },
       {
-        "rank": 4,
+        "rank": 5,
         "title": "KernelEvolve: Ranking Engineer Agent for AI infrastructure",
         "url": "https://engineering.fb.com/2026/04/02/developer-tools/kernelevolve-how-metas-ranking-engineer-agent-optimizes-ai-infrastructure/",
         "publishedAt": "2026-04-02",
@@ -2570,7 +2591,7 @@
         "interpretation": "业务问题：推荐/广告模型演化太快，异构 GPU/MTIA/CPU 上的自定义 kernel 人工调优跟不上。系统机制：Ranking Engineer Agent 使用结构化推理、检索增强知识和闭环评测来生成并优化 chip-specific kernels。指标/实验：ISCA 2026 论文方向，重点是跨硬件和跨算子的优化吞吐。可借鉴点：把性能工程任务变成可评测 agent loop，而不是让专家手写所有 kernel。不适用边界：没有稳定 benchmark 和硬件 profiling 数据的团队不该盲目自动生成底层优化。"
       },
       {
-        "rank": 5,
+        "rank": 6,
         "title": "Pinterest Homefeed multi-objective optimization evolution",
         "url": "https://medium.com/pinterest-engineering/evolution-of-multi-objective-optimization-at-pinterest-home-feed-06657e33cd10",
         "publishedAt": "2026-04-07",
@@ -2587,7 +2608,7 @@
         "interpretation": "业务问题：首页推荐需要同时平衡短期互动、长期满意度、新场景 adoption 和业务约束。系统机制：在 retrieval/pre-ranking/ranking/re-ranking 级联漏斗末层做多目标优化，DPP/SSD 多样性和视觉、文本、GraphSage embedding 共同定义相似性。指标/实验：文章强调服务延迟下降让 SSD 能容纳更多信号，并支持 soft-spacing。可借鉴点：多目标不要全塞进主 ranker，可在末层重排显式治理多样性和业务约束。不适用边界：候选质量低时，重排不能弥补召回和排序主模型缺陷。"
       },
       {
-        "rank": 6,
+        "rank": 7,
         "title": "Pinterest shopping conversion candidate generation",
         "url": "https://medium.com/pinterest-engineering/from-clicks-to-conversions-architecting-shopping-conversion-candidate-generation-at-pinterest-04cae5e1455b",
         "publishedAt": "2026-04-27",
@@ -2604,7 +2625,7 @@
         "interpretation": "业务问题：购物广告下游转化稀疏且噪声高，传统 engagement 候选生成无法优化 lower-funnel conversion。系统机制：跨 Homefeed、Related Pins、Search 训练单一多表面模型，融合实时上下文、长期偏好、Transformer 用户历史 embedding、商品多模态特征和表现特征。指标/实验：目标是把更高意图商品送入后续复杂排序/竞价。可借鉴点：稀疏 CVR 标签要靠跨表面共享和多模态特征补信号。不适用边界：如果转化回传质量差或归因延迟大，模型会学到错误目标。"
       },
       {
-        "rank": 7,
+        "rank": 8,
         "title": "Amazon BFS for cold-start e-commerce search",
         "url": "https://www.amazon.science/publications/behavioral-feature-boosting-via-substitute-relationships-for-e-commerce-search",
         "publishedAt": "2026-01-01",
@@ -2621,7 +2642,7 @@
         "interpretation": "业务问题：电商新品缺少交互行为，搜索排序可见性低。系统机制：用 substitute relationships 找到能满足相似需求的替代商品，把替代品行为特征聚合给冷启动商品。指标/实验：SIGIR 2026 论文方向，关注搜索排名中的行为特征补强。可借鉴点：冷启动不只靠内容相似，还可以借同需求替代品的行为信号。不适用边界：替代关系质量低或商品需求不可替代时，会把错误人群行为迁移给新品。"
       },
       {
-        "rank": 8,
+        "rank": 9,
         "title": "Amazon PROBES: Performance and relevance observation for better search",
         "url": "https://www.amazon.science/publications/probes-performance-and-relevance-observation-for-better-search",
         "publishedAt": "2026-01-01",
@@ -2638,7 +2659,7 @@
         "interpretation": "业务问题：高质量搜索需要同时看 relevance 和 serving performance，单一离线指标无法发现线上体验退化。系统机制：PROBES 将性能与相关性观察合并到搜索质量监控框架。指标/实验：面向电商、社交、内容发现和企业搜索的通用观测。可借鉴点：搜索平台应把延迟、召回、排序质量和用户行为放入同一观测面板。不适用边界：没有统一 query/document 事件链路时，观测框架会只剩报表。"
       },
       {
-        "rank": 9,
+        "rank": 10,
         "title": "Spotify: Better experiments with LLM evals",
         "url": "https://engineering.atspotify.com/2026/5/better-experiments-with-llm-evals-a-funnel-not-a-fork",
         "publishedAt": "2026-05-18",
@@ -2655,7 +2676,7 @@
         "interpretation": "业务问题：推荐/AI 产品实验命中率低，许多质量问题等到线上 A/B 才暴露。系统机制：把 LLM eval 放在实验前做 verification，再用线上实验做 validation，并用实验结果校准 judge。指标/实验：Spotify 透露约 12% A/B tests 最终正向发布，约 64% 产生有效学习，42% launched experiments 因二级指标回滚。可借鉴点：LLM judge 不是替代实验，而是过滤候选和发现质量模式。不适用边界：业务结果依赖长期留存时，离线 judge 不能单独决策。"
       },
       {
-        "rank": 10,
+        "rank": 11,
         "title": "Dropbox Dash search relevance with LLM-assisted labels",
         "url": "https://dropbox.tech/machine-learning/llm-human-labeling-improving-search-relevance-dropbox-dash",
         "publishedAt": "2026-02-26",
@@ -2672,7 +2693,7 @@
         "interpretation": "业务问题：企业 RAG 只能把少量文档送给 LLM，搜索排序质量直接决定答案质量，但人工相关性标注太贵。系统机制：用少量内部人工标注启动，再用 LLM 扩大 relevance labels，并结合额外上下文评估 query-document 相关性。指标/实验：目标是提升 Dash 搜索 ranking model 的训练数据规模和质量。可借鉴点：企业搜索可以用 LLM 放大标注，但必须用人类基准校准。不适用边界：权限隔离复杂或文档敏感时，标注生成链路要先过数据治理。"
       },
       {
-        "rank": 11,
+        "rank": 12,
         "title": "Airbnb search ranking: interleaving, counterfactuals, BiListing, LTCS",
         "url": "https://medium.com/airbnb-engineering/academic-publications-airbnb-tech-2025-year-in-review-7d79f57d3b52",
         "publishedAt": "2026-02-24",
@@ -2689,7 +2710,7 @@
         "interpretation": "业务问题：住宿搜索转化周期长，A/B 测试慢，且用户在结果页会比较多个 listing。系统机制：Interleaving 和 counterfactual evaluation 加速 ranking 评估；BiListing 用文本/图片多模态 embedding 增强 listing 表征；LTCS 显式建模 comparison-shopping。指标/实验：BiListing 带来 0.425% NDCB gain 和千万美元级增量收入；LTCS NDCG +1.7%、booking conversion +0.6%。可借鉴点：Marketplace ranking 要建模“比较上下文”，不能只给 item 独立打分。不适用边界：缺少稳定曝光和点击/预订日志时，反事实评估会失真。"
       },
       {
-        "rank": 12,
+        "rank": 13,
         "title": "Netflix foundation model for personalized recommendation",
         "url": "https://netflixtechblog.com/foundation-model-for-personalized-recommendation-1a0bd8e02d39",
         "publishedAt": "2025-03-21",
@@ -2706,7 +2727,7 @@
         "interpretation": "业务问题：多个专用推荐模型维护成本高，创新难迁移，短窗口行为无法表达长期偏好。系统机制：用大规模用户交互 token 序列做 next-token/multi-token 训练，结合稀疏注意力、滑窗采样、KV cache、ID embedding 与 metadata embedding 混合，输出用户/内容 embedding 和下游 fine-tuning 能力。指标/实验：Netflix 以 scaling law 和下游集成为验证框架。可借鉴点：推荐 foundation model 的核心是统一偏好表征和稳定 embedding 供下游复用。不适用边界：没有海量高质量交互、低延迟 serving 和冷启动策略时，大模型推荐会变成成本陷阱。"
       },
       {
-        "rank": 13,
+        "rank": 14,
         "title": "Google Research Sequential Attention for leaner models",
         "url": "https://research.google/blog/sequential-attention-making-ai-models-leaner-and-faster-without-sacrificing-accuracy/",
         "publishedAt": "2026-02-04",
@@ -2723,7 +2744,7 @@
         "interpretation": "业务问题：大规模 ML/排序模型有大量异构特征和 embedding tables，特征选择、交叉搜索、embedding 维度优化成本高。系统机制：Sequential Attention 用子集选择算法降低模型冗余，在保持准确率时削减无效特征。指标/实验：文章定位为让模型更瘦更快，尤其适合大规模特征系统。可借鉴点：搜广推特征治理不能只靠人工经验，应把特征价值和交互价值系统化评估。不适用边界：如果特征 pipeline 缺少稳定统计和回放数据，自动剪枝可能误删长尾信号。"
       },
       {
-        "rank": 14,
+        "rank": 15,
         "title": "Salesforce real-time search at 30B monthly queries",
         "url": "https://engineering.salesforce.com/scaling-real-time-search-to-30-billion-queries-with-sub-second-latency-and-0-downtime/",
         "publishedAt": "2026-04-08",
@@ -2761,8 +2782,8 @@
       "title": "AIHOT 5月21日精选",
       "source": "AIHOT 页面抓取",
       "date": "2026-05-21",
-      "generatedAt": "2026-05-21T08:23:13.438Z",
-      "summary": "今日 AIHOT 高分条目集中在 AI 重组、AI 原生影视、编码代理评测、系统级助手、推理网络和模型定价。",
+      "generatedAt": "2026-05-21T09:57:29.640Z",
+      "summary": "今日 AIHOT 高分条目集中在编码代理评测、系统级助手、推理网络和 AI 组织重构；本轮仅作为高频镜像/观察信号，关键事实已优先用官方来源交叉验证。",
       "stats": [
         {
           "label": "精选观察",
@@ -2993,10 +3014,10 @@
         "source": "OpenAI",
         "sourceDetail": "OpenAI 官方",
         "imageUrl": "https://www.google.com/s2/favicons?domain=openai.com&sz=128",
-        "summary": "信号：Codex 进入 ChatGPT 移动端预览，手机可连接正在运行的 Mac/远程环境，查看终端输出、diff、测试结果并批准动作。影响：Coding Agent 的协作形态从单机 IDE 扩展为“长任务 + 人在环 + 多设备接管”，企业会更关注权限、审计和远程环境治理。动作：评估移动审批、hooks、access tokens 和 Remote SSH 是否能接入现有研发合规流程。",
-        "interpretation": "Codex 进入 ChatGPT 移动端预览，手机可连接正在运行的 Mac/远程环境，查看终端输出、diff、测试结果并批准动作。",
-        "impact": "Coding Agent 的协作形态从单机 IDE 扩展为“长任务 + 人在环 + 多设备接管”，企业会更关注权限、审计和远程环境治理。",
-        "action": "评估移动审批、hooks、access tokens 和 Remote SSH 是否能接入现有研发合规流程。",
+        "summary": "信号：OpenAI 官方确认 Codex 进入 ChatGPT 移动端预览，可连接 Mac/Remote SSH 环境，查看终端输出、diff、测试结果、审批动作，并引入 hooks 与 programmatic access tokens。影响：Coding Agent 的协作形态从单机 IDE 扩展为“长任务 + 人在环 + 多设备接管 + 企业受控环境”，权限、审计、密钥边界和远程开发环境会成为采购前置项。动作：把移动审批、hooks、access tokens、Remote SSH 和本地权限策略纳入研发合规评估，不要只按模型编程能力打分。",
+        "interpretation": "Codex 进入 ChatGPT 移动端预览，可连接 Mac/Remote SSH 环境，查看终端输出、diff、测试结果、审批动作，并引入 hooks 与 programmatic access tokens。",
+        "impact": "Coding Agent 的协作形态从单机 IDE 扩展为“长任务 + 人在环 + 多设备接管 + 企业受控环境”，权限、审计、密钥边界和远程开发环境会成为采购前置项。",
+        "action": "把移动审批、hooks、access tokens、Remote SSH 和本地权限策略纳入研发合规评估，不要只按模型编程能力打分。",
         "tags": [
           "Codex",
           "Agent",
@@ -3047,10 +3068,10 @@
         "source": "Google Search",
         "sourceDetail": "Google 官方",
         "imageUrl": "https://www.google.com/s2/favicons?domain=blog.google&sz=128",
-        "summary": "信号：AI Mode 月活超过 10 亿，Search 引入 Information agents、智能搜索框和 Gemini 3.5 Flash。影响：搜索从关键词入口变成可执行任务入口，会改变 SEO、广告、商品发现和内容召回。动作：搜广推团队应评估 query rewrite、多模态输入、答案型结果对流量和转化的影响。",
-        "interpretation": "AI Mode 月活超过 10 亿，Search 引入 Information agents、智能搜索框和 Gemini 3.5 Flash。",
-        "impact": "搜索从关键词入口变成可执行任务入口，会改变 SEO、广告、商品发现和内容召回。",
-        "action": "搜广推团队应评估 query rewrite、多模态输入、答案型结果对流量和转化的影响。",
+        "summary": "信号：Google I/O 2026 宣布 AI Mode 月活级别扩大、Search agents、agentic booking、Personal Intelligence 和 Antigravity/Gemini 3.5 Flash 驱动的生成式 UI/mini apps。影响：Search 从“返回链接”走向“理解意图、执行任务、生成工作台”，会重塑 SEO、广告库存、内容归因和垂直搜索入口。动作：内容和广告团队应重新定义 AI Search 可见性指标：被引用、被解释、被交易、被 agent 调用，比传统排名位置更重要。",
+        "interpretation": "Google I/O 2026 宣布 AI Mode 月活级别扩大、Search agents、agentic booking、Personal Intelligence 和 Antigravity/Gemini 3.5 Flash 驱动的生成式 UI/mini apps。",
+        "impact": "Search 从“返回链接”走向“理解意图、执行任务、生成工作台”，会重塑 SEO、广告库存、内容归因和垂直搜索入口。",
+        "action": "内容和广告团队应重新定义 AI Search 可见性指标：被引用、被解释、被交易、被 agent 调用，比传统排名位置更重要。",
         "tags": [
           "搜索",
           "Agent",
