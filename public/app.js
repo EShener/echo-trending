@@ -92,7 +92,7 @@ function renderReport(report) {
   newsMeta.textContent = `${newsItems.length} updates · ${report.aiNews?.source || "-"}`;
   renderHeroVisual(report, items.length ? items : allItems, frontierItems, newsItems);
 
-  repoGrid.innerHTML = items.length ? items.map(renderRepoCard).join("") : renderRepoEmptyState(keyword, allItems.length);
+  repoGrid.innerHTML = items.length ? items.map(safeRenderRepoCard).join("") : renderRepoEmptyState(keyword, allItems.length);
   frontierGrid.innerHTML = frontierItems.map(renderFrontierCard).join("");
   renderSourceBrief(report.aiNews?.sourceBrief);
   renderAiHotDigest(report.aiNews?.aihot);
@@ -110,13 +110,48 @@ function renderRepoEmptyState(keyword, totalCount) {
   `;
 }
 
+function safeRenderRepoCard(item, index = 0) {
+  try {
+    return renderRepoCard(item, index);
+  } catch (error) {
+    console.error("Failed to render repo card", item?.repo?.fullName || item?.repo?.name || item?.rank, error);
+    return renderRepoFallbackCard(item, index);
+  }
+}
+
+function renderRepoFallbackCard(item = {}, index = 0) {
+  const repo = item.repo || {};
+  const analysis = item.analysis || {};
+  const title = repo.fullName || repo.name || `Rank #${item.rank || index + 1}`;
+  return `
+    <article class="repo-card repo-card-error">
+      <div class="repo-card-top">
+        <a class="repo-visual-link" href="${escapeAttr(repo.url || "#")}" target="_blank" rel="noreferrer">
+          <img class="repo-visual repo-visual-fallback" src="${escapeAttr(repo.avatarUrl || "")}" alt="${escapeAttr(title)} preview" loading="lazy" />
+        </a>
+        <div class="repo-summary-panel">
+          <div class="repo-head">
+            <div class="repo-title">
+              <a href="${escapeAttr(repo.url || "#")}" target="_blank" rel="noreferrer">${escapeHtml(title)}</a>
+              <div class="repo-meta">#${item.rank || index + 1} · ${escapeHtml(repo.language || "Unknown")}</div>
+            </div>
+            <div class="score">${Number(analysis.score || 0) || "-"}</div>
+          </div>
+          <p class="repo-desc strong">${escapeHtml(analysis.oneLiner || repo.description || "这条项目数据已加载，但部分字段需要下次更新补齐。")}</p>
+          <p class="repo-desc">已降级展示基础信息，避免单条异常影响整块项目解读。</p>
+        </div>
+      </div>
+    </article>
+  `;
+}
+
 function renderRepoCard(item, index = 0) {
   const repo = item.repo;
   const analysis = completeAnalysis(item.analysis, repo);
   const topics = repo.topics?.slice(0, 5) || [];
 
   return `
-    <article class="repo-card reveal" style="--delay: ${Math.min(index * 45, 360)}ms">
+    <article class="repo-card" style="--delay: ${Math.min(index * 45, 360)}ms">
       <div class="repo-card-top">
         <a class="repo-visual-link" href="${escapeAttr(repo.url)}" target="_blank" rel="noreferrer">
           <img class="repo-visual" src="${escapeAttr(repo.visualUrl || repo.avatarUrl || "")}" alt="${escapeAttr(repo.fullName)} social preview" loading="lazy" onerror="this.onerror=null;this.src='${escapeAttr(repo.avatarUrl || "")}';this.classList.add('repo-visual-fallback');" />
@@ -662,17 +697,26 @@ function observeMotion() {
     return;
   }
   if (revealObserver) revealObserver.disconnect();
+  const reveal = (target) => target.classList.add("is-visible");
+  const revealIfNearViewport = (target) => {
+    const rect = target.getBoundingClientRect();
+    if (rect.top <= window.innerHeight + 180 && rect.bottom >= -180) reveal(target);
+  };
   revealObserver = new IntersectionObserver(
     (entries) => {
       for (const entry of entries) {
         if (!entry.isIntersecting) continue;
-        entry.target.classList.add("is-visible");
+        reveal(entry.target);
         revealObserver.unobserve(entry.target);
       }
     },
-    { threshold: 0.12 },
+    { rootMargin: "180px 0px", threshold: 0.01 },
   );
-  targets.forEach((target) => revealObserver.observe(target));
+  targets.forEach((target) => {
+    revealIfNearViewport(target);
+    if (!target.classList.contains("is-visible")) revealObserver.observe(target);
+  });
+  window.setTimeout(() => targets.forEach(reveal), 900);
 }
 
 function setupFloatingToc() {
@@ -837,17 +881,21 @@ function compactNumber(value = 0) {
 
 function formatDate(value) {
   if (!value) return "-";
-  return new Intl.DateTimeFormat("zh-CN", { month: "2-digit", day: "2-digit" }).format(new Date(value));
+  const date = new Date(value);
+  if (Number.isNaN(date.getTime())) return String(value);
+  return new Intl.DateTimeFormat("zh-CN", { month: "2-digit", day: "2-digit" }).format(date);
 }
 
 function formatDateTime(value) {
   if (!value) return "-";
+  const date = new Date(value);
+  if (Number.isNaN(date.getTime())) return String(value);
   return new Intl.DateTimeFormat("zh-CN", {
     month: "2-digit",
     day: "2-digit",
     hour: "2-digit",
     minute: "2-digit",
-  }).format(new Date(value));
+  }).format(date);
 }
 
 function escapeHtml(value = "") {
