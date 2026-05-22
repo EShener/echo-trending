@@ -85,8 +85,8 @@ function renderReport(report) {
   maxStars.textContent = metricItems.length ? compactNumber(Math.max(...metricItems.map((item) => item.repo.stars || 0))) : "-";
   topLanguage.textContent = mostCommon(metricItems.map((item) => item.repo.language).filter(Boolean)) || "-";
   intelSources.textContent = `${frontierItems.length + newsItems.length} 条`;
-  briefHeadline.textContent = report.summary?.headline || "今日暂无摘要";
-  briefBullets.innerHTML = (report.summary?.bullets || []).map((item) => `<li>${escapeHtml(item)}</li>`).join("");
+  briefHeadline.innerHTML = renderBriefHeadline(report.summary?.headline || "今日暂无摘要");
+  briefBullets.innerHTML = (report.summary?.bullets || []).map(renderBriefItem).join("");
   repoSectionMeta.textContent = keyword ? `${items.length}/${allItems.length} repos` : `${allItems.length} repos`;
   frontierMeta.textContent = `${frontierItems.length} signals · ${report.frontier?.source || "-"}`;
   newsMeta.textContent = `${newsItems.length} updates · ${report.aiNews?.source || "-"}`;
@@ -167,8 +167,8 @@ function renderRepoCard(item, index = 0) {
             <div class="score">${Number(analysis.score || 0)}</div>
           </div>
 
-          <p class="repo-desc strong">${escapeHtml(analysis.oneLiner || repo.description || "")}</p>
-          <p class="repo-desc">${escapeHtml(analysis.whyItMatters || "")}</p>
+          <p class="repo-desc strong">${escapeHtml(compactCopy(analysis.oneLiner || repo.description || "", 92))}</p>
+          ${renderMicroDetail("为什么值得看", analysis.whyItMatters || "")}
 
           <div class="topic-row">
             ${topics.map((topic) => `<span class="topic">${escapeHtml(topic)}</span>`).join("")}
@@ -265,6 +265,26 @@ function renderHeroTile(item, index) {
   `;
 }
 
+function renderBriefHeadline(value = "") {
+  const compact = compactCopy(value, 58);
+  return `
+    <strong>${escapeHtml(compact)}</strong>
+    ${renderMicroDetail("完整判断", value, compact)}
+  `;
+}
+
+function renderBriefItem(item = "", index = 0) {
+  const labels = ["开源", "A 社", "AIHOT", "搜广推"];
+  const compact = compactCopy(item, 68);
+  return `
+    <li>
+      <span>${escapeHtml(labels[index] || `要点 ${index + 1}`)}</span>
+      <p>${escapeHtml(compact)}</p>
+      ${renderMicroDetail("阅读全文", item, compact)}
+    </li>
+  `;
+}
+
 function renderSignalBoard(analysis, repo) {
   const diagram = analysis.diagram || {};
   const nodes = diagram.nodes || [];
@@ -295,7 +315,7 @@ function renderSignalBoard(analysis, repo) {
             (lens, index) => `
               <article class="signal-lens signal-lens-${index + 1}">
                 <span>${escapeHtml(lens.label)}</span>
-                <strong>${escapeHtml(lens.value)}</strong>
+                <strong title="${escapeAttr(lens.value)}">${escapeHtml(compactCopy(lens.value, 58))}</strong>
               </article>
             `,
           )
@@ -453,6 +473,9 @@ function renderMaturity(maturity) {
 
 function renderFrontierCard(item, index = 0) {
   const tags = item.tags || [];
+  const summary = item.summary || "";
+  const interpretation = item.interpretation || "";
+  const detailCopy = [summary, interpretation].filter(Boolean).join("\n\n");
   return `
     <article class="insight-card reveal" style="--delay: ${Math.min(index * 70, 350)}ms">
       <a href="${escapeAttr(item.url)}" target="_blank" rel="noreferrer">
@@ -461,8 +484,8 @@ function renderFrontierCard(item, index = 0) {
       <div class="card-body">
         <div class="card-kicker">${escapeHtml(item.source || "source")} · ${formatDate(item.publishedAt)}</div>
         <h4><a href="${escapeAttr(item.url)}" target="_blank" rel="noreferrer">${escapeHtml(item.title)}</a></h4>
-        <p>${escapeHtml(item.summary || "")}</p>
-        <p class="interpretation">${escapeHtml(item.interpretation || "")}</p>
+        <p class="card-summary">${escapeHtml(compactCopy(summary || interpretation, 88))}</p>
+        ${renderMicroDetail("展开解读", detailCopy, compactCopy(summary || interpretation, 88))}
         <div class="topic-row">
           ${tags.map((tag) => `<span class="topic">${escapeHtml(tag)}</span>`).join("")}
         </div>
@@ -473,18 +496,15 @@ function renderFrontierCard(item, index = 0) {
 
 function renderNewsCard(item, index = 0) {
   const tags = item.tags || [];
+  const newsDetail = [item.interpretation, item.impact, item.action].filter(Boolean).join("\n\n");
   return `
     <article class="news-card reveal" style="--delay: ${Math.min(index * 55, 330)}ms">
       <img class="source-logo" src="${escapeAttr(item.imageUrl || "")}" alt="${escapeAttr(item.source || "source")}" loading="lazy" onerror="this.onerror=null;this.src='https://dummyimage.com/96x96/eef2ff/1f2a44.png&text=AI';" />
       <div>
         <div class="card-kicker">${escapeHtml(item.sourceDetail || item.source || "AI News")} · ${formatDate(item.publishedAt)}</div>
         <h4><a href="${escapeAttr(item.url)}" target="_blank" rel="noreferrer">${escapeHtml(item.title)}</a></h4>
-        <p>${escapeHtml(item.summary || "")}</p>
-        <div class="news-analysis">
-          <p><span>信号</span>${escapeHtml(item.interpretation || "")}</p>
-          ${item.impact ? `<p><span>影响</span>${escapeHtml(item.impact)}</p>` : ""}
-          ${item.action ? `<p><span>动作</span>${escapeHtml(item.action)}</p>` : ""}
-        </div>
+        <p class="card-summary">${escapeHtml(compactCopy(item.summary || item.interpretation || "", 84))}</p>
+        ${renderMicroDetail("信号 / 影响 / 动作", newsDetail, compactCopy(item.summary || item.interpretation || "", 84))}
         <div class="topic-row">
           ${tags.map((tag) => `<span class="topic">${escapeHtml(tag)}</span>`).join("")}
         </div>
@@ -826,6 +846,31 @@ function renderEmpty() {
   renderSourceBrief(null);
   renderAiHotDigest(null);
   emptyState.hidden = false;
+}
+
+function compactCopy(value = "", maxLength = 80) {
+  const text = String(value).replace(/\s+/g, " ").trim();
+  if (text.length <= maxLength) return text;
+  const sentence = text.split(/(?<=[。！？；;.!?])\s*/)[0] || "";
+  if (sentence.length >= 18 && sentence.length <= maxLength + 12) return sentence;
+  const boundary = text.lastIndexOf("，", maxLength);
+  const cutAt = boundary > maxLength * 0.55 ? boundary : maxLength;
+  return `${text.slice(0, cutAt).trim()}...`;
+}
+
+function renderMicroDetail(label, fullValue = "", compactValue = "") {
+  const full = String(fullValue || "").trim();
+  if (!full || full === compactValue) return "";
+  return `
+    <details class="micro-detail">
+      <summary>${escapeHtml(label)}</summary>
+      ${full
+        .split(/\n{2,}/)
+        .filter(Boolean)
+        .map((part) => `<p>${escapeHtml(part)}</p>`)
+        .join("")}
+    </details>
+  `;
 }
 
 async function fetchJson(path) {
