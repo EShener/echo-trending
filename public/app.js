@@ -44,7 +44,10 @@ async function init() {
       .map((report) => `<option value="${escapeHtml(report.path)}">${escapeHtml(report.date)}</option>`)
       .join("");
 
-    reportSelect.addEventListener("change", () => loadReport(reportSelect.value));
+    reportSelect.addEventListener("change", () => {
+      searchInput.value = "";
+      loadReport(reportSelect.value);
+    });
     searchInput.addEventListener("input", () => renderReport(currentReport));
     setupFloatingToc();
     await loadReport(index.reports[0].path);
@@ -69,30 +72,42 @@ function renderReport(report) {
   repoGrid.hidden = false;
 
   const keyword = searchInput.value.trim().toLowerCase();
-  const items = report.items.filter((item) => matchesKeyword(item, keyword));
+  const allItems = report.items || [];
+  const items = allItems.filter((item) => matchesKeyword(item, keyword));
+  const metricItems = items.length ? items : allItems;
   const frontierItems = report.frontier?.items || [];
   const newsItems = report.aiNews?.items || [];
 
   reportTitle.textContent = `${report.date} 技术雷达日报`;
   repoCount.textContent = String(items.length);
   sourceInfo.textContent = `${report.source?.language || "all"} · ${formatDateTime(report.generatedAt)}`;
-  avgScore.textContent = String(Math.round(avg(items.map((item) => item.analysis.score || 0))));
-  maxStars.textContent = compactNumber(Math.max(...items.map((item) => item.repo.stars || 0)));
-  topLanguage.textContent = mostCommon(items.map((item) => item.repo.language).filter(Boolean)) || "-";
+  avgScore.textContent = metricItems.length ? String(Math.round(avg(metricItems.map((item) => item.analysis.score || 0)))) : "-";
+  maxStars.textContent = metricItems.length ? compactNumber(Math.max(...metricItems.map((item) => item.repo.stars || 0))) : "-";
+  topLanguage.textContent = mostCommon(metricItems.map((item) => item.repo.language).filter(Boolean)) || "-";
   intelSources.textContent = `${frontierItems.length + newsItems.length} 条`;
   briefHeadline.textContent = report.summary?.headline || "今日暂无摘要";
   briefBullets.innerHTML = (report.summary?.bullets || []).map((item) => `<li>${escapeHtml(item)}</li>`).join("");
-  repoSectionMeta.textContent = `${items.length} repos`;
+  repoSectionMeta.textContent = keyword ? `${items.length}/${allItems.length} repos` : `${allItems.length} repos`;
   frontierMeta.textContent = `${frontierItems.length} signals · ${report.frontier?.source || "-"}`;
   newsMeta.textContent = `${newsItems.length} updates · ${report.aiNews?.source || "-"}`;
-  renderHeroVisual(report, items, frontierItems, newsItems);
+  renderHeroVisual(report, items.length ? items : allItems, frontierItems, newsItems);
 
-  repoGrid.innerHTML = items.map(renderRepoCard).join("");
+  repoGrid.innerHTML = items.length ? items.map(renderRepoCard).join("") : renderRepoEmptyState(keyword, allItems.length);
   frontierGrid.innerHTML = frontierItems.map(renderFrontierCard).join("");
   renderSourceBrief(report.aiNews?.sourceBrief);
   renderAiHotDigest(report.aiNews?.aihot);
   newsGrid.innerHTML = newsItems.map(renderNewsCard).join("");
   observeMotion();
+}
+
+function renderRepoEmptyState(keyword, totalCount) {
+  return `
+    <article class="repo-empty-state reveal">
+      <span>Open Source Radar</span>
+      <strong>${keyword ? "当前关键词没有匹配到项目" : "当前日报暂无项目"}</strong>
+      <p>${keyword ? `这份日报共有 ${totalCount} 个 GitHub 项目，但没有项目匹配「${escapeHtml(keyword)}」。切换日期时已自动清空过滤；也可以手动删除关键词重新查看。` : "数据文件已加载，但项目列表为空。请等待下一次自动更新。"}</p>
+    </article>
+  `;
 }
 
 function renderRepoCard(item, index = 0) {
