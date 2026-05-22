@@ -3018,6 +3018,91 @@ h2 {
   display: inline;
 }
 
+/* Full-copy mode: keep text inside cards without hiding content. */
+#briefHeadline {
+  display: block;
+  overflow: visible;
+  text-overflow: clip;
+  -webkit-line-clamp: unset;
+  font-size: clamp(22px, 1.3vw + 2px, 28px);
+  line-height: 1.2;
+}
+
+.briefing {
+  grid-template-columns: minmax(270px, 0.78fr) minmax(440px, 1.22fr);
+  align-items: start;
+}
+
+.briefing > div:first-child,
+.briefing ul {
+  height: auto;
+  overflow: visible;
+}
+
+.briefing ul {
+  grid-column: 1 / -1;
+  columns: 2 360px;
+  column-gap: 34px;
+}
+
+.briefing li,
+.repo-summary-panel .repo-desc,
+.insight-card p,
+.news-card > div > p,
+.aihot-section-card p,
+.aihot-selected-card p,
+.insight-card .interpretation,
+.news-analysis p {
+  display: block;
+  overflow: visible;
+  text-overflow: clip;
+  -webkit-line-clamp: unset;
+  -webkit-box-orient: initial;
+}
+
+.briefing li {
+  break-inside: avoid;
+  margin-bottom: 12px;
+}
+
+.repo-summary-panel .repo-desc,
+.repo-summary-panel .repo-desc.strong {
+  -webkit-line-clamp: unset;
+}
+
+.hero-mosaic {
+  grid-template-rows: repeat(2, auto);
+  min-height: 220px;
+}
+
+.hero-tile {
+  display: flex;
+  min-height: 104px;
+  flex-direction: column;
+  gap: 8px;
+  padding: 10px;
+}
+
+.hero-tile span,
+.hero-tile strong,
+.hero-tile em {
+  position: relative;
+  inset: auto;
+  margin-inline: 0;
+}
+
+.hero-tile strong {
+  overflow: visible;
+  text-overflow: clip;
+  white-space: normal;
+  font-size: 15px;
+  line-height: 1.18;
+}
+
+.hero-tile em {
+  margin-top: auto;
+}
+
 @media (max-width: 1280px) {
   .briefing {
     grid-template-columns: minmax(290px, 0.92fr) minmax(380px, 1.08fr);
@@ -3076,8 +3161,12 @@ h2 {
   }
 
   #briefHeadline {
-    -webkit-line-clamp: 7;
+    -webkit-line-clamp: unset;
     font-size: 25px;
+  }
+
+  .briefing ul {
+    columns: 1;
   }
 
   .briefing > div:first-child,
