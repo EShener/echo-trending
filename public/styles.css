@@ -2930,6 +2930,94 @@ h2 {
   animation: fadeUp 620ms cubic-bezier(0.2, 0.82, 0.18, 1) forwards;
 }
 
+/* Text containment guardrails for mixed Chinese/English intelligence copy. */
+.topbar > *,
+.briefing > *,
+.metrics > *,
+.repo-card,
+.repo-card *,
+.insight-card,
+.news-card,
+.source-brief,
+.aihot-digest,
+.section-head > * {
+  min-width: 0;
+}
+
+.topbar > div:first-child {
+  flex: 1 1 auto;
+}
+
+.top-actions {
+  flex: 0 0 auto;
+}
+
+h2 {
+  max-width: none;
+  overflow-wrap: break-word;
+  font-size: clamp(38px, 3.25vw, 56px);
+}
+
+.briefing > div,
+.briefing ul,
+.metrics div,
+.section-head,
+.repo-summary-panel,
+.card-body,
+.news-card > div,
+.poster-lane,
+.poster-note,
+.signal-lens,
+.analysis-block,
+.decision-strip,
+.maturity-row {
+  overflow: hidden;
+}
+
+#briefHeadline {
+  display: -webkit-box;
+  max-width: 100%;
+  overflow: hidden;
+  overflow-wrap: anywhere;
+  word-break: break-word;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 6;
+  font-size: clamp(23px, 1.55vw + 2px, 31px);
+  line-height: 1.16;
+}
+
+.repo-title a,
+.repo-desc,
+.engineering-read,
+.strategy-read,
+.insight-card h4,
+.insight-card p,
+.news-card h4,
+.news-card p,
+.source-brief p,
+.aihot-digest a,
+.aihot-digest p,
+.poster-lane,
+.poster-lane *,
+.poster-note,
+.poster-note *,
+.signal-lens,
+.signal-lens *,
+.analysis-block,
+.analysis-block *,
+.decision-strip,
+.decision-strip * {
+  max-width: 100%;
+  overflow-wrap: anywhere;
+  word-break: break-word;
+}
+
+.repo-title a,
+.insight-card h4 a,
+.news-card h4 a {
+  display: inline;
+}
+
 @media (max-width: 1280px) {
   .briefing {
     grid-template-columns: minmax(290px, 0.92fr) minmax(380px, 1.08fr);
@@ -2985,6 +3073,11 @@ h2 {
 @media (max-width: 560px) {
   h2 {
     font-size: 34px;
+  }
+
+  #briefHeadline {
+    -webkit-line-clamp: 7;
+    font-size: 25px;
   }
 
   .briefing > div:first-child,
