@@ -89,15 +89,3 @@ https://eshener.github.io/echo-trending/
 ```
 
 仓库不需要额外配置 OpenAI Secrets；深度解读由 Codex 定时任务生成。
-
-## Netlify 发布
-
-本目录仍保留 `netlify.toml` 作为手动备用发布配置。默认小时级自动更新使用 GitHub Pages，避免 Netlify production deploy credits 被小时级任务消耗。
-
-如需临时回退到 Netlify，在 Netlify 新建站点时，配置：
-
-- Base directory: 仓库根目录
-- Build command: `npm run build`
-- Publish directory: `public`
-
-环境变量同样可配置 `OPENAI_API_KEY`、`OPENAI_MODEL`、`REPORT_TIMEZONE`。
