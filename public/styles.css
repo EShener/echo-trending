@@ -3115,6 +3115,10 @@ h2 {
   align-content: center;
 }
 
+.briefing > .hero-visual {
+  min-height: 252px;
+}
+
 #briefHeadline.brief-headline {
   display: grid;
   gap: 12px;
@@ -3132,7 +3136,7 @@ h2 {
 .briefing ul {
   grid-column: 1 / -1;
   display: grid;
-  grid-template-columns: repeat(4, minmax(0, 1fr));
+  grid-template-columns: repeat(auto-fit, minmax(170px, 1fr));
   gap: 14px;
   min-height: 0;
   padding: 0;
@@ -3146,7 +3150,7 @@ h2 {
 .briefing li {
   display: grid;
   gap: 10px;
-  min-height: 180px;
+  min-height: 150px;
   margin: 0;
   padding: 16px;
   break-inside: auto;
@@ -3564,6 +3568,25 @@ h2 {
 }
 
 @media (max-width: 760px) {
+  .sidebar {
+    gap: 14px;
+    padding: 16px;
+  }
+
+  .sidebar .section-nav,
+  .creator-card {
+    display: none;
+  }
+
+  .summary-panel {
+    min-height: 82px;
+    padding: 14px 16px;
+  }
+
+  .summary-panel strong {
+    font-size: 34px;
+  }
+
   .briefing ul,
   .insight-grid,
   .news-grid {
