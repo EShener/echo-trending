@@ -1,0 +1,31 @@
+name: Source suggestion
+description: Suggest a reliable source to track.
+title: "[Source]: "
+labels: ["source"]
+body:
+  - type: input
+    id: source_url
+    attributes:
+      label: Source URL
+      placeholder: "https://engineering.example.com/feed.xml"
+    validations:
+      required: true
+  - type: dropdown
+    id: category
+    attributes:
+      label: Category
+      options:
+        - GitHub/project discovery
+        - AI news
+        - Search/ads/recommendation
+        - Research
+        - Other
+    validations:
+      required: true
+  - type: textarea
+    id: reason
+    attributes:
+      label: Why should Echo Trending track it?
+      description: Explain signal quality, source reliability, and expected value.
+    validations:
+      required: true
