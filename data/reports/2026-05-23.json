@@ -53,7 +53,7 @@
     "trendingUrl": "https://github.com/trending?since=daily",
     "refreshedAt": "2026-05-23 21:00 CST",
     "note": "Shell network cannot resolve github.com in this sandbox, so remote sync/push were attempted via git and web research used official/trusted pages for content refresh.",
-    "networkNote": "git pull/push over SSH blocked by sandbox DNS/control-socket restrictions; local static data and payload validation completed."
+    "networkNote": "git pull over SSH was blocked by sandbox DNS/control-socket restrictions; git push to origin/main succeeded after local validation."
   },
   "summary": {
     "headline": "21:00 刷新显示：GitHub 热门进一步向 agent 上下文、技能规约和团队控制面集中；AIHOT 新增工业 AI、飞书-Claude Code 桥接和模型规格数据库；搜广推前沿则继续围绕生成式搜索广告、自动出价预算和可审计 agent 工具层演进。",
@@ -66,7 +66,7 @@
     "validation": {
       "staticData": "passed at 2026-05-23T13:06:32.490Z: JSON parse, data/public parity, gzip payload parity, index latest report, 12 repos with deepDive/diagram fields, 37 frontier items with business problem/system mechanism/metrics/borrow/boundary shape, 86 AI news items with signal/impact/action shape, Anthropic official News/Research/Engineering/model/Claude Code/enterprise/safety coverage, Big Tech and Chinese search/recommendation sources present, retention <= 90 reports, and git diff --check clean before commit.",
       "verification": "web research refreshed at 2026-05-23 21:00 CST from GitHub Trending, AIHOT, Anthropic official pages, Google Ads & Commerce, Spotify Engineering, Meta Engineering, Pinterest Engineering, Amazon Science and retained Chinese search/recommendation sources.",
-      "networkNote": "git pull/push constrained by current sandbox DNS/SSH restrictions; direct static report and payload reads are used for validation."
+      "networkNote": "git pull was blocked by sandbox DNS/SSH restrictions; validated static data directly and pushed content commit b8f636f to origin/main."
     }
   },
   "items": [
@@ -5119,7 +5119,7 @@
     "sync": {
       "remoteMain": "blocked",
       "detail": "git pull --ff-only origin main failed before content update because the sandbox could not connect to the GitHub SSH control socket and could not resolve github.com.",
-      "push": "pending"
+      "push": "succeeded: git push origin main updated origin/main from 8b1ef74 to b8f636f."
     },
     "keySources": [
       "GitHub Trending official page crawled today at 21:00 CST",
@@ -5149,6 +5149,6 @@
     ],
     "updatedAt": "2026-05-23T13:05:58.408Z",
     "validation": "passed at 2026-05-23T13:06:32.490Z: JSON parse, data/public parity, gzip payload parity, index latest report, 12 repos with deepDive/diagram fields, 37 frontier items with business problem/system mechanism/metrics/borrow/boundary shape, 86 AI news items with signal/impact/action shape, Anthropic official News/Research/Engineering/model/Claude Code/enterprise/safety coverage, Big Tech and Chinese search/recommendation sources present, retention <= 90 reports, and git diff --check clean before commit.",
-    "publishedCommit": "pending"
+    "publishedCommit": "b8f636f content commit pushed to origin/main; this publish-status metadata commit follows on main."
   }
 }
