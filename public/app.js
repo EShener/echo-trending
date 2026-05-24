@@ -474,7 +474,7 @@ function renderMaturity(maturity) {
 function renderFrontierCard(item, index = 0) {
   const tags = item.tags || [];
   const summary = item.summary || "";
-  const interpretation = item.interpretation || "";
+  const interpretation = formatInterpretation(item.interpretation);
   const detailCopy = [summary, interpretation].filter(Boolean).join("\n\n");
   return `
     <article class="insight-card reveal" style="--delay: ${Math.min(index * 70, 350)}ms">
@@ -496,21 +496,46 @@ function renderFrontierCard(item, index = 0) {
 
 function renderNewsCard(item, index = 0) {
   const tags = item.tags || [];
-  const newsDetail = [item.interpretation, item.impact, item.action].filter(Boolean).join("\n\n");
+  const interpretation = formatInterpretation(item.interpretation);
+  const newsDetail = [interpretation, item.impact, item.action].filter(Boolean).join("\n\n");
   return `
     <article class="news-card reveal" style="--delay: ${Math.min(index * 55, 330)}ms">
       <img class="source-logo" src="${escapeAttr(item.imageUrl || "")}" alt="${escapeAttr(item.source || "source")}" loading="lazy" onerror="this.onerror=null;this.src='https://dummyimage.com/96x96/eef2ff/1f2a44.png&text=AI';" />
       <div>
         <div class="card-kicker">${escapeHtml(item.sourceDetail || item.source || "AI News")} · ${formatDate(item.publishedAt)}</div>
         <h4><a href="${escapeAttr(item.url)}" target="_blank" rel="noreferrer">${escapeHtml(item.title)}</a></h4>
-        <p class="card-summary">${escapeHtml(compactCopy(item.summary || item.interpretation || "", 84))}</p>
-        ${renderMicroDetail("信号 / 影响 / 动作", newsDetail, compactCopy(item.summary || item.interpretation || "", 84))}
+        <p class="card-summary">${escapeHtml(compactCopy(item.summary || interpretation || "", 84))}</p>
+        ${renderMicroDetail("信号 / 影响 / 动作", newsDetail, compactCopy(item.summary || interpretation || "", 84))}
         <div class="topic-row">
           ${tags.map((tag) => `<span class="topic">${escapeHtml(tag)}</span>`).join("")}
         </div>
       </div>
     </article>
   `;
+}
+
+function formatInterpretation(value) {
+  if (!value) return "";
+  if (typeof value === "string") return value;
+  if (typeof value !== "object") return String(value);
+
+  const frontierRows = [
+    ["businessProblem", "业务问题"],
+    ["systemMechanism", "系统机制"],
+    ["metricsAndExperiment", "指标/实验"],
+    ["borrowable", "可借鉴点"],
+    ["boundary", "不适用边界"],
+  ];
+  const newsRows = [
+    ["signal", "信号"],
+    ["impact", "影响"],
+    ["action", "动作"],
+  ];
+  const rows = frontierRows.some(([key]) => value[key]) ? frontierRows : newsRows;
+  return rows
+    .map(([key, label]) => (value[key] ? `${label} -> ${value[key]}` : ""))
+    .filter(Boolean)
+    .join("；");
 }
 
 function renderSourceBrief(brief) {
