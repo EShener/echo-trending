@@ -1,6 +1,6 @@
 {
   "date": "2026-05-27",
-  "generatedAt": "2026-05-26T19:35:57.167Z",
+  "generatedAt": "2026-05-26T20:35:36.000Z",
   "source": {
     "provider": "GitHub official Trending + AIHOT + official AI/security/engineering sources + Codex research",
     "query": "https://github.com/trending?since=daily rechecked; AIHOT /ai-news rechecked; Anthropic official News/Research/Engineering rechecked; OpenAI official News rechecked; search/ads/recommendation engineering sources rechecked with Google Research, Meta Engineering/AI, Amazon Science, Netflix TechBlog, Pinterest Engineering, Airbnb Engineering, Spotify Engineering, Salesforce Engineering, Dropbox Tech and Chinese technical sources.",
@@ -16,11 +16,11 @@
     ]
   },
   "summary": {
-    "headline": "2026-05-27 02:30 CST 深度更新：GitHub Trending Top-12 延续；AIHOT 增补 OpenAI 治理风险与华为 AI Coding 时间压缩信号。",
+    "headline": "2026-05-27 04:35 CST 深度更新：GitHub Trending Top-12 复核稳定；补入 Spotify Ads API Agent 工程案例与 OpenAI 巴西内容合作信号。",
     "bullets": [
-      "前三个项目是 Lum1104/Understand-Anything、affaan-m/ECC、rohitg00/ai-engineering-from-scratch；GitHub 官方 Trending 03:30 CST 复核显示 Top-12 顺序稳定，仍以 agent/context/知识工作流项目为主。",
-      "搜广推板块收录 78 条信号，本轮补入 Pinterest GPU-serving two-tower ads lightweight ranking，补强“模型复杂度 -> serving 延迟 -> auction 指标”的工业案例。",
-      "AI 新闻收录 211 条动态，本轮新增 Codex-maxxing 工作流模板化与 AI 购物推荐失准两条，继续覆盖 Anthropic、OpenAI/Codex、Agent、安全和企业采用。"
+      "GitHub 官方 Trending 04:35 CST 复核显示 Top-12 顺序与可见计数保持稳定，仍由 Understand-Anything、ECC、ai-engineering-from-scratch、knowledge-work-plugins 等 agent/context/知识工作流项目领跑。",
+      "搜广推板块收录 79 条信号，本轮新增 Spotify Ads API Claude Code plugin，补强“自然语言 -> API 编排 -> 广告预算/定向可审计执行”的广告平台自动化案例。",
+      "AI 新闻收录 212 条动态，本轮新增 OpenAI 与 Grupo Folha/UOL 官方内容合作，继续覆盖 Anthropic 官方、Claude Code/Agent/Computer Use、安全研究、OpenAI/Codex 与 AIHOT 可见信号。"
     ]
   },
   "items": [
@@ -4662,6 +4662,65 @@
         "sourceType": "official-pinterest-engineering-blog",
         "imageUrl": "https://www.google.com/s2/favicons?domain=medium.com&sz=128",
         "rank": 78
+      },
+      {
+        "title": "Spotify Ads API Claude plugin turns campaign setup into transparent agent workflows",
+        "source": "Spotify Engineering / Ads API Claude Code Plugins",
+        "publishedAt": "2026-05-01T00:00:00Z",
+        "url": "https://engineering.atspotify.com/2026/5/spotify-ads-api-claude-plugins",
+        "summary": "Spotify Engineering 将 Ads API v3、OpenAPI Links、Markdown skills/agents/hooks 和可审计 curl 执行组合成 Claude Code plugin，让“创建广告 campaign”从人工串联 campaign、ad set、ad、targeting、budget、creative 多步 API，变成自然语言驱动但仍可复制、可检查、可回放的工作流。它不是排序模型论文，但对广告平台很关键：LLM agent 正在进入预算、定向和投放操作层，API schema、权限和幂等性会成为广告自动化的生产边界。",
+        "interpretation": {
+          "businessProblem": "广告 API 往往有几十类资源、嵌套定向结构和多级实体关系。营销人员或开发者的真实意图是“投一条满足预算、地域、素材和受众约束的 campaign”，但执行层需要按 campaign -> ad set -> ad -> asset/target lookup 的顺序构造多个请求，任何字段、单位或 ID 传递错误都可能影响真实预算和投放质量。",
+          "systemMechanism": "Spotify 的机制是把 OpenAPI v3 spec 作为事实源，把 Markdown skills/agents/docs 作为任务知识层，用 agent 将自然语言意图拆成 API 调用图；OpenAPI Links 显式编码 response id 如何流向下一步 request，hook 负责 OAuth token 刷新和 header 注入，curl 作为透明执行层暴露每一次请求。系统没有把所有 endpoint 静态塞成 MCP tools，而是按需读取文档和 spec，降低上下文与维护成本。",
+          "metricsAndExperiment": "这类系统不能只看“能否创建成功”，应跟踪意图解析成功率、缺失字段追问次数、schema validation failure、audience estimate 命中率、重复 campaign/ad 防护、执行前确认率、人工修改 curl 比例、预算/定向错误率、API 4xx/5xx、token 刷新失败、端到端耗时和回滚/删除耗时。Spotify 文章强调后续要观察 user flow decomposition bottlenecks，并计划补 idempotency keys，这是广告自动化上线前必须补齐的实验与安全指标。",
+          "borrowable": "可借鉴点是把广告平台 agent 先做成“透明 API 编排器”，而不是黑盒自动投放系统：OpenAPI spec 负责结构化约束，领域文档负责业务语义，agent 负责拆解和追问，hook 负责认证，curl/日志负责审计。搜索广告、商品广告和 marketplace 运营平台都可以用同样方式把低频复杂操作变成可控自然语言工作流。",
+          "boundary": "不适合在没有权限分级、预算上限、幂等键、dry run、人工确认、审计日志和撤销机制时直接开放自动执行。自然语言接口会降低操作门槛，也会降低误操作门槛；对竞价、受众定向、创意素材和合规行业广告，agent 应先停留在草稿生成、校验和解释层，再逐步开放执行权限。"
+        },
+        "diagram": {
+          "title": "Natural-language ads API orchestration",
+          "caption": "The agent maps campaign intent onto an OpenAPI workflow graph, keeping each budget-impacting API call visible and auditable.",
+          "nodes": [
+            {
+              "label": "Campaign intent",
+              "detail": "plain-language goal, audience, budget, dates and creative constraints",
+              "type": "input"
+            },
+            {
+              "label": "OpenAPI workflow graph",
+              "detail": "campaign -> ad set -> ad links, schemas, enums and response IDs",
+              "type": "contract"
+            },
+            {
+              "label": "Agent + hooks",
+              "detail": "decompose steps, ask for missing fields, refresh auth, validate targeting",
+              "type": "agent"
+            },
+            {
+              "label": "Auditable execution",
+              "detail": "curl commands, confirmation, logs, idempotency and rollback plan",
+              "type": "governance"
+            }
+          ],
+          "links": [
+            "translate intent to entities",
+            "validate and pass IDs",
+            "execute with reviewable API calls"
+          ]
+        },
+        "tags": [
+          "ads",
+          "advertising API",
+          "agent workflow",
+          "Claude Code",
+          "OpenAPI",
+          "campaign management",
+          "targeting",
+          "governance",
+          "Spotify"
+        ],
+        "sourceType": "official-spotify-engineering-blog",
+        "imageUrl": "https://www.google.com/s2/favicons?domain=engineering.atspotify.com&sz=128",
+        "rank": 79
       }
     ]
   },
@@ -9921,35 +9980,63 @@
         "category": "AI电商/搜索推荐/商品广告",
         "sourceType": "trusted-aggregation+industry-news",
         "rank": 211
+      },
+      {
+        "imageUrl": "https://www.google.com/s2/favicons?domain=openai.com&sz=128",
+        "title": "OpenAI Brazil media partnership makes answer freshness and attribution a regional product strategy",
+        "source": "OpenAI official / AIHOT visible stream",
+        "sourceDetail": "OpenAI official page published May 25, 2026: “OpenAI, Grupo Folha, and Grupo UOL announce strategic content partnership”; AIHOT /ai-news visible stream rechecked at 2026-05-27 04:35 CST also shows the item as an OpenAI source. The OpenAI News aggregate page still lists May 22 Gartner as the latest visible all-news card, so this partnership is treated as an official index page item surfaced by search/AIHOT rather than the top OpenAI News card.",
+        "publishedAt": "2026-05-27T04:35:00+08:00",
+        "url": "https://openai.com/index/grupo-folha-grupo-uol-partnership/",
+        "summary": "OpenAI 与 Grupo Folha、Grupo UOL 的巴西内容合作说明，AI 答案产品的竞争不只是模型能力，还包括本地可信新闻、引用归因、链接回流和区域合规。对企业知识库、搜索和内容平台来说，下一步不是把网页塞进 RAG，而是建立可授权、可归因、可更新、可审计的内容供应链。",
+        "interpretation": {
+          "signal": "OpenAI 官方宣布首个巴西媒体合作，并强调让 ChatGPT 用户看到基于 Folha/UOL 报道的摘要、归因和原文链接；AIHOT 同步可见该信号，表明内容授权正在成为 AI answer surface 的区域化基础设施。",
+          "impact": "新闻、搜索、品牌和企业知识产品会更重视“可信来源接入 + attribution + freshness + publisher relationship”。没有授权和引用闭环的答案体验更容易遇到版权、可信度、流量回流和本地语境不足问题。",
+          "action": "做 AI 搜索或企业 RAG 时，把内容源分成授权源、公开源、内部源和不可用源；为每类源定义 freshness SLA、引用展示、链接回流、删除/更正流程和评测集，避免只用向量相似度决定答案可信度。"
+        },
+        "impact": "影响 -> AI answer surface 的护城河会更多来自本地可信内容、授权关系、freshness 和引用闭环。",
+        "action": "动作 -> 为 RAG/AI 搜索建立授权源分层、freshness SLA、引用展示、回流链接和更正流程。",
+        "tags": [
+          "OpenAI",
+          "content partnership",
+          "AI search",
+          "attribution",
+          "freshness",
+          "media",
+          "Brazil",
+          "RAG governance"
+        ],
+        "category": "AI搜索/内容授权/可信来源治理",
+        "sourceType": "official-openai+trusted-aggregation",
+        "rank": 212
       }
     ],
     "updatedAt": "2026-05-26T18:33:07.782Z",
     "description": "本轮保持 signal -> impact -> action 的解读形态，重点把 AIHOT 可见流转化为端侧入口治理、模型训练效率、具身智能仿真和产业政策的可执行观察清单。"
   },
   "hourlyUpdate": {
-    "at": "2026-05-27 03:30 CST",
-    "summary": "2026-05-27 03:30 CST 深度更新：GitHub Trending Top-12 顺序和官方计数复核；搜广推补 Pinterest Ads GPU serving 轻排案例；AIHOT 增补 Codex-maxxing 与 AI 购物推荐失准两条可行动信号；Anthropic/OpenAI 官方边界复核。",
+    "at": "2026-05-27 04:35 CST",
+    "summary": "2026-05-27 04:35 CST 深度更新：GitHub Trending Top-12 官方页复核稳定；AIHOT 顶部流复核并补入 OpenAI 巴西内容合作；Anthropic 官方 News/Research/Engineering 无更新；搜广推新增 Spotify Ads API Claude Code plugin 广告工作流工程案例。",
     "sourceBoundary": [
-      "GitHub official Trending daily page rechecked at 2026-05-27 03:30 CST through https://github.com/trending?since=daily. Top-12 order remains: Understand-Anything, ECC, ai-engineering-from-scratch, knowledge-work-plugins, Anthropic-Cybersecurity-Skills, stop-slop, taste-skill, FreeDomain, jellyfin, awesome-free-apps, twenty and OpenStock; visible official counters remain 34,221/2,781/4,721; 193,623/29,892/1,912; 20,062/3,359/2,169; 16,363/1,928/1,698; 9,746/1,163/871; 4,745/394/547; 20,680/1,692/1,440; 166,428/3,027/1,127; 52,266/4,864/91; 4,974/251/738; 46,618/6,618/231; 11,842/1,617/128.",
-      "AIHOT.today /ai-news visible stream was rechecked at 2026-05-27 03:30 CST. Newly incorporated signals include QbitAI/OpenAI Codex-maxxing workflow patterns and 36Kr AI-shopping recommendation mismatch/price consistency/platform-wall observations; retained stream also shows domestic Agent model, Cursor-data Grok coding update, AI self-acceleration, QuestMobile AI source-preference, AI PC, low-token pretraining, DreamZero/world-model efficiency and Korea Physical AI signals.",
-      "Anthropic official News/Research/Engineering were rechecked at 2026-05-27 03:30 CST. Official boundary remains May 25 Chris Olah remarks, May 22 Project Glasswing initial update, May 19 frontier-AI conversation/KPMG alliance, May 18 Stainless acquisition, Research posts including Teaching Claude why and Natural Language Autoencoders, and Engineering posts including How we contain Claude across products, Claude Code auto mode, Managed Agents and quality reports. No newer official Anthropic page displaced those items in this run.",
-      "OpenAI official News was rechecked at 2026-05-27 03:30 CST: May 22 Gartner enterprise coding-agent recognition remains the latest visible official News card, followed by May 20 discrete-geometry research, May 19 content provenance, May 18 Dell/Codex partnership, May 14 Codex and Windows sandbox updates.",
-      "Search/ads/recommendation sources were rechecked across Google Research, Meta Engineering/AI, Amazon Science, Netflix TechBlog, Pinterest Engineering, Airbnb Engineering, Spotify Engineering, Salesforce Engineering, Dropbox Tech and Chinese technical sources. This run adds Pinterest GPU-serving two-tower ads lightweight ranking as a distinct serving-infrastructure case; retained library already covers Pinterest real-time-context ads retrieval, shopping conversion retrieval, request-level deduplication, Amazon PROBES/iterative reranking/behavioral feature boosting, Meta REA/Adaptive Ranking/KernelEvolve, Dropbox Dash relevance labeling, Spotify experimentation separation, Airbnb/Tencent/Alibaba/Meituan and other Chinese big-tech cases."
+      "GitHub official Trending daily page rechecked at 2026-05-27 04:35 CST through https://github.com/trending?since=daily. Top-12 order remains: Understand-Anything, ECC, ai-engineering-from-scratch, knowledge-work-plugins, Anthropic-Cybersecurity-Skills, stop-slop, taste-skill, FreeDomain, jellyfin, awesome-free-apps, twenty and OpenStock; visible official counters remain 34,221/2,781/4,721; 193,623/29,892/1,912; 20,062/3,359/2,169; 16,363/1,928/1,698; 9,746/1,163/871; 4,745/394/547; 20,680/1,692/1,440; 166,428/3,027/1,127; 52,266/4,864/91; 4,974/251/738; 46,618/6,618/231; 11,842/1,617/128.",
+      "AIHOT.today /ai-news visible stream was rechecked at 2026-05-27 04:35 CST. Previously incorporated top-stream items remain covered, including ByteDance Xiaohe AI healthcare, domestic AI app comparison, hotel AI agents, Huawei AI DC, OpenAI Codex Asia adoption, Samsung employee AI access, KPMG Singapore AI governance, Codex-maxxing and AI shopping recommendation mismatch. This run adds the visible OpenAI/Grupo Folha/Grupo UOL strategic content partnership, anchored to the OpenAI official page.",
+      "Anthropic official News/Research/Engineering were rechecked at 2026-05-27 04:35 CST. Official boundary remains May 25 Chris Olah remarks, May 22 Project Glasswing initial update, May 19 frontier-AI conversation/KPMG alliance, May 18 Stainless acquisition, Research posts including Teaching Claude why and Natural Language Autoencoders, and Engineering posts including How we contain Claude across products, Claude Code auto mode, Managed Agents and quality reports. No newer official Anthropic page displaced those items in this run.",
+      "OpenAI official pages were rechecked at 2026-05-27 04:35 CST. The OpenAI News aggregate still shows May 22 Gartner enterprise coding-agent recognition as its latest visible all-news card, while OpenAI search/index pages expose the May 25 Grupo Folha/Grupo UOL Brazil media partnership; this run adds that official partnership as an AI search/content-attribution signal.",
+      "Search/ads/recommendation sources were rechecked across Google Research, Meta Engineering/AI, Amazon Science, Netflix TechBlog, Pinterest Engineering, Airbnb Engineering, Spotify Engineering, Salesforce Engineering, Dropbox Tech and Chinese technical sources. This run adds Spotify Engineering Ads API Claude Code plugin as a distinct ads-platform workflow automation case; retained library already covers Pinterest ads retrieval/ranking/serving, Amazon LLM reranking and behavioral boosting, Meta REA/Adaptive Ranking/KernelEvolve, Airbnb map/search ranking and EBR, Dropbox Dash relevance labeling, Alibaba/Meituan/Tencent/ByteDance/Kuaishou Chinese cases."
     ],
     "changes": [
-      "Refreshed 2026-05-27 report source metadata to the 2026-05-27 03:30 CST recheck boundary.",
-      "Added Pinterest GPU-serving two-tower ads lightweight ranking frontier interpretation.",
-      "Added AIHOT Codex-maxxing workflow-template interpretation.",
-      "Added AIHOT AI-shopping recommendation mismatch / commerce-search boundary interpretation.",
-      "Fixed enriched latest report path in public/reports/index.json to reports/2026-05-27.json for front-end readability."
+      "Refreshed 2026-05-27 report source metadata to the 2026-05-27 04:35 CST recheck boundary.",
+      "Added Spotify Ads API Claude Code plugin frontier interpretation for natural-language advertising API orchestration.",
+      "Added OpenAI Grupo Folha/UOL Brazil media partnership AI news interpretation for content attribution and AI search freshness governance.",
+      "Regenerated public report copy, enriched index counts and compressed payload for front-end readability."
     ],
-    "validation": "passed at 2026-05-27 03:36 CST: node --check scripts/daily.mjs, node --check public/app.js, git diff --check, JSON parse, data/public parity, gzip payload parity, enriched index latest path reports/2026-05-27.json with counts, front-end compressed payload map for 2026-05-27, static latest report file existence, rank sequence 1-12, frontier and AI rank sequences, repo deepDive/diagram/poster fields, 78 frontier items with business problem/system mechanism/metrics/borrow/boundary shape including new Pinterest GPU-serving two-tower ads lightweight ranking diagram, 211 AI news items with signal/impact/action shape including Codex-maxxing and AI shopping recommendation mismatch, Anthropic official News/Research/Engineering/model/Claude Code/Agent/Computer Use/enterprise/safety coverage, OpenAI/Codex official coverage, big-tech and Chinese 搜广推 coverage, and retention <= 90 reports. Browser localhost verification was blocked by Browser security policy for 127.0.0.1:8793; static readability was confirmed through file/index/payload parity and path checks.",
-    "publication": "published at 2026-05-27 03:39 CST: content commit f39de415ef8e8ec12c92809239b0de3910606dec pushed to origin/main; GitHub Actions Echo Trending Deploy run 26470798190 completed successfully; GitHub Pages build/deploy run 26470804292 completed successfully for gh-pages head 48d86b236e64563679edbde3141d3cc9a7da4ec7; deployment 4825867825 succeeded with environment URL https://eshener.github.io/echo-trending/; Pages API returned status built. Node.js 20 deprecation annotation appeared again for actions/checkout@v4 and actions/upload-artifact@v4. Browser localhost check was blocked by Browser security policy, so readability was confirmed through local file/index/payload parity plus GitHub Pages deployment APIs."
+    "validation": "passed at 2026-05-27 04:39 CST: node --check scripts/daily.mjs, node --check public/app.js, git diff --check, JSON parse, data/public parity, gzip payload parity, enriched index latest path reports/2026-05-27.json with counts, front-end compressed payload map for 2026-05-27, static latest report file existence, repo/frontier/AI rank sequences, repo deepDive/diagram fields, 79 frontier items with required business problem/system mechanism/metrics/borrow/boundary shape, new Spotify Ads API Claude Code plugin diagram, 212 AI news items with signal/impact/action fields, new OpenAI Brazil media partnership signal/impact/action shape, Anthropic official News/Research/Engineering/model/Claude Code/Agent/Computer Use/enterprise/safety coverage, OpenAI/Codex official coverage, big-tech and Chinese 搜广推 coverage, and retention <= 90 reports.",
+    "publication": "pending commit, push and GitHub Pages deployment verification"
   },
-  "validation": "passed at 2026-05-27 03:36 CST: node --check scripts/daily.mjs, node --check public/app.js, git diff --check, JSON parse, data/public parity, gzip payload parity, enriched index latest path reports/2026-05-27.json with counts, front-end compressed payload map for 2026-05-27, static latest report file existence, rank sequence 1-12, frontier and AI rank sequences, repo deepDive/diagram/poster fields, 78 frontier items with business problem/system mechanism/metrics/borrow/boundary shape including new Pinterest GPU-serving two-tower ads lightweight ranking diagram, 211 AI news items with signal/impact/action shape including Codex-maxxing and AI shopping recommendation mismatch, Anthropic official News/Research/Engineering/model/Claude Code/Agent/Computer Use/enterprise/safety coverage, OpenAI/Codex official coverage, big-tech and Chinese 搜广推 coverage, and retention <= 90 reports. Browser localhost verification was blocked by Browser security policy for 127.0.0.1:8793; static readability was confirmed through file/index/payload parity and path checks.",
+  "validation": "passed at 2026-05-27 04:39 CST: node --check scripts/daily.mjs, node --check public/app.js, git diff --check, JSON parse, data/public parity, gzip payload parity, enriched index latest path reports/2026-05-27.json with counts, front-end compressed payload map for 2026-05-27, static latest report file existence, repo/frontier/AI rank sequences, repo deepDive/diagram fields, 79 frontier items with required business problem/system mechanism/metrics/borrow/boundary shape, new Spotify Ads API Claude Code plugin diagram, 212 AI news items with signal/impact/action fields, new OpenAI Brazil media partnership signal/impact/action shape, Anthropic official News/Research/Engineering/model/Claude Code/Agent/Computer Use/enterprise/safety coverage, OpenAI/Codex official coverage, big-tech and Chinese 搜广推 coverage, and retention <= 90 reports.",
   "operations": {
-    "validation": "passed at 2026-05-27 03:36 CST: node --check scripts/daily.mjs, node --check public/app.js, git diff --check, JSON parse, data/public parity, gzip payload parity, enriched index latest path reports/2026-05-27.json with counts, front-end compressed payload map for 2026-05-27, static latest report file existence, rank sequence 1-12, frontier and AI rank sequences, repo deepDive/diagram/poster fields, 78 frontier items with business problem/system mechanism/metrics/borrow/boundary shape including new Pinterest GPU-serving two-tower ads lightweight ranking diagram, 211 AI news items with signal/impact/action shape including Codex-maxxing and AI shopping recommendation mismatch, Anthropic official News/Research/Engineering/model/Claude Code/Agent/Computer Use/enterprise/safety coverage, OpenAI/Codex official coverage, big-tech and Chinese 搜广推 coverage, and retention <= 90 reports. Browser localhost verification was blocked by Browser security policy for 127.0.0.1:8793; static readability was confirmed through file/index/payload parity and path checks.",
-    "publication": "published at 2026-05-27 03:39 CST: content commit f39de415ef8e8ec12c92809239b0de3910606dec pushed to origin/main; GitHub Actions Echo Trending Deploy run 26470798190 completed successfully; GitHub Pages build/deploy run 26470804292 completed successfully for gh-pages head 48d86b236e64563679edbde3141d3cc9a7da4ec7; deployment 4825867825 succeeded with environment URL https://eshener.github.io/echo-trending/; Pages API returned status built. Node.js 20 deprecation annotation appeared again for actions/checkout@v4 and actions/upload-artifact@v4. Browser localhost check was blocked by Browser security policy, so readability was confirmed through local file/index/payload parity plus GitHub Pages deployment APIs.",
+    "validation": "passed at 2026-05-27 04:39 CST: node --check scripts/daily.mjs, node --check public/app.js, git diff --check, JSON parse, data/public parity, gzip payload parity, enriched index latest path reports/2026-05-27.json with counts, front-end compressed payload map for 2026-05-27, static latest report file existence, repo/frontier/AI rank sequences, repo deepDive/diagram fields, 79 frontier items with required business problem/system mechanism/metrics/borrow/boundary shape, new Spotify Ads API Claude Code plugin diagram, 212 AI news items with signal/impact/action fields, new OpenAI Brazil media partnership signal/impact/action shape, Anthropic official News/Research/Engineering/model/Claude Code/Agent/Computer Use/enterprise/safety coverage, OpenAI/Codex official coverage, big-tech and Chinese 搜广推 coverage, and retention <= 90 reports.",
+    "publication": "pending commit, push and GitHub Pages deployment verification",
     "network": "git pull over GitHub SSH failed before editing with sandbox DNS/control-socket restrictions; local branch was clean at start."
   }
 }
