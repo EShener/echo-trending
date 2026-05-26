@@ -1,6 +1,6 @@
 {
   "date": "2026-05-27",
-  "generatedAt": "2026-05-26T21:38:05.610Z",
+  "generatedAt": "2026-05-26T22:38:13.274Z",
   "source": {
     "provider": "GitHub official Trending + AIHOT + official AI/security/engineering sources + Codex research",
     "query": "https://github.com/trending?since=daily rechecked; AIHOT /ai-news rechecked; Anthropic official News/Research/Engineering rechecked; OpenAI official News rechecked; search/ads/recommendation engineering sources rechecked with Google Research, Meta Engineering/AI, Amazon Science, Netflix TechBlog, Pinterest Engineering, Airbnb Engineering, Spotify Engineering, Salesforce Engineering, Dropbox Tech and Chinese technical sources.",
@@ -16,11 +16,11 @@
     ]
   },
   "summary": {
-    "headline": "2026-05-27 05:35 CST 深度更新：GitHub Trending Top-12 计数刷新；AIHOT 新增 AI 计费基础设施信号；Anthropic 官方边界稳定。",
+    "headline": "2026-05-27 06:35 CST 深度更新：GitHub Trending Top-12 稳定；新增 Anthropic 官方 agent containment 工程安全信号。",
     "bullets": [
-      "GitHub 官方 Trending 2026-05-27 05:35 CST 复核显示 Top-12 顺序稳定，Understand-Anything、ECC、ai-engineering-from-scratch、knowledge-work-plugins 继续领跑，所有可见 stars/forks/today counters 已刷新。",
-      "搜广推板块保留 79 条信号，本轮重点复核 Pinterest/Meta/Amazon/Spotify/Dropbox/Airbnb/Netflix/Google Research 及中文技术源；未新增重复案例，保留最新 Pinterest user-sequence、contextual sequential ads retrieval、Spotify Ads API agent 等工业案例。",
-      "AI 新闻收录 213 条动态，本轮新增 Flexprice/AI billing，补强 AI-native 产品商业化基础设施视角；Anthropic 官方 News/Research/Engineering、Claude Code/Agent/Computer Use、安全研究和 OpenAI/Codex 覆盖继续保留。"
+      "GitHub 官方 Trending 2026-05-27 06:35 CST 复核显示 Top-12 顺序稳定，Understand-Anything、ECC、ai-engineering-from-scratch、knowledge-work-plugins 继续领跑；官方可见 stars/forks/today counters 与上一轮一致。",
+      "搜广推板块保留 79 条信号，本轮专门复核 Google Research、Meta Engineering/AI、Amazon Science、Netflix TechBlog、Pinterest Engineering、Airbnb Engineering、Spotify Engineering、Salesforce Engineering、Dropbox Tech 及阿里/腾讯/美团/字节等中文源；未新增非重复大厂案例，保留 Pinterest、Meta、Amazon、Spotify、Dropbox、腾讯元宝和 PAI-Rec 等工业样本。",
+      "AI 新闻收录 214 条动态，本轮新增 Anthropic 官方 containment engineering 解读，补强 Claude Code/Cowork/Computer Use 的生产安全边界；OpenAI/Codex、AIHOT 和 A 社官方 News/Research/Engineering 覆盖继续保留。"
     ]
   },
   "items": [
@@ -10038,34 +10038,66 @@
         "category": "AI商业化/计量计费/产品基础设施",
         "sourceType": "trusted-aggregation+official-docs",
         "rank": 213
+      },
+      {
+        "imageUrl": "https://www.google.com/s2/favicons?domain=anthropic.com&sz=128",
+        "title": "Anthropic containment engineering reframes Claude Code and Cowork safety around blast-radius limits",
+        "source": "Anthropic Engineering official",
+        "sourceDetail": "Anthropic Engineering page rechecked at 2026-05-27 06:35 CST. Official featured article published May 25, 2026: \"How we contain Claude across products\". It covers claude.ai code execution, Claude Code, Claude Cowork, auto mode, devcontainers, VM isolation, egress controls, prompt-injection and agent identity/security guidance. AIHOT visible stream was also rechecked and showed Anthropic/Karpathy secondary coverage, but this item is anchored to the official Anthropic Engineering page.",
+        "publishedAt": "2026-05-27T06:35:00+08:00",
+        "url": "https://www.anthropic.com/engineering/how-we-contain-claude",
+        "summary": "Anthropic 的 containment 文章把 Claude Code、Claude Cowork 和 claude.ai 的安全问题从“模型会不会听话”推进到“系统能不能限制 blast radius”。它披露了权限提示疲劳、项目本地配置在信任提示前执行、用户粘贴恶意 prompt、approved-domain exfiltration、VM 隔离与 egress proxy 等真实工程失效模式。对正在部署 coding agent、office agent 和 Computer Use 的团队来说，这是一条官方级别的安全架构边界信号。",
+        "interpretation": {
+          "signal": "Anthropic 官方 Engineering 将 2026-05-25 的 containment 文章置为 featured，并具体覆盖 Claude Code、Claude Cowork、claude.ai code execution、auto mode、sandbox、VM、egress controls 和 prompt-injection 事故，说明 agent 安全从模型对齐扩展到运行环境、权限边界和网络出口治理。",
+          "impact": "企业采用 agent 时，风险不再只来自模型幻觉，还来自本地工作区、配置文件、MCP/tool 链、凭证、approved domains、用户粘贴指令和长期权限疲劳。只依赖人工确认或安全分类器会在高频操作中失效；真正可控的生产方案需要 deterministic containment、最小挂载、出网策略、身份隔离和审计回放。",
+          "action": "部署 Claude Code/Cowork/Computer Use 类 agent 前，建立 agent threat model：把 workspace mount、project config load、shell/network、credential access、MCP server、allowed domain、file upload 和 destructive action 列成权限矩阵；默认使用 devcontainer/VM/sandbox 与 egress allowlist，给高风险操作加 dry run、审计日志、回滚脚本和红队回放。"
+        },
+        "impact": "影响 -> agent 安全竞争进入运行时隔离、权限边界、出网控制、身份治理和审计回放层。",
+        "action": "动作 -> 为 Claude Code/Cowork/Computer Use 类工作流建立 sandbox/VM、egress、MCP、凭证和 destructive action 权限矩阵。",
+        "tags": [
+          "Anthropic",
+          "Claude Code",
+          "Claude Cowork",
+          "Computer Use",
+          "agent security",
+          "sandbox",
+          "VM isolation",
+          "egress control",
+          "prompt injection",
+          "Claude Engineering"
+        ],
+        "category": "A社官方/Agent安全/Claude Code与Cowork工程",
+        "sourceType": "official-anthropic-engineering",
+        "rank": 214
       }
     ],
-    "updatedAt": "2026-05-26T21:38:05.610Z",
+    "updatedAt": "2026-05-26T22:38:13.274Z",
     "description": "AIHOT 与官方来源小时级复核；本轮新增 AI 计费/计量基础设施条目，其余 Anthropic/OpenAI/Claude/Codex/agent 安全与企业合作覆盖保留。"
   },
   "hourlyUpdate": {
-    "at": "2026-05-27 05:35 CST",
-    "summary": "2026-05-27 05:35 CST 深度更新：GitHub Trending Top-12 官方页复核稳定但计数上升；AIHOT 顶部流补入 Flexprice/AI billing；Anthropic 官方 News/Research/Engineering 无更新；搜广推大厂工程源完成复核并保留非重复高信号案例。",
+    "at": "2026-05-27 06:35 CST",
+    "summary": "2026-05-27 06:35 CST 深度更新：GitHub Trending Top-12 官方页复核稳定；AIHOT 顶部流复核后未重复低信号条目；Anthropic 官方 Engineering 新增 containment/Claude Code/Cowork 安全边界解读；搜广推大厂和中文工程源完成复核。",
     "sourceBoundary": [
-      "GitHub official Trending daily page rechecked at 2026-05-27 05:35 CST through https://github.com/trending?since=daily. Top-12 order remains: Understand-Anything, ECC, ai-engineering-from-scratch, knowledge-work-plugins, Anthropic-Cybersecurity-Skills, stop-slop, taste-skill, FreeDomain, jellyfin, awesome-free-apps, twenty, OpenStock; visible official counters are 35,424/2,852/4,721; 194,167/29,951/1,912; 20,561/3,431/2,169; 16,583/1,946/1,698; 9,995/1,180/871; 4,945/402/547; 21,306/1,721/1,440; 167,125/3,073/1,127; 52,345/4,870/91; 5,176/263/738; 46,781/6,643/237; 12,018/1,624/128.",
-      "AIHOT.today /ai-news visible stream was rechecked at 2026-05-27 05:35 CST. Previously incorporated top-stream items remain covered, including Unitree IPO, Huawei AI DC, OpenAI Codex Asia adoption, VLA spatial model, Codex-maxxing, AI shopping recommendation mismatch, and OpenAI Brazil media partnership. This run adds Flexprice AI billing/metering as an AI-native pricing infrastructure signal, cross-checked with ETEntrepreneur and Flexprice official docs.",
-      "Anthropic official News/Research/Engineering were rechecked at 2026-05-27 05:35 CST. Official boundary remains May 25 Chris Olah remarks, May 22 Project Glasswing initial update, May 19 frontier-AI conversation/KPMG alliance, May 18 Stainless acquisition, Research posts including Teaching Claude why and Natural Language Autoencoders, and Engineering posts including How we contain Claude across products, Claude Code auto mode, Managed Agents and quality reports. No newer official Anthropic page displaced those items in this run.",
-      "OpenAI official pages and Codex-related search surfaces were rechecked at 2026-05-27 05:35 CST. Retained boundary includes OpenAI Brazil media partnership, Gartner coding-agent recognition, Codex enterprise/worldwide scaling and regional Codex adoption signals; no newer official OpenAI page displaced the retained items in this run.",
-      "Search/ads/recommendation sources were rechecked across Google Research, Meta Engineering/AI, Amazon Science, Netflix TechBlog, Pinterest Engineering, Airbnb Engineering, Spotify Engineering, Salesforce Engineering, Dropbox Tech and Chinese technical sources. No new non-duplicative article displaced retained Pinterest contextual sequential ads retrieval/user-sequence/Feature Trimmer, Spotify Ads API Claude plugin, Meta REA/Adaptive Ranking/KernelEvolve, Amazon PROBES/iterative reranking/behavioral boosting, Airbnb map/search ranking and EBR, Dropbox Dash relevance labeling, Alibaba/Meituan/Tencent/ByteDance/Kuaishou coverage."
+      "GitHub official Trending daily page rechecked at 2026-05-27 06:35 CST through https://github.com/trending?since=daily. Top-12 order remains: Understand-Anything, ECC, ai-engineering-from-scratch, knowledge-work-plugins, Anthropic-Cybersecurity-Skills, stop-slop, taste-skill, FreeDomain, jellyfin, awesome-free-apps, twenty, OpenStock; visible official counters remain 35,424/2,852/4,721; 194,167/29,951/1,912; 20,561/3,431/2,169; 16,583/1,946/1,698; 9,995/1,180/871; 4,945/402/547; 21,306/1,721/1,440; 167,125/3,073/1,127; 52,345/4,870/91; 5,176/263/738; 46,781/6,643/237; 12,018/1,624/128.",
+      "AIHOT.today /ai-news visible stream was rechecked at 2026-05-27 06:35 CST. Visible top stream still includes Claude/Anthropic secondary coverage, Unitree IPO, Huawei time-compression, OpenAI governance, VLA spatial model and Hugging Face model cards. Previously incorporated AIHOT items remain covered; this run adds an official Anthropic Engineering containment item instead of duplicating lower-signal secondary items.",
+      "Anthropic official News/Research/Engineering were rechecked at 2026-05-27 06:35 CST. News boundary remains May 25 Chris Olah remarks, May 22 Project Glasswing initial update, May 19 frontier-AI conversation/KPMG alliance, May 18 Stainless acquisition. Research boundary remains Project Glasswing, Teaching Claude why and Natural Language Autoencoders. Engineering now highlights the May 25 \"How we contain Claude across products\" article, which this run adds as an official Claude Code/Cowork/agent safety item; older Engineering coverage including Claude Code quality reports, Managed Agents and auto mode remains retained.",
+      "OpenAI official News page was rechecked at 2026-05-27 06:35 CST. Latest visible official card remains May 22 Gartner enterprise coding agents, followed by May 20 discrete geometry, May 19 content provenance, May 18 Dell/Codex hybrid enterprise, May 14 Codex anywhere and May 13 Codex Windows sandbox. OpenAI Brazil media partnership and Codex regional adoption items remain retained from prior runs.",
+      "Search/ads/recommendation sources were explicitly rechecked across Google Research, Meta Engineering/AI, Amazon Science, Netflix TechBlog, Pinterest Engineering, Airbnb Engineering, Spotify Engineering, Salesforce Engineering, Dropbox Tech and accessible Chinese technical sources from Alibaba, Tencent, Meituan and ByteDance/Volcengine. No new non-duplicative source displaced retained Pinterest request-level dedup/shopping conversion/two-tower GPU serving/multi-objective homefeed, Meta REA/Adaptive Ranking/KernelEvolve, Amazon behavioral boosting/iterative reranking/PROBES, Spotify Ads API Claude plugin, Airbnb map/search ranking and EBR, Dropbox Dash relevance labeling, Tencent Yuanbao AI Search and Alibaba PAI-Rec coverage."
     ],
     "changes": [
-      "Refreshed 2026-05-27 report source metadata to the 2026-05-27 05:35 CST recheck boundary.",
-      "Updated GitHub official Trending visible stars/forks/stars-today counters for all Top-12 repositories.",
-      "Added Flexprice AI billing/metering AI news interpretation for AI-native usage pricing, credit, entitlement and cost-governance infrastructure.",
+      "Refreshed 2026-05-27 report source metadata to the 2026-05-27 06:35 CST recheck boundary.",
+      "Added official Anthropic Engineering containment interpretation covering Claude Code, Claude Cowork, claude.ai code execution, sandbox/VM isolation, egress controls, prompt injection and production agent security actions.",
+      "Reconfirmed GitHub official Trending Top-12 order and visible counters without replacing existing project deep dives.",
+      "Rechecked big-tech and Chinese search/ads/recommendation engineering sources and retained non-duplicative industrial cases.",
       "Regenerated public report copy, enriched index counts and compressed payload for front-end readability."
     ],
-    "validation": "passed at 2026-05-27 05:38 CST: node --check scripts/daily.mjs, node --check public/app.js, git diff --check, JSON parse, data/public parity, gzip payload parity, enriched index latest path reports/2026-05-27.json with counts, front-end compressed payload map for 2026-05-27, static latest report file existence, repo/frontier/AI rank sequences, repo deepDive/diagram fields, 79 frontier items with required business problem/system mechanism/metrics/borrow/boundary shape, 213 AI news items with signal/impact/action fields, new Flexprice AI billing/metering signal/impact/action shape, Anthropic official News/Research/Engineering/model/Claude Code/Agent/Computer Use/enterprise/safety coverage, OpenAI/Codex official coverage, big-tech and Chinese 搜广推 coverage, and retention <= 90 reports.",
-    "publication": "published at 2026-05-27 05:39 CST: content commit d2eec8d80cfee202547fa44df4114055fc760646 pushed to origin/main; GitHub Actions Echo Trending Deploy run 26476697697 completed successfully; GitHub Pages build/deployment run 26476705232 completed successfully for gh-pages head 038ad59e5d291150fdcb902066edf4e64dc1f29a; deployment 4827174702 succeeded with environment URL https://eshener.github.io/echo-trending/; Pages API returned status built. Node.js 20 deprecation annotations appeared again for actions/checkout@v4 and actions/upload-artifact@v4."
+    "validation": "passed at 2026-05-27 06:39 CST: node --check scripts/daily.mjs, node --check public/app.js, git diff --check, JSON parse, data/public parity, gzip payload parity, enriched index latest path reports/2026-05-27.json with counts, static latest report file existence, repo/frontier/AI rank sequences, repo deepDive/diagram fields, 79 frontier items with required business problem/system mechanism/metrics/borrow/boundary shape, 214 AI news items with signal/impact/action fields, new official Anthropic containment engineering signal/impact/action shape, Anthropic official News/Research/Engineering/model/Claude Code/Agent/Computer Use/enterprise/safety coverage, OpenAI/Codex official coverage, big-tech and Chinese 搜广推 coverage, and retention <= 90 reports.",
+    "publication": "pending publication for 2026-05-27 06:35 CST update."
   },
-  "validation": "passed at 2026-05-27 05:38 CST: node --check scripts/daily.mjs, node --check public/app.js, git diff --check, JSON parse, data/public parity, gzip payload parity, enriched index latest path reports/2026-05-27.json with counts, front-end compressed payload map for 2026-05-27, static latest report file existence, repo/frontier/AI rank sequences, repo deepDive/diagram fields, 79 frontier items with required business problem/system mechanism/metrics/borrow/boundary shape, 213 AI news items with signal/impact/action fields, new Flexprice AI billing/metering signal/impact/action shape, Anthropic official News/Research/Engineering/model/Claude Code/Agent/Computer Use/enterprise/safety coverage, OpenAI/Codex official coverage, big-tech and Chinese 搜广推 coverage, and retention <= 90 reports.",
+  "validation": "passed at 2026-05-27 06:39 CST: node --check scripts/daily.mjs, node --check public/app.js, git diff --check, JSON parse, data/public parity, gzip payload parity, enriched index latest path reports/2026-05-27.json with counts, static latest report file existence, repo/frontier/AI rank sequences, repo deepDive/diagram fields, 79 frontier items with required business problem/system mechanism/metrics/borrow/boundary shape, 214 AI news items with signal/impact/action fields, new official Anthropic containment engineering signal/impact/action shape, Anthropic official News/Research/Engineering/model/Claude Code/Agent/Computer Use/enterprise/safety coverage, OpenAI/Codex official coverage, big-tech and Chinese 搜广推 coverage, and retention <= 90 reports.",
   "operations": {
-    "validation": "passed at 2026-05-27 05:38 CST: node --check scripts/daily.mjs, node --check public/app.js, git diff --check, JSON parse, data/public parity, gzip payload parity, enriched index latest path reports/2026-05-27.json with counts, front-end compressed payload map for 2026-05-27, static latest report file existence, repo/frontier/AI rank sequences, repo deepDive/diagram fields, 79 frontier items with required business problem/system mechanism/metrics/borrow/boundary shape, 213 AI news items with signal/impact/action fields, new Flexprice AI billing/metering signal/impact/action shape, Anthropic official News/Research/Engineering/model/Claude Code/Agent/Computer Use/enterprise/safety coverage, OpenAI/Codex official coverage, big-tech and Chinese 搜广推 coverage, and retention <= 90 reports.",
-    "publication": "published at 2026-05-27 05:39 CST: content commit d2eec8d80cfee202547fa44df4114055fc760646 pushed to origin/main; GitHub Actions Echo Trending Deploy run 26476697697 completed successfully; GitHub Pages build/deployment run 26476705232 completed successfully for gh-pages head 038ad59e5d291150fdcb902066edf4e64dc1f29a; deployment 4827174702 succeeded with environment URL https://eshener.github.io/echo-trending/; Pages API returned status built. Node.js 20 deprecation annotations appeared again for actions/checkout@v4 and actions/upload-artifact@v4.",
+    "validation": "passed at 2026-05-27 06:39 CST: node --check scripts/daily.mjs, node --check public/app.js, git diff --check, JSON parse, data/public parity, gzip payload parity, enriched index latest path reports/2026-05-27.json with counts, static latest report file existence, repo/frontier/AI rank sequences, repo deepDive/diagram fields, 79 frontier items with required business problem/system mechanism/metrics/borrow/boundary shape, 214 AI news items with signal/impact/action fields, new official Anthropic containment engineering signal/impact/action shape, Anthropic official News/Research/Engineering/model/Claude Code/Agent/Computer Use/enterprise/safety coverage, OpenAI/Codex official coverage, big-tech and Chinese 搜广推 coverage, and retention <= 90 reports.",
+    "publication": "pending publication for 2026-05-27 06:35 CST update.",
     "network": "git pull over GitHub SSH failed before editing with sandbox DNS/control-socket restrictions; local branch was clean at start."
   }
 }
