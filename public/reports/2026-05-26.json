@@ -1,6 +1,6 @@
 {
   "date": "2026-05-26",
-  "generatedAt": "2026-05-26T12:27:22.961Z",
+  "generatedAt": "2026-05-26T13:27:56.268Z",
   "source": {
     "provider": "GitHub official Trending + AIHOT + official AI/security/engineering sources + Codex research",
     "query": "https://github.com/trending?since=daily rechecked; AIHOT /ai-news and homepage rechecked; Anthropic official News/Research/Engineering rechecked; search/ads/recommendation engineering sources rechecked with Google Research, Meta Engineering/AI, Amazon Science, Netflix TechBlog, Pinterest Engineering, Airbnb Engineering, Spotify Engineering, Salesforce Engineering, Dropbox Tech and Chinese technical sources.",
@@ -15,12 +15,12 @@
     ]
   },
   "summary": {
-    "headline": "2026-05-26 20:24 CST 深度更新：GitHub Trending Top-12 稳定；搜广推新增 Google 多模态 File Search/RAG；AI 新闻补充 Google 官方检索平台与宇树 IPO 机器人资本信号。",
+    "headline": "2026-05-26 21:26 CST 深度更新：GitHub Trending Top-12 仍以 Agent 工程为主；搜广推新增 Dropbox Dash relevance labeling 与 Spotify 个性化/实验分栈；AI 新闻补充课堂 AI 宠物和阿里云新加坡 AI 布局。",
     "bullets": [
-      "GitHub 官方 Trending Top-12 顺序保持稳定；继续保留已验证的 Understand-Anything、knowledge-work-plugins、ai-engineering-from-scratch、ECC、Anthropic-Cybersecurity-Skills、codegraph、cmux、andrej-karpathy-skills、FinceptTerminal、paperless-ngx、claude-cookbooks、taste-skill 主线，并维持每个项目的架构机制、适用团队、落地路径、生产风险、决策问题和观察信号解读。",
-      "搜广推/搜索/广告/推荐累计 74 条；新增 Google Gemini API File Search 多模态 RAG，按“业务问题 -> 系统机制 -> 指标/实验 -> 可借鉴点 -> 不适用边界”拆解托管检索、metadata 过滤、跨模态召回与引用证据。",
-      "AI 新闻累计 191 条；新增 Google 官方 File Search/RAG 与 AIHOT/36Kr 宇树 IPO 信号，均按“信号 -> 影响 -> 动作”拆解，避免把平台能力或资本热度误读成已验证生产收益。",
-      "Anthropic 官方 News/Research/Engineering 再次复核：官方边界仍是 May 25 Chris Olah remarks、Project Glasswing、Teaching Claude why、Natural Language Autoencoders、Claude Code quality、Managed Agents/auto mode/harness/evals/tool use/security；AIHOT/QbitAI 的 Karpathy MTS 等条目仅作为二级观察。"
+      "GitHub 官方 Trending 页面再次复核：Top-12 仍是 Understand-Anything、knowledge-work-plugins、ai-engineering-from-scratch、ECC、Anthropic-Cybersecurity-Skills、codegraph、cmux、andrej-karpathy-skills、FinceptTerminal、paperless-ngx、claude-cookbooks、taste-skill；可访问页仍存在旧缓存计数，继续保留前次已验证 counters，避免误降级。",
+      "搜广推/搜索/广告/推荐累计 76 条；新增 Dropbox Dash LLM-assisted relevance labeling 和 Spotify personalization/experimentation split，分别拆解企业搜索标签工厂、离线 LLM judge、生产 ranker，以及推荐 serving 与实验判断的组织/系统边界。",
+      "AI 新闻累计 193 条；新增 AIHOT/36Kr 小学课堂 AI 宠物与 AIHOT/TechInAsia 阿里云新加坡 AI 布局，均按“信号 -> 影响 -> 动作”拆解，重点关注未成年人安全、教师控制、区域合规与企业交付。",
+      "Anthropic 官方 News/Research/Engineering 再次复核：官方边界仍是 May 25 Chris Olah remarks、Project Glasswing、Teaching Claude why、Natural Language Autoencoders、Claude Code quality reports、Managed Agents/auto mode/harness/evals/tool use/security；AIHOT/QbitAI 的 Karpathy MTS 条目继续按二级来源观察。"
     ]
   },
   "items": [
@@ -4423,6 +4423,125 @@
         "sourceType": "official-google-developer-blog",
         "imageUrl": "https://www.google.com/s2/favicons?domain=blog.google&sz=128",
         "rank": 74
+      },
+      {
+        "title": "Dropbox Dash uses human-calibrated LLM labels to make enterprise search relevance trainable",
+        "source": "Dropbox Tech Blog / Dash search relevance",
+        "publishedAt": "2026-02-26T00:00:00Z",
+        "url": "https://dropbox.tech/machine-learning/llm-human-labeling-improving-search-relevance-dropbox-dash",
+        "summary": "Dropbox Dash 把企业搜索/RAG 的核心瓶颈拆成“候选召回有限、排序模型依赖标签、人工标注难规模化”的链路，并用少量人工基准校准 LLM relevance judge，再生成大规模 query-document relevance labels 训练更轻量的生产排序模型。它对搜广推团队的启发是：LLM 不一定在在线链路直接重排，反而可以先成为离线标注和评测放大器。",
+        "interpretation": {
+          "businessProblem": "企业搜索、知识库问答和内部推荐面临同一个问题：索引里有百万到十亿级文档，LLM 上下文只能接收少量候选；如果第一阶段排序把关键文档排丢，后续生成再强也无法补救。纯点击信号又受展示偏置、职位权限、内部术语和已有排序影响，人工标注成本高且很难覆盖敏感客户数据。",
+          "systemMechanism": "Dropbox 的机制是把 relevance labeling 拆成可审计的离线闭环：先用小规模人工标注集定义 1-5 分 relevance 标准；再调优 LLM prompt、reasoning model 和参数，让 LLM judge 对齐人工基准；随后让 LLM 在合规边界内为大量 query-document pairs 生成标签，训练 XGBoost 等低延迟排序模型。对上下文缺失的查询，LLM judge 还可调用内部搜索/工具补齐术语和组织知识。",
+          "metricsAndExperiment": "指标不应只看生成答案满意度，而要分层看 label exact match、MSE、pairwise ranking agreement、NDCG/MRR/precision@k、query-class coverage、敏感数据隔离、标注成本、P95 serving latency、人工抽检通过率和线上无结果率。实验路径是先做离线 golden set 与 error bucket，再 shadow train ranker，最后小流量 A/B 观察搜索成功率、答案引用命中率和负反馈。",
+          "borrowable": "可借鉴点是把 LLM 放到“人工校准 -> 标签放大 -> 排序训练 -> 抽检再校准”的评价工厂里，而不是直接让大模型在线替代 ranker。这样既能吃到 LLM 的语义判断能力，又能保留生产排序模型的低延迟、可回滚和可解释特征。",
+          "boundary": "不适合没有高质量人工基准、权限模型不清、文档治理混乱或业务术语高速漂移的团队直接采用。LLM judge 会继承模型版本、prompt、抽样策略和内部工具质量的偏差；如果没有持续抽检和回归集，离线标签会把错误系统化地灌进 ranker。"
+        },
+        "diagram": {
+          "title": "Human-calibrated LLM relevance factory",
+          "caption": "Small human reference sets calibrate an LLM judge; the judge scales labels offline, then compact rankers serve low-latency enterprise search.",
+          "nodes": [
+            {
+              "label": "Human reference set",
+              "detail": "small 1-5 relevance labels, non-sensitive review data",
+              "type": "ground-truth"
+            },
+            {
+              "label": "LLM judge",
+              "detail": "prompt/model tuning, context lookup, MSE against humans",
+              "type": "evaluator"
+            },
+            {
+              "label": "Scaled labels",
+              "detail": "large query-document pairs across content types",
+              "type": "training-data"
+            },
+            {
+              "label": "Production ranker",
+              "detail": "XGBoost/ML ranker feeds Dash search and RAG answers",
+              "type": "serving"
+            }
+          ],
+          "links": [
+            "calibrate judgment",
+            "amplify labels offline",
+            "train low-latency ranker"
+          ]
+        },
+        "tags": [
+          "search",
+          "ranking",
+          "retrieval",
+          "RAG",
+          "LLM eval",
+          "labeling",
+          "enterprise search",
+          "NDCG",
+          "MRR",
+          "human-in-the-loop"
+        ],
+        "sourceType": "official-dropbox-tech-blog",
+        "imageUrl": "https://www.google.com/s2/favicons?domain=dropbox.tech&sz=128",
+        "rank": 75
+      },
+      {
+        "title": "Spotify separates personalization serving from experimentation to avoid bandit-shaped product debt",
+        "source": "Spotify Engineering / Personalization and Experimentation",
+        "publishedAt": "2026-01-07T00:00:00Z",
+        "url": "https://engineering.atspotify.com/2026/1/why-we-use-separate-tech-stacks-for-personalization-and-experimentation",
+        "summary": "Spotify 明确把 contextual bandits、推荐模型和低延迟特征服务放在 ML/AI stack，把 A/B、rollout 和 guardrail 放在 experimentation stack。对推荐和广告团队来说，这是一条很实用的组织/系统边界：个性化系统可以使用 bandit，但 bandit 不是实验平台本身，仍要作为一个待评估的 treatment 接受线上实验。",
+        "interpretation": {
+          "businessProblem": "很多团队把个性化、bandit 和实验平台混成一个系统：短期看可以更快分配流量，长期会出现目标函数单一、guardrail 不完整、模型迭代依赖实验工具、跨团队责任不清和指标解释混乱。推荐、广告、搜索排序往往同时优化点击、留存、发现、多样性、收入和安全，单指标 bandit 很容易把系统推向局部最优。",
+          "systemMechanism": "Spotify 的机制是职责分离：ML stack 负责训练、特征、实时推理、contextual bandit 和个性化 serving；experimentation stack 负责随机化、A/B、rollout、统计推断和 guardrail。个性化模型或 bandit 被包装成一个 treatment variant，与静态策略或旧模型对照，实验平台评估的是整个系统对用户结果的增量，而不是某个 arm 的平均收益。",
+          "metricsAndExperiment": "指标需要覆盖短期与长期：CTR/listening time/conversion、retention、discovery/diversity、重复推荐率、冷启动表现、延迟、成本、模型新鲜度、用户负反馈和业务 guardrails。实验设计上要比较“best average treatment vs personalized system vs previous personalization model”，并控制周内周期、延迟回报和 cohort 成熟期，避免用即时点击替代长期价值。",
+          "borrowable": "可借鉴点是把“推荐服务”和“实验判断”拆成两个稳定接口：推荐系统输出个性化决策和日志，实验系统负责随机化、指标归因和回滚。这样产品团队可以同时迭代模型和实验，而不会让实验平台承担完整 ML serving 的复杂度。",
+          "boundary": "不适合小团队一开始就搭双平台；如果流量很小、特征很少或决策低风险，简单 A/B 和规则分层可能更划算。多目标 bandit 也不是不能用，但需要清晰的目标权重、guardrail、延迟指标处理和可解释策略，否则会把“自适应流量分配”误当成“已证明个性化有效”。"
+        },
+        "diagram": {
+          "title": "Personalization and experimentation split",
+          "caption": "The ML stack serves context-aware recommendations; the experimentation stack evaluates whole-system lift and guardrails.",
+          "nodes": [
+            {
+              "label": "Feature + model stack",
+              "detail": "rich features, contextual bandits, ML/LLM rankers",
+              "type": "ml-platform"
+            },
+            {
+              "label": "Personalized treatment",
+              "detail": "recommendation policy served with low-latency inference",
+              "type": "serving"
+            },
+            {
+              "label": "Experiment platform",
+              "detail": "randomization, rollout, statistics, guardrail metrics",
+              "type": "evaluation"
+            },
+            {
+              "label": "Decision loop",
+              "detail": "ship, rollback or iterate based on system-level lift",
+              "type": "governance"
+            }
+          ],
+          "links": [
+            "serve policy",
+            "compare against baselines",
+            "feed learning and rollout decisions"
+          ]
+        },
+        "tags": [
+          "recommendation",
+          "personalization",
+          "experimentation",
+          "contextual bandit",
+          "A/B testing",
+          "guardrails",
+          "ranking",
+          "feed",
+          "metrics"
+        ],
+        "sourceType": "official-spotify-engineering-blog",
+        "imageUrl": "https://www.google.com/s2/favicons?domain=engineering.atspotify.com&sz=128",
+        "rank": 76
       }
     ]
   },
@@ -9129,34 +9248,91 @@
         "category": "机器人/具身智能/资本市场",
         "sourceType": "trusted-aggregation+industry-news",
         "rank": 191
+      },
+      {
+        "imageUrl": "https://www.google.com/s2/favicons?domain=aihot.today&sz=128",
+        "title": "AIHOT: classroom AI pets turn education agents into child-safety and teacher-workflow infrastructure",
+        "source": "AIHOT.today / 36Kr",
+        "sourceDetail": "AIHOT /ai-news accessible page rechecked at 2026-05-26 21:26 CST; 36Kr top item visible as “全国小学课堂，正在变成AI宠物园区 / AI班级宠物，开始拿捏小学生”.",
+        "publishedAt": "2026-05-26T21:26:00+08:00",
+        "url": "https://aihot.today/ai-news",
+        "summary": "AIHOT 顶部出现“AI 班级宠物”教育场景信号。它不是简单的儿童陪聊，而是把课堂激励、作业反馈、班级运营和家校沟通包装成拟人化 agent；真正的分水岭会在教师控制权、未成年人数据、安全内容和学习效果评估。",
+        "interpretation": {
+          "signal": "AI 正从通用学习助手下沉到小学课堂的日常运营界面，拟人化宠物降低儿童互动门槛，也会放大依赖、隐私和行为引导风险。",
+          "impact": "教育 AI 产品的竞争点会从“会讲题”转向“能被老师管、能被学校审计、能证明学习/管理收益”。未成年人场景要求更强的内容过滤、家长授权、日志留存、数据最小化和人工接管。",
+          "action": "评估教育 agent 时建立四类红线：儿童隐私与授权、教师可控策略、错误反馈纠正、学习效果/课堂秩序指标；先在教师辅助和班级运营层试点，不直接让 AI 独立塑造儿童行为。"
+        },
+        "impact": "影响 -> 教育 agent 进入低龄课堂后，安全治理会先于功能扩张。",
+        "action": "动作 -> 用教师控制、儿童隐私和学习效果指标审查试点。",
+        "tags": [
+          "AIHOT",
+          "education AI",
+          "AI agent",
+          "child safety",
+          "classroom",
+          "teacher workflow",
+          "governance"
+        ],
+        "category": "教育 AI/未成年人安全/课堂 Agent",
+        "sourceType": "trusted-aggregation+industry-news",
+        "rank": 192
+      },
+      {
+        "imageUrl": "https://www.google.com/s2/favicons?domain=aihot.today&sz=128",
+        "title": "AIHOT: Alibaba Cloud Singapore expansion shows AI infrastructure competition moving to regional compliance and delivery",
+        "source": "AIHOT.today / TechInAsia",
+        "sourceDetail": "AIHOT /ai-news accessible page rechecked at 2026-05-26 21:26 CST; TechInAsia item visible at 2026-05-26 04:35:16 about Alibaba Cloud expanding AI business in Singapore.",
+        "publishedAt": "2026-05-26T04:35:16Z",
+        "url": "https://aihot.today/ai-news",
+        "summary": "AIHOT 可见 TechInAsia 条目称阿里云扩大新加坡 AI 业务布局。这个信号不是单纯出海新闻，而是亚太企业 AI 基础设施竞争正在从模型参数转向区域数据驻留、合规、渠道、云生态和本地交付能力。",
+        "interpretation": {
+          "signal": "云厂商把 AI 平台能力向区域市场推进，说明企业客户需要本地可采购、可合规、可运维的模型/算力/数据平台，而不只是访问一个海外 API。",
+          "impact": "东南亚企业会在 Google/AWS/Microsoft/Alibaba/Tencent 等平台之间比较模型能力、价格、数据驻留、行业模板、中文/多语言支持和合作伙伴服务；中国云厂商的优势可能在电商、营销、客服、搜索推荐和跨境业务场景。",
+          "action": "做亚太 AI 落地时把“区域可用性”列入架构评审：数据 residency、审计日志、模型路由、灾备、延迟、成本、渠道支持和退出方案；避免只按单次模型 benchmark 选型。"
+        },
+        "impact": "影响 -> AI 云平台竞争进入区域合规、交付和行业场景阶段。",
+        "action": "动作 -> 选型时同时评估模型、数据驻留、成本和退出方案。",
+        "tags": [
+          "AIHOT",
+          "Alibaba Cloud",
+          "Singapore",
+          "AI infrastructure",
+          "regional compliance",
+          "cloud AI",
+          "Asia"
+        ],
+        "category": "AI 云基础设施/亚太市场/企业落地",
+        "sourceType": "trusted-aggregation+industry-news",
+        "rank": 193
       }
     ],
-    "updatedAt": "2026-05-26T12:27:22.961Z",
+    "updatedAt": "2026-05-26T13:27:56.268Z",
     "description": "汇总 AIHOT/AI Hot Daily、官方博客、A 社 Anthropic News/Research/Engineering、Claude 平台动态与技术社区更新；本小时重点补充 Google 官方多模态 File Search/RAG、宇树 IPO 具身智能资本信号，并复核 Anthropic 官方边界。"
   },
   "hourlyUpdate": {
     "automationId": "automation-2",
-    "runAt": "2026-05-26T12:27:22.961Z",
-    "runAtLocal": "2026-05-26 20:24 CST",
+    "runAt": "2026-05-26T13:27:56.268Z",
+    "runAtLocal": "2026-05-26 21:26 CST",
     "sync": "git pull --ff-only origin main attempted before editing but blocked by sandbox SSH control-socket/DNS restrictions; local branch started clean at main...origin/main.",
     "keySources": [
-      "GitHub official Trending order rechecked at 2026-05-26 20:24 CST: Top-12 order stable; previously verified counters retained where accessible pages replay older counts.",
-      "AIHOT /ai-news rechecked at 2026-05-26 20:24 CST: latest accessible top items include ByteDance Xiaohe AI healthcare, domestic AI app comparison, hotel vertical automation, Unitree IPO robotics financing, Zhejiang University/Alibaba executable reasoning, Shanghai Jiao Tong VLA spatial model, Karpathy Anthropic MTS secondary talent signal and Codex Asia adoption.",
-      "Anthropic official News/Research/Engineering rechecked: no newer official boundary than May 25 Chris Olah remarks / Project Glasswing / Teaching Claude why / Natural Language Autoencoders / Claude Code quality / Managed Agents.",
-      "Search/ads/recommendation engineering sources rechecked across Google Research, Meta, Amazon, Netflix, Pinterest, Airbnb, Spotify, Salesforce, Dropbox and Chinese technical sources; this run adds Google Gemini API File Search multimodal RAG as managed retrieval infrastructure."
+      "GitHub official Trending daily page rechecked at 2026-05-26 21:26 CST: Top-12 order remains stable; accessible page still replays older visible counters for several repos, so the report retains previously verified counters rather than downgrading.",
+      "AIHOT /ai-news rechecked at 2026-05-26 21:26 CST: top visible stream includes classroom AI pets, OpenAI leadership-crisis retrospective, Shanghai Jiao Tong 0.9B VLA spatial model, Karpathy Anthropic MTS secondary talent signal, Codex Asia adoption, Huawei AI DC, Alibaba Cloud Singapore expansion, Qwen3.7 coding-model coverage and QuestMobile AI source-preference report.",
+      "Anthropic official News/Research/Engineering rechecked: no newer official boundary than May 25 Chris Olah remarks / Project Glasswing / Teaching Claude why / Natural Language Autoencoders / Claude Code quality reports / Managed Agents and related Claude Code engineering posts.",
+      "Search/ads/recommendation engineering sources rechecked across Google Research, Meta Engineering/AI, Amazon Science, Netflix TechBlog, Pinterest Engineering, Airbnb Engineering, Spotify Engineering, Salesforce Engineering, Dropbox Tech and Chinese technical sources; this run adds Dropbox Dash relevance labeling and Spotify personalization-vs-experimentation architecture as non-duplicative frontier items."
     ],
     "keyChanges": [
-      "Refreshed source boundary, summary, AIHOT/Anthropic notes and operations metadata to 2026-05-26 20:24 CST.",
-      "Added Google Gemini API File Search multimodal RAG to the frontier section with business problem/system mechanism/metrics/borrow/boundary interpretation and diagram fields.",
-      "Added AI news interpretations for Google official File Search/RAG and AIHOT/36Kr Unitree IPO robotics capital signal.",
+      "Refreshed source boundary, summary, AIHOT/Anthropic notes and operations metadata to 2026-05-26 21:26 CST.",
+      "Added Dropbox Dash LLM-assisted human-calibrated relevance labeling to the frontier section with business problem/system mechanism/metrics/borrow/boundary interpretation and diagram fields.",
+      "Added Spotify personalization/experimentation stack separation to the frontier section with recommendation, contextual bandit, A/B testing and guardrail implications.",
+      "Added AI news interpretations for AIHOT classroom AI pets and Alibaba Cloud Singapore AI expansion.",
       "Regenerated static JSON, compressed payload and enriched index for 2026-05-26."
     ],
-    "validation": "passed at 2026-05-26 20:28 CST: node --check scripts/daily.mjs, node --check public/app.js, git diff --check, JSON parse, data/public parity, gzip payload parity, enriched index metadata/counts, latest report path, 12 GitHub Trending repos with stable official daily ranking and retained verified counters, rank sequence 1-12, repo deepDive/diagram fields, 74 frontier items with business problem/system mechanism/metrics/borrow/boundary shape including Google Gemini API File Search multimodal RAG and retained Google/Meta/Amazon/Pinterest/Spotify/Dropbox/Salesforce/Airbnb/Netflix plus Alibaba/Meituan/Tencent/ByteDance/Kuaishou coverage, 191 AI news items with signal/impact/action shape including Google official File Search/RAG and AIHOT/36Kr Unitree IPO, AIHOT accessible live boundary through 20:24 CST top stream, Anthropic official News/Research/Engineering/model/Claude Code/Agent/Computer Use/enterprise/safety coverage retained, and retention <= 90 reports. Static readability validated through file/index/payload parity; local HTTP bind was not retried because prior sandbox policy returned listen EPERM; git pull over GitHub SSH was blocked by sandbox DNS/control-socket restrictions.",
-    "publication": "blocked at 2026-05-26 20:33 CST: content commit 294ff2051964e413e1d31f019dcec89b0fdb819f was pushed to origin/main and manual gh-pages artifact commit faa15c264182c411091a3fde5cecd3251ac7a4e1 was pushed, but both the main Echo Trending Deploy run 26448106415 and the gh-pages pages-build-deployment run 26448192960 failed during actions/checkout with GitHub HTTPS 403: remote reported \"Your account is suspended.\" Static data is readable locally via file/index/payload parity, but GitHub Pages live publication remains blocked until the GitHub account/repository token suspension is resolved."
+    "validation": "passed at 2026-05-26 21:31 CST: node --check scripts/daily.mjs, node --check public/app.js, git diff --check, JSON parse, data/public parity, gzip payload parity, enriched index metadata/counts, latest report path, 12 GitHub Trending repos with stable official daily ranking and retained verified counters, rank sequence 1-12, repo deepDive/diagram fields, 76 frontier items with business problem/system mechanism/metrics/borrow/boundary shape including Dropbox Dash relevance labeling and Spotify personalization/experimentation split plus retained Google/Meta/Amazon/Pinterest/Spotify/Dropbox/Salesforce/Airbnb/Netflix and Alibaba/Meituan/Tencent/ByteDance/Kuaishou coverage, 193 AI news items with signal/impact/action shape including AIHOT classroom AI pets and Alibaba Cloud Singapore expansion, AIHOT accessible live boundary through 21:26 CST top stream, Anthropic official News/Research/Engineering/model/Claude Code/Agent/Computer Use/enterprise/safety coverage retained, and retention <= 90 reports. Static readability validated through file/index/payload parity; local HTTP bind was not retried because prior sandbox policy returned listen EPERM; git pull over GitHub SSH was blocked by sandbox DNS/control-socket restrictions.",
+    "publication": "pending commit, push and GitHub Pages status check."
   },
-  "validation": "passed at 2026-05-26 20:28 CST: node --check scripts/daily.mjs, node --check public/app.js, git diff --check, JSON parse, data/public parity, gzip payload parity, enriched index metadata/counts, latest report path, 12 GitHub Trending repos with stable official daily ranking and retained verified counters, rank sequence 1-12, repo deepDive/diagram fields, 74 frontier items with business problem/system mechanism/metrics/borrow/boundary shape including Google Gemini API File Search multimodal RAG and retained Google/Meta/Amazon/Pinterest/Spotify/Dropbox/Salesforce/Airbnb/Netflix plus Alibaba/Meituan/Tencent/ByteDance/Kuaishou coverage, 191 AI news items with signal/impact/action shape including Google official File Search/RAG and AIHOT/36Kr Unitree IPO, AIHOT accessible live boundary through 20:24 CST top stream, Anthropic official News/Research/Engineering/model/Claude Code/Agent/Computer Use/enterprise/safety coverage retained, and retention <= 90 reports. Static readability validated through file/index/payload parity; local HTTP bind was not retried because prior sandbox policy returned listen EPERM; git pull over GitHub SSH was blocked by sandbox DNS/control-socket restrictions.",
+  "validation": "passed at 2026-05-26 21:31 CST: node --check scripts/daily.mjs, node --check public/app.js, git diff --check, JSON parse, data/public parity, gzip payload parity, enriched index metadata/counts, latest report path, 12 GitHub Trending repos with stable official daily ranking and retained verified counters, rank sequence 1-12, repo deepDive/diagram fields, 76 frontier items with business problem/system mechanism/metrics/borrow/boundary shape including Dropbox Dash relevance labeling and Spotify personalization/experimentation split plus retained Google/Meta/Amazon/Pinterest/Spotify/Dropbox/Salesforce/Airbnb/Netflix and Alibaba/Meituan/Tencent/ByteDance/Kuaishou coverage, 193 AI news items with signal/impact/action shape including AIHOT classroom AI pets and Alibaba Cloud Singapore expansion, AIHOT accessible live boundary through 21:26 CST top stream, Anthropic official News/Research/Engineering/model/Claude Code/Agent/Computer Use/enterprise/safety coverage retained, and retention <= 90 reports. Static readability validated through file/index/payload parity; local HTTP bind was not retried because prior sandbox policy returned listen EPERM; git pull over GitHub SSH was blocked by sandbox DNS/control-socket restrictions.",
   "operations": {
-    "validation": "passed at 2026-05-26 20:28 CST: node --check scripts/daily.mjs, node --check public/app.js, git diff --check, JSON parse, data/public parity, gzip payload parity, enriched index metadata/counts, latest report path, 12 GitHub Trending repos with stable official daily ranking and retained verified counters, rank sequence 1-12, repo deepDive/diagram fields, 74 frontier items with business problem/system mechanism/metrics/borrow/boundary shape including Google Gemini API File Search multimodal RAG and retained Google/Meta/Amazon/Pinterest/Spotify/Dropbox/Salesforce/Airbnb/Netflix plus Alibaba/Meituan/Tencent/ByteDance/Kuaishou coverage, 191 AI news items with signal/impact/action shape including Google official File Search/RAG and AIHOT/36Kr Unitree IPO, AIHOT accessible live boundary through 20:24 CST top stream, Anthropic official News/Research/Engineering/model/Claude Code/Agent/Computer Use/enterprise/safety coverage retained, and retention <= 90 reports. Static readability validated through file/index/payload parity; local HTTP bind was not retried because prior sandbox policy returned listen EPERM; git pull over GitHub SSH was blocked by sandbox DNS/control-socket restrictions.",
-    "publication": "blocked at 2026-05-26 20:33 CST: content commit 294ff2051964e413e1d31f019dcec89b0fdb819f was pushed to origin/main and manual gh-pages artifact commit faa15c264182c411091a3fde5cecd3251ac7a4e1 was pushed, but both the main Echo Trending Deploy run 26448106415 and the gh-pages pages-build-deployment run 26448192960 failed during actions/checkout with GitHub HTTPS 403: remote reported \"Your account is suspended.\" Static data is readable locally via file/index/payload parity, but GitHub Pages live publication remains blocked until the GitHub account/repository token suspension is resolved."
+    "validation": "passed at 2026-05-26 21:31 CST: node --check scripts/daily.mjs, node --check public/app.js, git diff --check, JSON parse, data/public parity, gzip payload parity, enriched index metadata/counts, latest report path, 12 GitHub Trending repos with stable official daily ranking and retained verified counters, rank sequence 1-12, repo deepDive/diagram fields, 76 frontier items with business problem/system mechanism/metrics/borrow/boundary shape including Dropbox Dash relevance labeling and Spotify personalization/experimentation split plus retained Google/Meta/Amazon/Pinterest/Spotify/Dropbox/Salesforce/Airbnb/Netflix and Alibaba/Meituan/Tencent/ByteDance/Kuaishou coverage, 193 AI news items with signal/impact/action shape including AIHOT classroom AI pets and Alibaba Cloud Singapore expansion, AIHOT accessible live boundary through 21:26 CST top stream, Anthropic official News/Research/Engineering/model/Claude Code/Agent/Computer Use/enterprise/safety coverage retained, and retention <= 90 reports. Static readability validated through file/index/payload parity; local HTTP bind was not retried because prior sandbox policy returned listen EPERM; git pull over GitHub SSH was blocked by sandbox DNS/control-socket restrictions.",
+    "publication": "pending commit, push and GitHub Pages status check."
   }
 }
