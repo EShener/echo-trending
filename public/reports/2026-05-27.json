@@ -13817,11 +13817,17 @@
       "required big-tech/Chinese source and keyword coverage",
       "retention <= 90 reports"
     ],
-    "note": "Local HTTP server could be started on 127.0.0.1:8799, but sandbox denied localhost fetch with EPERM; static readability was verified via file/index/payload parity."
+    "note": "Local HTTP server could be started on 127.0.0.1:8799, but sandbox denied localhost fetch with EPERM; static readability was verified via file/index/payload parity. Publication status query is limited by invalid gh token and DNS failures to api.github.com."
   },
   "operations": {
     "gitPull": "git pull --ff-only origin main attempted before editing; blocked by sandbox SSH control-socket/DNS restrictions.",
-    "publication": "pending commit, push and GitHub Pages verification after local validation passed",
-    "sourceReview": "2026-05-28 00:36 CST"
+    "publication": "content commit d0398872eb3227cf3e9fae6e57d56ed69babaa29 pushed to origin/main; GitHub Actions/Pages status could not be queried from this environment because gh token is invalid and shell DNS to api.github.com fails.",
+    "sourceReview": "2026-05-28 00:36 CST",
+    "push": {
+      "commit": "d0398872eb3227cf3e9fae6e57d56ed69babaa29",
+      "remote": "origin",
+      "branch": "main",
+      "status": "pushed"
+    }
   }
 }
