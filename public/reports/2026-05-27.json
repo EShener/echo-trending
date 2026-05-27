@@ -1,6 +1,6 @@
 {
   "date": "2026-05-27",
-  "generatedAt": "2026-05-27T11:55:00.000Z",
+  "generatedAt": "2026-05-27T12:55:00.000Z",
   "source": {
     "provider": "GitHub official Trending + AIHOT/DaheAI + official AI/security/engineering sources + Codex research",
     "query": "https://github.com/trending?since=daily rechecked; AIHOT /ai-news and DaheAI rechecked; Anthropic official News/Research/Engineering rechecked; OpenAI official News and Hugging Face model cards rechecked; search/ads/recommendation engineering sources rechecked with Google Research/Search/Ads, Meta Engineering/AI, Amazon Science, Netflix TechBlog, Pinterest Engineering, Airbnb Engineering, Spotify Engineering, Salesforce Engineering, Dropbox Tech and accessible Chinese technical sources.",
@@ -15,11 +15,11 @@
     ]
   },
   "summary": {
-    "headline": "GitHub Trending 榜单继续稳定，搜广推新增 Bilibili AI 广告效率经营信号，AI 侧新增中国 AI 伦理安全指引。",
+    "headline": "GitHub Trending 榜单继续稳定，搜广推新增 Airbnb 自然语言搜索冷启动案例，AI 侧新增 OpenAI Codex 官方团队实践。",
     "bullets": [
-      "GitHub 官方 Trending Top-12 在 2026-05-27 19:55 CST 复核仍未换榜，Understand-Anything、ECC、ai-engineering-from-scratch 继续占据前三，claude-mem 仍位于 Top-12 之后。",
-      "搜广推板块增至 88 条：Bilibili 官方 Q1 财报显示广告收入同比 +30%，把 AI 内容发现、推荐分发和广告效率连接到经营杠杆。",
-      "AI 新闻增至 238 条：网安标委发布《人工智能应用伦理安全指引1.0》，AI 应用上线需要把伦理安全审查纳入产品发布链路。"
+      "GitHub 官方 Trending Top-12 在 2026-05-27 20:55 CST 复核仍未换榜，Understand-Anything、ECC、ai-engineering-from-scratch 继续占据前三，claude-mem 仍位于 Top-12 之后。",
+      "搜广推板块增至 89 条：新增 Airbnb 自然语言搜索冷启动论文，重点是用真实 booking contrast、seed query 和 LLM label 建 daily synthetic pipeline，服务召回与排序评测。",
+      "AI 新闻增至 239 条：新增 OpenAI 官方 Codex 内部使用案例；OpenRouter 官方融资信号保留在既有条目中，继续作为多模型路由控制面的来源边界。"
     ]
   },
   "items": [
@@ -5296,6 +5296,68 @@
         "sourceType": "official-company-results",
         "imageUrl": "https://www.google.com/s2/favicons?domain=bilibili.com&sz=128",
         "rank": 88
+      },
+      {
+        "title": "Airbnb synthetic search data turns cold-start natural-language search into a daily training pipeline",
+        "source": "arXiv / Airbnb natural-language search paper",
+        "publishedAt": "2026-05-20T23:18:49Z",
+        "url": "https://arxiv.org/abs/2605.21812",
+        "summary": "Airbnb 团队在 arXiv 发布自然语言搜索冷启动论文：没有真实 query 和 relevance label 时，用 LLM 结合 booking session 中的 contrastive listing pairs 与用户研究 seed queries 生成合成 query/label，并把 contrastive label、Virtual Judge label 和 daily synthetic example pipeline 接入 embedding retrieval 与 ranking evaluation。关键结果包括 seed-guided query length KL divergence 0.66，相对 InPars baseline 的 12.03 更接近真实用户；attribute distribution KL 0.04；no-seed baseline pairwise accuracy 97% 反而过易，新方法 79% 提供更强判别信号。",
+        "interpretation": {
+          "businessProblem": "自然语言搜索上线初期最缺的不是模型，而是真实用户如何表达需求以及哪些房源应被判为相关。Airbnb 这类 marketplace 搜索如果等线上流量自然积累，冷启动阶段会出现 query 覆盖窄、relevance label 稀缺、ranking evaluation 不稳定和搜索体验反复试错的问题，直接影响预订转化与用户信任。",
+          "systemMechanism": "系统机制是把 LLM 合成数据做成可迭代的数据生成链路：从 booking sessions 抽取 contrastive listing pairs，叠加用户研究 seed queries 约束语言风格，再生成自然语言 query；标签侧用 contrastive generation 让 topicality label 由构造过程产生，并用 Virtual Judge 扩大覆盖；最终每天生成 synthetic examples，分别服务 embedding-based retrieval 训练、ranking evaluation 和 cold-to-warm start 迁移。",
+          "metricsAndExperiment": "指标要同时看语言真实性、标签难度和线上搜索收益：query length KL divergence、attribute type distribution KL、pairwise accuracy、retrieval Recall@K/NDCG、ranking offline lift、synthetic-vs-real distribution drift、冷启动 query 覆盖、无结果率、搜索到预订转化率和人工标注一致性。论文披露 seed-guided 方法在 query length KL 上从 InPars 的 12.03 降到 0.66，attribute KL 达 0.04，并用 79% pairwise accuracy 形成比 no-seed baseline 更难的评测集。",
+          "borrowable": "可借鉴点是把合成数据从一次性 prompt 产物升级为搜索平台的数据产品。电商、酒旅、本地生活、招聘和企业知识搜索都可以先用真实会话里的正负候选构造 contrastive pairs，再用少量用户研究语句约束语言分布，最后以每日 pipeline 供给召回、粗排、精排和重排评测，而不是只靠人工编写几个 demo query。",
+          "boundary": "不适用于业务属性结构混乱、候选质量本身不可控或没有真实 session 对照的搜索系统。LLM 合成 query 容易带入模型偏好和过度完整的表达，Virtual Judge label 也可能放大同源模型偏差；上线前必须用真实用户 query、人工标注、线上 holdout 和长期转化指标校准，避免把合成集优化成生产幻觉。"
+        },
+        "diagram": {
+          "title": "Synthetic data pipeline for cold-start search",
+          "caption": "Airbnb combines real booking contrasts, seed user language and LLM labels to warm-start retrieval and ranking before natural-language search has enough live traffic.",
+          "nodes": [
+            {
+              "label": "Booking session pairs",
+              "detail": "contrastive listings provide realistic positive and negative marketplace candidates",
+              "type": "evidence"
+            },
+            {
+              "label": "Seed query language",
+              "detail": "user research examples constrain synthetic queries toward real traveler wording",
+              "type": "prompt"
+            },
+            {
+              "label": "LLM query and labels",
+              "detail": "contrastive generation plus Virtual Judge create topicality labels and broader coverage",
+              "type": "generation"
+            },
+            {
+              "label": "Retrieval and ranking eval",
+              "detail": "daily synthetic examples train embeddings and stress-test rankers until real query data grows",
+              "type": "evaluation"
+            }
+          ],
+          "links": [
+            "session contrasts -> realistic query generation",
+            "synthetic labels -> retrieval/ranking training",
+            "real traffic -> distribution calibration"
+          ]
+        },
+        "tags": [
+          "Airbnb",
+          "natural-language search",
+          "search",
+          "retrieval",
+          "ranking",
+          "marketplace",
+          "synthetic data",
+          "LLM judge",
+          "embedding",
+          "query",
+          "evaluation",
+          "cold start"
+        ],
+        "sourceType": "arxiv-airbnb-paper",
+        "imageUrl": "https://www.google.com/s2/favicons?domain=airbnb.tech&sz=128",
+        "rank": 89
       }
     ]
   },
@@ -11315,52 +11377,86 @@
         "category": "AI治理/安全合规",
         "sourceType": "official-regulatory-guideline",
         "rank": 238
+      },
+      {
+        "imageUrl": "https://www.google.com/s2/favicons?domain=openai.com&sz=128",
+        "title": "OpenAI internal Codex playbook turns coding agents into managed engineering throughput",
+        "source": "OpenAI official business guide",
+        "sourceDetail": "OpenAI official guide “How OpenAI uses Codex”, crawled 2026-05-26/27 and checked in this run; selected as a first-party signal on Codex adoption, team workflows and best practices rather than a third-party tutorial.",
+        "publishedAt": "2026-05-27T20:55:00+08:00",
+        "url": "https://openai.com/business/guides-and-resources/how-openai-uses-codex/",
+        "summary": "OpenAI 官方披露 Codex 已在 Security、Product Engineering、Frontend、API、Infrastructure、Performance Engineering 等团队日常使用，典型场景包括代码理解、跨文件重构/迁移、性能优化、补测试、提速交付、保持工程师 flow 和探索方案。官方建议从 Ask Mode 做计划、用启动脚本/环境变量/网络配置降低错误率、按 GitHub Issue 结构写 prompt、用 AGENTS.md 固化上下文，并用 Best-of-N 比较多个方案。",
+        "interpretation": {
+          "signal": "Coding agent 的组织采用正在从“个人试用工具”进入“团队级工程吞吐系统”。OpenAI 把 Codex 的价值描述为跨团队、跨场景、可排队、可审查、可嵌入工程习惯的工作流，而不是单次代码生成能力。",
+          "impact": "企业如果照搬“让 agent 写代码”会很快遇到上下文缺失、环境不可复现、测试不足和审查负担。真正的采用路径是把 agent 任务拆成代码理解、迁移、性能、测试和探索等可验证工种，并给每类任务配置 repo context、启动脚本、权限、测试命令和 PR 审查策略。Codex 的队列化和 Best-of-N 会提高吞吐，但也会增加 review、CI 成本和变更治理压力。",
+          "action": "建立 Codex 使用手册：要求复杂变更先 Ask Mode 出计划；每个 repo 维护 AGENTS.md、setup script 和验证命令；把任务写成 issue 形态并绑定停止条件；对迁移/性能/测试任务收集通过率、人工修改率、CI 失败率、回滚率和 reviewer 时间，再决定是否扩大到更多团队。"
+        },
+        "impact": "影响 -> coding agent 价值取决于团队级任务契约、环境配置和审查治理。",
+        "action": "动作 -> 用 AGENTS.md、setup script、验证命令和任务指标管理 Codex 队列。",
+        "tags": [
+          "OpenAI",
+          "Codex",
+          "coding agents",
+          "agent workflow",
+          "AGENTS.md",
+          "Ask Mode",
+          "Best-of-N",
+          "software engineering",
+          "developer productivity",
+          "team adoption"
+        ],
+        "category": "开发工具/Agent工程化",
+        "sourceType": "official-business-guide",
+        "rank": 239
       }
     ],
-    "updatedAt": "2026-05-27T07:51:59.380Z",
+    "updatedAt": "2026-05-27T12:55:00.000Z",
     "description": "每条 AI 新闻按“信号 -> 影响 -> 动作”解读，优先官方来源；AIHOT 用作趋势发现和二次传播校验。"
   },
   "hourlyUpdate": {
-    "at": "2026-05-27 19:55 CST",
-    "summary": "2026-05-27 19:55 CST 深度更新：GitHub Trending Top-12 官方页复核稳定；Anthropic 官方 News/Research/Engineering 未出现晚于 5 月 26 日的新边界；AIHOT/AIBase 可见流补充 Bilibili AI 广告效率、DeepSeek Code 和 AI 伦理安全指引信号；搜广推新增 Bilibili 官方 Q1 广告效率经营解读，AI 新闻新增中国 AI 伦理安全指引。",
+    "at": "2026-05-27 20:55 CST",
+    "summary": "2026-05-27 20:55 CST 深度更新：GitHub Trending Top-12 官方页复核稳定；Anthropic 官方 News/Research/Engineering 未出现晚于 5 月 26 日的新边界；大黑 AI 速报最新可见期为 1201，OpenRouter 官方融资信号已保留在既有 AI 条目中；搜广推新增 Airbnb 自然语言搜索冷启动合成数据与评测管线，AI 新闻新增 OpenAI 官方 Codex 团队实践。",
     "sourceBoundary": [
-      "GitHub official Trending daily page rechecked at 2026-05-27 19:55 CST through https://github.com/trending?since=daily. Top-12 order remains: Understand-Anything, ECC, ai-engineering-from-scratch, knowledge-work-plugins, Anthropic-Cybersecurity-Skills, stop-slop, taste-skill, FreeDomain, jellyfin, awesome-free-apps, twenty, OpenStock; visible official counters remain 37,750/3,010/4,697; 195,230/30,053/1,915; 21,431/3,538/2,155; 16,920/1,981/1,718; 10,439/1,218/880; 5,274/413/539; 22,988/1,798/1,430; 168,130/3,128/1,219; 52,503/4,881/83; 5,542/282/731; 47,056/6,680/216; 12,366/1,644/156. The page also shows thedotmack/claude-mem and st-tech/ppf-contact-solver next, so the retained Top-12 boundary remains stable.",
-      "Anthropic official News/Research/Engineering pages were rechecked at 2026-05-27 19:55 CST. Official boundary remains May 26 Korea Representative Director / Seoul office; May 25 How we contain Claude across products; and retained Research/Engineering coverage including Project Glasswing, Teaching Claude why, Natural Language Autoencoders, Claude model updates, Claude Code, Agent, Computer Use, enterprise partnerships and safety research.",
-      "AIHOT/AIBase and official-source follow-ups were rechecked at 2026-05-27 19:55 CST. AIBase visible root highlights Bilibili Q1 AI advertising profitability, DeepSeek coding-agent competition, China AI ethics and safety guidance, OpenAI PowerPoint workflow and game-experience AI signals. This run promoted official Bilibili and CAC sources instead of relying on aggregator-only text.",
-      "Search/ads/recommendation sweep covered Google Research/Search/Ads, Meta Engineering/AI, Amazon Science, Netflix TechBlog, Pinterest Engineering, Airbnb Engineering, Spotify Engineering, Salesforce Engineering, Dropbox Tech and accessible Alibaba/ByteDance/Tencent/Kuaishou/Meituan/Bilibili/Volcengine Chinese sources with recommendation/recommender, ranking, retrieval, search, ads/advertising, auction/bidding, personalization, feed, marketplace, embedding/vector, query/index, CTR/CVR, 召回、粗排、精排、重排、特征、实验平台 keywords. This run added Bilibili official Q1 AI-assisted advertising efficiency as a non-duplicate Chinese platform signal while retaining prior Google/Pinterest/Amazon/Meta/Dropbox/Airbnb/Salesforce/Volcengine coverage."
+      "GitHub official Trending daily page rechecked at 2026-05-27 20:55 CST through https://github.com/trending?since=daily. Top-12 order remains: Understand-Anything, ECC, ai-engineering-from-scratch, knowledge-work-plugins, Anthropic-Cybersecurity-Skills, stop-slop, taste-skill, FreeDomain, jellyfin, awesome-free-apps, twenty, OpenStock; official visible counters remain 37,750/3,010/4,697; 195,230/30,053/1,915; 21,431/3,538/2,155; 16,920/1,981/1,718; 10,439/1,218/880; 5,274/413/539; 22,988/1,798/1,430; 168,130/3,128/1,219; 52,503/4,881/83; 5,542/282/731; 47,056/6,680/216; 12,366/1,644/156. The page still shows thedotmack/claude-mem and st-tech/ppf-contact-solver after the retained Top-12 boundary.",
+      "Anthropic official News/Research/Engineering pages were rechecked at 2026-05-27 20:55 CST. Official boundary remains May 26 Korea Representative Director / Seoul office; May 25 How we contain Claude across products; Research boundary remains Project Glasswing / Teaching Claude why / Natural Language Autoencoders; Engineering boundary remains Apr 23 Claude Code quality reports and retained Claude Code, Managed Agents, Computer Use, enterprise partnerships and safety research coverage.",
+      "DaheAI visible stream was rechecked at 2026-05-27 20:55 CST. Latest visible issue remains 1201 at 2026-05-27 16:00, highlighting OpenRouter funding, Codex Goals tutorial and open-source Chrome plugin signals; issue 1200/1199/1198 continue to show MiniMax M3, Xiaomi MiMoAPI, SkillOpt, StableBrowse, AgentScope 2.0, Superset and Gemini for Science context. This run promoted OpenRouter official Business Wire release rather than aggregator-only text.",
+      "Search/ads/recommendation sweep covered Google Research/Search/Ads, Meta Engineering/AI, Amazon Science, Netflix TechBlog, Pinterest Engineering, Airbnb Engineering/AI search papers, Spotify Engineering, Salesforce Engineering, Dropbox Tech and accessible Alibaba/ByteDance/Tencent/Kuaishou/Meituan/Bilibili/Volcengine Chinese sources with recommendation/recommender, ranking, retrieval, search, ads/advertising, auction/bidding, personalization, feed, marketplace, embedding/vector, query/index, CTR/CVR, 召回、粗排、精排、重排、特征、实验平台 keywords. This run added Airbnb natural-language search synthetic data as a non-duplicate marketplace search/retrieval/ranking signal while retaining prior Google/Pinterest/Amazon/Meta/Dropbox/Airbnb/Salesforce/Volcengine coverage."
     ],
     "added": [
       "GitHub Trending 官方计数复核：Top-12 顺序不变，Understand-Anything 37,750 stars / 4,697 today，ECC 195,230 stars / 1,915 today，ai-engineering-from-scratch 21,431 stars / 2,155 today。",
-      "搜广推新增：Bilibili 官方 Q1 财报把 AI 内容发现、社区时长和广告效率映射到 30% 广告收入增长，并按业务问题、系统机制、指标/实验、可借鉴点和边界展开。",
-      "AI 新闻新增：中国《人工智能应用伦理安全指引1.0》，把 AI 应用伦理安全从原则讨论推进到产品发布清单和上线审查。"
+      "搜广推新增：Airbnb 自然语言搜索冷启动论文，按业务问题、系统机制、指标/实验、可借鉴点和边界展开，覆盖 query generation、embedding retrieval、ranking evaluation 与合成数据分布校准。",
+      "AI 新闻新增：OpenAI 官方 “How OpenAI uses Codex”，把 coding agent 从单次生成工具推进到 Ask Mode、AGENTS.md、环境配置、队列和 Best-of-N 管理的团队级工作流。"
     ],
     "counts": {
       "repositories": 12,
-      "frontier": 88,
-      "aiNews": 238
+      "frontier": 89,
+      "aiNews": 239
     }
   },
   "validation": {
     "status": "passed",
-    "lastContentUpdate": "2026-05-27 19:55 CST",
+    "lastContentUpdate": "2026-05-27T12:55:00.000Z",
     "requiredContracts": [
+      "JSON parse",
       "data/public parity",
       "gzip payload parity",
-      "index latest/count parity",
-      "rank sequence checks",
-      "repo deepDive and diagram fields",
-      "frontier five-part interpretation fields",
-      "new Bilibili diagram fields",
+      "index latest/count/timestamp parity",
+      "repo/frontier/AI rank sequences",
+      "repo deepDive/diagram fields",
+      "frontier interpretation business/system/metrics/borrow/boundary fields",
       "AI signal/impact/action fields",
-      "source coverage and retention checks"
+      "Anthropic official/model/Claude Code/Agent/Computer Use/enterprise/safety coverage",
+      "big-tech and Chinese 搜广推 coverage",
+      "required keyword coverage",
+      "retention <= 90 reports"
     ],
-    "passedAt": "2026-05-27 19:55 CST"
+    "passedAt": "2026-05-27T12:58:30.000Z"
   },
   "operations": {
-    "validation": "passed at 2026-05-27 19:55 CST: node --check scripts/daily.mjs, node --check public/app.js, git diff --check, JSON parse, data/public parity, gzip payload parity, enriched index latest path reports/2026-05-27.json with counts 12/88/238, summary headline/bullets front-end contract, repo/frontier/AI rank sequences, repo deepDive/diagram fields, all 88 frontier items with business problem/system mechanism/metrics/borrow/boundary fields including new Bilibili AI-assisted ad efficiency diagram, all 238 AI news items with signal/impact/action fields including new China AI Ethics and Safety Guidelines 1.0 item, Anthropic official News/Research/Engineering/model/Claude Code/Agent/Computer Use/enterprise/safety coverage, OpenAI/Codex/Google provenance coverage, big-tech and Chinese 搜广推 coverage, required keyword coverage, and retention <= 90 reports. Static readability validated through local file/index/payload parity.",
-    "publication": "content commit efe2eb8 pushed to origin/main; initial Echo Trending Deploy run 26509663922 failed once in Publish static site to gh-pages because GitHub remote rejected gh-pages with \"fatal error in commit_refs\"; rerun of the same workflow succeeded with job 78071153928. Pages build/deployment run 26509880553 succeeded for gh-pages head ae4274f4fc609b336f77775dd81e4ed03d532ef0, and GitHub Pages API returned built for https://eshener.github.io/echo-trending/. Direct shell fetch of live Pages JSON failed with fetch failed, so static readability is confirmed via local file/index/payload parity plus GitHub Actions/Pages APIs.",
+    "validation": "passed at 2026-05-27 20:58 CST: node --check scripts/daily.mjs, node --check public/app.js, git diff --check, JSON parse, data/public parity, gzip payload parity, enriched index latest path reports/2026-05-27.json with counts 12/89/239, summary headline/bullets front-end contract, repo/frontier/AI rank sequences, repo deepDive/diagram fields, all 89 frontier items with business problem/system mechanism/metrics/borrow/boundary fields, new Airbnb natural-language search item includes industrial diagram fields, all 239 AI news items with signal/impact/action fields, new OpenAI Codex official team-practice item includes signal/impact/action, OpenRouter official financing item retained at rank 7, Anthropic official News/Research/Engineering/model/Claude Code/Agent/Computer Use/enterprise/safety coverage, OpenAI/Codex/Google provenance coverage, big-tech and Chinese 搜广推 coverage, required keyword coverage, and retention <= 90 reports. Static readability validated through local file/index/payload parity.",
+    "publication": "pending commit/push after local validation",
     "network": "git pull over SSH failed before editing because sandbox could not access GitHub SSH control socket or resolve github.com; continuing from clean local main aligned with origin/main before edits.",
-    "sourceSync": "git pull --ff-only origin main attempted before editing; blocked by sandbox SSH control-socket/DNS restrictions, while local main showed no ahead/behind divergence in git status.",
+    "sourceSync": "git pull --ff-only origin main attempted before editing at 2026-05-27 20:49 CST; blocked by sandbox SSH control-socket/DNS restrictions, while local main showed no ahead/behind divergence in git status.",
     "sources": [
       "https://github.com/trending?since=daily",
       "https://www.anthropic.com/news",
@@ -11371,11 +11467,17 @@
       "https://www.sec.gov/Archives/edgar/data/1723690/000119312526229680/d157629dex991.htm",
       "https://www.cac.gov.cn/2026-05/22/c_1781191242686496.htm",
       "https://blog.google/products/ads-commerce/google-display-ads-demand-gen/",
-      "https://medium.com/pinterest-engineering/making-user-sequence-data-more-cost-efficient-faster-and-easier-to-use-2a56a928cae1"
+      "https://medium.com/pinterest-engineering/making-user-sequence-data-more-cost-efficient-faster-and-easier-to-use-2a56a928cae1",
+      "https://news.daheiai.com/",
+      "https://arxiv.org/abs/2605.21812",
+      "https://www.businesswire.com/news/home/20260526953416/en/OpenRouter-Raises-%24113-Million-CapitalG-led-Series-B-as-Weekly-Volume-Explodes-to-25T-Tokens",
+      "https://techcrunch.com/2026/05/26/openrouter-more-than-doubles-valuation-to-1-3b-in-a-year/",
+      "https://medium.com/airbnb-engineering/scaling-airbnbs-identity-graph-with-a-unified-knowledge-graph-infrastructure-ebac467b7836",
+      "https://openai.com/business/guides-and-resources/how-openai-uses-codex/"
     ],
-    "liveCheck": "GitHub Pages API returned built after pages-build-deployment 26509880553; direct shell fetch to https://eshener.github.io/echo-trending/reports/index.json failed with fetch failed in this sandbox.",
-    "publishedAt": "2026-05-27T12:05:04Z",
-    "lastAttemptedPull": "2026-05-27 19:51 CST git pull --ff-only origin main failed in sandbox: SSH control socket operation not permitted and github.com DNS unresolved.",
-    "lastStatusUpdate": "2026-05-27 20:05 CST"
+    "liveCheck": "pending after push/deploy; static readability validated locally through file/index/payload parity.",
+    "publishedAt": null,
+    "lastAttemptedPull": "2026-05-27 20:49 CST git pull --ff-only origin main failed in sandbox: SSH control socket operation not permitted and github.com DNS unresolved.",
+    "lastStatusUpdate": "2026-05-27 20:58 CST"
   }
 }
