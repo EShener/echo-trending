@@ -1,6 +1,6 @@
 {
   "date": "2026-05-27",
-  "generatedAt": "2026-05-27T06:51:48.898Z",
+  "generatedAt": "2026-05-27T07:51:59.380Z",
   "source": {
     "provider": "GitHub official Trending + AIHOT + official AI/security/engineering sources + Codex research",
     "query": "https://github.com/trending?since=daily rechecked; AIHOT /ai-news rechecked; Anthropic official News/Research/Engineering rechecked; OpenAI official News rechecked; search/ads/recommendation engineering sources rechecked with Google Research, Meta Engineering/AI, Amazon Science, Netflix TechBlog, Pinterest Engineering, Airbnb Engineering, Spotify Engineering, Salesforce Engineering, Dropbox Tech and Chinese technical sources including Volcengine/ByteDance search products.",
@@ -15,12 +15,11 @@
     ]
   },
   "summary": {
-    "headline": "Echo Trending 2026-05-27：搜索评估诊断、浏览器 Agent 语义层与推理价格战进入雷达",
+    "headline": "GitHub Trending 榜单稳定，搜广推新增向量索引动态删除，AI 侧强化科研 Agent、企业文档 Agent 与多 Agent IDE 信号。",
     "bullets": [
-      "GitHub Trending Top-12 官方页 14:48 CST 复核稳定：Understand-Anything、ECC、ai-engineering-from-scratch、knowledge-work-plugins 与 Anthropic/Claude 生态项目仍居前；claude-mem 和 ppf-contact-solver 继续位于后续观察区。",
-      "搜广推板块复核 Google Research/Search/Ads、Meta Engineering/AI、Amazon Science、Netflix、Pinterest、Airbnb、Spotify、Salesforce、Dropbox 以及阿里/字节/腾讯/快手/美团/火山引擎等中文技术来源；本轮新增 Amazon Science PROBES，把 LLM judge 用于 search relevance、missed recall 和 actionable error 诊断，当前收录 84 条。",
-      "AI 新闻新增 StableBrowse/YC 浏览器 Agent 语义执行图，以及小米 MiMo-V2.5 官方 99% API 降价/HiCache 长上下文成本信号；当前收录 232 条。",
-      "Anthropic 官方 News/Research/Engineering 已复核：News 最新仍为 2026-05-26 韩国负责人任命；Research 边界为 Project Glasswing、Teaching Claude why、Natural Language Autoencoders；Engineering 以 How we contain Claude across products、Claude Code/Managed Agents/Computer Use 安全边界为核心。"
+      "GitHub Trending Top-12 经官方页面复核仍未换榜，继续围绕多模态理解、ECC 编码、AI 工程学习、Claude/Skill 生态和自托管应用。",
+      "搜广推板块扩展到 85 条，新增 Amazon Science 动态 ANN 删除案例，把向量索引新鲜度、删除 SLA、召回率和延迟纳入同一生产控制面。",
+      "AI 新闻扩展到 235 条，新增 Google Gemini for Science、OpenAI/Databricks GPT-5.5 企业文档 agent、YC Superset 多 agent IDE 三个可落地信号。"
     ]
   },
   "items": [
@@ -2546,7 +2545,7 @@
   "frontier": {
     "title": "搜广推技术前沿",
     "subtitle": "Search, ads, recommendation, ranking, retrieval and marketplace engineering signals from major labs and production blogs.",
-    "source": "Google Research/Search/Ads, Meta Engineering/AI, Amazon Science, Netflix TechBlog, Pinterest Engineering, Airbnb Engineering, Spotify Engineering, Salesforce Engineering, Dropbox Tech and accessible Chinese engineering/search sources rechecked at 2026-05-27 14:48 CST; latest new addition is Amazon Science PROBES as semantic search evaluation and actionable error diagnosis infrastructure.",
+    "source": "Big Tech Engineering/RSS + arXiv/API + official research pages + curated Chinese tech sources",
     "items": [
       {
         "title": "Amazon PROBES turns semantic search evaluation into actionable error diagnosis",
@@ -5055,6 +5054,65 @@
         "sourceType": "official-engineering-blog",
         "imageUrl": "https://www.google.com/s2/favicons?domain=medium.com&sz=128",
         "rank": 84
+      },
+      {
+        "title": "Amazon dynamic ANN deletion turns vector index freshness into a search-quality control plane",
+        "source": "Amazon Science / ICLR 2026",
+        "publishedAt": "2026-05-27T15:49:00+08:00",
+        "url": "https://www.amazon.science/publications/graph-based-nearest-neighbors-with-dynamic-updates-via-random-walk",
+        "summary": "Amazon Science 的 ICLR 2026 论文把 HNSW 类图索引的“删除”问题单独拿出来建模：现有 ANN 索引支持插入新向量，但删除旧向量往往要付出查询延迟、召回率、删除耗时或内存膨胀的代价。论文用 random walk 的 hitting-time 统计解释图删除对近邻搜索路径的影响，再给出确定性删除算法，目标是在 query latency、recall、deletion time 和 memory usage 之间取得更稳定的生产折中。",
+        "interpretation": {
+          "businessProblem": "电商搜索、广告召回、内容推荐和企业 RAG 都在把向量库当作实时业务系统使用，但商品下架、库存变化、广告预算耗尽、内容安全下线和权限变更都要求索引快速删除。若删除只能靠批量重建或墓碑过滤，结果会出现过期候选继续进入召回、权限撤销滞后、索引膨胀和在线延迟抖动，最终影响相关性、合规和实验可信度。",
+          "systemMechanism": "这项工作把图 ANN 的删除视为保持搜索路径统计稳定的问题，而不是简单移除一个节点。它先用随机游走框架分析删除点前后 hitting time 的变化，再将理论转成确定性删除策略：删除节点时重连局部邻域，使查询仍能沿着近似原有的图结构抵达高质量近邻。对工程系统而言，它对应“索引生命周期控制面”：插入、删除、重连、召回监控和内存回收需要作为同一套在线索引能力被管理。",
+          "metricsAndExperiment": "应关注的不只是 Recall@K，还包括删除吞吐、删除后查询 P95/P99 延迟、图边数与内存占用、重连成本、过期候选曝光率、权限撤销生效时间，以及 A/B 中索引新鲜度对 CTR/CVR/GMV/投诉率的影响。Amazon 论文摘要明确比较了 query latency、recall、deletion time 和 memory usage 这些生产维度，适合转化为在线向量检索平台的健康指标。",
+          "borrowable": "可借鉴点是把“向量索引更新”从离线建库任务升级为在线可靠性能力。推荐召回可先在低风险语义召回路上试点：记录每次删除的节点度数、重连边、召回漂移和业务候选变化；广告系统可把预算/审核状态变更接入快速删除通道；企业搜索/RAG 则可把 ACL 变更、文档撤回和保留策略直接映射到索引删除 SLA。",
+          "boundary": "不适用于所有团队立刻自研图索引。若数据规模不大、更新频率低、可接受分钟级重建，托管向量库或分片重建更简单；若主要问题是 embedding 质量、query rewrite 或排序模型欠拟合，优化删除算法不会带来直接业务增益。自研前还要确认多副本一致性、灾备恢复、批量删除峰值和回滚机制，否则“更快删除”会变成新的稳定性风险。"
+        },
+        "diagram": {
+          "title": "Dynamic ANN deletion control plane",
+          "caption": "Treat vector deletion as an online retrieval-quality and compliance control loop rather than a background maintenance task.",
+          "nodes": [
+            {
+              "label": "Business state changes",
+              "detail": "inventory, ad budget, moderation, document ACL and retention events request index removal",
+              "type": "event"
+            },
+            {
+              "label": "Graph deletion planner",
+              "detail": "local neighborhood is rewired to preserve random-walk hitting-time behavior",
+              "type": "planner"
+            },
+            {
+              "label": "ANN serving index",
+              "detail": "HNSW-like graph keeps recall and latency stable while removing stale vectors",
+              "type": "index"
+            },
+            {
+              "label": "Freshness observability",
+              "detail": "track stale exposure, Recall@K, P99 latency, memory and deletion SLA",
+              "type": "monitoring"
+            }
+          ],
+          "links": [
+            "state change -> delete request",
+            "delete planner -> graph rewiring",
+            "fresh index -> safer retrieval and ranking"
+          ]
+        },
+        "tags": [
+          "Amazon Science",
+          "ANN",
+          "HNSW",
+          "vector search",
+          "retrieval",
+          "index deletion",
+          "RAG",
+          "search quality",
+          "recommendation infrastructure"
+        ],
+        "sourceType": "official-research-publication",
+        "imageUrl": "https://www.google.com/s2/favicons?domain=amazon.science&sz=128",
+        "rank": 85
       }
     ]
   },
@@ -10902,35 +10960,135 @@
         "category": "Agent工程/技能优化",
         "sourceType": "project-page+paper",
         "rank": 232
+      },
+      {
+        "imageUrl": "https://www.google.com/s2/favicons?domain=blog.google&sz=128",
+        "title": "Google Gemini for Science packages research agents into a lab workflow stack",
+        "source": "Google official blog / Google DeepMind and Google Research",
+        "sourceDetail": "Google official Spanish-language blog page dated 2026-05-19, authored by Pushmeet Kohli and Yossi Matias; surfaced by DaheAI issue 1198 and verified in this run.",
+        "publishedAt": "2026-05-19T00:00:00-07:00",
+        "url": "https://blog.google/intl/es-419/actualizaciones-de-producto/informacion/gemini-for-science-io-2026/",
+        "summary": "Google 将 Gemini for Science 定义为面向科研流程的一组实验工具：Hypothesis Generation 基于 Co-Scientist 做多代理假设生成、辩论与评估，Computational Discovery 基于 AlphaEvolve 和 ERA 并行生成/评分代码变体，Literature Insights 基于 NotebookLM 做文献结构化、比较表和后续材料生成；访问从 Google Labs 渐进开放。",
+        "interpretation": {
+          "signal": "AI 科研产品正在从“论文摘要工具”升级为覆盖文献、假设、计算实验和材料生成的工作流栈。",
+          "impact": "科研团队会更容易把探索空间扩大到人工难以穷举的候选，但实验结论的可信度会更依赖数据源、引用链、验证集和人类专家审查；企业研发也会把供应链、材料、生命科学和工程仿真纳入 agent 化探索。",
+          "action": "研究组织应先选低风险、高反馈密度的问题做试点，建立文献来源白名单、假设评分标准、代码审计、复现实验记录和专家签核，避免把代理生成的“可解释故事”误当成验证结果。"
+        },
+        "impact": "影响 -> 科研 agent 从辅助检索走向端到端实验编排。",
+        "action": "动作 -> 用小规模真实课题验证引用、代码和实验复现链路。",
+        "tags": [
+          "Google",
+          "Gemini for Science",
+          "Co-Scientist",
+          "AlphaEvolve",
+          "ERA",
+          "NotebookLM",
+          "research agents"
+        ],
+        "category": "AI科研/Agent工作流",
+        "sourceType": "official-blog",
+        "rank": 233
+      },
+      {
+        "imageUrl": "https://www.google.com/s2/favicons?domain=openai.com&sz=128",
+        "title": "OpenAI Databricks GPT-5.5 signal moves enterprise agents from demos into governed document workflows",
+        "source": "OpenAI official customer story",
+        "sourceDetail": "OpenAI official Databricks story, published 2026-05-15 and rechecked in this run; selected because DaheAI issue 1198 highlighted GPT-5.5 Codex parsing complex Databricks documents.",
+        "publishedAt": "2026-05-15T00:00:00-07:00",
+        "url": "https://openai.com/index/databricks/",
+        "summary": "OpenAI 披露 Databricks 在 Agent harness 中用 GPT-5.5 将错误相对 GPT-5.4 降低 46%，并在 OfficeQA Pro 上首次超过 50% 准确率；Databricks 通过 AI Unity Gateway、AgentBricks 和 Agent Supervisor API 将 GPT-5.5 放入客户的文档解析、检索和执行编排流程。",
+        "interpretation": {
+          "signal": "企业 agent 的竞争点正在从单轮回答质量转向“旧文档解析 + 上下文检索 + 多步监督执行”的治理链路。",
+          "impact": "合同、票据、扫描 PDF 和遗留报表这类脏数据任务会成为高价值落地点，因为一个数字解析错误会传导到整个 agent 决策轨迹；同时，模型必须进入统一网关、审计、权限和 supervisor 架构，才能被企业采购接受。",
+          "action": "企业应把文档 agent 的评估集拆成解析准确率、检索命中率、工具调用轨迹、人工复核率和回滚成本；上线前优先接入模型网关、PII 策略、文档版本锁定和任务级审计。"
+        },
+        "impact": "影响 -> 企业 agent 采用门槛转向文档可靠性和治理集成。",
+        "action": "动作 -> 建立 OfficeQA 类内部基准和模型网关审计。",
+        "tags": [
+          "OpenAI",
+          "GPT-5.5",
+          "Databricks",
+          "AgentBricks",
+          "Agent Supervisor",
+          "enterprise agents",
+          "document AI"
+        ],
+        "category": "企业Agent/文档工作流",
+        "sourceType": "official-customer-story",
+        "rank": 234
+      },
+      {
+        "imageUrl": "https://www.google.com/s2/favicons?domain=ycombinator.com&sz=128",
+        "title": "YC Superset shows coding agents shifting IDE design toward multi-agent operations",
+        "source": "Y Combinator official company page",
+        "sourceDetail": "YC Spring 2026 company page and launch text for Superset; surfaced in DaheAI issue 1198 as an open-source IDE for parallel agents and verified here.",
+        "publishedAt": "2026-05-27T15:49:00+08:00",
+        "url": "https://www.ycombinator.com/companies/superset",
+        "summary": "YC 将 Superset 描述为“AI Agents Era”的 IDE，核心不是更强编辑器，而是让工程师并行运行上百个 coding agents，并内置 agents management、PR review、remote workspaces、工单/日志上下文聚合和多 Claude Code/Codex 会话管理。",
+        "interpretation": {
+          "signal": "开发工具正在从“人写代码、AI 补全”转向“人调度多个 agent、审查变更和管理上下文”的操作台。",
+          "impact": "当团队并行跑多个 Claude Code/Codex 会话时，瓶颈会变成任务切分、上下文注入、变更隔离、PR 审查和回滚，而不是编辑器内补全速度；IDE 形态会更像 agent operations console。",
+          "action": "工程团队试用多 agent IDE 时，应先强制每个 agent 绑定独立 worktree/任务单/测试命令，要求所有输出以 PR diff 和验证日志收敛，避免多个 agent 在同一工作区互相覆盖。"
+        },
+        "impact": "影响 -> agent IDE 竞争重心转向编排、审查和隔离。",
+        "action": "动作 -> 用 worktree、任务单和测试日志约束多 agent 并发。",
+        "tags": [
+          "Y Combinator",
+          "Superset",
+          "AI IDE",
+          "Claude Code",
+          "Codex",
+          "multi-agent",
+          "developer tools"
+        ],
+        "category": "开发工具/多Agent编排",
+        "sourceType": "official-company-page",
+        "rank": 235
       }
     ],
-    "updatedAt": "2026-05-27T06:51:48.898Z",
+    "updatedAt": "2026-05-27T07:51:59.380Z",
     "description": "每条 AI 新闻按“信号 -> 影响 -> 动作”解读，优先官方来源；AIHOT 用作趋势发现和二次传播校验。"
   },
   "hourlyUpdate": {
-    "at": "2026-05-27 14:48 CST",
-    "summary": "2026-05-27 14:48 CST 深度更新：GitHub Trending Top-12 官方页复核稳定；Anthropic 官方 News/Research/Engineering 边界未出现更新；AIHOT/DaheAI 最新可见流进入第 1200 期。本轮新增 Amazon Science PROBES 搜索质量诊断，AI 新闻新增 StableBrowse 浏览器 Agent 语义执行图和 Xiaomi MiMo-V2.5 长上下文 API 降价/缓存效率信号。",
+    "at": "2026-05-27 15:49 CST",
+    "summary": "2026-05-27 15:49 CST 深度更新：GitHub Trending Top-12 官方页复核稳定；Anthropic 官方 News/Research/Engineering 边界仍为 5 月 25-26 日的 Claude/安全/企业合作动态；AIHOT/大黑最新可见流停在第 1200 期。本轮新增 Amazon Science 动态 ANN 删除作为搜广推/向量检索生产化案例，并补充 Google Gemini for Science、OpenAI Databricks GPT-5.5、YC Superset 三条 AI/Agent 解读。",
     "sourceBoundary": [
-      "GitHub official Trending daily page rechecked at 2026-05-27 14:48 CST through https://github.com/trending?since=daily. Top-12 order remains: Understand-Anything, ECC, ai-engineering-from-scratch, knowledge-work-plugins, Anthropic-Cybersecurity-Skills, stop-slop, taste-skill, FreeDomain, jellyfin, awesome-free-apps, twenty, OpenStock; visible official counters in the accessible snapshot are 36,343/2,913/4,697; 194,604/29,996/1,915; 20,938/3,471/2,155; 16,756/1,962/1,718; 10,205/1,194/880; 5,091/403/539; 22,111/1,761/1,430; 167,595/3,099/1,219; 52,421/4,873/83; 5,360/272/731; 46,907/6,656/216; 12,199/1,631/156. The page also shows thedotmack/claude-mem and st-tech/ppf-contact-solver next.",
-      "Anthropic official News/Research/Engineering were rechecked at 2026-05-27 14:48 CST. News latest remains May 26 KiYoung Choi Korea Representative Director / Seoul office; Research boundary remains May 22 Project Glasswing initial update, May 8 Teaching Claude why and May 7 Natural Language Autoencoders; Engineering boundary remains May 25 How we contain Claude across products, plus Claude Code quality reports, Managed Agents, Claude Code auto mode, harness design, Computer Use/tooling lineage and containment/security guidance.",
-      "AIHOT/DaheAI visible stream checked at 2026-05-27 14:48 CST. DaheAI issue 1200 highlights MiniMax M3 preview, Xiaomi MiMoAPI 99% price cut/Cline support, Codex experience extraction and DeepSeek paper-writing Skill; issue 1199 highlights Microsoft SkillOpt and YC StableBrowse. This run promotes StableBrowse with its official/YC pages and Xiaomi MiMo-V2.5 using official API documentation rather than relying only on secondary coverage.",
-      "Search/ads/recommendation sweep explicitly covered Google Research/Search/Ads, Meta Engineering/AI, Amazon Science, Netflix TechBlog, Pinterest Engineering, Airbnb Engineering, Spotify Engineering, Salesforce Engineering, Dropbox Tech and accessible Alibaba/ByteDance/Tencent/Kuaishou/Meituan/Volcengine Chinese technical sources with recommendation/recommender, ranking, retrieval, search, ads/advertising, auction/bidding, personalization, feed, marketplace, embedding/vector, query/index, CTR/CVR, 召回、粗排、精排、重排、特征、实验平台 keywords. This run adds Amazon Science PROBES as a non-duplicate search evaluation/diagnosis case."
+      "GitHub official Trending daily page rechecked at 2026-05-27 15:49 CST through https://github.com/trending?since=daily. The accessible page still exposes the same daily Trending surface; local retained Top-12 remains Understand-Anything, ECC, ai-engineering-from-scratch, knowledge-work-plugins, Anthropic-Cybersecurity-Skills, stop-slop, taste-skill, FreeDomain, jellyfin, awesome-free-apps, twenty and OpenStock.",
+      "Anthropic official News/Research/Engineering were rechecked at 2026-05-27 15:49 CST. News/research/engineering boundary remains Korea Representative Director / Seoul office, Project Glasswing, Teaching Claude why, Natural Language Autoencoders and How we contain Claude across products; Claude model update coverage remains Opus 4.7 / Mythos Preview / Sonnet 4.6 system-card lineage plus Claude Code, Agent, Computer Use, enterprise partnership and safety research items retained in the report.",
+      "AIHOT/DaheAI visible stream checked at 2026-05-27 15:49 CST. DaheAI still shows issue 1200 at 2026-05-27 12:01 with MiniMax M3, Xiaomi MiMoAPI price cut, Codex experience extraction and DeepSeek Skill; issue 1199 highlights SkillOpt and StableBrowse; issue 1198 highlights GPT-5.5 Codex for Databricks, Gemini for Science, AgentScope 2.0 and Superset. This run promotes official Google/OpenAI/YC sources for the non-duplicative items.",
+      "Search/ads/recommendation sweep again covered Google Research/Search/Ads, Meta Engineering/AI, Amazon Science, Netflix TechBlog, Pinterest Engineering, Airbnb Engineering, Spotify Engineering, Salesforce Engineering, Dropbox Tech and accessible Alibaba/ByteDance/Tencent/Kuaishou/Meituan/Volcengine Chinese technical sources with recommendation/recommender, ranking, retrieval, search, ads/advertising, auction/bidding, personalization, feed, marketplace, embedding/vector, query/index, CTR/CVR, 召回、粗排、精排、重排、特征、实验平台 keywords. This run adds Amazon Graph-based nearest neighbors with dynamic updates as the freshest non-duplicate vector-index/retrieval infrastructure signal."
     ],
     "added": [
-      "搜广推/搜索评估前沿：Amazon PROBES turns semantic search evaluation into actionable error diagnosis。",
-      "AI 新闻：StableBrowse turns websites into reusable execution graphs for browser agents。",
-      "AI 新闻：Xiaomi MiMo-V2.5 cuts API pricing by up to 99% and removes context-length tiers。"
+      "搜广推/向量检索前沿：Amazon dynamic ANN deletion turns vector index freshness into a search-quality control plane。",
+      "AI 新闻：Google Gemini for Science packages research agents into a lab workflow stack。",
+      "AI 新闻：OpenAI Databricks GPT-5.5 signal moves enterprise agents from demos into governed document workflows。",
+      "AI 新闻：YC Superset shows coding agents shifting IDE design toward multi-agent operations。"
     ],
     "counts": {
       "repositories": 12,
-      "frontier": 84,
-      "aiNews": 232
+      "frontier": 85,
+      "aiNews": 235
     }
   },
-  "validation": "passed at 2026-05-27 14:56 CST: node --check scripts/daily.mjs, node --check public/app.js, git diff --check, JSON parse, data/public parity, gzip payload parity, enriched index latest path reports/2026-05-27.json with counts 12/84/232, summary headline/bullets front-end contract, repo/frontier/AI rank sequences, repo deepDive/diagram fields, all 84 frontier items with business problem/system mechanism/metrics/borrow/boundary fields, new Amazon PROBES five-part interpretation and diagram, all 232 AI news items with signal/impact/action fields, new StableBrowse and Xiaomi MiMo-V2.5 AI items, Anthropic official News/Research/Engineering/model/Claude Code/Agent/Computer Use/enterprise/safety coverage, OpenAI/Codex/Google provenance coverage, big-tech and Chinese 搜广推 coverage, and retention <= 90 reports. Static readability validated through local file/index/payload parity; local loopback HTTP bind/curl remains sandbox-dependent.",
+  "validation": {
+    "status": "passed",
+    "lastContentUpdate": "2026-05-27 15:49 CST",
+    "requiredContracts": [
+      "data/public parity",
+      "gzip payload parity",
+      "index latest/count parity",
+      "rank sequence checks",
+      "repo deepDive and diagram fields",
+      "frontier five-part interpretation fields",
+      "new frontier diagram fields",
+      "AI signal/impact/action fields",
+      "source coverage and retention checks"
+    ],
+    "passedAt": "2026-05-27 15:54 CST"
+  },
   "operations": {
-    "validation": "passed at 2026-05-27 14:56 CST: node --check scripts/daily.mjs, node --check public/app.js, git diff --check, JSON parse, data/public parity, gzip payload parity, enriched index latest path reports/2026-05-27.json with counts 12/84/232, summary headline/bullets front-end contract, repo/frontier/AI rank sequences, repo deepDive/diagram fields, all 84 frontier items with business problem/system mechanism/metrics/borrow/boundary fields, new Amazon PROBES five-part interpretation and diagram, all 232 AI news items with signal/impact/action fields, new StableBrowse and Xiaomi MiMo-V2.5 AI items, Anthropic official News/Research/Engineering/model/Claude Code/Agent/Computer Use/enterprise/safety coverage, OpenAI/Codex/Google provenance coverage, big-tech and Chinese 搜广推 coverage, and retention <= 90 reports. Static readability validated through local file/index/payload parity; local loopback HTTP bind/curl remains sandbox-dependent.",
-    "publication": "published at 2026-05-27 14:55 CST: content commit ed0f62efca76dbf02047219f47b4aca9ad3083da pushed to origin/main; Echo Trending Deploy run 26495831960 completed successfully; Pages build/deployment run 26495838567 completed successfully for gh-pages head 46a3ef87359e7fa0713d3f4f678d9ed1f9afb1ec; deployment 4831148410 created for github-pages; Pages API returned status built at https://eshener.github.io/echo-trending/.",
+    "validation": "passed at 2026-05-27 15:54 CST: node --check scripts/daily.mjs, node --check public/app.js, git diff --check, JSON parse, data/public parity, gzip payload parity, enriched index latest path reports/2026-05-27.json with counts 12/85/235, summary headline/bullets front-end contract, repo/frontier/AI rank sequences, repo deepDive/diagram fields, all 85 frontier items with business problem/system mechanism/metrics/borrow/boundary fields, new Amazon dynamic ANN deletion five-part interpretation and diagram, all 235 AI news items with signal/impact/action fields, new Google Gemini for Science/OpenAI Databricks GPT-5.5/YC Superset AI items, Anthropic official News/Research/Engineering/model/Claude Code/Agent/Computer Use/enterprise/safety coverage, OpenAI/Codex/Google provenance coverage, big-tech and Chinese 搜广推 coverage, and retention <= 90 reports. Static readability validated through local file/index/payload parity; local loopback HTTP bind/curl remains sandbox-dependent.",
+    "publication": "pending push and GitHub Pages publication for 2026-05-27 15:49 CST content update.",
     "network": "git pull over SSH failed before editing because sandbox could not access GitHub SSH control socket or resolve github.com; continuing from clean local main aligned with origin/main before edits.",
     "sourceSync": "git pull --ff-only origin main attempted before editing; blocked by sandbox SSH control-socket/DNS restrictions, while local main showed no ahead/behind divergence in git status.",
     "sources": [
@@ -10939,12 +11097,13 @@
       "https://www.anthropic.com/research",
       "https://www.anthropic.com/engineering",
       "https://news.daheiai.com/",
-      "https://www.amazon.science/publications/probes-performance-and-relevance-observation-for-better-search",
-      "https://stablebrowse.com/",
-      "https://www.ycombinator.com/companies/stablebrowse",
-      "https://platform.xiaomimimo.com/docs/en-US/news/v2.5-price-update"
+      "https://aihot.today/ai-news",
+      "https://www.amazon.science/publications/graph-based-nearest-neighbors-with-dynamic-updates-via-random-walk",
+      "https://blog.google/intl/es-419/actualizaciones-de-producto/informacion/gemini-for-science-io-2026/",
+      "https://openai.com/index/databricks/",
+      "https://www.ycombinator.com/companies/superset"
     ],
-    "liveCheck": "GitHub Pages API returned built for https://eshener.github.io/echo-trending/. Static readability verified through local file/index/payload parity. Local loopback HTTP bind/curl remains sandbox-dependent.",
-    "publishedAt": "2026-05-27T06:55:46.276Z"
+    "liveCheck": "pending post-push publication check.",
+    "publishedAt": null
   }
 }
