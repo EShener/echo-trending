@@ -1,6 +1,6 @@
 {
   "date": "2026-05-28",
-  "generatedAt": "2026-05-27T19:04:19.556Z",
+  "generatedAt": "2026-05-27T20:04:38.838Z",
   "source": {
     "provider": "GitHub official Trending + official engineering/research/news pages + AIHOT accessible mirror",
     "query": "https://github.com/trending?since=daily plus official AI/engineering sources",
@@ -16,11 +16,11 @@
     "refreshedAt": "2026-05-28 03:05 CST"
   },
   "summary": {
-    "headline": "GitHub Trending 维持 agent 工具链高热，用户可控推荐和 Search agents 成为本轮重点架构信号。",
+    "headline": "GitHub Trending 继续由 agent 工具链主导，个性化输入补全、Claude 企业采购生态和端侧隐私观测成为新增信号。",
     "bullets": [
-      "GitHub 官方 Trending Top-12 在 2026-05-28 03:05 CST 复核仍为 MoneyPrinterTurbo、Understand-Anything、stop-slop、ECC、knowledge-work-plugins、taste-skill、heretic、Kronos、Anthropic-Cybersecurity-Skills、twenty、FreeDomain、superpowers。",
-      "搜广推置顶深化 Amazon Science/AAMAS 2026 用户可控推荐论文：个人代理维护可编辑偏好，内容侧通过共享 embedding space 和 ANN API 提供候选。",
-      "AI 新闻置顶深化 Google Search information agents：Search 从一次性答案扩展到长期监控、预订、购物和动态 mini app 生成；当前站点收录 94 条搜广推前沿和 246 条 AI 动态。"
+      "GitHub 官方 Trending Top-12 在 2026-05-28 04:05 CST 复核仍为 MoneyPrinterTurbo、Understand-Anything、stop-slop、ECC、knowledge-work-plugins、taste-skill、heretic、Kronos、Anthropic-Cybersecurity-Skills、twenty、FreeDomain、superpowers。",
+      "搜广推新增 Amazon Science/ECIR 2026 个性化 chatbot autocomplete：把输入建议拆成 generation/ranking、prior messages/external features，并纳入推荐实验指标。",
+      "AI 新闻新增 Claude Marketplace、Google zero-trust private analytics 与 ITBench-AA；当前站点收录 95 条搜广推前沿和 249 条 AI 动态。"
     ]
   },
   "items": [
@@ -7728,6 +7728,67 @@
         "sourceType": "big-tech-research",
         "imageUrl": "https://www.google.com/s2/favicons?domain=www.amazon.science&sz=128",
         "rank": 94
+      },
+      {
+        "title": "Amazon chatbot autocomplete personalizes generation and ranking instead of treating prompts as one-size-fits-all",
+        "source": "Amazon Science / ECIR 2026",
+        "publishedAt": "2026-05-28T04:05:00+08:00",
+        "url": "https://www.amazon.science/publications/personalized-autocompletion-of-interactions-with-llm-based-chatbots",
+        "summary": "Amazon Science 收录 ECIR 2026 论文《Personalized autocompletion of interactions with LLM-based chatbots》。论文把 chatbot 输入补全从通用语言模型续写，改造成可按用户历史和外部特征个性化的 generation/ranking 问题，并在 WildChat 与 PRISM 数据集上用 Mistral-7B、Phi-3.5-mini 验证四类方案均有稳定收益。对搜索框、客服助手、企业知识库和广告投放工作台来说，这说明“下一句建议”已经可以进入推荐系统的召回、排序和实验治理范畴。",
+        "interpretation": {
+          "businessProblem": "AI 搜索框、客服 Copilot、广告运营助手和企业知识库都在争夺用户下一次输入，但通用 autocomplete 往往只优化语言流畅度，不理解用户偏好、历史任务、角色语气和业务上下文。结果是建议看起来合理却不省时，甚至诱导用户走向错误查询、错误客服工单或低质量广告 brief。",
+          "systemMechanism": "论文把补全系统拆成两条轴线：生成式补全还是候选排序，使用 prior messages 还是 external features。工程上可对应到多路候选生成、用户/会话 embedding、候选重排、个性化特征拼接和在线反馈采样；LLM 负责产生候选，ranking 层负责按用户意图、历史偏好、合规边界和任务阶段选择可展示的建议。",
+          "metricsAndExperiment": "实验不应只看 perplexity 或文本相似度，而要同时看 suggestion acceptance rate、time-to-send/query、query reformulation、客服首次解决率、广告 brief 完整度、负反馈率、个性化特征冷启动和延迟。Amazon 页面披露 WildChat 与 PRISM 上四类 personalization 方案在 Mistral-7B 与 Phi-3.5-mini 上有 consistent gains，说明小模型+排序层也能产生可衡量收益。",
+          "borrowable": "可借鉴点是把“输入框建议”纳入推荐系统流水线：先用历史会话、角色、最近任务和外部业务特征生成多路候选，再用轻量 ranker 做个性化排序，最后通过 A/B 实验校准是否真的减少用户操作成本。搜索、客服、CRM、广告投放、BI 查询和内部开发者门户都可以先从 opt-in autocomplete 开始。",
+          "boundary": "不适用于高风险合规输入、用户历史稀疏或没有明确反馈闭环的场景。个性化补全可能放大过往偏见、泄露用户历史、把临时意图误判为长期偏好，也可能让用户过度依赖建议；生产落地必须保留禁用开关、敏感字段过滤、审计日志和线上 guardrail 指标。"
+        },
+        "diagram": {
+          "title": "Personalized chatbot autocomplete ranking loop",
+          "caption": "Autocomplete becomes a recommender problem: generate candidates from conversation context, rank them with user and task signals, then evaluate whether they reduce real work.",
+          "nodes": [
+            {
+              "label": "Conversation context",
+              "detail": "prior messages, task state, role and external business features",
+              "type": "input"
+            },
+            {
+              "label": "Candidate generation",
+              "detail": "LLM produces multiple possible completions or query continuations",
+              "type": "model"
+            },
+            {
+              "label": "Personalized ranker",
+              "detail": "scores candidates by intent fit, safety, historical preference and latency budget",
+              "type": "ranking"
+            },
+            {
+              "label": "Experiment feedback",
+              "detail": "acceptance, edit distance, task completion and guardrail metrics update policy",
+              "type": "metric"
+            }
+          ],
+          "links": [
+            "capture user and task signals",
+            "rank suggestions before display",
+            "calibrate personalization through online outcomes"
+          ]
+        },
+        "tags": [
+          "Amazon Science",
+          "ECIR 2026",
+          "autocomplete",
+          "personalization",
+          "recommender systems",
+          "ranking",
+          "generation",
+          "chatbots",
+          "search",
+          "experiment platform"
+        ],
+        "category": "个性化/推荐系统/对话搜索",
+        "sourceType": "official-research-publication",
+        "imageUrl": "https://www.google.com/s2/favicons?domain=www.amazon.science&sz=128",
+        "rank": 95
       }
     ]
   },
@@ -13996,35 +14057,125 @@
         "category": "模型训练/推理可靠性",
         "sourceType": "official-research-blog",
         "rank": 246
+      },
+      {
+        "imageUrl": "https://www.google.com/s2/favicons?domain=claude.com&sz=128",
+        "title": "Claude Marketplace turns Anthropic enterprise commitments into a procurement layer for agent tools",
+        "source": "Anthropic Claude official Marketplace page + AIHOT visible stream",
+        "sourceDetail": "Claude official Marketplace page rechecked 2026-05-28 04:05 CST; AIHOT.virxact visible stream surfaced the Claude Marketplace partner update at 2026-05-27 23:53 CST. The official page is used as the primary source.",
+        "publishedAt": "2026-05-27T23:53:00+08:00",
+        "url": "https://claude.com/platform/marketplace",
+        "summary": "Claude Marketplace 官方页面显示，企业可用既有 Anthropic commitment 购买 Claude-powered partner tools，目前为 limited preview；页面列出 Augment Code、Bolt、CodeRabbit、GitLab、Harvey、Hebbia、Legora、Lovable、Replit、Rogo 和 Snowflake 等伙伴，并强调 consolidated AI spend、enterprise-ready partners 与 Anthropic 统一发票。",
+        "interpretation": {
+          "signal": "Anthropic 正在把 Claude 从模型/API 供应商扩展成企业 AI 工具采购与结算入口。Marketplace 把 coding、legal、finance、data、app building 和 review tools 放进同一个 Claude-powered partner surface，说明 A 社的企业合作不只是大客户部署 Claude，还包括把外部 agent 产品纳入可控采购链。",
+          "impact": "企业会更容易把 Claude 预算转成具体工具试点，但也会把供应商风险集中到 Anthropic commitment、partner vetting、数据边界、审计和合同条款上。对 AI 工具创业公司来说，是否进入 Claude Marketplace 可能影响企业分发效率；对采购和安全团队来说，评估重点会从单个工具功能转向统一计费、权限、数据流和模型依赖。",
+          "action": "把 Claude Marketplace 当成企业 agent 工具生态信号跟踪：列出已在用的 Claude-powered 工具，检查采购是否能合并到 Anthropic commitment；同时要求每个 partner 提供数据处理说明、权限模型、审计日志、模型 fallback、退出路径和与现有 SSO/SCIM/DLP 的兼容性。"
+        },
+        "impact": "影响 -> Claude 企业生态从模型调用扩展到采购、结算和伙伴分发，工具选择会被平台化。",
+        "action": "动作 -> 对 Claude Marketplace 伙伴做统一安全/采购清单，不要只按单品功能采购。",
+        "tags": [
+          "Anthropic",
+          "Claude Marketplace",
+          "enterprise AI",
+          "procurement",
+          "Claude Code",
+          "agents",
+          "partners",
+          "governance"
+        ],
+        "category": "A社/企业合作/智能体生态",
+        "sourceType": "official-product-page",
+        "rank": 247
+      },
+      {
+        "imageUrl": "https://www.google.com/s2/favicons?domain=research.google&sz=128",
+        "title": "Google Research zero-trust aggregation makes private analytics a production requirement for on-device AI",
+        "source": "Google Research official blog + AIHOT visible stream",
+        "sourceDetail": "Google Research official post published May 27, 2026 and rechecked 2026-05-28 04:05 CST; AIHOT.virxact surfaced the item in its May 28 visible stream.",
+        "publishedAt": "2026-05-27T00:00:00Z",
+        "url": "https://research.google/blog/private-analytics-via-zero-trust-aggregation/",
+        "summary": "Google Research 发布 private analytics via zero-trust aggregation，介绍把新的 cryptographic secure aggregation protocol 与 TEE attestation/transparency 结合，用于在不暴露个人设备数据的情况下获得群体级匿名洞察。文章以 Android SafetyCore、Pixel Recorder、Gboard 等端侧 AI 场景说明，模型上线后仍需要了解 drift、bias、real-world error rate 和用户行为差异。",
+        "interpretation": {
+          "signal": "端侧 AI 的瓶颈从“能不能在本地跑”进入“本地跑了之后如何安全观测”。Google 把 cryptographic aggregation 与 TEE 组合成 zero-trust analytics，说明隐私、模型监控和产品迭代必须一起设计，而不是上线后再补日志。",
+          "impact": "对手机、浏览器、车载、企业桌面代理和本地语音助手来说，缺少私密聚合会让模型漂移、区域偏差、失败模式和体验退化不可见；但直接上传日志又会触发隐私和监管风险。未来端侧 AI 平台会更像一个带证明、聚合、采样和透明度报告的观测系统。",
+          "action": "为端侧/本地 agent 设计“可观测但不回传原文”的指标层：定义只需要群体聚合的 drift、acceptance、error、latency 和 safety 指标；评估 secure aggregation、TEE attestation、差分隐私和数据保留策略；在发布评审里要求每个本地模型说明失败观测路径。"
+        },
+        "impact": "影响 -> 端侧 AI 的生产化需要隐私保护观测层，否则无法发现漂移和真实错误率。",
+        "action": "动作 -> 给本地模型和桌面 agent 增加聚合指标设计，并审查是否需要 TEE/安全聚合。",
+        "tags": [
+          "Google Research",
+          "private analytics",
+          "zero-trust aggregation",
+          "TEE",
+          "on-device AI",
+          "federated analytics",
+          "privacy",
+          "SafetyCore"
+        ],
+        "category": "隐私计算/端侧AI/生产观测",
+        "sourceType": "official-research-blog",
+        "rank": 248
+      },
+      {
+        "imageUrl": "https://www.google.com/s2/favicons?domain=huggingface.co&sz=128",
+        "title": "ITBench-AA shows frontier agents still fail most enterprise SRE investigations",
+        "source": "Hugging Face / Artificial Analysis / IBM official blog via AIHOT",
+        "sourceDetail": "Hugging Face official enterprise article published May 27, 2026 and rechecked 2026-05-28 04:05 CST; AIHOT.virxact surfaced the benchmark in its May 28 visible stream.",
+        "publishedAt": "2026-05-27T00:00:00Z",
+        "url": "https://huggingface.co/blog/ibm-research/itbench-aa",
+        "summary": "Artificial Analysis 与 IBM 在 Hugging Face 发布 ITBench-AA，首轮聚焦 Kubernetes SRE incident response：59 个任务、40 个公开任务和 19 个 held-out task，agent 需要读取 alerts、events、traces、metrics、logs 和 topology 后提交 root-cause Kubernetes entities。Claude Opus 4.7 最高 47%，GPT-5.5 为 46%，Qwen3.7 Max 为 42%，全部 frontier models 低于 50%；更长轨迹不一定更准，过度调查会因误报被罚。",
+        "interpretation": {
+          "signal": "企业 IT agent 的真实门槛不是会不会调用 shell，而是能否在复杂证据中收敛到最小根因集合。ITBench-AA 把 SRE 诊断从演示任务推向有 topology、日志、指标、误报惩罚和 held-out 任务的基准，暴露出 frontier 模型在生产推理上的可靠性缺口。",
+          "impact": "SRE/FinOps/CISO agent 不应直接按通用 coding benchmark 采购。低于 50% 的最高分意味着自动化可以先承担 evidence gathering、runbook navigation 和候选根因排序，但最终诊断、变更和事故沟通仍需要人类 gate。成本侧也出现开源模型机会：部分开源推理模型在得分接近时每任务成本显著更低。",
+          "action": "用 ITBench-AA 风格重建企业内部 agent 评测：准备真实但脱敏的 incident snapshot，要求模型输出结构化根因集合，用 full-recall precision 惩罚多报；同时记录 turns、tool calls、成本、误报类型和人工接管点，把“少而准”作为 SRE agent 上线门槛。"
+        },
+        "impact": "影响 -> 企业 SRE agent 离无人值守还有明显距离，过度探索和误报是核心上线风险。",
+        "action": "动作 -> 用真实事故快照做 root-cause 评测，并把人工 gate 写进运行流程。",
+        "tags": [
+          "ITBench-AA",
+          "Hugging Face",
+          "IBM Research",
+          "Artificial Analysis",
+          "Claude Opus 4.7",
+          "GPT-5.5",
+          "Qwen3.7 Max",
+          "SRE agents",
+          "Kubernetes"
+        ],
+        "category": "智能体评测/企业IT/SRE",
+        "sourceType": "official-benchmark-blog",
+        "rank": 249
       }
     ],
     "updatedAt": "2026-05-27T18:02:59.647Z",
     "description": "AIHOT/大黑 AI 速报、Anthropic/OpenAI/Amazon/Google 等官方来源与可信技术媒体的 AI 动态解读，按 signal -> impact -> action 生成。"
   },
   "hourlyUpdate": {
-    "at": "2026-05-28 03:05 CST",
-    "summary": "2026-05-28 03:05 CST 深度更新：GitHub Trending Top-12 复核保持上一轮顺序；Anthropic 官方 News/Research/Engineering 与 Claude Code releases 复核未发现晚于既有官方项的新公开页面；搜广推置顶深化 Amazon Science/AAMAS 2026 user-agency recommender；AI 新闻置顶深化 Google Search information agents / agentic booking / Antigravity mini apps 官方信号。",
+    "at": "2026-05-28 04:05 CST",
+    "summary": "2026-05-28 04:05 CST 深度更新：GitHub Trending Top-12 与 Anthropic 官方 News/Research/Engineering/Claude Code release 边界复核；新增 Amazon Science 个性化 autocomplete 搜广推条目，新增 Claude Marketplace、Google zero-trust private analytics 和 ITBench-AA 三条 AI 动态。",
     "sourceBoundary": [
-      "GitHub official Trending daily page rechecked at 2026-05-28 03:05 CST through https://github.com/trending?since=daily. Top-12 order remains MoneyPrinterTurbo, Understand-Anything, stop-slop, ECC, knowledge-work-plugins, taste-skill, heretic, Kronos, Anthropic-Cybersecurity-Skills, twenty, FreeDomain, superpowers; official visible counters remain 60,930/8,964/1,737; 38,842/3,089/4,466; 5,455/423/664; 195,652/30,096/2,062; 17,067/2,004/695; 23,607/1,835/2,715; 21,880/2,337/219; 26,757/4,639/402; 10,693/1,238/885; 47,155/6,699/520; 168,591/3,157/2,223; 209,133/18,629/1,680. Next visible projects are English-level-up-tips, iii, awesome-free-apps and airi.",
-      "Anthropic official News/Research/Engineering pages were rechecked at 2026-05-28 03:05 CST. Accessible official boundary remains News May 26 KiYoung Choi / Seoul office, Research May 22 Project Glasswing plus May 8 Teaching Claude why and May 7 Natural Language Autoencoders, and Engineering Apr 23 Claude Code quality reports / Apr 8 Managed Agents. Official anthropics/claude-code releases page still shows v2.1.152 dated May 27 01:30 as the latest visible release.",
-      "Search/ads/recommendation sweep covered Google Research, Meta Engineering/AI, Amazon Science, Netflix TechBlog, Pinterest Engineering, Airbnb Engineering, Spotify Engineering, Salesforce Engineering, Dropbox Tech and accessible Alibaba/ByteDance/Tencent/Kuaishou/Meituan sources with recommendation/recommender, ranking, retrieval, search, ads/advertising, auction/bidding, personalization, feed, marketplace, embedding/vector, query/index, CTR/CVR, 召回、粗排、精排、重排、特征、实验平台 keywords. This run replaced the shorter retained Amazon Science/AAMAS 2026 user-agency recommender note with a deeper production interpretation covering personal agents, editable profiles, shared embedding space and ANN retrieval.",
-      "AIHOT/open web and official AI source sweep rechecked OpenAI, Google, Anthropic and Claude Code surfaces. This run replaced a shorter Google AI Mode item with a first-party Google Search I/O 2026 Search agents interpretation because the retained Google AI Search entries did not separately capture information agents, agentic booking and Antigravity-generated mini apps.",
-      "OpenAI official AI-native engineering guide and Claude Code v2.1.152 were rechecked but already retained in prior OpenAI Codex playbook / Claude Code release coverage, so they were not duplicated."
+      "GitHub official Trending daily page rechecked at 2026-05-28 04:05 CST through https://github.com/trending?since=daily. Top-12 order remains MoneyPrinterTurbo, Understand-Anything, stop-slop, ECC, knowledge-work-plugins, taste-skill, heretic, Kronos, Anthropic-Cybersecurity-Skills, twenty, FreeDomain, superpowers; official visible counters remain 60,930/8,964/1,737; 38,842/3,089/4,466; 5,455/423/664; 195,652/30,096/2,062; 17,067/2,004/695; 23,607/1,835/2,715; 21,880/2,337/219; 26,757/4,639/402; 10,693/1,238/885; 47,155/6,699/520; 168,591/3,157/2,223; 209,133/18,629/1,680. Next visible projects remain English-level-up-tips, iii, awesome-free-apps and airi.",
+      "Anthropic official News/Research/Engineering pages and anthropics/claude-code releases were rechecked at 2026-05-28 04:05 CST. Accessible official boundary remains News May 26 KiYoung Choi / Seoul office, Research May 22 Project Glasswing plus May 8 Teaching Claude why and May 7 Natural Language Autoencoders, Engineering featured containment / Apr 23 Claude Code quality reports / Apr 8 Managed Agents, and Claude Code v2.1.152 dated May 27 01:30 as latest visible release. Claude Marketplace official page was additionally checked as the newest accessible enterprise ecosystem surface.",
+      "Search/ads/recommendation sweep covered Google Research, Meta Engineering/AI, Amazon Science, Netflix TechBlog, Pinterest Engineering, Airbnb Engineering, Spotify Engineering, Salesforce Engineering, Dropbox Tech and accessible Alibaba/ByteDance/Tencent/Kuaishou/Meituan sources with recommendation/recommender, ranking, retrieval, search, ads/advertising, auction/bidding, personalization, feed, marketplace, embedding/vector, query/index, CTR/CVR, 召回、粗排、精排、重排、特征、实验平台 keywords. This run added Amazon Science/ECIR 2026 personalized chatbot autocompletion as a non-duplicate personalization/ranking item.",
+      "AIHOT.virxact visible stream was rechecked at 2026-05-28 04:05 CST and showed OpenAI election safeguards, Google Pay agentic commerce, Google Research private analytics, Hugging Face/IBM ITBench-AA, Qwen TokenSpeed, Claude Marketplace and Claude/OpenAI pricing commentary. Official sources were preferred for retained additions.",
+      "Chinese source sweep rechecked accessible Alibaba Cloud PAI-Rec, Volcengine/ByteDance vector/search articles, Tencent Cloud/DeWu generative recall and Meituan search/coarse-ranking material; retained existing coverage already satisfied the Chinese 搜广推 source boundary, so no duplicate Chinese item was appended."
     ],
     "added": [
-      "Deepened Amazon user-agency recommender: preference profiles move from platform memory to personal agents",
-      "Deepened Google Search information agents: recurring queries become monitored task workflows"
+      "Amazon Science personalized chatbot autocomplete: generation/ranking plus prior messages/external features as a recommendation problem",
+      "Claude Marketplace: Anthropic enterprise commitment becomes partner-tool procurement and billing layer",
+      "Google Research zero-trust aggregation: private analytics for on-device AI observability",
+      "ITBench-AA: enterprise SRE agent benchmark shows frontier models below 50%"
     ],
     "counts": {
       "github": 12,
-      "frontier": 94,
-      "aiNews": 246
+      "frontier": 95,
+      "aiNews": 249
     }
   },
   "validation": {
-    "generatedAt": "2026-05-27T19:05:06.531Z",
+    "generatedAt": "2026-05-27T20:05:26.452Z",
     "status": "passed",
-    "staticData": "passed at 2026-05-28 03:05 CST: node --check scripts/daily.mjs, node --check public/app.js, git diff --check, JSON parse, data/public parity, gzip base64 payload parity, enriched index latest/count metadata, front-end payload map, 12 GitHub Trending repos with deepDive/diagram fields, 94 frontier items with business problem/system mechanism/metrics/borrow/boundary and diagram fields including the deepened Amazon user-agency recommender item, 246 AI news items with signal/impact/action fields including the deepened Google Search information agents item, Anthropic official News/Research/Engineering and Claude Code v2.1.152 release boundary retained, OpenAI/Codex/Computer Use/agent/safety coverage retained, Google/Meta/Amazon/Netflix/Pinterest/Airbnb/Spotify/Salesforce/Dropbox plus Alibaba/ByteDance/Tencent/Kuaishou/Meituan source coverage present, required 搜广推 keyword coverage present, retention <= 90 reports. Local HTTP server bind was attempted on 127.0.0.1:8799 but failed with sandbox listen EPERM, so static readability is validated by file/index/payload parity.",
+    "staticData": "passed at 2026-05-28 04:05 CST: node --check scripts/daily.mjs, node --check public/app.js, git diff --check, JSON parse, data/public parity, gzip base64 payload parity, enriched index latest/count metadata, front-end payload map, 12 GitHub Trending repos with deepDive/diagram fields, 95 frontier items with business problem/system mechanism/metrics/borrow/boundary and diagram fields including new Amazon personalized chatbot autocomplete, 249 AI news items with signal/impact/action fields including Claude Marketplace, Google zero-trust private analytics and ITBench-AA, Anthropic official News/Research/Engineering and Claude Code v2.1.152 release boundary retained, OpenAI/Codex/Computer Use/agent/safety coverage retained, Google/Meta/Amazon/Netflix/Pinterest/Airbnb/Spotify/Salesforce/Dropbox plus Alibaba/ByteDance/Tencent/Kuaishou/Meituan source coverage present, required 搜广推 keyword coverage present, retention <= 90 reports. Local HTTP bind test on 127.0.0.1:8799 failed with sandbox listen EPERM, so static readability is validated by file/index/payload parity.",
     "checks": [
       "node --check scripts/daily.mjs",
       "node --check public/app.js",
@@ -14038,22 +14189,23 @@
       "frontier five-part interpretation + diagram contract",
       "AI signal/impact/action contract",
       "source and keyword coverage",
-      "retention <= 90 reports"
+      "retention <= 90 reports",
+      "local HTTP bind attempted and blocked by sandbox EPERM"
     ]
   },
   "operations": {
     "gitPull": "git pull --ff-only origin main attempted before editing; blocked by sandbox SSH control-socket/DNS restrictions while local branch started clean at main...origin/main.",
-    "publication": "content commit 351133e pushed to origin/main; Echo Trending Deploy run 26532603908 succeeded; GitHub Pages API returned built for https://eshener.github.io/echo-trending/. Local HTTP bind was blocked by sandbox listen EPERM, so static readability is confirmed by file/index/payload parity plus GitHub Actions/Pages APIs.",
-    "sourceReview": "2026-05-28 03:05 CST",
+    "publication": "pending: content updated locally; verification and push will run after static data checks.",
+    "sourceReview": "2026-05-28 04:05 CST",
     "push": {
-      "commit": "351133e",
+      "commit": null,
       "remote": "origin",
       "branch": "main",
-      "status": "pushed",
-      "deployRun": "26532603908",
+      "status": "pending",
+      "deployRun": null,
       "pagesRun": null,
-      "pagesStatus": "built"
+      "pagesStatus": "pending"
     }
   },
-  "validationSummary": "passed at 2026-05-28 03:05 CST: node --check scripts/daily.mjs, node --check public/app.js, git diff --check, JSON parse, data/public parity, gzip base64 payload parity, enriched index latest/count metadata, front-end payload map, 12 GitHub Trending repos with deepDive/diagram fields, 94 frontier items with business problem/system mechanism/metrics/borrow/boundary and diagram fields including the deepened Amazon user-agency recommender item, 246 AI news items with signal/impact/action fields including the deepened Google Search information agents item, Anthropic official News/Research/Engineering and Claude Code v2.1.152 release boundary retained, OpenAI/Codex/Computer Use/agent/safety coverage retained, Google/Meta/Amazon/Netflix/Pinterest/Airbnb/Spotify/Salesforce/Dropbox plus Alibaba/ByteDance/Tencent/Kuaishou/Meituan source coverage present, required 搜广推 keyword coverage present, retention <= 90 reports. Local HTTP server bind was attempted on 127.0.0.1:8799 but failed with sandbox listen EPERM, so static readability is validated by file/index/payload parity."
+  "validationSummary": "passed at 2026-05-28 04:05 CST: node --check scripts/daily.mjs, node --check public/app.js, git diff --check, JSON parse, data/public parity, gzip base64 payload parity, enriched index latest/count metadata, front-end payload map, 12 GitHub Trending repos with deepDive/diagram fields, 95 frontier items with business problem/system mechanism/metrics/borrow/boundary and diagram fields including new Amazon personalized chatbot autocomplete, 249 AI news items with signal/impact/action fields including Claude Marketplace, Google zero-trust private analytics and ITBench-AA, Anthropic official News/Research/Engineering and Claude Code v2.1.152 release boundary retained, OpenAI/Codex/Computer Use/agent/safety coverage retained, Google/Meta/Amazon/Netflix/Pinterest/Airbnb/Spotify/Salesforce/Dropbox plus Alibaba/ByteDance/Tencent/Kuaishou/Meituan source coverage present, required 搜广推 keyword coverage present, retention <= 90 reports. Local HTTP bind test on 127.0.0.1:8799 failed with sandbox listen EPERM, so static readability is validated by file/index/payload parity."
 }
