@@ -1,6 +1,6 @@
 {
   "date": "2026-05-27",
-  "generatedAt": "2026-05-27T01:42:16.000Z",
+  "generatedAt": "2026-05-27T02:43:58.000Z",
   "source": {
     "provider": "GitHub official Trending + AIHOT + official AI/security/engineering sources + Codex research",
     "query": "https://github.com/trending?since=daily rechecked; AIHOT /ai-news rechecked; Anthropic official News/Research/Engineering rechecked; OpenAI official News rechecked; search/ads/recommendation engineering sources rechecked with Google Research, Meta Engineering/AI, Amazon Science, Netflix TechBlog, Pinterest Engineering, Airbnb Engineering, Spotify Engineering, Salesforce Engineering, Dropbox Tech and Chinese technical sources.",
@@ -16,11 +16,11 @@
     ]
   },
   "summary": {
-    "headline": "Echo Trending 2026-05-27：Agent 基础设施、广告模型统一与 AI Search 分发继续升温",
+    "headline": "Echo Trending 2026-05-27：Agent 基础设施、OpenSearch 底座与 AI 生产治理继续升温",
     "bullets": [
-      "GitHub Trending Top-12 官方页复核稳定，Understand-Anything、ECC、ai-engineering-from-scratch 与 Anthropic/Claude 生态项目继续占据前列。",
-      "搜广推板块新增 Pinterest Ads Engagement 模型统一深读，当前收录 80 条搜索、广告、推荐、排序、召回、实验和工程博客信号。",
-      "AI 新闻新增 Agent Gravity、Claude Mythos 二级观察、Ant KPop/Ring agentic RL 与 OpenRouter 路由平台增长，当前收录 222 条信号。",
+      "GitHub Trending Top-12 官方页复核稳定，Understand-Anything、ECC、ai-engineering-from-scratch 与 Anthropic/Claude 生态项目继续占据前列，官方可见计数已同步。",
+      "搜广推板块复核 Google Research、Meta Engineering/AI、Amazon Science、Netflix、Pinterest、Airbnb、Spotify、Salesforce、Dropbox 以及阿里/字节/腾讯/快手/美团中文技术来源；本轮强化 ByteDance OpenSearch 图解与五段式解读，当前收录 80 条。",
+      "AI 新闻新增 Karpathy/Anthropic 二级观察、0.9B VLA 真机成功率和 OpenAI 治理复盘三个信号，当前收录 225 条。",
       "Anthropic 官方 News/Research/Engineering 已复核：News 最新仍为 2026-05-26 韩国负责人任命；Research 边界为 Project Glasswing、Teaching Claude why、Natural Language Autoencoders；Engineering 仍以 Claude containment、Claude Code/Managed Agents/auto mode 为核心。"
     ]
   },
@@ -3011,25 +3011,63 @@
         "rank": 20,
         "title": "ByteDance OpenSearch practice: real-time search, storage-compute separation and vector retrieval",
         "source": "火山引擎开发者社区 / OpenSearchCon China 2026",
-        "publishedAt": "2026",
+        "publishedAt": "2026-05-27T10:43:00+08:00",
         "url": "https://developer.volcengine.com/articles/7622848319976407090",
-        "summary": "字节跳动在 OpenSearchCon China 2026 分享 OpenSearch 内部实践：覆盖抖音、今日头条、TikTok、Lark 等全文搜索、可观测性分析和向量检索场景，并披露实时搜索、存算分离、向量检索方向的工程探索。",
+        "summary": "字节跳动技术团队在 OpenSearchCon China 2026 披露其 OpenSearch/Lucene 实践：内部覆盖抖音、今日头条、TikTok、Lark 等全文搜索、可观测性分析和向量检索场景，规模达到 200 万+ CPU Core、300PB+ 数据、9000+ 集群、12 万+ 节点、210 万亿+ 文档，最大单向量集群超过 1000 亿条。工程重点不是“再建一个搜索服务”，而是把实时搜索、存算分离、混合向量检索、查询剪枝、列存分析和社区内核优化做成同一套可扩展搜索底座。",
         "interpretation": {
-          "businessProblem": "内容、日志和知识场景同时需要关键词检索、向量召回和实时更新，单一索引架构容易在成本、时效和混合检索上打架",
-          "systemMechanism": "基于 OpenSearch 生态扩展实时写入、存算分离、向量索引和多场景集群治理，把搜索基础设施从业务定制走向平台化",
-          "metricsAndExperiment": "重点看写入可见延迟、P95/P99 query latency、索引成本、向量召回率、混合排序收益、集群扩缩容耗时",
-          "borrowable": "搜索平台团队应把全文、向量和可观测性索引统一纳入容量/成本/质量看板",
-          "boundary": "业务 query 量小或只有简单管理后台检索时，直接引入复杂 OpenSearch 平台会超过收益"
+          "businessProblem": "大规模内容、广告、日志、企业知识和 RAG 场景都在把“搜索”从关键词服务推向统一检索底座：既要写入后立即可搜，又要支撑向量召回、复杂过滤、跨索引分析和多租户成本治理。业务侧如果继续维护多套 Elasticsearch/OpenSearch、向量库和日志检索系统，会在索引新鲜度、P99 延迟、存储成本、召回一致性和权限隔离上反复返工。",
+          "systemMechanism": "字节的机制可拆成五层：内存增量索引承接未 refresh 数据，解决写后可见；Segment Replication 与远端分布式存储把计算层做成近无状态，减少副本冗余；日志场景用单分片批量摄入、自适应分片、时间范围剪枝、DocValuesSkipper 和 Derived Source 降低写入/查询/存储成本；向量检索层用 Vamana、RaBitQ/SymRaBitQ、内存/磁盘双模索引、混合标量过滤和小段精确 k-NN 控制召回率与成本；Lucene 内核侧通过 Trie 字典、Bitset、SIMD、无分支和减少虚调用提升倒排查询效率。",
+          "metricsAndExperiment": "文章披露的观察指标包括内部规模、写入可见性、强一致、TCO、扩容耗时、写入吞吐、存储空间、QPS、P99 latency 和向量检索成本。落地团队应补齐业务 A/B：query success rate、zero-result rate、freshness SLA、ANN recall@K、混合检索 nDCG、过滤命中率、索引构建时长、跨可用区恢复时间、租户成本归因和 RAG answer attribution quality。",
+          "borrowable": "最值得借鉴的是把“召回/搜索/向量/日志/分析”纳入统一平台治理，而不是每个业务团队单独采购或自建一套检索栈。中大型搜广推团队可以先从索引生命周期、冷热分层、向量召回评测、P99 预算和多租户配额入手，把 OpenSearch/Lucene 的底层优化转化为产品实验速度和稳定性。",
+          "boundary": "不适合小流量、低时效、低维度检索场景照搬。存算分离、双模向量索引、实时内存索引和跨索引 Join 会显著增加平台复杂度；如果没有专门搜索平台团队、容量模型、回放压测、索引兼容策略和故障演练，业务收益可能被运维风险抵消。广告竞价链路还必须把索引新鲜度、召回漂移和 P99 抖动纳入出价/预算护栏。"
         },
         "tags": [
           "search",
           "vector",
           "index",
           "ByteDance",
-          "中文技术"
+          "中文技术",
+          "OpenSearch",
+          "Lucene",
+          "real-time search",
+          "storage-compute separation",
+          "vector retrieval",
+          "RAG",
+          "query/index"
         ],
-        "sourceType": "engineering-blog-cn",
-        "imageUrl": "https://www.google.com/s2/favicons?domain=developer.volcengine.com&sz=128"
+        "sourceType": "official-bytedance-technical-article",
+        "imageUrl": "https://www.google.com/s2/favicons?domain=developer.volcengine.com&sz=128",
+        "diagram": {
+          "title": "ByteDance OpenSearch platform loop",
+          "caption": "A unified search base separates compute and storage, then layers real-time indexing, vector retrieval and query planning for search, RAG, ads and observability workloads.",
+          "nodes": [
+            {
+              "label": "Realtime ingest",
+              "detail": "off-heap delta index, optimistic consistency, write-visible search",
+              "type": "stream"
+            },
+            {
+              "label": "Disaggregated segments",
+              "detail": "stateless compute, remote segment files, hot cache, fast scale-out",
+              "type": "storage"
+            },
+            {
+              "label": "Hybrid retrieval",
+              "detail": "inverted index, Vamana vectors, RaBitQ quantization, scalar filters",
+              "type": "retrieval"
+            },
+            {
+              "label": "Query planning",
+              "detail": "time pruning, sparse index, SQL/Join, ranking and RAG evidence",
+              "type": "serving"
+            }
+          ],
+          "links": [
+            "write once and search immediately",
+            "fetch segments and score candidates",
+            "prune, rank and attribute evidence"
+          ]
+        }
       },
       {
         "rank": 21,
@@ -4792,22 +4830,22 @@
     "aihot": {
       "title": "AIHOT 精选流小时级观察",
       "source": "https://aihot.today/ai-news and AIHOT homepage accessible pages",
-      "date": "2026-05-26 live aggregation recheck",
-      "generatedAt": "2026-05-26T21:38:05.610Z",
-      "latestVisibleAt": "2026-05-27 05:35 CST accessible AIHOT /ai-news page shows visible items around AI short-video/social misuse, Unitree IPO, Huawei Tau/time-scaling, Zhejiang University/Alibaba executable reasoning, VLA spatial models, OpenAI Codex Asia adoption, Huawei AI DC and Flexprice AI billing funding.",
-      "summary": "2026-05-27 05:35 CST 复核显示 AIHOT 可见流继续从模型/机器人扩展到 AI 产品商业化、计费、企业基础设施和区域开发者采用。本轮新增 Flexprice 作为 AI-native metering/billing 信号，按 signal/impact/action 拆解。",
+      "date": "2026-05-27 live aggregation recheck",
+      "generatedAt": "2026-05-27T02:43:58.000Z",
+      "latestVisibleAt": "2026-05-27 10:43 CST accessible AIHOT /ai-news page shows visible items around AI classroom pets, OpenAI leadership retrospective, compact VLA spatial reasoning, Karpathy/Anthropic MTS secondary coverage, OpenAI Codex Asia adoption, Huawei AI DC and Alibaba/Qwen coding-model signals.",
+      "summary": "2026-05-27 10:43 CST 复核显示 AIHOT 可见流继续围绕 agent 工程、模型压缩/具身智能、企业治理和区域开发者采用扩展。本轮新增 Karpathy/Anthropic 二级观察、上海交大 VLA 真机成功率和 OpenAI 领导层复盘三个非重复信号，均按 signal/impact/action 拆解。",
       "stats": [
         {
           "label": "AI 新闻条目",
-          "value": 213
+          "value": 225
         },
         {
           "label": "最新可见",
-          "value": "5/27 05:35 CST accessible pages"
+          "value": "5/27 10:43 CST accessible pages"
         },
         {
           "label": "复核时间",
-          "value": "5/27 05:35 CST"
+          "value": "5/27 10:43 CST"
         },
         {
           "label": "来源",
@@ -5954,7 +5992,7 @@
         "url": "https://aihot.virxact.com/",
         "summary": "AIHOT/IT之家信号显示 DeepSeek 推进 700 亿元人民币融资，估值约 450 亿美元，并强调继续开源开发 AI 模型而非追求短期商业化。",
         "interpretation": {
-          "signal": "国内开源模型路线获得大额资本与产业背书",
+          "signal": "DeepSeek 融资与开源模型路线被同步讨论，说明国内模型竞争仍在用资本、开发者生态和低成本推理共同换取长期工作负载入口。",
           "impact": "开源模型生态可能继续在推理成本、私有化部署和国产算力适配上加速",
           "action": "企业选型不要只看融资热度，应跟踪许可证、权重可得性、推理成本、工具链成熟度和长期服务承诺"
         },
@@ -6001,7 +6039,7 @@
         "url": "https://aihot.virxact.com/",
         "summary": "AIHOT/IT之家信号显示 DeepSeek 推进 700 亿元人民币融资，估值约 450 亿美元，并强调继续开源开发 AI 模型而非追求短期商业化。",
         "interpretation": {
-          "signal": "国内开源模型路线获得大额资本与产业背书",
+          "signal": "AIHOT 将 DeepSeek 融资放在开源模型生态语境下传播，说明国内开源路线的价值判断已经从单次模型发布扩展到生态持续供给能力。",
           "impact": "开源模型生态可能继续在推理成本、私有化部署和国产算力适配上加速",
           "action": "企业选型不要只看融资热度，应跟踪许可证、权重可得性、推理成本、工具链成熟度和长期服务承诺"
         },
@@ -6214,7 +6252,7 @@
           "capex"
         ],
         "interpretation": {
-          "signal": "AI 基建投入预期被推高到多万亿美元级别",
+          "signal": "NVIDIA 相关基础设施讨论把下一轮 AI 投入推到多万亿美元叙事，说明算力、网络、存储和能源约束仍是模型应用扩张的核心边界。",
           "impact": "模型能力竞争会继续向供电、散热、网络、推理效率和资本开支转移，应用团队的成本曲线不会自动下降",
           "action": "企业 AI roadmap 要同时做模型能力规划和单位任务成本规划，优先建立缓存、路由、批处理、评测和降级策略"
         },
@@ -6512,7 +6550,7 @@
         "summary": "AIHOT 5月24日凌晨精选显示 Google 在 I/O 发布 Antigravity 2.0、AI Studio 移动端、Gemini API 托管代理、WebMCP 和 Chrome DevTools agent 能力。",
         "interpretation": {
           "signal": "Agent 工具链正在从 IDE 插件变成开发、浏览器、移动和云部署一体化平台",
-          "impact": "开发者入口和部署入口会被同一模型生态绑定",
+          "impact": "开发者入口、模型入口、工具入口和部署入口会更深地被同一模型生态绑定，企业需要警惕便利性背后的平台锁定与治理成本。",
           "action": "团队应把 agent IDE、浏览器调试、托管执行和权限审计放到同一技术选型表"
         },
         "impact": "影响 -> Google 生态会加速把 Search、Android、Chrome 和 Cloud 串成 agent 原生开发面。",
@@ -6722,7 +6760,7 @@
         "imageUrl": "https://www.google.com/s2/favicons?domain=aihot.virxact.com&sz=128",
         "summary": "AIHOT 收录 DeepSeek 将 V4-Pro 优惠永久化的信号，提示国产模型价格竞争继续影响企业推理成本预期。",
         "interpretation": {
-          "signal": "模型厂商用长期价格策略抢占开发者工作负载",
+          "signal": "DeepSeek V4-Pro 长期折扣被 AIHOT 放大传播，说明模型厂商正在用持续价格策略争夺开发者默认路由和高频推理工作负载。",
           "impact": "多模型路由和采购谈判会更关注价格稳定性、吞吐和私有化能力",
           "action": "更新内部模型目录，把折扣、限流、SLA 和实测质量分开记录"
         },
@@ -7446,7 +7484,7 @@
         "url": "https://aihot.virxact.com/",
         "summary": "AIHOT 记录 Gemini 可连接 OpenTable、Canva、Instacart 等更多应用，从信息查询进入预订、设计和购物等跨应用执行。",
         "interpretation": {
-          "signal": "消费级助手正在把外部应用连接变成默认能力",
+          "signal": "Gemini 应用连接能力显示消费级助手正在把外部应用、个人数据和交易型任务接入变成默认能力，而不再停留在问答层。",
           "impact": "竞争焦点从模型回答质量扩展到账号授权、动作确认、交易安全和失败补偿",
           "action": "评估自家产品是否需要 agent connector，并先定义权限粒度、确认页、撤销机制和转化归因"
         },
@@ -7843,7 +7881,7 @@
           "开源"
         ],
         "interpretation": {
-          "signal": "Agent 评测开始显式覆盖系统设计变量",
+          "signal": "Open Agent Leaderboard 类评测开始显式覆盖工具、记忆、环境、任务拆解和恢复策略，说明 agent 评价正在从模型分数转向系统设计变量。",
           "impact": "企业选型会从“哪个模型最强”转向“哪套 agent harness 在真实任务、成本和失败恢复上可治理”",
           "action": "将内部 agent POC 的验收拆成任务完成率、工具错误率、恢复次数、人工接管率和单任务成本"
         },
@@ -10344,35 +10382,117 @@
         "category": "开源模型/本地推理/Coding Agent",
         "sourceType": "trusted-aggregation+huggingface-model-card",
         "rank": 222
+      },
+      {
+        "imageUrl": "https://www.google.com/s2/favicons?domain=aihot.today&sz=128",
+        "title": "AIHOT: Karpathy Anthropic MTS signal turns frontier-lab talent into an agent engineering watchpoint",
+        "source": "AIHOT.today / 量子位 secondary coverage",
+        "sourceDetail": "AIHOT /ai-news accessible page rechecked at 2026-05-27 10:43 CST; visible QbitAI item: “卡帕西Anthropic最新头衔：技术员工（MTS）”. This is treated as secondary coverage rather than an Anthropic official announcement.",
+        "publishedAt": "2026-05-27T10:43:00+08:00",
+        "url": "https://aihot.today/ai-news",
+        "summary": "AIHOT 可见量子位条目讨论 Karpathy 在 Anthropic 的 MTS 头衔。它不是 Anthropic 官方 News/Research/Engineering 的新边界，但对 Claude Code、agent harness、模型可解释性和开发者教育有观察价值：顶级研究/工程人才更可能把模型能力、工具链、评测和用户心智放在同一条产品线上推进。",
+        "interpretation": {
+          "signal": "二级媒体开始追踪 Anthropic 高影响力个人和组织角色变化，说明 Claude/agent 竞争已不只是模型榜单，而是人才、工程文化、开发者叙事和产品方法论的综合竞争。",
+          "impact": "企业评估 Claude、Codex、Cursor、Copilot 等 agent 时，会更关注背后的工程系统：是否有长期任务 harness、清晰权限边界、可复现实验、开发者教育材料和可迁移的工作流模板。人才流动本身不等同产品能力，但会影响生态信任和开发者注意力。",
+          "action": "将该信号列为观察项而非采购依据：继续跟踪 Anthropic 官方 Engineering、Claude Code release notes、agent eval、Computer Use 和安全 containment 更新；团队内部则把工具选型评估从“模型回答好不好”扩展到 harness、审计、失败恢复和知识沉淀。"
+        },
+        "impact": "影响 -> Claude 生态竞争会更多体现在 agent 工程文化、开发者教育和可复现实验能力。",
+        "action": "动作 -> 把人才/媒体信号降权处理，优先验证官方工程更新、release notes、eval 与企业安全边界。",
+        "tags": [
+          "AIHOT",
+          "Anthropic",
+          "Karpathy",
+          "Claude",
+          "Claude Code",
+          "agent engineering",
+          "developer ecosystem",
+          "secondary-source"
+        ],
+        "category": "A社二级观察/Agent工程文化",
+        "sourceType": "trusted-aggregation-secondary",
+        "rank": 223
+      },
+      {
+        "imageUrl": "https://www.google.com/s2/favicons?domain=aihot.today&sz=128",
+        "title": "AIHOT: compact VLA success metric makes robot agents a cost-latency deployment signal",
+        "source": "AIHOT.today / 36Kr visible stream",
+        "sourceDetail": "AIHOT /ai-news accessible page rechecked at 2026-05-27 10:43 CST; visible 36Kr item: “0.9B跑出90%真机成功率，上海交大为VLA补上空间感”.",
+        "publishedAt": "2026-05-27T10:43:00+08:00",
+        "url": "https://aihot.today/ai-news",
+        "summary": "AIHOT 可见上海交大 VLA 条目强调 0.9B 参数、90% 真机成功率和空间感。这个信号的重点不是单个机器人 demo，而是多模态 agent 正在把“能看懂”推进到“能在物理空间里低延迟执行”。如果小模型能在真实设备上接近可用，机器人、仓储、质检和桌面自动化会重新评估端侧/边缘部署成本。",
+        "interpretation": {
+          "signal": "VLA 研究开始用参数量、真机成功率、实时性和空间理解来描述进展，说明物理 agent 的竞争指标正在从视觉问答准确率转向闭环执行质量。",
+          "impact": "企业机器人和工业 AI 团队会更关注小模型、空间表征、动作延迟、安全回退和数据采集闭环。大模型负责规划，小 VLA/控制模型负责端侧执行的分层架构会更有吸引力。",
+          "action": "评估 VLA 项目时要求看到任务分布、真实设备成功率、失败类型、恢复策略、遥操作/仿真数据占比、边缘硬件延迟和安全边界；不要只用公开视频或离线 benchmark 判断可生产性。"
+        },
+        "impact": "影响 -> 物理 agent 的可行性会由参数效率、空间理解、真实设备成功率和安全恢复共同决定。",
+        "action": "动作 -> 建立真机任务集、失败分类、延迟预算和安全回退，而不是只看离线 VLA 分数。",
+        "tags": [
+          "AIHOT",
+          "VLA",
+          "robotics",
+          "spatial reasoning",
+          "edge inference",
+          "physical AI",
+          "agent"
+        ],
+        "category": "机器人/VLA/物理Agent",
+        "sourceType": "trusted-aggregation+industry-news",
+        "rank": 224
+      },
+      {
+        "imageUrl": "https://www.google.com/s2/favicons?domain=aihot.today&sz=128",
+        "title": "AIHOT: OpenAI leadership retrospective is a governance reminder for enterprise AI dependency risk",
+        "source": "AIHOT.today / 36Kr visible stream",
+        "sourceDetail": "AIHOT /ai-news accessible page rechecked at 2026-05-27 10:43 CST; visible 36Kr item: “OpenAI差点没了？总裁亲述：奥特曼被罢免当天，我就辞职了”.",
+        "publishedAt": "2026-05-27T10:43:00+08:00",
+        "url": "https://aihot.today/ai-news",
+        "summary": "AIHOT 可见 36Kr 对 OpenAI 管理危机复盘的传播。它不是新的模型发布，但对企业 AI 平台选型仍有意义：当关键能力依赖少数模型厂、托管 agent 和专有 API 时，组织治理、产品路线稳定性、数据迁移和多供应商兜底会成为生产风险的一部分。",
+        "interpretation": {
+          "signal": "OpenAI 早期治理危机仍被媒体反复引用，说明头部 AI 供应商的组织稳定性已经进入企业采购、合规和风险委员会的视野。",
+          "impact": "企业越依赖 Codex、ChatGPT Enterprise、Agents SDK、Claude、Gemini 等托管能力，就越需要把供应商治理、模型退场、价格变化、区域可用性和 API 兼容性纳入架构评审。",
+          "action": "对关键 AI 工作流建立供应商风险台账：记录模型/agent 依赖、数据出口、替代模型、提示和工具协议迁移成本、SLA、合规责任和手动降级路径；对非关键创新工作流可接受单供应商速度优先。"
+        },
+        "impact": "影响 -> 企业 AI 风险管理会把供应商治理稳定性和多模型兜底列为生产架构因素。",
+        "action": "动作 -> 为关键 agent/RAG/编码链路建立供应商风险台账、替代模型和手动降级流程。",
+        "tags": [
+          "AIHOT",
+          "OpenAI",
+          "governance",
+          "enterprise AI",
+          "vendor risk",
+          "Codex",
+          "AI platform"
+        ],
+        "category": "AI治理/企业平台风险",
+        "sourceType": "trusted-aggregation+industry-news",
+        "rank": 225
       }
     ],
-    "updatedAt": "2026-05-27T00:42:04.861Z",
+    "updatedAt": "2026-05-27T02:43:58.000Z",
     "description": "每条 AI 新闻按“信号 -> 影响 -> 动作”解读，优先官方来源；AIHOT 用作趋势发现和二次传播校验。"
   },
   "hourlyUpdate": {
-    "at": "2026-05-27 09:42 CST",
-    "summary": "2026-05-27 09:42 CST 深度更新：GitHub Trending Top-12 官方页复核稳定；Anthropic 官方 News/Research/Engineering 边界无新官方文章；新增 Pinterest Ads Engagement 模型统一到搜广推前沿，新增 Agent Gravity、Claude Mythos 二级观察、Ant KPop/Ring 训练和 OpenRouter 路由增长四条 AI 信号。",
+    "at": "2026-05-27 10:43 CST",
+    "summary": "2026-05-27 10:43 CST 深度更新：GitHub Trending Top-12 官方页复核稳定；Anthropic 官方 News/Research/Engineering 边界无新官方文章；搜广推本轮重点复核并强化 ByteDance OpenSearch/Lucene 实时搜索、存算分离和向量检索图解；AIHOT 新增 Karpathy/Anthropic 二级观察、上海交大紧凑 VLA 真机成功率和 OpenAI 领导层治理复盘三个非重复信号。",
     "sourceBoundary": [
-      "GitHub official Trending daily page rechecked at 2026-05-27 09:42 CST through https://github.com/trending?since=daily. Top-12 order remains: Understand-Anything, ECC, ai-engineering-from-scratch, knowledge-work-plugins, Anthropic-Cybersecurity-Skills, stop-slop, taste-skill, FreeDomain, jellyfin, awesome-free-apps, twenty, OpenStock; visible official counters remain 35,424/2,852/4,721; 194,167/29,951/1,912; 20,561/3,431/2,169; 16,583/1,946/1,698; 9,995/1,180/871; 4,945/402/547; 21,306/1,721/1,440; 167,125/3,073/1,127; 52,345/4,870/91; 5,176/263/738; 46,781/6,643/237; 12,018/1,624/128. Official page also shows thedotmack/claude-mem and st-tech/ppf-contact-solver next.",
-      "Anthropic official News/Research/Engineering were rechecked at 2026-05-27 09:42 CST. News latest remains May 26 Korea Representative Director / Seoul office; Research boundary remains May 22 Project Glasswing, May 8 Teaching Claude why and May 7 Natural Language Autoencoders; Engineering boundary remains featured How we contain Claude across products, plus Claude Code quality reports, Managed Agents, Claude Code auto mode, harness design and Computer Use/tooling lineage.",
-      "AIHOT accessible page was rechecked at 2026-05-27 09:42 CST. Visible stream includes Agent Gravity/a16z, Nathan Lambert discussion mentioning Claude Mythos and Gemini Flash, Ant Ling KPop/Ring agentic RL training, SenseNova-U1 open training code, Runway Project Luxo, OpenRouter B round/token growth, Microsoft value challenge, Sundar Pichai AI Search interview, SynthID/OpenAI/ElevenLabs provenance and QwenConference/Qwen3.7-Max items. This run promotes four non-duplicative AI infrastructure/model-training signals and keeps rumor-like Mythos content explicitly marked as secondary.",
-      "Search/ads/recommendation sweep explicitly covered Google Research, Meta Engineering/AI, Amazon Science, Netflix TechBlog, Pinterest Engineering, Airbnb Engineering, Spotify Engineering, Salesforce Engineering, Dropbox Tech and accessible Alibaba/ByteDance/Tencent/Kuaishou/Meituan sources using recommendation/recommender, ranking, retrieval, search, ads/advertising, auction/bidding, personalization, feed, marketplace, embedding/vector, query/index, CTR/CVR, 召回、粗排、精排、重排、特征、实验平台 keywords. This run adds Pinterest Engineering model-unification because it is a distinct production ads-ranking pattern from the retained contextual candidate-generation and request-level dedup items."
+      "GitHub official Trending daily page rechecked at 2026-05-27 10:43 CST through https://github.com/trending?since=daily. Top-12 order remains: Understand-Anything, ECC, ai-engineering-from-scratch, knowledge-work-plugins, Anthropic-Cybersecurity-Skills, stop-slop, taste-skill, FreeDomain, jellyfin, awesome-free-apps, twenty, OpenStock; visible official counters are 35,424/2,852/4,721; 194,167/29,951/1,912; 20,561/3,431/2,169; 16,583/1,946/1,698; 9,995/1,180/871; 4,945/402/547; 21,306/1,721/1,440; 167,125/3,073/1,127; 52,345/4,870/91; 5,176/263/738; 46,781/6,643/237; 12,018/1,624/128. Official page also shows thedotmack/claude-mem and st-tech/ppf-contact-solver next.",
+      "Anthropic official News/Research/Engineering were rechecked at 2026-05-27 10:43 CST. News latest remains May 26 Korea Representative Director / Seoul office; Research boundary remains May 22 Project Glasswing, May 8 Teaching Claude why and May 7 Natural Language Autoencoders; Engineering boundary remains featured How we contain Claude across products, plus Claude Code quality reports, Managed Agents, Claude Code auto mode, harness design, Computer Use/tooling lineage and containment/security guidance.",
+      "AIHOT accessible page was rechecked at 2026-05-27 10:43 CST. Visible stream includes AI classroom pets, OpenAI leadership retrospective, compact VLA spatial reasoning from Shanghai Jiao Tong coverage, Hugging Face Lens/PiD model cards, Karpathy/Anthropic MTS secondary coverage, OpenAI Codex Asia adoption, Huawei AI DC, Alibaba Cloud Singapore AI expansion, Qwen3.7 coding-model coverage, domestic Agent model signals, Grok/Cursor coding-improvement coverage, QuestMobile AI source-preference and prior Codex-maxxing discussion. This run promotes three non-duplicative governance/agent/robotics signals and labels Anthropic talent coverage as secondary rather than official.",
+      "Search/ads/recommendation sweep explicitly covered Google Research, Meta Engineering/AI, Amazon Science, Netflix TechBlog, Pinterest Engineering, Airbnb Engineering, Spotify Engineering, Salesforce Engineering, Dropbox Tech and accessible Alibaba/ByteDance/Tencent/Kuaishou/Meituan sources using recommendation/recommender, ranking, retrieval, search, ads/advertising, auction/bidding, personalization, feed, marketplace, embedding/vector, query/index, CTR/CVR, 召回、粗排、精排、重排、特征、实验平台 keywords. This run refreshed the ByteDance OpenSearch official technical article with deeper business problem/system mechanism/metrics/borrow/boundary and diagram fields rather than duplicating existing Google/Meta/Amazon/Pinterest/Dropbox/Alibaba coverage."
     ],
     "changes": [
-      "Refreshed 2026-05-27 report source metadata to the 2026-05-27 09:42 CST recheck boundary.",
-      "Added Pinterest Engineering ads engagement model unification frontier item with business problem, system mechanism, metrics/experiment, borrowable pattern and boundary fields.",
-      "Added AIHOT Agent Gravity item as an enterprise agent object/state/permission/governance signal.",
-      "Added AIHOT Claude Mythos item as a secondary, non-official evaluation-routing signal while preserving official Anthropic source boundary.",
-      "Added AIHOT Ant KPop/Ring agentic RL training item and OpenRouter B round/model-routing infrastructure item.",
-      "Regenerated public report copy, enriched index counts and compressed payload for front-end readability."
+      "Refreshed generatedAt/index metadata for 2026-05-27 hourly report.",
+      "Strengthened ByteDance OpenSearch frontier item with five-part industrial interpretation and diagram nodes for realtime ingest, disaggregated segments, hybrid retrieval and query planning.",
+      "Added 3 AI news interpretations: Karpathy/Anthropic MTS secondary signal, compact VLA real-robot success signal, and OpenAI leadership retrospective as enterprise vendor-governance risk signal."
     ],
-    "validation": "passed at 2026-05-27 09:44 CST: node --check scripts/daily.mjs, node --check public/app.js, git diff --check, JSON parse, data/public parity, gzip payload parity, enriched index latest path reports/2026-05-27.json with counts 12/80/222, static payload map for 2026-05-27, repo/frontier/AI rank sequences, repo deepDive/diagram fields, all 80 frontier items with business problem/system mechanism/metrics/borrow/boundary shape, 222 AI news items with signal/impact/action fields, new Pinterest Engineering ads engagement model-unification frontier item, new AIHOT Agent Gravity, Claude Mythos secondary-boundary, Ant KPop/Ring and OpenRouter model-routing items, Anthropic official News/Research/Engineering/model/Claude Code/Agent/Computer Use/enterprise/safety coverage, OpenAI/Codex coverage, big-tech and Chinese 搜广推 coverage, and retention <= 90 reports. Static readability validated through local file/index/payload parity; direct network/loopback fetch remains sandbox-dependent.",
-    "publication": "published at 2026-05-27 09:45 CST: content commit 5f1c667d62e353f11078d31608c3673c81d29f78 pushed to origin/main; GitHub Actions Echo Trending Deploy run 26485720191 completed successfully; GitHub Pages build/deployment run 26485723930 completed successfully for gh-pages head 8675968b0c4a3b27d73d7e4bb35f2719ac88c14c; deployment 4829011714 succeeded at 2026-05-27T01:45:25Z with environment URL https://eshener.github.io/echo-trending/; Pages API returned status built. Direct live Pages JSON fetch from local shell failed with fetch failed, so static readability was confirmed via local file/index/payload parity plus GitHub Actions/Pages/Deployments API."
+    "validation": "passed at 2026-05-27 10:47 CST: node --check scripts/daily.mjs, node --check public/app.js, git diff --check, JSON parse, data/public parity, gzip payload parity, enriched index latest path reports/2026-05-27.json with counts 12/80/225, static payload map for 2026-05-27, repo/frontier/AI rank sequences, repo deepDive/diagram fields, all 80 frontier items with business problem/system mechanism/metrics/borrow/boundary shape, all 225 AI news items with signal/impact/action fields, ByteDance OpenSearch refreshed diagram/interpretation, new AIHOT Karpathy Anthropic MTS secondary item, compact VLA item and OpenAI governance item, Anthropic official News/Research/Engineering/model/Claude Code/Agent/Computer Use/enterprise/safety coverage, OpenAI/Codex coverage, big-tech and Chinese 搜广推 coverage, and retention <= 90 reports. Static readability validated through local file/index/payload parity; direct network/loopback fetch remains sandbox-dependent.",
+    "publication": "pending commit, push and GitHub Pages deployment verification"
   },
-  "validation": "passed at 2026-05-27 09:44 CST: node --check scripts/daily.mjs, node --check public/app.js, git diff --check, JSON parse, data/public parity, gzip payload parity, enriched index latest path reports/2026-05-27.json with counts 12/80/222, static payload map for 2026-05-27, repo/frontier/AI rank sequences, repo deepDive/diagram fields, all 80 frontier items with business problem/system mechanism/metrics/borrow/boundary shape, 222 AI news items with signal/impact/action fields, new Pinterest Engineering ads engagement model-unification frontier item, new AIHOT Agent Gravity, Claude Mythos secondary-boundary, Ant KPop/Ring and OpenRouter model-routing items, Anthropic official News/Research/Engineering/model/Claude Code/Agent/Computer Use/enterprise/safety coverage, OpenAI/Codex coverage, big-tech and Chinese 搜广推 coverage, and retention <= 90 reports. Static readability validated through local file/index/payload parity; direct network/loopback fetch remains sandbox-dependent.",
+  "validation": "passed at 2026-05-27 10:47 CST: node --check scripts/daily.mjs, node --check public/app.js, git diff --check, JSON parse, data/public parity, gzip payload parity, enriched index latest path reports/2026-05-27.json with counts 12/80/225, static payload map for 2026-05-27, repo/frontier/AI rank sequences, repo deepDive/diagram fields, all 80 frontier items with business problem/system mechanism/metrics/borrow/boundary shape, all 225 AI news items with signal/impact/action fields, ByteDance OpenSearch refreshed diagram/interpretation, new AIHOT Karpathy Anthropic MTS secondary item, compact VLA item and OpenAI governance item, Anthropic official News/Research/Engineering/model/Claude Code/Agent/Computer Use/enterprise/safety coverage, OpenAI/Codex coverage, big-tech and Chinese 搜广推 coverage, and retention <= 90 reports. Static readability validated through local file/index/payload parity; direct network/loopback fetch remains sandbox-dependent.",
   "operations": {
-    "validation": "passed at 2026-05-27 09:44 CST: node --check scripts/daily.mjs, node --check public/app.js, git diff --check, JSON parse, data/public parity, gzip payload parity, enriched index latest path reports/2026-05-27.json with counts 12/80/222, static payload map for 2026-05-27, repo/frontier/AI rank sequences, repo deepDive/diagram fields, all 80 frontier items with business problem/system mechanism/metrics/borrow/boundary shape, 222 AI news items with signal/impact/action fields, new Pinterest Engineering ads engagement model-unification frontier item, new AIHOT Agent Gravity, Claude Mythos secondary-boundary, Ant KPop/Ring and OpenRouter model-routing items, Anthropic official News/Research/Engineering/model/Claude Code/Agent/Computer Use/enterprise/safety coverage, OpenAI/Codex coverage, big-tech and Chinese 搜广推 coverage, and retention <= 90 reports. Static readability validated through local file/index/payload parity; direct network/loopback fetch remains sandbox-dependent.",
-    "publication": "published at 2026-05-27 09:45 CST: content commit 5f1c667d62e353f11078d31608c3673c81d29f78 pushed to origin/main; GitHub Actions Echo Trending Deploy run 26485720191 completed successfully; GitHub Pages build/deployment run 26485723930 completed successfully for gh-pages head 8675968b0c4a3b27d73d7e4bb35f2719ac88c14c; deployment 4829011714 succeeded at 2026-05-27T01:45:25Z with environment URL https://eshener.github.io/echo-trending/; Pages API returned status built. Direct live Pages JSON fetch from local shell failed with fetch failed, so static readability was confirmed via local file/index/payload parity plus GitHub Actions/Pages/Deployments API.",
-    "network": "git pull over SSH failed before editing because sandbox could not access GitHub SSH control socket or resolve github.com; content push over SSH succeeded; direct Pages JSON fetch from local shell failed with fetch failed."
+    "validation": "passed at 2026-05-27 10:47 CST: node --check scripts/daily.mjs, node --check public/app.js, git diff --check, JSON parse, data/public parity, gzip payload parity, enriched index latest path reports/2026-05-27.json with counts 12/80/225, static payload map for 2026-05-27, repo/frontier/AI rank sequences, repo deepDive/diagram fields, all 80 frontier items with business problem/system mechanism/metrics/borrow/boundary shape, all 225 AI news items with signal/impact/action fields, ByteDance OpenSearch refreshed diagram/interpretation, new AIHOT Karpathy Anthropic MTS secondary item, compact VLA item and OpenAI governance item, Anthropic official News/Research/Engineering/model/Claude Code/Agent/Computer Use/enterprise/safety coverage, OpenAI/Codex coverage, big-tech and Chinese 搜广推 coverage, and retention <= 90 reports. Static readability validated through local file/index/payload parity; direct network/loopback fetch remains sandbox-dependent.",
+    "publication": "pending commit, push and GitHub Pages deployment verification",
+    "network": "git pull over SSH failed before editing because sandbox could not access GitHub SSH control socket or resolve github.com; continuing from clean local main aligned with origin/main before edits."
   }
 }
