@@ -14336,8 +14336,8 @@
     "headline": "GitHub Trending 稳定；新增 Meta SilverTorch 和 Anthropic coding-agent 采用研究。"
   },
   "validation": {
-    "generatedAt": "2026-05-28T00:10:25.870Z",
-    "status": "passed-static-validation; local HTTP serve blocked by sandbox EPERM",
+    "generatedAt": "2026-05-28T00:12:21.470Z",
+    "status": "passed-static-validation; pushed to origin/main; live Pages verification blocked by local network/auth limits",
     "staticData": "passed: data/public JSON parity, gzip payload parity, index latest/count parity and front-end field contracts verified",
     "checks": [
       "node --check scripts/daily.mjs",
@@ -14354,15 +14354,24 @@
       "Anthropic/OpenAI/Codex/Computer Use/agent/safety provenance coverage",
       "retention <= 90 reports"
     ],
-    "publication": "pending commit and push"
+    "publication": "content commit 27b1235 pushed to origin/main; GitHub connector returned no PR-triggered workflow runs for the main commit; gh token is invalid; direct shell fetch to GitHub Pages/API failed with fetch failed"
   },
   "operations": {
     "gitPull": "git pull --ff-only origin main attempted before editing at 2026-05-28 08:04 CST; blocked by sandbox SSH control-socket/DNS restrictions while local branch started clean at main...origin/main.",
-    "publication": "Static validation passed; local npm run serve failed with sandbox PermissionError [Errno 1] Operation not permitted; publication pending commit/push and GitHub Pages verification.",
+    "publication": "Content commit 27b1235 pushed to origin/main. Post-push verification is limited: gh auth status reports invalid EShener token, GitHub connector combined-status endpoint returned no statuses and PR-run endpoint returned no workflow runs for this main commit, and direct shell fetch to Pages/API failed with fetch failed. Static site data readability was verified locally through JSON/index/payload parity.",
     "sourceReview": "2026-05-28 08:08 CST",
     "push": {
-      "status": "pending",
-      "recordedAt": "2026-05-28T00:10:25.870Z"
+      "commit": "27b1235",
+      "remote": "origin",
+      "branch": "main",
+      "status": "pushed",
+      "deployRun": null,
+      "pagesRun": null,
+      "pagesDeployment": null,
+      "pagesDeploymentStatus": "unverified due auth/network limits",
+      "pagesStatus": "unverified",
+      "environmentUrl": "https://eshener.github.io/echo-trending/",
+      "recordedAt": "2026-05-28T00:12:21.470Z"
     }
   }
 }
