@@ -1,6 +1,6 @@
 {
   "date": "2026-05-28",
-  "generatedAt": "2026-05-28T01:10:59.161Z",
+  "generatedAt": "2026-05-28T02:13:12.985Z",
   "source": {
     "provider": "GitHub official Trending + official AI/frontier engineering sources + curated AIHOT mirror",
     "query": "https://github.com/trending?since=daily plus official AI/engineering sources",
@@ -17,11 +17,11 @@
     "reviewedAt": "2026-05-28 08:08 CST"
   },
   "summary": {
-    "headline": "09:10 CST 更新：GitHub Trending Top-12 稳定，新增 Claude Code 安全插件治理信号。",
+    "headline": "10:15 CST 更新：A 社新增两篇官方 agent 安全框架，Claude Code 最新边界到 v2.1.153。",
     "bullets": [
-      "GitHub 官方 Trending Top-12 在 2026-05-28 09:08 CST 复核：前 12 位仍是 MoneyPrinterTurbo、Understand-Anything、stop-slop、ECC、knowledge-work-plugins、taste-skill、heretic、Kronos、Anthropic-Cybersecurity-Skills、twenty、claude-code-harness、FreeDomain；仅 star/fork 计数有小幅变化。",
-      "AIHOT 05:39 CST 可见流新增 Claude Code Security Guidance 插件：安全检查从 PR/发布前扫描前移到 Write/Edit/MultiEdit 编辑时 hook，适合纳入 coding-agent 插件治理观察。",
-      "搜广推大厂源已复核 Google Research/Ads、Meta Engineering/AI、Amazon Science、Netflix、Pinterest、Airbnb、Spotify、Salesforce、Dropbox 和可访问中文技术源；本轮没有比 Meta SilverTorch、Amazon chatbot autocomplete、RMIR、iterative reranking 更新且不重复的官方工程条目。"
+      "GitHub 官方 Trending Top-12 在 2026-05-28 10:12 CST 复核：前 12 位仍是 MoneyPrinterTurbo、Understand-Anything、stop-slop、ECC、knowledge-work-plugins、taste-skill、heretic、Kronos、Anthropic-Cybersecurity-Skills、twenty、claude-code-harness、FreeDomain；后续可见 superpowers、English-level-up-tips、iii、awesome-free-apps、airi。",
+      "AIHOT 10:15 CST 可见流新增 Anthropic/Claude 官方安全内容：source-code security 六步循环和 AI agents 零信任框架；这与 Security Guidance 插件共同表明 A 社在把 agent 安全从事后扫描扩展为编辑时 hook、漏洞运营和企业零信任架构。",
+      "搜广推大厂源继续覆盖 Google Research/Ads、Meta Engineering/AI、Amazon Science、Netflix、Pinterest、Airbnb、Spotify、Salesforce、Dropbox 和可访问中文技术源；本轮无比 Meta SilverTorch、Amazon chatbot autocomplete、RMIR、Airbnb synthetic search、Pinterest ads retrieval 更新且不重复的强工程条目。"
     ]
   },
   "items": [
@@ -14333,40 +14333,103 @@
         "category": "Claude Code/Agent安全/插件治理",
         "sourceType": "official-plugin+aihot",
         "rank": 253
+      },
+      {
+        "imageUrl": "https://www.google.com/s2/favicons?domain=claude.com&sz=128",
+        "title": "Anthropic source-code security guide turns AI vulnerability discovery into a six-step operating loop",
+        "source": "Claude official blog + AIHOT visible stream",
+        "sourceDetail": "Claude official blog post published May 27, 2026 and surfaced in AIHOT visible stream at 2026-05-28 06:07 CST. Official page frames discovery as easy to parallelize and verification/triage/patching as the new bottleneck.",
+        "publishedAt": "2026-05-27T00:00:00-07:00",
+        "url": "https://claude.com/blog/using-llms-to-secure-source-code",
+        "summary": "Anthropic/Claude 官方博客发布“Using LLMs to secure source code”：用 Claude Opus 做 threat model、sandbox、discovery、verification、triage、patching 六步循环。官方披露截至 2026-05-22，开源扫描已披露 1,596 个漏洞，其中 97 个已修补，并明确指出漏洞发现已经容易并行化，真正瓶颈转向验证、去重、定级、补丁质量和回归验证。",
+        "interpretation": {
+          "signal": "A 社安全线正在把 Claude 从“能发现漏洞的模型”推进到“可被安全团队运行的漏洞运营流程”。信号不只是 1,596 个披露数字，而是官方把 threat model、隔离沙箱、独立验证器、triage 和补丁回归写成标准作业链路。",
+          "impact": "企业安全团队会面临候选漏洞数量快速膨胀：扫描成本下降后，误报、重复根因、PoC 复现、维护者沟通和补丁破坏性会成为主要成本。对使用 coding agent 的工程组织，安全能力需要从 SAST/PR gate 前移到“代码库上下文 + 可执行沙箱 + 独立验证 + 最小补丁”的闭环。",
+          "action": "为关键仓库建立 THREAT_MODEL.md 和离线 sandbox，先选 1-2 类历史高发漏洞做 replay；把 discovery 和 verification 拆成独立 agent/模型，要求每个高危 finding 附 PoC、可达性、前置条件、补丁测试和变体搜索结果，再接入现有漏洞管理队列。"
+        },
+        "impact": "影响 -> AI 找洞供给会增长，安全瓶颈转向验证、去重、定级和补丁质量。",
+        "action": "动作 -> 给关键仓库补 threat model/sandbox，用独立 verifier 和 PoC 作为接收门槛。",
+        "tags": [
+          "Anthropic",
+          "Claude Opus",
+          "Claude Security",
+          "source-code security",
+          "vulnerability discovery",
+          "threat model",
+          "sandbox",
+          "triage",
+          "patching",
+          "AIHOT"
+        ],
+        "category": "A社/安全研究/漏洞运营",
+        "sourceType": "official-claude-blog+aihot",
+        "rank": 254
+      },
+      {
+        "imageUrl": "https://www.google.com/s2/favicons?domain=claude.com&sz=128",
+        "title": "Anthropic zero-trust framework makes autonomous agents an identity, permission and memory-security problem",
+        "source": "Claude official blog + AIHOT visible stream",
+        "sourceDetail": "Claude official blog post published May 27, 2026 and surfaced in AIHOT visible stream at 2026-05-28 02:06 CST. Official page describes a tiered Zero Trust architecture for enterprise autonomous AI agents.",
+        "publishedAt": "2026-05-27T00:00:00-07:00",
+        "url": "https://claude.com/blog/zero-trust-for-ai-agents",
+        "summary": "Anthropic/Claude 官方博客发布 AI agents 零信任安全框架，强调前沿模型把“漏洞到利用”的时间从数月压缩到数小时；企业部署自主 agent 时，风险同时来自底层基础设施和 agent 自身的目标解释、工具选择、权限使用、记忆污染与持久化操作。文章把零信任原则落到 agentic systems：加密根身份、按任务收窄权限、保护记忆免受 poisoning、并让防御运营跟上自主攻击速度。",
+        "interpretation": {
+          "signal": "企业 agent 的安全边界正在从“这个模型能不能被信任”转为“每个 agent 身份、每次任务授权、每段记忆和每个工具调用能否被证明、收窄和审计”。这说明 A 社正在把 Claude Security 与 Claude Code/Cowork/企业部署统一到更可采购的安全框架。",
+          "impact": "高自治 agent 会把传统 IAM、DLP、SIEM、EDR 和 secrets 管理的盲点放大：合法权限也可能被 agent 误用，记忆和工具描述也可能成为攻击面。没有零信任架构的企业会很难解释为什么允许 agent 访问代码库、工单、浏览器、支付、CRM 或生产控制台。",
+          "action": "把 agent 纳入身份与访问治理：每个 agent 使用独立身份和短期凭证，按任务申请最小权限，工具调用全量审计，记忆写入经过来源标注和污染检测，高风险动作需要人类 gate；同时做 prompt-injection、tool-poisoning、memory-poisoning 和权限升级演练。"
+        },
+        "impact": "影响 -> 自主 agent 的采购门槛会上升到身份、权限、记忆和审计架构。",
+        "action": "动作 -> 给 agent 设独立身份、短期凭证、最小权限和高风险人工 gate。",
+        "tags": [
+          "Anthropic",
+          "Claude Security",
+          "AI agents",
+          "Zero Trust",
+          "enterprise AI",
+          "identity",
+          "permissions",
+          "memory poisoning",
+          "tool poisoning",
+          "AIHOT"
+        ],
+        "category": "A社/企业安全/Agent治理",
+        "sourceType": "official-claude-blog+aihot",
+        "rank": 255
       }
     ],
-    "updatedAt": "2026-05-28T00:09:50.010Z",
-    "description": "AIHOT/大黑 AI 速报、Anthropic/OpenAI/Amazon/Google 等官方来源与可信技术媒体的 AI 动态解读，按 signal -> impact -> action 生成。",
-    "sourceDetail": "Official sources were preferred for ingestion; AIHOT/accessible mirrors were used as discovery surfaces and source labels preserve provenance."
+    "updatedAt": "2026-05-28T02:13:12.985Z",
+    "description": "AIHOT visible stream, Anthropic/Claude official pages and official AI source pages rechecked for the 10:15 CST boundary refresh.",
+    "sourceDetail": "AIHOT used as discovery surface; official Claude/Anthropic, OpenAI, Google, Hugging Face and big-tech pages used as primary evidence where available."
   },
   "hourlyUpdate": {
-    "at": "2026-05-28 09:10 CST",
-    "summary": "本轮做边界刷新和高价值补点：GitHub Trending 顺序稳定但计数更新；AIHOT/A 社新增 Claude Code Security Guidance 插件，说明 coding agent 的安全控制正在从事后扫描移到编辑时 hook。搜广推部分复核大厂源后没有新增不重复强信号，保留 Meta SilverTorch 作为今日最强工程文章。",
+    "at": "2026-05-28 10:15 CST",
+    "summary": "本轮做边界刷新和 A 社安全补点：GitHub Trending 顺序稳定；AIHOT/A 社新增 Claude source-code security guide 与 zero-trust agent framework；Claude Code release boundary 前移到 v2.1.153；搜广推源完成大厂与中文源复核，未新增不重复强条目。",
     "sourceBoundary": {
-      "github": "GitHub official Trending daily page rechecked at 2026-05-28 09:08 CST through https://github.com/trending?since=daily. Top-12 order remains MoneyPrinterTurbo, Understand-Anything, stop-slop, ECC, knowledge-work-plugins, taste-skill, heretic, Kronos, Anthropic-Cybersecurity-Skills, twenty, claude-code-harness, FreeDomain; official visible counters are 61,687/9,023/1,737; 39,525/3,144/4,466; 5,609/430/664; 195,932/30,138/2,062; 17,205/2,015/695; 24,054/1,855/2,715; 21,975/2,345/219; 26,854/4,654/402; 10,890/1,248/885; 47,288/6,714/520; 1,780/197/143; 169,020/3,189/2,223. The next visible projects include superpowers, English-level-up-tips, iii, awesome-free-apps and airi.",
-      "aihot": "AIHOT accessible stream rechecked at 2026-05-28 09:10 CST; visible highlights include Claude Code v2.1.152, Anthropic Korea/Seoul office, Claude Code Security Guidance plugin at 05:39 CST, Gemini Omni video prompting, Anthropic/financial-sector cybersecurity discussion, OpenAI/Cisco Codex enterprise engineering, Google AI Search/agents and Meta SilverTorch.",
-      "anthropic": "Anthropic official News/Research/Engineering, Claude plugin page, Claude Code releases and Claude product/docs surfaces rechecked. Latest official News boundary remains May 26, 2026 Korea/Seoul office; Research boundary remains May 27, 2026 Coding agents in the social sciences; Engineering boundary remains May 25, 2026 How we contain Claude across products plus Claude Code quality/Managed Agents/auto mode lineage; Claude Code release boundary remains v2.1.152; Security Guidance plugin is verified through claude.com plugin page and AIHOT visible stream.",
-      "frontier": "Big-tech 搜广推 sweep covered Google Research/Ads, Meta Engineering/AI, Amazon Science, Netflix TechBlog, Pinterest Engineering, Airbnb Engineering, Spotify Engineering, Salesforce Engineering, Dropbox Tech and accessible 阿里/Alibaba、字节/ByteDance、腾讯/Tencent、快手/Kuaishou、美团/Meituan、Bilibili/Volcengine Chinese sources with recommendation/recommender, ranking, retrieval, search, ads/advertising, auction/bidding, personalization, feed, marketplace, embedding/vector, query/index, CTR/CVR, 召回、粗排、精排、重排、特征、实验平台 keywords. No non-duplicate article outranked Meta SilverTorch / Amazon chatbot autocomplete / RMIR / iterative reranking in recency plus engineering depth during this pass."
+      "github": "GitHub official Trending daily page rechecked at 2026-05-28 10:12 CST through https://github.com/trending?since=daily. Top-12 order remains MoneyPrinterTurbo, Understand-Anything, stop-slop, ECC, knowledge-work-plugins, taste-skill, heretic, Kronos, Anthropic-Cybersecurity-Skills, twenty, claude-code-harness, FreeDomain; official visible counters remain 61,687/9,023/1,737; 39,525/3,144/4,466; 5,609/430/664; 195,932/30,138/2,062; 17,205/2,015/695; 24,054/1,855/2,715; 21,975/2,345/219; 26,854/4,654/402; 10,890/1,248/885; 47,288/6,714/520; 1,780/197/143; 169,020/3,189/2,223. The next visible projects include superpowers, English-level-up-tips, iii, awesome-free-apps and airi.",
+      "aihot": "AIHOT accessible stream rechecked at 2026-05-28 10:15 CST; visible highlights include coding-agent planning practice, Anthropic Research coding agents in social sciences, OpenAI/Cisco Codex, Claude source-code security guide, Meta SilverTorch, Claude Marketplace, Google zero-trust aggregation, ITBench-AA, Qwen3.5 TokenSpeed, Google AI-native Search discussion, Anthropic Zero Trust for AI agents and Claude Code Security Guidance plugin.",
+      "anthropic": "Anthropic official News/Research/Engineering plus Claude official blog/plugin/release surfaces rechecked. Latest Anthropic News boundary remains May 26, 2026 Korea/Seoul office; Research boundary remains May 27, 2026 Coding agents in the social sciences; Engineering boundary remains May 25, 2026 How we contain Claude across products plus Claude Code quality/Managed Agents/auto mode lineage; Claude official blog adds May 27 source-code security and Zero Trust for AI agents; Claude Code GitHub release boundary is v2.1.153 at 2026-05-28 00:52 UTC; Security Guidance plugin remains verified through claude.com plugin page.",
+      "frontier": "Big-tech 搜广推 sweep covered Google Research/Ads, Meta Engineering/AI, Amazon Science, Netflix TechBlog, Pinterest Engineering, Airbnb Engineering, Spotify Engineering, Salesforce Engineering, Dropbox Tech and accessible 阿里/Alibaba、字节/ByteDance、腾讯/Tencent、快手/Kuaishou、美团/Meituan、Bilibili/Volcengine Chinese sources with recommendation/recommender, ranking, retrieval, search, ads/advertising, auction/bidding, personalization, feed, marketplace, embedding/vector, query/index, CTR/CVR, 召回、粗排、精排、重排、特征、实验平台 keywords. No non-duplicate article outranked Meta SilverTorch / Amazon chatbot autocomplete / RMIR / Airbnb synthetic search / Pinterest contextual ads retrieval in recency plus engineering depth during this pass."
     },
     "added": {
       "repositories": 0,
       "frontier": [],
       "aiNews": [
-        "Claude Code Security Guidance plugin turns secure coding into edit-time guardrails"
+        "Anthropic source-code security guide turns AI vulnerability discovery into a six-step operating loop",
+        "Anthropic zero-trust framework makes autonomous agents an identity, permission and memory-security problem"
       ]
     },
     "counts": {
       "repositories": 12,
       "frontier": 96,
-      "aiNews": 253
+      "aiNews": 255
     },
-    "updatedAt": "2026-05-28T01:10:59.161Z",
-    "reviewTime": "2026-05-28 09:10 CST",
-    "headline": "GitHub Trending 稳定；新增 Claude Code 安全插件治理信号。"
+    "updatedAt": "2026-05-28T02:13:12.985Z",
+    "reviewTime": "2026-05-28 10:15 CST",
+    "headline": "GitHub Trending 稳定；A 社安全框架补点；Claude Code 最新到 v2.1.153。"
   },
   "validation": {
-    "generatedAt": "2026-05-28T01:13:15.155Z",
-    "status": "passed-static-validation; content commit pushed; Echo Trending Deploy workflow succeeded; live Pages/API fetch blocked by local DNS/API connectivity",
+    "generatedAt": "2026-05-28T02:17:08.283Z",
+    "status": "passed-static-validation; pending push/deploy confirmation",
     "staticData": "passed: data/public JSON parity, gzip payload parity, index latest/count parity and front-end field contracts verified",
     "checks": [
       "node --check scripts/daily.mjs",
@@ -14375,33 +14438,19 @@
       "JSON parse for data/public reports and index",
       "data/public parity",
       "gzip payload parity",
-      "index latest path/counts parity: 12 repos / 96 frontier / 253 AI news",
+      "index latest path/counts parity: 12 repos / 96 frontier / 255 AI news",
       "repo deepDive and diagram contract",
       "frontier five-part interpretation contract",
-      "AI signal/impact/action contract plus Claude Code Security Guidance plugin item",
+      "AI signal/impact/action contract plus new Anthropic source-code security and zero-trust agent items",
       "big-tech and Chinese 搜广推 source/keyword coverage",
-      "Anthropic/Claude Code/agent/security provenance coverage",
+      "Anthropic/Claude Code/agent/security provenance coverage including Claude Code v2.1.153",
       "retention <= 90 reports"
     ],
-    "publication": "content commit 689d997 pushed to origin/main; Echo Trending Deploy run 26548476824 completed successfully and workflow publishes public/ to gh-pages; direct shell fetch to GitHub Pages failed with DNS resolution error and later GitHub API calls were intermittently unavailable"
+    "publication": "pending commit/push/deploy confirmation for 10:15 CST content refresh"
   },
   "operations": {
-    "gitPull": "git pull --ff-only origin main attempted before editing at 2026-05-28 09:04 CST; blocked by sandbox SSH control-socket/DNS restrictions while local branch started clean at main...origin/main.",
-    "publication": "Content commit 689d997 pushed to origin/main. GitHub CLI confirmed Echo Trending Deploy run 26548476824 completed successfully; workflow publishes public/ to gh-pages. Live Pages JSON fetch from the local shell failed with DNS resolution error, and subsequent GitHub API/Pages/Deployments calls were intermittently unavailable, so static site readability was verified locally by JSON/index/payload parity.",
-    "sourceReview": "2026-05-28 09:10 CST",
-    "push": {
-      "commit": "689d997",
-      "remote": "origin",
-      "branch": "main",
-      "status": "pushed",
-      "deployRun": "26548476824",
-      "deployConclusion": "success",
-      "pagesRun": null,
-      "pagesDeployment": null,
-      "pagesDeploymentStatus": "unverified due local DNS/API connectivity limits",
-      "pagesStatus": "unverified-live-fetch; deploy workflow success confirmed",
-      "environmentUrl": "https://eshener.github.io/echo-trending/",
-      "recordedAt": "2026-05-28T01:13:15.155Z"
-    }
+    "gitPull": "git pull --ff-only origin main attempted before editing at 2026-05-28 10:04 CST; blocked by sandbox SSH control-socket/DNS restrictions while local branch started clean at main...origin/main.",
+    "publication": "Pending commit/push after 10:15 CST content refresh; static site readability verified locally by JSON/index/payload parity.",
+    "sourceReview": "2026-05-28 10:15 CST"
   }
 }
