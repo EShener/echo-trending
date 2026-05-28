@@ -1,6 +1,6 @@
 {
   "date": "2026-05-28",
-  "generatedAt": "2026-05-28T07:17:44.864Z",
+  "generatedAt": "2026-05-28T08:18:58.001Z",
   "source": {
     "provider": "GitHub official Trending + AIHOT visible stream + official AI/company sources + big-tech engineering blogs",
     "query": "https://github.com/trending?since=daily plus manual official-source sweep",
@@ -17,11 +17,11 @@
     "reviewedAt": "2026-05-28 15:16 CST"
   },
   "summary": {
-    "headline": "今日开源热点继续稳定在 Agent 工具链与 AI 内容生产，新增焦点转向私有工具接入和转化广告召回。",
+    "headline": "今日开源热点稳定，新增焦点转向长期排序实验评估与 agent RL 训练基础设施。",
     "bullets": [
-      "GitHub Trending Top-12 顺序未变；Understand-Anything 计数更新到 40,533 stars / 3,226 forks / 4,465 stars today，说明多模态理解项目仍在高速吸收关注。",
-      "搜广推新增 Pinterest 购物转化广告候选生成案例，把稀疏 offsite conversion、multi-task retrieval 和 RoAS 指标放进同一个可落地链路。",
-      "搜广推板块收录 99 条前沿论文/研究信号，AI 新闻收录 262 条动态；本轮 AI 新增 OpenAI Secure MCP Tunnel 企业内网工具接入信号。"
+      "GitHub Trending Top-12 顺序与 15 点复核一致，MoneyPrinterTurbo、Understand-Anything、stop-slop、ECC 继续占据前列；本轮保留官方可见计数并记录 16:16 CST 复核边界。",
+      "搜广推新增 Airbnb/UC Berkeley BSTAR：把短期 ranker A/B、搜索结果集 surrogate、长期 PLATE 和 bias/MSE 门禁串成可借鉴的 marketplace 排序实验框架。",
+      "搜广推板块收录 100 条前沿论文/工程信号，AI 新闻收录 264 条动态；本轮 AI 新增 NVIDIA Polar 与 OpenAI Cisco/Codex 企业落地信号。"
     ]
   },
   "items": [
@@ -2386,8 +2386,65 @@
   "frontier": {
     "title": "搜广推技术前沿",
     "subtitle": "跟踪搜索、广告、推荐、排序、召回、AI 搜索评测和工业工程博客的新论文与生产实践。",
-    "source": "Meta Engineering, Amazon Science, Google Research, Pinterest Engineering, Airbnb Engineering, Spotify Engineering, Salesforce Engineering, Dropbox Tech, Perplexity Research, AIHOT/HuggingFace Daily Papers and accessible Chinese tech sources",
+    "source": "Meta Engineering, Amazon Science, Google Research, Pinterest Engineering, Airbnb Engineering, Spotify Engineering, Salesforce Engineering, Dropbox Tech, Perplexity Research, AIHOT/HuggingFace Daily Papers and accessible Chinese tech sources, refreshed 2026-05-28 16:16 CST",
     "items": [
+      {
+        "title": "Airbnb BSTAR moves ranker launch decisions beyond short A/B-test windows",
+        "source": "Airbnb Engineering & Data Science / UC Berkeley paper abstract",
+        "publishedAt": "2026-05-28T00:00:00.000Z",
+        "url": "https://airbnb.tech/wp-content/uploads/sites/19/2026/01/BSTAR_abstract_5pages.pdf",
+        "summary": "Airbnb 与 UC Berkeley 的 BSTAR 摘要把 marketplace 搜索排序实验的核心风险讲清楚：短期 A/B 可能提升转化，却因为低质量供给、用户信任、季节性和反馈回路在长期损害复购。论文把目标定义为 prospective long-term average treatment effect，并用 Blip Surrogate Transfer 组合 structural nested mean model 的 blip、search result set 作为 surrogate index、历史观察数据到实验数据的 transfer learning。模拟显示，在只跑 1-12 周短实验时，BSTAR 相比 IPW 和普通 surrogate index 对 12 周 PLATE 有更低 bias 和 MSE；同时明确警告如果漏掉 user booking intent 等时变混杂，估计会偏。",
+        "interpretation": {
+          "businessProblem": "搜索、推荐和广告 ranker 的上线决策常被短期 A/B 绑架：新的排序可能立刻提高点击或预订，但如果它把低价低质结果推高、改变供给曝光、影响用户信任或改变后续搜索行为，真正的长期 GMV、复购和平台健康会在实验窗口之后才显现。",
+          "systemMechanism": "BSTAR 的系统机制不是替代在线实验，而是在实验分析层补一个长期因果估计管线：把用户协变量、ranker treatment、搜索结果集 surrogate 和 booking outcome 按时间序列建模；用 blip function 估计每次 ranker 暴露对未来 outcome 的增量影响；用 result set density ratio 对齐新旧 ranker 产生的结果分布；再从历史长周期观察数据迁移到短期实验人群。",
+          "metricsAndExperiment": "指标/实验应同时看短期 A/B 指标和 PLATE 类长期累计结果：短期 conversion、booking、CTR、取消/投诉、供给侧曝光公平性、用户意图变化、搜索结果集分布漂移、density-ratio 稳定性、bootstrap 置信区间以及对漏掉时变混杂的敏感性。Airbnb 摘要中的模拟结论是 BSTAR 在复杂纵向动态下比 IPW 和 SurIdx 估计 12 周长期效应的 bias/MSE 更低。",
+          "borrowable": "可借鉴点是把“实验窗口外的排序影响”变成发布门禁：ranker 灰度不只看一两周转化，还要保存 result-set snapshot、用户状态摘要和历史长窗 outcome，用长期因果估计判断是否真的该全量；对广告 auction、feed、marketplace 和本地生活排序都适用。",
+          "boundary": "不适用于缺少稳定用户标识、历史长窗数据、结果集快照或关键混杂变量的团队；如果 ranker 变化主要是 UI 位置、价格展示或供给政策变化，surrogacy 假设可能失效。小团队先做 cohort holdout 和长期 guardrail，比直接上复杂因果模型更稳。"
+        },
+        "tags": [
+          "search",
+          "ranking",
+          "A/B testing",
+          "marketplace",
+          "causal inference",
+          "experiment platform"
+        ],
+        "category": "搜索排序 / 实验平台 / 长期因果评估",
+        "sourceType": "industry-paper",
+        "imageUrl": "https://www.google.com/s2/favicons?domain=airbnb.tech&sz=128",
+        "diagram": {
+          "title": "Airbnb BSTAR long-term ranker decision loop",
+          "caption": "Airbnb / UC Berkeley · short experiment window -> result-set surrogate -> long-term PLATE estimate",
+          "nodes": [
+            {
+              "label": "Short A/B window",
+              "detail": "ranker treatment exposes users to new result sets for days or weeks",
+              "type": "experiment"
+            },
+            {
+              "label": "Result-set surrogate",
+              "detail": "shown listings encode how users experience the backend ranker",
+              "type": "data"
+            },
+            {
+              "label": "BSTAR estimator",
+              "detail": "blip functions, density ratios and transfer learning estimate long-term effects",
+              "type": "system"
+            },
+            {
+              "label": "Launch gate",
+              "detail": "PLATE, bias/MSE, guardrails and sensitivity checks decide full rollout",
+              "type": "metric"
+            }
+          ],
+          "links": [
+            "short metrics enter causal replay",
+            "result distribution aligns old and new rankers",
+            "long-term estimate controls rollout risk"
+          ]
+        },
+        "rank": 1
+      },
       {
         "title": "Pinterest conversion ads candidate generation turns sparse purchase signals into retrieval supervision",
         "source": "Pinterest Engineering Blog",
@@ -2441,7 +2498,7 @@
             "candidate quality flows into auction outcomes"
           ]
         },
-        "rank": 1
+        "rank": 2
       },
       {
         "title": "VibeSearchBench exposes the gap between search benchmarks and ambiguous user intent",
@@ -2502,7 +2559,7 @@
             "outcome graph exposes missing preferences"
           ]
         },
-        "rank": 2
+        "rank": 3
       },
       {
         "title": "Meta SilverTorch turns recommendation retrieval into a single GPU-resident model",
@@ -2564,7 +2621,7 @@
             "streaming tensor updates preserve freshness"
           ]
         },
-        "rank": 3
+        "rank": 4
       },
       {
         "title": "Amazon user-agency recommender moves preference profiles from platform memory to personal agents",
@@ -2624,7 +2681,7 @@
         ],
         "category": "推荐系统/个性化/个人代理",
         "sourceType": "official-research-publication",
-        "rank": 4
+        "rank": 5
       },
       {
         "title": "Amazon MIRAGE makes multimodal product-support retrieval depend on metadata-grounded evidence",
@@ -2684,7 +2741,7 @@
         ],
         "sourceType": "official-research-publication",
         "imageUrl": "https://www.google.com/s2/favicons?domain=amazon.science&sz=128",
-        "rank": 5
+        "rank": 6
       },
       {
         "title": "Amazon ReflectiveRAG treats retrieval adaptivity as a lightweight reasoning-control problem",
@@ -2744,7 +2801,7 @@
         ],
         "sourceType": "official-research-publication",
         "imageUrl": "https://www.google.com/s2/favicons?domain=amazon.science&sz=128",
-        "rank": 6
+        "rank": 7
       },
       {
         "title": "Airbnb AI discovery event frames ranking, recommendations and retrieval as one adaptive marketplace system",
@@ -2804,7 +2861,7 @@
         ],
         "sourceType": "official-engineering-event",
         "imageUrl": "https://www.google.com/s2/favicons?domain=airbnb.tech&sz=128",
-        "rank": 7
+        "rank": 8
       },
       {
         "title": "Perplexity tokenizer work shows reranker latency still depends on CPU preprocessing discipline",
@@ -2866,7 +2923,7 @@
             "latency and token exactness gate rollout"
           ]
         },
-        "rank": 8
+        "rank": 9
       },
       {
         "title": "Google Gemini Embedding 2 paper turns multimodal embeddings into shared search infrastructure",
@@ -2926,7 +2983,7 @@
         ],
         "sourceType": "big-tech-research",
         "imageUrl": "https://www.google.com/s2/favicons?domain=deepmind.google&sz=128",
-        "rank": 9
+        "rank": 10
       },
       {
         "title": "Amazon PROBES turns semantic search evaluation into actionable error diagnosis",
@@ -2983,7 +3040,7 @@
         ],
         "sourceType": "big-tech-research",
         "imageUrl": "https://www.google.com/s2/favicons?domain=www.amazon.science&sz=128",
-        "rank": 10
+        "rank": 11
       },
       {
         "title": "Google AI Search shift creates a new distribution problem for search, ads and vertical discovery teams",
@@ -3008,7 +3065,7 @@
         ],
         "sourceType": "industry-news",
         "imageUrl": "https://www.google.com/s2/favicons?domain=techcrunch.com&sz=128",
-        "rank": 11,
+        "rank": 12,
         "diagram": {
           "title": "Google AI Search shift creates a new distribution problem for search, ads and ver…",
           "caption": "TechCrunch / Google I/O 2026 coverage · business problem -> system mechanism -> metrics/experiment -> borrowable boundary",
@@ -3064,7 +3121,7 @@
         ],
         "sourceType": "official-product-blog",
         "imageUrl": "https://www.google.com/s2/favicons?domain=blog.google&sz=128",
-        "rank": 12,
+        "rank": 13,
         "diagram": {
           "title": "Google Universal Commerce Protocol links AI Search, Gemini and Maps into shoppabl…",
           "caption": "Google Ads & Commerce / Shopping Blog · business problem -> system mechanism -> metrics/experiment -> borrowable boundary",
@@ -3119,7 +3176,7 @@
         ],
         "sourceType": "official-product-blog",
         "imageUrl": "https://www.google.com/s2/favicons?domain=blog.google&sz=128",
-        "rank": 13,
+        "rank": 14,
         "diagram": {
           "title": "Google Search Ads moves into AI Mode with Gemini-native ad formats",
           "caption": "Google Ads & Commerce Blog · business problem -> system mechanism -> metrics/experiment -> borrowable boundary",
@@ -3174,7 +3231,7 @@
         ],
         "sourceType": "official-product-blog",
         "imageUrl": "https://www.google.com/s2/favicons?domain=blog.google&sz=128",
-        "rank": 14,
+        "rank": 15,
         "diagram": {
           "title": "Google Ads Advisor adds real-time policy, security and certification automation",
           "caption": "Google Ads & Commerce Blog · business problem -> system mechanism -> metrics/experiment -> borrowable boundary",
@@ -3230,7 +3287,7 @@
         ],
         "sourceType": "official-engineering-blog",
         "imageUrl": "https://www.google.com/s2/favicons?domain=medium.com&sz=128",
-        "rank": 15,
+        "rank": 16,
         "diagram": {
           "title": "Pinterest contextual sequential two-tower model injects real-time context into ad…",
           "caption": "Pinterest Engineering · business problem -> system mechanism -> metrics/experiment -> borrowable boundary",
@@ -3285,7 +3342,7 @@
         ],
         "sourceType": "official-engineering-blog",
         "imageUrl": "https://www.google.com/s2/favicons?domain=medium.com&sz=128",
-        "rank": 16,
+        "rank": 17,
         "diagram": {
           "title": "Pinterest request-level deduplication scales ranking models without proportional …",
           "caption": "Pinterest Engineering · business problem -> system mechanism -> metrics/experiment -> borrowable boundary",
@@ -3341,7 +3398,7 @@
         ],
         "sourceType": "industry",
         "imageUrl": "https://www.google.com/s2/favicons?domain=medium.com&sz=128",
-        "rank": 17,
+        "rank": 18,
         "diagram": {
           "title": "Pinterest unifies ads engagement modeling across Home Feed and Search surfaces",
           "caption": "Pinterest Engineering · business problem -> system mechanism -> metrics/experiment -> borrowable boundary",
@@ -3396,7 +3453,7 @@
         ],
         "sourceType": "official-product-blog",
         "imageUrl": "https://www.google.com/s2/favicons?domain=blog.google&sz=128",
-        "rank": 18,
+        "rank": 19,
         "diagram": {
           "title": "Google Ask Advisor turns ads operations into cross-product agent workflows",
           "caption": "Google Ads & Commerce Blog · business problem -> system mechanism -> metrics/experiment -> borrowable boundary",
@@ -3451,7 +3508,7 @@
         ],
         "sourceType": "official-product-blog",
         "imageUrl": "https://www.google.com/s2/favicons?domain=blog.google&sz=128",
-        "rank": 19,
+        "rank": 20,
         "diagram": {
           "title": "Google Smart Bidding adds journey-aware signals and demand-led pacing",
           "caption": "Google Ads & Commerce Blog · business problem -> system mechanism -> metrics/experiment -> borrowable boundary",
@@ -3506,7 +3563,7 @@
         ],
         "sourceType": "engineering-blog",
         "imageUrl": "https://www.google.com/s2/favicons?domain=medium.com&sz=128",
-        "rank": 20,
+        "rank": 21,
         "diagram": {
           "title": "Pinterest conversion candidate generation turns sparse offsite labels into shoppi…",
           "caption": "Pinterest Engineering · business problem -> system mechanism -> metrics/experiment -> borrowable boundary",
@@ -3561,7 +3618,7 @@
         ],
         "sourceType": "engineering-blog",
         "imageUrl": "https://www.google.com/s2/favicons?domain=engineering.fb.com&sz=128",
-        "rank": 21,
+        "rank": 22,
         "diagram": {
           "title": "Meta REA automates ads ranking experimentation across multi-day ML workflows",
           "caption": "Meta Engineering · business problem -> system mechanism -> metrics/experiment -> borrowable boundary",
@@ -3616,7 +3673,7 @@
         ],
         "sourceType": "engineering-blog",
         "imageUrl": "https://www.google.com/s2/favicons?domain=engineering.fb.com&sz=128",
-        "rank": 22,
+        "rank": 23,
         "diagram": {
           "title": "Meta Adaptive Ranking bends ads inference cost for LLM-scale recommender models",
           "caption": "Meta Engineering · business problem -> system mechanism -> metrics/experiment -> borrowable boundary",
@@ -3671,7 +3728,7 @@
         ],
         "sourceType": "engineering-blog",
         "imageUrl": "https://www.google.com/s2/favicons?domain=engineering.atspotify.com&sz=128",
-        "rank": 23,
+        "rank": 24,
         "diagram": {
           "title": "Spotify Ads API Claude plugin exposes ad operations as auditable natural-language…",
           "caption": "Spotify Engineering · business problem -> system mechanism -> metrics/experiment -> borrowable boundary",
@@ -3726,7 +3783,7 @@
         ],
         "sourceType": "engineering-blog",
         "imageUrl": "https://www.google.com/s2/favicons?domain=dropbox.tech&sz=128",
-        "rank": 24,
+        "rank": 25,
         "diagram": {
           "title": "Dropbox Dash uses LLM-assisted labels to improve enterprise search relevance",
           "caption": "Dropbox Tech · business problem -> system mechanism -> metrics/experiment -> borrowable boundary",
@@ -3781,7 +3838,7 @@
         ],
         "sourceType": "cn-engineering",
         "imageUrl": "https://www.google.com/s2/favicons?domain=developer.aliyun.com&sz=128",
-        "rank": 25,
+        "rank": 26,
         "diagram": {
           "title": "Alibaba PAI-Rec positions recall engines as configurable millisecond recommendati…",
           "caption": "阿里云开发者社区 · business problem -> system mechanism -> metrics/experiment -> borrowable boundary",
@@ -3815,7 +3872,7 @@
         }
       },
       {
-        "rank": 26,
+        "rank": 27,
         "title": "Dropbox Dash relevance judge optimization turns LLM eval into a production ranking primitive",
         "source": "Dropbox Tech",
         "publishedAt": "2026-03-17",
@@ -3891,7 +3948,7 @@
         ],
         "sourceType": "cn-engineering",
         "imageUrl": "https://www.google.com/s2/favicons?domain=tech.meituan.com&sz=128",
-        "rank": 27,
+        "rank": 28,
         "diagram": {
           "title": "Meituan LongCat-Thinking strengthens agentic search and tool-use evaluation",
           "caption": "美团技术团队 · business problem -> system mechanism -> metrics/experiment -> borrowable boundary",
@@ -3925,7 +3982,7 @@
         }
       },
       {
-        "rank": 28,
+        "rank": 29,
         "title": "Google Search experimentation platform: CI-style continuous evaluation for ranking changes",
         "source": "Google Research / IEEE 2025 via Google Publications",
         "publishedAt": "2026",
@@ -3979,7 +4036,7 @@
         }
       },
       {
-        "rank": 29,
+        "rank": 30,
         "title": "Netflix recommendation foundation model: shared preference representation instead of many isolated rankers",
         "source": "Netflix TechBlog",
         "publishedAt": "2025-03-21",
@@ -4033,7 +4090,7 @@
         }
       },
       {
-        "rank": 30,
+        "rank": 31,
         "title": "ByteDance OpenSearch practice: real-time search, storage-compute separation and vector retrieval",
         "source": "火山引擎开发者社区 / OpenSearchCon China 2026",
         "publishedAt": "2026-05-27T10:43:00+08:00",
@@ -4095,7 +4152,7 @@
         }
       },
       {
-        "rank": 31,
+        "rank": 32,
         "title": "Kuaishou GRank: generate-rank retrieval for target-aware industrial recall",
         "source": "WWW 2026 / 快手技术论文解读",
         "publishedAt": "2026-04",
@@ -4150,7 +4207,7 @@
         }
       },
       {
-        "rank": 32,
+        "rank": 33,
         "title": "Meituan MBGR: multi-business prediction for generative recommendation",
         "source": "arXiv / Meituan",
         "publishedAt": "2026-04-03",
@@ -4204,7 +4261,7 @@
         }
       },
       {
-        "rank": 33,
+        "rank": 34,
         "title": "Tencent Advertising Algorithm Challenge: all-modality generative recommendation becomes benchmarkable",
         "source": "arXiv / Tencent Advertising",
         "publishedAt": "2026-04-04",
@@ -4259,7 +4316,7 @@
         }
       },
       {
-        "rank": 34,
+        "rank": 35,
         "title": "Alibaba generative retrieval for Tmall search: semantic cluster IDs plus expert-guided RL",
         "source": "Recsys Frontier / Alibaba paper watch",
         "publishedAt": "2026-05",
@@ -4314,7 +4371,7 @@
         }
       },
       {
-        "rank": 35,
+        "rank": 36,
         "title": "Amazon Search: behavioral feature boosting with substitute relationships for cold-start products",
         "source": "Amazon Science",
         "publishedAt": "2026",
@@ -4368,7 +4425,7 @@
         }
       },
       {
-        "rank": 36,
+        "rank": 37,
         "title": "Google Research ERA: agentic experiment search as a pattern for ranking and retrieval R&D",
         "source": "Google Research",
         "publishedAt": "2026-05-19",
@@ -4422,7 +4479,7 @@
         }
       },
       {
-        "rank": 37,
+        "rank": 38,
         "title": "Google Research TurboQuant: extreme compression for vector search and KV-heavy retrieval",
         "source": "Google Research",
         "publishedAt": "2026-03-24",
@@ -4476,7 +4533,7 @@
         }
       },
       {
-        "rank": 38,
+        "rank": 39,
         "title": "Meta Facebook Groups Search: hybrid retrieval for community knowledge",
         "source": "Meta Engineering",
         "publishedAt": "2026-04-21",
@@ -4550,7 +4607,7 @@
         ],
         "sourceType": "industry",
         "imageUrl": "https://www.google.com/s2/favicons?domain=amazon.science&sz=128",
-        "rank": 39,
+        "rank": 40,
         "diagram": {
           "title": "Amazon PRECISE: bias-corrected LLM evaluation for Precision@K",
           "caption": "Amazon Science · business problem -> system mechanism -> metrics/experiment -> borrowable boundary",
@@ -4604,7 +4661,7 @@
           "deduplication",
           "serving"
         ],
-        "rank": 40,
+        "rank": 41,
         "diagram": {
           "title": "Pinterest request-level deduplication: 100x larger ranking model without proporti…",
           "caption": "Pinterest Engineering · business problem -> system mechanism -> metrics/experiment -> borrowable boundary",
@@ -4638,7 +4695,7 @@
         }
       },
       {
-        "rank": 41,
+        "rank": 42,
         "title": "Amazon Science: LLM iterative reranking as inference-time scaling",
         "source": "Amazon Science",
         "publishedAt": "2026",
@@ -4712,7 +4769,7 @@
           "media planning",
           "experimentation"
         ],
-        "rank": 42,
+        "rank": 43,
         "diagram": {
           "title": "Spotify Ads AI: multi-agent media planning over shared ads services",
           "caption": "Spotify Engineering · business problem -> system mechanism -> metrics/experiment -> borrowable boundary",
@@ -4766,7 +4823,7 @@
           "recommendation",
           "exploration"
         ],
-        "rank": 43,
+        "rank": 44,
         "diagram": {
           "title": "Airbnb destination recommendation: exploration-stage marketplace discovery",
           "caption": "Airbnb Engineering · business problem -> system mechanism -> metrics/experiment -> borrowable boundary",
@@ -4802,7 +4859,7 @@
       {
         "sourceType": "official-engineering-blog",
         "imageUrl": "https://www.google.com/s2/favicons?domain=medium.com&sz=128",
-        "rank": 44,
+        "rank": 45,
         "title": "Pinterest Ads lightweight ranking breaks beyond two-tower serving limits",
         "source": "Pinterest Engineering",
         "publishedAt": "2026-02-02",
@@ -4855,7 +4912,7 @@
         }
       },
       {
-        "rank": 45,
+        "rank": 46,
         "title": "Google Marketing Live 2026: AI Search ads and commerce stack",
         "source": "Google Ads & Commerce",
         "publishedAt": "2026-05-20",
@@ -4909,7 +4966,7 @@
         }
       },
       {
-        "rank": 46,
+        "rank": 47,
         "title": "Google Search I/O 2026: agents, AI Mode and personal intelligence",
         "source": "Google Search",
         "publishedAt": "2026-05-19",
@@ -4963,7 +5020,7 @@
         }
       },
       {
-        "rank": 47,
+        "rank": 48,
         "title": "Spotify: LLM evals are an experiment funnel, not an A/B replacement",
         "source": "Spotify Engineering",
         "publishedAt": "2026-05-18",
@@ -5017,7 +5074,7 @@
         }
       },
       {
-        "rank": 48,
+        "rank": 49,
         "title": "腾讯云/得物：生成式召回进入推荐系统试验",
         "source": "腾讯云开发者社区",
         "publishedAt": "2026-04-16",
@@ -5071,7 +5128,7 @@
         }
       },
       {
-        "rank": 49,
+        "rank": 50,
         "title": "Airbnb Search: map ranking and embedding retrieval for marketplace discovery",
         "source": "Airbnb Engineering",
         "publishedAt": "2026",
@@ -5125,7 +5182,7 @@
         }
       },
       {
-        "rank": 50,
+        "rank": 51,
         "title": "Salesforce Data Cloud: hybrid search and sub-100ms personalization",
         "source": "Salesforce Engineering",
         "publishedAt": "2025-2026",
@@ -5199,7 +5256,7 @@
         ],
         "sourceType": "industry",
         "imageUrl": "https://www.google.com/s2/favicons?domain=medium.com&sz=128",
-        "rank": 51,
+        "rank": 52,
         "diagram": {
           "title": "Pinterest Ads: unified engagement modeling across Home Feed and Search",
           "caption": "Pinterest Engineering · business problem -> system mechanism -> metrics/experiment -> borrowable boundary",
@@ -5233,7 +5290,7 @@
         }
       },
       {
-        "rank": 52,
+        "rank": 53,
         "title": "Meta REA and KernelEvolve connect ranking experiments to infrastructure optimization",
         "source": "Meta Engineering",
         "publishedAt": "2026-04-02",
@@ -5307,7 +5364,7 @@
         ],
         "sourceType": "research",
         "imageUrl": "https://www.google.com/s2/favicons?domain=amazon.science&sz=128",
-        "rank": 53,
+        "rank": 54,
         "diagram": {
           "title": "Amazon Science PROBES: LLM-powered search relevance observability",
           "caption": "Amazon Science · business problem -> system mechanism -> metrics/experiment -> borrowable boundary",
@@ -5361,7 +5418,7 @@
         ],
         "sourceType": "engineering-blog",
         "imageUrl": "https://www.google.com/s2/favicons?domain=medium.com&sz=128",
-        "rank": 54,
+        "rank": 55,
         "diagram": {
           "title": "Pinterest Homefeed multi-objective optimization: reranking as business governance",
           "caption": "Pinterest Engineering Blog · business problem -> system mechanism -> metrics/experiment -> borrowable boundary",
@@ -5416,7 +5473,7 @@
         ],
         "sourceType": "chinese-engineering-community",
         "imageUrl": "https://www.google.com/s2/favicons?domain=developer.aliyun.com&sz=128",
-        "rank": 55,
+        "rank": 56,
         "diagram": {
           "title": "Alibaba Cloud: AI shopping search shifts product discovery from keyword bidding t…",
           "caption": "阿里云开发者社区 · business problem -> system mechanism -> metrics/experiment -> borrowable boundary",
@@ -5471,7 +5528,7 @@
         ],
         "sourceType": "engineering-blog",
         "imageUrl": "https://www.google.com/s2/favicons?domain=engineering.atspotify.com&sz=128",
-        "rank": 56,
+        "rank": 57,
         "diagram": {
           "title": "Spotify separates personalization serving from experimentation evaluation",
           "caption": "Spotify Engineering · business problem -> system mechanism -> metrics/experiment -> borrowable boundary",
@@ -5528,7 +5585,7 @@
         ],
         "sourceType": "engineering-blog",
         "imageUrl": "https://www.google.com/s2/favicons?domain=medium.com&sz=128",
-        "rank": 57,
+        "rank": 58,
         "diagram": {
           "title": "Pinterest adds real-time context to sequential ads candidate generation",
           "caption": "Pinterest Engineering Blog · business problem -> system mechanism -> metrics/experiment -> borrowable boundary",
@@ -5589,7 +5646,7 @@
         ],
         "sourceType": "official-pinterest-engineering-blog",
         "imageUrl": "https://www.google.com/s2/favicons?domain=medium.com&sz=128",
-        "rank": 58,
+        "rank": 59,
         "diagram": {
           "title": "Governed user-sequence platform",
           "caption": "A single sequence definition feeds streaming freshness, batch completeness, online serving and offline training without letting feature semantics drift.",
@@ -5644,7 +5701,7 @@
         ],
         "sourceType": "industry-research",
         "imageUrl": "https://www.google.com/s2/favicons?domain=amazon.science&sz=128",
-        "rank": 59,
+        "rank": 60,
         "diagram": {
           "title": "Amazon Science LLMEvalRec turns recommender evaluation into agent-simulated user …",
           "caption": "Amazon Science · business problem -> system mechanism -> metrics/experiment -> borrowable boundary",
@@ -5699,7 +5756,7 @@
         ],
         "sourceType": "industry-research",
         "imageUrl": "https://www.google.com/s2/favicons?domain=amazon.science&sz=128",
-        "rank": 60,
+        "rank": 61,
         "diagram": {
           "title": "Amazon Science SDR compresses late-interaction neural re-ranking for production s…",
           "caption": "Amazon Science · business problem -> system mechanism -> metrics/experiment -> borrowable boundary",
@@ -5754,7 +5811,7 @@
         ],
         "sourceType": "industry-research",
         "imageUrl": "https://www.google.com/s2/favicons?domain=amazon.science&sz=128",
-        "rank": 61,
+        "rank": 62,
         "diagram": {
           "title": "Amazon Science tests agentic keyword search against standing vector RAG",
           "caption": "Amazon Science · business problem -> system mechanism -> metrics/experiment -> borrowable boundary",
@@ -5810,7 +5867,7 @@
         ],
         "sourceType": "engineering-blog",
         "imageUrl": "https://www.google.com/s2/favicons?domain=medium.com&sz=128",
-        "rank": 62,
+        "rank": 63,
         "diagram": {
           "title": "Pinterest unifies ads engagement models across Home Feed and Search",
           "caption": "Pinterest Engineering Blog · business problem -> system mechanism -> metrics/experiment -> borrowable boundary",
@@ -5866,7 +5923,7 @@
         ],
         "sourceType": "official-product-blog",
         "imageUrl": "https://www.google.com/s2/favicons?domain=blog.google&sz=128",
-        "rank": 63,
+        "rank": 64,
         "diagram": {
           "title": "Google Marketing Live turns bidding and budgeting into journey-aware AI control l…",
           "caption": "Google Ads & Commerce Blog · business problem -> system mechanism -> metrics/experiment -> borrowable boundary",
@@ -5922,7 +5979,7 @@
         ],
         "sourceType": "academic-measurement",
         "imageUrl": "https://www.google.com/s2/favicons?domain=arxiv.org&sz=128",
-        "rank": 64,
+        "rank": 65,
         "diagram": {
           "title": "AI Overviews measurement exposes a new search-ranking and publisher-revenue audit…",
           "caption": "arXiv / independent measurement study · business problem -> system mechanism -> metrics/experiment -> borrowable boundary",
@@ -5981,7 +6038,7 @@
         ],
         "sourceType": "Chinese-engineering-article",
         "imageUrl": "https://www.google.com/s2/favicons?domain=developer.aliyun.com&sz=128",
-        "rank": 65,
+        "rank": 66,
         "diagram": {
           "title": "Alibaba Cloud Elasticsearch hybrid retrieval turns AI search into a cost-governed…",
           "caption": "Alibaba Cloud Developer Community · business problem -> system mechanism -> metrics/experiment -> borrowable boundary",
@@ -6037,7 +6094,7 @@
         ],
         "sourceType": "official-engineering-blog",
         "imageUrl": "https://www.google.com/s2/favicons?domain=medium.com&sz=128",
-        "rank": 66,
+        "rank": 67,
         "diagram": {
           "title": "Pinterest Beyond Two Towers moves ads lightweight ranking from dot-product retrie…",
           "caption": "Pinterest Engineering · business problem -> system mechanism -> metrics/experiment -> borrowable boundary",
@@ -6093,7 +6150,7 @@
         ],
         "sourceType": "official-engineering-blog",
         "imageUrl": "https://www.google.com/s2/favicons?domain=medium.com&sz=128",
-        "rank": 67,
+        "rank": 68,
         "diagram": {
           "title": "Pinterest L1 CVR diagnosis turns online-offline discrepancy into an ads ranking l…",
           "caption": "Pinterest Engineering · business problem -> system mechanism -> metrics/experiment -> borrowable boundary",
@@ -6152,7 +6209,7 @@
         ],
         "sourceType": "official-engineering-blog",
         "imageUrl": "https://www.google.com/s2/favicons?domain=medium.com&sz=128",
-        "rank": 68,
+        "rank": 69,
         "diagram": {
           "title": "Pinterest shopping conversion candidate generation treats sparse offsite purchase…",
           "caption": "Pinterest Engineering · business problem -> system mechanism -> metrics/experiment -> borrowable boundary",
@@ -6211,7 +6268,7 @@
         ],
         "sourceType": "official-engineering-blog",
         "imageUrl": "https://www.google.com/s2/favicons?domain=engineering.fb.com&sz=128",
-        "rank": 69,
+        "rank": 70,
         "diagram": {
           "title": "Meta Friend Bubbles turns social graph context into a Reels retrieval and ranking…",
           "caption": "Meta Engineering · business problem -> system mechanism -> metrics/experiment -> borrowable boundary",
@@ -6270,7 +6327,7 @@
         ],
         "sourceType": "Chinese-engineering-article",
         "imageUrl": "https://www.google.com/s2/favicons?domain=tech.meituan.com&sz=128",
-        "rank": 70,
+        "rank": 71,
         "diagram": {
           "title": "Meituan AAAI 2026 C2R and MACRec expose two production paths for faster reranking…",
           "caption": "Meituan Tech · business problem -> system mechanism -> metrics/experiment -> borrowable boundary",
@@ -6329,7 +6386,7 @@
         ],
         "sourceType": "official-research-publication",
         "imageUrl": "https://www.google.com/s2/favicons?domain=research.google&sz=128",
-        "rank": 71,
+        "rank": 72,
         "diagram": {
           "title": "Google Research BlockRank makes LLM in-context ranking practical for long candida…",
           "caption": "Google Research · business problem -> system mechanism -> metrics/experiment -> borrowable boundary",
@@ -6389,7 +6446,7 @@
         ],
         "sourceType": "official-engineering-blog",
         "imageUrl": "https://www.google.com/s2/favicons?domain=amazon.science&sz=128",
-        "rank": 72,
+        "rank": 73,
         "diagram": {
           "title": "Amazon Science Flo Pro turns mechanism design into marketplace coordination infra…",
           "caption": "Amazon Science · business problem -> system mechanism -> metrics/experiment -> borrowable boundary",
@@ -6449,7 +6506,7 @@
         ],
         "sourceType": "engineering-blog",
         "imageUrl": "https://www.google.com/s2/favicons?domain=medium.com&sz=128",
-        "rank": 73,
+        "rank": 74,
         "diagram": {
           "title": "Pinterest Feature Trimmer makes root-leaf ML serving cost governed by model signa…",
           "caption": "Pinterest Engineering · business problem -> system mechanism -> metrics/experiment -> borrowable boundary",
@@ -6510,7 +6567,7 @@
         ],
         "sourceType": "engineering-blog",
         "imageUrl": "https://www.google.com/s2/favicons?domain=engineering.fb.com&sz=128",
-        "rank": 74,
+        "rank": 75,
         "diagram": {
           "title": "Meta data-ingestion migration turns social-graph freshness into recommender relia…",
           "caption": "Meta Engineering · business problem -> system mechanism -> metrics/experiment -> borrowable boundary",
@@ -6572,7 +6629,7 @@
         ],
         "sourceType": "engineering-case",
         "imageUrl": "https://www.google.com/s2/favicons?domain=cloud.tencent.com&sz=128",
-        "rank": 75,
+        "rank": 76,
         "diagram": {
           "title": "Tencent News recommendation reconstruction turns strategy sprawl into orchestrate…",
           "caption": "Tencent Cloud Developer / Tencent News engineering case · business problem -> system mechanism -> metrics/experiment -> borrowable boundary",
@@ -6632,7 +6689,7 @@
         ],
         "sourceType": "research-paper",
         "imageUrl": "https://www.google.com/s2/favicons?domain=amazon.science&sz=128",
-        "rank": 76,
+        "rank": 77,
         "diagram": {
           "title": "Amazon Science iterative reranking makes e-commerce search quality a compute-scal…",
           "caption": "Amazon Science · business problem -> system mechanism -> metrics/experiment -> borrowable boundary",
@@ -6693,7 +6750,7 @@
         ],
         "sourceType": "trusted-aggregation+industry-investigation",
         "imageUrl": "https://www.google.com/s2/favicons?domain=aihot.today&sz=128",
-        "rank": 77,
+        "rank": 78,
         "diagram": {
           "title": "AI-search credibility attacks turn ranking quality into an adversarial retrieval …",
           "caption": "AIHOT.today / 36Kr AI-search abuse investigation · business problem -> system mechanism -> metrics/experiment -> borrowable boundary",
@@ -6752,7 +6809,7 @@
         ],
         "sourceType": "engineering-blog",
         "imageUrl": "https://www.google.com/s2/favicons?domain=dropbox.tech&sz=128",
-        "rank": 78,
+        "rank": 79,
         "diagram": {
           "title": "Dropbox monorepo health turns AI search and ranking iteration speed into platform…",
           "caption": "Dropbox TechBlog · business problem -> system mechanism -> metrics/experiment -> borrowable boundary",
@@ -6810,7 +6867,7 @@
         ],
         "sourceType": "official-research-blog",
         "imageUrl": "https://www.google.com/s2/favicons?domain=research.google&sz=128",
-        "rank": 79,
+        "rank": 80,
         "diagram": {
           "title": "Google Research ERA makes metric-driven experiment agents relevant to search and …",
           "caption": "Google Research · business problem -> system mechanism -> metrics/experiment -> borrowable boundary",
@@ -6871,7 +6928,7 @@
         ],
         "sourceType": "engineering-blog",
         "imageUrl": "https://www.google.com/s2/favicons?domain=engineering.salesforce.com&sz=128",
-        "rank": 80,
+        "rank": 81,
         "diagram": {
           "title": "Salesforce Agentforce conversational recommendations turn user intent into a firs…",
           "caption": "Salesforce Engineering · business problem -> system mechanism -> metrics/experiment -> borrowable boundary",
@@ -6927,7 +6984,7 @@
         ],
         "sourceType": "industry-report-aggregated",
         "imageUrl": "https://www.google.com/s2/favicons?domain=aihot.today&sz=128",
-        "rank": 81,
+        "rank": 82,
         "diagram": {
           "title": "QuestMobile AI platform source-preference report turns answer ranking into truste…",
           "caption": "AIHOT.today / QuestMobile via 36Kr · business problem -> system mechanism -> metrics/experiment -> borrowable boundary",
@@ -6985,7 +7042,7 @@
         ],
         "sourceType": "industry-aggregation+ads-ops-signal",
         "imageUrl": "https://www.google.com/s2/favicons?domain=aihot.today&sz=128",
-        "rank": 82,
+        "rank": 83,
         "diagram": {
           "title": "AIHOT/AppLovin signal reframes ad platform automation as ranking, creative and sa…",
           "caption": "AIHOT.today / 36Kr industry signal · business problem -> system mechanism -> metrics/experiment -> borrowable boundary",
@@ -7044,7 +7101,7 @@
         ],
         "sourceType": "trusted-aggregation+marketing-ops-signal",
         "imageUrl": "https://www.google.com/s2/favicons?domain=aihot.today&sz=128",
-        "rank": 83,
+        "rank": 84,
         "diagram": {
           "title": "AIHOT marketing-content governance turns ad creative generation into brand-contex…",
           "caption": "AIHOT.today / 36Kr marketing operations signal · business problem -> system mechanism -> metrics/experiment -> borrowable boundary",
@@ -7134,7 +7191,7 @@
         ],
         "sourceType": "official-google-developer-blog",
         "imageUrl": "https://www.google.com/s2/favicons?domain=blog.google&sz=128",
-        "rank": 84
+        "rank": 85
       },
       {
         "title": "Dropbox Dash uses human-calibrated LLM labels to make enterprise search relevance trainable",
@@ -7194,7 +7251,7 @@
         ],
         "sourceType": "official-dropbox-tech-blog",
         "imageUrl": "https://www.google.com/s2/favicons?domain=dropbox.tech&sz=128",
-        "rank": 85
+        "rank": 86
       },
       {
         "title": "Spotify separates personalization serving from experimentation to avoid bandit-shaped product debt",
@@ -7253,7 +7310,7 @@
         ],
         "sourceType": "official-spotify-engineering-blog",
         "imageUrl": "https://www.google.com/s2/favicons?domain=engineering.atspotify.com&sz=128",
-        "rank": 86
+        "rank": 87
       },
       {
         "title": "Tencent Yuanbao AI Search turns Agentic RAG into a product-scale search architecture",
@@ -7313,7 +7370,7 @@
         ],
         "sourceType": "official-chinese-technical-article",
         "imageUrl": "https://www.google.com/s2/favicons?domain=cloud.tencent.com&sz=128",
-        "rank": 87
+        "rank": 88
       },
       {
         "title": "Pinterest GPU-serves two-tower ads lightweight ranking without giving up latency budgets",
@@ -7373,7 +7430,7 @@
         ],
         "sourceType": "official-pinterest-engineering-blog",
         "imageUrl": "https://www.google.com/s2/favicons?domain=medium.com&sz=128",
-        "rank": 88
+        "rank": 89
       },
       {
         "title": "Spotify Ads API Claude plugin turns campaign setup into transparent agent workflows",
@@ -7432,7 +7489,7 @@
         ],
         "sourceType": "official-spotify-engineering-blog",
         "imageUrl": "https://www.google.com/s2/favicons?domain=engineering.atspotify.com&sz=128",
-        "rank": 89
+        "rank": 90
       },
       {
         "title": "Salesforce Agentforce governance turns enterprise retrieval into policy-enforced ranking infrastructure",
@@ -7492,7 +7549,7 @@
         ],
         "sourceType": "official-salesforce-engineering-blog",
         "imageUrl": "https://www.google.com/s2/favicons?domain=engineering.salesforce.com&sz=128",
-        "rank": 90
+        "rank": 91
       },
       {
         "title": "Volcengine Web Search turns semantic vector retrieval into managed real-time AI search infrastructure",
@@ -7552,7 +7609,7 @@
         ],
         "sourceType": "official-developer-article",
         "imageUrl": "https://www.google.com/s2/favicons?domain=volcengine.com&sz=128",
-        "rank": 91
+        "rank": 92
       },
       {
         "title": "Pinterest contextual sequential recommender injects real-time intent into ads retrieval",
@@ -7612,7 +7669,7 @@
         ],
         "sourceType": "official-engineering-blog",
         "imageUrl": "https://www.google.com/s2/favicons?domain=medium.com&sz=128",
-        "rank": 92
+        "rank": 93
       },
       {
         "title": "Amazon dynamic ANN deletion turns vector index freshness into a search-quality control plane",
@@ -7671,7 +7728,7 @@
         ],
         "sourceType": "official-research-publication",
         "imageUrl": "https://www.google.com/s2/favicons?domain=amazon.science&sz=128",
-        "rank": 93
+        "rank": 94
       },
       {
         "title": "Amazon iterative reranking makes LLM rankers an inference-time scaling layer for e-commerce search",
@@ -7730,7 +7787,7 @@
         ],
         "sourceType": "official-research-publication",
         "imageUrl": "https://www.google.com/s2/favicons?domain=amazon.science&sz=128",
-        "rank": 94
+        "rank": 95
       },
       {
         "title": "Google Display Ads migration to Demand Gen turns display inventory into a cross-surface optimization layer",
@@ -7793,7 +7850,7 @@
         ],
         "sourceType": "official-google-ads-blog",
         "imageUrl": "https://www.google.com/s2/favicons?domain=blog.google&sz=128",
-        "rank": 95
+        "rank": 96
       },
       {
         "title": "Bilibili AI-assisted ad efficiency turns content discovery into operating leverage",
@@ -7854,7 +7911,7 @@
         ],
         "sourceType": "official-company-results",
         "imageUrl": "https://www.google.com/s2/favicons?domain=bilibili.com&sz=128",
-        "rank": 96
+        "rank": 97
       },
       {
         "title": "Airbnb synthetic search data turns cold-start natural-language search into a daily training pipeline",
@@ -7916,7 +7973,7 @@
         ],
         "sourceType": "arxiv-airbnb-paper",
         "imageUrl": "https://www.google.com/s2/favicons?domain=airbnb.tech&sz=128",
-        "rank": 97
+        "rank": 98
       },
       {
         "title": "Amazon RMIR makes reasoning-intensive visual retrieval measurable before it becomes product search debt",
@@ -7974,7 +8031,7 @@
         ],
         "sourceType": "big-tech-research",
         "imageUrl": "https://www.google.com/s2/favicons?domain=www.amazon.science&sz=128",
-        "rank": 98
+        "rank": 99
       },
       {
         "title": "Amazon chatbot autocomplete personalizes generation and ranking instead of treating prompts as one-size-fits-all",
@@ -8035,34 +8092,34 @@
         "category": "个性化/推荐系统/对话搜索",
         "sourceType": "official-research-publication",
         "imageUrl": "https://www.google.com/s2/favicons?domain=www.amazon.science&sz=128",
-        "rank": 99
+        "rank": 100
       }
     ]
   },
   "aiNews": {
     "title": "AI 新闻",
-    "subtitle": "汇总 AIHOT/AI Hot Daily、官方博客、A 社 Anthropic News/Research/Engineering、Claude 平台动态与技术社区更新；本小时重点补充 AI billing/metering 作为 AI-native 产品商业化基础设施信号，并复核 Anthropic 官方边界。",
-    "source": "AIHOT accessible stream + official Anthropic/OpenAI/Microsoft/Google/Amazon/Hugging Face pages, refreshed 2026-05-28 06:03 CST",
+    "subtitle": "汇总 AIHOT/AI Hot Daily、官方博客、A 社 Anthropic News/Research/Engineering、Claude 平台动态与技术社区更新；本小时重点补充 Polar agent RL 与 Cisco/Codex 企业落地证据，并复核 Anthropic 官方边界。",
+    "source": "AIHOT accessible stream + official Anthropic/OpenAI/NVIDIA/Google/Amazon/Hugging Face pages, refreshed 2026-05-28 16:16 CST",
     "sourceBrief": "AIHOT visible stream + official vendor/research pages; official sources used when available.",
     "aihot": {
       "title": "AIHOT 精选流小时级观察",
       "source": "https://aihot.virxact.com/ visible stream",
       "date": "2026-05-28 live aggregation recheck",
-      "generatedAt": "2026-05-28T04:14:46.337Z",
-      "latestVisibleAt": "2026-05-28 10:36 CST visible stream showed Alibaba Cloud MuleRun; 07:07 showed Anthropic coding-agents survey; 04:19/02:06 showed Claude source-code security and zero-trust agent framework.",
-      "summary": "AIHOT highlighted Alibaba Cloud MuleRun as an enterprise AI workforce product, plus coding-agent practice, Anthropic official research and Claude security guidance. Official pages were used where available; AIHOT is treated as discovery/source-boundary evidence when the primary post is not otherwise accessible.",
+      "generatedAt": "2026-05-28T08:18:58.001Z",
+      "latestVisibleAt": "2026-05-28 14:28 CST visible stream showed HuggingFace Daily Papers DenoiseRL; 12:41 showed OpenRouter Series B; 11:36 DataWorks Data Agent; 11:15 NVIDIA Polar; 07:07 Anthropic coding-agents survey; 06:13 OpenAI Cisco/Codex official item.",
+      "summary": "AIHOT highlighted DenoiseRL, OpenRouter Series B, DataWorks Data Agent, NVIDIA Polar, Anthropic coding-agent adoption research and OpenAI Cisco/Codex enterprise engineering. Official arXiv/GitHub/OpenAI/Anthropic pages were used where available; AIHOT is treated as discovery/source-boundary evidence when primary posts are otherwise noisy or inaccessible.",
       "stats": [
         {
           "label": "AI 新闻条目",
-          "value": 257
+          "value": 264
         },
         {
           "label": "最新可见",
-          "value": "5/28 10:36 CST MuleRun"
+          "value": "5/28 14:28 CST DenoiseRL"
         },
         {
           "label": "复核时间",
-          "value": "5/28 12:12 CST"
+          "value": "5/28 16:16 CST"
         },
         {
           "label": "来源",
@@ -8072,6 +8129,61 @@
       "sections": []
     },
     "items": [
+      {
+        "imageUrl": "https://www.google.com/s2/favicons?domain=github.com&sz=128",
+        "title": "NVIDIA Polar turns existing coding-agent harnesses into scalable RL environments",
+        "source": "AIHOT visible stream + arXiv + NVIDIA-NeMo GitHub",
+        "sourceDetail": "AIHOT visible stream at 2026-05-28 11:15 CST surfaced NVIDIA Polar; arXiv:2605.24220 was submitted May 22, 2026, and NVIDIA-NeMo/ProRL-Agent-Server describes Polar as a rollout framework for real-world agent harnesses with Apache-2.0 code.",
+        "publishedAt": "2026-05-28T03:15:00.000Z",
+        "url": "https://arxiv.org/abs/2605.24220",
+        "summary": "Polar 把 Codex、Claude Code、Qwen Code、Pi 这类真实 agent harness 当成黑盒环境：它代理 LLM API 调用，记录 token-level 交互，重建 token-faithful trajectories，并通过 rollout server/gateway nodes 异步预热运行时、执行 agent、构建轨迹和评估结果。论文报告用简单 GRPO 训练 Qwen3.5-4B 时，在 SWE-Bench Verified 上分别让 Codex、Claude Code、Qwen Code、Pi harness 提升 22.6、4.8、0.6、6.2 个百分点；GitHub README 还给出 rollout-as-a-service、dashboard、SWE-bench 示例和 trainer-agnostic 拓扑。",
+        "interpretation": {
+          "signal": "信号是 agent RL 正在从“重写一个训练环境”转向“复用真实产品 harness”。对 coding agent 来说，训练时保留 Codex/Claude Code 这类工具链的多轮上下文、工具调用、运行时失败和评测反馈，比在简化环境里训练更接近生产行为。",
+          "impact": "影响是开源/企业团队可以在不大改现有 agent 执行框架的情况下采集高保真 rollout，并把长任务、异步执行、token 轨迹、评估和训练解耦；同时会引入新的运维面：推理代理、token 归因、隐私日志、GPU 利用率、失败重放和 benchmark overfitting。",
+          "action": "动作 -> 先用只读或开源 SWE-bench 类任务跑 Polar PoC，验证轨迹重建是否能覆盖真实 tool calls、失败样本是否可重放、训练指标是否能迁移到真实 issue 修复；涉及私有代码前必须补日志脱敏、secret 过滤、harness 版本锁定和人审发布门禁。"
+        },
+        "impact": "影响 -> agent 训练可以复用真实 Codex/Claude Code 等 harness，但治理重点转向轨迹、日志和重放。",
+        "action": "动作 -> 用开源 SWE 任务验证 rollout 质量，再决定是否接入私有代码链路。",
+        "tags": [
+          "NVIDIA",
+          "Polar",
+          "agent RL",
+          "Codex",
+          "Claude Code",
+          "SWE-Bench",
+          "GRPO"
+        ],
+        "category": "AI Agent 训练基础设施 / Coding Agent",
+        "sourceType": "arxiv+github+aihot-visible-stream",
+        "rank": 1
+      },
+      {
+        "imageUrl": "https://www.google.com/s2/favicons?domain=openai.com&sz=128",
+        "title": "OpenAI Cisco Codex case turns enterprise coding agents into production workflow evidence",
+        "source": "OpenAI official customer story + AIHOT visible stream",
+        "sourceDetail": "AIHOT visible stream at 2026-05-28 06:13 CST surfaced the OpenAI Cisco/Codex item. OpenAI official localized page dated 2026-05-27 reports Cisco Codex usage results, while the English page and Gartner note provide the same enterprise-coding-agent context.",
+        "publishedAt": "2026-05-28T00:13:00.000Z",
+        "url": "https://openai.com/zh-Hant-HK/index/cisco/",
+        "summary": "OpenAI 的 Cisco/Codex 官方案例把 enterprise coding agent 从“效率工具”推进到生产工程流程证据：页面给出 95%+ 新 AI features written by Codex、Codex CLI defect remediation throughput 10-15x、每月节省 1,500+ engineering hours 等结果，并描述 Codex 进入多仓库、C/C++ 重代码库、compile-test-fix loop、安全合规和 long-running engineering tasks。AIHOT 06:13 CST 将其列为 OpenAI 官网动态，但也提醒公告本身容易偏营销，工程团队应把它当作 adoption pattern 而非可直接外推的 benchmark。",
+        "interpretation": {
+          "signal": "信号是 Codex 的企业叙事从单人编码助手转向“生产工程 teammate”：多仓库理解、CLI 自主编译测试修复、合规治理和长任务支持成为 OpenAI 与大型企业共同验证的卖点。",
+          "impact": "影响是 coding agent 采购和自建评估会更看重真实 SDLC 集成：build log、dependency graph、defect remediation、framework migration、plan document、review handoff 和 governance，而不是只比较 autocomplete 或单题 benchmark。",
+          "action": "动作 -> 企业试点不要复制 Cisco 指标，先挑 2-3 条可审计工作流建立基线：构建耗时、缺陷修复吞吐、人工 review 返工率、安全拦截率和回滚耗时；Codex 权限应从只读分析和测试修复开始，再进入自动改代码。"
+        },
+        "impact": "影响 -> 企业 coding agent 评估重点转向 SDLC 集成、治理和可审计产出。",
+        "action": "动作 -> 用真实工程工作流建基线，不直接外推 Cisco 的营销指标。",
+        "tags": [
+          "OpenAI",
+          "Codex",
+          "Cisco",
+          "enterprise coding agents",
+          "SDLC",
+          "AIHOT"
+        ],
+        "category": "AI Coding Agent / 企业落地",
+        "sourceType": "official-customer-story+aihot-visible-stream",
+        "rank": 2
+      },
       {
         "imageUrl": "https://www.google.com/s2/favicons?domain=openai.com&sz=128",
         "title": "OpenAI Secure MCP Tunnel makes private enterprise tools reachable by ChatGPT and Codex",
@@ -8096,7 +8208,7 @@
         ],
         "category": "AI Agent 工具接入 / 企业安全",
         "sourceType": "official-docs",
-        "rank": 1
+        "rank": 3
       },
       {
         "imageUrl": "https://www.google.com/s2/favicons?domain=krea.ai&sz=128",
@@ -8125,7 +8237,7 @@
         ],
         "category": "AI 图像/创意基础设施",
         "sourceType": "official-news+aihot-visible-stream",
-        "rank": 2
+        "rank": 4
       },
       {
         "imageUrl": "https://www.google.com/s2/favicons?domain=alibabacloud.com&sz=128",
@@ -8155,7 +8267,7 @@
         ],
         "category": "AI Agent/数据工程",
         "sourceType": "official-docs+aihot-visible-stream",
-        "rank": 3
+        "rank": 5
       },
       {
         "imageUrl": "https://www.google.com/s2/favicons?domain=alibabacloud.com&sz=128",
@@ -8186,7 +8298,7 @@
         ],
         "category": "AI Agent/企业协作",
         "sourceType": "aihot-visible-stream",
-        "rank": 4
+        "rank": 6
       },
       {
         "imageUrl": "https://www.google.com/s2/favicons?domain=pytorch.org&sz=128",
@@ -8217,7 +8329,7 @@
         ],
         "category": "开源模型/推理系统/Agent工程",
         "sourceType": "official-engineering-blog",
-        "rank": 5
+        "rank": 7
       },
       {
         "imageUrl": "https://www.google.com/s2/favicons?domain=runwayml.com&sz=128",
@@ -8248,7 +8360,7 @@
         ],
         "category": "多模态Agent/创意生产工具",
         "sourceType": "official-product-news",
-        "rank": 6
+        "rank": 8
       },
       {
         "imageUrl": "https://www.google.com/s2/favicons?domain=anthropic.com&sz=128",
@@ -8278,7 +8390,7 @@
         ],
         "category": "AI Agent/知识工作扩散",
         "sourceType": "official-research",
-        "rank": 7
+        "rank": 9
       },
       {
         "imageUrl": "https://www.google.com/s2/favicons?domain=claude.com&sz=128",
@@ -8307,7 +8419,7 @@
         ],
         "category": "A社/智能体部署/企业安全",
         "sourceType": "official-product-blog",
-        "rank": 8
+        "rank": 10
       },
       {
         "imageUrl": "https://www.google.com/s2/favicons?domain=blog.google&sz=128",
@@ -8337,7 +8449,7 @@
         ],
         "category": "AI搜索/智能体产品",
         "sourceType": "official-product-blog",
-        "rank": 9
+        "rank": 11
       },
       {
         "imageUrl": "https://www.google.com/s2/favicons?domain=anthropic.com&sz=128",
@@ -8367,7 +8479,7 @@
         ],
         "category": "A社/企业治理/安全合规",
         "sourceType": "official-release-notes",
-        "rank": 10
+        "rank": 12
       },
       {
         "imageUrl": "https://www.google.com/s2/favicons?domain=openai.com&sz=128",
@@ -8396,7 +8508,7 @@
         ],
         "category": "AI安全/公共事件治理",
         "sourceType": "official-policy-update",
-        "rank": 11
+        "rank": 13
       },
       {
         "imageUrl": "https://www.google.com/s2/favicons?domain=developers.googleblog.com&sz=128",
@@ -8426,7 +8538,7 @@
         ],
         "category": "智能体商务/支付协议",
         "sourceType": "official-developer-update",
-        "rank": 12
+        "rank": 14
       },
       {
         "imageUrl": "https://www.google.com/s2/favicons?domain=microsoft.com&sz=128",
@@ -8457,7 +8569,7 @@
         ],
         "category": "企业Agent/Computer Use治理",
         "sourceType": "official-product-update",
-        "rank": 13
+        "rank": 15
       },
       {
         "imageUrl": "https://www.google.com/s2/favicons?domain=help.openai.com&sz=128",
@@ -8489,7 +8601,7 @@
         ],
         "category": "开发工具/企业Agent治理",
         "sourceType": "official-release-notes",
-        "rank": 14
+        "rank": 16
       },
       {
         "imageUrl": "https://www.google.com/s2/favicons?domain=openai.com&sz=128",
@@ -8519,7 +8631,7 @@
         ],
         "category": "Agent 生产闭环",
         "sourceType": "official-engineering-blog",
-        "rank": 15
+        "rank": 17
       },
       {
         "imageUrl": "https://www.google.com/s2/favicons?domain=github.com&sz=128",
@@ -8550,7 +8662,7 @@
         ],
         "category": "A 社 / Claude Code 工程动态",
         "sourceType": "official-github-release",
-        "rank": 16
+        "rank": 18
       },
       {
         "imageUrl": "https://www.google.com/s2/favicons?domain=stablebrowse.com&sz=128",
@@ -8576,7 +8688,7 @@
           "工程/基础设施"
         ],
         "sourceType": "company-official-secondary-verified",
-        "rank": 17
+        "rank": 19
       },
       {
         "imageUrl": "https://www.google.com/s2/favicons?domain=platform.xiaomimimo.com&sz=128",
@@ -8601,7 +8713,7 @@
           "工程/基础设施"
         ],
         "sourceType": "official",
-        "rank": 18
+        "rank": 20
       },
       {
         "imageUrl": "https://www.google.com/s2/favicons?domain=www.anthropic.com&sz=128",
@@ -8626,7 +8738,7 @@
           "agent safety"
         ],
         "sourceType": "official",
-        "rank": 19
+        "rank": 21
       },
       {
         "imageUrl": "https://www.google.com/s2/favicons?domain=aihot.virxact.com&sz=128",
@@ -8651,7 +8763,7 @@
           "governance"
         ],
         "sourceType": "aggregated",
-        "rank": 20
+        "rank": 22
       },
       {
         "imageUrl": "https://www.google.com/s2/favicons?domain=aihot.virxact.com&sz=128",
@@ -8676,7 +8788,7 @@
           "evaluation"
         ],
         "sourceType": "aggregated-secondary",
-        "rank": 21
+        "rank": 23
       },
       {
         "imageUrl": "https://www.google.com/s2/favicons?domain=aihot.virxact.com&sz=128",
@@ -8701,7 +8813,7 @@
           "training"
         ],
         "sourceType": "aggregated",
-        "rank": 22
+        "rank": 24
       },
       {
         "imageUrl": "https://www.google.com/s2/favicons?domain=businesswire.com&sz=128",
@@ -8729,7 +8841,7 @@
           "DaheAI 1201"
         ],
         "sourceType": "official-company-announcement",
-        "rank": 23
+        "rank": 25
       },
       {
         "imageUrl": "https://www.google.com/s2/favicons?domain=dropbox.tech&sz=128",
@@ -8756,7 +8868,7 @@
           "observability"
         ],
         "sourceType": "official-engineering",
-        "rank": 24
+        "rank": 26
       },
       {
         "imageUrl": "https://www.google.com/s2/favicons?domain=huggingface.co&sz=128",
@@ -8782,7 +8894,7 @@
           "context engineering"
         ],
         "sourceType": "official-blog-via-aggregator",
-        "rank": 25
+        "rank": 27
       },
       {
         "imageUrl": "https://www.google.com/s2/favicons?domain=aihot.virxact.com&sz=128",
@@ -8808,7 +8920,7 @@
           "workflow"
         ],
         "sourceType": "aggregator",
-        "rank": 26
+        "rank": 28
       },
       {
         "imageUrl": "https://www.google.com/s2/favicons?domain=machinelearning.apple.com&sz=128",
@@ -8834,7 +8946,7 @@
           "computer use"
         ],
         "sourceType": "aggregator",
-        "rank": 27
+        "rank": 29
       },
       {
         "imageUrl": "https://www.google.com/s2/favicons?domain=www.cnbc.com&sz=128",
@@ -8860,7 +8972,7 @@
           "enterprise procurement"
         ],
         "sourceType": "aggregator",
-        "rank": 28
+        "rank": 30
       },
       {
         "title": "AIHOT: TechCrunch 13:38 highlights real-time AI safety operations pressure",
@@ -8884,7 +8996,7 @@
           "security operations",
           "governance"
         ],
-        "rank": 29
+        "rank": 31
       },
       {
         "title": "AIHOT: 36Kr MemEye makes multimodal agent memory measurable instead of anecdotal",
@@ -8908,7 +9020,7 @@
           "memory",
           "evaluation"
         ],
-        "rank": 30
+        "rank": 32
       },
       {
         "title": "AIHOT: Netflix INKubator signal moves generative video from experiment to production studio design",
@@ -8932,7 +9044,7 @@
           "animation",
           "production workflow"
         ],
-        "rank": 31
+        "rank": 33
       },
       {
         "title": "AIHOT: SailPoint-Anthropic connector makes Claude Enterprise part of identity governance",
@@ -8956,7 +9068,7 @@
           "identity governance",
           "enterprise AI"
         ],
-        "rank": 32
+        "rank": 34
       },
       {
         "title": "AIHOT: Hark $700M Series A shows investors still buying universal AI interface narratives",
@@ -8980,7 +9092,7 @@
           "AI interface",
           "agent platform"
         ],
-        "rank": 33
+        "rank": 35
       },
       {
         "title": "AIHOT: Spotify-UMG AI remix deal turns model governance into licensing product design",
@@ -9004,7 +9116,7 @@
           "AI music",
           "licensing"
         ],
-        "rank": 34
+        "rank": 36
       },
       {
         "title": "AIHOT: TechCrunch search-engine alternatives reflect Google AI Search distribution shock",
@@ -9028,7 +9140,7 @@
           "distribution",
           "SEO"
         ],
-        "rank": 35
+        "rank": 37
       },
       {
         "title": "AIHOT: Huawei logic-folding paper makes chip performance a compiler-and-architecture co-design signal",
@@ -9053,7 +9165,7 @@
           "compiler",
           "TCO"
         ],
-        "rank": 36
+        "rank": 38
       },
       {
         "title": "AIHOT: BitCPM-CANN returns at 12:11 as a domestic Ascend-native 1.58-bit edge-model signal",
@@ -9078,7 +9190,7 @@
           "low-bit",
           "open source"
         ],
-        "rank": 37
+        "rank": 39
       },
       {
         "title": "AIHOT: 36Kr frames the Codex update as another reason Mac becomes the default coding-agent workstation",
@@ -9103,7 +9215,7 @@
           "Mac",
           "developer workflow"
         ],
-        "rank": 38
+        "rank": 40
       },
       {
         "title": "AIHOT: SaaS-Bench puts Claude Computer Use below 4% and exposes the UI-agent gap",
@@ -9127,7 +9239,7 @@
           "SaaS-Bench",
           "agent evals"
         ],
-        "rank": 39
+        "rank": 41
       },
       {
         "title": "AIHOT: Claude file memory and Conway Agent discussion points to persistent agent workspaces",
@@ -9151,7 +9263,7 @@
           "persistent agents",
           "workspace"
         ],
-        "rank": 40
+        "rank": 42
       },
       {
         "title": "AIHOT: HN constraint-decay discussion makes backend coding agents a reliability problem",
@@ -9175,7 +9287,7 @@
           "reliability",
           "constraints"
         ],
-        "rank": 41
+        "rank": 43
       },
       {
         "title": "AIHOT: arXiv IntentScore turns computer-use agents into intent-conditioned action evaluation",
@@ -9199,7 +9311,7 @@
           "agent evaluation",
           "IntentScore"
         ],
-        "rank": 42
+        "rank": 44
       },
       {
         "title": "AIHOT: 10:33 TechCrunch block keeps AI safety in real-time operations mode",
@@ -9223,7 +9335,7 @@
           "governance",
           "operations"
         ],
-        "rank": 43
+        "rank": 45
       },
       {
         "title": "AIHOT: QbitAI links DeepSeek V4 pricing with domestic coding-agent roadmap",
@@ -9248,7 +9360,7 @@
           "coding agents",
           "model routing"
         ],
-        "rank": 44
+        "rank": 46
       },
       {
         "title": "AIHOT: Google Search agent debate exposes the new benchmark for AI-native search",
@@ -9273,7 +9385,7 @@
           "agentic commerce",
           "search"
         ],
-        "rank": 45
+        "rank": 47
       },
       {
         "title": "AIHOT: 36Kr spotlights OpenAI chip ambition blocked by procurement dependency",
@@ -9298,7 +9410,7 @@
           "procurement",
           "enterprise AI"
         ],
-        "rank": 46
+        "rank": 48
       },
       {
         "title": "AIHOT: Project Glasswing spreads through 36Kr and Hacker News after Anthropic official update",
@@ -9322,7 +9434,7 @@
           "security",
           "supply chain"
         ],
-        "rank": 47
+        "rank": 49
       },
       {
         "title": "AIHOT: Luma Agents turns UGC-style ad production into a brief-to-creative workflow",
@@ -9347,7 +9459,7 @@
           "UGC",
           "agents"
         ],
-        "rank": 48
+        "rank": 50
       },
       {
         "title": "AIHOT.today live stream adds OpenAI IPO rumor, Nvidia earnings signal and DeepSeek V4 Hugging Face updates",
@@ -9371,7 +9483,7 @@
           "model release",
           "source caveat"
         ],
-        "rank": 49
+        "rank": 51
       },
       {
         "title": "AIHOT: StepAudio 2.5 Realtime emphasizes paralinguistic voice understanding and persona control",
@@ -9395,7 +9507,7 @@
           "StepAudio",
           "persona"
         ],
-        "rank": 50
+        "rank": 52
       },
       {
         "title": "AIHOT: DeepSeek flagship model permanent 75% discount resets application cost assumptions",
@@ -9419,7 +9531,7 @@
           "inference cost",
           "model routing"
         ],
-        "rank": 51
+        "rank": 53
       },
       {
         "title": "AIHOT: Greg Brockman shares a Codex prompt for mining repeatable workflows from history",
@@ -9443,7 +9555,7 @@
           "skills",
           "memory"
         ],
-        "rank": 52
+        "rank": 54
       },
       {
         "title": "AIHOT: TrapDoor supply-chain attack turns agent instruction files into an attack surface",
@@ -9467,7 +9579,7 @@
           "Claude Code",
           "Cursor"
         ],
-        "rank": 53
+        "rank": 55
       },
       {
         "title": "AIHOT: Replit Agent and Squidler form a build-test-fix QA loop through MCP",
@@ -9491,7 +9603,7 @@
           "QA agent",
           "testing"
         ],
-        "rank": 54
+        "rank": 56
       },
       {
         "title": "AIHOT: latest visible stream shifts to TechCrunch, 36Kr, QbitAI, arXiv and HN updates",
@@ -9515,7 +9627,7 @@
           "搜索",
           "A社/Claude"
         ],
-        "rank": 55
+        "rank": 57
       },
       {
         "title": "HN resurfaces Anthropic Project Glasswing as a software-supply-chain security discussion",
@@ -9538,7 +9650,7 @@
           "software supply chain",
           "Project Glasswing"
         ],
-        "rank": 56
+        "rank": 58
       },
       {
         "title": "AIHOT: Claude Code auto mode moves into Pro and makes parallel agents a default workflow",
@@ -9563,7 +9675,7 @@
           "auto mode",
           "developer tooling"
         ],
-        "rank": 57
+        "rank": 59
       },
       {
         "title": "AIHOT: OpenClaw 2026.5.22 tightens local agent gateway and model-list latency",
@@ -9588,7 +9700,7 @@
           "supply chain",
           "developer tooling"
         ],
-        "rank": 58
+        "rank": 60
       },
       {
         "title": "AIHOT: StepAudio 2.5 pushes real-time voice agents toward paralinguistic understanding",
@@ -9612,7 +9724,7 @@
           "StepAudio",
           "persona"
         ],
-        "rank": 59
+        "rank": 61
       },
       {
         "title": "AIHOT: Replit Agent and Squidler close the loop from app build to user-like QA repair",
@@ -9637,7 +9749,7 @@
           "agent"
         ],
         "category": "AIHOT精选",
-        "rank": 60
+        "rank": 62
       },
       {
         "title": "AIHOT: Anthropic financing rumor tests whether Claude revenue can justify frontier-model valuations",
@@ -9661,7 +9773,7 @@
           "供应商风险"
         ],
         "category": "行业动态",
-        "rank": 61
+        "rank": 63
       },
       {
         "title": "AIHOT: Mistral acquires Emmi AI to push industrial AI into simulation stacks",
@@ -9685,7 +9797,7 @@
           "digital twin"
         ],
         "category": "AIHOT精选",
-        "rank": 62
+        "rank": 64
       },
       {
         "title": "AIHOT: Feishu-Claude Code bridge turns chat workspace into agent control plane",
@@ -9709,7 +9821,7 @@
           "developer tools"
         ],
         "category": "A社生态/AIHOT精选",
-        "rank": 63
+        "rank": 65
       },
       {
         "title": "Microsoft/Fortune cost signal cools agent ROI assumptions",
@@ -9732,7 +9844,7 @@
           "AI cost",
           "agent ROI"
         ],
-        "rank": 64
+        "rank": 66
       },
       {
         "imageUrl": "https://www.google.com/s2/favicons?domain=aihot.virxact.com&sz=128",
@@ -9755,7 +9867,7 @@
           "funding",
           "AIHOT"
         ],
-        "rank": 65
+        "rank": 67
       },
       {
         "title": "Google Antigravity quota lift signals agent IDE competition shifting to execution budgets",
@@ -9778,10 +9890,10 @@
           "Antigravity",
           "quota"
         ],
-        "rank": 66
+        "rank": 68
       },
       {
-        "rank": 67,
+        "rank": 69,
         "imageUrl": "https://www.google.com/s2/favicons?domain=aihot.virxact.com&sz=128",
         "title": "AIHOT flags DeepSeek financing as an open-source ecosystem signal",
         "source": "AIHOT / IT之家",
@@ -9804,7 +9916,7 @@
         ]
       },
       {
-        "rank": 68,
+        "rank": 70,
         "imageUrl": "https://www.google.com/s2/favicons?domain=help.openai.com&sz=128",
         "title": "OpenAI Codex goal mode graduates from experiment",
         "source": "OpenAI / AIHOT精选",
@@ -9847,7 +9959,7 @@
           "film production"
         ],
         "imageUrl": "https://www.google.com/s2/favicons?domain=klingai.com&sz=128",
-        "rank": 69
+        "rank": 71
       },
       {
         "title": "AIHOT: model pricing and capability database becomes AI product selection infrastructure",
@@ -9870,7 +9982,7 @@
           "pricing",
           "model routing"
         ],
-        "rank": 70
+        "rank": 72
       },
       {
         "title": "AIHOT: Models.dev makes model specs and pricing a shared operational database",
@@ -9894,7 +10006,7 @@
           "AI ops"
         ],
         "category": "AIHOT精选",
-        "rank": 71
+        "rank": 73
       },
       {
         "title": "AIHOT: Google DeepMind Singapore partnership keeps national AI deployment in the news cycle",
@@ -9917,7 +10029,7 @@
           "public sector",
           "healthcare"
         ],
-        "rank": 72
+        "rank": 74
       },
       {
         "title": "Google DeepMind and Singapore expand AI-for-good partnership",
@@ -9939,7 +10051,7 @@
           "impact": "前沿模型实验正在更多绑定国家级科研、医疗和公共服务场景，企业侧会看到更多合规、数据治理和本地能力建设要求",
           "action": "关注此类国家合作中的数据边界、评测公开度、医疗责任划分和本地人才/算力投入，不要只把它当作品牌新闻"
         },
-        "rank": 73,
+        "rank": 75,
         "imageUrl": "https://www.google.com/s2/favicons?domain=www.edb.gov.sg&sz=128"
       },
       {
@@ -9962,7 +10074,7 @@
           "impact": "实时交互、低延迟 agent 和批量文本生成可能出现不同于纯自回归扩容的新路线，但采样器、质量稳定性和部署栈仍是主要变量",
           "action": "研究团队可把它放入推理基准池，重点测首 token、吞吐、长文本一致性、工具调用格式稳定性和 vLLM/llama.cpp 等服务栈适配"
         },
-        "rank": 74,
+        "rank": 76,
         "imageUrl": "https://www.google.com/s2/favicons?domain=research.nvidia.com&sz=128"
       },
       {
@@ -9984,7 +10096,7 @@
           "impact": "AI 采用的组织风险不只在工具 ROI，还在人才梯队、训练样本和未来中层供给",
           "action": "管理者应把 AI 替代计划和新人培养计划一起设计，用任务自动化率、导师负担、晋升漏斗和质量事故做组合监控"
         },
-        "rank": 75,
+        "rank": 77,
         "imageUrl": "https://www.google.com/s2/favicons?domain=aihot.virxact.com&sz=128"
       },
       {
@@ -10007,7 +10119,7 @@
           "impact": "模型能力竞争会继续向供电、散热、网络、推理效率和资本开支转移，应用团队的成本曲线不会自动下降",
           "action": "企业 AI roadmap 要同时做模型能力规划和单位任务成本规划，优先建立缓存、路由、批处理、评测和降级策略"
         },
-        "rank": 76,
+        "rank": 78,
         "imageUrl": "https://www.google.com/s2/favicons?domain=aihot.virxact.com&sz=128"
       },
       {
@@ -10030,7 +10142,7 @@
           "impact": "高可信推理的核心会从“模型说得像”转向“模型产物可被外部验证器拒绝和修复”，这对代码、数学、合规文档都有启发",
           "action": "对高风险 agent 任务优先设计可执行验证器、编译器、单测或规则引擎，让模型输出进入候选方案池而不是最终裁判"
         },
-        "rank": 77,
+        "rank": 79,
         "imageUrl": "https://www.google.com/s2/favicons?domain=aihot.virxact.com&sz=128"
       },
       {
@@ -10056,7 +10168,7 @@
           "security"
         ],
         "category": "A社 Anthropic",
-        "rank": 78
+        "rank": 80
       },
       {
         "title": "Viggle PINOC turns motion video into exportable skeletal animation",
@@ -10078,7 +10190,7 @@
           "impact": "生成式视频工具正在进入资产生产管线，而不是停留在最终视频生成",
           "action": "试点时不要只看 demo 观感，要测骨骼稳定性、遮挡动作、导入 Unity/Unreal 后的 retarget 成本和版权授权"
         },
-        "rank": 79,
+        "rank": 81,
         "imageUrl": "https://www.google.com/s2/favicons?domain=aihot.virxact.com&sz=128"
       },
       {
@@ -10101,7 +10213,7 @@
           "impact": "自动代理编程的可用人群扩大，权限决策从手点确认转向模型分类器和 sandbox 组合，安全边界会成为团队采用门槛",
           "action": "团队试用 auto mode 时应固定 allow/deny 策略、审计工具调用、隔离密钥和仓库写权限，并用错误阻断率与人工接管率评估"
         },
-        "rank": 80,
+        "rank": 82,
         "imageUrl": "https://www.google.com/s2/favicons?domain=www.anthropic.com&sz=128"
       },
       {
@@ -10125,7 +10237,7 @@
           "image generation",
           "marketing ops"
         ],
-        "rank": 81
+        "rank": 83
       },
       {
         "title": "Claude Code v2.1.149 exposes usage by skills, subagents, plugins and MCP servers",
@@ -10147,7 +10259,7 @@
           "impact": "agent 工具链的生产化正在进入可观测、权限审计和企业 MCP 管理阶段",
           "action": "升级后把 /usage 输出纳入团队成本复盘，检查 PowerShell、sandbox 写入白名单、企业 MCP 连接器和 diff 审查流程"
         },
-        "rank": 82,
+        "rank": 84,
         "imageUrl": "https://www.google.com/s2/favicons?domain=github.com&sz=128"
       },
       {
@@ -10171,7 +10283,7 @@
           "coding UX",
           "diff review"
         ],
-        "rank": 83
+        "rank": 85
       },
       {
         "title": "AIHOT: ChatGPT voice and image form filling turns paperwork into multimodal workflow",
@@ -10196,7 +10308,7 @@
           "workflow"
         ],
         "category": "AIHOT精选",
-        "rank": 84
+        "rank": 86
       },
       {
         "imageUrl": "https://www.google.com/s2/favicons?domain=aihot.virxact.com&sz=128",
@@ -10219,7 +10331,7 @@
           "maintainability",
           "testing"
         ],
-        "rank": 85
+        "rank": 87
       },
       {
         "imageUrl": "https://www.google.com/s2/favicons?domain=openrouter.ai&sz=128",
@@ -10242,7 +10354,7 @@
           "Warp",
           "model routing"
         ],
-        "rank": 86
+        "rank": 88
       },
       {
         "imageUrl": "https://www.google.com/s2/favicons?domain=machinelearning.apple.com&sz=128",
@@ -10265,11 +10377,11 @@
           "benchmark",
           "streaming"
         ],
-        "rank": 87
+        "rank": 89
       },
       {
         "imageUrl": "https://www.google.com/s2/favicons?domain=anthropic.com&sz=128",
-        "rank": 88,
+        "rank": 90,
         "title": "Anthropic CVD dashboard quantifies the new security bottleneck after Mythos Preview scans",
         "source": "A社 Anthropic",
         "sourceDetail": "Anthropic Frontier Red Team CVD dashboard, last updated May 22 2026 10:27 PT",
@@ -10313,7 +10425,7 @@
           "developer tools"
         ],
         "category": "AIHOT精选",
-        "rank": 89
+        "rank": 91
       },
       {
         "imageUrl": "https://www.google.com/s2/favicons?domain=github.com&sz=128",
@@ -10336,7 +10448,7 @@
           "supply chain",
           "developer tools"
         ],
-        "rank": 90
+        "rank": 92
       },
       {
         "imageUrl": "https://www.google.com/s2/favicons?domain=google.com&sz=128",
@@ -10359,7 +10471,7 @@
           "Agent",
           "WebMCP"
         ],
-        "rank": 91
+        "rank": 93
       },
       {
         "title": "AIHOT: SemiAnalysis agent workload data resets inference cost assumptions",
@@ -10383,7 +10495,7 @@
           "coding"
         ],
         "category": "AIHOT精选",
-        "rank": 92
+        "rank": 94
       },
       {
         "imageUrl": "https://www.google.com/s2/favicons?domain=semianalysis.com&sz=128",
@@ -10406,7 +10518,7 @@
           "inference cost",
           "coding agent"
         ],
-        "rank": 93
+        "rank": 95
       },
       {
         "title": "AIHOT: Cursor and GitHub Gartner leader signals push AI coding agent procurement mainstream",
@@ -10430,7 +10542,7 @@
           "Gartner"
         ],
         "category": "AIHOT精选",
-        "rank": 94
+        "rank": 96
       },
       {
         "imageUrl": "https://www.google.com/s2/favicons?domain=cursor.com&sz=128",
@@ -10453,7 +10565,7 @@
           "coding agent",
           "enterprise controls"
         ],
-        "rank": 95
+        "rank": 97
       },
       {
         "title": "AIHOT: malleable UI thesis reframes AI product interfaces as generated artifacts",
@@ -10477,7 +10589,7 @@
           "product"
         ],
         "category": "AIHOT精选",
-        "rank": 96
+        "rank": 98
       },
       {
         "imageUrl": "https://www.google.com/s2/favicons?domain=github.blog&sz=128",
@@ -10500,7 +10612,7 @@
           "Agent Control Plane",
           "enterprise AI"
         ],
-        "rank": 97
+        "rank": 99
       },
       {
         "title": "AIHOT: DeepSeek V4-Pro discount permanence keeps price pressure high",
@@ -10524,7 +10636,7 @@
           "model routing"
         ],
         "category": "AIHOT精选",
-        "rank": 98
+        "rank": 100
       },
       {
         "title": "AIHOT: DeepSeek V4 Pro 以低价路线冲击推理 API 成本曲线",
@@ -10547,7 +10659,7 @@
           "模型",
           "推理成本"
         ],
-        "rank": 99
+        "rank": 101
       },
       {
         "title": "AIHOT: Suno 歌曲登顶 Billboard，生成音乐进入主流分发测试",
@@ -10570,7 +10682,7 @@
           "版权",
           "内容平台"
         ],
-        "rank": 100
+        "rank": 102
       },
       {
         "imageUrl": "https://www.google.com/s2/favicons?domain=openai.com&sz=128",
@@ -10593,7 +10705,7 @@
           "enterprise AI",
           "coding agents"
         ],
-        "rank": 101
+        "rank": 103
       },
       {
         "imageUrl": "https://www.google.com/s2/favicons?domain=huggingface.co&sz=128",
@@ -10616,7 +10728,7 @@
           "serving",
           "benchmark"
         ],
-        "rank": 102
+        "rank": 104
       },
       {
         "title": "AIHOT: Google Project Genie 把真实街景转成交互式世界",
@@ -10639,7 +10751,7 @@
           "世界模型",
           "交互内容"
         ],
-        "rank": 103
+        "rank": 105
       },
       {
         "title": "AIHOT: BitCPM-CANN 在昇腾 910B 上原生训练 1.58-bit 开源模型",
@@ -10662,7 +10774,7 @@
           "量化",
           "端侧"
         ],
-        "rank": 104
+        "rank": 106
       },
       {
         "imageUrl": "https://www.google.com/s2/favicons?domain=aihot.virxact.com&sz=128",
@@ -10686,7 +10798,7 @@
           "端侧部署",
           "昇腾"
         ],
-        "rank": 105
+        "rank": 107
       },
       {
         "imageUrl": "https://www.google.com/s2/favicons?domain=openai.com&sz=128",
@@ -10709,7 +10821,7 @@
           "Codex",
           "desktop agents"
         ],
-        "rank": 106
+        "rank": 108
       },
       {
         "title": "AIHOT: llms.txt 1.1 与 Karpathy CLAUDE.md 同时强化“给模型看的工程文档”",
@@ -10732,7 +10844,7 @@
           "工程文档",
           "AI coding"
         ],
-        "rank": 107
+        "rank": 109
       },
       {
         "imageUrl": "https://www.google.com/s2/favicons?domain=aihot.virxact.com&sz=128",
@@ -10755,7 +10867,7 @@
           "内容索引",
           "RAG"
         ],
-        "rank": 108
+        "rank": 110
       },
       {
         "imageUrl": "https://www.google.com/s2/favicons?domain=github.com&sz=128",
@@ -10778,7 +10890,7 @@
           "CLAUDE.md",
           "workflow"
         ],
-        "rank": 109
+        "rank": 111
       },
       {
         "imageUrl": "https://www.google.com/s2/favicons?domain=pixverse.ai&sz=128",
@@ -10801,7 +10913,7 @@
           "mobile creation",
           "PixVerse"
         ],
-        "rank": 110
+        "rank": 112
       },
       {
         "imageUrl": "https://www.google.com/s2/favicons?domain=aihot.virxact.com&sz=128",
@@ -10824,7 +10936,7 @@
           "open-source models",
           "education"
         ],
-        "rank": 111
+        "rank": 113
       },
       {
         "imageUrl": "https://www.google.com/s2/favicons?domain=aihot.virxact.com&sz=128",
@@ -10847,7 +10959,7 @@
           "policy",
           "robotics"
         ],
-        "rank": 112
+        "rank": 114
       },
       {
         "imageUrl": "https://www.google.com/s2/favicons?domain=github.com&sz=128",
@@ -10870,7 +10982,7 @@
           "developer infrastructure",
           "risk"
         ],
-        "rank": 113
+        "rank": 115
       },
       {
         "imageUrl": "https://www.google.com/s2/favicons?domain=aihot.virxact.com&sz=128",
@@ -10893,7 +11005,7 @@
           "goal mode",
           "developer tools"
         ],
-        "rank": 114
+        "rank": 116
       },
       {
         "title": "AIHOT flags DeepSeek V4 Flash topping OpenRouter weekly usage",
@@ -10916,7 +11028,7 @@
           "model routing",
           "inference"
         ],
-        "rank": 115
+        "rank": 117
       },
       {
         "imageUrl": "https://www.google.com/s2/favicons?domain=ithome.com&sz=128",
@@ -10939,7 +11051,7 @@
           "model release",
           "safety"
         ],
-        "rank": 116
+        "rank": 118
       },
       {
         "title": "GPT-4.5 Turing-test discussion turns identity trust into an AI safety signal",
@@ -10962,10 +11074,10 @@
           "identity trust",
           "evaluation"
         ],
-        "rank": 117
+        "rank": 119
       },
       {
-        "rank": 118,
+        "rank": 120,
         "imageUrl": "https://www.google.com/s2/favicons?domain=aihot.virxact.com&sz=128",
         "title": "AIHOT highlights GLM-5.1 high-speed API for low-latency model serving",
         "source": "AIHOT / IT之家",
@@ -11009,7 +11121,7 @@
           "enterprise",
           "official"
         ],
-        "rank": 119
+        "rank": 121
       },
       {
         "title": "Anthropic Computer Use docs keep beta boundaries explicit for desktop-operating agents",
@@ -11033,7 +11145,7 @@
           "safety"
         ],
         "category": "A社Computer Use",
-        "rank": 120
+        "rank": 122
       },
       {
         "title": "Anthropic Project Glasswing initial update turns AI vulnerability discovery into a disclosure bottleneck problem",
@@ -11058,7 +11170,7 @@
           "Claude Mythos"
         ],
         "category": "A社安全研究",
-        "rank": 121
+        "rank": 123
       },
       {
         "title": "Anthropic CVD dashboard quantifies Mythos Preview vulnerability pipeline",
@@ -11083,7 +11195,7 @@
           "open source"
         ],
         "category": "A社安全研究",
-        "rank": 122
+        "rank": 124
       },
       {
         "title": "Anthropic Glasswing update makes vulnerability verification the new bottleneck",
@@ -11107,7 +11219,7 @@
           "Claude Mythos"
         ],
         "category": "A社官方研究",
-        "rank": 123
+        "rank": 125
       },
       {
         "title": "Anthropic Project Glasswing 初始更新：AI 找洞能力把瓶颈推向验证与补丁吞吐",
@@ -11131,7 +11243,7 @@
           "漏洞治理"
         ],
         "category": "官方 AI 动态",
-        "rank": 124
+        "rank": 126
       },
       {
         "title": "Anthropic Project Glasswing update: 漏洞发现吞吐已把瓶颈推到验证与修复",
@@ -11154,11 +11266,11 @@
           "代码安全",
           "Agent"
         ],
-        "rank": 125
+        "rank": 127
       },
       {
         "imageUrl": "https://www.google.com/s2/favicons?domain=anthropic.com&sz=128",
-        "rank": 126,
+        "rank": 128,
         "title": "Anthropic Project Glasswing turns AI vulnerability discovery into a verification-and-patching bottleneck",
         "source": "A社 Anthropic",
         "sourceDetail": "Anthropic official Research/News, May 22 2026",
@@ -11181,7 +11293,7 @@
         ]
       },
       {
-        "rank": 127,
+        "rank": 129,
         "imageUrl": "https://www.google.com/s2/favicons?domain=github.com&sz=128",
         "title": "Claude Code v2.1.147 adds Workflow and code-review updates",
         "source": "AIHOT / Claude Code GitHub Releases",
@@ -11224,7 +11336,7 @@
           "SQL",
           "plugins"
         ],
-        "rank": 128
+        "rank": 130
       },
       {
         "imageUrl": "https://www.google.com/s2/favicons?domain=gemini.google.com&sz=128",
@@ -11247,7 +11359,7 @@
           "agent connectors",
           "commerce"
         ],
-        "rank": 129
+        "rank": 131
       },
       {
         "imageUrl": "https://www.google.com/s2/favicons?domain=aihot.virxact.com&sz=128",
@@ -11269,7 +11381,7 @@
           "workforce",
           "AI-governance"
         ],
-        "rank": 130
+        "rank": 132
       },
       {
         "imageUrl": "https://www.google.com/s2/favicons?domain=runwayml.com&sz=128",
@@ -11291,7 +11403,7 @@
           "video generation",
           "creative workflow"
         ],
-        "rank": 131
+        "rank": 133
       },
       {
         "imageUrl": "https://www.google.com/s2/favicons?domain=aihot.virxact.com&sz=128",
@@ -11313,7 +11425,7 @@
           "OpenCode",
           "coding-agent"
         ],
-        "rank": 132
+        "rank": 134
       },
       {
         "title": "Google I/O 2026 makes Gemini 3.5 Flash the AI Mode Search and agent development anchor",
@@ -11337,7 +11449,7 @@
           "Search",
           "official"
         ],
-        "rank": 133
+        "rank": 135
       },
       {
         "title": "OpenAI model disproves a central conjecture in discrete geometry",
@@ -11360,7 +11472,7 @@
           "验证",
           "模型能力"
         ],
-        "rank": 134
+        "rank": 136
       },
       {
         "title": "Google I/O 2026 packages Gemini 3.5, Omni and Spark into an agentic product stack",
@@ -11383,10 +11495,10 @@
           "搜索",
           "多模态"
         ],
-        "rank": 135
+        "rank": 137
       },
       {
-        "rank": 136,
+        "rank": 138,
         "imageUrl": "https://www.google.com/s2/favicons?domain=blog.google&sz=128",
         "title": "Google brings Gemini-powered ads into AI Search",
         "source": "Google Ads",
@@ -11429,7 +11541,7 @@
           "计算发现"
         ],
         "category": "官方 AI 动态",
-        "rank": 137
+        "rank": 139
       },
       {
         "title": "Google Managed Agents brings hosted execution environments into Gemini API",
@@ -11451,11 +11563,11 @@
           "action": "评估 hosted agent 时同时测试隔离边界、文件状态恢复、工具审计、成本上限和失败接管"
         },
         "imageUrl": "https://www.google.com/s2/favicons?domain=blog.google&sz=128",
-        "rank": 138
+        "rank": 140
       },
       {
         "imageUrl": "https://www.google.com/s2/favicons?domain=anthropic.com&sz=128",
-        "rank": 139,
+        "rank": 141,
         "title": "Anthropic KPMG alliance puts Claude into regulated enterprise workflows",
         "source": "A社 Anthropic",
         "sourceDetail": "Anthropic official News, May 19 2026",
@@ -11477,7 +11589,7 @@
         ]
       },
       {
-        "rank": 140,
+        "rank": 142,
         "imageUrl": "https://www.google.com/s2/favicons?domain=www.anthropic.com&sz=128",
         "title": "Anthropic widens frontier AI conversation",
         "source": "A社 Anthropic",
@@ -11519,10 +11631,10 @@
           "provenance",
           "搜索治理"
         ],
-        "rank": 141
+        "rank": 143
       },
       {
-        "rank": 142,
+        "rank": 144,
         "imageUrl": "https://www.google.com/s2/favicons?domain=blog.google&sz=128",
         "title": "Google Search AI Mode moves to Gemini 3.5 Flash",
         "source": "Google Search",
@@ -11565,7 +11677,7 @@
           "hybrid deployment",
           "enterprise agents"
         ],
-        "rank": 143
+        "rank": 145
       },
       {
         "title": "Anthropic acquires Stainless to strengthen SDK, CLI and MCP server tooling for agents",
@@ -11589,7 +11701,7 @@
           "agents"
         ],
         "category": "A社Agent/工程",
-        "rank": 144
+        "rank": 146
       },
       {
         "title": "Open Agent Leaderboard shifts agent evaluation from model-only scores to system design",
@@ -11612,11 +11724,11 @@
           "action": "将内部 agent POC 的验收拆成任务完成率、工具错误率、恢复次数、人工接管率和单任务成本"
         },
         "imageUrl": "https://www.google.com/s2/favicons?domain=huggingface.co&sz=128",
-        "rank": 145
+        "rank": 147
       },
       {
         "imageUrl": "https://www.google.com/s2/favicons?domain=anthropic.com&sz=128",
-        "rank": 146,
+        "rank": 148,
         "title": "Anthropic Stainless acquisition reinforces MCP and SDK tooling as agent infrastructure",
         "source": "A社 Anthropic",
         "sourceDetail": "Anthropic official News, May 18 2026",
@@ -11638,7 +11750,7 @@
         ]
       },
       {
-        "rank": 147,
+        "rank": 149,
         "imageUrl": "https://www.google.com/s2/favicons?domain=openai.com&sz=128",
         "title": "OpenAI and Dell bring Codex to hybrid and on-prem enterprise",
         "source": "OpenAI",
@@ -11683,10 +11795,10 @@
           "edge AI",
           "multimodal"
         ],
-        "rank": 148
+        "rank": 150
       },
       {
-        "rank": 149,
+        "rank": 151,
         "imageUrl": "https://www.google.com/s2/favicons?domain=openai.com&sz=128",
         "title": "ChatGPT personal finance preview connects accounts through Plaid",
         "source": "OpenAI",
@@ -11729,7 +11841,7 @@
           "Claude Code"
         ],
         "category": "A社企业合作",
-        "rank": 150
+        "rank": 152
       },
       {
         "imageUrl": "https://www.google.com/s2/favicons?domain=www.anthropic.com&sz=128",
@@ -11753,7 +11865,7 @@
           "Claude Cowork"
         ],
         "sourceType": "official",
-        "rank": 151
+        "rank": 153
       },
       {
         "title": "Anthropic Gates Foundation partnership tests Claude in public-good delivery loops",
@@ -11776,7 +11888,7 @@
           "合作",
           "治理"
         ],
-        "rank": 152
+        "rank": 154
       },
       {
         "title": "Claude for Small Business packages connectors and approval gates",
@@ -11800,7 +11912,7 @@
           "Claude Cowork"
         ],
         "sourceType": "official",
-        "rank": 153
+        "rank": 155
       },
       {
         "title": "Anthropic Research: Teaching Claude why targets agentic misalignment",
@@ -11824,10 +11936,10 @@
           "agent safety"
         ],
         "category": "A社安全研究",
-        "rank": 154
+        "rank": 156
       },
       {
-        "rank": 155,
+        "rank": 157,
         "imageUrl": "https://www.google.com/s2/favicons?domain=www.anthropic.com&sz=128",
         "title": "Teaching Claude why reduces agentic misalignment",
         "source": "A社 Anthropic Research",
@@ -11870,11 +11982,11 @@
           "science",
           "optimization"
         ],
-        "rank": 156
+        "rank": 158
       },
       {
         "imageUrl": "https://www.google.com/s2/favicons?domain=anthropic.com&sz=128",
-        "rank": 157,
+        "rank": 159,
         "title": "Anthropic Institute agenda frames safety around economic diffusion and AI-driven R&D",
         "source": "A社 Anthropic Research",
         "sourceDetail": "Anthropic official Research, May 7 2026",
@@ -11896,7 +12008,7 @@
         ]
       },
       {
-        "rank": 158,
+        "rank": 160,
         "imageUrl": "https://www.google.com/s2/favicons?domain=www.anthropic.com&sz=128",
         "title": "Natural Language Autoencoders turn Claude activations into text",
         "source": "A社 Anthropic Research",
@@ -11918,7 +12030,7 @@
         ]
       },
       {
-        "rank": 159,
+        "rank": 161,
         "imageUrl": "https://www.google.com/s2/favicons?domain=techcrunch.com&sz=128",
         "title": "Karpathy joining Anthropic turns pre-training into an agent-accelerated research loop",
         "source": "TechCrunch / Anthropic spokesperson signal",
@@ -11965,7 +12077,7 @@
           "Microsoft"
         ],
         "sourceType": "aggregator-media",
-        "rank": 160
+        "rank": 162
       },
       {
         "title": "Google AI poisoning coverage reframes ads policy as retrieval-time safety infrastructure",
@@ -11990,7 +12102,7 @@
           "retrieval"
         ],
         "sourceType": "aggregator-media",
-        "rank": 161
+        "rank": 163
       },
       {
         "title": "JD JoyInside pushes AI from chatbot surface to ambient device operating layer",
@@ -12015,7 +12127,7 @@
           "QbitAI"
         ],
         "sourceType": "aggregator-media",
-        "rank": 162
+        "rank": 164
       },
       {
         "title": "ToolMerge frames long-video retrieval as query decomposition plus tool-level merging",
@@ -12040,7 +12152,7 @@
           "arXiv"
         ],
         "sourceType": "aggregator-paper",
-        "rank": 163
+        "rank": 165
       },
       {
         "title": "OpenAI Virgin Atlantic case shows Codex moving from code generation to delivery-risk reduction",
@@ -12065,7 +12177,7 @@
           "testing"
         ],
         "sourceType": "official-case-study",
-        "rank": 164
+        "rank": 166
       },
       {
         "title": "Anthropic Claude Design expands Claude from text workbench to visual artifact production",
@@ -12090,7 +12202,7 @@
           "enterprise"
         ],
         "sourceType": "official-product",
-        "rank": 165
+        "rank": 167
       },
       {
         "title": "OpenAI Windows sandbox post makes OS isolation a first-class coding-agent product requirement",
@@ -12115,7 +12227,7 @@
           "security"
         ],
         "sourceType": "official-engineering",
-        "rank": 166
+        "rank": 168
       },
       {
         "title": "Product Hunt Waydev signal turns AI software delivery into token-to-production measurement",
@@ -12140,7 +12252,7 @@
           "metrics"
         ],
         "sourceType": "aggregator-product",
-        "rank": 167
+        "rank": 169
       },
       {
         "title": "Anthropic Claude Code quality postmortem turns agent harness changes into release-governance signal",
@@ -12165,7 +12277,7 @@
           "安全评测"
         ],
         "sourceType": "official",
-        "rank": 168
+        "rank": 170
       },
       {
         "title": "AIHOT CNBC block turns OpenAI IPO timing and Anthropic chip talks into compute-finance signal",
@@ -12191,7 +12303,7 @@
         ],
         "category": "市场/供应商风险",
         "sourceType": "aggregation",
-        "rank": 169
+        "rank": 171
       },
       {
         "imageUrl": "https://www.google.com/s2/favicons?domain=36kr.com&sz=128",
@@ -12217,7 +12329,7 @@
         ],
         "category": "成本治理",
         "sourceType": "aggregation",
-        "rank": 170
+        "rank": 172
       },
       {
         "imageUrl": "https://www.google.com/s2/favicons?domain=apnews.com&sz=128",
@@ -12243,7 +12355,7 @@
         ],
         "category": "AI治理",
         "sourceType": "trusted-media+official-announcement",
-        "rank": 171
+        "rank": 173
       },
       {
         "imageUrl": "https://www.google.com/s2/favicons?domain=anthropic.com&sz=128",
@@ -12269,7 +12381,7 @@
         ],
         "category": "A社/平台基础设施",
         "sourceType": "official-news",
-        "rank": 172
+        "rank": 174
       },
       {
         "imageUrl": "https://www.google.com/s2/favicons?domain=arxiv.org&sz=128",
@@ -12295,7 +12407,7 @@
         ],
         "category": "Agent安全研究",
         "sourceType": "academic-research",
-        "rank": 173
+        "rank": 175
       },
       {
         "imageUrl": "https://www.google.com/s2/favicons?domain=arxiv.org&sz=128",
@@ -12321,7 +12433,7 @@
         ],
         "category": "搜索/分发",
         "sourceType": "academic-measurement",
-        "rank": 174
+        "rank": 176
       },
       {
         "imageUrl": "https://www.google.com/s2/favicons?domain=openai.com&sz=128",
@@ -12347,7 +12459,7 @@
         ],
         "category": "AI科研",
         "sourceType": "official-research",
-        "rank": 175
+        "rank": 177
       },
       {
         "imageUrl": "https://www.google.com/s2/favicons?domain=aihot.today&sz=128",
@@ -12373,7 +12485,7 @@
         ],
         "category": "搜索安全",
         "sourceType": "AIHOT-secondary-aggregation",
-        "rank": 176
+        "rank": 178
       },
       {
         "imageUrl": "https://www.google.com/s2/favicons?domain=qbitai.com&sz=128",
@@ -12399,7 +12511,7 @@
         ],
         "category": "中文大模型/产业应用",
         "sourceType": "AIHOT-secondary-aggregation",
-        "rank": 177
+        "rank": 179
       },
       {
         "imageUrl": "https://www.google.com/s2/favicons?domain=aihot.today&sz=128",
@@ -12425,7 +12537,7 @@
         ],
         "category": "A社/资本与企业采用",
         "sourceType": "AIHOT-secondary-aggregation",
-        "rank": 178
+        "rank": 180
       },
       {
         "imageUrl": "https://www.google.com/s2/favicons?domain=36kr.com&sz=128",
@@ -12450,7 +12562,7 @@
           "cost governance"
         ],
         "sourceType": "trusted-aggregation",
-        "rank": 179
+        "rank": 181
       },
       {
         "imageUrl": "https://www.google.com/s2/favicons?domain=36kr.com&sz=128",
@@ -12475,7 +12587,7 @@
           "robotics"
         ],
         "sourceType": "trusted-aggregation",
-        "rank": 180
+        "rank": 182
       },
       {
         "imageUrl": "https://www.google.com/s2/favicons?domain=36kr.com&sz=128",
@@ -12500,7 +12612,7 @@
           "AIHOT"
         ],
         "sourceType": "trusted-aggregation",
-        "rank": 181
+        "rank": 183
       },
       {
         "imageUrl": "https://www.google.com/s2/favicons?domain=anthropic.com&sz=128",
@@ -12527,7 +12639,7 @@
         ],
         "category": "Anthropic官方/AI治理",
         "sourceType": "official-news",
-        "rank": 182
+        "rank": 184
       },
       {
         "imageUrl": "https://www.google.com/s2/favicons?domain=36kr.com&sz=128",
@@ -12554,7 +12666,7 @@
         ],
         "category": "AI商业生态",
         "sourceType": "trusted-aggregation",
-        "rank": 183
+        "rank": 185
       },
       {
         "imageUrl": "https://www.google.com/s2/favicons?domain=36kr.com&sz=128",
@@ -12581,7 +12693,7 @@
         ],
         "category": "AI商业生态/资本市场",
         "sourceType": "trusted-aggregation",
-        "rank": 184
+        "rank": 186
       },
       {
         "imageUrl": "https://www.google.com/s2/favicons?domain=aihot.today&sz=128",
@@ -12608,7 +12720,7 @@
         ],
         "category": "中文大模型/模型路由",
         "sourceType": "trusted-aggregation",
-        "rank": 185
+        "rank": 187
       },
       {
         "imageUrl": "https://www.google.com/s2/favicons?domain=aihot.today&sz=128",
@@ -12636,7 +12748,7 @@
         ],
         "category": "AI科学/产业基础设施",
         "sourceType": "trusted-aggregation",
-        "rank": 186
+        "rank": 188
       },
       {
         "imageUrl": "https://www.google.com/s2/favicons?domain=aihot.today&sz=128",
@@ -12663,7 +12775,7 @@
         ],
         "category": "企业AI/组织转型",
         "sourceType": "trusted-aggregation",
-        "rank": 187
+        "rank": 189
       },
       {
         "imageUrl": "https://www.google.com/s2/favicons?domain=36kr.com&sz=128",
@@ -12691,7 +12803,7 @@
         ],
         "category": "AI数据工程/模型评测",
         "sourceType": "trusted-aggregation",
-        "rank": 188
+        "rank": 190
       },
       {
         "imageUrl": "https://www.google.com/s2/favicons?domain=arstechnica.com&sz=128",
@@ -12719,7 +12831,7 @@
         ],
         "category": "A社/企业采用/资本效率",
         "sourceType": "trusted-aggregation",
-        "rank": 189
+        "rank": 191
       },
       {
         "imageUrl": "https://www.google.com/s2/favicons?domain=openai.com&sz=128",
@@ -12748,7 +12860,7 @@
         ],
         "category": "AI办公/Agent治理/企业采用",
         "sourceType": "official-help-center+trusted-aggregation",
-        "rank": 190
+        "rank": 192
       },
       {
         "imageUrl": "https://www.google.com/s2/favicons?domain=blog.google&sz=128",
@@ -12778,7 +12890,7 @@
         ],
         "category": "AI搜索/广告商业化/分发变迁",
         "sourceType": "official-blog+trusted-aggregation",
-        "rank": 191
+        "rank": 193
       },
       {
         "imageUrl": "https://www.google.com/s2/favicons?domain=tenable.com&sz=128",
@@ -12808,7 +12920,7 @@
         ],
         "category": "A社/企业安全治理/合规可见性",
         "sourceType": "official-press-release+trusted-aggregation",
-        "rank": 192
+        "rank": 194
       },
       {
         "imageUrl": "https://www.google.com/s2/favicons?domain=a16z.com&sz=128",
@@ -12836,7 +12948,7 @@
         ],
         "category": "AI商业化/企业软件/定价模型",
         "sourceType": "trusted-aggregation+analysis-source",
-        "rank": 193
+        "rank": 195
       },
       {
         "imageUrl": "https://www.google.com/s2/favicons?domain=aihot.today&sz=128",
@@ -12864,7 +12976,7 @@
         ],
         "category": "AI产业落地/制造业/流程自动化",
         "sourceType": "trusted-aggregation+industry-signal",
-        "rank": 194
+        "rank": 196
       },
       {
         "imageUrl": "https://www.google.com/s2/favicons?domain=aihot.today&sz=128",
@@ -12892,7 +13004,7 @@
         ],
         "category": "AI Agent/开发者工具/模型生态",
         "sourceType": "trusted-aggregation+industry-signal",
-        "rank": 195
+        "rank": 197
       },
       {
         "imageUrl": "https://www.google.com/s2/favicons?domain=aihot.today&sz=128",
@@ -12920,7 +13032,7 @@
         ],
         "category": "AI应用生态/产品指标/商业化",
         "sourceType": "trusted-aggregation+market-signal",
-        "rank": 196
+        "rank": 198
       },
       {
         "imageUrl": "https://www.google.com/s2/favicons?domain=aihot.virxact.com&sz=128",
@@ -12947,7 +13059,7 @@
         ],
         "category": "模型价格/Agent 成本/多模型路由",
         "sourceType": "trusted-aggregation+pricing-signal",
-        "rank": 197
+        "rank": 199
       },
       {
         "imageUrl": "https://www.google.com/s2/favicons?domain=research.google&sz=128",
@@ -12974,7 +13086,7 @@
         ],
         "category": "官方 AI 研究/Agent 工程/实验平台",
         "sourceType": "official-research",
-        "rank": 198
+        "rank": 200
       },
       {
         "imageUrl": "https://www.google.com/s2/favicons?domain=promptarmor.com&sz=128",
@@ -13005,7 +13117,7 @@
         ],
         "category": "AI安全/企业Agent/权限治理",
         "sourceType": "security-research+trusted-aggregation",
-        "rank": 199
+        "rank": 201
       },
       {
         "imageUrl": "https://www.google.com/s2/favicons?domain=aihot.today&sz=128",
@@ -13030,7 +13142,7 @@
           "retrieval"
         ],
         "sourceType": "aggregator-secondary-report",
-        "rank": 200
+        "rank": 202
       },
       {
         "imageUrl": "https://www.google.com/s2/favicons?domain=aihot.today&sz=128",
@@ -13055,7 +13167,7 @@
           "domestic AI"
         ],
         "sourceType": "aggregator-secondary-report",
-        "rank": 201
+        "rank": 203
       },
       {
         "imageUrl": "https://www.google.com/s2/favicons?domain=techcrunch.com&sz=128",
@@ -13081,7 +13193,7 @@
         ],
         "category": "企业 AI/组织效率/工作流自动化",
         "sourceType": "trusted-aggregation+media-report",
-        "rank": 202
+        "rank": 204
       },
       {
         "imageUrl": "https://www.google.com/s2/favicons?domain=openai.com&sz=128",
@@ -13108,7 +13220,7 @@
         ],
         "category": "官方 AI 新闻/内容合作/AI 搜索",
         "sourceType": "official",
-        "rank": 203
+        "rank": 205
       },
       {
         "imageUrl": "https://www.google.com/s2/favicons?domain=aihot.today&sz=128",
@@ -13134,7 +13246,7 @@
         ],
         "category": "AI 基础设施/企业部署",
         "sourceType": "trusted-aggregation",
-        "rank": 204
+        "rank": 206
       },
       {
         "imageUrl": "https://www.google.com/s2/favicons?domain=36kr.com&sz=128",
@@ -13161,7 +13273,7 @@
         ],
         "category": "AI 搜索/电商推荐/导购 Agent",
         "sourceType": "trusted-aggregation+product-test",
-        "rank": 205
+        "rank": 207
       },
       {
         "imageUrl": "https://www.google.com/s2/favicons?domain=36kr.com&sz=128",
@@ -13188,7 +13300,7 @@
         ],
         "category": "广告平台/AI 运营/商业化",
         "sourceType": "trusted-aggregation+business-signal",
-        "rank": 206
+        "rank": 208
       },
       {
         "imageUrl": "https://www.google.com/s2/favicons?domain=36kr.com&sz=128",
@@ -13215,7 +13327,7 @@
         ],
         "category": "医疗 AI/垂直 Agent/治理",
         "sourceType": "trusted-aggregation+industry-signal",
-        "rank": 207
+        "rank": 209
       },
       {
         "imageUrl": "https://www.google.com/s2/favicons?domain=36kr.com&sz=128",
@@ -13241,7 +13353,7 @@
         ],
         "category": "AI 产品/消费者应用/评测",
         "sourceType": "trusted-aggregation+product-test",
-        "rank": 208
+        "rank": 210
       },
       {
         "imageUrl": "https://www.google.com/s2/favicons?domain=36kr.com&sz=128",
@@ -13267,7 +13379,7 @@
         ],
         "category": "垂直 Agent/酒店智能化/运营自动化",
         "sourceType": "trusted-aggregation+industry-case",
-        "rank": 209
+        "rank": 211
       },
       {
         "imageUrl": "https://www.google.com/s2/favicons?domain=36kr.com&sz=128",
@@ -13293,7 +13405,7 @@
         ],
         "category": "模型研究/多模态/评测",
         "sourceType": "trusted-aggregation+research-signal",
-        "rank": 210
+        "rank": 212
       },
       {
         "imageUrl": "https://www.google.com/s2/favicons?domain=36kr.com&sz=128",
@@ -13320,7 +13432,7 @@
         ],
         "category": "机器人/具身智能/模型部署",
         "sourceType": "trusted-aggregation+research-signal",
-        "rank": 211
+        "rank": 213
       },
       {
         "imageUrl": "https://www.google.com/s2/favicons?domain=techinasia.com&sz=128",
@@ -13347,7 +13459,7 @@
         ],
         "category": "编码 Agent/开发者生态/区域增长",
         "sourceType": "trusted-aggregation+industry-news",
-        "rank": 212
+        "rank": 214
       },
       {
         "imageUrl": "https://www.google.com/s2/favicons?domain=blog.google&sz=128",
@@ -13375,7 +13487,7 @@
         ],
         "category": "官方 AI 工具/企业检索/RAG",
         "sourceType": "official-ai-news",
-        "rank": 213
+        "rank": 215
       },
       {
         "imageUrl": "https://www.google.com/s2/favicons?domain=aihot.today&sz=128",
@@ -13403,7 +13515,7 @@
         ],
         "category": "机器人/具身智能/资本市场",
         "sourceType": "trusted-aggregation+industry-news",
-        "rank": 214
+        "rank": 216
       },
       {
         "imageUrl": "https://www.google.com/s2/favicons?domain=aihot.today&sz=128",
@@ -13431,7 +13543,7 @@
         ],
         "category": "教育 AI/未成年人安全/课堂 Agent",
         "sourceType": "trusted-aggregation+industry-news",
-        "rank": 215
+        "rank": 217
       },
       {
         "imageUrl": "https://www.google.com/s2/favicons?domain=aihot.today&sz=128",
@@ -13459,7 +13571,7 @@
         ],
         "category": "AI 云基础设施/亚太市场/企业落地",
         "sourceType": "trusted-aggregation+industry-news",
-        "rank": 216
+        "rank": 218
       },
       {
         "imageUrl": "https://www.google.com/s2/favicons?domain=aihot.today&sz=128",
@@ -13488,7 +13600,7 @@
         ],
         "category": "企业 AI 治理/区域合规/咨询生态",
         "sourceType": "trusted-aggregation+industry-news",
-        "rank": 217
+        "rank": 219
       },
       {
         "imageUrl": "https://www.google.com/s2/favicons?domain=aihot.today&sz=128",
@@ -13517,7 +13629,7 @@
         ],
         "category": "企业生产力 AI/员工工具/安全治理",
         "sourceType": "trusted-aggregation+industry-news",
-        "rank": 218
+        "rank": 220
       },
       {
         "imageUrl": "https://www.google.com/s2/favicons?domain=aihot.today&sz=128",
@@ -13545,7 +13657,7 @@
         ],
         "category": "AI 研发效率/算力规划/安全治理",
         "sourceType": "trusted-aggregation+industry-news",
-        "rank": 219
+        "rank": 221
       },
       {
         "imageUrl": "https://www.google.com/s2/favicons?domain=aihot.today&sz=128",
@@ -13573,7 +13685,7 @@
         ],
         "category": "编程模型/开发工具数据/企业采购",
         "sourceType": "trusted-aggregation+industry-news",
-        "rank": 220
+        "rank": 222
       },
       {
         "imageUrl": "https://www.google.com/s2/favicons?domain=aihot.today&sz=128",
@@ -13601,7 +13713,7 @@
         ],
         "category": "AI 安全研究/漏洞披露/企业防御",
         "sourceType": "official-apple-security-advisory+trusted-aggregation",
-        "rank": 221
+        "rank": 223
       },
       {
         "imageUrl": "https://www.google.com/s2/favicons?domain=aihot.today&sz=128",
@@ -13628,7 +13740,7 @@
         ],
         "category": "模型产品/Agent评测/工作流自动化",
         "sourceType": "trusted-aggregation+industry-news",
-        "rank": 222
+        "rank": 224
       },
       {
         "imageUrl": "https://www.google.com/s2/favicons?domain=aihot.today&sz=128",
@@ -13656,7 +13768,7 @@
         ],
         "category": "企业AI落地/项目治理/ROI",
         "sourceType": "trusted-aggregation+industry-news",
-        "rank": 223
+        "rank": 225
       },
       {
         "imageUrl": "https://www.google.com/s2/favicons?domain=aihot.today&sz=128",
@@ -13683,7 +13795,7 @@
         ],
         "category": "Agent安全/金融AI/奖励治理",
         "sourceType": "trusted-aggregation+industry-news",
-        "rank": 224
+        "rank": 226
       },
       {
         "imageUrl": "https://www.google.com/s2/favicons?domain=aihot.today&sz=128",
@@ -13710,7 +13822,7 @@
         ],
         "category": "AI安全/插件生态/隐私治理",
         "sourceType": "trusted-aggregation+industry-news",
-        "rank": 225
+        "rank": 227
       },
       {
         "imageUrl": "https://www.google.com/s2/favicons?domain=aihot.today&sz=128",
@@ -13738,7 +13850,7 @@
         ],
         "category": "AI入口/搜索分发/增长效率",
         "sourceType": "trusted-aggregation+industry-news",
-        "rank": 226
+        "rank": 228
       },
       {
         "imageUrl": "https://www.google.com/s2/favicons?domain=aihot.today&sz=128",
@@ -13765,7 +13877,7 @@
         ],
         "category": "AI入口/端侧Agent/企业治理",
         "sourceType": "trusted-aggregation+industry-news",
-        "rank": 227
+        "rank": 229
       },
       {
         "imageUrl": "https://www.google.com/s2/favicons?domain=aihot.today&sz=128",
@@ -13792,7 +13904,7 @@
         ],
         "category": "模型训练/数据效率/研究复现",
         "sourceType": "trusted-aggregation+industry-news",
-        "rank": 228
+        "rank": 230
       },
       {
         "imageUrl": "https://www.google.com/s2/favicons?domain=aihot.today&sz=128",
@@ -13819,7 +13931,7 @@
         ],
         "category": "具身智能/世界模型/仿真训练",
         "sourceType": "trusted-aggregation+industry-news",
-        "rank": 229
+        "rank": 231
       },
       {
         "imageUrl": "https://www.google.com/s2/favicons?domain=aihot.today&sz=128",
@@ -13846,7 +13958,7 @@
         ],
         "category": "具身智能/产业政策/工业AI",
         "sourceType": "trusted-aggregation+industry-news",
-        "rank": 230
+        "rank": 232
       },
       {
         "imageUrl": "https://www.google.com/s2/favicons?domain=aihot.today&sz=128",
@@ -13873,7 +13985,7 @@
         ],
         "category": "AI平台/公司治理/供应商风险",
         "sourceType": "trusted-aggregation+industry-news",
-        "rank": 231
+        "rank": 233
       },
       {
         "imageUrl": "https://www.google.com/s2/favicons?domain=aihot.today&sz=128",
@@ -13900,7 +14012,7 @@
         ],
         "category": "AI研发效能/组织机制/Agent工作流",
         "sourceType": "trusted-aggregation+industry-news",
-        "rank": 232
+        "rank": 234
       },
       {
         "imageUrl": "https://www.google.com/s2/favicons?domain=aihot.today&sz=128",
@@ -13927,7 +14039,7 @@
         ],
         "category": "AI研发效能/Agent工作流/工程治理",
         "sourceType": "trusted-aggregation+industry-news",
-        "rank": 233
+        "rank": 235
       },
       {
         "imageUrl": "https://www.google.com/s2/favicons?domain=aihot.today&sz=128",
@@ -13956,7 +14068,7 @@
         ],
         "category": "AI电商/搜索推荐/商品广告",
         "sourceType": "trusted-aggregation+industry-news",
-        "rank": 234
+        "rank": 236
       },
       {
         "imageUrl": "https://www.google.com/s2/favicons?domain=openai.com&sz=128",
@@ -13985,7 +14097,7 @@
         ],
         "category": "AI搜索/内容授权/可信来源治理",
         "sourceType": "official-openai+trusted-aggregation",
-        "rank": 235
+        "rank": 237
       },
       {
         "imageUrl": "https://www.google.com/s2/favicons?domain=flexprice.io&sz=128",
@@ -14014,7 +14126,7 @@
         ],
         "category": "AI商业化/计量计费/产品基础设施",
         "sourceType": "trusted-aggregation+official-docs",
-        "rank": 236
+        "rank": 238
       },
       {
         "imageUrl": "https://www.google.com/s2/favicons?domain=anthropic.com&sz=128",
@@ -14045,7 +14157,7 @@
         ],
         "category": "A社官方/Agent安全/Claude Code与Cowork工程",
         "sourceType": "official-anthropic-engineering",
-        "rank": 237
+        "rank": 239
       },
       {
         "imageUrl": "https://www.google.com/s2/favicons?domain=anthropic.com&sz=128",
@@ -14076,7 +14188,7 @@
         ],
         "category": "A社官方/企业合作/区域市场与生态",
         "sourceType": "official-anthropic-news",
-        "rank": 238
+        "rank": 240
       },
       {
         "imageUrl": "https://www.google.com/s2/favicons?domain=huggingface.co&sz=128",
@@ -14107,7 +14219,7 @@
         ],
         "category": "开源模型/本地推理/Coding Agent",
         "sourceType": "trusted-aggregation+huggingface-model-card",
-        "rank": 239
+        "rank": 241
       },
       {
         "imageUrl": "https://www.google.com/s2/favicons?domain=aihot.today&sz=128",
@@ -14136,7 +14248,7 @@
         ],
         "category": "A社二级观察/Agent工程文化",
         "sourceType": "trusted-aggregation-secondary",
-        "rank": 240
+        "rank": 242
       },
       {
         "imageUrl": "https://www.google.com/s2/favicons?domain=aihot.today&sz=128",
@@ -14164,7 +14276,7 @@
         ],
         "category": "机器人/VLA/物理Agent",
         "sourceType": "trusted-aggregation+industry-news",
-        "rank": 241
+        "rank": 243
       },
       {
         "imageUrl": "https://www.google.com/s2/favicons?domain=aihot.today&sz=128",
@@ -14192,7 +14304,7 @@
         ],
         "category": "AI治理/企业平台风险",
         "sourceType": "trusted-aggregation+industry-news",
-        "rank": 242
+        "rank": 244
       },
       {
         "imageUrl": "https://www.google.com/s2/favicons?domain=arxiv.org&sz=128",
@@ -14222,7 +14334,7 @@
         ],
         "category": "AI Agent/科学计算",
         "sourceType": "paper+trusted-aggregation",
-        "rank": 243
+        "rank": 245
       },
       {
         "imageUrl": "https://www.google.com/s2/favicons?domain=engineering.salesforce.com&sz=128",
@@ -14253,7 +14365,7 @@
         ],
         "category": "企业AI/Agent治理",
         "sourceType": "official-engineering-blog",
-        "rank": 244
+        "rank": 246
       },
       {
         "imageUrl": "https://www.google.com/s2/favicons?domain=volcengine.com&sz=128",
@@ -14282,7 +14394,7 @@
         ],
         "category": "AI搜索/RAG基础设施",
         "sourceType": "official-developer-doc",
-        "rank": 245
+        "rank": 247
       },
       {
         "imageUrl": "https://www.google.com/s2/favicons?domain=blog.google&sz=128",
@@ -14312,7 +14424,7 @@
         ],
         "category": "AI内容溯源/安全",
         "sourceType": "official-blog",
-        "rank": 246
+        "rank": 248
       },
       {
         "imageUrl": "https://www.google.com/s2/favicons?domain=microsoft.github.io&sz=128",
@@ -14340,7 +14452,7 @@
         ],
         "category": "Agent工程/技能优化",
         "sourceType": "project-page+paper",
-        "rank": 247
+        "rank": 249
       },
       {
         "imageUrl": "https://www.google.com/s2/favicons?domain=blog.google&sz=128",
@@ -14368,7 +14480,7 @@
         ],
         "category": "AI科研/Agent工作流",
         "sourceType": "official-blog",
-        "rank": 248
+        "rank": 250
       },
       {
         "imageUrl": "https://www.google.com/s2/favicons?domain=openai.com&sz=128",
@@ -14396,7 +14508,7 @@
         ],
         "category": "企业Agent/文档工作流",
         "sourceType": "official-customer-story",
-        "rank": 249
+        "rank": 251
       },
       {
         "imageUrl": "https://www.google.com/s2/favicons?domain=ycombinator.com&sz=128",
@@ -14424,7 +14536,7 @@
         ],
         "category": "开发工具/多Agent编排",
         "sourceType": "official-company-page",
-        "rank": 250
+        "rank": 252
       },
       {
         "imageUrl": "https://www.google.com/s2/favicons?domain=techcrunch.com&sz=128",
@@ -14452,7 +14564,7 @@
         ],
         "category": "AI搜索/用户信任",
         "sourceType": "credible-media-with-company-metrics",
-        "rank": 251
+        "rank": 253
       },
       {
         "imageUrl": "https://www.google.com/s2/favicons?domain=huggingface.co&sz=128",
@@ -14481,7 +14593,7 @@
         ],
         "category": "端侧模型/Agent基础设施",
         "sourceType": "official-model-card",
-        "rank": 252
+        "rank": 254
       },
       {
         "imageUrl": "https://www.google.com/s2/favicons?domain=cac.gov.cn&sz=128",
@@ -14509,7 +14621,7 @@
         ],
         "category": "AI治理/安全合规",
         "sourceType": "official-regulatory-guideline",
-        "rank": 253
+        "rank": 255
       },
       {
         "imageUrl": "https://www.google.com/s2/favicons?domain=openai.com&sz=128",
@@ -14540,7 +14652,7 @@
         ],
         "category": "开发工具/Agent工程化",
         "sourceType": "official-business-guide",
-        "rank": 254
+        "rank": 256
       },
       {
         "imageUrl": "https://www.google.com/s2/favicons?domain=www.amazon.science&sz=128",
@@ -14570,7 +14682,7 @@
         ],
         "category": "模型训练/推理可靠性",
         "sourceType": "official-research-blog",
-        "rank": 255
+        "rank": 257
       },
       {
         "imageUrl": "https://www.google.com/s2/favicons?domain=claude.com&sz=128",
@@ -14599,7 +14711,7 @@
         ],
         "category": "A社/企业合作/智能体生态",
         "sourceType": "official-product-page",
-        "rank": 256
+        "rank": 258
       },
       {
         "imageUrl": "https://www.google.com/s2/favicons?domain=research.google&sz=128",
@@ -14628,7 +14740,7 @@
         ],
         "category": "隐私计算/端侧AI/生产观测",
         "sourceType": "official-research-blog",
-        "rank": 257
+        "rank": 259
       },
       {
         "imageUrl": "https://www.google.com/s2/favicons?domain=huggingface.co&sz=128",
@@ -14658,7 +14770,7 @@
         ],
         "category": "智能体评测/企业IT/SRE",
         "sourceType": "official-benchmark-blog",
-        "rank": 258
+        "rank": 260
       },
       {
         "imageUrl": "https://www.google.com/s2/favicons?domain=claude.com&sz=128",
@@ -14688,7 +14800,7 @@
         ],
         "category": "Claude Code/Agent安全/插件治理",
         "sourceType": "official-plugin+aihot",
-        "rank": 259
+        "rank": 261
       },
       {
         "imageUrl": "https://www.google.com/s2/favicons?domain=claude.com&sz=128",
@@ -14719,7 +14831,7 @@
         ],
         "category": "A社/安全研究/漏洞运营",
         "sourceType": "official-claude-blog+aihot",
-        "rank": 260
+        "rank": 262
       },
       {
         "imageUrl": "https://www.google.com/s2/favicons?domain=claude.com&sz=128",
@@ -14750,7 +14862,7 @@
         ],
         "category": "A社/企业安全/Agent治理",
         "sourceType": "official-claude-blog+aihot",
-        "rank": 261
+        "rank": 263
       },
       {
         "imageUrl": "https://www.google.com/s2/favicons?domain=github.com&sz=128",
@@ -14781,43 +14893,44 @@
         ],
         "category": "A 社 / Claude Code 工程动态",
         "sourceType": "official-github-release",
-        "rank": 262
+        "rank": 264
       }
     ],
-    "updatedAt": "2026-05-28T07:17:44.864Z",
+    "updatedAt": "2026-05-28T08:18:58.001Z",
     "description": "本轮新增 OpenAI Secure MCP Tunnel 企业工具接入信号，并继续保留 Anthropic、Claude Code、OpenAI、Google、AIHOT 等官方/高可信来源解读。",
     "sourceDetail": "AIHOT visible stream rechecked 2026-05-28 15:16 CST. Top visible item remained Krea 2 at 14:06 CST; this pass added OpenAI Secure MCP Tunnel from official OpenAI developer docs plus AIHOT lower-stream signal, retained Anthropic/Claude official source boundaries and avoided duplicate Krea/DataWorks/VibeSearchBench entries already added at 14 CST."
   },
   "hourlyUpdate": {
-    "at": "2026-05-28 15:16 CST",
-    "summary": "本轮完成 15 点深度刷新：GitHub Trending Top-12 稳定但 Understand-Anything 计数上升；AIHOT 顶部仍是 Krea 2；新增 Pinterest 转化广告召回案例和 OpenAI Secure MCP Tunnel 企业工具接入信号；A 社官方边界稳定，无重复新增。",
+    "at": "2026-05-28 16:16 CST",
+    "summary": "本轮完成 16 点深度刷新：GitHub Trending Top-12 稳定；AIHOT 顶部更新到 DenoiseRL，并保留 Polar、OpenAI Cisco/Codex、Anthropic coding-agents survey 等强信号；新增 Airbnb BSTAR 长期排序实验评估、NVIDIA Polar agent RL 和 Cisco/Codex 企业落地证据；A 社官方 News/Research/Engineering 无重复新增。",
     "sourceBoundary": {
-      "github": "GitHub official Trending daily page rechecked at 2026-05-28 15:16 CST through https://github.com/trending?since=daily. Top-12 order remains MoneyPrinterTurbo, Understand-Anything, stop-slop, ECC, knowledge-work-plugins, taste-skill, heretic, Kronos, Anthropic-Cybersecurity-Skills, twenty, claude-code-harness and FreeDomain. Official visible counters: 62,954/9,169/1,742; 40,533/3,226/4,465; 5,832/436/664; 196,229/30,189/2,062; 17,381/2,026/695; 24,619/1,890/2,715; 22,081/2,355/211; 26,942/4,664/401; 11,087/1,256/886; 47,408/6,727/519; 1,914/206/87; 169,372/3,217/2,222. Next visible projects include superpowers, English-level-up-tips, iii, awesome-free-apps and airi.",
-      "aihot": "AIHOT visible stream rechecked at 2026-05-28 15:16 CST through https://aihot.virxact.com/. Latest visible selected item remains 14:06 CST Krea 2 on Replicate; follow-on strong items still include OpenRouter Series B, Alibaba Cloud DataWorks Data Agent, VibeSearchBench, NVIDIA Polar, MuleRun and an OpenAI Secure MCP Tunnel signal surfaced in the lower visible stream. No later top item was visible in the accessible page.",
-      "anthropic": "Anthropic official News/Research/Engineering, Claude blog, Claude Marketplace, Claude Code and Agent/Computer Use related surfaces rechecked at 2026-05-28 15:16 CST. News boundary remains May 26, 2026 Korea/Seoul office; Research boundary remains May 27, 2026 Coding agents in the social sciences; Engineering boundary remains the containment article plus Claude Code quality reports. No stronger non-duplicate A-company item was added this pass.",
-      "frontier": "Big-tech 搜广推 sweep rechecked Google Research/Ads, Meta Engineering/AI, Amazon Science, Netflix TechBlog, Pinterest Engineering, Airbnb Engineering, Spotify Engineering, Salesforce Engineering, Dropbox Tech, Perplexity Research and accessible 阿里/Alibaba、字节/ByteDance、腾讯/Tencent、快手/Kuaishou、美团/Meituan、Bilibili/Volcengine sources with recommendation/recommender, ranking, retrieval, search, ads/advertising, auction/bidding, personalization, feed, marketplace, embedding/vector, query/index, CTR/CVR, 召回、粗排、精排、重排、特征、实验平台 keywords. Added Pinterest conversion ads candidate generation as a non-duplicate production retrieval case; Meta SilverTorch remains the strongest fresh retrieval-architecture article."
+      "github": "GitHub official Trending daily page rechecked at 2026-05-28 16:16 CST through https://github.com/trending?since=daily. Accessible rendered text did not expose a stronger changed Top-12 than the 15:16 CST official scrape, so the retained order remains MoneyPrinterTurbo, Understand-Anything, stop-slop, ECC, knowledge-work-plugins, taste-skill, heretic, Kronos, Anthropic-Cybersecurity-Skills, twenty, claude-code-harness and FreeDomain with the last official visible counters retained.",
+      "aihot": "AIHOT visible stream rechecked at 2026-05-28 16:16 CST through https://aihot.virxact.com/. Latest visible selected item is 14:28 CST HuggingFace Daily Papers DenoiseRL; follow-on strong visible items include OpenRouter Series B at 12:41, Alibaba Cloud DataWorks Data Agent at 11:36, NVIDIA Polar at 11:15, VibeSearchBench at 11:28, MuleRun at 10:36, Anthropic coding-agents survey at 07:07 and OpenAI Cisco/Codex official item at 06:13.",
+      "anthropic": "Anthropic official News/Research/Engineering, Claude blog, Claude Marketplace, Claude Code and Agent/Computer Use related surfaces rechecked at 2026-05-28 16:16 CST. News boundary remains May 26, 2026 Korea/Seoul office; Research boundary remains May 27, 2026 Coding agents in the social sciences; Engineering boundary remains containment/Claude Code quality reports. Existing Anthropic source-code security, zero-trust agent framework, coding-agents social-science survey, Claude Code release and enterprise/security coverage is retained; no stronger non-duplicate A-company item was added this pass.",
+      "frontier": "Big-tech 搜广推 sweep rechecked Google Research/Ads, Meta Engineering/AI, Amazon Science, Netflix TechBlog, Pinterest Engineering, Airbnb Engineering, Spotify Engineering, Salesforce Engineering, Dropbox Tech, Perplexity Research and accessible 阿里/Alibaba、字节/ByteDance、腾讯/Tencent、快手/Kuaishou、美团/Meituan、Bilibili/Volcengine sources with recommendation/recommender, ranking, retrieval, search, ads/advertising, auction/bidding, personalization, feed, marketplace, embedding/vector, query/index, CTR/CVR, 召回、粗排、精排、重排、特征、实验平台 keywords. Added Airbnb BSTAR as a non-duplicate ranking experiment/long-term causal evaluation case; retained Meta SilverTorch and Pinterest conversion ads candidate generation as strongest fresh production retrieval cases."
     },
     "added": {
       "repositories": 0,
       "frontier": [
-        "Pinterest conversion ads candidate generation turns sparse purchase signals into retrieval supervision"
+        "Airbnb BSTAR moves ranker launch decisions beyond short A/B-test windows"
       ],
       "aiNews": [
-        "OpenAI Secure MCP Tunnel makes private enterprise tools reachable by ChatGPT and Codex"
+        "NVIDIA Polar turns existing coding-agent harnesses into scalable RL environments",
+        "OpenAI Cisco Codex case turns enterprise coding agents into production workflow evidence"
       ]
     },
     "counts": {
       "repositories": 12,
-      "frontier": 99,
-      "aiNews": 262
+      "frontier": 100,
+      "aiNews": 264
     },
-    "updatedAt": "2026-05-28T07:17:44.864Z",
-    "reviewTime": "2026-05-28 15:16 CST",
-    "headline": "新增 Pinterest 转化广告召回与 OpenAI Secure MCP Tunnel。"
+    "updatedAt": "2026-05-28T08:18:58.001Z",
+    "reviewTime": "2026-05-28 16:16 CST",
+    "headline": "新增 Airbnb BSTAR、NVIDIA Polar 与 Cisco/Codex 企业落地证据。"
   },
   "validation": {
-    "generatedAt": "2026-05-28T07:22:02.656Z",
-    "status": "passed-static-validation; content commit pushed; Echo Trending Deploy workflow and Pages deployment succeeded; Pages API returned built",
+    "generatedAt": "2026-05-28T08:19:35.716Z",
+    "status": "passed-static-validation; publication pending",
     "staticData": "passed: data/public JSON parity, gzip payload parity, index latest/count parity and front-end field contracts verified",
     "checks": [
       "node --check scripts/daily.mjs",
@@ -14826,36 +14939,23 @@
       "JSON parse for data/public reports and index",
       "data/public parity",
       "gzip payload parity",
-      "index latest/count parity: 12 repos / 99 frontier / 262 AI news",
+      "index latest/count parity: 12 repos / 100 frontier / 264 AI news",
       "repo deepDive and diagram contract",
-      "frontier five-part interpretation contract plus new Pinterest conversion ads candidate generation diagram",
-      "AI signal/impact/action contract plus new OpenAI Secure MCP Tunnel item",
+      "frontier five-part interpretation contract plus new Airbnb BSTAR diagram",
+      "AI signal/impact/action contract plus new NVIDIA Polar and OpenAI Cisco/Codex items",
       "big-tech and Chinese 搜广推 source/keyword coverage",
       "Anthropic News/Research/Engineering, Claude blog, Claude Code/Agent/Computer Use/security provenance coverage",
       "retention <= 90 reports"
     ],
-    "publication": "content commit 3eff6b8 pushed to origin/main; Echo Trending Deploy run 26560683251 completed successfully; pages-build-deployment run 26560691102 completed successfully for gh-pages head c1e8d312; deployment 4845283007 succeeded; Pages API returned built for https://eshener.github.io/echo-trending/; direct live reports/index.json fetch was blocked by local DNS, while gh-pages index content exposed 12/99/262 counts."
+    "publication": "pending content commit push and GitHub Pages deployment verification"
   },
   "operations": {
-    "gitPull": "git pull --ff-only origin main attempted before editing at 2026-05-28 15:14 CST; blocked by sandbox SSH control-socket/DNS restrictions while local branch started clean at main...origin/main.",
-    "publication": "Content commit 3eff6b8 pushed to origin/main. Echo Trending Deploy run 26560683251 completed successfully; Pages build/deployment run 26560691102 completed successfully for gh-pages head c1e8d312; deployment 4845283007 succeeded and Pages API returned built. Direct live Pages index fetch from the sandbox failed with DNS ENOTFOUND for eshener.github.io; GitHub Pages API/deployment status and gh-pages index content confirm publication.",
-    "sourceReview": "2026-05-28 15:16 CST",
+    "gitPull": "git pull --ff-only origin main attempted before editing at 2026-05-28 16:15 CST; blocked by sandbox SSH control-socket/DNS restrictions while local branch started clean at main...origin/main.",
+    "publication": "pending content commit push and GitHub Pages deployment verification after 16 CST content refresh",
+    "sourceReview": "2026-05-28 16:16 CST",
     "push": {
-      "commit": "3eff6b8",
-      "remote": "origin",
-      "branch": "main",
-      "status": "pushed",
-      "deployRun": "26560683251",
-      "deployConclusion": "success",
-      "pagesRun": "26560691102",
-      "pagesRunConclusion": "success",
-      "pagesHead": "c1e8d312",
-      "pagesDeployment": "4845283007",
-      "pagesDeploymentStatus": "success",
-      "pagesStatus": "built",
-      "environmentUrl": "https://eshener.github.io/echo-trending/",
-      "liveIndexFetch": "blocked locally: DNS ENOTFOUND eshener.github.io; gh-pages index content showed 12 repos / 99 frontier / 262 AI news",
-      "recordedAt": "2026-05-28T07:22:02.656Z"
+      "status": "pending",
+      "recordedAt": "2026-05-28T08:19:35.716Z"
     }
   }
 }
