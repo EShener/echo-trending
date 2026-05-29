@@ -16094,8 +16094,8 @@
     ]
   },
   "validation": {
-    "generatedAt": "2026-05-29T09:50:08.597Z",
-    "status": "passed-static-validation; ready for commit/push; GitHub Pages publication pending after push",
+    "generatedAt": "2026-05-29T09:52:16.516Z",
+    "status": "passed-static-validation; content commit pushed; GitHub Actions/Pages live verification blocked by local gh token and shell network restrictions",
     "staticData": "passed: data/public JSON parity, gzip payload parity, index latest/count parity and front-end field contracts verified",
     "checks": [
       "node --check scripts/daily.mjs",
@@ -16112,7 +16112,7 @@
       "required Anthropic/Claude Code/Computer Use and search-ads-recsys source/keyword coverage",
       "retention <= 90 reports"
     ],
-    "publication": "pending push; local shell GitHub/Pages network availability will be checked after commit/push. Static readability validated from file/index/payload parity."
+    "publication": "content commit 22a6bc9 pushed to origin/main. GitHub Actions/Pages verification could not be completed from this shell because gh auth status reports the EShener token is invalid, git ls-remote immediately after push hit the recurring SSH/DNS control-socket restriction, and direct HTTPS fetch to GitHub Pages failed locally with fetch failed. Static readability was verified through file/index/payload parity."
   },
   "operations": {
     "gitPull": "failed before editing: sandbox SSH control-socket/DNS restriction prevented git pull --ff-only origin main",
@@ -16127,13 +16127,24 @@
     },
     "validationRecordedAt": "2026-05-29T09:50:08.597Z",
     "publication": {
-      "status": "pending-push",
-      "url": "https://eshener.github.io/echo-trending/"
+      "status": "content-commit-pushed; live-pages-verification-blocked-locally",
+      "contentCommit": "22a6bc9",
+      "remote": "origin",
+      "branch": "main",
+      "url": "https://eshener.github.io/echo-trending/",
+      "pagesVerification": "blocked: gh token invalid and local shell HTTPS fetch failed",
+      "staticReadability": "passed locally: 12 repos / 107 frontier / 295 AI news with data/public/payload/index parity",
+      "recordedAt": "2026-05-29T09:52:16.516Z"
     },
     "push": {
-      "status": "pending",
+      "status": "pushed",
+      "contentCommit": "22a6bc9",
       "remote": "origin",
-      "branch": "main"
+      "branch": "main",
+      "result": "git push origin main succeeded: 52129c3..22a6bc9 main -> main",
+      "postPushRemoteCheck": "git ls-remote failed after push due sandbox SSH/DNS control-socket restriction",
+      "liveIndexFetch": "blocked locally: node fetch to https://eshener.github.io/echo-trending/reports/index.json failed",
+      "recordedAt": "2026-05-29T09:52:16.516Z"
     },
     "lastRunAt": "2026-05-29T09:48:41.896Z",
     "sourceBoundaryAt": "2026-05-29 17:44 CST",
