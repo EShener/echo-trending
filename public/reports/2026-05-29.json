@@ -16074,8 +16074,8 @@
     ]
   },
   "validation": {
-    "generatedAt": "2026-05-29T10:55:00.000Z",
-    "status": "passed-static-validation; pending push",
+    "generatedAt": "2026-05-29T10:58:00.000Z",
+    "status": "passed-static-validation; content commit pushed; GitHub Actions and Pages deployment succeeded",
     "staticData": "passed: data/public JSON parity, gzip payload parity, index latest/count parity and front-end field contracts verified; counts 12/107/295",
     "checks": [
       "node --check scripts/daily.mjs",
@@ -16092,7 +16092,7 @@
       "required Anthropic/Claude Code/Computer Use and search-ads-recsys source/keyword coverage",
       "retention <= 90 reports"
     ],
-    "publication": "pending git commit and push to origin/main"
+    "publication": "content commit f0720c6 pushed to origin/main; Echo Trending Deploy run 26633087946 succeeded; pages-build-deployment run 26633094980 succeeded; deployment 4861160291 succeeded with gh-pages head 6e04706b; Pages API returned built for https://eshener.github.io/echo-trending/. Direct shell fetch to live Pages JSON remained blocked locally with fetch failed, but static data readability passed from files."
   },
   "operations": {
     "gitPull": "failed before editing: sandbox SSH control-socket/DNS restriction prevented git pull --ff-only origin main",
@@ -16105,24 +16105,37 @@
         "Rechecked AIHOT/Anthropic/OpenAI/Robinhood/Asana/Glean plus required search/ads/recommendation engineering sources; no duplicate frontier or AI item was promoted."
       ]
     },
-    "validationRecordedAt": "2026-05-29T10:55:00.000Z",
+    "validationRecordedAt": "2026-05-29T10:58:00.000Z",
     "publication": {
-      "status": "pending-push-after-validation",
+      "status": "content-commit-pushed; actions-and-pages-succeeded",
+      "contentCommit": "f0720c6",
       "remote": "origin",
       "branch": "main",
       "url": "https://eshener.github.io/echo-trending/",
+      "deployRun": "26633087946",
+      "pagesRun": "26633094980",
+      "deployment": "4861160291",
+      "ghPagesHead": "6e04706b",
+      "pagesStatus": "built",
       "staticReadability": "passed locally: 12 repos / 107 frontier / 295 AI news with data/public/payload/index parity",
-      "recordedAt": "2026-05-29T10:55:00.000Z"
+      "liveIndexFetch": "blocked locally: node fetch to https://eshener.github.io/echo-trending/reports/index.json failed",
+      "recordedAt": "2026-05-29T10:58:00.000Z"
     },
     "push": {
-      "status": "pending-push-after-validation",
+      "status": "pushed",
+      "contentCommit": "f0720c6",
       "remote": "origin",
       "branch": "main",
-      "recordedAt": "2026-05-29T10:55:00.000Z"
+      "result": "git push origin main succeeded: e024a29..f0720c6 main -> main",
+      "postPushRemoteCheck": "git ls-remote failed after push due sandbox SSH/DNS control-socket restriction",
+      "ghAuth": "gh auth status valid for EShener with repo scope",
+      "actions": "Echo Trending Deploy run 26633087946 succeeded",
+      "pages": "pages-build-deployment run 26633094980 succeeded; deployment 4861160291 success; Pages API status built",
+      "recordedAt": "2026-05-29T10:58:00.000Z"
     },
     "lastRunAt": "2026-05-29T10:47:43.000Z",
     "sourceBoundaryAt": "2026-05-29 18:47 CST",
     "runType": "18 CST official GitHub Trending boundary refresh plus AIHOT/Anthropic/search-ads-recsys sweep",
-    "validationSummary": "passed static validation locally: syntax checks, git diff whitespace, data/public parity, gzip payload parity, index counts, official GitHub Top-12 order, repo/frontier/AI field contracts, required source coverage and retention; counts 12/107/295"
+    "validationSummary": "passed static validation locally and GitHub publication checks: syntax checks, git diff whitespace, data/public parity, gzip payload parity, index counts, official GitHub Top-12 order, repo/frontier/AI field contracts, required source coverage, retention, Echo Trending Deploy success and Pages built; counts 12/107/295"
   }
 }
