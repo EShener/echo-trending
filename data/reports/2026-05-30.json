@@ -16159,8 +16159,8 @@
     "reviewedAt": "2026-05-30 20:22 CST"
   },
   "validation": {
-    "generatedAt": "2026-05-30T12:33:42.636Z",
-    "status": "passed-static-validation; pending push",
+    "generatedAt": "2026-05-30T12:35:10.643Z",
+    "status": "passed-static-validation; content commit pushed; Actions/Pages verification unavailable in current environment",
     "staticData": "passed: data/public JSON parity, gzip payload parity, index latest/count parity and front-end field contracts verified; counts 12/111/305",
     "checks": [
       "node --check scripts/daily.mjs",
@@ -16177,7 +16177,7 @@
       "retention <= 90 reports",
       "local HTTP server started on 127.0.0.1:8787 but shell fetch failed with sandbox fetch failed; static file/payload/index parity used as readability proof"
     ],
-    "publication": "pending git push origin main"
+    "publication": "content commit 9cf7080 pushed to origin/main. GitHub connector returned no workflow runs for the commit, gh CLI is unavailable, shell fetch to api.github.com and GitHub Pages failed, and web open for direct Pages JSON was blocked by URL-safety restrictions. Workflow configuration publishes public/ to gh-pages on push to main."
   },
   "operations": {
     "gitPull": "failed before editing at 20:22 CST: sandbox SSH/DNS restriction prevented git pull --ff-only origin main",
@@ -16186,30 +16186,30 @@
     "validationRecordedAt": "2026-05-30T12:33:42.636Z",
     "publication": {
       "status": "content-commit-pushed; actions-pages-unverified-locally",
-      "contentCommit": "55b0081",
+      "contentCommit": "9cf7080",
       "remote": "origin",
       "branch": "main",
       "url": "https://eshener.github.io/echo-trending/",
       "workflow": "Echo Trending Deploy on push to main publishes public/ to gh-pages",
-      "actions": "not verified: GitHub connector returned no combined statuses and no commit workflow runs; gh CLI unavailable; curl api.github.com failed DNS",
-      "pages": "not verified: direct local HTTP fetch blocked by sandbox EPERM and GitHub Pages/API fetch blocked by DNS",
-      "staticReadability": "passed locally via file/payload/index parity: 12 repos / 110 frontier / 302 AI news",
-      "recordedAt": "2026-05-30T11:27:24.953Z"
+      "actions": "not verified: GitHub connector _fetch_commit_workflow_runs returned an empty workflow_runs array for commit 9cf7080; gh CLI unavailable; shell fetch to api.github.com failed",
+      "pages": "not verified: direct shell fetch to GitHub Pages failed; web open for direct Pages JSON was blocked by URL-safety restrictions",
+      "staticReadability": "passed locally via file/payload/index parity: 12 repos / 111 frontier / 305 AI news",
+      "recordedAt": "2026-05-30T12:35:10.643Z"
     },
     "push": {
       "status": "pushed",
-      "contentCommit": "55b0081",
+      "contentCommit": "9cf7080",
       "remote": "origin",
       "branch": "main",
-      "result": "git push origin main succeeded: 3444d22..55b0081 main -> main",
-      "postPushRemoteCheck": "GitHub connector combined status returned empty status list; commit workflow-run wrapper returned empty run list; curl api.github.com failed DNS",
-      "recordedAt": "2026-05-30T11:27:24.953Z"
+      "result": "git push origin main succeeded: 6a5ef2b..9cf7080 main -> main",
+      "postPushRemoteCheck": "GitHub connector returned empty workflow_runs; gh CLI unavailable; shell HTTPS fetches failed",
+      "recordedAt": "2026-05-30T12:35:10.643Z"
     },
-    "lastRunAt": "2026-05-30T11:24:51.996Z",
+    "lastRunAt": "2026-05-30T12:35:10.643Z",
     "sourceBoundaryAt": "2026-05-30 20:22 CST",
     "runType": "20 CST GitTrend Top-10 recalibration plus AIHOT embodied/chip/robotics and Google generative-search frontier refresh",
     "validationSummary": "passed static validation locally: syntax checks, git diff whitespace, JSON parse, data/public parity, gzip payload parity, index counts, repo/frontier/AI field contracts, required source coverage and retention; counts 12/111/305. Local HTTP fetch to 127.0.0.1 was blocked by sandbox fetch failure after server startup.",
-    "publicationStatus": "pending git push origin main",
+    "publicationStatus": "content-commit-pushed; actions-pages-unverified-locally",
     "notes": [
       "git pull --ff-only origin main failed locally with SSH/DNS sandbox error before editing.",
       "Official GitHub Trending still rendered Loading; retained 18 CST GitTrend Top-12 because current auxiliary sources were incomplete or stale.",
