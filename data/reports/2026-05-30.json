@@ -16358,8 +16358,8 @@
     ]
   },
   "validation": {
-    "generatedAt": "2026-05-30T10:29:09.562Z",
-    "status": "passed-static-validation; publication pending push",
+    "generatedAt": "2026-05-30T10:32:03.966Z",
+    "status": "passed-static-validation; content commit pushed; GitHub Actions/Pages verification blocked locally",
     "staticData": "passed: data/public JSON parity, gzip payload parity, index latest/count parity and front-end field contracts verified; counts 12/110/299",
     "checks": [
       "node --check scripts/daily.mjs",
@@ -16376,7 +16376,7 @@
       "required Anthropic/Claude Code/Computer Use and search-ads-recsys source/keyword coverage",
       "retention <= 90 reports"
     ],
-    "publication": "pending: content commit and push not attempted yet"
+    "publication": "content commit adda54e pushed to origin/main; Echo Trending Deploy is configured on push to main, but gh CLI is unavailable and local HTTPS/API/Page fetch plus git ls-remote checks are blocked by sandbox DNS/SSH restrictions, so Actions and Pages completion could not be confirmed from this environment."
   },
   "operations": {
     "gitPull": "failed before editing: sandbox SSH/DNS restriction prevented git pull --ff-only origin main",
@@ -16384,41 +16384,38 @@
     "lastRun": "2026-05-30T10:28:25.760Z",
     "validationRecordedAt": "2026-05-30T10:29:09.562Z",
     "publication": {
-      "status": "content-commit-pushed; actions-and-pages-succeeded",
-      "contentCommit": "f0720c6",
+      "status": "content-commit-pushed; actions-pages-unverified-locally",
+      "contentCommit": "adda54e",
       "remote": "origin",
       "branch": "main",
       "url": "https://eshener.github.io/echo-trending/",
-      "deployRun": "26633087946",
-      "pagesRun": "26633094980",
-      "deployment": "4861160291",
-      "ghPagesHead": "6e04706b",
-      "pagesStatus": "built",
-      "staticReadability": "passed locally: 12 repos / 107 frontier / 295 AI news with data/public/payload/index parity",
-      "liveIndexFetch": "blocked locally: node fetch to https://eshener.github.io/echo-trending/reports/index.json failed",
-      "recordedAt": "2026-05-29T10:58:00.000Z"
+      "workflow": "Echo Trending Deploy on push to main publishes public/ to gh-pages",
+      "actions": "not verified: gh CLI command not found; GitHub App commit workflow query returned no push runs; direct API fetch failed locally",
+      "pages": "not verified: direct fetch to live Pages JSON failed locally",
+      "staticReadability": "passed locally: 12 repos / 110 frontier / 299 AI news with data/public/payload/index parity",
+      "recordedAt": "2026-05-30T10:32:03.966Z"
     },
     "push": {
       "status": "pushed",
-      "contentCommit": "f0720c6",
+      "contentCommit": "adda54e",
       "remote": "origin",
       "branch": "main",
-      "result": "git push origin main succeeded: e024a29..f0720c6 main -> main",
-      "postPushRemoteCheck": "git ls-remote failed after push due sandbox SSH/DNS control-socket restriction",
-      "ghAuth": "gh auth status valid for EShener with repo scope",
-      "actions": "Echo Trending Deploy run 26633087946 succeeded",
-      "pages": "pages-build-deployment run 26633094980 succeeded; deployment 4861160291 success; Pages API status built",
-      "recordedAt": "2026-05-29T10:58:00.000Z"
+      "result": "git push origin main succeeded: f019da8..adda54e main -> main",
+      "postPushRemoteCheck": "git ls-remote origin gh-pages failed after push due sandbox SSH/DNS control-socket restriction",
+      "ghAuth": "not available: gh CLI is not installed in this environment",
+      "recordedAt": "2026-05-30T10:32:03.966Z"
     },
     "lastRunAt": "2026-05-30T10:28:25.760Z",
     "sourceBoundaryAt": "2026-05-30 18:22 CST",
     "runType": "18 CST GitTrend mirror rank refresh plus AIHOT/Anthropic/search-ads-recsys sweep",
     "validationSummary": "passed static validation locally: syntax checks, git diff whitespace, JSON parse, data/public parity, gzip payload parity, index counts, repo/frontier/AI field contracts, required source coverage and retention; counts 12/110/299",
-    "publicationStatus": "pending",
+    "publicationStatus": "pushed-unverified",
     "notes": [
       "git pull --ff-only origin main failed locally with SSH/DNS sandbox error before editing.",
       "Official GitHub Trending rendered Loading; GitTrend Today mirror calibration used and labeled.",
-      "Added current GitTrend Top-12 repo analyses plus Amazon BFS, Pinterest ads engagement unification, Groq inference neocloud and Cognition coding-agent governance signals."
+      "Added current GitTrend Top-12 repo analyses plus Amazon BFS, Pinterest ads engagement unification, Groq inference neocloud and Cognition coding-agent governance signals.",
+      "Content commit adda54e pushed to origin/main successfully.",
+      "Actions/Pages completion could not be verified locally because gh is missing and HTTPS/API/Page fetch plus git ls-remote are blocked."
     ]
   }
 }
