@@ -16453,8 +16453,8 @@
     "reviewedAt": "2026-05-30 19:21 CST"
   },
   "validation": {
-    "generatedAt": "2026-05-30T11:25:53.782Z",
-    "status": "passed-static-validation; local-http-readability-blocked-by-sandbox; publication pending push",
+    "generatedAt": "2026-05-30T11:27:24.953Z",
+    "status": "passed-static-validation; content commit pushed; Actions/Pages verification unavailable in current environment",
     "staticData": "passed: data/public JSON parity, gzip payload parity, index latest/count parity and front-end field contracts verified; counts 12/110/302",
     "checks": [
       "node --check scripts/daily.mjs",
@@ -16472,45 +16472,45 @@
       "required Anthropic/Claude Code/Computer Use and search-ads-recsys source/keyword coverage",
       "retention <= 90 reports"
     ],
-    "publication": "pending push to origin/main; GitHub Actions publishes public/ to gh-pages on push. Local HTTP server startup succeeded, but shell fetch to 127.0.0.1:8787 failed with sandbox EPERM, so browser-style local HTTP readability was replaced by file/payload parity validation."
+    "publication": "content commit 55b0081 pushed to origin/main. GitHub Actions/Pages completion not confirmed locally: GitHub connector combined status returned no statuses, commit workflow-run wrapper returned no runs, gh CLI is unavailable, shell curl to api.github.com failed DNS, and local HTTP fetch to 127.0.0.1 failed with sandbox EPERM. Workflow configuration publishes public/ to gh-pages on push to main."
   },
   "operations": {
     "gitPull": "failed before editing: sandbox SSH/DNS restriction prevented git pull --ff-only origin main",
     "sourceReview": "2026-05-30 19:21 CST",
     "lastRun": "2026-05-30T11:24:51.996Z",
-    "validationRecordedAt": "2026-05-30T11:25:53.782Z",
+    "validationRecordedAt": "2026-05-30T11:27:24.953Z",
     "publication": {
       "status": "content-commit-pushed; actions-pages-unverified-locally",
-      "contentCommit": "adda54e",
+      "contentCommit": "55b0081",
       "remote": "origin",
       "branch": "main",
       "url": "https://eshener.github.io/echo-trending/",
       "workflow": "Echo Trending Deploy on push to main publishes public/ to gh-pages",
-      "actions": "not verified: gh CLI command not found; GitHub App commit workflow query returned no push runs; direct API fetch failed locally",
-      "pages": "not verified: direct fetch to live Pages JSON failed locally",
-      "staticReadability": "passed locally: 12 repos / 110 frontier / 299 AI news with data/public/payload/index parity",
-      "recordedAt": "2026-05-30T10:32:03.966Z"
+      "actions": "not verified: GitHub connector returned no combined statuses and no commit workflow runs; gh CLI unavailable; curl api.github.com failed DNS",
+      "pages": "not verified: direct local HTTP fetch blocked by sandbox EPERM and GitHub Pages/API fetch blocked by DNS",
+      "staticReadability": "passed locally via file/payload/index parity: 12 repos / 110 frontier / 302 AI news",
+      "recordedAt": "2026-05-30T11:27:24.953Z"
     },
     "push": {
       "status": "pushed",
-      "contentCommit": "adda54e",
+      "contentCommit": "55b0081",
       "remote": "origin",
       "branch": "main",
-      "result": "git push origin main succeeded: f019da8..adda54e main -> main",
-      "postPushRemoteCheck": "git ls-remote origin gh-pages failed after push due sandbox SSH/DNS control-socket restriction",
-      "ghAuth": "not available: gh CLI is not installed in this environment",
-      "recordedAt": "2026-05-30T10:32:03.966Z"
+      "result": "git push origin main succeeded: 3444d22..55b0081 main -> main",
+      "postPushRemoteCheck": "GitHub connector combined status returned empty status list; commit workflow-run wrapper returned empty run list; curl api.github.com failed DNS",
+      "recordedAt": "2026-05-30T11:27:24.953Z"
     },
     "lastRunAt": "2026-05-30T11:24:51.996Z",
     "sourceBoundaryAt": "2026-05-30 19:21 CST",
     "runType": "19 CST AIHOT/OpenAI/Gamma-World delta refresh plus GitHub/Anthropic/search-ads-recsys source-boundary sweep",
     "validationSummary": "passed static validation locally: syntax checks, git diff whitespace, JSON parse, data/public parity, gzip payload parity, index counts, repo/frontier/AI field contracts, required source coverage and retention; counts 12/110/302. Local HTTP fetch to 127.0.0.1 was blocked by sandbox EPERM.",
-    "publicationStatus": "pending-push",
+    "publicationStatus": "content-commit-pushed; actions-pages-unverified-locally",
     "notes": [
       "git pull --ff-only origin main failed locally with SSH/DNS sandbox error before editing.",
       "Official GitHub Trending still rendered Loading; retained 18 CST GitTrend Top-12 because current auxiliary sources were incomplete or stale.",
       "Added OpenAI Braintrust Codex, OpenAI trustworthy third-party evaluations and Gamma-World AI items.",
-      "No stronger non-duplicate search/ads/recommendation big-tech article was promoted at 19 CST."
+      "No stronger non-duplicate search/ads/recommendation big-tech article was promoted at 19 CST.",
+      "Content commit 55b0081 pushed to origin/main successfully; Actions/Pages completion could not be confirmed from this environment."
     ]
   }
 }
