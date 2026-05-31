@@ -1,6 +1,6 @@
 {
   "date": "2026-06-01",
-  "generatedAt": "2026-05-31T22:38:32.232Z",
+  "generatedAt": "2026-05-31T22:40:12.093Z",
   "source": {
     "provider": "GitHub official Trending + AIHOT + official/trusted industry sources",
     "query": "GitHub official Trending daily, GitHubFinds stale fallback, AIHOT/API-visible stream, Anthropic official News/Research/Engineering/Claude Code surfaces, OpenAI/Mistral official engineering, and big-tech search/ads/recsys engineering blogs",
@@ -18552,7 +18552,7 @@
     ]
   },
   "validation": {
-    "checkedAt": "2026-05-31T22:38:32.232Z",
+    "checkedAt": "2026-05-31T22:40:12.093Z",
     "status": "passed-static-validation; local-http-loopback-blocked-by-sandbox",
     "checks": [
       "node --check scripts/daily.mjs",
@@ -18578,25 +18578,24 @@
     "sourceBoundaryAt": "2026-06-01 06:36 CST",
     "runType": "06 CST source-boundary refresh plus Mistral remote coding agent and OpenAI Codex safety-control update",
     "validationSummary": "passed static validation after 06 CST update: node syntax checks, git diff whitespace, JSON parse, data/public parity, gzip payload parity, index latest/count parity, repo deepDive/diagram contract, frontier five-part interpretation/diagram contract with top-level mirrors, AI signal/impact/action contract, required Anthropic/Computer Use and search-ads-recsys coverage, retention <= 90 reports, and static readability via file/index/payload parity. Local HTTP server bound to 127.0.0.1:8798, but sandbox loopback fetch failed with EPERM.",
-    "publicationStatus": "pending-push",
+    "publicationStatus": "pushed; actions-and-pages-not-verified-locally",
     "notes": [
       "git pull --ff-only origin main failed locally with SSH sandbox error before editing.",
       "Official GitHub Trending rendered only Loading at 06 CST; GitHubFinds was stale May 30, so 03 CST official Top-12 was retained.",
       "Added two AI items from official Mistral and OpenAI sources.",
       "Rechecked required Anthropic and search/ads/recsys sources; no stronger non-duplicate frontier item was added."
     ],
-    "publication": "content commit 93e9557 pushed to origin/main (f6110d2..93e9557). Echo Trending Deploy run 26722463239 completed successfully. Pages API returned building immediately after deploy and later gh api/live JSON fetches failed from this environment, so final Pages JSON remains unverified locally.",
+    "publication": "content commit 491ad5d pushed to origin/main (ca0b266..491ad5d). GitHub connector returned empty workflow_runs/statuses for 491ad5d; gh token is invalid; direct GitHub API and Pages JSON fetches failed locally with ENOTFOUND, so Actions/Pages completion remains unverified from this environment.",
     "push": {
       "status": "pushed",
-      "contentCommit": "93e95573cad47b0807333739e107e054d6e8e9f8",
+      "contentCommit": "491ad5d",
       "remote": "origin",
       "branch": "main",
-      "result": "git push origin main succeeded: f6110d2..93e9557 main -> main",
-      "actionsRun": "Echo Trending Deploy run 26722463239 succeeded",
-      "pages": "Pages API initially returned built before deploy and building immediately after deploy; final verification blocked by local network/API failures",
-      "liveJson": "unverified locally: Node HTTPS fetch failed and web safe-open rejected direct GitHub Pages JSON URL",
-      "postPushRemoteCheck": "git status reports main...origin/main after content push",
-      "recordedAt": "2026-05-31T19:40:07.677Z"
+      "result": "git push origin main succeeded: ca0b266..491ad5d main -> main",
+      "actionsRun": "unverified locally: GitHub connector returned empty workflow_runs/statuses for commit 491ad5d",
+      "pages": "unverified locally: direct Pages/API fetch failed with ENOTFOUND from sandbox",
+      "liveJson": "unverified locally",
+      "recordedAt": "2026-05-31T22:40:12.093Z"
     }
   }
 }
