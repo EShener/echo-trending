@@ -17913,12 +17913,26 @@
     "sourceBoundaryAt": "2026-06-01 03:32 CST",
     "runType": "03 CST official GitHub Trending refresh plus Pinterest ads-context, Claude Code auto-mode cloud, and Codex production-eval update",
     "validationSummary": "passed static validation after 03 CST update: node syntax checks, git diff whitespace, JSON parse, data/public parity, gzip payload parity, index latest/count parity, repo deepDive/diagram contract, frontier five-part interpretation/diagram contract, AI signal/impact/action contract, required Anthropic/Computer Use and search-ads-recsys coverage, retention <= 90 reports, and static readability via file/index/payload parity. Local HTTP server bound to 127.0.0.1:8797, but sandbox loopback fetch failed with connect EPERM.",
-    "publicationStatus": "pending push",
+    "publicationStatus": "pushed; deploy-succeeded; pages-built-status-not-finally-verified-after-network-errors",
     "notes": [
       "git pull --ff-only origin main failed locally with SSH sandbox error before editing.",
       "Official GitHub Trending was readable and replaced the earlier fallback ranking.",
       "Added one search/ads/recsys frontier item from Pinterest Engineering with required five-part interpretation.",
-      "Added two AI items from official Anthropic Claude Code changelog and OpenAI Engineering sources."
-    ]
+      "Added two AI items from official Anthropic Claude Code changelog and OpenAI Engineering sources.",
+      "Content commit 93e9557 pushed and deploy workflow 26722463239 succeeded; final Pages JSON verification was blocked by local network/API errors after Pages entered building."
+    ],
+    "publication": "content commit 93e9557 pushed to origin/main (f6110d2..93e9557). Echo Trending Deploy run 26722463239 completed successfully. Pages API returned building immediately after deploy and later gh api/live JSON fetches failed from this environment, so final Pages JSON remains unverified locally.",
+    "push": {
+      "status": "pushed",
+      "contentCommit": "93e95573cad47b0807333739e107e054d6e8e9f8",
+      "remote": "origin",
+      "branch": "main",
+      "result": "git push origin main succeeded: f6110d2..93e9557 main -> main",
+      "actionsRun": "Echo Trending Deploy run 26722463239 succeeded",
+      "pages": "Pages API initially returned built before deploy and building immediately after deploy; final verification blocked by local network/API failures",
+      "liveJson": "unverified locally: Node HTTPS fetch failed and web safe-open rejected direct GitHub Pages JSON URL",
+      "postPushRemoteCheck": "git status reports main...origin/main after content push",
+      "recordedAt": "2026-05-31T19:40:07.677Z"
+    }
   }
 }
