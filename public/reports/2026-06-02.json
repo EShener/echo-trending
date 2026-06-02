@@ -19113,7 +19113,7 @@
     "keyChanges": [
       "搜广推从 119 条增至 120 条。",
       "AI 新闻从 346 条增至 347 条。",
-      "同步更新 data/public 报告与 gzip payload，等待本轮验证和推送结果写回。"
+      "发布结果已记录：content commit c5cca0e 已推送；Echo Trending Deploy 26794812913 成功；pages-build-deployment 26794817623 成功；Pages API 返回 built。"
     ]
   },
   "validation": {
@@ -19138,7 +19138,7 @@
       "local HTTP server bound on 127.0.0.1:8896 but loopback fetch failed under sandbox; static readability verified by file/index/payload parity"
     ],
     "validationSummary": "Passed node --check for scripts/daily.mjs and public/app.js, git diff --check, JSON parse, data/public parity, gzip payload parity, index latest/count parity, front-end report fetch path, repo deepDive/diagram contract, frontier five-part interpretation/diagram contract, AI signal/impact/action contract, required Anthropic/Computer Use and search-ads-recsys coverage, new DuckDuckGo No-AI search frontier item presence, new OpenAI on AWS/Codex AI item presence, and retention <= 90 reports. Local HTTP server bound to 127.0.0.1:8896 but sandbox blocked loopback fetch with fetch failed, so static readability was verified through file/index/payload parity.",
-    "updatedAt": "2026-06-02T02:34:10.959Z"
+    "updatedAt": "2026-06-02T02:35:51.621Z"
   },
   "operations": {
     "gitPull": "Attempted git pull --ff-only origin main first; failed because the sandbox blocks SSH/DNS to github.com. Local main was clean at origin/main before editing.",
@@ -19148,22 +19148,22 @@
     "sourceBoundaryAt": "2026-06-02T10:30:00+08:00",
     "runType": "automation-2 deep refresh",
     "validationSummary": "Passed node --check for scripts/daily.mjs and public/app.js, git diff --check, JSON parse, data/public parity, gzip payload parity, index latest/count parity, front-end report fetch path, repo deepDive/diagram contract, frontier five-part interpretation/diagram contract, AI signal/impact/action contract, required Anthropic/Computer Use and search-ads-recsys coverage, new DuckDuckGo No-AI search frontier item presence, new OpenAI on AWS/Codex AI item presence, and retention <= 90 reports. Local HTTP server bound to 127.0.0.1:8896 but sandbox blocked loopback fetch with fetch failed, so static readability was verified through file/index/payload parity.",
-    "publicationStatus": "validated locally; push pending",
+    "publicationStatus": "published: content commit c5cca0e pushed to origin/main; Echo Trending Deploy 26794812913 succeeded; pages-build-deployment 26794817623 succeeded; Pages API returned built for https://eshener.github.io/echo-trending/. Direct live Pages JSON fetch from local shell failed with fetch failed.",
     "notes": "Added OpenAI on AWS/Codex enterprise deployment signal and DuckDuckGo No-AI search control-plane frontier signal after 10:30 CST research sweep.",
-    "publication": "pending push",
-    "push": "pending",
+    "publication": "GitHub Pages built",
+    "push": "pushed c5cca0e to origin/main successfully",
     "localHttp": "python3 -m http.server bound on 127.0.0.1:8896, but node fetch to /reports/index.json failed under sandbox loopback restrictions; server was stopped and static file/index/payload parity passed.",
-    "gitPush": "pending",
-    "updatedAt": "2026-06-02T02:34:10.959Z",
+    "gitPush": "content commit pushed successfully",
+    "updatedAt": "2026-06-02T02:35:51.621Z",
     "githubActions": {
       "echoTrendingDeploy": {
-        "runId": 26780388368,
+        "runId": 26794812913,
         "status": "completed",
         "conclusion": "success",
-        "commit": "5cbcdf6f72c69c1af882085334bfd28a948e0d73"
+        "commit": "c5cca0ee55565395e1e1d133d1a7bb6a26e70fbf"
       },
       "pagesBuildDeployment": {
-        "runId": 26780397183,
+        "runId": 26794817623,
         "status": "completed",
         "conclusion": "success"
       }
@@ -19172,9 +19172,12 @@
       "status": "built",
       "url": "https://eshener.github.io/echo-trending/"
     },
-    "node20Annotation": "Pages workflow emitted the recurring GitHub Actions Node.js 20 deprecation annotation for actions/checkout@v4 and actions/upload-artifact@v4.",
-    "liveFetch": "curl https://eshener.github.io/echo-trending/reports/index.json failed locally: Could not resolve host eshener.github.io",
+    "node20Annotation": "No blocking workflow failure observed in this run; monitor recurring GitHub Actions Node.js 20 deprecation annotations if they reappear.",
+    "liveFetch": "node fetch https://eshener.github.io/echo-trending/reports/index.json failed locally with fetch failed; GitHub Pages API and Actions were used for publication verification.",
     "sync": "git pull --ff-only origin main attempted before editing and failed under SSH/DNS sandbox restrictions; local branch started clean at main...origin/main.",
-    "publish": "pending"
+    "publish": "published",
+    "contentCommit": "c5cca0e Refresh 2026-06-02 radar at 10 CST",
+    "deployRun": "Echo Trending Deploy 26794812913 succeeded for c5cca0ee55565395e1e1d133d1a7bb6a26e70fbf",
+    "pagesRun": "pages-build-deployment 26794817623 succeeded; GitHub Pages API returned built for https://eshener.github.io/echo-trending/"
   }
 }
