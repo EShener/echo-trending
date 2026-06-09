@@ -4763,17 +4763,18 @@
   },
   "validation": {
     "status": "passed",
-    "checkedAt": "2026-06-10 02:37 CST",
+    "checkedAt": "2026-06-10 02:42 CST",
     "summary": "passed at 2026-06-10 02:37 CST: node syntax checks, git diff whitespace, data/public JSON parity, gzip payload parity, index latest/path parity, front-end payload-map entry, 12-repo deepDive/diagram contract, 10-frontier five-part+diagram contract, 18-AI signal/impact/action+diagram contract, required Anthropic/OpenAI/AIHOT/search-ads-recsys source and keyword coverage including Claude Fable 5, Claude Mythos 5, Google Research, Meta, Amazon/AWS, Pinterest, Alibaba, Tencent and Kuaishou, object-residue scan and retention <= 90 reports. Static readability verified through file/index/payload parity."
   },
   "operations": {
     "pull": "failed under sandbox SSH/DNS restriction: 按自动化要求先执行 git pull --ff-only origin main；当前沙箱仍阻止 GitHub SSH/DNS control-socket 访问，但编辑前 main 工作树干净且显示与 origin/main 对齐。",
-    "commit": "pending",
-    "push": "pending",
-    "actions": "pending",
-    "pages": "pending",
-    "publication": "pending first main push",
+    "commit": "d43da81 Refresh 2026-06-10 radar at 02 CST",
+    "push": "success: main pushed to origin (a41e83a..d43da81)",
+    "actions": "deploy observed through gh-pages update; gh run list did not yet return the d43da81 run during immediate polling",
+    "pages": "verified through origin/gh-pages after fetch: deploy commit dfd4372 contains reports/2026-06-10.json with generatedAt 2026-06-09T18:36:26.192Z, sourceBoundary 2026-06-10 02:33 CST, validation passed, 12 repos, 10 frontier items, 18 AI items, and compressed payload parts sized 64,000 and 5,972 bytes; Pages API was still building immediately after deploy",
+    "publication": "success: gh-pages contains the refreshed 2026-06-10 static report and compressed payload after main push",
     "validation": "passed at 2026-06-10 02:37 CST: node syntax checks, git diff whitespace, data/public JSON parity, gzip payload parity, index latest/path parity, front-end payload-map entry, 12-repo deepDive/diagram contract, 10-frontier five-part+diagram contract, 18-AI signal/impact/action+diagram contract, required Anthropic/OpenAI/AIHOT/search-ads-recsys source and keyword coverage including Claude Fable 5, Claude Mythos 5, Google Research, Meta, Amazon/AWS, Pinterest, Alibaba, Tencent and Kuaishou, object-residue scan and retention <= 90 reports. Static readability verified through file/index/payload parity.",
-    "staticReadability": "passed locally via data/public/index/gzip payload parity"
+    "staticReadability": "passed locally via data/public/index/gzip payload parity and remotely via origin/gh-pages content check",
+    "publicationCheckedAt": "2026-06-10 02:42 CST"
   }
 }
