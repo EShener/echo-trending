@@ -5562,11 +5562,11 @@
     "commit": "807d450 Refresh 2026-06-10 radar at 23 CST",
     "push": "success: main pushed to origin (479e485..807d450); git ls-remote confirmed refs/heads/main at 807d450af477e06a0f2f349090b7341b99332de9.",
     "actions": "success: Echo Trending Deploy run 27287923123 for 807d450 completed successfully; publish-static-site job 80600184784 completed at 2026-06-10T15:44:43Z.",
-    "pages": "success: GitHub Pages API returned built at https://eshener.github.io/echo-trending/; gh-pages contains reports/2026-06-10.json size 451,462 bytes and payload parts 64,000 / 26,004 bytes, matching local sizes.",
-    "publication": "success: gh-pages contains the refreshed 2026-06-10 23:38 CST static report and two-part compressed payload after main push.",
+    "pages": "success: GitHub Pages API returned built for the content deploy; gh-pages contents API verified the final report and two-part compressed payload are present. Direct Pages CDN may serve the previous cached object until cache expiry because reports use a stable path.",
+    "publication": "success: gh-pages contains the refreshed 2026-06-10 23:38 CST static report and two-part compressed payload after main pushes; final byte-size parity is checked outside the report to avoid self-referential size drift.",
     "validation": "passed at 2026-06-10 23:45 CST: node --check scripts/daily.mjs, node --check public/app.js, git diff --check, data/public JSON parity, gzip payload parity with 2 payload parts, index latest/path parity, front-end payload-map entry, 12-repo deepDive/diagram/trendingToday contract, 12-frontier five-part+diagram contract, 34-AI signal/impact/action+diagram contract, required Anthropic/OpenAI/AIHOT/search-ads-recsys source and keyword coverage including Claude Fable 5, Claude Mythos 5, Claude Code, Computer Use, Aye browser agent, Google Research, Meta, Amazon, Pinterest, Alibaba, Tencent, Kuaishou and ranking/retrieval/search/ads/CTR/CVR/召回/粗排/精排/重排/实验 keywords; retention <= 90 reports. Static readability verified through file/index/payload parity; GitHub Trending exact counters retained from 14:34 official snapshot because 23:38 Trending route exposed loading/filter shell only.",
-    "staticReadability": "passed locally via data/public/index/gzip payload parity and remotely via gh-pages contents API size parity",
-    "publicationCheckedAt": "2026-06-10 23:49 CST"
+    "staticReadability": "passed locally via data/public/index/gzip payload parity and remotely via gh-pages contents API; direct Pages HTTP path was reachable with HTTP 200 but briefly served the prior cached object after the status commit.",
+    "publicationCheckedAt": "2026-06-10 23:52 CST"
   },
   "sourceBoundary": "2026-06-10 23:38 CST"
 }
