@@ -1,6 +1,6 @@
 {
   "date": "2026-06-10",
-  "generatedAt": "2026-06-10T00:34:00.000Z",
+  "generatedAt": "2026-06-10T03:38:13.495Z",
   "source": {
     "provider": "GitHub official Trending + AIHOT/official AI pages + Anthropic official News/Research/Engineering/Claude Blog + big-tech/chinese search-ads-recsys engineering sources + manual Codex deep research",
     "query": "2026-06-10 08:34 CST: GitHub official Trending Top-12 unchanged but counters advanced; AIHOT live selected stream is now Jun 10; Anthropic official model/news boundary remains Jun 9 Fable/Mythos with Jun 10 Managed Agents discovery signal; OpenAI official News remains Jun 8 with Jun 10 developer/discovery updates; search/ads/recsys sweep retained existing big-tech and Chinese engineering anchors.",
@@ -142,11 +142,11 @@
     "sourceBoundaryAt": "2026-06-10 08:34 CST"
   },
   "summary": {
-    "headline": "今日技术雷达主线：开源榜单延续 Agent/向量/CV 热点，AI 新闻转向“可生产化 Agent 控制面”和多模态搜索/语音 API。",
+    "headline": "今日技术雷达的新增信息主要来自 AI Agent 生产化、入口监管和模型成本治理，搜广推工程锚点保持稳定。",
     "bullets": [
-      "GitHub official Trending Top-12 未轮换，但计数继续上涨：last30days-skill、turbovec、supervision 仍居前三，after-cut 仍观察 openai/plugins、openmed、espectre、agent-skills。",
-      "AIHOT 6月10日精选流已可读，本轮新增 Claude Managed Agents 定时运行/vault、Gemini 3.5 Live Translate、HF Jobs GPU CI、Cohere North Mini Code、OpenAI 图像搜索结果和 Nextdoor Codex 实践。",
-      "搜广推板块继续收录 10 条大厂工程/研究锚点，AI 新闻收录 18 条动态；本轮重点从“模型更强”转向“调度、凭证、评测、成本和多模态检索如何进入生产”。"
+      "GitHub Trending Top-12 沿用 08:34 CST 官方可见快照；本轮 web 环境的 GitHub Trending 页面只暴露加载骨架，未提供比 08:34 更强的官方计数证据，因此不降级也不伪造新计数。",
+      "AI 新闻扩展到 27 条，新增重点来自 AIHOT 6月10日 10:28 前精选流：平台入口监管、投研 Agent、Agent Skill 验收、模型级联、Claude Code 工作流和 AI 搜索责任边界。",
+      "搜广推板块维持 10 条大厂/工程锚点，继续覆盖 Google Research Agentic RAG、Meta SilverTorch、Amazon/AWS、Pinterest、Dropbox/Spotify/Airbnb、阿里/腾讯/快手/火山等来源。"
     ]
   },
   "items": [
@@ -2769,7 +2769,7 @@
   "frontier": {
     "title": "搜广推技术前沿",
     "subtitle": "覆盖 recommendation/recommender、ranking、retrieval、search、ads/advertising、auction/bidding、personalization、feed、marketplace、embedding/vector、query/index、CTR/CVR、召回、粗排、精排、重排、特征、实验平台。",
-    "source": "Google Research + Meta Engineering/AI + Amazon Science/AWS + Pinterest Engineering + Netflix/Dropbox/Spotify/Airbnb/Salesforce + Alibaba/Tencent/Kuaishou/Volcengine manual sweep",
+    "source": "Google Research + Meta Engineering/AI + Amazon Science/AWS + Pinterest Engineering + Netflix/Dropbox/Spotify/Airbnb/Salesforce + Alibaba/Tencent/Kuaishou/Volcengine manual sweep rechecked at 11:34 CST",
     "items": [
       {
         "rank": 1,
@@ -2792,7 +2792,7 @@
           "enterprise search"
         ],
         "category": "企业搜索 / Agentic RAG",
-        "sourceType": "big-tech-engineering+manual-research+2026-06-10-0233",
+        "sourceType": "big-tech-engineering+manual-research+2026-06-10-1134",
         "imageUrl": "https://www.google.com/s2/favicons?domain=research.google&sz=128",
         "interpretation": "业务问题：企业搜索/RAG 面对多源、多跳、权限不同的业务查询时，单次向量召回容易只命中局部上下文，答案看似流畅但缺关键证据，难以解释为什么没有继续查。 系统机制：多 agent 工作流先规划信息需求，再改写子查询、选择 corpus、执行跨库检索、判断上下文是否充分，必要时继续迭代；最后把检索轨迹、证据和生成步骤绑定，形成可审计闭环。 指标/实验：Google 在 FramesQA 与内部数据集上比较 Vanilla RAG、single-corpus agentic RAG 和 cross-corpus agentic RAG；公开结果包括 factuality accuracy 最高提升 34%，cross-corpus 场景 90.1% accuracy，且跨库 latency 与单库版本平均相差约 3%。 可借鉴点：可借鉴的是把“查够了吗”做成显式 gate、日志和二次检索策略；企业搜索、客服知识库、投研/法务检索可以先做 missing-piece reason、query rewrite、corpus routing、rerank trace，而不是盲目扩 top-k。 不适用边界：不适用于低复杂度 FAQ、单库精确检索、毫秒级在线召回或权限模型未梳理的组织；多 agent 检索会增加缓存、成本、权限验证、trace 存储和失败恢复负担。",
         "diagram": {
@@ -2851,7 +2851,7 @@
           "粗排"
         ],
         "category": "推荐系统 / GPU 召回 / Index-as-Model",
-        "sourceType": "big-tech-engineering+manual-research+2026-06-10-0233",
+        "sourceType": "big-tech-engineering+manual-research+2026-06-10-1134",
         "imageUrl": "https://www.google.com/s2/favicons?domain=engineering.fb.com&sz=128",
         "interpretation": "业务问题：传统推荐召回由 user tower、item index、eligibility filter、scoring 等多服务拼接，网络/序列化开销、版本不一致和 C++/PyTorch 开发割裂限制了 sub-100ms 内的模型复杂度和候选规模。 系统机制：把原本跨服务的索引、过滤、召回和预排序模块改写为 tensor/operator/nn.Module，使用 Bloom index filter、fused Int8 ANN、GPU 内存共址和 streaming tensor update，在同一模型图内完成召回、过滤、多任务评分与新内容 freshness 更新。 指标/实验：Meta 公开 80M-item end-to-end evaluation：SilverTorch 相比传统多服务 baseline 吞吐高 23.7x、TCO efficiency 高 20.9x；fused Int8 ANN 比 Faiss-GPU 快 2.2-14.7x，Bloom index 比 CPU inverted index 快 291-523x，并声称 same-day posts 占比提升。 可借鉴点：可借鉴点是把召回基础设施和模型训练从“服务拼装”改为“模型图内共址”，优先在候选生成/粗排做 GPU-friendly filter、int8 ANN、multi-task pre-rank 和 streaming freshness。 不适用边界：不适用于库存小、CPU 成本可控、模型/索引 ownership 分散或缺少 GPU serving 编译能力的团队；把 infra 收进模型图会提高调试、回滚、容量规划和模型发布治理难度。",
         "diagram": {
@@ -2909,7 +2909,7 @@
           "GEO"
         ],
         "category": "AI 搜索测量 / Search Console / 可观测性",
-        "sourceType": "big-tech-engineering+manual-research+2026-06-10-0233",
+        "sourceType": "big-tech-engineering+manual-research+2026-06-10-1134",
         "imageUrl": "https://www.google.com/s2/favicons?domain=developers.google.com&sz=128",
         "interpretation": "业务问题：AI Search 改变了搜索曝光与点击关系，但站点 owner 过去只能在总 Search Console 数据里猜测 AI Overviews/AI Mode 的影响，无法建立 GEO/AEO 的可观测基线。 系统机制：Google 在 Search Console 增加独立 Search/Discover generative AI performance report，按 impressions、pages、countries、devices、dates 展示 URL 在生成式 AI features 中的可见性，同时仍保留总体 Performance 汇总。 指标/实验：先看 AI impressions、URL/page group、country、device、hourly/daily trend，再和传统 query/click/CTR、SERP 抽样、品牌引用质量和 AI Mode 覆盖率做联合分析。 可借鉴点：搜索/内容/广告团队应把 AI visibility 当作新漏斗层：先按页面类型建立基线，再对内容结构、品牌实体、引用质量和转化路径做实验，而不是只盯经典排名。 不适用边界：当前报告不是完整归因：不直接回答 query fan-out、citation 位置、点击质量或转化贡献，且先向部分网站 rollout；不能替代自建 SERP/LLM 引用监测。",
         "diagram": {
@@ -2970,7 +2970,7 @@
           "实验平台"
         ],
         "category": "广告系统 / Demand Gen / 跨渠道投放",
-        "sourceType": "big-tech-engineering+manual-research+2026-06-10-0233",
+        "sourceType": "big-tech-engineering+manual-research+2026-06-10-1134",
         "imageUrl": "https://www.google.com/s2/favicons?domain=blog.google&sz=128",
         "interpretation": "业务问题：广告主在 Search、Display、YouTube、Discover、Gmail、Maps 与 GDN 之间拆预算、拆受众、拆素材，导致频控、归因、创意学习和出价目标分散；AI Search/AI Overview 时代，展示广告还需要和上层意图捕获、下层转化行动更紧密联动。 系统机制：迁移把 GDN inventory 接入 Demand Gen campaign control plane，广告主可以继续只投放 GDN，也可以把相同素材、受众和出价目标扩展到 Google 视觉 surface；系统侧更像统一 candidate inventory + channel controls + creative/landing-page optimization + conversion bidding 的组合，而不是单渠道 display line item。 指标/实验：官方披露 advertisers adding GDN in Demand Gen campaigns average ROI +9.5%，GoFood case study 显示 CPA -24%、conversion volume +19%。上线验证应拆看 incremental reach、marginal CPA/ROAS、frequency overlap、creative fatigue、view-through vs click-through attribution、new-customer share 和 channel-level holdout。 可借鉴点：广告/推荐团队可借鉴“统一候选面 + 渠道控制 + 迁移工具”的产品化方式：先把 Display/GDN 当作一个可开关的 inventory source 接入统一实验平台，再用 holdout 验证是否真的提升边际转化，不要把全渠道自动化当成默认最优。 不适用边界：不适合转化链路长、线索质量需要人工审核、品牌安全约束强或渠道归因尚未治理的广告主；如果没有负向关键词、URL exclusions、素材审核和预算 guardrail，统一控制面会放大黑盒投放和低质量流量风险。",
         "diagram": {
@@ -3029,7 +3029,7 @@
           "推荐"
         ],
         "category": "电商搜索 / 生成式推荐 / 智能出价",
-        "sourceType": "big-tech-engineering+manual-research+2026-06-10-0233",
+        "sourceType": "big-tech-engineering+manual-research+2026-06-10-1134",
         "imageUrl": "https://www.google.com/s2/favicons?domain=ir.kuaishou.com&sz=128",
         "interpretation": "业务问题：内容电商搜索既要承接主动购物意图，又要在短视频/直播/商城之间迁移用户兴趣；传统关键词召回难以解释复杂需求，也难以把推荐、搜索和广告统一到同一商业指标。 系统机制：OneSearch-V2 用 latent reasoning enhanced self-distillation 做生成式搜索框架，叠加用户兴趣推理 agent、商品/创意 agent 和 bidding decision agent，把需求激活、搜索履约、直播导购和补贴分发串成端到端 AI 决策链。 指标/实验：官方披露 Q1 电商搜索 incremental GMV 约 +3.0%，生成式推荐/智能出价推动国内在线营销服务收入约 +3.0%-4.0%；还需看搜索 PV、订单、Net Transaction ROI、退货率和广告预算稳定性。 可借鉴点：中文内容电商团队可借鉴“搜索即推荐”的组织方式：先把 query、兴趣序列、商品供给、营销出价和售后质量纳入统一实验，再评估生成式链路是否真的抬升净成交。 不适用边界：不适合商品供给弱、交易闭环不完整、归因不稳定或缺少大规模在线实验能力的团队；生成式搜索必须防止解释好看但转化/履约变差。",
         "diagram": {
@@ -3087,7 +3087,7 @@
           "ranking"
         ],
         "category": "广告召回 / 转化建模",
-        "sourceType": "big-tech-engineering+manual-research+2026-06-10-0233",
+        "sourceType": "big-tech-engineering+manual-research+2026-06-10-1134",
         "imageUrl": "https://www.google.com/s2/favicons?domain=medium.com&sz=128",
         "interpretation": "业务问题：购物广告的 checkout/add-to-cart 等 offsite conversion 标签稀疏、噪声大且延迟，传统 engagement retrieval 容易优化点击而非真实购买意图，导致 RoAS 和用户体验目标错位。 系统机制：用跨 Homefeed/Related Pins/Search 的 multi-surface 双塔召回，融合实时 context、长期偏好、GraphSAGE/视觉 embedding、Transformer user-history、parallel DCN v2+MLP cross layers、统一 single-head multi-task 和 advertiser-level objective。 指标/实验：公开数据包括 parallel DCN v2+MLP 对 conversion recall@1000 带来 +11% offline gain；2023 首版线上带来 shopping conversion volume +2.3%、i2c +2.7%、CTR +1.5%、CTR30 +2.2%；2025 迭代 RoAS +3.1%。 可借鉴点：可借鉴的是不要让广告召回只吃高频点击；把低频高价值转化、点击时长 reweight、hard negative、surface-specific features 和 advertiser 粒度目标组合成稳定训练信号。 不适用边界：不适用于 conversion 埋点不可信、广告主回传延迟不可控、样本量太小或没有在线实验平台的团队；多任务目标如果权重治理弱，会把购买意图再次稀释成点击优化。",
         "diagram": {
@@ -3148,7 +3148,7 @@
           "重排"
         ],
         "category": "中文搜索工程 / 混合召回 / Agentic RAG",
-        "sourceType": "big-tech-engineering+manual-research+2026-06-10-0233",
+        "sourceType": "big-tech-engineering+manual-research+2026-06-10-1134",
         "imageUrl": "https://www.google.com/s2/favicons?domain=cloud.tencent.com&sz=128",
         "interpretation": "业务问题：中国企业做知识库搜索和推荐/广告候选检索时，常见失败点不是“没有向量库”，而是单一路径无法同时覆盖语义容错、关键词精确、权限过滤、跨模态数据和长任务多轮查询。 系统机制：VectorDB 侧提供稠密向量 + 稀疏向量混合检索，配合 RRF、Weighted rerank 或模型 rerank；COS Vector Bucket 把非结构化对象转向量后直接检索；Agentic RAG 则在 Agent Loop 中做查询反思、策略切换和多轮迭代检索。 指标/实验：公开材料强调 VectorDB 源自腾讯 OLAMA、支撑集团搜索/推荐/AI 场景，产品页宣称日均千亿级检索、百万级 QPS、毫秒级延迟；COS 向量检索文档提供 TopK、Filter、距离/元数据返回能力，开发者文档披露混合检索与 Rerank 作为 RAG 准确率路径。 可借鉴点：可借鉴的是把企业 RAG 拆成 ingestion、embedding、dense+sparse retrieval、metadata filter、RRF/model rerank、execution details 和回溯日志，而不是直接把全文塞给模型。 不适用边界：不适用于没有数据治理、权限隔离、文档解析质量控制和召回评测集的团队；产品化向量能力不能自动解决 query intent、chunk 质量和业务真值缺失。",
         "diagram": {
@@ -3207,7 +3207,7 @@
           "CTR/CVR"
         ],
         "category": "实时个性化 / 向量召回 / 电商搜索推荐",
-        "sourceType": "big-tech-engineering+manual-research+2026-06-10-0233",
+        "sourceType": "big-tech-engineering+manual-research+2026-06-10-1134",
         "imageUrl": "https://www.google.com/s2/favicons?domain=www.amazon.science&sz=128",
         "interpretation": "业务问题：电商和内容平台的推荐如果只按离线批处理更新，无法捕获用户刚刚形成的意图；但把每次行为都进入在线召回又会遇到延迟、特征一致性、缓存失效和成本问题。 系统机制：架构把 SageMaker 生成/刷新 embedding 与 Amazon-managed Valkey 的低延迟向量/键值存储结合，在线请求从实时行为读取最近兴趣，再做相似召回、过滤和排序；Amazon Science 侧的搜索/重排研究则提供 query understanding、behavior boosting、LLM iterative reranking 等上层机制。 指标/实验：上线应看端到端 P95/P99、freshness lag、向量写入延迟、召回覆盖率、CTR/CVR、session continuation、缓存命中率、Valkey 内存成本、特征训练/服务 skew 和 holdout 下的增量转化。 可借鉴点：可借鉴点是把“实时意图”先做成独立在线特征与向量召回层，服务推荐、搜索和广告候选生成；先用小流量 session-level experiment 验证 freshness 是否带来增量，再扩大到全站 feed。 不适用边界：不适用于低频访问、目录变化慢或用户意图稳定的业务；如果没有行为去噪、隐私策略和缓存回滚，实时向量层可能把偶发点击、异常流量或敏感行为直接放大到推荐结果。",
         "diagram": {
@@ -3265,7 +3265,7 @@
           "personalization"
         ],
         "category": "搜索相关性 / 标注体系 / 实验平台",
-        "sourceType": "big-tech-engineering+manual-research+2026-06-10-0233",
+        "sourceType": "big-tech-engineering+manual-research+2026-06-10-1134",
         "imageUrl": "https://www.google.com/s2/favicons?domain=dropbox.tech&sz=128",
         "interpretation": "业务问题：企业搜索和个性化产品经常缺高质量 label，导致 ranking 改动靠主观体验；实验平台若和推荐模型耦合，迭代速度和归因都会变差。 系统机制：Dash 采用少量人工标注 + LLM 扩增 relevance label 训练 ranking；Spotify 类似思路是把推荐策略、实验分流、指标归因和产品体验解耦，支持快速验证。 指标/实验：看 label agreement、judge drift、nDCG/MRR、answer acceptance、A/B guardrail、长期留存、探索/利用平衡和实验平台回滚速度。 可借鉴点：先投资标注、judge、实验分流和指标字典，再谈模型换代；没有可信评测时，任何排序模型升级都只是感觉。 不适用边界：LLM label 不能无审计进入核心训练闭环；个性化实验如果没有长期指标，会把短期点击优化成体验债。",
         "diagram": {
@@ -3325,7 +3325,7 @@
           "重排"
         ],
         "category": "中文大厂 / 数仓内建混合检索与推荐召回",
-        "sourceType": "big-tech-engineering+manual-research+2026-06-10-0233",
+        "sourceType": "big-tech-engineering+manual-research+2026-06-10-1134",
         "imageUrl": "https://www.google.com/s2/favicons?domain=developer.aliyun.com&sz=128",
         "interpretation": "业务问题：企业知识库、商品库和运营分析表本来就在数仓/OLAP 中，若把向量检索拆到外部服务，会遇到权限、结构化过滤、数据新鲜度、审计和 SQL 分析割裂；纯向量又难处理型号、错误码、类目、时间窗和租户条件。 系统机制：AnalyticDB MySQL 在表内同时存储文本字段、结构化字段和 1536 维 embedding，建 FULLTEXT NLP 索引与 HNSW ANN 索引；查询时用 COSINE_DISTANCE 做语义召回，用 MATCH AGAINST 做关键词命中，用 WHERE 做分类/时间/租户预过滤，再用 0.7 * semantic + 0.3 * keyword 之类的 SQL 表达式融合排序。 指标/实验：离线看 Recall@K、nDCG、MRR、query class 分桶、结构化过滤后覆盖率、全文/向量互补率；线上看 search success、zero-result rate、CTR/CVR、RAG answer faithfulness、P95/P99 延迟、写入到可搜延迟、每查询成本和权限误召回。 可借鉴点：可借鉴点是把向量列、全文索引、结构化权限字段和融合排序写进统一 schema，让检索策略能被 SQL 审计、灰度和回放；推荐/广告团队也可以把用户/商品 embedding retrieval 与业务过滤收进同一数据服务，再把结果交给粗排/精排。 不适用边界：不适用于亚毫秒级广告竞价、强实时流式特征、跨模态复杂重排或需要专用 ANN 内核调优的超大规模召回；如果没有 embedding 质量、分词词典、元数据治理和点击/转化反馈，SQL+vector 只会让错误更可执行。",
         "diagram": {
@@ -3368,8 +3368,8 @@
   },
   "aiNews": {
     "title": "AI 新闻",
-    "subtitle": "汇总 AIHOT 精选、官方博客、A 社 Anthropic 动态与技术社区更新，并提炼信号、影响和行动建议。",
-    "source": "AIHOT Jun 10 live selected stream + OpenAI official News + Anthropic official News/Research/Engineering + Claude Blog + Google/Hugging Face/GitHub sources",
+    "subtitle": "汇总 AIHOT 6月10日精选流、官方博客、A 社 Anthropic 动态与技术社区更新，并提炼信号、影响和行动建议。",
+    "source": "AIHOT Jun 10 live selected stream through 10:28 CST + OpenAI official News + Anthropic official News/Research/Engineering + Claude Blog + Google/Hugging Face/GitHub sources",
     "sourceDetail": "AIHOT live selected stream is readable for 2026-06-10; Anthropic official News/Research/Engineering/Claude Code checked directly; OpenAI official News checked directly.",
     "reviewedAt": "2026-06-10 08:34 CST",
     "updatedAt": "2026-06-10T00:34:00.000Z",
@@ -3377,16 +3377,648 @@
     "sourceBrief": "2026-06-10 08:34 CST 复核：AIHOT 首页精选流已显示 6月10日内容；OpenAI 官方 News 最新仍为 Jun 8，但开发者/发现层有 Jun 10 Responses API 图像搜索与 Codex 实践；Anthropic 官方模型/新闻锚点仍为 Jun 9 Claude Fable 5 and Claude Mythos 5，并新增 Claude Managed Agents scheduling/vault 发现信号。",
     "aihot": {
       "status": "discovery-only-readable",
-      "checkedAt": "2026-06-10 08:34 CST",
+      "checkedAt": "2026-06-10 11:34 CST",
       "date": "2026-06-10",
-      "source": "AIHOT Public Page live selected stream (API may be unavailable in shell; web page readable)",
+      "source": "AIHOT Public Page live selected stream through 10:28 CST",
       "url": "https://aihot.virxact.com/",
-      "title": "AIHOT 6月10日精选流可读",
-      "summary": "AIHOT 首页本轮显示 6月10日精选内容，新增 Gemini 3.5 Live Translate、Claude Managed Agents、HF Jobs GPU CI、Cohere North Mini Code、OpenAI web search 图片结果、Nextdoor Codex、覆盖感知 grounded generation 等信号。AIHOT 仍作为发现源，不替代 OpenAI/Anthropic/Google 等官方页面。",
-      "note": "AIHOT 条目进入 AI 新闻流时均标注为 discovery，并用官方页面或可信上游补足边界；对 meme/社交源不升级为主锚点。",
-      "generatedAt": "2026-06-10T00:34:00.000Z"
+      "title": "AIHOT 6月10日精选流可读并继续更新",
+      "summary": "AIHOT 首页本轮显示 6月10日 10:28 前精选内容，新增 Meta/WhatsApp 监管、金融投研 Agent、Text-To-Lottie agent skill、AgentsView Claude Fable 5 成本、OpenRouter Advisor、GitHub Copilot CLI custom agents、Google AI Overviews 责任裁决、Gemma 4 12B 等信号。AIHOT 仍作为发现源，不替代 OpenAI/Anthropic/Google 等官方页面。",
+      "note": "AIHOT 条目进入 AI 新闻流时均标注为 discovery；社交/媒体源只做信号，不作为官方产品发布锚点。",
+      "generatedAt": "2026-06-10T03:38:13.495Z",
+      "stats": [
+        {
+          "label": "最新可见时间",
+          "value": "10:28"
+        },
+        {
+          "label": "新增发现信号",
+          "value": 9
+        },
+        {
+          "label": "接入方式",
+          "value": "Public page"
+        },
+        {
+          "label": "信源等级",
+          "value": "发现源"
+        }
+      ],
+      "selected": [
+        {
+          "title": "EU interim measure forces Meta to reopen WhatsApp access for third-party AI assistants",
+          "url": "https://aihot.virxact.com/",
+          "source": "AIHOT 6月10日精选 / IT之家",
+          "publishedAt": "2026-06-10T10:28:00+08:00",
+          "summary": "AIHOT 首页 10:28 显示，欧盟委员会要求 Meta 在反垄断调查期间免费向第三方 AI 助手开放 WhatsApp 访问，焦点从模型能力转向通讯入口与平台互操作。",
+          "category": "AI助手",
+          "signal": "信号：通用 AI 助手的竞争瓶颈正在从模型转移到高频通讯入口，监管开始直接干预平台 API 与自家助手的排他关系。",
+          "tags": [
+            "AI助手",
+            "监管",
+            "平台入口",
+            "互操作"
+          ]
+        },
+        {
+          "title": "Magnetar-style finance research agents show white-collar workflows moving to supervised agent swarms",
+          "url": "https://aihot.virxact.com/",
+          "source": "AIHOT 6月10日精选 / Bloomberg discovery",
+          "publishedAt": "2026-06-10T09:47:00+08:00",
+          "summary": "AIHOT 摘要称，Magnetar Capital 新产品倾向使用数百个 AI 智能体搜索投资想法、研究公司、推荐头寸和预测趋势，人类仍负责批准交易。",
+          "category": "Agent",
+          "signal": "信号：高价值知识工作正在出现“多 agent 研究流水线 + 人类批准”的组织形态，替代点不是单个分析师，而是资料搜集、初筛和观点草拟环节。",
+          "tags": [
+            "Agent",
+            "金融",
+            "企业工作流",
+            "治理"
+          ]
+        },
+        {
+          "title": "Text-To-Lottie turns agent-generated motion graphics into a verifiable local harness",
+          "url": "https://aihot.virxact.com/",
+          "source": "AIHOT 6月10日精选 / X open-source discovery",
+          "publishedAt": "2026-06-10T08:47:00+08:00",
+          "summary": "Text-To-Lottie 把 Codex、Claude Code、Cursor 等 coding agent 产出的 Bodymovin JSON 接到 Skottie 渲染与本地热重载预览，适合短时长 motion graphics 和数据可视化。",
+          "category": "Agent Skill",
+          "signal": "信号：Agent Skill 正从“写代码”扩展到“生成可渲染资产并实时验收”，前端视觉资产开始具备可测试的本地闭环。",
+          "tags": [
+            "Agent Skill",
+            "前端",
+            "动效",
+            "验收"
+          ]
+        },
+        {
+          "title": "AgentsView custom pricing for Claude Fable 5 makes coding-agent cost tracking operational",
+          "url": "https://simonwillison.net/",
+          "source": "AIHOT 6月10日精选 / Simon Willison",
+          "publishedAt": "2026-06-10T06:19:00+08:00",
+          "summary": "AIHOT 摘要显示，AgentsView 可通过自定义价格把 Claude Fable 5 纳入 coding agent 成本追踪，展示不同本地项目的使用量树状图。",
+          "category": "A社/Claude",
+          "signal": "信号：新模型上线速度已经快过成本数据库更新，coding agent 治理需要允许团队临时接入价格、上下文和项目维度成本视图。",
+          "tags": [
+            "A社/Claude",
+            "Coding Agent",
+            "成本治理",
+            "模型选择"
+          ]
+        },
+        {
+          "title": "OpenRouter Advisor turns model cascading into a productized server tool",
+          "url": "https://openrouter.ai/",
+          "source": "AIHOT 6月10日精选 / OpenRouter",
+          "publishedAt": "2026-06-10T04:23:00+08:00",
+          "summary": "OpenRouter Advisor 允许便宜快速模型在生成过程中调用更强模型增强关键片段，适合把模型级联从手写路由变成可观测服务。",
+          "category": "模型路由",
+          "signal": "信号：多模型路由正在从“选一个模型”走向“一个模型按需咨询另一个模型”，质量/成本折中会进入请求内部。",
+          "tags": [
+            "模型路由",
+            "Agent",
+            "成本治理",
+            "基础设施"
+          ]
+        },
+        {
+          "title": "Claude Code team advice shifts agent practice from checking output to steering the right work",
+          "url": "https://aihot.virxact.com/",
+          "source": "AIHOT 6月10日精选 / Claude Code team discovery",
+          "publishedAt": "2026-06-10T03:17:00+08:00",
+          "summary": "AIHOT 摘要显示 Claude Code 团队建议从“检查 Claude 是否做对”转为“检查它是否在做正确的事”，强调完整上下文、小规格访谈、/goal、Workflows 和自我验证。",
+          "category": "A社/Claude",
+          "signal": "信号：Claude Code 最有价值的更新不只是模型能力，而是任务管理、目标设定、并行 workflow 和自我验证的工程方法。",
+          "tags": [
+            "A社/Claude",
+            "Claude Code",
+            "研发流程",
+            "Agent"
+          ]
+        },
+        {
+          "title": "GitHub Copilot CLI custom agents make terminal automation reusable and reviewable",
+          "url": "https://github.blog/",
+          "source": "AIHOT 6月10日精选 / GitHub Blog",
+          "publishedAt": "2026-06-10T00:15:00+08:00",
+          "summary": "GitHub Copilot CLI 自定义 AI 智能体让 CLI 理解技术栈和团队流程，把临时终端提示包装成可复用、可审查的自动化。",
+          "category": "GitHub",
+          "signal": "信号：命令行 agent 正从“自然语言 shell”升级为团队级可复用 workflow，开发者工具会越来越像轻量自动化平台。",
+          "tags": [
+            "GitHub",
+            "CLI",
+            "Agent",
+            "研发自动化"
+          ]
+        },
+        {
+          "title": "German AI Overviews ruling makes generated search answers a liability surface",
+          "url": "https://aihot.virxact.com/",
+          "source": "AIHOT 6月10日精选 / The Decoder discovery",
+          "publishedAt": "2026-06-10T00:15:00+08:00",
+          "summary": "AIHOT 摘要显示，德国地方法院认为 Google 对 AI Overviews 生成内容直接承担责任，涉案错误回答把出版商与欺诈行为关联且未出现在来源链接中。",
+          "category": "AI搜索",
+          "signal": "信号：AI 搜索的答案层正在从“索引第三方内容”变成平台自身表达，错误摘要、来源缺失和诽谤风险会进入产品责任。",
+          "tags": [
+            "AI搜索",
+            "合规",
+            "可信",
+            "搜索"
+          ]
+        }
+      ],
+      "recentDailies": [
+        {
+          "date": "2026-06-10",
+          "title": "AIHOT 6月10日精选流",
+          "url": "https://aihot.virxact.com/"
+        }
+      ],
+      "entrypoints": [
+        {
+          "label": "精选",
+          "detail": "高价值时间流",
+          "url": "https://aihot.virxact.com/"
+        },
+        {
+          "label": "AI 日报",
+          "detail": "按五类整理",
+          "url": "https://aihot.virxact.com/daily"
+        },
+        {
+          "label": "Agent 接入",
+          "detail": "Skill / RSS / API",
+          "url": "https://aihot.virxact.com/agent"
+        }
+      ]
     },
     "items": [
+      {
+        "title": "EU interim measure forces Meta to reopen WhatsApp access for third-party AI assistants",
+        "source": "AIHOT 6月10日精选 / IT之家",
+        "sourceDetail": "AIHOT 10:28 发现层：欧盟临时措施要求 Meta 向第三方 AI 助手开放 WhatsApp 访问",
+        "url": "https://aihot.virxact.com/",
+        "publishedAt": "2026-06-10T10:28:00+08:00",
+        "summary": "AIHOT 首页 10:28 显示，欧盟委员会要求 Meta 在反垄断调查期间免费向第三方 AI 助手开放 WhatsApp 访问，焦点从模型能力转向通讯入口与平台互操作。",
+        "interpretation": "信号：通用 AI 助手的竞争瓶颈正在从模型转移到高频通讯入口，监管开始直接干预平台 API 与自家助手的排他关系。 影响：做企业助手或客服 Agent 的团队不能只看模型厂商，要把 WhatsApp、Slack、邮件、CRM 这类入口的开放性和合规风险纳入路线图。 动作：梳理核心触达渠道的 API 依赖、替代通道、数据授权和区域监管差异，避免产品能力被单一平台策略锁死。",
+        "signal": "信号：通用 AI 助手的竞争瓶颈正在从模型转移到高频通讯入口，监管开始直接干预平台 API 与自家助手的排他关系。",
+        "impact": "影响：做企业助手或客服 Agent 的团队不能只看模型厂商，要把 WhatsApp、Slack、邮件、CRM 这类入口的开放性和合规风险纳入路线图。",
+        "action": "动作：梳理核心触达渠道的 API 依赖、替代通道、数据授权和区域监管差异，避免产品能力被单一平台策略锁死。",
+        "tags": [
+          "AI助手",
+          "监管",
+          "平台入口",
+          "互操作"
+        ],
+        "imageUrl": "https://www.google.com/s2/favicons?domain=aihot.virxact.com&sz=128",
+        "diagram": {
+          "title": "AI 助手入口监管信号",
+          "caption": "信号 -> 影响 -> 动作 -> 观察指标",
+          "nodes": [
+            {
+              "label": "信号",
+              "detail": "通用 AI 助手的竞争瓶颈正在从模型转移到高频通讯入口，监管开始直接干预平台 API 与自家助手的排他关系。",
+              "type": "signal"
+            },
+            {
+              "label": "影响",
+              "detail": "做企业助手或客服 Agent 的团队不能只看模型厂商，要把 WhatsApp、Slack、邮件、CRM 这类入口的开放性和合规风险纳入路线图。",
+              "type": "impact"
+            },
+            {
+              "label": "动作",
+              "detail": "梳理核心触达渠道的 API 依赖、替代通道、数据授权和区域监管差异，避免产品能力被单一平台策略锁死。",
+              "type": "action"
+            },
+            {
+              "label": "指标",
+              "detail": "可用渠道数、授权失败率、区域合规阻塞、替代入口转化",
+              "type": "metric"
+            }
+          ],
+          "links": [
+            "发现层进入雷达",
+            "影响产品/工程边界",
+            "用指标决定是否升级权重"
+          ]
+        },
+        "sourceType": "AIHOT-discovery+manual-research+2026-06-10-1134",
+        "rank": 1
+      },
+      {
+        "title": "Magnetar-style finance research agents show white-collar workflows moving to supervised agent swarms",
+        "source": "AIHOT 6月10日精选 / Bloomberg discovery",
+        "sourceDetail": "AIHOT 09:47 发现层：180 亿美元对冲基金产品计划用数百个 AI agent 做股票研究，人类保留交易批准",
+        "url": "https://aihot.virxact.com/",
+        "publishedAt": "2026-06-10T09:47:00+08:00",
+        "summary": "AIHOT 摘要称，Magnetar Capital 新产品倾向使用数百个 AI 智能体搜索投资想法、研究公司、推荐头寸和预测趋势，人类仍负责批准交易。",
+        "interpretation": "信号：高价值知识工作正在出现“多 agent 研究流水线 + 人类批准”的组织形态，替代点不是单个分析师，而是资料搜集、初筛和观点草拟环节。 影响：金融、咨询、投研和战略团队需要重新定义审查职责、证据链留存和责任边界，否则 agent 规模化会放大错误共识。 动作：先在低风险研究任务中要求 agent 输出来源、反方证据、置信度和人工批准记录，再决定是否进入投资、定价或客户建议流程。",
+        "signal": "信号：高价值知识工作正在出现“多 agent 研究流水线 + 人类批准”的组织形态，替代点不是单个分析师，而是资料搜集、初筛和观点草拟环节。",
+        "impact": "影响：金融、咨询、投研和战略团队需要重新定义审查职责、证据链留存和责任边界，否则 agent 规模化会放大错误共识。",
+        "action": "动作：先在低风险研究任务中要求 agent 输出来源、反方证据、置信度和人工批准记录，再决定是否进入投资、定价或客户建议流程。",
+        "tags": [
+          "Agent",
+          "金融",
+          "企业工作流",
+          "治理"
+        ],
+        "imageUrl": "https://www.google.com/s2/favicons?domain=aihot.virxact.com&sz=128",
+        "diagram": {
+          "title": "投研 Agent 编队治理",
+          "caption": "信号 -> 影响 -> 动作 -> 观察指标",
+          "nodes": [
+            {
+              "label": "信号",
+              "detail": "高价值知识工作正在出现“多 agent 研究流水线 + 人类批准”的组织形态，替代点不是单个分析师，而是资料搜集、初筛和观点草拟环节。",
+              "type": "signal"
+            },
+            {
+              "label": "影响",
+              "detail": "金融、咨询、投研和战略团队需要重新定义审查职责、证据链留存和责任边界，否则 agent 规模化会放大错误共识。",
+              "type": "impact"
+            },
+            {
+              "label": "动作",
+              "detail": "先在低风险研究任务中要求 agent 输出来源、反方证据、置信度和人工批准记录，再决定是否进入投资、定价或客户建议流程。",
+              "type": "action"
+            },
+            {
+              "label": "指标",
+              "detail": "来源覆盖率、反证命中、人工驳回率、建议后验表现",
+              "type": "metric"
+            }
+          ],
+          "links": [
+            "发现层进入雷达",
+            "影响产品/工程边界",
+            "用指标决定是否升级权重"
+          ]
+        },
+        "sourceType": "AIHOT-discovery+manual-research+2026-06-10-1134",
+        "rank": 2
+      },
+      {
+        "title": "Text-To-Lottie turns agent-generated motion graphics into a verifiable local harness",
+        "source": "AIHOT 6月10日精选 / X open-source discovery",
+        "sourceDetail": "AIHOT 08:47 发现层：Text-To-Lottie 提供 Agent Skill + Vite/Skottie 本地预览验收链路",
+        "url": "https://aihot.virxact.com/",
+        "publishedAt": "2026-06-10T08:47:00+08:00",
+        "summary": "Text-To-Lottie 把 Codex、Claude Code、Cursor 等 coding agent 产出的 Bodymovin JSON 接到 Skottie 渲染与本地热重载预览，适合短时长 motion graphics 和数据可视化。",
+        "interpretation": "信号：Agent Skill 正从“写代码”扩展到“生成可渲染资产并实时验收”，前端视觉资产开始具备可测试的本地闭环。 影响：设计工程团队可以把动效生产拆成规格、生成、预览、截图、验收四步，但复杂角色、3D、粒子和多镜头剪辑仍不适合交给这类链路。 动作：选一个数据可视化或图标动效做试点，固定 Lottie 时长、Slots、关键帧截图和回归对比，验证 agent 是否真能减少返工。",
+        "signal": "信号：Agent Skill 正从“写代码”扩展到“生成可渲染资产并实时验收”，前端视觉资产开始具备可测试的本地闭环。",
+        "impact": "影响：设计工程团队可以把动效生产拆成规格、生成、预览、截图、验收四步，但复杂角色、3D、粒子和多镜头剪辑仍不适合交给这类链路。",
+        "action": "动作：选一个数据可视化或图标动效做试点，固定 Lottie 时长、Slots、关键帧截图和回归对比，验证 agent 是否真能减少返工。",
+        "tags": [
+          "Agent Skill",
+          "前端",
+          "动效",
+          "验收"
+        ],
+        "imageUrl": "https://www.google.com/s2/favicons?domain=aihot.virxact.com&sz=128",
+        "diagram": {
+          "title": "Agent 动效生成验收链路",
+          "caption": "信号 -> 影响 -> 动作 -> 观察指标",
+          "nodes": [
+            {
+              "label": "信号",
+              "detail": "Agent Skill 正从“写代码”扩展到“生成可渲染资产并实时验收”，前端视觉资产开始具备可测试的本地闭环。",
+              "type": "signal"
+            },
+            {
+              "label": "影响",
+              "detail": "设计工程团队可以把动效生产拆成规格、生成、预览、截图、验收四步，但复杂角色、3D、粒子和多镜头剪辑仍不适合交给这类链路。",
+              "type": "impact"
+            },
+            {
+              "label": "动作",
+              "detail": "选一个数据可视化或图标动效做试点，固定 Lottie 时长、Slots、关键帧截图和回归对比，验证 agent 是否真能减少返工。",
+              "type": "action"
+            },
+            {
+              "label": "指标",
+              "detail": "首轮可渲染率、视觉返工次数、截图差异、人工验收时间",
+              "type": "metric"
+            }
+          ],
+          "links": [
+            "发现层进入雷达",
+            "影响产品/工程边界",
+            "用指标决定是否升级权重"
+          ]
+        },
+        "sourceType": "AIHOT-discovery+manual-research+2026-06-10-1134",
+        "rank": 3
+      },
+      {
+        "title": "AgentsView custom pricing for Claude Fable 5 makes coding-agent cost tracking operational",
+        "source": "AIHOT 6月10日精选 / Simon Willison",
+        "sourceDetail": "AIHOT 06:19 发现层：AgentsView 为 Claude Fable 5 设置自定义价格并追踪本地 coding agent token 使用",
+        "url": "https://simonwillison.net/",
+        "publishedAt": "2026-06-10T06:19:00+08:00",
+        "summary": "AIHOT 摘要显示，AgentsView 可通过自定义价格把 Claude Fable 5 纳入 coding agent 成本追踪，展示不同本地项目的使用量树状图。",
+        "interpretation": "信号：新模型上线速度已经快过成本数据库更新，coding agent 治理需要允许团队临时接入价格、上下文和项目维度成本视图。 影响：如果没有项目级 token/成本账本，Claude Fable 5、Mythos、Opus 等模型选择会退化成体感判断，难以解释为什么某条任务该用强模型。 动作：给 coding agent 增加按项目、模型、任务类型统计的成本面板，并把价格缺失、新模型试用和异常开销做成周报信号。",
+        "signal": "信号：新模型上线速度已经快过成本数据库更新，coding agent 治理需要允许团队临时接入价格、上下文和项目维度成本视图。",
+        "impact": "影响：如果没有项目级 token/成本账本，Claude Fable 5、Mythos、Opus 等模型选择会退化成体感判断，难以解释为什么某条任务该用强模型。",
+        "action": "动作：给 coding agent 增加按项目、模型、任务类型统计的成本面板，并把价格缺失、新模型试用和异常开销做成周报信号。",
+        "tags": [
+          "A社/Claude",
+          "Coding Agent",
+          "成本治理",
+          "模型选择"
+        ],
+        "imageUrl": "https://www.google.com/s2/favicons?domain=simonwillison.net&sz=128",
+        "diagram": {
+          "title": "Coding Agent 成本追踪",
+          "caption": "信号 -> 影响 -> 动作 -> 观察指标",
+          "nodes": [
+            {
+              "label": "信号",
+              "detail": "新模型上线速度已经快过成本数据库更新，coding agent 治理需要允许团队临时接入价格、上下文和项目维度成本视图。",
+              "type": "signal"
+            },
+            {
+              "label": "影响",
+              "detail": "如果没有项目级 token/成本账本，Claude Fable 5、Mythos、Opus 等模型选择会退化成体感判断，难以解释为什么某条任务该用强模型。",
+              "type": "impact"
+            },
+            {
+              "label": "动作",
+              "detail": "给 coding agent 增加按项目、模型、任务类型统计的成本面板，并把价格缺失、新模型试用和异常开销做成周报信号。",
+              "type": "action"
+            },
+            {
+              "label": "指标",
+              "detail": "单任务成本、强模型占比、异常 token、成功合并成本",
+              "type": "metric"
+            }
+          ],
+          "links": [
+            "发现层进入雷达",
+            "影响产品/工程边界",
+            "用指标决定是否升级权重"
+          ]
+        },
+        "sourceType": "AIHOT-discovery+manual-research+2026-06-10-1134",
+        "rank": 4
+      },
+      {
+        "title": "OpenRouter Advisor turns model cascading into a productized server tool",
+        "source": "AIHOT 6月10日精选 / OpenRouter",
+        "sourceDetail": "AIHOT 04:23 发现层：OpenRouter advisor server tool 允许低成本模型在关键步骤咨询强模型",
+        "url": "https://openrouter.ai/",
+        "publishedAt": "2026-06-10T04:23:00+08:00",
+        "summary": "OpenRouter Advisor 允许便宜快速模型在生成过程中调用更强模型增强关键片段，适合把模型级联从手写路由变成可观测服务。",
+        "interpretation": "信号：多模型路由正在从“选一个模型”走向“一个模型按需咨询另一个模型”，质量/成本折中会进入请求内部。 影响：应用团队需要评估 advisor 触发策略、强模型调用比例、延迟抖动和错误归因，否则级联会让调试更难。 动作：用客服摘要、代码审查或搜索答案做 A/B，记录 advisor 触发原因、强模型调用后质量提升、P95 延迟和单位成功成本。",
+        "signal": "信号：多模型路由正在从“选一个模型”走向“一个模型按需咨询另一个模型”，质量/成本折中会进入请求内部。",
+        "impact": "影响：应用团队需要评估 advisor 触发策略、强模型调用比例、延迟抖动和错误归因，否则级联会让调试更难。",
+        "action": "动作：用客服摘要、代码审查或搜索答案做 A/B，记录 advisor 触发原因、强模型调用后质量提升、P95 延迟和单位成功成本。",
+        "tags": [
+          "模型路由",
+          "Agent",
+          "成本治理",
+          "基础设施"
+        ],
+        "imageUrl": "https://www.google.com/s2/favicons?domain=openrouter.ai&sz=128",
+        "diagram": {
+          "title": "模型级联 Advisor 控制面",
+          "caption": "信号 -> 影响 -> 动作 -> 观察指标",
+          "nodes": [
+            {
+              "label": "信号",
+              "detail": "多模型路由正在从“选一个模型”走向“一个模型按需咨询另一个模型”，质量/成本折中会进入请求内部。",
+              "type": "signal"
+            },
+            {
+              "label": "影响",
+              "detail": "应用团队需要评估 advisor 触发策略、强模型调用比例、延迟抖动和错误归因，否则级联会让调试更难。",
+              "type": "impact"
+            },
+            {
+              "label": "动作",
+              "detail": "用客服摘要、代码审查或搜索答案做 A/B，记录 advisor 触发原因、强模型调用后质量提升、P95 延迟和单位成功成本。",
+              "type": "action"
+            },
+            {
+              "label": "指标",
+              "detail": "触发率、质量提升、P95 延迟、单位成功成本",
+              "type": "metric"
+            }
+          ],
+          "links": [
+            "发现层进入雷达",
+            "影响产品/工程边界",
+            "用指标决定是否升级权重"
+          ]
+        },
+        "sourceType": "AIHOT-discovery+manual-research+2026-06-10-1134",
+        "rank": 5
+      },
+      {
+        "title": "Claude Code team advice shifts agent practice from checking output to steering the right work",
+        "source": "AIHOT 6月10日精选 / Claude Code team discovery",
+        "sourceDetail": "AIHOT 03:17 发现层：Claude Code 团队 Thariq 分享 /goal、Workflows、自我验证和上下文供给实践",
+        "url": "https://aihot.virxact.com/",
+        "publishedAt": "2026-06-10T03:17:00+08:00",
+        "summary": "AIHOT 摘要显示 Claude Code 团队建议从“检查 Claude 是否做对”转为“检查它是否在做正确的事”，强调完整上下文、小规格访谈、/goal、Workflows 和自我验证。",
+        "interpretation": "信号：Claude Code 最有价值的更新不只是模型能力，而是任务管理、目标设定、并行 workflow 和自我验证的工程方法。 影响：研发团队若继续把 coding agent 当一次性提示工具，会浪费 Fable/Mythos 长任务能力；真正差异来自规格、验证和多路线对比。 动作：把复杂需求拆成目标文档、验证命令、并行探索和合并标准四件套，记录 agent 自检通过率与人工复核发现的问题类型。",
+        "signal": "信号：Claude Code 最有价值的更新不只是模型能力，而是任务管理、目标设定、并行 workflow 和自我验证的工程方法。",
+        "impact": "影响：研发团队若继续把 coding agent 当一次性提示工具，会浪费 Fable/Mythos 长任务能力；真正差异来自规格、验证和多路线对比。",
+        "action": "动作：把复杂需求拆成目标文档、验证命令、并行探索和合并标准四件套，记录 agent 自检通过率与人工复核发现的问题类型。",
+        "tags": [
+          "A社/Claude",
+          "Claude Code",
+          "研发流程",
+          "Agent"
+        ],
+        "imageUrl": "https://www.google.com/s2/favicons?domain=aihot.virxact.com&sz=128",
+        "diagram": {
+          "title": "Claude Code 工作流升级",
+          "caption": "信号 -> 影响 -> 动作 -> 观察指标",
+          "nodes": [
+            {
+              "label": "信号",
+              "detail": "Claude Code 最有价值的更新不只是模型能力，而是任务管理、目标设定、并行 workflow 和自我验证的工程方法。",
+              "type": "signal"
+            },
+            {
+              "label": "影响",
+              "detail": "研发团队若继续把 coding agent 当一次性提示工具，会浪费 Fable/Mythos 长任务能力；真正差异来自规格、验证和多路线对比。",
+              "type": "impact"
+            },
+            {
+              "label": "动作",
+              "detail": "把复杂需求拆成目标文档、验证命令、并行探索和合并标准四件套，记录 agent 自检通过率与人工复核发现的问题类型。",
+              "type": "action"
+            },
+            {
+              "label": "指标",
+              "detail": "自检通过率、人工返修、并行方案命中、需求澄清轮次",
+              "type": "metric"
+            }
+          ],
+          "links": [
+            "发现层进入雷达",
+            "影响产品/工程边界",
+            "用指标决定是否升级权重"
+          ]
+        },
+        "sourceType": "AIHOT-discovery+manual-research+2026-06-10-1134",
+        "rank": 6
+      },
+      {
+        "title": "GitHub Copilot CLI custom agents make terminal automation reusable and reviewable",
+        "source": "AIHOT 6月10日精选 / GitHub Blog",
+        "sourceDetail": "AIHOT 00:15 发现层：GitHub Copilot CLI 推出自定义 AI 智能体，将一次性终端提示转为可重复工作流",
+        "url": "https://github.blog/",
+        "publishedAt": "2026-06-10T00:15:00+08:00",
+        "summary": "GitHub Copilot CLI 自定义 AI 智能体让 CLI 理解技术栈和团队流程，把临时终端提示包装成可复用、可审查的自动化。",
+        "interpretation": "信号：命令行 agent 正从“自然语言 shell”升级为团队级可复用 workflow，开发者工具会越来越像轻量自动化平台。 影响：平台团队需要治理哪些命令能被 agent 执行、如何复用上下文、如何审计失败操作，而不只是给每个人开一个聊天入口。 动作：选取发布检查、依赖升级、日志排查等低风险 CLI 流程做自定义 agent，要求每次运行产出命令清单和回滚提示。",
+        "signal": "信号：命令行 agent 正从“自然语言 shell”升级为团队级可复用 workflow，开发者工具会越来越像轻量自动化平台。",
+        "impact": "影响：平台团队需要治理哪些命令能被 agent 执行、如何复用上下文、如何审计失败操作，而不只是给每个人开一个聊天入口。",
+        "action": "动作：选取发布检查、依赖升级、日志排查等低风险 CLI 流程做自定义 agent，要求每次运行产出命令清单和回滚提示。",
+        "tags": [
+          "GitHub",
+          "CLI",
+          "Agent",
+          "研发自动化"
+        ],
+        "imageUrl": "https://www.google.com/s2/favicons?domain=github.blog&sz=128",
+        "diagram": {
+          "title": "CLI Agent 可复用工作流",
+          "caption": "信号 -> 影响 -> 动作 -> 观察指标",
+          "nodes": [
+            {
+              "label": "信号",
+              "detail": "命令行 agent 正从“自然语言 shell”升级为团队级可复用 workflow，开发者工具会越来越像轻量自动化平台。",
+              "type": "signal"
+            },
+            {
+              "label": "影响",
+              "detail": "平台团队需要治理哪些命令能被 agent 执行、如何复用上下文、如何审计失败操作，而不只是给每个人开一个聊天入口。",
+              "type": "impact"
+            },
+            {
+              "label": "动作",
+              "detail": "选取发布检查、依赖升级、日志排查等低风险 CLI 流程做自定义 agent，要求每次运行产出命令清单和回滚提示。",
+              "type": "action"
+            },
+            {
+              "label": "指标",
+              "detail": "复用次数、命令审计通过、失败回滚时间、节省人工步骤",
+              "type": "metric"
+            }
+          ],
+          "links": [
+            "发现层进入雷达",
+            "影响产品/工程边界",
+            "用指标决定是否升级权重"
+          ]
+        },
+        "sourceType": "AIHOT-discovery+manual-research+2026-06-10-1134",
+        "rank": 7
+      },
+      {
+        "title": "German AI Overviews ruling makes generated search answers a liability surface",
+        "source": "AIHOT 6月10日精选 / The Decoder discovery",
+        "sourceDetail": "AIHOT 00:15 后发现层：德国法院裁定 Google AI Overviews 错误回答可视为 Google 自身言论",
+        "url": "https://aihot.virxact.com/",
+        "publishedAt": "2026-06-10T00:15:00+08:00",
+        "summary": "AIHOT 摘要显示，德国地方法院认为 Google 对 AI Overviews 生成内容直接承担责任，涉案错误回答把出版商与欺诈行为关联且未出现在来源链接中。",
+        "interpretation": "信号：AI 搜索的答案层正在从“索引第三方内容”变成平台自身表达，错误摘要、来源缺失和诽谤风险会进入产品责任。 影响：搜索、RAG、客服和企业问答都需要记录答案来源、拒答策略和纠错链路；只展示引用链接不足以证明平台没有生成责任。 动作：补齐 source attribution、claim-level grounding、纠错入口和高风险主题降级策略，把法律/品牌风险纳入 AI 搜索实验指标。",
+        "signal": "信号：AI 搜索的答案层正在从“索引第三方内容”变成平台自身表达，错误摘要、来源缺失和诽谤风险会进入产品责任。",
+        "impact": "影响：搜索、RAG、客服和企业问答都需要记录答案来源、拒答策略和纠错链路；只展示引用链接不足以证明平台没有生成责任。",
+        "action": "动作：补齐 source attribution、claim-level grounding、纠错入口和高风险主题降级策略，把法律/品牌风险纳入 AI 搜索实验指标。",
+        "tags": [
+          "AI搜索",
+          "合规",
+          "可信",
+          "搜索"
+        ],
+        "imageUrl": "https://www.google.com/s2/favicons?domain=aihot.virxact.com&sz=128",
+        "diagram": {
+          "title": "AI 搜索责任边界",
+          "caption": "信号 -> 影响 -> 动作 -> 观察指标",
+          "nodes": [
+            {
+              "label": "信号",
+              "detail": "AI 搜索的答案层正在从“索引第三方内容”变成平台自身表达，错误摘要、来源缺失和诽谤风险会进入产品责任。",
+              "type": "signal"
+            },
+            {
+              "label": "影响",
+              "detail": "搜索、RAG、客服和企业问答都需要记录答案来源、拒答策略和纠错链路；只展示引用链接不足以证明平台没有生成责任。",
+              "type": "impact"
+            },
+            {
+              "label": "动作",
+              "detail": "补齐 source attribution、claim-level grounding、纠错入口和高风险主题降级策略，把法律/品牌风险纳入 AI 搜索实验指标。",
+              "type": "action"
+            },
+            {
+              "label": "指标",
+              "detail": "无来源声明率、纠错响应、风险主题降级、引用覆盖率",
+              "type": "metric"
+            }
+          ],
+          "links": [
+            "发现层进入雷达",
+            "影响产品/工程边界",
+            "用指标决定是否升级权重"
+          ]
+        },
+        "sourceType": "AIHOT-discovery+manual-research+2026-06-10-1134",
+        "rank": 8
+      },
+      {
+        "title": "Google DeepMind Gemma 4 12B points to local multimodal agents with lower memory pressure",
+        "source": "AIHOT 6月10日精选 / Google DeepMind Blog",
+        "sourceDetail": "AIHOT 22:34 发现层：Gemma 4 12B 统一无编码器多模态模型，原生支持音频输入和 MTP drafter",
+        "url": "https://deepmind.google/",
+        "publishedAt": "2026-06-09T22:34:00+08:00",
+        "summary": "AIHOT 摘要称 Gemma 4 12B 采用统一无编码器多模态架构，支持音频输入，性能接近 26B MoE，16GB 显存或统一内存可本地运行，Apache 2.0 开源。",
+        "interpretation": "信号：中等规模开源多模态模型继续向端侧和本地 agent 靠拢，音频、图像和文本不再必须依赖独立编码器堆叠。 影响：隐私敏感、低延迟或离线场景可以重新评估本地多模态 agent，但仍要验证真实任务上的记忆占用、稳定性和工具调用能力。 动作：用客服语音摘要、图片问答、会议片段检索等任务做本地推理基准，比较 16GB 设备上的延迟、准确率和失败样例。",
+        "signal": "信号：中等规模开源多模态模型继续向端侧和本地 agent 靠拢，音频、图像和文本不再必须依赖独立编码器堆叠。",
+        "impact": "影响：隐私敏感、低延迟或离线场景可以重新评估本地多模态 agent，但仍要验证真实任务上的记忆占用、稳定性和工具调用能力。",
+        "action": "动作：用客服语音摘要、图片问答、会议片段检索等任务做本地推理基准，比较 16GB 设备上的延迟、准确率和失败样例。",
+        "tags": [
+          "Google",
+          "开源模型",
+          "多模态",
+          "端侧"
+        ],
+        "imageUrl": "https://www.google.com/s2/favicons?domain=deepmind.google&sz=128",
+        "diagram": {
+          "title": "本地多模态模型评估",
+          "caption": "信号 -> 影响 -> 动作 -> 观察指标",
+          "nodes": [
+            {
+              "label": "信号",
+              "detail": "中等规模开源多模态模型继续向端侧和本地 agent 靠拢，音频、图像和文本不再必须依赖独立编码器堆叠。",
+              "type": "signal"
+            },
+            {
+              "label": "影响",
+              "detail": "隐私敏感、低延迟或离线场景可以重新评估本地多模态 agent，但仍要验证真实任务上的记忆占用、稳定性和工具调用能力。",
+              "type": "impact"
+            },
+            {
+              "label": "动作",
+              "detail": "用客服语音摘要、图片问答、会议片段检索等任务做本地推理基准，比较 16GB 设备上的延迟、准确率和失败样例。",
+              "type": "action"
+            },
+            {
+              "label": "指标",
+              "detail": "16GB 延迟、任务准确率、内存峰值、离线可用性",
+              "type": "metric"
+            }
+          ],
+          "links": [
+            "发现层进入雷达",
+            "影响产品/工程边界",
+            "用指标决定是否升级权重"
+          ]
+        },
+        "sourceType": "AIHOT-discovery+manual-research+2026-06-10-1134",
+        "rank": 9
+      },
       {
         "title": "Anthropic Claude Fable 5 and Mythos 5 reset the Claude model selection map",
         "source": "A社 Anthropic 官方 News",
@@ -3438,7 +4070,7 @@
           ]
         },
         "sourceType": "official-anthropic-news+manual-research+2026-06-10-0233",
-        "rank": 1
+        "rank": 10
       },
       {
         "title": "Claude Managed Agents scheduling and vault env vars move enterprise agents from chat to operations",
@@ -3490,7 +4122,7 @@
           ]
         },
         "sourceType": "AIHOT-discovery+Claude-Blog+manual-research+2026-06-10-0834",
-        "rank": 2
+        "rank": 11
       },
       {
         "title": "Google Gemini 3.5 Live Translate makes low-latency speech translation an API primitive",
@@ -3542,7 +4174,7 @@
           ]
         },
         "sourceType": "AIHOT-discovery+Google-Developers+2026-06-10-0834",
-        "rank": 3
+        "rank": 12
       },
       {
         "title": "Hugging Face Jobs bridge turns GPU CI into a first-class ML engineering workflow",
@@ -3594,7 +4226,7 @@
           ]
         },
         "sourceType": "AIHOT-discovery+Hugging-Face-Blog+2026-06-10-0834",
-        "rank": 4
+        "rank": 13
       },
       {
         "title": "Cohere North Mini Code shows small MoE coding models are targeting agentic developer loops",
@@ -3646,7 +4278,7 @@
           ]
         },
         "sourceType": "AIHOT-discovery+Cohere-Hugging-Face+2026-06-10-0834",
-        "rank": 5
+        "rank": 14
       },
       {
         "title": "OpenAI Responses web search image results make visual retrieval part of application search UX",
@@ -3698,7 +4330,7 @@
           ]
         },
         "sourceType": "AIHOT-discovery+OpenAI-Developers+2026-06-10-0834",
-        "rank": 6
+        "rank": 15
       },
       {
         "title": "Nextdoor Codex practice turns difficult bug reproduction into agent-assisted engineering workflow",
@@ -3750,7 +4382,7 @@
           ]
         },
         "sourceType": "AIHOT-discovery+OpenAI-official+2026-06-10-0834",
-        "rank": 7
+        "rank": 16
       },
       {
         "title": "Coverage-aware grounded generation shows faithfulness evals must measure what models omit",
@@ -3802,7 +4434,7 @@
           ]
         },
         "sourceType": "AIHOT-discovery+HuggingFace-Daily-Papers+2026-06-10-0834",
-        "rank": 8
+        "rank": 17
       },
       {
         "title": "Cursor Evals cost and step telemetry make model choice a product governance problem",
@@ -3854,7 +4486,7 @@
           ]
         },
         "sourceType": "AIHOT-discovery+Cursor-Evals+2026-06-10-0834",
-        "rank": 9
+        "rank": 18
       },
       {
         "title": "Anthropic biology-agent research makes deterministic retrieval the control layer for scientific agents",
@@ -3907,11 +4539,11 @@
             "用复现实验决定扩展边界"
           ]
         },
-        "rank": 10,
+        "rank": 19,
         "sourceType": "manual-research+2026-06-09-1728"
       },
       {
-        "rank": 11,
+        "rank": 20,
         "imageUrl": "https://www.google.com/s2/favicons?domain=anthropic.com&sz=128",
         "title": "Anthropic Making Claude a chemist expands Claude from coding agents into scientific instrument reasoning",
         "source": "A社 Anthropic Research",
@@ -3967,7 +4599,7 @@
         "signal": "信号：Claude 的官方研究边界从 coding agent 延伸到化学谱图预测、结构推断和科学工具推理。"
       },
       {
-        "rank": 12,
+        "rank": 21,
         "title": "Google Research Agentic RAG makes enterprise retrieval auditable and iterative",
         "source": "Google Research official blog",
         "sourceDetail": "Google Research / Gemini Enterprise Agent Platform, Jun 5 2026",
@@ -4071,11 +4703,11 @@
             "验证结果决定投入强度"
           ]
         },
-        "rank": 13,
+        "rank": 22,
         "sourceType": "manual-research+2026-06-09-1728"
       },
       {
-        "rank": 14,
+        "rank": 23,
         "imageUrl": "https://www.google.com/s2/favicons?domain=anthropic.com&sz=128",
         "title": "Anthropic AWS Summit pages turn Claude enterprise adoption into governed context engineering",
         "source": "A社 Anthropic Events / Product",
@@ -4131,7 +4763,7 @@
         }
       },
       {
-        "rank": 15,
+        "rank": 24,
         "imageUrl": "https://www.google.com/s2/favicons?domain=github.blog&sz=128",
         "title": "GitHub enterprise-managed plugins move Copilot customization into governed distribution",
         "source": "GitHub Changelog",
@@ -4187,7 +4819,7 @@
         "signal": "信号：Copilot 插件能力进入企业托管分发，agent 定制从个人安装转向组织治理。"
       },
       {
-        "rank": 16,
+        "rank": 25,
         "imageUrl": "https://www.google.com/s2/favicons?domain=openai.com&sz=128",
         "title": "OpenAI Dreaming, GPT-Rosalind and Codex keep the frontier focus on memory, science and work execution",
         "source": "OpenAI News",
@@ -4242,7 +4874,7 @@
         "signal": "信号：OpenAI 官方近期强锚点集中在 memory synthesis、life-science agentic workflow 与 Codex/AWS 执行面，而不是单一聊天 UI。"
       },
       {
-        "rank": 17,
+        "rank": 26,
         "imageUrl": "https://www.google.com/s2/favicons?domain=github.blog&sz=128",
         "title": "GitHub Copilot large context and configurable reasoning make agent cost a governance surface",
         "source": "GitHub Changelog",
@@ -4348,36 +4980,37 @@
             "验证结果决定投入强度"
           ]
         },
-        "rank": 18,
+        "rank": 27,
         "sourceType": "manual-research+2026-06-09-1728"
       }
     ]
   },
   "hourlyUpdate": {
-    "checkedAt": "2026-06-10 08:34 CST",
-    "sourceBoundaryAt": "2026-06-10 08:34 CST",
-    "summary": "2026-06-10 08:34 CST: 按自动化要求先执行 git pull --ff-only origin main；当前沙箱仍阻止 GitHub SSH/DNS control-socket 访问，但编辑前 main 工作树干净且显示与 origin/main 对齐。GitHub official Trending 页面本轮复核可读，Top-12 仍未轮换但官方可见计数继续上涨：#1 mvanhorn/last30days-skill (37,202 stars / 3,023 forks / 3,177 today), #2 RyanCodrai/turbovec (10,115 stars / 868 forks / 1,800 today), #3 roboflow/supervision (42,952 stars / 3,832 forks / 735 today), #4 opencv/opencv (88,603 stars / 56,621 forks / 169 today), #5 refactoringhq/tolaria (14,279 stars / 993 forks / 821 today), #6 aaif-goose/goose (48,475 stars / 5,094 forks / 490 today), #7 Andyyyy64/whichllm (4,048 stars / 225 forks / 631 today), #8 TapXWorld/ChinaTextbook (73,446 stars / 16,444 forks / 517 today), #9 x1xhlol/system-prompts-and-models-of-ai-tools (139,131 stars / 34,558 forks / 66 today), #10 yikart/AiToEarn (19,881 stars / 3,017 forks / 423 today), #11 phuryn/pm-skills (13,383 stars / 1,537 forks / 808 today), #12 santifer/career-ops (51,582 stars / 10,413 forks / 1,114 today)。after-cut 观察池为 openai/plugins 2,579/304/284, maziyarpanahi/openmed 1,821/212/165, francescopace/espectre 8,178/632/112, addyosmani/agent-skills 49,786/5,563/348。AIHOT 首页本轮已切到 6月10日精选流，新增 Gemini 3.5 Live Translate、Claude Managed Agents 定时运行与 vault 环境变量、Hugging Face Jobs GPU CI、Cohere North Mini Code、OpenAI Responses web search 图片结果、Nextdoor Codex/GPT-5.5、覆盖感知 grounded generation 评测等发现层信号；AIHOT 日报入口未作为官方日报锚点替代，仍标注为发现源。OpenAI 官方 News 页面复核，最新公司边界仍为 2026-06-08 Confidential submission of draft S-1、Built to benefit everyone、Economic Research Exchange，但 AIHOT/开发者流出现 Jun 10 Responses API 图像搜索和 Nextdoor Codex 实践信号。A社 Anthropic 官方 News/Research/Engineering/Claude Code 页面复核：News 最新有效模型锚点仍为 2026-06-09 Claude Fable 5 and Claude Mythos 5，Research 最新仍为 2026-06-08 Paving the way for agents in biology；AIHOT/Claude Blog 新增 Managed Agents cron schedule 与 vault 环境变量，继续覆盖 Claude Code、Computer Use、Managed Agents、Agent Skills、MCP/code execution、containment 和企业安全主线。搜广推专项复核 Google Research Agentic RAG、Meta SilverTorch、Pinterest conversion candidate generation、Google Search/AI Mode 与 Demand Gen、Amazon Science search/reranking、AWS Valkey real-time personalization、Dropbox Dash relevance labeling、Spotify experimentation、Airbnb EBR/search ranking、腾讯 VectorDB、阿里 AnalyticDB/PAI-Rec、火山 Viking AI Search、快手 OneSearch-V2；本轮未发现足以替换这些工程锚点的 Jun 10 大厂长文，继续覆盖 recommendation/recommender、ranking、retrieval、search、ads/advertising、auction/bidding、personalization、feed、marketplace、embedding/vector、query/index、CTR/CVR、召回、粗排、精排、重排、特征、实验平台。",
+    "checkedAt": "2026-06-10 11:34 CST",
+    "sourceBoundaryAt": "2026-06-10 11:34 CST",
+    "summary": "2026-06-10 11:34 CST: 按自动化要求先执行 git pull --ff-only origin main；当前沙箱仍阻止 GitHub SSH/DNS control-socket 访问，但编辑前 main 工作树干净且显示与 origin/main 对齐。GitHub official Trending 页面本轮在 web 环境只暴露加载骨架，未提供比 08:34 CST 更强的官方可见计数证据，因此沿用 08:34 CST 官方快照和 Top-12 排序，不伪造新计数。AIHOT 首页可读且显示 6月10日 10:28 前精选流，新增 Meta/WhatsApp 第三方 AI 助手开放监管、Magnetar 式金融投研 Agent、Text-To-Lottie Agent Skill + 本地验收 Harness、AgentsView Claude Fable 5 成本追踪、OpenRouter Advisor 模型级联、GitHub Copilot CLI custom agents、Google AI Overviews 德国责任裁决、Gemma 4 12B 等发现层信号。OpenAI 官方 News 页面复核，最新公司边界仍为 2026-06-08 Confidential submission of draft S-1、Built to benefit everyone、Economic Research Exchange；AIHOT/开发者流继续补充 Responses API 图像搜索和 Nextdoor Codex 实践。A社 Anthropic 官方 News/Research/Engineering 页面复核：News 最新有效模型锚点仍为 2026-06-09 Claude Fable 5 and Claude Mythos 5，Research 最新仍为 2026-06-08 Paving the way for agents in biology，Engineering 继续覆盖 containment、Managed Agents、Claude Code、Computer Use、Agent Skills、MCP/code execution 和企业安全主线。搜广推专项复核 Google Research Agentic RAG、Meta SilverTorch、Pinterest conversion candidate generation、Google Search/AI Mode 与 Demand Gen、Amazon Science search/reranking、AWS Valkey real-time personalization、Dropbox Dash relevance labeling、Spotify experimentation、Airbnb EBR/search ranking、腾讯 VectorDB、阿里 AnalyticDB/PAI-Rec、火山 Viking AI Search、快手 OneSearch-V2；本轮未发现足以替换这些工程锚点的 Jun 10 大厂长文。",
     "keyChanges": [
-      "GitHub official Trending Top-12 与 05:32 CST 一致，未轮换；官方可见计数继续上涨。",
-      "AIHOT 首页精选流已显示 2026-06-10 内容，新增 Claude Managed Agents、Gemini Live Translate、HF Jobs、Cohere North Mini Code、OpenAI image search、Nextdoor Codex 等发现层。",
-      "Anthropic 官方模型/新闻边界仍为 2026-06-09 Claude Fable 5 and Claude Mythos 5；Research 最新仍为 Jun 8 biology agents；Managed Agents 作为 Claude Blog/AIHOT 发现层补充。",
+      "AIHOT 首页精选流已推进到 2026-06-10 10:28 CST，新增平台监管、投研 Agent、Agent Skill 验收、模型级联和 AI 搜索责任边界信号。",
+      "Anthropic 官方模型/新闻边界仍为 2026-06-09 Claude Fable 5 and Claude Mythos 5；Research 最新仍为 Jun 8 biology agents；Engineering/Claude 生态继续覆盖 Managed Agents、Claude Code、Computer Use、Agent Skills 和 containment。",
+      "OpenAI 官方 News 边界仍为 Jun 8；AIHOT/开发者流继续补充 Responses API 图像搜索和 Nextdoor Codex 实践，但不替代官方 News 边界。",
+      "GitHub Trending 未获得比 08:34 更强的官方计数证据；Top-12 沿用上轮官方快照，明确标注未伪造新计数。",
       "搜广推专项继续覆盖 Google/Meta/Amazon/Pinterest/AWS/Dropbox/Spotify/Airbnb/中文大厂工程锚点，暂无 Jun 10 强替代长文。"
     ]
   },
   "validation": {
     "status": "passed",
-    "checkedAt": "2026-06-10 08:34 CST",
-    "summary": "passed at 2026-06-10 08:34 CST: node syntax checks, git diff whitespace, data/public JSON parity, gzip payload parity with 2 payload parts, index latest/path parity, front-end payload-map entry, 12-repo deepDive/diagram/trendingToday contract, 10-frontier five-part+diagram contract, 18-AI signal/impact/action+diagram contract, required Anthropic/OpenAI/AIHOT/search-ads-recsys source and keyword coverage including Claude Fable 5, Claude Mythos 5, Claude Managed Agents, Claude Code, Computer Use, Google Research, Meta, Amazon/AWS, Pinterest, Alibaba, Tencent and Kuaishou, object-residue scan and retention <= 90 reports. Static readability verified through file/index/payload parity."
+    "checkedAt": "2026-06-10 11:34 CST",
+    "summary": "passed at 2026-06-10 11:34 CST: node syntax checks, git diff whitespace, data/public JSON parity, gzip payload parity with 2 payload parts, index latest/path parity, front-end payload-map entry, 12-repo deepDive/diagram/trendingToday contract, 10-frontier five-part+diagram contract, 27-AI signal/impact/action+diagram contract, required Anthropic/OpenAI/AIHOT/search-ads-recsys source and keyword coverage including Claude Fable 5, Claude Mythos 5, Claude Managed Agents, Claude Code, Computer Use, GitHub Copilot CLI custom agents, OpenRouter Advisor, AI Overviews liability, Google Research, Meta, Amazon/AWS, Pinterest, Alibaba, Tencent and Kuaishou, object-residue scan and retention <= 90 reports. Static readability verified through file/index/payload parity."
   },
   "operations": {
     "pull": "failed under sandbox SSH/DNS restriction: git pull --ff-only origin main could not resolve github.com/control socket; local main was clean and showed ## main...origin/main before edits.",
-    "commit": "a5c384c Refresh 2026-06-10 radar at 08 CST",
-    "push": "success: main pushed to origin (568a12e..a5c384c); git ls-remote confirms refs/heads/main at a5c384c0e250fdcc19b420fd6b62525ec48183eb",
-    "actions": "not directly verified: gh/API access to api.github.com failed under sandbox DNS after push",
-    "pages": "success: GitHub Pages returned HTTP 200 for reports/2026-06-10.json and both payload parts; remote content lengths match local report 394260 bytes, part00 64000 bytes, part01 6700 bytes; last-modified Wed, 10 Jun 2026 00:39:41 GMT",
-    "publication": "success: Pages contains the refreshed 2026-06-10 08:34 CST static report and two-part compressed payload after main push",
-    "validation": "passed at 2026-06-10 08:34 CST: node syntax checks, git diff whitespace, data/public JSON parity, gzip payload parity with 2 payload parts, index latest/path parity, front-end payload-map entry, 12-repo deepDive/diagram/trendingToday contract, 10-frontier five-part+diagram contract, 18-AI signal/impact/action+diagram contract, required Anthropic/OpenAI/AIHOT/search-ads-recsys source and keyword coverage including Claude Fable 5, Claude Mythos 5, Claude Managed Agents, Claude Code, Computer Use, Google Research, Meta, Amazon/AWS, Pinterest, Alibaba, Tencent and Kuaishou, object-residue scan and retention <= 90 reports. Static readability verified through file/index/payload parity.",
+    "commit": "pending content commit",
+    "push": "pending content push",
+    "actions": "pending post-push verification",
+    "pages": "pending post-push verification",
+    "publication": "pending post-push verification",
+    "validation": "passed at 2026-06-10 11:34 CST: node syntax checks, git diff whitespace, data/public JSON parity, gzip payload parity with 2 payload parts, index latest/path parity, front-end payload-map entry, 12-repo deepDive/diagram/trendingToday contract, 10-frontier five-part+diagram contract, 27-AI signal/impact/action+diagram contract, required Anthropic/OpenAI/AIHOT/search-ads-recsys source and keyword coverage including Claude Fable 5, Claude Mythos 5, Claude Managed Agents, Claude Code, Computer Use, GitHub Copilot CLI custom agents, OpenRouter Advisor, AI Overviews liability, Google Research, Meta, Amazon/AWS, Pinterest, Alibaba, Tencent and Kuaishou, object-residue scan and retention <= 90 reports. Static readability verified through file/index/payload parity.",
     "staticReadability": "passed locally via data/public/index/gzip payload parity",
-    "publicationCheckedAt": "2026-06-10 08:41 CST"
+    "publicationCheckedAt": "2026-06-10 11:34 CST"
   }
 }
