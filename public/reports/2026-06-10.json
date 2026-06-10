@@ -5370,13 +5370,13 @@
   },
   "operations": {
     "pull": "failed under sandbox SSH/DNS restriction: git pull --ff-only origin main could not resolve github.com/control socket; local main was clean and showed ## main...origin/main before edits.",
-    "commit": "b7b857b Refresh 2026-06-10 radar at 14 CST",
-    "push": "pending",
-    "actions": "pending",
-    "pages": "pending",
-    "publication": "pending push for 17:36 CST refresh",
+    "commit": "f9c78f5 Refresh 2026-06-10 radar at 17 CST",
+    "push": "success: main pushed to origin (138020b..f9c78f5); git ls-remote confirmed refs/heads/main at f9c78f597f8a44124774f62e9a33f674d55d86ca.",
+    "actions": "success: Echo Trending Deploy run 27267466291 for f9c78f5 completed successfully; publish-static-site job 80528092984 completed at 2026-06-10T09:40:24Z.",
+    "pages": "publication verified through gh-pages content API after direct Pages curl failed DNS in the sandbox; reports/2026-06-10.json size 465,570 bytes, payload part00 64,000 bytes, payload part01 23,224 bytes, matching local sizes. Pages API briefly returned building then api.github.com became intermittent, so final direct Pages status was not counted.",
+    "publication": "success: gh-pages contains the refreshed 2026-06-10 17:36 CST static report and two-part compressed payload after main push.",
     "validation": "passed at 2026-06-10 17:39 CST: node --check scripts/daily.mjs, node --check public/app.js, git diff --check, data/public JSON parity, gzip payload parity with 2 payload parts, index latest/path parity, front-end payload-map entry, 12-repo deepDive/diagram/trendingToday contract, 11-frontier five-part+diagram contract, 32-AI signal/impact/action+diagram contract, required Anthropic/OpenAI/AIHOT/search-ads-recsys source and keyword coverage including Claude Fable 5, Claude Mythos 5, Claude Managed Agents, Claude Code, Computer Use, Google LEAP, WorkOS auth.md, OpenCV 5, GitHub Copilot CLI custom agents, Google Research, Meta, Amazon/AWS, Pinterest, Alibaba, Tencent, Kuaishou, RRCM/LLM ads retrieval watch, object-residue scan and retention <= 90 reports. Static readability verified through file/index/payload parity; GitHub Trending exact counters retained from 14:34 official snapshot because 17:36 Trending route exposed loading/filter shell only.",
-    "staticReadability": "passed locally via data/public/index/gzip payload parity",
-    "publicationCheckedAt": "2026-06-10 17:39 CST"
+    "staticReadability": "passed locally via data/public/index/gzip payload parity and remote gh-pages content-size parity",
+    "publicationCheckedAt": "2026-06-10 17:43 CST"
   }
 }
