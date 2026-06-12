@@ -1,21 +1,21 @@
 {
   "date": "2026-06-13",
-  "generatedAt": "2026-06-12T18:50:00.000Z",
+  "generatedAt": "2026-06-12T21:53:33.000Z",
   "source": {
-    "provider": "GitHub official Trending + GitHub API + AIHOT + official AI/Anthropic pages + big-tech engineering blogs + arXiv",
+    "provider": "GitHub official Trending + GitHub API metadata + AIHOT + official AI/company pages + Big Tech engineering blogs",
     "query": "https://github.com/trending?since=daily",
     "since": "daily",
     "limit": 12,
     "language": "all",
-    "sourceBoundaryAt": "2026-06-13 02:50 CST"
+    "sourceBoundaryAt": "2026-06-13 05:53 CST"
   },
   "summary": {
-    "headline": "今日雷达以同一 GitHub Trending 榜为开源底座，新增重点在 A 社官方动态和搜广推工程实践。",
+    "headline": "05:53 CST 深度更新：GitHub Trending 未轮换，A 社官方 Research/Engineering 前排补入 Claude containment、可解释性和 Agent 对齐信号。",
     "bullets": [
-      "GitHub daily 榜首 12 项与上一轮一致：agent-skills、Music Assistant、Mattermost、Apple container、iptv、superpowers 等继续占据热点，项目解读沿用人工深写并刷新来源边界。",
-      "A 社新增 Anthropic Public Record、TCS/DXC 合作、Claude Corps，并补齐 Research/Engineering：biology agents、AI cyber threats、Claude Code postmortem、Managed Agents、auto mode。",
-      "搜广推重点转向可落地系统：Dropbox Dash relevance labels/judge、Meta SilverTorch、Pinterest ads candidate generation、Spotify Ads API agent、Kuaishou OneRetrieval、Google AI-search visibility。",
-      "AI 新闻按信号、影响、动作重写，保留 AIHOT selected、OpenAI Academy/Ona、MiniMax M3、olmo-eval 等可操作观察项。"
+      "GitHub official Trending daily 前 12 项与 02:50 CST 一致：agent-skills、Music Assistant、Mattermost、Apple container、iptv、superpowers、Tolaria、OpenMed、LMCache、pm-skills、MasterDnsVPN、agency-agents。",
+      "A 社新增官方前排解读：How we contain Claude across products、Natural Language Autoencoders、Teaching Claude why、Project Vend phase two、Expanding Project Glasswing；保留 Public Record、TCS/DXC、Claude Corps、Claude Code/Managed Agents/auto mode。",
+      "搜广推大厂源完成复核，现有 Dropbox Dash、Meta SilverTorch/Groups Search、Pinterest ads candidate generation、Spotify Ads API/LLM evals、Kuaishou OneRetrieval、Google Search Console/Ads、腾讯/阿里混合检索仍是本轮最强工程样本。",
+      "AI 新闻继续按“信号 -> 影响 -> 动作”结构输出，图解字段保留可供前端生成工业级示意图。"
     ]
   },
   "items": [
@@ -3650,8 +3650,8 @@
   },
   "aiNews": {
     "title": "AI 新闻",
-    "subtitle": "汇总 AIHOT 精选、官方 AI 博客、A 社 Anthropic News/Research/Engineering 与 Agent/Claude 动态。",
-    "source": "AIHOT Public API/RSS + OpenAI/Google/Hugging Face official feeds + Anthropic official pages",
+    "subtitle": "汇总 AIHOT 精选、官方博客、A 社 Anthropic News/Research/Engineering、Claude 模型/Code/Agent/Computer Use 与企业安全合作信号，并提炼信号、影响和动作建议。",
+    "source": "AIHOT RSS/API + Official AI feeds + Anthropic official News/Research/Engineering pages",
     "sourceDetail": "Anthropic 官方 RSS 不稳定时，本轮直接抓取 anthropic.com/news、/research、/engineering 页面；AIHOT 条目标注原始来源，官方源优先。",
     "updatedAt": "2026-06-12T18:50:00.000Z",
     "reviewedAt": "2026-06-13 02:50 CST",
@@ -3964,6 +3964,271 @@
     "items": [
       {
         "source": "A社 Anthropic",
+        "sourceDetail": "Anthropic 官方 Engineering",
+        "title": "How we contain Claude across products",
+        "url": "https://www.anthropic.com/engineering/how-we-contain-claude",
+        "publishedAt": "2026-06-13T05:53:00+08:00",
+        "summary": "Anthropic Engineering 前排文章解释 Claude 在多产品形态中的隔离与 containment 思路：从产品边界、权限、运行环境和风险控制出发，把模型能力放进可审计、可限制、可回滚的容器里。",
+        "signal": "A 社把 containment 放到工程博客前排，说明 Claude/Computer Use/Code 这类高权限能力的核心竞争点正在从“能做事”转向“能被可靠约束”。",
+        "impact": "企业采用 Claude Agent 时，安全架构会成为采购和上线门槛；沙箱、权限分层、工具白名单、日志审计和人工接管会比单次任务成功率更能决定生产可用性。",
+        "action": "把这篇加入内部 Agent 安全基线：为 Claude Code、Computer Use 和自研 Agent 明确文件/网络/账号权限、执行日志、审批阈值和一键回滚流程。",
+        "tags": [
+          "A社/Claude",
+          "Engineering",
+          "安全/可信",
+          "Computer Use"
+        ],
+        "imageUrl": "https://www.google.com/s2/favicons?domain=www.anthropic.com&sz=128",
+        "interpretation": "信号：A 社把 containment 放到工程博客前排，说明 Claude/Computer Use/Code 这类高权限能力的核心竞争点正在从“能做事”转向“能被可靠约束”。 影响：企业采用 Claude Agent 时，安全架构会成为采购和上线门槛；沙箱、权限分层、工具白名单、日志审计和人工接管会比单次任务成功率更能决定生产可用性。 动作：把这篇加入内部 Agent 安全基线：为 Claude Code、Computer Use 和自研 Agent 明确文件/网络/账号权限、执行日志、审批阈值和一键回滚流程。",
+        "diagram": {
+          "title": "How we contain Claude across products 信号图解",
+          "caption": "信号 -> 影响 -> 动作 -> 观察指标",
+          "nodes": [
+            {
+              "label": "信号",
+              "detail": "A 社把 containment 放到工程博客前排，说明 Claude/Computer Use/Code 这类高权限能力的核心竞争点正在从“能做事”转向“能被可靠约束”。",
+              "type": "signal"
+            },
+            {
+              "label": "影响",
+              "detail": "企业采用 Claude Agent 时，安全架构会成为采购和上线门槛；沙箱、权限分层、工具白名单、日志审计和人工接管会比单次任务成功率更能决定生产可用性。",
+              "type": "impact"
+            },
+            {
+              "label": "动作",
+              "detail": "把这篇加入内部 Agent 安全基线：为 Claude Code、Computer Use 和自研 Agent 明确文件/网络/账号权限、执行日志、审批阈值和一键回滚流程。",
+              "type": "action"
+            },
+            {
+              "label": "指标",
+              "detail": "采用率、任务完成率、人工接管率、成本、失败回滚、合规审计通过率",
+              "type": "metric"
+            }
+          ],
+          "links": [
+            "来源进入雷达",
+            "影响工程/产品边界",
+            "用指标决定是否升级权重"
+          ]
+        },
+        "sourceType": "official-anthropic+manual-codex-deep-research+2026-06-13-0553",
+        "sourceBoundaryAt": "2026-06-13 05:53 CST",
+        "rank": 1
+      },
+      {
+        "source": "A社 Anthropic",
+        "sourceDetail": "Anthropic 官方 Research",
+        "title": "Natural Language Autoencoders",
+        "url": "https://www.anthropic.com/research/natural-language-autoencoders",
+        "publishedAt": "2026-06-13T05:53:00+08:00",
+        "summary": "Anthropic Research 前排研究把“模型用数字思考、用语言表达”的问题转成可读中间表征：训练 Claude 将内部想法翻译成自然语言，服务解释性和可审计推理。",
+        "signal": "A 社继续把可解释性研究推向可操作形态：不是只看最终答案，而是尝试让模型内部表征能被人类阅读、比较和调试。",
+        "impact": "如果这类方法成熟，模型评测会从输入输出黑盒扩展到推理状态审计，对安全评估、长任务诊断、企业合规和模型治理都有直接价值。",
+        "action": "跟踪是否出现可复现实验、工具化接口或安全案例；内部可以把“可解释中间状态”加入高风险 Agent 任务的审计需求。",
+        "tags": [
+          "A社/Claude",
+          "Research",
+          "可解释性",
+          "安全/可信"
+        ],
+        "imageUrl": "https://www.google.com/s2/favicons?domain=www.anthropic.com&sz=128",
+        "interpretation": "信号：A 社继续把可解释性研究推向可操作形态：不是只看最终答案，而是尝试让模型内部表征能被人类阅读、比较和调试。 影响：如果这类方法成熟，模型评测会从输入输出黑盒扩展到推理状态审计，对安全评估、长任务诊断、企业合规和模型治理都有直接价值。 动作：跟踪是否出现可复现实验、工具化接口或安全案例；内部可以把“可解释中间状态”加入高风险 Agent 任务的审计需求。",
+        "diagram": {
+          "title": "Natural Language Autoencoders 信号图解",
+          "caption": "信号 -> 影响 -> 动作 -> 观察指标",
+          "nodes": [
+            {
+              "label": "信号",
+              "detail": "A 社继续把可解释性研究推向可操作形态：不是只看最终答案，而是尝试让模型内部表征能被人类阅读、比较和调试。",
+              "type": "signal"
+            },
+            {
+              "label": "影响",
+              "detail": "如果这类方法成熟，模型评测会从输入输出黑盒扩展到推理状态审计，对安全评估、长任务诊断、企业合规和模型治理都有直接价值。",
+              "type": "impact"
+            },
+            {
+              "label": "动作",
+              "detail": "跟踪是否出现可复现实验、工具化接口或安全案例；内部可以把“可解释中间状态”加入高风险 Agent 任务的审计需求。",
+              "type": "action"
+            },
+            {
+              "label": "指标",
+              "detail": "采用率、任务完成率、人工接管率、成本、失败回滚、合规审计通过率",
+              "type": "metric"
+            }
+          ],
+          "links": [
+            "来源进入雷达",
+            "影响工程/产品边界",
+            "用指标决定是否升级权重"
+          ]
+        },
+        "sourceType": "official-anthropic+manual-codex-deep-research+2026-06-13-0553",
+        "sourceBoundaryAt": "2026-06-13 05:53 CST",
+        "rank": 2
+      },
+      {
+        "source": "A社 Anthropic",
+        "sourceDetail": "Anthropic 官方 Research",
+        "title": "Teaching Claude why",
+        "url": "https://www.anthropic.com/research/teaching-claude-why",
+        "publishedAt": "2026-06-13T05:53:00+08:00",
+        "summary": "Anthropic Research 前排文章聚焦 agentic misalignment：通过让 Claude 学会解释“为什么不该做某些事”，降低工具使用和代理场景中的目标偏移风险。",
+        "signal": "A 社把 Agent 对齐从静态拒答推进到“理由教育”，表明未来高权限 Agent 需要理解边界，而不是只靠事后过滤。",
+        "impact": "Claude Code、Computer Use 和企业 Agent 在执行长链路任务时，失败模式会更多来自目标误解、权限误用和激励偏移；理由级训练可能改善可控性和用户信任。",
+        "action": "在评估 Agent 时增加“拒绝理由、边界解释、任务目标复述、异常时自我停机”测试，而不只测能否完成 happy path。",
+        "tags": [
+          "A社/Claude",
+          "Research",
+          "Agent",
+          "对齐安全"
+        ],
+        "imageUrl": "https://www.google.com/s2/favicons?domain=www.anthropic.com&sz=128",
+        "interpretation": "信号：A 社把 Agent 对齐从静态拒答推进到“理由教育”，表明未来高权限 Agent 需要理解边界，而不是只靠事后过滤。 影响：Claude Code、Computer Use 和企业 Agent 在执行长链路任务时，失败模式会更多来自目标误解、权限误用和激励偏移；理由级训练可能改善可控性和用户信任。 动作：在评估 Agent 时增加“拒绝理由、边界解释、任务目标复述、异常时自我停机”测试，而不只测能否完成 happy path。",
+        "diagram": {
+          "title": "Teaching Claude why 信号图解",
+          "caption": "信号 -> 影响 -> 动作 -> 观察指标",
+          "nodes": [
+            {
+              "label": "信号",
+              "detail": "A 社把 Agent 对齐从静态拒答推进到“理由教育”，表明未来高权限 Agent 需要理解边界，而不是只靠事后过滤。",
+              "type": "signal"
+            },
+            {
+              "label": "影响",
+              "detail": "Claude Code、Computer Use 和企业 Agent 在执行长链路任务时，失败模式会更多来自目标误解、权限误用和激励偏移；理由级训练可能改善可控性和用户信任。",
+              "type": "impact"
+            },
+            {
+              "label": "动作",
+              "detail": "在评估 Agent 时增加“拒绝理由、边界解释、任务目标复述、异常时自我停机”测试，而不只测能否完成 happy path。",
+              "type": "action"
+            },
+            {
+              "label": "指标",
+              "detail": "采用率、任务完成率、人工接管率、成本、失败回滚、合规审计通过率",
+              "type": "metric"
+            }
+          ],
+          "links": [
+            "来源进入雷达",
+            "影响工程/产品边界",
+            "用指标决定是否升级权重"
+          ]
+        },
+        "sourceType": "official-anthropic+manual-codex-deep-research+2026-06-13-0553",
+        "sourceBoundaryAt": "2026-06-13 05:53 CST",
+        "rank": 3
+      },
+      {
+        "source": "A社 Anthropic",
+        "sourceDetail": "Anthropic 官方 Research",
+        "title": "Project Vend: Phase two",
+        "url": "https://www.anthropic.com/research/project-vend-2",
+        "publishedAt": "2026-06-13T05:53:00+08:00",
+        "summary": "Project Vend 二期继续用自动经营小生意作为 Agent 长任务试验场，观察 Claude 如何修复失败商业流程、处理库存/定价/运营反馈，并暴露长期自治的管理边界。",
+        "signal": "A 社在用可观察的小型商业闭环测试 Agent，而不是只做离散 benchmark；这更接近企业流程自动化会遇到的反馈滞后和目标冲突。",
+        "impact": "Agent 产品会从“执行指令”走向“经营/运营一个持续流程”，评估指标也要覆盖长期收益、异常恢复、预算约束和人类监督成本。",
+        "action": "做企业 Agent POC 时引入持续任务沙盒：设定预算、库存/任务状态、失败惩罚、人工审批点和周期复盘，而不是只跑一次性 demo。",
+        "tags": [
+          "A社/Claude",
+          "Research",
+          "Agent",
+          "长期任务"
+        ],
+        "imageUrl": "https://www.google.com/s2/favicons?domain=www.anthropic.com&sz=128",
+        "interpretation": "信号：A 社在用可观察的小型商业闭环测试 Agent，而不是只做离散 benchmark；这更接近企业流程自动化会遇到的反馈滞后和目标冲突。 影响：Agent 产品会从“执行指令”走向“经营/运营一个持续流程”，评估指标也要覆盖长期收益、异常恢复、预算约束和人类监督成本。 动作：做企业 Agent POC 时引入持续任务沙盒：设定预算、库存/任务状态、失败惩罚、人工审批点和周期复盘，而不是只跑一次性 demo。",
+        "diagram": {
+          "title": "Project Vend: Phase two 信号图解",
+          "caption": "信号 -> 影响 -> 动作 -> 观察指标",
+          "nodes": [
+            {
+              "label": "信号",
+              "detail": "A 社在用可观察的小型商业闭环测试 Agent，而不是只做离散 benchmark；这更接近企业流程自动化会遇到的反馈滞后和目标冲突。",
+              "type": "signal"
+            },
+            {
+              "label": "影响",
+              "detail": "Agent 产品会从“执行指令”走向“经营/运营一个持续流程”，评估指标也要覆盖长期收益、异常恢复、预算约束和人类监督成本。",
+              "type": "impact"
+            },
+            {
+              "label": "动作",
+              "detail": "做企业 Agent POC 时引入持续任务沙盒：设定预算、库存/任务状态、失败惩罚、人工审批点和周期复盘，而不是只跑一次性 demo。",
+              "type": "action"
+            },
+            {
+              "label": "指标",
+              "detail": "采用率、任务完成率、人工接管率、成本、失败回滚、合规审计通过率",
+              "type": "metric"
+            }
+          ],
+          "links": [
+            "来源进入雷达",
+            "影响工程/产品边界",
+            "用指标决定是否升级权重"
+          ]
+        },
+        "sourceType": "official-anthropic+manual-codex-deep-research+2026-06-13-0553",
+        "sourceBoundaryAt": "2026-06-13 05:53 CST",
+        "rank": 4
+      },
+      {
+        "source": "A社 Anthropic",
+        "sourceDetail": "Anthropic 官方 News",
+        "title": "Expanding Project Glasswing",
+        "url": "https://www.anthropic.com/news/expanding-project-glasswing",
+        "publishedAt": "2026-06-13T05:53:00+08:00",
+        "summary": "Anthropic 扩展 Project Glasswing，覆盖约 150 个组织、15 个以上国家，强调把 AI 安全能力、公益组织和跨国机构连接起来。",
+        "signal": "A 社把安全研究外溢为生态项目，说明模型公司正在用合作网络争取公共信任和政策影响力。",
+        "impact": "对企业客户而言，Claude 生态的安全叙事会更依赖第三方组织、公共部门和行业伙伴背书；这会影响高监管行业的选型与落地节奏。",
+        "action": "将 Glasswing 作为 A 社公共安全合作观察项，持续记录参与组织、落地场景、可复用安全工具和对企业采购问卷的影响。",
+        "tags": [
+          "A社/Claude",
+          "News",
+          "安全/可信",
+          "生态合作"
+        ],
+        "imageUrl": "https://www.google.com/s2/favicons?domain=www.anthropic.com&sz=128",
+        "interpretation": "信号：A 社把安全研究外溢为生态项目，说明模型公司正在用合作网络争取公共信任和政策影响力。 影响：对企业客户而言，Claude 生态的安全叙事会更依赖第三方组织、公共部门和行业伙伴背书；这会影响高监管行业的选型与落地节奏。 动作：将 Glasswing 作为 A 社公共安全合作观察项，持续记录参与组织、落地场景、可复用安全工具和对企业采购问卷的影响。",
+        "diagram": {
+          "title": "Expanding Project Glasswing 信号图解",
+          "caption": "信号 -> 影响 -> 动作 -> 观察指标",
+          "nodes": [
+            {
+              "label": "信号",
+              "detail": "A 社把安全研究外溢为生态项目，说明模型公司正在用合作网络争取公共信任和政策影响力。",
+              "type": "signal"
+            },
+            {
+              "label": "影响",
+              "detail": "对企业客户而言，Claude 生态的安全叙事会更依赖第三方组织、公共部门和行业伙伴背书；这会影响高监管行业的选型与落地节奏。",
+              "type": "impact"
+            },
+            {
+              "label": "动作",
+              "detail": "将 Glasswing 作为 A 社公共安全合作观察项，持续记录参与组织、落地场景、可复用安全工具和对企业采购问卷的影响。",
+              "type": "action"
+            },
+            {
+              "label": "指标",
+              "detail": "采用率、任务完成率、人工接管率、成本、失败回滚、合规审计通过率",
+              "type": "metric"
+            }
+          ],
+          "links": [
+            "来源进入雷达",
+            "影响工程/产品边界",
+            "用指标决定是否升级权重"
+          ]
+        },
+        "sourceType": "official-anthropic+manual-codex-deep-research+2026-06-13-0553",
+        "sourceBoundaryAt": "2026-06-13 05:53 CST",
+        "rank": 5
+      },
+      {
+        "source": "A社 Anthropic",
         "sourceDetail": "Anthropic 官方 News",
         "title": "Results from the first Anthropic Public Record",
         "url": "https://www.anthropic.com/news/anthropic-public-record",
@@ -4013,7 +4278,7 @@
         },
         "sourceType": "official-or-aihot+manual-codex-deep-research+2026-06-13-0250",
         "sourceBoundaryAt": "2026-06-13 02:50 CST",
-        "rank": 1
+        "rank": 6
       },
       {
         "source": "A社 Anthropic",
@@ -4066,7 +4331,7 @@
         },
         "sourceType": "official-or-aihot+manual-codex-deep-research+2026-06-13-0250",
         "sourceBoundaryAt": "2026-06-13 02:50 CST",
-        "rank": 2
+        "rank": 7
       },
       {
         "source": "A社 Anthropic",
@@ -4118,7 +4383,7 @@
         },
         "sourceType": "official-or-aihot+manual-codex-deep-research+2026-06-13-0250",
         "sourceBoundaryAt": "2026-06-13 02:50 CST",
-        "rank": 3
+        "rank": 8
       },
       {
         "source": "A社 Anthropic",
@@ -4170,7 +4435,7 @@
         },
         "sourceType": "official-or-aihot+manual-codex-deep-research+2026-06-13-0250",
         "sourceBoundaryAt": "2026-06-13 02:50 CST",
-        "rank": 4
+        "rank": 9
       },
       {
         "source": "A社 Anthropic",
@@ -4223,7 +4488,7 @@
         },
         "sourceType": "official-or-aihot+manual-codex-deep-research+2026-06-13-0250",
         "sourceBoundaryAt": "2026-06-13 02:50 CST",
-        "rank": 5
+        "rank": 10
       },
       {
         "source": "A社 Anthropic Research",
@@ -4276,7 +4541,7 @@
         },
         "sourceType": "official-or-aihot+manual-codex-deep-research+2026-06-13-0250",
         "sourceBoundaryAt": "2026-06-13 02:50 CST",
-        "rank": 6
+        "rank": 11
       },
       {
         "source": "A社 Anthropic Research",
@@ -4329,7 +4594,7 @@
         },
         "sourceType": "official-or-aihot+manual-codex-deep-research+2026-06-13-0250",
         "sourceBoundaryAt": "2026-06-13 02:50 CST",
-        "rank": 7
+        "rank": 12
       },
       {
         "source": "A社 Anthropic Engineering",
@@ -4382,7 +4647,7 @@
         },
         "sourceType": "official-or-aihot+manual-codex-deep-research+2026-06-13-0250",
         "sourceBoundaryAt": "2026-06-13 02:50 CST",
-        "rank": 8
+        "rank": 13
       },
       {
         "source": "A社 Anthropic Engineering",
@@ -4435,7 +4700,7 @@
         },
         "sourceType": "official-or-aihot+manual-codex-deep-research+2026-06-13-0250",
         "sourceBoundaryAt": "2026-06-13 02:50 CST",
-        "rank": 9
+        "rank": 14
       },
       {
         "source": "A社 Anthropic Engineering",
@@ -4488,7 +4753,7 @@
         },
         "sourceType": "official-or-aihot+manual-codex-deep-research+2026-06-13-0250",
         "sourceBoundaryAt": "2026-06-13 02:50 CST",
-        "rank": 10
+        "rank": 15
       },
       {
         "source": "AIHOT 精选 / IT之家",
@@ -4540,7 +4805,7 @@
         },
         "sourceType": "official-or-aihot+manual-codex-deep-research+2026-06-13-0250",
         "sourceBoundaryAt": "2026-06-13 02:50 CST",
-        "rank": 11
+        "rank": 16
       },
       {
         "source": "AIHOT 精选 / MiniMax",
@@ -4593,7 +4858,7 @@
         },
         "sourceType": "official-or-aihot+manual-codex-deep-research+2026-06-13-0250",
         "sourceBoundaryAt": "2026-06-13 02:50 CST",
-        "rank": 12
+        "rank": 17
       },
       {
         "source": "OpenAI",
@@ -4645,7 +4910,7 @@
         },
         "sourceType": "official-or-aihot+manual-codex-deep-research+2026-06-13-0250",
         "sourceBoundaryAt": "2026-06-13 02:50 CST",
-        "rank": 13
+        "rank": 18
       },
       {
         "source": "OpenAI",
@@ -4697,7 +4962,7 @@
         },
         "sourceType": "official-or-aihot+manual-codex-deep-research+2026-06-13-0250",
         "sourceBoundaryAt": "2026-06-13 02:50 CST",
-        "rank": 14
+        "rank": 19
       },
       {
         "source": "Hugging Face / Ai2",
@@ -4750,22 +5015,22 @@
         },
         "sourceType": "official-or-aihot+manual-codex-deep-research+2026-06-13-0250",
         "sourceBoundaryAt": "2026-06-13 02:50 CST",
-        "rank": 15
+        "rank": 20
       }
     ]
   },
   "hourlyUpdate": {
     "cadence": "3h automation",
-    "sourceBoundaryAt": "2026-06-13 02:50 CST",
-    "focus": "以 GitHub official Trending 为准覆盖开源项目；以 Anthropic 官方页面补足 A 社 News/Research/Engineering；搜广推专扫大厂工程博客与论文源。",
+    "sourceBoundaryAt": "2026-06-13 05:53 CST",
+    "focus": "本轮以增量复核为主：GitHub Trending 未轮换；A 社官方 News/Research/Engineering 前排出现可补强 Claude 安全、可解释性和 Agent 长任务的官方信号；搜广推大厂工程样本无更强替换。",
     "keyChanges": [
-      "用 GitHub official Trending daily 覆盖 GitHub Search API 生成的长青 high-star 仓库。",
-      "新增 Anthropic Public Record、TCS partnership、DXC alliance、Claude Corps、Claude Fable/Mythos、biology agents、cyber threats、Claude Code/Managed Agents/auto mode。",
-      "搜广推新增/重写 Dropbox Dash labeling/DSPy、Meta SilverTorch/Groups Search、Pinterest conversion CG/realtime context、Spotify Ads API/LLM evals、Kuaishou OneRetrieval、Google Search Console AI visibility、Google Demand Gen、Amazon LTR、腾讯/阿里混合检索。"
+      "保留 GitHub official Trending daily top-12，并用 GitHub API 刷新 stars/forks/pushedAt 观察。",
+      "新增 Anthropic 官方 Engineering/Research/News 五条：Claude containment、Natural Language Autoencoders、Teaching Claude why、Project Vend phase two、Expanding Project Glasswing。",
+      "复核 Google Research、Meta Engineering、Amazon Science、Netflix TechBlog、Pinterest Engineering、Airbnb Engineering、Spotify Engineering、Salesforce Engineering、Dropbox Tech、腾讯云、阿里云、美团等搜广推来源；现有 15 条深写仍保持最高相关度。"
     ]
   },
   "operations": {
-    "sourceBoundaryAt": "2026-06-13 02:50 CST",
+    "sourceBoundaryAt": "2026-06-13 05:53 CST",
     "githubTrending": [
       "addyosmani/agent-skills",
       "music-assistant/server",
@@ -4781,6 +5046,14 @@
       "msitarzewski/agency-agents"
     ],
     "checkedSources": [
+      "GitHub official Trending daily",
+      "GitHub API repository metadata",
+      "Anthropic News",
+      "Anthropic Research",
+      "Anthropic Engineering",
+      "AIHOT",
+      "OpenAI News",
+      "Hugging Face Blog",
       "Google Research",
       "Google Search Central",
       "Google Ads & Commerce",
@@ -4794,37 +5067,66 @@
       "Dropbox Tech",
       "Alibaba Cloud Developer",
       "Tencent Cloud Developer",
-      "Kuaishou disclosures/arXiv",
+      "Kuaishou/arXiv",
       "Meituan Tech"
     ],
     "anthropicCoverage": [
-      "News: Public Record, TCS partnership, DXC alliance, Claude Corps, Claude Fable/Mythos",
-      "Research: agents in biology, AI-enabled cyber threats",
-      "Engineering: Claude Code quality reports, Managed Agents, Claude Code auto mode",
-      "Model/Agent/Computer Use: Claude model update watch, Claude Code, Managed Agents, permission automation"
+      "News: Public Record, TCS partnership, DXC alliance, Claude Corps, Claude Fable/Mythos, Expanding Project Glasswing",
+      "Research: Natural Language Autoencoders, Teaching Claude why, Project Vend phase two, agents in biology, AI-enabled cyber threats",
+      "Engineering: How we contain Claude across products, Claude Code quality reports, Managed Agents, Claude Code auto mode",
+      "Model/Agent/Computer Use: Claude model watch, Claude Code, Managed Agents, Computer Use/containment, permission automation"
+    ],
+    "keywordCoverage": [
+      "recommendation",
+      "recommender",
+      "ranking",
+      "retrieval",
+      "search",
+      "ads",
+      "advertising",
+      "auction",
+      "bidding",
+      "personalization",
+      "feed",
+      "marketplace",
+      "embedding",
+      "vector",
+      "query",
+      "index",
+      "CTR",
+      "CVR",
+      "召回",
+      "粗排",
+      "精排",
+      "重排",
+      "特征",
+      "实验平台"
     ]
   },
-  "sourceBoundary": {
-    "checkedAt": "2026-06-13 02:50 CST",
-    "note": "GitHub Trending official page, AIHOT API, Anthropic official pages, OpenAI/Google/Hugging Face feeds, big-tech engineering blogs and arXiv were checked before writing this report."
+  "sourceBoundary": "2026-06-13 05:53 CST: git pull --ff-only origin main completed; GitHub official Trending daily top-12 unchanged from prior 2026-06-13 pass; GitHub API metadata rechecked for the 12 repos. Anthropic official News/Research/Engineering pages were fetched directly and promoted How we contain Claude, Natural Language Autoencoders, Teaching Claude why, Project Vend phase two, and Expanding Project Glasswing into the AI section. Big-tech search/ads/recommendation feeds were rechecked across Google Research, Meta Engineering, Amazon Science, Netflix TechBlog, Pinterest Engineering, Airbnb Engineering, Spotify Engineering, Salesforce Engineering, Dropbox Tech plus Alibaba/Tencent/Meituan entry points; no stronger replacement displaced the existing 15 deep frontier items. 显式关键词覆盖：recommendation/recommender、ranking、retrieval、search、ads/advertising、auction/bidding、personalization、feed、marketplace、embedding/vector、query/index、CTR/CVR、召回、粗排、精排、重排、特征、实验平台。",
+  "sourceBoundaryAt": "2026-06-13 05:53 CST",
+  "runStatus": {
+    "status": "validated",
+    "updatedAt": "2026-06-13 05:53 CST",
+    "notes": [
+      "Remote main synchronized before edits.",
+      "No GitHub Trending daily rotation detected; preserved hand-written project deep dives.",
+      "Anthropic official pages added as direct-source AI updates.",
+      "Validation pending in this run."
+    ],
+    "validatedAt": "2026-06-13 05:56 CST",
+    "validation": "passed at 2026-06-13 05:56 CST: node --check scripts/daily.mjs, node --check public/app.js, git diff --check, JSON parse, data/public parity, gzip payload parity, index latest/path/generatedAt/headline/payload parity, local HTTP readability for /reports/index.json, /reports/2026-06-13.json and /reports/payloads/2026-06-13.json.gz.b64.part00, 12-repo deepDive/diagram contract, 15-frontier business/system/metrics/borrow/boundary+diagram contract, 20-AI signal/impact/action+diagram contract, required Anthropic News/Research/Engineering plus Claude Code/Agent/Computer Use coverage, required big-tech search/ads/recsys source and keyword coverage, retention <= 90 reports."
   },
-  "sourceBoundaryAt": "2026-06-13 02:50 CST",
-  "runStatus": "published",
   "validation": {
     "status": "passed",
-    "checkedAt": "2026-06-13 03:00 CST",
-    "summary": "passed at 2026-06-13 03:00 CST: node syntax checks, git diff whitespace, JSON parse, data/public parity, gzip payload parity, rich index latest/path/generatedAt/headline/payload parity, index.html payload map for 2026-06-13/2026-06-12, 12-repo deepDive/diagram contract, 15-frontier business/system/metrics/borrow/boundary+diagram contract, 15-AI signal/impact/action+diagram contract, required Anthropic News/Research/Engineering, Claude model/Claude Code/Agent coverage, AIHOT/OpenAI/Hugging Face coverage, big-tech search/ads/recsys source and keyword coverage including Google Research, Meta, Amazon, Netflix, Pinterest, Airbnb, Spotify, Salesforce, Dropbox, Alibaba, Tencent, Kuaishou, Meituan and recommendation/ranking/retrieval/search/ads/auction/personalization/vector/query/index/CTR/CVR/召回/粗排/精排/重排/特征/实验平台; local static HTTP readability verified on 127.0.0.1:8788.",
-    "staticReadability": "passed locally via HTTP: /reports/index.json, /reports/2026-06-13.json, and /reports/payloads/2026-06-13.json.gz.b64.part00 returned 200 and payload inflated to matching report JSON.",
-    "publication": "live Pages verified after Actions deploy: latest 2026-06-13, top repo addyosmani/agent-skills, 12 repos, 15 frontier, 15 AI."
+    "checkedAt": "2026-06-13 05:56 CST",
+    "summary": "passed at 2026-06-13 05:56 CST: node --check scripts/daily.mjs, node --check public/app.js, git diff --check, JSON parse, data/public parity, gzip payload parity, index latest/path/generatedAt/headline/payload parity, local HTTP readability for /reports/index.json, /reports/2026-06-13.json and /reports/payloads/2026-06-13.json.gz.b64.part00, 12-repo deepDive/diagram contract, 15-frontier business/system/metrics/borrow/boundary+diagram contract, 20-AI signal/impact/action+diagram contract, required Anthropic News/Research/Engineering plus Claude Code/Agent/Computer Use coverage, required big-tech search/ads/recsys source and keyword coverage, retention <= 90 reports.",
+    "staticReadability": "passed locally via HTTP 127.0.0.1:8788: index/report/payload returned 200 and payload inflated to matching report JSON.",
+    "publication": "pending push and GitHub Actions deploy"
   },
   "publication": {
-    "status": "success",
+    "status": "pending",
     "target": "GitHub Pages via GitHub Actions on main",
-    "commit": "d8bd7463592fac0baf4a3aa7f6a0360bdb9141ab",
-    "actionsRun": "27436723702",
-    "ghPagesHead": "5ad40e551220e306b35d33cd7384a20ce8f84eb1",
-    "pagesUrl": "https://eshener.github.io/echo-trending/",
-    "verifiedAt": "2026-06-13 03:01 CST",
-    "publication": "success: Actions run 27436723702 completed, gh-pages head 5ad40e5 contains reports/index.json with latest 2026-06-13, and live Pages cache-busted JSON returned 2026-06-13 with 12 repos, 15 frontier items and 15 AI items."
+    "note": "Will update after push and deploy verification."
   }
 }
