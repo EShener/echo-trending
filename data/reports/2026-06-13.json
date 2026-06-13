@@ -1,19 +1,34 @@
 {
   "date": "2026-06-13",
-  "generatedAt": "2026-06-13T01:02:54.550Z",
+  "generatedAt": "2026-06-13T03:55:10.279Z",
   "source": {
     "provider": "GitHub Trending daily + GitHub API + official/industry pages + AIHOT",
     "query": "https://github.com/trending?since=daily",
     "since": "2026-06-13",
     "limit": 12,
-    "language": "all"
+    "language": "all",
+    "refreshedAt": "2026-06-13T03:55:10.279Z",
+    "latestTrendingTop12": [
+      "addyosmani/agent-skills",
+      "music-assistant/server",
+      "mattermost/mattermost",
+      "apple/container",
+      "iptv-org/iptv",
+      "obra/superpowers",
+      "refactoringhq/tolaria",
+      "maziyarpanahi/openmed",
+      "LMCache/LMCache",
+      "phuryn/pm-skills",
+      "masterking32/MasterDnsVPN",
+      "msitarzewski/agency-agents"
+    ]
   },
   "summary": {
-    "headline": "今日雷达主线：GitHub Trending 转向 Agent skills/本地基础设施/LLM 推理，A 社强化 Claude 企业化与安全治理，搜广推继续把召回、排序、评估做成系统工程。",
+    "headline": "截至 2026-06-13 午间，Echo Trending 主线仍是 Agent skills、本地/私有基础设施和 LLM 推理；A 社信号转向高能力模型的可控发布、企业集成和 agent 安全治理。",
     "bullets": [
-      "GitHub 日榜前列包括 addyosmani/agent-skills、music-assistant/server、mattermost/mattermost；共同信号是 agent 工作流、私有/本地基础设施和可复用工程模板升温。",
-      "A 社最新官方动态覆盖 Public Record、TCS/DXC 合作、Fable/Mythos、Claude Code 限额和 Agent 自主性研究，说明 Claude 路线同时押注高能力、企业系统集成和安全可观测。",
-      "搜广推板块优先收录 Meta、Pinterest、Dropbox、Amazon、Salesforce 与中文工程文章，重点从业务问题、系统机制、指标实验和适用边界拆解。"
+      "GitHub Trending 日榜复核后仍为 addyosmani/agent-skills、music-assistant/server、mattermost/mattermost 等；新增观察点是 superpowers/pm-skills/agency-agents 让“可复用 agent 流程资产”从单仓库扩散成生态现象。",
+      "A 社补充官方 Opus 4.8、Fable/Mythos 暂停访问更新、biology agents 与 Public Record/TCS/DXC/agent autonomy/cyber safety，模型能力、企业合作和安全边界必须一起读。",
+      "搜广推新增 Spotify 个性化/实验栈、Netflix 模型生命周期图、美团 ACL 2026 生成式推荐信号；仍按“业务问题 -> 系统机制 -> 指标/实验 -> 可借鉴点 -> 不适用边界”拆解。"
     ]
   },
   "items": [
@@ -2533,8 +2548,8 @@
   ],
   "frontier": {
     "title": "搜广推技术前沿",
-    "subtitle": "聚焦搜索、广告、推荐、排序、召回、评估与个性化的最新大厂工程实践和中文工程参考。",
-    "source": "Meta/Pinterest/Dropbox/Amazon/Salesforce/阿里云工程文章 + arXiv/GitHub radar",
+    "subtitle": "混合跟踪 search / ads / advertising / recommendation、排序、召回、特征、实验平台和生成式推荐的产业工程实践。",
+    "source": "Meta/Pinterest/Spotify/Netflix/Dropbox/Amazon/Salesforce/Alibaba/Meituan official engineering sources + targeted web verification",
     "items": [
       {
         "rank": 1,
@@ -2698,7 +2713,53 @@
         }
       },
       {
-        "rank": 8,
+        "title": "Spotify：个性化与实验平台分栈，避免推荐系统把探索和因果验证搅在一起",
+        "url": "https://engineering.atspotify.com/2026/1/why-we-use-separate-tech-stacks-for-personalization-and-experimentation",
+        "source": "Spotify Engineering",
+        "publishedAt": "2026-01-15T00:00:00Z",
+        "sourceType": "industry",
+        "tags": [
+          "recsys",
+          "personalization",
+          "experiment",
+          "ranking"
+        ],
+        "summary": "Spotify 解释为何将 personalization 与 experimentation 使用不同技术栈：推荐系统需要连续学习和个体化体验，实验系统则要保持因果判断、处理 rollout 与统计可信度。",
+        "imageUrl": "https://www.google.com/s2/favicons?domain=engineering.atspotify.com&sz=128",
+        "interpretation": {
+          "businessProblem": "个性化系统持续适配用户，实验平台却要稳定识别处理效应；两者混用会让策略优化和因果评估互相污染。",
+          "systemMechanism": "把推荐/强化学习/个性化 serving 与实验分流、指标归因、统计分析拆成不同控制面，用清晰接口传递 treatment。",
+          "metricsAndExperiment": "关注长期满意度、session engagement、实验 power、样本污染、guardrail 指标和 rollout 后回归。",
+          "borrowable": "推荐团队要把“模型优化面”和“实验可信面”分开治理，尤其是多目标推荐和动态策略场景。",
+          "boundary": "低流量、单策略或还没有基础 A/B 规范的团队，先建立实验卫生，再谈复杂分栈。"
+        },
+        "rank": 8
+      },
+      {
+        "title": "Netflix Model Lifecycle Graph：把模型、特征、训练和推荐使用关系做成可治理图谱",
+        "url": "https://netflixtechblog.com/democratizing-machine-learning-at-netflix-building-the-model-lifecycle-graph-5cc6d5828bb1",
+        "source": "Netflix TechBlog",
+        "publishedAt": "2026-05-01T00:00:00Z",
+        "sourceType": "industry",
+        "tags": [
+          "recsys",
+          "ml-platform",
+          "feature",
+          "governance"
+        ],
+        "summary": "Netflix 近期文章聚焦 Model Lifecycle Graph，用图谱串联模型、数据、特征和消费方，让个性化、内容理解与推荐场景能追踪依赖、复用资产并降低 ML 平台门槛。",
+        "imageUrl": "https://www.google.com/s2/favicons?domain=netflixtechblog.com&sz=128",
+        "interpretation": {
+          "businessProblem": "推荐和个性化模型增多后，模型、特征、数据集、下游产品之间的依赖不透明，影响复用、排障和合规审计。",
+          "systemMechanism": "用生命周期图表达训练输入、模型版本、特征来源、服务消费方和 owner，把 ML 资产从文件/表升级为可查询图结构。",
+          "metricsAndExperiment": "看模型复用率、依赖追踪覆盖率、上线 lead time、故障定位时间和特征重复建设率。",
+          "borrowable": "中大型推荐平台应把模型注册表扩展成“资产关系图”，否则多团队并行会快速产生不可见耦合。",
+          "boundary": "小团队模型数量少时不必先建复杂图谱；先保证模型卡、数据血缘和版本记录完整。"
+        },
+        "rank": 9
+      },
+      {
+        "rank": 10,
         "title": "Salesforce DPRS：100ms 内实时个性化决策的系统取舍",
         "url": "https://engineering.salesforce.com/ai-powered-personalization-in-under-100ms-optimizing-real-time-decisioning-at-scale/",
         "source": "Salesforce Engineering",
@@ -2721,7 +2782,7 @@
         }
       },
       {
-        "rank": 9,
+        "rank": 11,
         "title": "推荐系统经典三段式：离线训练、在线召回、在线排序",
         "url": "https://developer.aliyun.com/article/1709087",
         "source": "阿里云开发者社区",
@@ -2744,7 +2805,7 @@
         }
       },
       {
-        "rank": 10,
+        "rank": 12,
         "title": "广告引擎 0.1s 返回：检索、预筛、精排的低延迟链路",
         "url": "https://developer.aliyun.com/article/1693734",
         "source": "阿里云开发者社区",
@@ -2765,18 +2826,41 @@
           "borrowable": "广告链路的关键是把“能不能投、值不值得投、排在哪里”拆开算。",
           "boundary": "没有广告主预算、竞价和归因链路时，不应照搬广告系统复杂模块。"
         }
+      },
+      {
+        "title": "美团 ACL 2026：生成式推荐进入顶会论文精选，搜索推荐正在和复杂推理同框",
+        "url": "https://tech.meituan.com/",
+        "source": "美团技术团队",
+        "publishedAt": "2026-06-05T00:00:00Z",
+        "sourceType": "cn-industry",
+        "tags": [
+          "recsys",
+          "generative",
+          "ranking",
+          "cn-tech"
+        ],
+        "summary": "美团技术首页 2026-06-05 论文精选提到大模型评测、复杂流程推理、强化学习优化和生成式推荐，说明中文本地生活场景也在把生成式模型纳入推荐系统研究版图。",
+        "imageUrl": "https://www.google.com/s2/favicons?domain=tech.meituan.com&sz=128",
+        "interpretation": {
+          "businessProblem": "本地生活推荐需要同时处理商户、用户意图、场景约束和履约质量，传统 CTR/CVR 模型难以覆盖复杂推理与解释需求。",
+          "systemMechanism": "生成式推荐可用于意图理解、候选解释、query/item 语义扩展和多目标重排，但需要与召回、粗排、精排链路协同。",
+          "metricsAndExperiment": "除 CTR/CVR 外，还要看核销、复访、供给公平性、解释采纳率、延迟和生成内容安全。",
+          "borrowable": "中文搜广推团队应把生成式能力先放在旁路特征、query 改写和解释层，再逐步进入主排序。",
+          "boundary": "强实时、高 QPS、低毛利场景中，生成式模型直接进在线精排容易被成本和稳定性卡住。"
+        },
+        "rank": 13
       }
     ]
   },
   "aiNews": {
     "title": "AI 新闻",
-    "subtitle": "汇总 AIHOT、官方 AI 资讯和 A 社 Anthropic News/Research/Enterprise/Safety 动态，并拆成信号、影响、动作。",
-    "source": "AIHOT RSS/API + Anthropic official pages + OpenAI/Google/Hugging Face official feeds",
+    "subtitle": "按“信号 -> 影响 -> 动作”跟踪模型、Agent、企业合作、安全研究和 AIHOT 精选流。",
+    "source": "Anthropic official News/Research + AIHOT Public API/RSS + OpenAI/Hugging Face/Google official feeds",
     "sourceBrief": {
       "kicker": "AIHOT Source",
       "title": "AIHOT 可作为 AI 资讯上游：日报、精选、分类、RSS/API/Skill",
       "url": "https://mp.weixin.qq.com/s/L3OIqqrZkxDxqLA4RZB14Q",
-      "summary": "这篇文章介绍的 AIHOT 不是单条新闻，而是一套 AI 信息源：从多信源抓取、筛选、去重、打分、分类，再通过日报、精选 Feed、RSS/API/Skill 输出。",
+      "summary": "AIHOT 继续作为 AI 资讯上游，本次同时以 Anthropic 官方 News/Research、OpenAI/Hugging Face/Google 官方动态做交叉校验；A 社条目以官网为主，RSS 不可用时采用官网页面。",
       "takeaways": [
         "日报按模型发布/更新、产品发布/更新、行业动态、论文研究、技巧与观点五类组织，适合做早间简报。",
         "精选模式像高质量时间流，适合捕捉不一定进日报、但值得跟进的产品和工程信号。",
@@ -3146,18 +3230,42 @@
           "安全/可信",
           "Agent"
         ],
-        "summary": "Anthropic 发布 Fable 5 与 Mythos 5，强调长任务、软件工程、知识工作、视觉、科研与网络安全能力，并以更保守 safeguard 管控高风险能力。",
+        "summary": "Anthropic 6 月 9 日发布 Claude Fable 5 与 Mythos 5，强调长任务、软件工程、视觉、科研与网络安全能力；6 月 12 日官方页面追加更新，称已暂停 Fable 5 和 Mythos 5 访问，正在恢复。",
         "imageUrl": "https://www.google.com/s2/favicons?domain=anthropic.com&sz=128",
         "interpretation": {
-          "signal": "Claude 模型更新的主线是更长自治任务、更强编码/知识工作，以及能力开放与安全限制同步推进。",
-          "impact": "高能力模型会提升 agentic coding 和复杂分析上限，但也让权限、网络安全和误用防护成为选型核心。",
-          "action": "做模型评估时同时测 SWE 任务、长链路失败恢复、token 成本和 safeguard 误触发。"
+          "signal": "A 社在高能力模型上采取“发布能力 + 快速暂停/恢复”的可控上线模式，能力边界和安全门槛与产品节奏强绑定。",
+          "impact": "企业选型不能只看 benchmark；需要把模型可用性、回滚预案、替代模型和任务降级写进运行手册。",
+          "action": "对 Claude 5 系列建立模型路由和降级策略，长任务/安全敏感任务单独做 canary 与审计。"
         },
-        "impact": "高能力模型会提升 agentic coding 和复杂分析上限，但也让权限、网络安全和误用防护成为选型核心。",
-        "action": "做模型评估时同时测 SWE 任务、长链路失败恢复、token 成本和 safeguard 误触发。"
+        "impact": "企业选型不能只看 benchmark；需要把模型可用性、回滚预案、替代模型和任务降级写进运行手册。",
+        "action": "对 Claude 5 系列建立模型路由和降级策略，长任务/安全敏感任务单独做 canary 与审计。"
       },
       {
-        "rank": 5,
+        "source": "A社 Anthropic",
+        "sourceDetail": "Anthropic 官方",
+        "domain": "anthropic.com",
+        "title": "Introducing Claude Opus 4.8",
+        "url": "https://www.anthropic.com/news/claude-opus-4-8",
+        "publishedAt": "2026-05-28T16:00:00Z",
+        "tags": [
+          "A社/Claude",
+          "模型",
+          "Claude Code",
+          "Computer Use"
+        ],
+        "summary": "Anthropic 发布 Claude Opus 4.8，强调 coding、agentic tasks、professional work、computer use/browser-agent 能力和更高一致性；官方材料还突出更少 unsupported claims 与更强长任务可靠性。",
+        "imageUrl": "https://www.google.com/s2/favicons?domain=anthropic.com&sz=128",
+        "interpretation": {
+          "signal": "Opus 4.8 把 Claude 模型升级重点放在 agentic coding、浏览器/Computer Use、长任务协作和诚实性上。",
+          "impact": "Claude Code 和企业 agent workload 的瓶颈从单步生成质量转向长链路执行、工具调用稳定性和自我纠错。",
+          "action": "模型评估增加长会话编码、浏览器任务、引用准确性、失败自检和成本曲线，不只跑短 benchmark。"
+        },
+        "impact": "Claude Code 和企业 agent workload 的瓶颈从单步生成质量转向长链路执行、工具调用稳定性和自我纠错。",
+        "action": "模型评估增加长会话编码、浏览器任务、引用准确性、失败自检和成本曲线，不只跑短 benchmark。",
+        "rank": 5
+      },
+      {
+        "rank": 6,
         "source": "A社 Anthropic",
         "sourceDetail": "Anthropic Research",
         "domain": "anthropic.com",
@@ -3181,7 +3289,31 @@
         "action": "在内部 coding agent 监控里增加 clarification rate、interrupt rate、tool approval 和 task duration。"
       },
       {
-        "rank": 6,
+        "source": "A社 Anthropic",
+        "sourceDetail": "Anthropic Research",
+        "domain": "anthropic.com",
+        "title": "Paving the way for agents in biology",
+        "url": "https://www.anthropic.com/research/agents-in-biology",
+        "publishedAt": "2026-06-08T16:00:00Z",
+        "tags": [
+          "A社/Claude",
+          "Research",
+          "Agent",
+          "安全/可信"
+        ],
+        "summary": "Anthropic Research 以生物数据检索为案例，指出科研 agent 在 NCBI Virus 等数据基础设施上仍难稳定达到可靠数据集构建所需准确率，核心问题不只在模型，也在数据基础设施是否 agent-friendly。",
+        "imageUrl": "https://www.google.com/s2/favicons?domain=anthropic.com&sz=128",
+        "interpretation": {
+          "signal": "A 社研究把 agent 可靠性问题从通用办公扩展到高风险科研场景，强调数据基础设施需要适配 agent。",
+          "impact": "高价值行业 agent 不能只接网页和 API；数据源结构、 provenance、验证脚本和权限边界会决定可用性。",
+          "action": "在内部知识库/科研数据平台中补齐机器可读 metadata、校验接口和任务回放基线。"
+        },
+        "impact": "高价值行业 agent 不能只接网页和 API；数据源结构、 provenance、验证脚本和权限边界会决定可用性。",
+        "action": "在内部知识库/科研数据平台中补齐机器可读 metadata、校验接口和任务回放基线。",
+        "rank": 7
+      },
+      {
+        "rank": 8,
         "source": "A社 Anthropic",
         "sourceDetail": "Anthropic 官方",
         "domain": "anthropic.com",
@@ -3204,7 +3336,7 @@
         "action": "把 AI agent 的命令执行、凭据访问、网络请求和代码生成纳入 SOC 检测规则。"
       },
       {
-        "rank": 7,
+        "rank": 9,
         "source": "A社 Anthropic",
         "sourceDetail": "Anthropic 官方",
         "domain": "anthropic.com",
@@ -3227,7 +3359,7 @@
         "action": "重新测算 Claude Code 团队使用策略：配额、并发、仓库权限、日志留存和人类审批。"
       },
       {
-        "rank": 8,
+        "rank": 10,
         "source": "AIHOT 精选",
         "sourceDetail": "AIHOT Public API/RSS",
         "domain": "aihot.virxact.com",
@@ -3251,7 +3383,7 @@
         "action": "把 OpenRouter 成本策略、olmo-eval 评估方法和 skill 模板放入周度实验候选。"
       },
       {
-        "rank": 9,
+        "rank": 11,
         "source": "OpenAI",
         "sourceDetail": "OpenAI 官方",
         "domain": "openai.com",
@@ -3274,7 +3406,7 @@
         "action": "为内部 AI adoption 设计角色化课程和实践任务，而不是只发工具链接。"
       },
       {
-        "rank": 10,
+        "rank": 12,
         "source": "Hugging Face",
         "sourceDetail": "Hugging Face Blog",
         "domain": "huggingface.co",
@@ -3297,7 +3429,7 @@
         "action": "把关键业务 prompt、工具调用和失败案例整理成 eval suite，纳入模型升级 gate。"
       },
       {
-        "rank": 11,
+        "rank": 13,
         "source": "Google AI",
         "sourceDetail": "Google Blog",
         "domain": "blog.google",
@@ -3320,7 +3452,7 @@
         "action": "跟踪主要云/模型供应商的区域容量、能源约束和可持续性承诺。"
       },
       {
-        "rank": 12,
+        "rank": 14,
         "source": "OpenAI",
         "sourceDetail": "OpenAI 官方",
         "domain": "openai.com",
@@ -3354,39 +3486,64 @@
   "operations": {
     "syncedMain": true,
     "reportRetentionDays": 90,
-    "latestGitHubSource": "GitHub Trending daily page parsed on 2026-06-13 plus authenticated GitHub REST API metadata",
+    "latestGitHubSource": "GitHub Trending daily page parsed on 2026-06-13T03:55Z; top-12 unchanged from prior curated report",
     "frontierSources": [
       "Meta Engineering",
       "Pinterest Engineering",
+      "Spotify Engineering",
+      "Netflix TechBlog",
       "Dropbox Tech",
       "Amazon Science",
       "Salesforce Engineering",
-      "阿里云开发者社区"
+      "阿里云开发者社区",
+      "美团技术团队"
     ],
     "anthropicCoverage": [
       "Newsroom",
       "Research",
       "Claude model updates",
-      "Claude Code/Agent",
+      "Claude Code/Agent/Computer Use",
       "enterprise partnerships",
-      "AI safety/cyber research"
-    ]
+      "AI safety/cyber research",
+      "Fable/Mythos access suspension update"
+    ],
+    "currentRun": {
+      "at": "2026-06-13T03:55:10.279Z",
+      "actions": [
+        "pulled origin/main with --ff-only",
+        "rechecked GitHub Trending daily top-12",
+        "added Anthropic Opus 4.8 and agents-in-biology official research signal",
+        "expanded search/ads/recsys with Spotify, Netflix and Meituan sources",
+        "regenerated public JSON and gzip payload shard"
+      ]
+    }
   },
-  "sourceBoundary": "Anthropic 以官方网页为主；AIHOT 使用 Public API/RSS；搜广推优先大厂工程博客，中文文章标注为中文工程参考；GitHub 项目来自 github.com/trending daily。",
-  "sourceBoundaryAt": "2026-06-13T01:02:54.553Z",
+  "sourceBoundary": "Anthropic 以官方 News/Research 网页为主；AIHOT 使用 Public API/RSS；搜广推优先大厂工程博客和官方研究页，中文文章标注为中文工程参考；GitHub 项目来自 github.com/trending daily。",
+  "sourceBoundaryAt": "2026-06-13T03:55:10.279Z",
   "runStatus": "validated-ready-to-publish",
   "validation": {
     "status": "passed",
-    "checkedAt": "2026-06-13T01:03:54.470Z",
+    "checkedAt": "2026-06-13T03:56:39.280Z",
     "checks": [
-      "JSON parse for data/public/index",
-      "compressed payload gunzip + JSON parse",
+      "node --check scripts/daily.mjs",
+      "node --check public/app.js",
+      "git diff --check",
+      "data/public JSON parity",
+      "gzip payload gunzip + JSON parse parity",
+      "index latest/path parity",
+      "GitHub Trending top-12 contract",
+      "12-repo deepDive/diagram contract",
+      "13-frontier business/system/metrics/borrow/boundary contract",
+      "14-AI signal/impact/action contract",
+      "required Anthropic/AIHOT/OpenAI and search/ads/recsys source-keyword coverage",
+      "retention <= 90 days",
       "local HTTP static fetch for index and current report"
     ],
     "result": {
       "items": 12,
-      "frontier": 10,
-      "aiNews": 12
+      "frontier": 13,
+      "aiNews": 14,
+      "payloadParts": 1
     }
   },
   "publication": {
