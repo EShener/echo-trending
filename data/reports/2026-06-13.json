@@ -3594,7 +3594,7 @@
   },
   "sourceBoundary": "GitHub 项目来自 github.com/trending daily 并用 GitHub API 刷新计数；Anthropic 以官方 News/Research/Engineering 页面为主；AIHOT 使用 Public API/RSS；OpenAI 使用官方 News；搜广推优先大厂工程博客和官方研究页，中文文章标注为中文工程参考。",
   "sourceBoundaryAt": "2026-06-13T13:01:35.677Z",
-  "runStatus": "validated-ready-to-publish",
+  "runStatus": "published",
   "validation": {
     "status": "passed",
     "checkedAt": "2026-06-13T13:02:26.525Z",
@@ -3611,7 +3611,9 @@
       "14-AI signal/impact/action contract",
       "required Anthropic/AIHOT/OpenAI and search/ads/recsys source-keyword coverage",
       "retention <= 90 days",
-      "local HTTP static fetch for index and current report"
+      "local HTTP static fetch for index and current report",
+      "GitHub Actions deploy success",
+      "GitHub Pages API built status"
     ],
     "result": {
       "items": 12,
@@ -3626,11 +3628,29 @@
       "items": 12,
       "frontier": 14,
       "aiNews": 14
-    }
+    },
+    "publication": "success: Echo Trending Deploy run 27467557874 completed successfully; Pages API returned built for https://eshener.github.io/echo-trending/."
   },
   "publication": {
     "targetBranch": "main",
     "target": "GitHub Pages via GitHub Actions",
-    "status": "pending push"
+    "status": "success",
+    "commit": "26c171f",
+    "actionsRun": {
+      "id": 27467557874,
+      "url": "https://github.com/EShener/echo-trending/actions/runs/27467557874",
+      "headSha": "26c171f2c3927ab553c0c5210847cf2da8720aea",
+      "conclusion": "success",
+      "completedAt": "2026-06-13T13:03:43Z"
+    },
+    "pages": {
+      "status": "built",
+      "htmlUrl": "https://eshener.github.io/echo-trending/",
+      "source": {
+        "branch": "gh-pages",
+        "path": "/"
+      }
+    },
+    "updatedAt": "2026-06-13T13:04:06.214Z"
   }
 }
