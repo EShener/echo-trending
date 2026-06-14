@@ -3678,18 +3678,23 @@
     ]
   },
   "runStatus": {
-    "status": "local validation passed; push pending",
-    "checkedAt": "2026-06-14T19:08:45.002Z",
-    "note": "Synced origin/main, regenerated GitHub/API data, enriched Chinese deep analysis, rebuilt public JSON and compressed payload."
+    "status": "published to gh-pages; Pages CDN may briefly cache stable report path",
+    "checkedAt": "2026-06-14T19:10:34.392Z",
+    "note": "Content push debf349 triggered GitHub Actions run 27509093634, which completed successfully. gh-pages contains refreshed 2026-06-15 report and payload; direct Pages JSON path briefly returned the prior cached object while index.json already pointed to 2026-06-15."
   },
   "validation": {
-    "summary": "passed local validation: node --check scripts/daily.mjs, node --check public/app.js, JSON parse, data/public parity, gzip payload parity, index latest/path parity, 12-repo deepDive/diagram contract, 10-frontier five-part business/system/metrics/borrow/boundary contract, 12-AI signal/impact/action contract, static HTTP read on 127.0.0.1:8787, and 90-day retention policy.",
-    "staticReadability": "passed locally through direct file parity and HTTP fetch: /reports/index.json latest=2026-06-15, /reports/2026-06-15.json parsed as 12 repos / 10 frontier / 12 AI, payload part readable, homepage payload map contains 2026-06-15.",
-    "checkedAt": "2026-06-14T19:08:45.002Z"
+    "summary": "passed local and remote validation: node --check scripts/daily.mjs, node --check public/app.js, git diff --check, JSON parse, data/public parity, gzip payload parity, index latest/path parity, 12-repo deepDive/diagram contract, 10-frontier five-part business/system/metrics/borrow/boundary contract, 12-AI signal/impact/action contract, static HTTP read on 127.0.0.1:8787, GitHub Actions deploy success, and gh-pages artifact verification.",
+    "staticReadability": "passed locally via file parity and HTTP fetch; passed remotely on gh-pages via reports/index.json latest=2026-06-15, reports/2026-06-15.json parsed as 12 repos / 10 frontier / 12 AI, payload part present, and index.html payload map contains 2026-06-15. Live Pages CDN may briefly serve the previous stable JSON object for /reports/2026-06-15.json.",
+    "checkedAt": "2026-06-14T19:10:34.392Z"
   },
   "publication": {
-    "status": "pending main push and GitHub Pages workflow",
+    "status": "success via GitHub Actions to gh-pages",
     "branch": "main",
-    "checkedAt": "2026-06-14T19:08:45.002Z"
+    "contentCommit": "debf349e51b4db387990c28ca5640212ca3c6ffd",
+    "actionsRun": "27509093634",
+    "ghPagesCommit": "009cda56e659f79043e3795e1b7ece6d71fed97e",
+    "pagesUrl": "https://eshener.github.io/echo-trending/",
+    "cacheNote": "Stable report URL briefly served old CDN cache during verification; gh-pages source artifacts are refreshed.",
+    "checkedAt": "2026-06-14T19:10:34.392Z"
   }
 }
