@@ -60,12 +60,17 @@ async function buildReport({ reportDate, limit, days, language }) {
   const since = offsetDate(reportDate, -days);
   const languageQuery = language ? ` language:${language}` : "";
   const query = `pushed:>=${since} stars:>100 archived:false${languageQuery}`;
-  const searchUrl = `https://api.github.com/search/repositories?q=${encodeURIComponent(
-    query,
-  )}&sort=stars&order=desc&per_page=${limit}`;
-
-  const search = await githubJson(searchUrl);
-  const repos = search.items || [];
+  const repoSource = await fetchTrendingRepos({ limit, language }).catch(async (error) => {
+    const searchUrl = `https://api.github.com/search/repositories?q=${encodeURIComponent(
+      query,
+    )}&sort=stars&order=desc&per_page=${limit}`;
+    const search = await githubJson(searchUrl);
+    return {
+      provider: `GitHub Search API (Trending fallback failed: ${String(error.message || error).slice(0, 120)})`,
+      repos: search.items || [],
+    };
+  });
+  const repos = repoSource.repos || [];
   const items = [];
 
   for (const [index, repo] of repos.entries()) {
@@ -95,7 +100,7 @@ async function buildReport({ reportDate, limit, days, language }) {
     date: reportDate,
     generatedAt: new Date().toISOString(),
     source: {
-      provider: "GitHub Search API + arXiv + RSS",
+      provider: `${repoSource.provider} + arXiv + RSS`,
       query,
       since,
       limit,
@@ -108,12 +113,53 @@ async function buildReport({ reportDate, limit, days, language }) {
   };
 }
 
+async function fetchTrendingRepos({ limit, language }) {
+  const languagePath = language ? `/${encodeURIComponent(language)}` : "";
+  const url = `https://github.com/trending${languagePath}?since=daily`;
+  const html = await fetchText(url);
+  const candidates = parseGitHubTrending(html).slice(0, Math.max(limit * 2, limit));
+  if (!candidates.length) throw new Error("GitHub Trending page returned no repositories");
+
+  const settled = await Promise.allSettled(
+    candidates.map(async (candidate) => {
+      const repo = await githubJson(`https://api.github.com/repos/${candidate.fullName}`);
+      repo.trending = candidate;
+      return repo;
+    }),
+  );
+  const repos = settled
+    .flatMap((result) => (result.status === "fulfilled" ? [result.value] : []))
+    .slice(0, limit);
+  if (!repos.length) throw new Error("GitHub Trending metadata fetch returned no repositories");
+  return { provider: "GitHub Trending daily", repos };
+}
+
+function parseGitHubTrending(html) {
+  return [...html.matchAll(/<article[\s\S]*?<\/article>/g)]
+    .map((match) => match[0])
+    .map((article) => {
+      const href = article.match(/<h2[\s\S]*?<a[^>]+href="([^"]+)"[\s\S]*?<\/a>/)?.[1] || "";
+      const fullName = cleanupXml(href).replace(/^\/+/, "").replace(/\s+/g, "");
+      const starsToday = Number((article.match(/([\d,]+)\s+stars today/i)?.[1] || "0").replaceAll(",", ""));
+      const description =
+        article
+          .match(/<p[^>]*class="[^"]*col-9[^"]*"[^>]*>([\s\S]*?)<\/p>/)?.[1]
+          ?.replace(/<[^>]+>/g, " ")
+          .replace(/\s+/g, " ")
+          .trim() || "";
+      const language = cleanupXml(article.match(/itemprop="programmingLanguage">([^<]+)</)?.[1] || "");
+      return { fullName, starsToday, description, language };
+    })
+    .filter((item) => /^[^/\s]+\/[^/\s]+$/.test(item.fullName));
+}
+
 async function githubJson(url) {
   const headers = {
     Accept: "application/vnd.github+json",
     "User-Agent": "echo-trending",
   };
-  if (process.env.GITHUB_TOKEN) headers.Authorization = `Bearer ${process.env.GITHUB_TOKEN}`;
+  const token = process.env.GITHUB_TOKEN || process.env.GH_TOKEN;
+  if (token) headers.Authorization = `Bearer ${token}`;
 
   const response = await fetch(url, { headers });
   if (!response.ok) {
@@ -806,7 +852,15 @@ async function buildFrontierSection(maxItems) {
       ...arxivItems,
     ],
     maxItems,
-  ).map((item, index) => ({ ...item, rank: index + 1 }));
+  ).map((item, index) => {
+    const interpretation = normalizeFrontierInterpretation(item);
+    return {
+      ...item,
+      interpretation,
+      diagram: buildFrontierDiagram(item, interpretation),
+      rank: index + 1,
+    };
+  });
 
   const sourceNotes = [];
   if (industryItems.length) sourceNotes.push("Big Tech Engineering/RSS");
@@ -819,6 +873,65 @@ async function buildFrontierSection(maxItems) {
     subtitle: "混合跟踪搜索、广告、推荐、排序、召回相关的新论文和大厂工程实践。",
     source: sourceNotes.length ? sourceNotes.join(" + ") : "fallback",
     items: selected.length ? selected : fallbackFrontierItems(),
+  };
+}
+
+function normalizeFrontierInterpretation(item) {
+  if (item.interpretation && typeof item.interpretation === "object" && item.interpretation.businessProblem) {
+    return item.interpretation;
+  }
+  const text = `${item.title || ""} ${item.summary || ""} ${(item.tags || []).join(" ")}`.toLowerCase();
+  const isAds = /ads?|advertis|auction|bidding|ctr|cvr|conversion|cpa|cpm/.test(text);
+  const isSearch = /search|retrieval|query|index|relevance|rag/.test(text);
+  const isRec = /recommend|recsys|ranking|personalization|feed|candidate/.test(text);
+  const isLabeling = /label|judge|dspy|human/.test(text);
+  if (isAds) {
+    return {
+      businessProblem: "广告候选、排序和竞价需要同时控制转化价值、用户体验、延迟与算力成本，单点模型提升很难直接证明业务收益。",
+      systemMechanism: "把用户行为序列、实时上下文、候选生成、轻量排序、精排/重排和预算约束拆成可观测阶段，并在高价值候选上投入更重模型。",
+      metricsAndExperiment: "优先看 CTR、CVR、CPA/ROAS、广告质量、P95 延迟、推理成本和预算消耗；在线实验要同时观察广告主价值与用户负反馈。",
+      borrowable: "可借鉴分阶段候选裁剪、实时特征注入、模型容量自适应和在线/离线差异诊断，把算力预算变成排序策略的一部分。",
+      boundary: "流量小、转化回传慢、成本归因不清或缺少在线实验平台时，不适合直接复制大厂多阶段广告架构。",
+    };
+  }
+  if (isSearch || isLabeling) {
+    return {
+      businessProblem: "企业搜索和社区搜索的长尾查询、权限边界、语义漂移和标注稀缺会拉低相关性，人工标注又难以覆盖全部候选。",
+      systemMechanism: "通过混合检索、模型化相关性评估、LLM 辅助标注或自动化 judge，把查询理解、召回、排序和质量评估串成闭环。",
+      metricsAndExperiment: "重点看 NDCG/MRR、answer match、人工一致性、长尾覆盖、权限误召、P95 延迟和标注成本；线上需要观察搜索成功率与二次查询率。",
+      borrowable: "适合迁移到企业知识库、RAG、客服搜索和社区内容搜索：先建立可靠评测集，再让 LLM 扩大标注覆盖。",
+      boundary: "如果文档权限复杂但审计不足，或 LLM judge 没有金标校准，自动评估会把错误相关性放大到生产排序。",
+    };
+  }
+  if (isRec) {
+    return {
+      businessProblem: "推荐系统需要在巨大候选池里兼顾兴趣匹配、新鲜度、多样性和商业目标，传统召回/排序割裂会造成离线提升难以上线转化。",
+      systemMechanism: "把候选生成、向量/索引、用户序列、ranker 表征和反馈学习联合设计，让召回质量与后续排序目标保持一致。",
+      metricsAndExperiment: "关注 recall@K、覆盖率、多样性、CTR/CVR、停留/满意度、延迟和索引刷新时延；实验要看离线召回是否转化为在线核心指标。",
+      borrowable: "可借鉴模型化索引、可编辑生成式召回、多目标排序和实时行为特征，将推荐漏斗从组件拼接改为端到端协同。",
+      boundary: "物料规模不大、业务目标单一或团队没有检索/排序联合 owner 时，复杂联合建模会增加维护成本。",
+    };
+  }
+  return {
+    businessProblem: "前沿论文或工程文章触及搜广推链路中的召回、排序、评测或系统效率问题，需要先判断它离真实业务目标有多近。",
+    systemMechanism: "从任务定义、数据构造、模型结构、服务约束和评测协议五个层面拆解，避免只被单个 benchmark 指标吸引。",
+    metricsAndExperiment: "优先补齐离线指标、线上代理指标、成本、延迟、稳定性和反例分析，再决定是否进入工程 spike。",
+    borrowable: "适合沉淀为候选技术卡片：记录输入输出、依赖数据、可替换组件和最小验证路径。",
+    boundary: "如果论文数据不可复现、业务指标不匹配或系统约束被简化，暂时只应观察，不应进入主链路。",
+  };
+}
+
+function buildFrontierDiagram(item, interpretation) {
+  return {
+    title: `${item.source || "Frontier"} 搜广推机制图`,
+    caption: (item.tags || []).slice(0, 4).join(" / ") || item.sourceType || "frontier",
+    nodes: [
+      { label: "业务问题", detail: interpretation.businessProblem, type: "input" },
+      { label: "系统机制", detail: interpretation.systemMechanism, type: "core" },
+      { label: "指标实验", detail: interpretation.metricsAndExperiment, type: "measure" },
+      { label: "采用边界", detail: interpretation.boundary, type: "risk" },
+    ],
+    links: ["定义目标", "拆解链路", "实验验收"],
   };
 }
 
@@ -971,17 +1084,26 @@ async function buildAiNewsSection(maxItems) {
       return parseFeedItems(xml, feed).slice(0, 4);
     }),
     ),
-    fetchAnthropicNewsItems(5).catch(() => []),
+    fetchAnthropicNewsItems(Math.max(12, maxItems)).catch(() => []),
   ]);
   const aiHotDigest = await buildAiHotDigest();
 
-  const items = feedResults
+  const rawItems = feedResults
     .flatMap((result) => (result.status === "fulfilled" ? result.value : []))
     .concat(anthropicResult)
     .sort((a, b) => (b.priority || 0) - (a.priority || 0) || new Date(b.publishedAt || 0) - new Date(a.publishedAt || 0))
     .filter(dedupeByTitle)
-    .sort((a, b) => new Date(b.publishedAt || 0) - new Date(a.publishedAt || 0))
-    .slice(0, maxItems)
+    .sort((a, b) => new Date(b.publishedAt || 0) - new Date(a.publishedAt || 0));
+  const anthropicQuota = Math.min(5, Math.max(2, Math.floor(maxItems * 0.4)));
+  const anthropicItems = selectAnthropicCoverage(rawItems.filter(isAnthropicItem), anthropicQuota);
+  const items = pickUniqueItems(
+    [
+      ...rawItems.slice(0, Math.max(4, maxItems - anthropicItems.length)),
+      ...anthropicItems,
+      ...rawItems,
+    ],
+    maxItems,
+  )
     .map((item, index) => ({
       ...item,
       rank: index + 1,
@@ -998,21 +1120,70 @@ async function buildAiNewsSection(maxItems) {
   };
 }
 
+function isAnthropicItem(item) {
+  const text = `${item.source || ""} ${item.sourceDetail || ""} ${item.title || ""} ${item.summary || ""}`.toLowerCase();
+  return text.includes("anthropic") || text.includes("claude") || text.includes("a社");
+}
+
+function selectAnthropicCoverage(items, maxItems) {
+  const ranked = rankAnthropicItems(items);
+  const buckets = [
+    (item) => /opus|sonnet|fable|mythos|model/i.test(`${item.title} ${item.summary}`),
+    (item) => /partnership|alliance|regulated|compute|enterprise|tcs|dxc|spacex/i.test(`${item.title} ${item.summary}`),
+    (item) => /research|safety|alignment|teaching|misuse|autonomy|trustworthy/i.test(`${item.source} ${item.title} ${item.summary}`),
+    (item) => /engineering|claude code|managed agents|auto mode|sandbox|contain|computer use|tool use/i.test(`${item.source} ${item.title} ${item.summary}`),
+  ];
+  const selected = [];
+  for (const matches of buckets) {
+    const item = ranked.find((candidate) => matches(candidate) && !selected.some((seen) => normalizeTitle(seen.title) === normalizeTitle(candidate.title)));
+    if (item) selected.push(item);
+  }
+  for (const item of ranked) {
+    if (selected.length >= maxItems) break;
+    if (!selected.some((seen) => normalizeTitle(seen.title) === normalizeTitle(item.title))) selected.push(item);
+  }
+  return selected.slice(0, maxItems);
+}
+
 async function fetchAnthropicNewsItems(maxItems) {
   try {
-    const html = await fetchText("https://www.anthropic.com/news");
-    const paths = uniqueList([...html.matchAll(/href=["'](\/news\/[^"'?#]+)["']/g)].map((match) => match[1])).slice(0, maxItems + 3);
+    const sectionPages = [
+      { section: "News", path: "/news" },
+      { section: "Research", path: "/research" },
+      { section: "Engineering", path: "/engineering" },
+    ];
+    const sectionResults = await Promise.allSettled(
+      sectionPages.map(async (section) => {
+        const html = await fetchText(`https://www.anthropic.com${section.path}`);
+        const pattern = new RegExp(`href=["'](/(?:news|research|engineering)/[^"'?#]+)["']`, "g");
+        return [...html.matchAll(pattern)].map((match) => ({
+          pathname: match[1],
+          section: section.section,
+        }));
+      }),
+    );
+    const paths = uniqueList(
+      sectionResults
+        .flatMap((result) => (result.status === "fulfilled" ? result.value : []))
+        .filter((item) => !item.pathname.includes("/team/"))
+        .map((item) => `${item.section}|${item.pathname}`),
+    )
+      .map((value) => {
+        const [section, pathname] = value.split("|");
+        return { section, pathname };
+      })
+      .slice(0, Math.max(maxItems * 3, maxItems + 6));
     const results = await Promise.allSettled(
-      paths.slice(0, maxItems).map(async (pathname) => {
+      paths.map(async ({ section, pathname }) => {
         const url = `https://www.anthropic.com${pathname}`;
         const page = await fetchText(url);
         const title = extractMeta(page, "og:title") || extractTitle(page) || pathname.split("/").pop();
         const summary = extractMeta(page, "og:description") || extractMeta(page, "description") || extractFirstParagraph(page);
         const imageUrl = extractMeta(page, "og:image") || "https://www.google.com/s2/favicons?domain=anthropic.com&sz=128";
-        const publishedAt = parseAnthropicPublishedAt(page) || new Date().toISOString();
+        const publishedAt = parseAnthropicPublishedAt(page) || "";
         return {
-          source: "A社 Anthropic",
-          sourceDetail: "Anthropic 官方",
+          source: section === "News" ? "A社 Anthropic" : `A社 Anthropic ${section}`,
+          sourceDetail: `Anthropic 官方 ${section}`,
           domain: "anthropic.com",
           title: cleanupXml(title).replace(/\s+\\ Anthropic$/, ""),
           url,
@@ -1026,7 +1197,7 @@ async function fetchAnthropicNewsItems(maxItems) {
     const items = results
       .flatMap((result) => (result.status === "fulfilled" ? [result.value] : []))
       .filter((item) => item.title && item.url);
-    if (items.length) return items;
+    if (items.length) return rankAnthropicItems(items).slice(0, Math.max(maxItems, 24));
   } catch {
     // Fall through to community-maintained feed mirrors when the official site blocks or changes markup.
   }
@@ -1064,6 +1235,39 @@ async function fetchAnthropicNewsItems(maxItems) {
     .flatMap((result) => (result.status === "fulfilled" ? result.value : []))
     .filter(dedupeByTitle)
     .slice(0, maxItems);
+}
+
+function rankAnthropicItems(items) {
+  const priorityTerms = [
+    ["opus", 9],
+    ["sonnet", 8],
+    ["fable", 8],
+    ["mythos", 8],
+    ["claude code", 9],
+    ["agent", 8],
+    ["computer use", 8],
+    ["managed agents", 8],
+    ["sandbox", 7],
+    ["contain", 7],
+    ["safety", 7],
+    ["alignment", 7],
+    ["misuse", 7],
+    ["partnership", 6],
+    ["alliance", 6],
+    ["compute", 6],
+    ["enterprise", 5],
+  ];
+  return items
+    .map((item) => {
+      const text = `${item.title} ${item.summary}`.toLowerCase();
+      const sectionBoost = item.source?.includes("Research") || item.source?.includes("Engineering") ? 5 : 0;
+      const signalBoost = priorityTerms.reduce((sum, [term, score]) => sum + (text.includes(term) ? score : 0), 0);
+      const age = item.publishedAt ? daysBetween(new Date(item.publishedAt), new Date()) : 999;
+      const recencyBoost = age <= 7 ? 8 : age <= 30 ? 5 : age <= 90 ? 2 : 0;
+      return { ...item, anthropicScore: sectionBoost + signalBoost + recencyBoost };
+    })
+    .sort((a, b) => b.anthropicScore - a.anthropicScore || new Date(b.publishedAt || 0) - new Date(a.publishedAt || 0))
+    .filter(dedupeByTitle);
 }
 
 async function buildAiHotDigest() {
@@ -1466,6 +1670,7 @@ function normalizeRepo(repo, languages, reportDate) {
     url: repo.html_url,
     description: repo.description || "",
     stars: repo.stargazers_count,
+    starsToday: repo.trending?.starsToday || 0,
     forks: repo.forks_count,
     openIssues: repo.open_issues_count,
     language: repo.language || Object.keys(languages)[0] || "",
