@@ -881,7 +881,7 @@ function normalizeFrontierInterpretation(item) {
     return item.interpretation;
   }
   const text = `${item.title || ""} ${item.summary || ""} ${(item.tags || []).join(" ")}`.toLowerCase();
-  const isAds = /ads?|advertis|auction|bidding|ctr|cvr|conversion|cpa|cpm/.test(text);
+  const isAds = /\bads?\b|advertis|auction|bidding|\bctr\b|\bcvr\b|conversion|\bcpa\b|\bcpm\b/.test(text);
   const isSearch = /search|retrieval|query|index|relevance|rag/.test(text);
   const isRec = /recommend|recsys|ranking|personalization|feed|candidate/.test(text);
   const isLabeling = /label|judge|dspy|human/.test(text);
@@ -974,6 +974,9 @@ async function fetchIndustryFrontierItems(maxItems) {
     { source: "Spotify Engineering", url: "https://engineering.atspotify.com/feed/", domain: "engineering.atspotify.com", priority: 3 },
     { source: "Salesforce Engineering", url: "https://engineering.salesforce.com/feed/", domain: "engineering.salesforce.com", priority: 3 },
     { source: "Dropbox Tech", url: "https://dropbox.tech/feed", domain: "dropbox.tech", priority: 2 },
+    { source: "Meituan Tech", url: "https://tech.meituan.com/feed/", domain: "tech.meituan.com", priority: 3 },
+    { source: "Tencent Cloud Developer", url: "https://cloud.tencent.com/developer/rss", domain: "cloud.tencent.com", priority: 2 },
+    { source: "Alibaba Cloud Developer", url: "https://developer.aliyun.com/rss", domain: "developer.aliyun.com", priority: 2 },
   ];
 
   const results = await Promise.allSettled(
