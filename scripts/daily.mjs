@@ -2,12 +2,17 @@
 
 import fs from "node:fs/promises";
 import path from "node:path";
+import { promisify } from "node:util";
 import { fileURLToPath } from "node:url";
+import { gzip } from "node:zlib";
 
 const __dirname = path.dirname(fileURLToPath(import.meta.url));
 const rootDir = path.resolve(__dirname, "..");
 const publicReportsDir = path.join(rootDir, "public", "reports");
 const dataReportsDir = path.join(rootDir, "data", "reports");
+const publicPayloadsDir = path.join(publicReportsDir, "payloads");
+const publicIndexHtmlPath = path.join(rootDir, "public", "index.html");
+const gzipAsync = promisify(gzip);
 
 const args = parseArgs(process.argv.slice(2));
 const reportTimezone = process.env.REPORT_TIMEZONE || "Asia/Shanghai";
@@ -1697,6 +1702,7 @@ async function writeReport(report) {
   const json = `${JSON.stringify(report, null, 2)}\n`;
   await fs.writeFile(path.join(dataReportsDir, `${report.date}.json`), json);
   await fs.writeFile(path.join(publicReportsDir, `${report.date}.json`), json);
+  await writeReportPayload(report.date, json);
 }
 
 async function updateIndex() {
@@ -1713,12 +1719,13 @@ async function updateIndex() {
     path.join(publicReportsDir, "index.json"),
     `${JSON.stringify({ reports }, null, 2)}\n`,
   );
+  await updateReportPayloadManifest(reports);
 }
 
 async function pruneOldReports(currentDate) {
   if (!Number.isFinite(reportRetentionDays) || reportRetentionDays <= 0) return;
   const cutoff = offsetDate(currentDate, -(Math.floor(reportRetentionDays) - 1));
-  await Promise.all([pruneReportsInDir(publicReportsDir, cutoff), pruneReportsInDir(dataReportsDir, cutoff)]);
+  await Promise.all([pruneReportsInDir(publicReportsDir, cutoff), pruneReportsInDir(dataReportsDir, cutoff), prunePayloads(cutoff)]);
 }
 
 async function pruneReportsInDir(dir, cutoff) {
@@ -1729,6 +1736,55 @@ async function pruneReportsInDir(dir, cutoff) {
       .filter((file) => file.replace(".json", "") < cutoff)
       .map((file) => fs.unlink(path.join(dir, file)).catch(() => {})),
   );
+}
+
+async function writeReportPayload(date, json) {
+  await fs.mkdir(publicPayloadsDir, { recursive: true });
+  await removePayloadParts(date);
+  const encoded = (await gzipAsync(Buffer.from(json, "utf8"))).toString("base64");
+  const chunkSize = 900000;
+  const partCount = Math.max(1, Math.ceil(encoded.length / chunkSize));
+  await Promise.all(
+    Array.from({ length: partCount }, (_, index) => {
+      const part = encoded.slice(index * chunkSize, (index + 1) * chunkSize);
+      return fs.writeFile(payloadPartPath(date, index), `${part}\n`);
+    }),
+  );
+}
+
+async function removePayloadParts(date) {
+  const files = await fs.readdir(publicPayloadsDir).catch(() => []);
+  await Promise.all(
+    files
+      .filter((file) => file.startsWith(`${date}.json.gz.b64.part`))
+      .map((file) => fs.unlink(path.join(publicPayloadsDir, file)).catch(() => {})),
+  );
+}
+
+function payloadPartPath(date, index) {
+  return path.join(publicPayloadsDir, `${date}.json.gz.b64.part${String(index).padStart(2, "0")}`);
+}
+
+async function prunePayloads(cutoff) {
+  const files = await fs.readdir(publicPayloadsDir).catch(() => []);
+  await Promise.all(
+    files
+      .filter((file) => /^\d{4}-\d{2}-\d{2}\.json\.gz\.b64\.part\d{2}$/.test(file))
+      .filter((file) => file.slice(0, 10) < cutoff)
+      .map((file) => fs.unlink(path.join(publicPayloadsDir, file)).catch(() => {})),
+  );
+}
+
+async function updateReportPayloadManifest(reports) {
+  const html = await fs.readFile(publicIndexHtmlPath, "utf8").catch(() => "");
+  if (!html) return;
+  const manifest = [
+    "        const reportPayloads = {",
+    ...reports.map((report) => `          "${report.path}": "reports/payloads/${report.date}.json.gz.b64.part",`),
+    "        };",
+  ].join("\n");
+  const nextHtml = html.replace(/        const reportPayloads = \{[\s\S]*?        \};/, manifest);
+  if (nextHtml !== html) await fs.writeFile(publicIndexHtmlPath, nextHtml);
 }
 
 function makeSampleReport(date) {
