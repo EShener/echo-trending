@@ -227,7 +227,7 @@ async function fetchLanguages(fullName) {
 
 async function analyzeRepo({ repo, readme, languages }) {
   const fallback = fallbackAnalysis({ repo, readme, languages });
-  if (!process.env.OPENAI_API_KEY || !process.env.OPENAI_MODEL) return fallback;
+  if (!process.env.OPENAI_API_KEY || !process.env.OPENAI_MODEL) return codexResearchRefresh({ repo, readme, languages, fallback });
 
   try {
     const prompt = buildPrompt({ repo, readme, languages });
@@ -256,6 +256,226 @@ async function analyzeRepo({ repo, readme, languages }) {
       note: `LLM analysis failed, used deterministic analysis: ${String(error.message || error).slice(0, 160)}`,
     };
   }
+}
+
+function codexResearchRefresh({ repo, readme, languages, fallback }) {
+  const lens = specializeLens(repo, inferProjectLens({ repo, readme, languages }));
+  const profile = extractRepoProfile({ repo, readme, languages });
+  const primaryLang = Object.keys(languages)[0] || repo.language || "unknown";
+  const project = repo.full_name;
+  const teamFit = describeTeamFit(lens, repo);
+  const landingPath = describeLandingPath(lens, repo, profile);
+  const productionRisk = describeProductionRisk(lens, repo);
+  const watchSignal = describeWatchSignal(lens, repo, profile);
+  const decisionQuestion = describeDecisionQuestion(lens, repo);
+  const architectureMechanism = `架构机制：${lens.coreMechanism}；阅读时把 ${primaryLang} 代码入口、数据/配置形态、自动化脚本和边界条件连起来看，而不是只看 README 的安装示例。`;
+  const applicableTeams = `适用团队：${teamFit}`;
+  const adoptionPath = `落地路径：${landingPath}`;
+  const riskLine = `生产风险：${productionRisk}`;
+  const decisionLine = `决策问题：${decisionQuestion}`;
+  const watchLine = `观察信号：${watchSignal}`;
+
+  const architectureSignals = [
+    architectureMechanism,
+    applicableTeams,
+    adoptionPath,
+    riskLine,
+    decisionLine,
+    watchLine,
+  ];
+
+  const deepDive = {
+    strategicValue: `${project} 的价值不应按 star 数直接外推；更合理的读法是把它当作 ${lens.domain} 的工程样本，判断其机制是否能降低你现有链路的复杂度、人工成本或质量波动。`,
+    implementationPath: [
+      landingPath,
+      `用一个可回放样本验证 ${lens.successMetric}，同时记录接入时间、失败样本和回滚步骤。`,
+      `只在指标改善、维护 owner 明确、风险可隔离后，再从旁路验证扩大到核心流程。`,
+    ],
+    productionConcerns: [
+      productionRisk,
+      `与现有 ${primaryLang} / ${profile.installSurface} 工具链的耦合要先做最小集成验证。`,
+      repo.open_issues_count > 300 ? "当前 open issues 偏高，必须抽查最近 issue 的响应质量和 release 节奏。" : "社区负载相对可控，但仍要关注 breaking change、license 和长期维护信号。",
+    ],
+    decisionQuestions: [
+      decisionQuestion,
+      `如果两周 spike 只能证明“能跑”，不能证明 ${lens.successMetric} 改善，是否应降级为观察项？`,
+      "谁负责上线后的升级、告警、回滚和安全审计？",
+    ],
+    recommendedAction: `进入观察/试点池：${landingPath}`,
+  };
+
+  return {
+    ...fallback,
+    method: "codex-research-refresh",
+    oneLiner: sharpenOneLiner(repo, lens, fallback.oneLiner),
+    whyItMatters: `${fallback.whyItMatters} 这次更新更值得关注的是其可迁移机制：${lens.coreMechanism} 能否被拆成小样本验证，而不是把项目整体搬进生产。`,
+    engineeringRead: `${primaryLang} · ${profile.installSurface}。建议按“入口示例 -> 数据/配置 -> 失败处理 -> CI/release -> issue 反例”的顺序读；重点回答 ${decisionQuestion}`,
+    architectureSignals,
+    valueHypothesis: [
+      `如果团队确实存在「${lens.userPain}」，${project} 的收益应体现为 ${lens.successMetric} 的改善。`,
+      `适合先复制机制、接口或治理方式，不适合未验证成本就全量迁移。`,
+      `若 ${lens.badFit}，它更适合作为资料样本，而不是生产依赖。`,
+    ],
+    technicalTakeaways: [
+      `先抓 ${lens.inspectFirst}，再决定 spike 范围。`,
+      `图解字段应突出 ${lens.coreMechanism} 如何把 ${lens.userPain} 转成 ${lens.businessValue}。`,
+      `验收时同时记录正样本、失败样本、成本、延迟和维护 owner。`,
+    ],
+    adoptionRisks: deepDive.productionConcerns,
+    suggestedUseCases: deepDive.implementationPath,
+    watchSignals: [
+      watchSignal,
+      `release note 是否持续解释 ${lens.coreMechanism} 的演进，而不只是功能堆叠。`,
+      `issue/讨论区是否出现与你的目标场景相似的真实案例和失败反馈。`,
+    ],
+    deepDive,
+    diagram: {
+      ...fallback.diagram,
+      title: `${repo.name} 工业级采用图解`,
+      caption: `${lens.domain} · ${primaryLang} · ${compact(repo.stargazers_count)} stars`,
+      summary: `用 ${lens.coreMechanism} 解决 ${lens.userPain}，先经由 ${lens.safeEntry} 验证 ${lens.successMetric}，再决定是否扩大。`,
+      nodes: [
+        { label: "架构机制", detail: lens.coreMechanism, type: "core" },
+        { label: "适用团队", detail: teamFit, type: "input" },
+        { label: "落地路径", detail: landingPath, type: "integration" },
+        { label: "观察信号", detail: watchSignal, type: "measure" },
+      ],
+      links: ["机制拆解", "试点验证", "指标放大"],
+      poster: {
+        ...fallback.diagram.poster,
+        headline: lens.domain,
+        thesis: `把「${lens.userPain}」通过「${lens.coreMechanism}」转化为「${lens.businessValue}」。`,
+        lanes: [
+          { label: "架构机制", detail: lens.coreMechanism, type: "core", step: "01", signal: lens.inspectFirst },
+          { label: "适用团队", detail: teamFit, type: "input", step: "02", signal: lens.bestFit },
+          { label: "落地路径", detail: landingPath, type: "integration", step: "03", signal: lens.safeEntry },
+          { label: "观察信号", detail: watchSignal, type: "measure", step: "04", signal: lens.successMetric },
+        ],
+        adoption: [
+          { label: "试点入口", detail: lens.safeEntry },
+          { label: "验收指标", detail: lens.successMetric },
+          { label: "生产风险", detail: productionRisk },
+          { label: "决策问题", detail: decisionQuestion },
+        ],
+        warning: lens.badFit,
+      },
+    },
+  };
+}
+
+function specializeLens(repo, lens) {
+  const overrides = {
+    "teslamate-org/teslamate": {
+      domain: "IoT 数据记录 / 自托管观测",
+      userPain: "车联网个人数据留存、可视化和自动化分析",
+      coreMechanism: "数据采集、时序存储、Grafana 仪表盘、容器化部署和第三方 API 连接",
+      safeEntry: "个人或小团队自托管数据日志环境",
+      businessValue: "长期数据可见性、设备行为分析和自动化触发",
+      successMetric: "数据完整率、同步延迟、备份恢复时间、API 变更影响",
+      inspectFirst: "先看采集任务、数据库 schema、Grafana dashboard、Docker compose 和备份路径",
+      bestFit: "需要自主管理设备/车辆数据且能承担自托管运维",
+      badFit: "缺少部署 owner 或无法接受第三方 API 变更风险",
+      primaryRisk: "隐私数据、账号授权、API 变更和长期备份恢复需要前置治理。",
+    },
+    "music-assistant/server": {
+      domain: "边缘媒体服务 / 家庭自动化",
+      userPain: "多音乐源、多播放器和家庭自动化之间的统一控制",
+      coreMechanism: "服务端编排、插件连接器、媒体库索引、设备发现和播放状态同步",
+      safeEntry: "家庭实验室或低风险内网媒体环境",
+      businessValue: "媒体体验一致性、设备复用和本地控制能力",
+      successMetric: "设备兼容率、播放稳定性、索引刷新延迟、账号授权失败率",
+      inspectFirst: "先看 provider 插件、队列状态、设备发现、认证存储和恢复机制",
+      bestFit: "有多源媒体和多设备统一控制需求",
+      badFit: "需要企业级 SLA 或无法接受家庭网络不稳定",
+      primaryRisk: "账号授权、协议差异、网络抖动和边缘设备资源会决定真实体验。",
+    },
+    "alibaba/zvec": {
+      domain: "本地向量数据库 / RAG 基础设施",
+      userPain: "RAG、Agent 记忆或端内检索需要低延迟、轻量级向量索引",
+      coreMechanism: "嵌入式向量索引、HNSW/相似度检索、进程内查询和轻量持久化边界",
+      safeEntry: "离线评测、桌面应用或边缘 RAG 旁路索引",
+      businessValue: "降低检索延迟、部署复杂度和外部服务依赖",
+      successMetric: "recall@K、P95 查询延迟、内存占用、索引构建时间、崩溃恢复",
+      inspectFirst: "先看索引结构、更新/删除语义、持久化、并发模型和 benchmark 数据",
+      bestFit: "数据规模可控且更重视本地低延迟和部署简单性",
+      badFit: "需要分布式扩展、复杂过滤、强一致写入或成熟托管运维",
+      primaryRisk: "索引正确性、更新一致性、内存上限和崩溃恢复不能只靠 benchmark 判断。",
+    },
+    "rmyndharis/OpenWA": {
+      domain: "消息 API 网关 / 自托管集成",
+      userPain: "把 WhatsApp 通讯接入客服、通知或自动化流程",
+      coreMechanism: "会话登录、API 网关、消息队列/回调、限流和自托管运行时",
+      safeEntry: "低风险通知、内部客服沙箱或人工可接管流程",
+      businessValue: "降低消息集成成本、提升自动化触达和客服响应速度",
+      successMetric: "送达率、失败重试率、账号风控事件、人工接管率、审计完整性",
+      inspectFirst: "先看登录态管理、webhook、限流、错误重试、凭据存储和容器部署",
+      bestFit: "已有合规消息场景且能接受自托管维护",
+      badFit: "缺少合规审查、账号风控策略或人工接管机制",
+      primaryRisk: "非官方消息集成要重点关注账号风控、隐私、审计、限流和服务条款变化。",
+    },
+  };
+  return overrides[repo.full_name] ? { ...lens, ...overrides[repo.full_name] } : lens;
+}
+
+function sharpenOneLiner(repo, lens, fallbackLine) {
+  const base = repo.description || fallbackLine || repo.full_name;
+  if (lens.domain.includes("AI Agent")) return `${base}；关键看工具边界、上下文持久化、权限和失败接管是否可治理。`;
+  if (lens.domain.includes("数据")) return `${base}；关键看索引/查询机制、数据一致性和嵌入式运行成本。`;
+  if (lens.domain.includes("开发者工具")) return `${base}；关键看它能否稳定缩短构建、测试、调试或自动化链路。`;
+  if (lens.domain.includes("学习")) return `${base}；关键看内容 schema、评测、翻译和社区审校如何形成长期闭环。`;
+  if (lens.domain.includes("API")) return `${base}；关键看目录治理、可用性校验和来源合规，而不是条目数量。`;
+  return `${base}；关键看 ${lens.coreMechanism} 是否能被小范围验证。`;
+}
+
+function describeTeamFit(lens, repo) {
+  if (lens.domain.includes("学习")) return "开发者教育、内部工程学院、技术社区和需要长期维护课程/认证的团队。";
+  if (lens.domain.includes("API")) return "做内容聚合、资源目录、原型调研或外部能力扫描的团队。";
+  if (lens.domain.includes("开发者工具")) return "有明确构建、测试、浏览器自动化、编译或交付瓶颈的工程平台团队。";
+  if (lens.domain.includes("云原生")) return "有平台 owner、可观测性体系和非核心环境试点窗口的基础设施团队。";
+  if (lens.domain.includes("数据")) return "需要本地向量检索、低延迟查询、RAG 记忆或嵌入式索引的 AI/数据平台团队。";
+  if (lens.domain.includes("机器学习")) return "有离线评测、算力预算和模型服务经验的语音/多模态/推荐实验团队。";
+  if (lens.domain.includes("AI Agent")) return "已有标准化人工流程、权限边界和审计需求的 Agent/自动化平台团队。";
+  return `${repo.language || "多技术栈"} 团队中已有明确痛点、且能安排小样本验证的工程组。`;
+}
+
+function describeLandingPath(lens, repo, profile) {
+  if (lens.domain.includes("学习")) return "抽一条课程或知识路径，先复刻目录规范、校验脚本和审稿流程，再接入学习记录。";
+  if (lens.domain.includes("API")) return "抽样 20 个条目做可用性、授权、地域和刷新频率检查，再决定是否进入内部目录。";
+  if (repo.full_name === "swc-project/swc") return "先选一个 Babel/TS 编译最慢的包做影子构建，对比构建耗时、source map、插件兼容和回滚成本。";
+  if (repo.full_name === "puppeteer/puppeteer") return "先把一个高频浏览器验收或抓取任务迁到无头浏览器流水线，补齐截图、trace、重试和隔离策略。";
+  if (repo.full_name === "cypress-io/cypress") return "先挑一条核心前端回归路径做稳定性基线，度量 flaky 率、调试耗时和 CI 资源。";
+  if (repo.full_name === "alibaba/zvec") return "先用离线 embedding 样本构建本地索引，对比 HNSW 召回、内存、P95 查询和更新成本。";
+  if (repo.full_name === "OpenBMB/VoxCPM") return "先用内部多语言语音样本做离线 A/B，验证音色一致性、延迟、版权和人工质检成本。";
+  if (repo.full_name === "rmyndharis/OpenWA") return "先接入一个低风险通知或客服沙箱，验证登录态、限流、审计和失败重发。";
+  return `围绕 ${profile.headings[0] || lens.safeEntry} 做最小 spike，把接入面限定在非核心路径。`;
+}
+
+function describeProductionRisk(lens, repo) {
+  if (repo.full_name === "meshery/meshery") return "控制面会触达多集群和服务网格，权限、资源漂移和插件质量会放大故障半径。";
+  if (repo.full_name === "teslamate-org/teslamate") return "个人/车联网数据涉及隐私和长期留存，部署、备份、API 变更和图表口径都要可恢复。";
+  if (repo.full_name === "music-assistant/server") return "家庭/边缘设备依赖多服务和音频协议，网络抖动、账号授权和设备兼容会影响体验。";
+  if (repo.full_name === "Universal-Debloater-Alliance/universal-android-debloater-next-generation") return "ADB 去包有误删和设备差异风险，必须保留可回滚清单和机型白名单。";
+  if (lens.domain.includes("开发者工具")) return "工具链替换容易引入插件不兼容、调试信息丢失和 CI 差异，需要影子运行。";
+  if (lens.domain.includes("AI Agent")) return "Agent/API 网关类项目必须先处理凭据、越权、审计、重试和人工接管。";
+  if (lens.domain.includes("数据")) return "索引正确性、更新一致性、内存上限和崩溃恢复不能只靠 benchmark 判断。";
+  return lens.primaryRisk;
+}
+
+function describeDecisionQuestion(lens, repo) {
+  if (repo.full_name === "iptv-org/iptv") return "我们需要的是可审计的公共频道目录，还是会不必要地承担版权、地域和可用性维护责任？";
+  if (repo.full_name === "freeCodeCamp/freeCodeCamp") return "我们是否有足够内容 owner 持续维护课程，而不是只复制一个庞大的内容仓库？";
+  if (repo.full_name === "alibaba/zvec") return "本地向量库的低延迟收益是否足以覆盖功能、可观测性和生态成熟度差距？";
+  if (repo.full_name === "OpenBMB/VoxCPM") return "语音质量提升是否能在目标语言、目标音色和合规授权下稳定复现？";
+  return `它解决的是「${lens.userPain}」的主矛盾，还是只会给现有流程增加新的维护面？`;
+}
+
+function describeWatchSignal(lens, repo, profile) {
+  if (repo.full_name === "swc-project/swc") return "插件兼容矩阵、Next/Vite/TypeScript 生态适配、release breaking change 和构建性能基准。";
+  if (repo.full_name === "cypress-io/cypress") return "flaky issue 收敛、浏览器版本支持、CI 云服务边界和组件测试生态更新。";
+  if (repo.full_name === "meshery/meshery") return "CNCF 生态集成、适配器健康度、open issues 收敛和真实多集群案例。";
+  if (repo.full_name === "alibaba/zvec") return "HNSW 参数、召回/延迟曲线、内存占用、持久化能力和 RAG 框架适配。";
+  if (repo.full_name === "OpenBMB/VoxCPM") return "多语言样本质量、克隆相似度、推理成本、许可证和社区失败案例。";
+  return `${lens.successMetric}、最近 release 质量、issue 响应速度和 ${profile.installSurface} 的集成反馈。`;
 }
 
 function buildPrompt({ repo, readme, languages }) {
@@ -942,30 +1162,60 @@ function buildFrontierDiagram(item, interpretation) {
 
 async function fetchArxivFrontierItems(maxItems) {
   try {
-    const query = [
-      'all:"recommender systems"',
-      'all:"learning to rank"',
-      'all:"information retrieval"',
-      'all:"search ranking"',
-      'all:"ads ranking"',
-    ].join("+OR+");
-    const url = `https://export.arxiv.org/api/query?search_query=${query}&start=0&max_results=${maxItems}&sortBy=submittedDate&sortOrder=descending`;
+    const query = encodeURIComponent(
+      'cat:cs.IR AND (all:"recommender systems" OR all:"learning to rank" OR all:"information retrieval" OR all:"search ranking" OR all:"recommendation" OR all:"retrieval augmented generation" OR all:"ads ranking")',
+    );
+    const url = `https://export.arxiv.org/api/query?search_query=${query}&start=0&max_results=${Math.max(maxItems * 4, 24)}&sortBy=submittedDate&sortOrder=descending`;
     const xml = await fetchText(url);
-    return parseAtomEntries(xml, maxItems).map((item, index) => ({
-      rank: index + 1,
-      title: item.title,
-      url: item.url,
-      publishedAt: item.publishedAt,
-      source: "arXiv",
-      sourceType: "paper",
-      imageUrl: `https://dummyimage.com/960x540/eef2ff/1f2a44.png&text=${encodeURIComponent("Search Ads RecSys")}`,
-      tags: inferFrontierTags(`${item.title} ${item.summary}`),
-      summary: item.summary,
-      interpretation: interpretFrontier(item),
-    }));
+    return parseAtomEntries(xml, Math.max(maxItems * 4, 24))
+      .map((item) => ({ ...item, frontierScore: scoreArxivFrontierItem(item) }))
+      .filter((item) => item.frontierScore >= 8)
+      .sort((a, b) => b.frontierScore - a.frontierScore || new Date(b.publishedAt || 0) - new Date(a.publishedAt || 0))
+      .slice(0, maxItems)
+      .map((item, index) => ({
+        rank: index + 1,
+        title: item.title,
+        url: item.url,
+        publishedAt: item.publishedAt,
+        source: "arXiv",
+        sourceType: "paper",
+        imageUrl: `https://dummyimage.com/960x540/eef2ff/1f2a44.png&text=${encodeURIComponent("Search Ads RecSys")}`,
+        tags: inferFrontierTags(`${item.title} ${item.summary}`),
+        summary: item.summary,
+        interpretation: interpretFrontier(item),
+      }));
   } catch (error) {
     throw error;
   }
+}
+
+function scoreArxivFrontierItem(item) {
+  const text = `${item.title || ""} ${item.summary || ""}`.toLowerCase();
+  const positive = [
+    ["recommender", 10],
+    ["recommendation", 10],
+    ["learning to rank", 10],
+    ["ranking", 6],
+    ["information retrieval", 10],
+    ["retrieval-augmented", 8],
+    ["retrieval augmented", 8],
+    ["search", 6],
+    ["query", 5],
+    ["index", 5],
+    ["relevance", 7],
+    ["advertising", 8],
+    ["ads", 6],
+    ["ctr", 6],
+    ["cvr", 6],
+    ["personalization", 7],
+    ["embedding", 5],
+  ];
+  const negative = ["gravitational", "fishing", "seafood", "labor abuse", "wavepacket", "biology", "medical", "protein"];
+  const positiveScore = positive.reduce((sum, [term, score]) => sum + (text.includes(term) ? score : 0), 0);
+  const negativeScore = negative.reduce((sum, term) => sum + (text.includes(term) ? 8 : 0), 0);
+  const age = item.publishedAt ? daysBetween(new Date(item.publishedAt), new Date()) : 999;
+  const recency = age <= 14 ? 4 : age <= 45 ? 2 : 0;
+  return positiveScore + recency - negativeScore;
 }
 
 async function fetchIndustryFrontierItems(maxItems) {
@@ -1186,7 +1436,8 @@ async function fetchAnthropicNewsItems(maxItems) {
         const url = `https://www.anthropic.com${pathname}`;
         const page = await fetchText(url);
         const title = extractMeta(page, "og:title") || extractTitle(page) || pathname.split("/").pop();
-        const summary = extractMeta(page, "og:description") || extractMeta(page, "description") || extractFirstParagraph(page);
+        let summary = extractMeta(page, "og:description") || extractMeta(page, "description") || extractFirstParagraph(page);
+        if (isGenericAnthropicSummary(summary)) summary = extractAnthropicLead(page, title);
         const imageUrl = extractMeta(page, "og:image") || "https://www.google.com/s2/favicons?domain=anthropic.com&sz=128";
         const publishedAt = parseAnthropicPublishedAt(page) || "";
         return {
@@ -1243,6 +1494,25 @@ async function fetchAnthropicNewsItems(maxItems) {
     .flatMap((result) => (result.status === "fulfilled" ? result.value : []))
     .filter(dedupeByTitle)
     .slice(0, maxItems);
+}
+
+function isGenericAnthropicSummary(summary = "") {
+  const text = summary.toLowerCase();
+  return !summary || text.includes("anthropic is an ai safety and research company") || text.length < 48;
+}
+
+function extractAnthropicLead(html, title = "") {
+  const text = cleanupXml(html.replace(/<script[\s\S]*?<\/script>/gi, " ").replace(/<style[\s\S]*?<\/style>/gi, " "));
+  const titleIndex = title ? text.toLowerCase().indexOf(cleanupXml(title).toLowerCase().slice(0, 80)) : -1;
+  const scoped = titleIndex >= 0 ? text.slice(titleIndex, titleIndex + 5000) : text.slice(0, 5000);
+  const candidates = scoped
+    .split(/(?<=[.!?。！？])\s+/)
+    .map((item) => item.replace(/\s+/g, " ").trim())
+    .filter((item) => item.length >= 80 && item.length <= 520)
+    .filter((item) => !/^(research|policy|commitments|learn|news|try claude)$/i.test(item))
+    .filter((item) => !item.toLowerCase().includes("skip to main content"))
+    .filter((item) => !item.toLowerCase().includes("anthropic is an ai safety and research company"));
+  return trimText(candidates[0] || extractFirstParagraph(html) || title, 300);
 }
 
 function rankAnthropicItems(items) {
