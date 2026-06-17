@@ -1412,7 +1412,7 @@ async function buildAiNewsSection(maxItems) {
     .sort((a, b) => (b.priority || 0) - (a.priority || 0) || new Date(b.publishedAt || 0) - new Date(a.publishedAt || 0))
     .filter(dedupeByCanonicalItem)
     .sort((a, b) => new Date(b.publishedAt || 0) - new Date(a.publishedAt || 0));
-  const anthropicQuota = Math.min(5, Math.max(2, Math.floor(maxItems * 0.4)));
+  const anthropicQuota = Math.min(6, Math.max(5, Math.floor(maxItems * 0.45)));
   const anthropicItems = selectAnthropicCoverage(rawItems.filter(isAnthropicItem), anthropicQuota);
   const items = pickUniqueItems(
     [
@@ -1451,10 +1451,11 @@ function isAnthropicOfficialItem(item = {}) {
 function selectAnthropicCoverage(items, maxItems) {
   const ranked = rankAnthropicItems(items);
   const buckets = [
-    (item) => /opus|sonnet|fable|mythos|model/i.test(`${item.title} ${item.summary}`),
-    (item) => /partnership|alliance|regulated|compute|enterprise|tcs|dxc|spacex/i.test(`${item.title} ${item.summary}`),
-    (item) => /research|safety|alignment|teaching|misuse|autonomy|trustworthy/i.test(`${item.source} ${item.title} ${item.summary}`),
-    (item) => /engineering|claude code|managed agents|auto mode|sandbox|contain|computer use|tool use/i.test(`${item.source} ${item.title} ${item.summary}`),
+    (item) => /introducing claude opus|claude opus|claude sonnet|claude haiku/i.test(`${item.title} ${item.summary}`),
+    (item) => /claude code|agentic coding|computer use|dynamic workflows|managed agents|auto mode/i.test(`${item.source} ${item.title} ${item.summary}`),
+    (item) => /partnership|alliance|regulated|compute|enterprise|tcs|dxc|spacex|seoul|corps/i.test(`${item.title} ${item.summary}`),
+    (item) => /cyber|safety|alignment|misuse|autonomy|trustworthy|contain|teaching claude why|attack/i.test(`${item.source} ${item.title} ${item.summary}`),
+    (item) => /engineering|managed agents|auto mode|sandbox|contain|harness|tool use|context engineering/i.test(`${item.source} ${item.title} ${item.summary}`),
   ];
   const selected = [];
   for (const matches of buckets) {
@@ -1587,11 +1588,14 @@ function rankAnthropicItems(items) {
     ["fable", 8],
     ["mythos", 8],
     ["claude code", 9],
+    ["agentic coding", 9],
+    ["dynamic workflows", 8],
     ["agent", 8],
     ["computer use", 8],
     ["managed agents", 8],
     ["sandbox", 7],
     ["contain", 7],
+    ["cyber", 7],
     ["safety", 7],
     ["alignment", 7],
     ["misuse", 7],
@@ -2370,7 +2374,12 @@ function parseAnthropicPublishedAt(html) {
   if (parsed && Number.isFinite(parsed.getTime())) return parsed.toISOString();
   const published = html.match(/"datePublished"\s*:\s*"([^"]+)"/i)?.[1] || html.match(/publishedAt["']?\s*:\s*["']([^"']+)/i)?.[1];
   const fallback = published ? new Date(published) : null;
-  return fallback && Number.isFinite(fallback.getTime()) ? fallback.toISOString() : "";
+  if (fallback && Number.isFinite(fallback.getTime())) return fallback.toISOString();
+  const visibleDate = cleanupXml(html.slice(0, 7000)).match(
+    /\b(?:Jan|Feb|Mar|Apr|May|Jun|Jul|Aug|Sep|Oct|Nov|Dec)[a-z]*\.?\s+\d{1,2},\s+20\d{2}\b/i,
+  )?.[0];
+  const visibleParsed = visibleDate ? new Date(visibleDate) : null;
+  return visibleParsed && Number.isFinite(visibleParsed.getTime()) ? visibleParsed.toISOString() : "";
 }
 
 function cleanupXml(value) {
