@@ -65,16 +65,21 @@ async function buildReport({ reportDate, limit, days, language }) {
   const since = offsetDate(reportDate, -days);
   const languageQuery = language ? ` language:${language}` : "";
   const query = `pushed:>=${since} stars:>100 archived:false${languageQuery}`;
-  const repoSource = await fetchTrendingRepos({ limit, language }).catch(async (error) => {
-    const searchUrl = `https://api.github.com/search/repositories?q=${encodeURIComponent(
-      query,
-    )}&sort=stars&order=desc&per_page=${limit}`;
-    const search = await githubJson(searchUrl);
-    return {
-      provider: `GitHub Search API (Trending fallback failed: ${String(error.message || error).slice(0, 120)})`,
-      repos: search.items || [],
+  let repoSource = await fetchTrendingRepos({ limit, language }).catch(async (error) => ({
+    provider: `GitHub Trending daily failed: ${String(error.message || error).slice(0, 120)}`,
+    repos: [],
+  }));
+  if ((repoSource.repos || []).length < limit) {
+    const searchRepos = await fetchSearchRepos({ query, limit }).catch(() => []);
+    const mergedRepos = mergeReposByFullName([...(repoSource.repos || []), ...searchRepos]).slice(0, limit);
+    repoSource = {
+      provider:
+        repoSource.repos?.length
+          ? `${repoSource.provider} + GitHub Search API supplement`
+          : `GitHub Search API (${repoSource.provider})`,
+      repos: mergedRepos,
     };
-  });
+  }
   const repos = repoSource.repos || [];
   const items = [];
 
@@ -127,9 +132,13 @@ async function fetchTrendingRepos({ limit, language }) {
 
   const settled = await Promise.allSettled(
     candidates.map(async (candidate) => {
-      const repo = await githubJson(`https://api.github.com/repos/${candidate.fullName}`);
-      repo.trending = candidate;
-      return repo;
+      try {
+        const repo = await githubJson(`https://api.github.com/repos/${candidate.fullName}`);
+        repo.trending = candidate;
+        return repo;
+      } catch {
+        return repoFromTrendingCandidate(candidate);
+      }
     }),
   );
   const repos = settled
@@ -139,6 +148,50 @@ async function fetchTrendingRepos({ limit, language }) {
   return { provider: "GitHub Trending daily", repos };
 }
 
+function repoFromTrendingCandidate(candidate) {
+  const [owner, name] = candidate.fullName.split("/");
+  return {
+    full_name: candidate.fullName,
+    name,
+    owner: {
+      login: owner,
+      avatar_url: `https://github.com/${owner}.png`,
+    },
+    html_url: `https://github.com/${candidate.fullName}`,
+    description: candidate.description || "",
+    stargazers_count: candidate.stars || candidate.starsToday || 0,
+    forks_count: candidate.forks || 0,
+    open_issues_count: 0,
+    language: candidate.language || "",
+    topics: [],
+    license: null,
+    pushed_at: new Date().toISOString(),
+    created_at: "",
+    default_branch: "main",
+    trending: candidate,
+  };
+}
+
+async function fetchSearchRepos({ query, limit }) {
+  const searchUrl = `https://api.github.com/search/repositories?q=${encodeURIComponent(
+    query,
+  )}&sort=stars&order=desc&per_page=${Math.max(limit * 2, limit)}`;
+  const search = await githubJson(searchUrl);
+  return search.items || [];
+}
+
+function mergeReposByFullName(repos) {
+  const seen = new Set();
+  const merged = [];
+  for (const repo of repos) {
+    const key = repo.full_name;
+    if (!key || seen.has(key)) continue;
+    seen.add(key);
+    merged.push(repo);
+  }
+  return merged;
+}
+
 function parseGitHubTrending(html) {
   return [...html.matchAll(/<article[\s\S]*?<\/article>/g)]
     .map((match) => match[0])
@@ -146,6 +199,8 @@ function parseGitHubTrending(html) {
       const href = article.match(/<h2[\s\S]*?<a[^>]+href="([^"]+)"[\s\S]*?<\/a>/)?.[1] || "";
       const fullName = cleanupXml(href).replace(/^\/+/, "").replace(/\s+/g, "");
       const starsToday = Number((article.match(/([\d,]+)\s+stars today/i)?.[1] || "0").replaceAll(",", ""));
+      const stars = extractRepoLinkCount(article, fullName, "stargazers");
+      const forks = extractRepoLinkCount(article, fullName, "forks");
       const description =
         article
           .match(/<p[^>]*class="[^"]*col-9[^"]*"[^>]*>([\s\S]*?)<\/p>/)?.[1]
@@ -153,9 +208,14 @@ function parseGitHubTrending(html) {
           .replace(/\s+/g, " ")
           .trim() || "";
       const language = cleanupXml(article.match(/itemprop="programmingLanguage">([^<]+)</)?.[1] || "");
-      return { fullName, starsToday, description, language };
+      return { fullName, stars, forks, starsToday, description, language };
     })
     .filter((item) => /^[^/\s]+\/[^/\s]+$/.test(item.fullName));
+}
+
+function extractRepoLinkCount(article, fullName, endpoint) {
+  const pattern = new RegExp(`href="/${escapeRegExp(fullName)}/${endpoint}"[\\s\\S]*?</svg>\\s*([\\d,]+)</a>`, "i");
+  return Number((article.match(pattern)?.[1] || "0").replaceAll(",", ""));
 }
 
 async function githubJson(url) {
@@ -1350,7 +1410,7 @@ async function buildAiNewsSection(maxItems) {
     .flatMap((result) => (result.status === "fulfilled" ? result.value : []))
     .concat(anthropicResult)
     .sort((a, b) => (b.priority || 0) - (a.priority || 0) || new Date(b.publishedAt || 0) - new Date(a.publishedAt || 0))
-    .filter(dedupeByTitle)
+    .filter(dedupeByCanonicalItem)
     .sort((a, b) => new Date(b.publishedAt || 0) - new Date(a.publishedAt || 0));
   const anthropicQuota = Math.min(5, Math.max(2, Math.floor(maxItems * 0.4)));
   const anthropicItems = selectAnthropicCoverage(rawItems.filter(isAnthropicItem), anthropicQuota);
@@ -1379,8 +1439,13 @@ async function buildAiNewsSection(maxItems) {
 }
 
 function isAnthropicItem(item) {
-  const text = `${item.source || ""} ${item.sourceDetail || ""} ${item.title || ""} ${item.summary || ""}`.toLowerCase();
-  return text.includes("anthropic") || text.includes("claude") || text.includes("a社");
+  return isAnthropicOfficialItem(item);
+}
+
+function isAnthropicOfficialItem(item = {}) {
+  const source = `${item.source || ""} ${item.sourceDetail || ""}`.toLowerCase();
+  const url = `${item.domain || ""} ${item.url || ""}`.toLowerCase();
+  return source.includes("anthropic") || source.includes("a社") || url.includes("anthropic.com");
 }
 
 function selectAnthropicCoverage(items, maxItems) {
@@ -1725,6 +1790,30 @@ function dedupeByTitle(item, index, items) {
   return items.findIndex((candidate) => normalizeTitle(candidate.title) === key) === index;
 }
 
+function dedupeByCanonicalItem(item, index, items) {
+  const key = canonicalItemKey(item);
+  return items.findIndex((candidate) => canonicalItemKey(candidate) === key) === index;
+}
+
+function canonicalItemKey(item = {}) {
+  const url = canonicalUrl(item.url || "");
+  if (url) return `url:${url}`;
+  return `title:${normalizeTitle(item.title)}`;
+}
+
+function canonicalUrl(value = "") {
+  try {
+    const url = new URL(cleanupXml(value));
+    url.hash = "";
+    for (const key of [...url.searchParams.keys()]) {
+      if (/^(utm_|source$|ref$|rss$)/i.test(key)) url.searchParams.delete(key);
+    }
+    return `${url.hostname.replace(/^www\./, "")}${url.pathname.replace(/\/$/, "")}${url.search}`;
+  } catch {
+    return "";
+  }
+}
+
 function normalizeTitle(value = "") {
   return String(value)
     .toLowerCase()
@@ -1821,10 +1910,11 @@ function interpretFrontier(item) {
 
 function interpretAiNews(item) {
   const text = `${item.title} ${item.summary}`.toLowerCase();
-  if (item.source?.includes("Anthropic") || item.sourceDetail?.includes("Anthropic") || text.includes("claude") || text.includes("anthropic")) {
-    if (text.includes("opus") || text.includes("sonnet") || text.includes("model")) return "A 社模型信号：Claude 系列更新需要重点拆编码能力、长任务稳定性、上下文管理和企业成本边界。";
-    if (text.includes("research") || text.includes("alignment") || text.includes("safety")) return "A 社安全研究信号：值得跟进其评测、可解释性和对齐方法是否能转化为内部模型治理清单。";
+  if (isAnthropicOfficialItem(item) || text.includes("anthropic")) {
     if (text.includes("agent") || text.includes("computer") || text.includes("tool")) return "A 社 Agent 信号：Claude 正在把工具使用、电脑操作和企业流程连接起来，重点看权限、审计和失败接管。";
+    if (text.includes("partnership") || text.includes("office") || text.includes("ecosystem") || text.includes("enterprise") || text.includes("compute")) return "A 社企业生态信号：合作、算力和区域办公室会影响 Claude 的可用额度、企业采购路径和本地生态扩散。";
+    if (text.includes("research") || text.includes("alignment") || text.includes("safety") || text.includes("contain")) return "A 社安全研究信号：值得跟进其评测、可解释性和对齐方法是否能转化为内部模型治理清单。";
+    if (text.includes("opus") || text.includes("sonnet") || text.includes("fable") || text.includes("mythos") || text.includes("model")) return "A 社模型信号：Claude 系列更新需要重点拆编码能力、长任务稳定性、上下文管理和企业成本边界。";
     return "A 社生态信号：Anthropic 的产品、研究和企业合作会影响 Claude 生态、模型选型和 Agent 工作流落地节奏。";
   }
   if (text.includes("openclaw") || text.includes("grok")) return "开源 Agent 生态信号：模型厂商正在把能力接入本地优先的个人助理和多端通讯入口。";
@@ -1871,7 +1961,7 @@ function enrichAiNews(item) {
 function inferAiNewsTags(item) {
   const text = `${item.title} ${item.summary} ${item.sourceDetail || ""}`.toLowerCase();
   const tags = [];
-  if (item.source?.includes("Anthropic") || text.includes("anthropic") || text.includes("claude")) tags.push("A社/Claude");
+  if (isAnthropicOfficialItem(item) || text.includes("anthropic")) tags.push("A社/Claude");
   if (text.includes("agent") || text.includes("智能体") || text.includes("openclaw") || text.includes("codex")) tags.push("Agent");
   if (text.includes("model") || text.includes("模型") || text.includes("grok") || text.includes("gemini") || text.includes("claude")) tags.push("模型");
   if (hasSearchSignal(text)) tags.push("搜索");
@@ -1888,6 +1978,7 @@ function hasSearchSignal(text) {
 
 function buildAiNewsImpact(item, tags) {
   const text = `${item.title} ${item.summary}`.toLowerCase();
+  if (tags.includes("A社/Claude")) return "Claude 生态的变化会直接影响 Agent 选型、企业采购、权限治理和安全评测，不能只按模型跑分决策。";
   if (tags.includes("Agent")) return "Agent 正从单点工具走向跨设备、跨应用、跨通讯入口，产品设计要考虑权限、记忆和接管机制。";
   if (tags.includes("搜索")) return "搜索正在从“更多上下文”转向“更会压缩和排序上下文”，会影响 RAG、推荐和信息流产品。";
   if (tags.includes("安全/可信")) return "AI 生成内容和搜索结果会被系统性攻击，后续要把来源证明、反作弊和审计纳入基础架构。";
@@ -1898,6 +1989,7 @@ function buildAiNewsImpact(item, tags) {
 }
 
 function buildAiNewsAction(item, tags) {
+  if (tags.includes("A社/Claude")) return "建议更新 Claude 评测清单：模型能力、Claude Code/Agent 工作流、权限隔离、审计日志和供应连续性分开验证。";
   if (tags.includes("Agent")) return "建议记录可试用入口、权限模型和是否支持长会话，适合做 30 分钟产品体验验证。";
   if (tags.includes("搜索")) return "建议加入搜广推/RAG 观察清单，重点看压缩率、召回质量、延迟和答案质量是否同时改善。";
   if (tags.includes("安全/可信")) return "建议沉淀到 AI 安全清单，跟踪攻击方式、检测指标和平台级防御策略。";
@@ -1927,13 +2019,26 @@ function buildExecutiveSummary(items, frontier, aiNews) {
   const categories = items.map((item) => item.analysis.category).filter(Boolean);
   const topRepos = items.slice(0, 3).map((item) => item.repo.fullName);
   const topCategory = mostCommon(categories) || "开源工程";
-  const firstInsight = items[0]?.analysis?.whyItMatters || "";
+  const repoSignals = items
+    .slice(0, 4)
+    .map((item) => item.analysis?.category)
+    .filter(Boolean);
+  const frontierItems = frontier.items || [];
+  const frontierSources = uniqueList(frontierItems.map((item) => item.source).filter(Boolean)).slice(0, 4);
+  const frontierTags = uniqueList(frontierItems.flatMap((item) => item.tags || [])).slice(0, 5);
+  const anthropicItems = (aiNews.items || []).filter((item) => isAnthropicItem(item));
+  const aiHotCount = (aiNews.items || []).filter((item) => item.source?.includes("AIHOT")).length;
+  const firstRepoAction = items[0]?.analysis?.deepDive?.recommendedAction || items[0]?.analysis?.watchSignals?.[0] || "";
+  const firstFrontier = frontierItems[0];
+  const firstAnthropic = anthropicItems[0];
   return {
-    headline: `今日开源热点更偏 ${topCategory}，适合从“能借鉴什么机制”而不是“要不要马上引入”来读。`,
+    headline: `今日雷达主线：${topCategory} 继续升温，搜广推关注 ${frontierTags.join(" / ") || "召回排序"}，A 社动态聚焦 Claude 生态治理。`,
     bullets: [
-      topRepos.length ? `前三个项目是 ${topRepos.join("、")}，其中不少更像公共资产或方法样本，而不是可直接 npm/pip 引入的依赖。` : "今日暂无 GitHub 项目数据。",
-      `主要语言集中在 ${mostCommon(languages) || "多语言生态"}；第一条项目判断：${trimText(firstInsight, 120)}`,
-      `搜广推板块收录 ${frontier.items.length} 条前沿论文/研究信号，AI 新闻收录 ${aiNews.items.length} 条动态。`,
+      topRepos.length ? `GitHub 热门前三为 ${topRepos.join("、")}；主要语言是 ${mostCommon(languages) || "多语言生态"}，主题集中在 ${uniqueList(repoSignals).slice(0, 3).join("、") || "工程效率和 AI 基建"}。` : "今日暂无 GitHub 项目数据。",
+      firstRepoAction ? `开源项目的采用动作：${trimText(firstRepoAction, 150)}` : "开源项目先按架构机制、适用团队、落地路径和生产风险做小样本验证。",
+      firstFrontier ? `搜广推收录 ${frontierItems.length} 条，来源覆盖 ${frontierSources.join("、") || frontier.source}；首要信号是「${firstFrontier.title}」，适合按业务问题、系统机制、指标实验和采用边界拆解。` : `搜广推板块收录 ${frontierItems.length} 条前沿论文/研究信号。`,
+      firstAnthropic ? `A 社覆盖 ${anthropicItems.length} 条官方 News/Research/Engineering 动态，重点包括「${firstAnthropic.title}」；动作是把模型更新、Claude Code/Agent、企业合作和安全治理分开评估。` : "A 社动态本次未抓到足够官方条目，下次优先重试 Anthropic News/Research/Engineering 页面。",
+      `AIHOT/官方 AI 新闻共 ${aiNews.items?.length || 0} 条，其中 AIHOT ${aiHotCount} 条；阅读口径统一为“信号 -> 影响 -> 动作”，避免只收藏新闻标题。`,
     ],
   };
 }
