@@ -366,6 +366,7 @@ function codexResearchRefresh({ repo, readme, languages, fallback }) {
 
   return {
     ...fallback,
+    category: lens.domain,
     method: "codex-research-refresh",
     oneLiner: sharpenOneLiner(repo, lens, fallback.oneLiner),
     whyItMatters: `${fallback.whyItMatters} 这次更新更值得关注的是其可迁移机制：${lens.coreMechanism} 能否被拆成小样本验证，而不是把项目整体搬进生产。`,
@@ -472,6 +473,126 @@ function specializeLens(repo, lens) {
       bestFit: "已有合规消息场景且能接受自托管维护",
       badFit: "缺少合规审查、账号风控策略或人工接管机制",
       primaryRisk: "非官方消息集成要重点关注账号风控、隐私、审计、限流和服务条款变化。",
+    },
+    "DeusData/codebase-memory-mcp": {
+      domain: "代码智能 / MCP 记忆基础设施",
+      userPain: "Coding Agent 每次任务都要重新读取仓库，token 成本高且跨文件依赖容易丢失",
+      coreMechanism: "静态代码索引、持久知识图谱、MCP 工具接口、跨语言符号解析和低延迟查询",
+      safeEntry: "选一个中型服务仓库，接入只读 MCP 查询，旁路比较 Agent 定位文件和解释依赖的准确率",
+      businessValue: "降低 Agent 上下文成本，提高代码问答、影响面分析和变更定位稳定性",
+      successMetric: "首次定位耗时、token 消耗、符号命中率、错误引用率、索引更新时间",
+      inspectFirst: "先看索引构建入口、语言 parser、图谱 schema、MCP tool 定义和缓存失效策略",
+      bestFit: "多仓库维护、代码审查、迁移改造或 Agent coding 平台团队",
+      badFit: "仓库很小、权限无法隔离或不允许把源码索引暴露给 Agent",
+      primaryRisk: "源码权限、索引陈旧、跨语言解析错误和 MCP 工具越权要先治理。",
+    },
+    "n0-computer/iroh": {
+      domain: "点对点网络 / 边缘连接基础设施",
+      userPain: "设备、边缘节点或本地优先应用在 NAT、动态 IP 和跨网络连接下可靠性不足",
+      coreMechanism: "基于 dial key 的寻址、Rust 模块化网络栈、直连/中继连接协商和能力封装",
+      safeEntry: "先用两个受控节点做文件同步或设备控制链路，旁路记录连接建立、重连和降级行为",
+      businessValue: "减少中心化网关依赖，让边缘协作、本地优先应用和设备连接更容易落地",
+      successMetric: "连接成功率、P95 建连耗时、断线恢复时间、中继占比、端到端吞吐",
+      inspectFirst: "先看 endpoint/key 管理、relay/discovery、连接状态机、错误重试和安全模型",
+      bestFit: "边缘计算、本地优先协作、P2P 文件同步或设备互联团队",
+      badFit: "强监管网络、必须全量经企业代理审计或没有网络故障排查 owner",
+      primaryRisk: "NAT 差异、密钥生命周期、中继成本和企业网络策略可能决定真实可用性。",
+    },
+    "Panniantong/Agent-Reach": {
+      domain: "Agent 外部信息采集 / 多平台浏览工具",
+      userPain: "Agent 需要读取 Twitter、Reddit、YouTube、GitHub、Bilibili、小红书等平台，但官方 API 成本和限制高",
+      coreMechanism: "CLI 工具封装、多平台读取/搜索适配、网页解析、结果归一化和无 API key 工作流",
+      safeEntry: "选 3 个公开信息源做研究助手旁路任务，禁止自动发帖和账号操作，只评估读取质量",
+      businessValue: "降低舆情、竞品、开源生态和内容研究的资料收集成本",
+      successMetric: "可访问率、去重率、引用可追溯率、解析失败率、单次任务耗时",
+      inspectFirst: "先看平台适配器、登录态处理、限流/重试、输出 schema 和来源引用保真",
+      bestFit: "研究、增长、开发者关系、开源情报和 Agent 数据采集团队",
+      badFit: "需要稳定 SLA、强合规审计或涉及私域/敏感账号自动化",
+      primaryRisk: "平台条款、账号风控、反爬变化、隐私边界和引用可追溯性是生产前置条件。",
+    },
+    "obra/superpowers": {
+      domain: "Agentic 软件工程方法 / 技能框架",
+      userPain: "团队把 AI 编码当聊天工具使用，缺少可复用流程、检查点和质量门禁",
+      coreMechanism: "技能文件、强制流程、任务分解、验证清单和可迁移的工程方法约束",
+      safeEntry: "挑一个低风险维护任务，把调研、实现、验证、复盘写成技能并在两名工程师间复用",
+      businessValue: "把个人提示词经验沉淀为团队级工程流程，降低 Agent 产出不稳定性",
+      successMetric: "返工率、漏测率、任务交接成本、技能复用次数、review 缺陷密度",
+      inspectFirst: "先看技能触发规则、检查清单、失败处理、与现有 CI/review 流程的衔接",
+      bestFit: "已经在用 Coding Agent 且想治理工程流程的研发效能团队",
+      badFit: "没有统一开发流程、任务高度探索或团队不愿维护流程资产",
+      primaryRisk: "过度流程化会拖慢简单任务，技能陈旧也会把坏习惯固化。",
+    },
+    "google-research/timesfm": {
+      domain: "时间序列基础模型 / 预测建模",
+      userPain: "需求、流量、库存、容量或告警预测需要跨场景迁移，但传统模型每个业务都要单独调参",
+      coreMechanism: "预训练时间序列基础模型、patch 输入表示、零样本/少样本预测和批量推理接口",
+      safeEntry: "选一组已有基线的离线时间序列，比较 TimesFM 与 Prophet/ARIMA/LightGBM 的误差和稳定性",
+      businessValue: "缩短预测建模周期，为容量规划、供应链和运营指标提供统一预测基座",
+      successMetric: "MAE/MAPE/sMAPE、冷启动序列表现、预测区间覆盖、推理成本、异常期鲁棒性",
+      inspectFirst: "先看模型输入频率限制、上下文窗口、外生变量支持、batch 推理和评测脚本",
+      bestFit: "有大量同构指标、需要快速预测基线的数据科学或平台团队",
+      badFit: "强依赖可解释特征、业务规律突变或需要严格因果解释",
+      primaryRisk: "分布漂移、节假日/促销外生因素、异常点和成本曲线必须纳入评测。",
+    },
+    "RocketChat/Rocket.Chat": {
+      domain: "企业通讯 / 自托管协作平台",
+      userPain: "高安全或受监管团队需要可自托管、可审计、可扩展的实时通讯系统",
+      coreMechanism: "实时消息服务、权限/频道模型、应用集成、联邦/合规能力和容器化部署",
+      safeEntry: "先在一个非核心团队试点 SSO、审计、备份和移动端体验，再评估替换范围",
+      businessValue: "把敏感协作数据留在可控环境，同时保留机器人、工单和业务系统集成能力",
+      successMetric: "消息延迟、移动端活跃、SSO 成功率、审计完整率、升级回滚时间",
+      inspectFirst: "先看部署拓扑、数据库/文件存储、权限模型、应用市场、安全公告和迁移工具",
+      bestFit: "政企、医疗、制造、金融或需要私有化通讯的团队",
+      badFit: "只需要轻量 IM 或没有平台运维、安全和合规 owner",
+      primaryRisk: "升级、移动端兼容、插件安全、消息留存和合规审计会形成长期运维负担。",
+    },
+    "continuedev/continue": {
+      domain: "开源 Coding Agent / IDE 助手",
+      userPain: "企业想把代码助手接入自有模型、私有知识和开发流程，但 SaaS 助手权限与可控性不足",
+      coreMechanism: "IDE 插件、模型路由、上下文提供器、代码编辑 Agent、规则/索引和本地配置体系",
+      safeEntry: "选一个内部仓库做只读问答和小补丁试点，对比定位准确率、diff 质量和开发者接管体验",
+      businessValue: "在可控模型和代码权限下提升开发、迁移、测试和代码理解效率",
+      successMetric: "采纳率、回滚率、review 缺陷、上下文命中率、单任务成本",
+      inspectFirst: "先看 context provider、模型配置、索引策略、权限边界、telemetry 和 IDE 支持矩阵",
+      bestFit: "需要私有化/多模型 Coding Agent 的平台工程或研发效能团队",
+      badFit: "缺少模型网关、代码权限治理或开发者不愿改变 IDE 工作流",
+      primaryRisk: "代码泄露、错误补丁、模型供应不稳定和插件升级兼容性需要前置评估。",
+    },
+    "penpot/penpot": {
+      domain: "开源设计协作 / 设计工程平台",
+      userPain: "设计系统和产品协作依赖封闭工具，代码团队难以自托管、扩展和审计设计资产",
+      coreMechanism: "Web 设计编辑器、协作状态、组件/样式系统、文件存储和前后端分离服务",
+      safeEntry: "先迁移一个非核心设计系统或内部工具项目，验证组件、导出、权限和协作延迟",
+      businessValue: "让设计资产进入可控部署和开放格式，降低设计与代码协作的供应商锁定",
+      successMetric: "设计文件打开耗时、协作冲突率、组件复用率、导出可用性、迁移成本",
+      inspectFirst: "先看存储模型、实时协作、导入导出、权限、备份恢复和插件/扩展边界",
+      bestFit: "重视开放设计系统、自托管和设计工程衔接的产品研发团队",
+      badFit: "高度依赖既有 Figma 生态插件、外部设计伙伴或无设计平台 owner",
+      primaryRisk: "协作性能、格式兼容、插件生态和设计师迁移成本会决定采用成败。",
+    },
+    "krahets/hello-algo": {
+      domain: "算法教育 / 多语言知识工程",
+      userPain: "团队算法基础培训缺少可运行、多语言、可视化且持续维护的材料",
+      coreMechanism: "统一章节结构、动画图解、多语言代码实现、在线构建和社区翻译维护",
+      safeEntry: "选一条数据结构学习路径接入内部培训，要求学员运行代码并提交错题/改进反馈",
+      businessValue: "把算法培训从静态文档变成可运行、可本地化、可持续更新的学习资产",
+      successMetric: "完成率、练习通过率、代码运行成功率、翻译缺陷、内容更新周期",
+      inspectFirst: "先看章节 schema、多语言代码一致性、构建脚本、贡献流程和版本发布节奏",
+      bestFit: "工程培训、校园招聘、内部学院和技术社区运营团队",
+      badFit: "目标是生产依赖或高级算法研究，而不是基础教学和知识沉淀",
+      primaryRisk: "内容维护、翻译一致性、代码过期和学习效果评估需要长期 owner。",
+    },
+    "mattpocock/skills": {
+      domain: "工程师技能库 / AI 辅助开发方法",
+      userPain: "个人工程经验分散在提示词和笔记里，难以转成可执行、可复用的 AI 工作流",
+      coreMechanism: "面向真实工程任务的技能说明、上下文约束、命令模式和可复制实践清单",
+      safeEntry: "挑 2 个团队高频任务，把对应技能改写成本地规范并在真实 PR 中验证一次",
+      businessValue: "把资深工程师经验产品化，减少 Agent 使用中的上下文遗漏和输出漂移",
+      successMetric: "技能调用成功率、PR 返工率、上下文补充次数、任务完成时间",
+      inspectFirst: "先看技能粒度、触发条件、与本地技术栈差异、验证步骤和维护成本",
+      bestFit: "已引入 AI 编码、希望沉淀团队实践的工程平台或技术负责人",
+      badFit: "没有统一代码规范或把技能当一次性提示词集合使用",
+      primaryRisk: "外部技能直接照搬会与本地架构、权限和测试要求冲突。",
     },
   };
   return overrides[repo.full_name] ? { ...lens, ...overrides[repo.full_name] } : lens;
@@ -1166,9 +1287,10 @@ function normalizeFrontierInterpretation(item) {
     return item.interpretation;
   }
   const text = `${item.title || ""} ${item.summary || ""} ${(item.tags || []).join(" ")}`.toLowerCase();
-  const isAds = /\bads?\b|advertis|auction|bidding|\bctr\b|\bcvr\b|conversion|\bcpa\b|\bcpm\b/.test(text);
-  const isSearch = /search|retrieval|query|index|relevance|rag/.test(text);
-  const isRec = /recommend|recsys|ranking|personalization|feed|candidate/.test(text);
+  const isAds = /\bads?\b|advertis|auction|bidding|\bctr\b|\bcvr\b|conversion|\bcpa\b|\bcpm\b|广告|竞价|出价|转化/.test(text);
+  const isSearch = /search|retrieval|query|index|relevance|rag|搜索|检索|查询|索引/.test(text);
+  const isRec = /recommend|recsys|ranking|personalization|feed|candidate|推荐|排序|召回|粗排|精排|重排|个性化|信息流/.test(text);
+  const isExperiment = /experiment|a\/b|lifecycle graph|model lifecycle|实验平台|模型生命周期/.test(text);
   const isLabeling = /label|judge|dspy|human/.test(text);
   if (isAds) {
     return {
@@ -1195,6 +1317,15 @@ function normalizeFrontierInterpretation(item) {
       metricsAndExperiment: "关注 recall@K、覆盖率、多样性、CTR/CVR、停留/满意度、延迟和索引刷新时延；实验要看离线召回是否转化为在线核心指标。",
       borrowable: "可借鉴模型化索引、可编辑生成式召回、多目标排序和实时行为特征，将推荐漏斗从组件拼接改为端到端协同。",
       boundary: "物料规模不大、业务目标单一或团队没有检索/排序联合 owner 时，复杂联合建模会增加维护成本。",
+    };
+  }
+  if (isExperiment) {
+    return {
+      businessProblem: "搜广推团队的模型、特征、训练、部署和实验资产关系复杂，单次实验成功后也容易在依赖、回滚和复用上失控。",
+      systemMechanism: "用模型生命周期图或实验资产图谱记录数据、特征、模型、评测、服务和消费方关系，把影响面分析从人工经验转成系统能力。",
+      metricsAndExperiment: "关注实验复用率、依赖定位时间、回滚时间、特征/模型血缘完整率、离线到线上指标一致性和事故恢复成本。",
+      borrowable: "可借鉴到推荐/广告平台治理：先建轻量 lineage，再把实验报告、模型 registry、特征平台和线上指标串起来。",
+      boundary: "团队规模小、模型数量少或没有统一平台 owner 时，完整生命周期图会变成维护负担。",
     };
   }
   return {
@@ -1304,8 +1435,12 @@ async function fetchIndustryFrontierItems(maxItems) {
     }),
   );
 
-  return results
+  return [
+    ...results
     .flatMap((result) => (result.status === "fulfilled" ? result.value : []))
+      .map((item) => ({ ...item, sourceType: item.sourceType || "industry" })),
+    ...seedIndustryFrontierItems(),
+  ]
     .filter(dedupeByTitle)
     .sort((a, b) => b.frontierScore - a.frontierScore || new Date(b.publishedAt || 0) - new Date(a.publishedAt || 0))
     .slice(0, maxItems)
@@ -1321,6 +1456,121 @@ async function fetchIndustryFrontierItems(maxItems) {
       summary: item.summary,
       interpretation: interpretFrontier(item),
     }));
+}
+
+function seedIndustryFrontierItems() {
+  return [
+    {
+      title: "Meta Adaptive Ranking Model: Bending the Inference Scaling Curve to Serve LLM-Scale Models for Ads",
+      url: "https://engineering.fb.com/2026/03/31/ml-applications/meta-adaptive-ranking-model-bending-the-inference-scaling-curve-to-serve-llm-scale-models-for-ads/",
+      publishedAt: "2026-03-31T16:00:00Z",
+      source: "Meta Engineering",
+      domain: "engineering.fb.com",
+      sourceType: "industry",
+      frontierScore: 42,
+      summary: "Meta 讨论在实时广告推荐中服务 LLM-scale 排序模型的复杂度/效率矛盾，核心是让模型容量、延迟预算和广告业务目标共同优化。",
+    },
+    {
+      title: "SilverTorch: Index as Model — A New Retrieval Paradigm for Recommendation Systems",
+      url: "https://engineering.fb.com/2026/05/26/ml-applications/silvertorch-index-as-model-new-retrieval-paradigm-recommendation-systems/",
+      publishedAt: "2026-05-26T16:00:00Z",
+      source: "Meta Engineering",
+      domain: "engineering.fb.com",
+      sourceType: "industry",
+      frontierScore: 41,
+      summary: "Meta 将推荐检索组件统一到 index-as-model 架构，强调吞吐、成本效率和准确率的系统级权衡。",
+    },
+    {
+      title: "From Clicks to Conversions: Architecting Shopping Conversion Candidate Generation at Pinterest",
+      url: "https://medium.com/pinterest-engineering/from-clicks-to-conversions-architecting-shopping-conversion-candidate-generation-at-pinterest-04cae5e1455b",
+      publishedAt: "2026-04-27T16:01:05Z",
+      source: "Pinterest Engineering",
+      domain: "medium.com",
+      sourceType: "industry",
+      frontierScore: 40,
+      summary: "Pinterest 介绍购物转化候选生成模型，从点击信号转向转化目标，并讨论大规模上线到 6 亿月活用户的系统设计。",
+    },
+    {
+      title: "Enhancing Ad Relevance: Integrating Real-Time Context into Sequential Recommender Models",
+      url: "https://medium.com/pinterest-engineering/enhancing-ad-relevance-integrating-real-time-context-into-sequential-recommender-models-bc3a2f9b682e",
+      publishedAt: "2026-05-08T19:01:00Z",
+      source: "Pinterest Engineering",
+      domain: "medium.com",
+      sourceType: "industry",
+      frontierScore: 39,
+      summary: "Pinterest 将实时上下文接入序列推荐模型，报告转化相关 ROAS 指标提升，适合观察广告实时特征和在线实验闭环。",
+    },
+    {
+      title: "Using LLMs to amplify human labeling and improve Dash search relevance",
+      url: "https://dropbox.tech/machine-learning/llm-human-labeling-improving-search-relevance-dropbox-dash",
+      publishedAt: "2026-02-26T17:00:00Z",
+      source: "Dropbox Tech",
+      domain: "dropbox.tech",
+      sourceType: "industry",
+      frontierScore: 36,
+      summary: "Dropbox Dash 用少量人工标注和 LLM 辅助标注训练搜索排序模型，解决企业搜索相关性评测与长尾标注稀缺。",
+    },
+    {
+      title: "How we optimized Dash's relevance judge with DSPy",
+      url: "https://dropbox.tech/machine-learning/optimizing-dropbox-dash-relevance-judge-with-dspy",
+      publishedAt: "2026-03-17T17:00:00Z",
+      source: "Dropbox Tech",
+      domain: "dropbox.tech",
+      sourceType: "industry",
+      frontierScore: 35,
+      summary: "Dropbox 用 DSPy 将搜索相关性 judge 的提示词优化变成可测量、可迁移的自动化循环，降低 LLM judge 脆弱性。",
+    },
+    {
+      title: "Towards Generalizable and Efficient Large-Scale Generative Recommenders",
+      url: "https://netflixtechblog.com/towards-generalizable-and-efficient-large-scale-generative-recommenders-a7db648aa257",
+      publishedAt: "2026-01-13T16:00:00Z",
+      source: "Netflix TechBlog",
+      domain: "netflixtechblog.com",
+      sourceType: "industry",
+      frontierScore: 34,
+      summary: "Netflix 讨论大规模生成式推荐的泛化与效率，重点是如何让生成式模型服务个性化推荐而不牺牲工程成本。",
+    },
+    {
+      title: "Democratizing Machine Learning at Netflix: Building the Model Lifecycle Graph",
+      url: "https://netflixtechblog.com/democratizing-machine-learning-at-netflix-building-the-model-lifecycle-graph-5cc6d5828bb1",
+      publishedAt: "2026-05-12T16:00:00Z",
+      source: "Netflix TechBlog",
+      domain: "netflixtechblog.com",
+      sourceType: "industry",
+      frontierScore: 30,
+      summary: "Netflix 将模型、特征、训练、部署和消费关系建成生命周期图，推荐和个性化团队可借此治理实验资产和依赖影响面。",
+    },
+    {
+      title: "PAI-Rec推荐开发平台：企业级智能推荐解决方案，驱动业务全域增长",
+      url: "https://developer.aliyun.com/article/1724027",
+      publishedAt: "2026-04-04T00:00:00Z",
+      source: "Alibaba Cloud Developer",
+      domain: "developer.aliyun.com",
+      sourceType: "industry",
+      frontierScore: 29,
+      summary: "阿里云 PAI-Rec 介绍企业级推荐平台，多路召回、多目标精排、GPU 推理和实验迭代面向电商、直播、音视频等场景。",
+    },
+    {
+      title: "召回在美团到店推荐广告的应用",
+      url: "https://tech.meituan.com/",
+      publishedAt: "2026-04-27T00:00:00Z",
+      source: "Meituan Tech",
+      domain: "tech.meituan.com",
+      sourceType: "industry",
+      frontierScore: 28,
+      summary: "美团技术首页近期收录到店推荐广告召回实践，适合跟踪本地生活场景中广告召回、排序和多业务商品排序的工程约束。",
+    },
+    {
+      title: "Query attribute recommendation at Amazon Search",
+      url: "https://www.amazon.science/publications/query-attribute-recommendation-at-amazon-search",
+      publishedAt: "2026-01-01T00:00:00Z",
+      source: "Amazon Science",
+      domain: "amazon.science",
+      sourceType: "industry",
+      frontierScore: 26,
+      summary: "Amazon Search 关注短查询中的属性推荐，属性理解会同时影响排序、广告和推荐。",
+    },
+  ];
 }
 
 function scoreIndustryFrontierItem(item, feed) {
@@ -1965,7 +2215,7 @@ function enrichAiNews(item) {
 function inferAiNewsTags(item) {
   const text = `${item.title} ${item.summary} ${item.sourceDetail || ""}`.toLowerCase();
   const tags = [];
-  if (isAnthropicOfficialItem(item) || text.includes("anthropic")) tags.push("A社/Claude");
+  if (isAnthropicOfficialItem(item) || text.includes("anthropic") || text.includes("claude")) tags.push("A社/Claude");
   if (text.includes("agent") || text.includes("智能体") || text.includes("openclaw") || text.includes("codex")) tags.push("Agent");
   if (text.includes("model") || text.includes("模型") || text.includes("grok") || text.includes("gemini") || text.includes("claude")) tags.push("模型");
   if (hasSearchSignal(text)) tags.push("搜索");
@@ -1982,6 +2232,9 @@ function hasSearchSignal(text) {
 
 function buildAiNewsImpact(item, tags) {
   const text = `${item.title} ${item.summary}`.toLowerCase();
+  if (text.includes("a2ui") || text.includes("mcp apps")) return "Google 把 A2UI 与 MCP Apps 放在同一组集成架构里，信号是 AI 应用入口正在从单点插件走向标准化应用协议。";
+  if (text.includes("workload identity federation")) return "Claude Platform 接入开始强调无长期密钥的身份联合，影响企业把 Claude 接入云上工作负载和 CI/CD 的安全基线。";
+  if (text.includes("claude design")) return "Claude Design 与 Claude Code 协同意味着品牌资产、设计规范和代码生成会更紧密，设计系统会成为 Agent 工作流输入。";
   if (tags.includes("A社/Claude")) return "Claude 生态的变化会直接影响 Agent 选型、企业采购、权限治理和安全评测，不能只按模型跑分决策。";
   if (tags.includes("Agent")) return "Agent 正从单点工具走向跨设备、跨应用、跨通讯入口，产品设计要考虑权限、记忆和接管机制。";
   if (tags.includes("搜索")) return "搜索正在从“更多上下文”转向“更会压缩和排序上下文”，会影响 RAG、推荐和信息流产品。";
@@ -1993,6 +2246,10 @@ function buildAiNewsImpact(item, tags) {
 }
 
 function buildAiNewsAction(item, tags) {
+  const text = `${item.title} ${item.summary}`.toLowerCase();
+  if (text.includes("a2ui") || text.includes("mcp apps")) return "建议把 A2UI/MCP Apps 放入 Agent 集成雷达，比较权限模型、上下文传递、应用发现和前端承载边界。";
+  if (text.includes("workload identity federation")) return "建议更新 Claude Platform 接入规范，优先验证短期凭据、最小权限、审计日志和密钥轮换流程。";
+  if (text.includes("claude design")) return "建议让设计系统 owner 试跑一次品牌一致性流程，检查 token、组件、文案和 Claude Code 交付物是否可追踪。";
   if (tags.includes("A社/Claude")) return "建议更新 Claude 评测清单：模型能力、Claude Code/Agent 工作流、权限隔离、审计日志和供应连续性分开验证。";
   if (tags.includes("Agent")) return "建议记录可试用入口、权限模型和是否支持长会话，适合做 30 分钟产品体验验证。";
   if (tags.includes("搜索")) return "建议加入搜广推/RAG 观察清单，重点看压缩率、召回质量、延迟和答案质量是否同时改善。";
