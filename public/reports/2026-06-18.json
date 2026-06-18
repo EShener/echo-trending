@@ -1,6 +1,6 @@
 {
   "date": "2026-06-18",
-  "generatedAt": "2026-06-18T04:23:40.020Z",
+  "generatedAt": "2026-06-18T07:29:18.576Z",
   "source": {
     "provider": "GitHub Trending daily + arXiv + RSS",
     "query": "pushed:>=2026-06-11 stars:>100 archived:false",
@@ -9,13 +9,13 @@
     "language": "all"
   },
   "summary": {
-    "headline": "今日雷达主线：代码智能 / MCP 记忆基础设施 继续升温，搜广推关注 ranking / ads / llm / frontier / retrieval，A 社动态聚焦 Claude 生态治理。",
+    "headline": "今日雷达主线：代码智能与 Agent 基建继续升温，搜广推重点转向 index-as-model、广告自适应推理、实时转化候选和企业搜索评测闭环。",
     "bullets": [
-      "GitHub 热门前三为 DeusData/codebase-memory-mcp、n0-computer/iroh、Panniantong/Agent-Reach；主要语言是 TypeScript，主题集中在 代码智能 / MCP 记忆基础设施、点对点网络 / 边缘连接基础设施、Agent 外部信息采集 / 多平台浏览工具。",
-      "开源项目的采用动作：进入观察/试点池：围绕 codebase memory mcp 做最小 spike，把接入面限定在非核心路径。",
-      "搜广推收录 10 条，来源覆盖 Meta Engineering、Netflix TechBlog、Dropbox Tech、Alibaba Cloud Developer；首要信号是「Meta Adaptive Ranking Model: Bending the Inference Scaling Curve to Serve LLM-Scale Models for Ads」，适合按业务问题、系统机制、指标实验和采用边界拆解。",
-      "A 社覆盖 5 条官方 News/Research/Engineering 动态，重点包括「Introducing Claude Opus 4.8」；动作是把模型更新、Claude Code/Agent、企业合作和安全治理分开评估。",
-      "AIHOT/官方 AI 新闻共 12 条，其中 AIHOT 4 条；阅读口径统一为“信号 -> 影响 -> 动作”，避免只收藏新闻标题。"
+      "GitHub 热门前三为 DeusData/codebase-memory-mcp、n0-computer/iroh、Panniantong/Agent-Reach；重点观察 codebase-memory-mcp、iroh、Agent-Reach 对 Coding Agent 记忆、边缘连接和多平台信息采集的工程启发。",
+      "开源项目解读已按架构机制、适用团队、落地路径、生产风险、决策问题和观察信号组织，优先做旁路 spike，不按 star 数直接采用。",
+      "搜广推收录 12 条深读：Meta SilverTorch/ARM/REA、Pinterest 转化候选与实时上下文、Dropbox Dash 搜索相关性、Netflix 生成式推荐、美团 MTGR、阿里 PAI-Rec 和 2 篇最新 arXiv。",
+      "A 社覆盖 9 条官方动态：Claude Fable/Mythos 5、Opus 4.8、Claude Code 质量复盘、Managed Agents、agentic coding、生命科学 Agent、N-day exploit、LLM ATT&CK 与韩国生态合作。",
+      "AIHOT/官方 AI 新闻共 16 条；每条继续用“信号 -> 影响 -> 动作”口径，避免只保留标题。"
     ]
   },
   "items": [
@@ -29,10 +29,10 @@
         "visualUrl": "https://opengraph.githubassets.com/20260618/DeusData/codebase-memory-mcp",
         "url": "https://github.com/DeusData/codebase-memory-mcp",
         "description": "High-performance code intelligence MCP server. Indexes codebases into a persistent knowledge graph — average repo in milliseconds. 158 languages, sub-ms queries, 99% fewer tokens. Single static binary, zero dependencies.",
-        "stars": 5667,
+        "stars": 5989,
         "starsToday": 371,
-        "forks": 497,
-        "openIssues": 96,
+        "forks": 510,
+        "openIssues": 97,
         "language": "C",
         "topics": [
           "aider",
@@ -82,7 +82,7 @@
         "method": "codex-research-refresh",
         "category": "代码智能 / MCP 记忆基础设施",
         "oneLiner": "High-performance code intelligence MCP server. Indexes codebases into a persistent knowledge graph — average repo in milliseconds. 158 languages, sub-ms queries, 99% fewer tokens. Single static binary, zero dependencies.；关键看 静态代码索引、持久知识图谱、MCP 工具接口、跨语言符号解析和低延迟查询 是否能被小范围验证。",
-        "whyItMatters": "DeusData/codebase-memory-mcp 值得看，是因为 AI 项目真正的分水岭已经从“能跑 demo”转向“能被治理、能接工具、能失败恢复”。当前 5.7K stars / 497 forks，近期仍在活跃迭代，足够进入 Agent 工程雷达。 这次更新更值得关注的是其可迁移机制：静态代码索引、持久知识图谱、MCP 工具接口、跨语言符号解析和低延迟查询 能否被拆成小样本验证，而不是把项目整体搬进生产。",
+        "whyItMatters": "DeusData/codebase-memory-mcp 值得看，是因为 AI 项目真正的分水岭已经从“能跑 demo”转向“能被治理、能接工具、能失败恢复”。当前 6K stars / 510 forks，近期仍在活跃迭代，足够进入 Agent 工程雷达。 这次更新更值得关注的是其可迁移机制：静态代码索引、持久知识图谱、MCP 工具接口、跨语言符号解析和低延迟查询 能否被拆成小样本验证，而不是把项目整体搬进生产。",
         "engineeringRead": "C · 容器化部署。建议按“入口示例 -> 数据/配置 -> 失败处理 -> CI/release -> issue 反例”的顺序读；重点回答 它解决的是「Coding Agent 每次任务都要重新读取仓库，token 成本高且跨文件依赖容易丢失」的主矛盾，还是只会给现有流程增加新的维护面？",
         "architectureSignals": [
           "架构机制：静态代码索引、持久知识图谱、MCP 工具接口、跨语言符号解析和低延迟查询；阅读时把 C 代码入口、数据/配置形态、自动化脚本和边界条件连起来看，而不是只看 README 的安装示例。",
@@ -138,7 +138,7 @@
         },
         "diagram": {
           "title": "codebase-memory-mcp 工业级采用图解",
-          "caption": "代码智能 / MCP 记忆基础设施 · C · 5.7K stars",
+          "caption": "代码智能 / MCP 记忆基础设施 · C · 6K stars",
           "summary": "用 静态代码索引、持久知识图谱、MCP 工具接口、跨语言符号解析和低延迟查询 解决 Coding Agent 每次任务都要重新读取仓库，token 成本高且跨文件依赖容易丢失，先经由 选一个中型服务仓库，接入只读 MCP 查询，旁路比较 Agent 定位文件和解释依赖的准确率 验证 首次定位耗时、token 消耗、符号命中率、错误引用率、索引更新时间，再决定是否扩大。",
           "nodes": [
             {
@@ -175,17 +175,17 @@
             "metrics": [
               {
                 "label": "Stars",
-                "value": "5.7K",
+                "value": "6K",
                 "note": "社区关注"
               },
               {
                 "label": "Forks",
-                "value": "497",
+                "value": "510",
                 "note": "二次采用"
               },
               {
                 "label": "Issues",
-                "value": "96",
+                "value": "97",
                 "note": "维护压力"
               },
               {
@@ -268,9 +268,9 @@
         "visualUrl": "https://opengraph.githubassets.com/20260618/n0-computer/iroh",
         "url": "https://github.com/n0-computer/iroh",
         "description": "IP addresses break, dial keys instead. Modular networking stack in Rust.",
-        "stars": 9714,
+        "stars": 9752,
         "starsToday": 421,
-        "forks": 454,
+        "forks": 456,
         "openIssues": 143,
         "language": "Rust",
         "topics": [
@@ -298,7 +298,7 @@
         "method": "codex-research-refresh",
         "category": "点对点网络 / 边缘连接基础设施",
         "oneLiner": "IP addresses break, dial keys instead. Modular networking stack in Rust.；关键看 基于 dial key 的寻址、Rust 模块化网络栈、直连/中继连接协商和能力封装 是否能被小范围验证。",
-        "whyItMatters": "n0-computer/iroh 处在 快速扩散项目 区间：9.7K stars / 454 forks，维护非常活跃。README 把重点放在「What is iroh?」，适合判断它是否能在 部署、弹性、监控或平台化运维复杂度 上形成真实工程收益。 这次更新更值得关注的是其可迁移机制：基于 dial key 的寻址、Rust 模块化网络栈、直连/中继连接协商和能力封装 能否被拆成小样本验证，而不是把项目整体搬进生产。",
+        "whyItMatters": "n0-computer/iroh 处在 快速扩散项目 区间：9.8K stars / 456 forks，维护非常活跃。README 把重点放在「What is iroh?」，适合判断它是否能在 部署、弹性、监控或平台化运维复杂度 上形成真实工程收益。 这次更新更值得关注的是其可迁移机制：基于 dial key 的寻址、Rust 模块化网络栈、直连/中继连接协商和能力封装 能否被拆成小样本验证，而不是把项目整体搬进生产。",
         "engineeringRead": "Rust · Rust CLI/库。建议按“入口示例 -> 数据/配置 -> 失败处理 -> CI/release -> issue 反例”的顺序读；重点回答 它解决的是「设备、边缘节点或本地优先应用在 NAT、动态 IP 和跨网络连接下可靠性不足」的主矛盾，还是只会给现有流程增加新的维护面？",
         "architectureSignals": [
           "架构机制：基于 dial key 的寻址、Rust 模块化网络栈、直连/中继连接协商和能力封装；阅读时把 Rust 代码入口、数据/配置形态、自动化脚本和边界条件连起来看，而不是只看 README 的安装示例。",
@@ -354,7 +354,7 @@
         },
         "diagram": {
           "title": "iroh 工业级采用图解",
-          "caption": "点对点网络 / 边缘连接基础设施 · Rust · 9.7K stars",
+          "caption": "点对点网络 / 边缘连接基础设施 · Rust · 9.8K stars",
           "summary": "用 基于 dial key 的寻址、Rust 模块化网络栈、直连/中继连接协商和能力封装 解决 设备、边缘节点或本地优先应用在 NAT、动态 IP 和跨网络连接下可靠性不足，先经由 先用两个受控节点做文件同步或设备控制链路，旁路记录连接建立、重连和降级行为 验证 连接成功率、P95 建连耗时、断线恢复时间、中继占比、端到端吞吐，再决定是否扩大。",
           "nodes": [
             {
@@ -391,12 +391,12 @@
             "metrics": [
               {
                 "label": "Stars",
-                "value": "9.7K",
+                "value": "9.8K",
                 "note": "社区关注"
               },
               {
                 "label": "Forks",
-                "value": "454",
+                "value": "456",
                 "note": "二次采用"
               },
               {
@@ -484,10 +484,10 @@
         "visualUrl": "https://opengraph.githubassets.com/20260618/Panniantong/Agent-Reach",
         "url": "https://github.com/Panniantong/Agent-Reach",
         "description": "Give your AI agent eyes to see the entire internet. Read & search Twitter, Reddit, YouTube, GitHub, Bilibili, XiaoHongShu — one CLI, zero API fees.",
-        "stars": 33462,
+        "stars": 33681,
         "starsToday": 1161,
-        "forks": 2687,
-        "openIssues": 67,
+        "forks": 2696,
+        "openIssues": 69,
         "language": "Python",
         "topics": [
           "agent-infrastructure",
@@ -520,7 +520,7 @@
         "method": "codex-research-refresh",
         "category": "Agent 外部信息采集 / 多平台浏览工具",
         "oneLiner": "Give your AI agent eyes to see the entire internet. Read & search Twitter, Reddit, YouTube, GitHub, Bilibili, XiaoHongShu — one CLI, zero API fees.；关键看 CLI 工具封装、多平台读取/搜索适配、网页解析、结果归一化和无 API key 工作流 是否能被小范围验证。",
-        "whyItMatters": "Panniantong/Agent-Reach 值得看，是因为 AI 项目真正的分水岭已经从“能跑 demo”转向“能被治理、能接工具、能失败恢复”。当前 33.5K stars / 2.7K forks，维护非常活跃，足够进入 Agent 工程雷达。 这次更新更值得关注的是其可迁移机制：CLI 工具封装、多平台读取/搜索适配、网页解析、结果归一化和无 API key 工作流 能否被拆成小样本验证，而不是把项目整体搬进生产。",
+        "whyItMatters": "Panniantong/Agent-Reach 值得看，是因为 AI 项目真正的分水岭已经从“能跑 demo”转向“能被治理、能接工具、能失败恢复”。当前 33.7K stars / 2.7K forks，维护非常活跃，足够进入 Agent 工程雷达。 这次更新更值得关注的是其可迁移机制：CLI 工具封装、多平台读取/搜索适配、网页解析、结果归一化和无 API key 工作流 能否被拆成小样本验证，而不是把项目整体搬进生产。",
         "engineeringRead": "Python · Python 包/脚本。建议按“入口示例 -> 数据/配置 -> 失败处理 -> CI/release -> issue 反例”的顺序读；重点回答 它解决的是「Agent 需要读取 Twitter、Reddit、YouTube、GitHub、Bilibili、小红书等平台，但官方 API 成本和限制高」的主矛盾，还是只会给现有流程增加新的维护面？",
         "architectureSignals": [
           "架构机制：CLI 工具封装、多平台读取/搜索适配、网页解析、结果归一化和无 API key 工作流；阅读时把 Python 代码入口、数据/配置形态、自动化脚本和边界条件连起来看，而不是只看 README 的安装示例。",
@@ -576,7 +576,7 @@
         },
         "diagram": {
           "title": "Agent-Reach 工业级采用图解",
-          "caption": "Agent 外部信息采集 / 多平台浏览工具 · Python · 33.5K stars",
+          "caption": "Agent 外部信息采集 / 多平台浏览工具 · Python · 33.7K stars",
           "summary": "用 CLI 工具封装、多平台读取/搜索适配、网页解析、结果归一化和无 API key 工作流 解决 Agent 需要读取 Twitter、Reddit、YouTube、GitHub、Bilibili、小红书等平台，但官方 API 成本和限制高，先经由 选 3 个公开信息源做研究助手旁路任务，禁止自动发帖和账号操作，只评估读取质量 验证 可访问率、去重率、引用可追溯率、解析失败率、单次任务耗时，再决定是否扩大。",
           "nodes": [
             {
@@ -613,7 +613,7 @@
             "metrics": [
               {
                 "label": "Stars",
-                "value": "33.5K",
+                "value": "33.7K",
                 "note": "社区关注"
               },
               {
@@ -623,7 +623,7 @@
               },
               {
                 "label": "Issues",
-                "value": "67",
+                "value": "69",
                 "note": "维护压力"
               },
               {
@@ -706,10 +706,10 @@
         "visualUrl": "https://opengraph.githubassets.com/20260618/meshery/meshery",
         "url": "https://github.com/meshery/meshery",
         "description": "Meshery, the cloud native manager",
-        "stars": 11051,
+        "stars": 11073,
         "starsToday": 196,
-        "forks": 3458,
-        "openIssues": 1524,
+        "forks": 3460,
+        "openIssues": 1525,
         "language": "TypeScript",
         "topics": [
           "cloud-native",
@@ -734,7 +734,7 @@
           "webassembly"
         ],
         "license": "Apache-2.0",
-        "pushedAt": "2026-06-18T01:14:45Z",
+        "pushedAt": "2026-06-18T06:29:12Z",
         "createdAt": "2018-11-14T13:41:00Z",
         "languages": {
           "TypeScript": 4340643,
@@ -941,10 +941,10 @@
         "visualUrl": "https://opengraph.githubassets.com/20260618/obra/superpowers",
         "url": "https://github.com/obra/superpowers",
         "description": "An agentic skills framework & software development methodology that works.",
-        "stars": 231308,
+        "stars": 231517,
         "starsToday": 1129,
-        "forks": 20558,
-        "openIssues": 264,
+        "forks": 20575,
+        "openIssues": 268,
         "language": "Shell",
         "topics": [],
         "license": "MIT",
@@ -963,7 +963,7 @@
         "method": "codex-research-refresh",
         "category": "Agentic 软件工程方法 / 技能框架",
         "oneLiner": "An agentic skills framework & software development methodology that works.；关键看 技能文件、强制流程、任务分解、验证清单和可迁移的工程方法约束 是否能被小范围验证。",
-        "whyItMatters": "obra/superpowers 值得看，是因为 AI 项目真正的分水岭已经从“能跑 demo”转向“能被治理、能接工具、能失败恢复”。当前 231.3K stars / 20.6K forks，维护非常活跃，足够进入 Agent 工程雷达。 这次更新更值得关注的是其可迁移机制：技能文件、强制流程、任务分解、验证清单和可迁移的工程方法约束 能否被拆成小样本验证，而不是把项目整体搬进生产。",
+        "whyItMatters": "obra/superpowers 值得看，是因为 AI 项目真正的分水岭已经从“能跑 demo”转向“能被治理、能接工具、能失败恢复”。当前 231.5K stars / 20.6K forks，维护非常活跃，足够进入 Agent 工程雷达。 这次更新更值得关注的是其可迁移机制：技能文件、强制流程、任务分解、验证清单和可迁移的工程方法约束 能否被拆成小样本验证，而不是把项目整体搬进生产。",
         "engineeringRead": "Shell · 阅读型或源码集成。建议按“入口示例 -> 数据/配置 -> 失败处理 -> CI/release -> issue 反例”的顺序读；重点回答 它解决的是「团队把 AI 编码当聊天工具使用，缺少可复用流程、检查点和质量门禁」的主矛盾，还是只会给现有流程增加新的维护面？",
         "architectureSignals": [
           "架构机制：技能文件、强制流程、任务分解、验证清单和可迁移的工程方法约束；阅读时把 Shell 代码入口、数据/配置形态、自动化脚本和边界条件连起来看，而不是只看 README 的安装示例。",
@@ -1019,7 +1019,7 @@
         },
         "diagram": {
           "title": "superpowers 工业级采用图解",
-          "caption": "Agentic 软件工程方法 / 技能框架 · Shell · 231.3K stars",
+          "caption": "Agentic 软件工程方法 / 技能框架 · Shell · 231.5K stars",
           "summary": "用 技能文件、强制流程、任务分解、验证清单和可迁移的工程方法约束 解决 团队把 AI 编码当聊天工具使用，缺少可复用流程、检查点和质量门禁，先经由 挑一个低风险维护任务，把调研、实现、验证、复盘写成技能并在两名工程师间复用 验证 返工率、漏测率、任务交接成本、技能复用次数、review 缺陷密度，再决定是否扩大。",
           "nodes": [
             {
@@ -1056,7 +1056,7 @@
             "metrics": [
               {
                 "label": "Stars",
-                "value": "231.3K",
+                "value": "231.5K",
                 "note": "社区关注"
               },
               {
@@ -1066,7 +1066,7 @@
               },
               {
                 "label": "Issues",
-                "value": "264",
+                "value": "268",
                 "note": "维护压力"
               },
               {
@@ -1149,9 +1149,9 @@
         "visualUrl": "https://opengraph.githubassets.com/20260618/google-research/timesfm",
         "url": "https://github.com/google-research/timesfm",
         "description": "TimesFM (Time Series Foundation Model) is a pretrained time-series foundation model developed by Google Research for time-series forecasting.",
-        "stars": 22007,
+        "stars": 22114,
         "starsToday": 606,
-        "forks": 2135,
+        "forks": 2150,
         "openIssues": 214,
         "language": "Python",
         "topics": [],
@@ -1169,7 +1169,7 @@
         "method": "codex-research-refresh",
         "category": "时间序列基础模型 / 预测建模",
         "oneLiner": "TimesFM (Time Series Foundation Model) is a pretrained time-series foundation model developed by Google Research for time-series forecasting.；关键看 预训练时间序列基础模型、patch 输入表示、零样本/少样本预测和批量推理接口 是否能被小范围验证。",
-        "whyItMatters": "google-research/timesfm 值得看，是因为 AI 项目真正的分水岭已经从“能跑 demo”转向“能被治理、能接工具、能失败恢复”。当前 22K stars / 2.1K forks，维护非常活跃，足够进入 Agent 工程雷达。 这次更新更值得关注的是其可迁移机制：预训练时间序列基础模型、patch 输入表示、零样本/少样本预测和批量推理接口 能否被拆成小样本验证，而不是把项目整体搬进生产。",
+        "whyItMatters": "google-research/timesfm 值得看，是因为 AI 项目真正的分水岭已经从“能跑 demo”转向“能被治理、能接工具、能失败恢复”。当前 22.1K stars / 2.2K forks，维护非常活跃，足够进入 Agent 工程雷达。 这次更新更值得关注的是其可迁移机制：预训练时间序列基础模型、patch 输入表示、零样本/少样本预测和批量推理接口 能否被拆成小样本验证，而不是把项目整体搬进生产。",
         "engineeringRead": "Python · 容器化部署。建议按“入口示例 -> 数据/配置 -> 失败处理 -> CI/release -> issue 反例”的顺序读；重点回答 它解决的是「需求、流量、库存、容量或告警预测需要跨场景迁移，但传统模型每个业务都要单独调参」的主矛盾，还是只会给现有流程增加新的维护面？",
         "architectureSignals": [
           "架构机制：预训练时间序列基础模型、patch 输入表示、零样本/少样本预测和批量推理接口；阅读时把 Python 代码入口、数据/配置形态、自动化脚本和边界条件连起来看，而不是只看 README 的安装示例。",
@@ -1225,7 +1225,7 @@
         },
         "diagram": {
           "title": "timesfm 工业级采用图解",
-          "caption": "时间序列基础模型 / 预测建模 · Python · 22K stars",
+          "caption": "时间序列基础模型 / 预测建模 · Python · 22.1K stars",
           "summary": "用 预训练时间序列基础模型、patch 输入表示、零样本/少样本预测和批量推理接口 解决 需求、流量、库存、容量或告警预测需要跨场景迁移，但传统模型每个业务都要单独调参，先经由 选一组已有基线的离线时间序列，比较 TimesFM 与 Prophet/ARIMA/LightGBM 的误差和稳定性 验证 MAE/MAPE/sMAPE、冷启动序列表现、预测区间覆盖、推理成本、异常期鲁棒性，再决定是否扩大。",
           "nodes": [
             {
@@ -1262,12 +1262,12 @@
             "metrics": [
               {
                 "label": "Stars",
-                "value": "22K",
+                "value": "22.1K",
                 "note": "社区关注"
               },
               {
                 "label": "Forks",
-                "value": "2.1K",
+                "value": "2.2K",
                 "note": "二次采用"
               },
               {
@@ -1355,9 +1355,9 @@
         "visualUrl": "https://opengraph.githubassets.com/20260618/RocketChat/Rocket.Chat",
         "url": "https://github.com/RocketChat/Rocket.Chat",
         "description": "The Secure CommsOS™ for mission-critical operations",
-        "stars": 45615,
+        "stars": 45639,
         "starsToday": 22,
-        "forks": 13657,
+        "forks": 13659,
         "openIssues": 3779,
         "language": "TypeScript",
         "topics": [
@@ -1582,10 +1582,10 @@
         "visualUrl": "https://opengraph.githubassets.com/20260618/continuedev/continue",
         "url": "https://github.com/continuedev/continue",
         "description": "open-source coding agent",
-        "stars": 33954,
+        "stars": 33995,
         "starsToday": 49,
-        "forks": 4704,
-        "openIssues": 853,
+        "forks": 4711,
+        "openIssues": 860,
         "language": "TypeScript",
         "topics": [
           "agent",
@@ -1725,7 +1725,7 @@
               },
               {
                 "label": "Issues",
-                "value": "853",
+                "value": "860",
                 "note": "维护压力"
               },
               {
@@ -1808,10 +1808,10 @@
         "visualUrl": "https://opengraph.githubassets.com/20260618/penpot/penpot",
         "url": "https://github.com/penpot/penpot",
         "description": "Penpot: The open-source design tool for design and code collaboration",
-        "stars": 50161,
+        "stars": 50209,
         "starsToday": 70,
-        "forks": 3236,
-        "openIssues": 697,
+        "forks": 3239,
+        "openIssues": 700,
         "language": "Clojure",
         "topics": [
           "clojure",
@@ -1823,7 +1823,7 @@
           "ux-experience"
         ],
         "license": "MPL-2.0",
-        "pushedAt": "2026-06-17T21:46:44Z",
+        "pushedAt": "2026-06-18T07:22:32Z",
         "createdAt": "2015-12-29T22:09:07Z",
         "languages": {
           "Clojure": 11768144,
@@ -1953,7 +1953,7 @@
               },
               {
                 "label": "Issues",
-                "value": "697",
+                "value": "700",
                 "note": "维护压力"
               },
               {
@@ -2036,9 +2036,9 @@
         "visualUrl": "https://opengraph.githubassets.com/20260618/krahets/hello-algo",
         "url": "https://github.com/krahets/hello-algo",
         "description": "《Hello 算法》：动画图解、一键运行的数据结构与算法教程。支持简中、繁中、English、日本語，提供 Python, Java, C++, C, C#, JS, Go, Swift, Rust, Ruby, Kotlin, TS, Dart 等代码实现",
-        "stars": 127532,
+        "stars": 127584,
         "starsToday": 96,
-        "forks": 15180,
+        "forks": 15181,
         "openIssues": 38,
         "language": "Java",
         "topics": [
@@ -2073,7 +2073,7 @@
         "method": "codex-research-refresh",
         "category": "算法教育 / 多语言知识工程",
         "oneLiner": "《Hello 算法》：动画图解、一键运行的数据结构与算法教程。支持简中、繁中、English、日本語，提供 Python, Java, C++, C, C#, JS, Go, Swift, Rust, Ruby, Kotlin, TS, Dart 等代码实现；关键看 统一章节结构、动画图解、多语言代码实现、在线构建和社区翻译维护 是否能被小范围验证。",
-        "whyItMatters": "krahets/hello-algo 值得看，是因为 AI 项目真正的分水岭已经从“能跑 demo”转向“能被治理、能接工具、能失败恢复”。当前 127.5K stars / 15.2K forks，需要确认近期维护强度，足够进入 Agent 工程雷达。 这次更新更值得关注的是其可迁移机制：统一章节结构、动画图解、多语言代码实现、在线构建和社区翻译维护 能否被拆成小样本验证，而不是把项目整体搬进生产。",
+        "whyItMatters": "krahets/hello-algo 值得看，是因为 AI 项目真正的分水岭已经从“能跑 demo”转向“能被治理、能接工具、能失败恢复”。当前 127.6K stars / 15.2K forks，需要确认近期维护强度，足够进入 Agent 工程雷达。 这次更新更值得关注的是其可迁移机制：统一章节结构、动画图解、多语言代码实现、在线构建和社区翻译维护 能否被拆成小样本验证，而不是把项目整体搬进生产。",
         "engineeringRead": "Java · 阅读型或源码集成。建议按“入口示例 -> 数据/配置 -> 失败处理 -> CI/release -> issue 反例”的顺序读；重点回答 它解决的是「团队算法基础培训缺少可运行、多语言、可视化且持续维护的材料」的主矛盾，还是只会给现有流程增加新的维护面？",
         "architectureSignals": [
           "架构机制：统一章节结构、动画图解、多语言代码实现、在线构建和社区翻译维护；阅读时把 Java 代码入口、数据/配置形态、自动化脚本和边界条件连起来看，而不是只看 README 的安装示例。",
@@ -2129,7 +2129,7 @@
         },
         "diagram": {
           "title": "hello-algo 工业级采用图解",
-          "caption": "算法教育 / 多语言知识工程 · Java · 127.5K stars",
+          "caption": "算法教育 / 多语言知识工程 · Java · 127.6K stars",
           "summary": "用 统一章节结构、动画图解、多语言代码实现、在线构建和社区翻译维护 解决 团队算法基础培训缺少可运行、多语言、可视化且持续维护的材料，先经由 选一条数据结构学习路径接入内部培训，要求学员运行代码并提交错题/改进反馈 验证 完成率、练习通过率、代码运行成功率、翻译缺陷、内容更新周期，再决定是否扩大。",
           "nodes": [
             {
@@ -2166,7 +2166,7 @@
             "metrics": [
               {
                 "label": "Stars",
-                "value": "127.5K",
+                "value": "127.6K",
                 "note": "社区关注"
               },
               {
@@ -2259,10 +2259,10 @@
         "visualUrl": "https://opengraph.githubassets.com/20260618/Universal-Debloater-Alliance/universal-android-debloater-next-generation",
         "url": "https://github.com/Universal-Debloater-Alliance/universal-android-debloater-next-generation",
         "description": "Cross-platform GUI written in Rust using ADB to debloat non-rooted Android devices. Improve your privacy, the security and battery life of your device.",
-        "stars": 7680,
+        "stars": 7721,
         "starsToday": 457,
-        "forks": 330,
-        "openIssues": 244,
+        "forks": 333,
+        "openIssues": 246,
         "language": "Rust",
         "topics": [
           "adb",
@@ -2275,7 +2275,7 @@
           "privacy"
         ],
         "license": "GPL-3.0",
-        "pushedAt": "2026-06-17T18:55:23Z",
+        "pushedAt": "2026-06-18T06:01:38Z",
         "createdAt": "2023-10-26T17:00:49Z",
         "languages": {
           "Rust": 278440,
@@ -2287,7 +2287,7 @@
         "method": "codex-research-refresh",
         "category": "开发者工具 / 工程效率",
         "oneLiner": "Cross-platform GUI written in Rust using ADB to debloat non-rooted Android devices. Improve your privacy, the security and battery life of your device.；关键看它能否稳定缩短构建、测试、调试或自动化链路。",
-        "whyItMatters": "Universal-Debloater-Alliance/universal-android-debloater-next-generation 处在 早期观察项目 区间：7.7K stars / 330 forks，维护非常活跃。README 把重点放在「Universal Android Debloater Next Generation」，适合判断它是否能在 构建、调试、交付或依赖管理的效率瓶颈 上形成真实工程收益。 这次更新更值得关注的是其可迁移机制：命令行、插件系统、构建管线或 SDK 抽象 能否被拆成小样本验证，而不是把项目整体搬进生产。",
+        "whyItMatters": "Universal-Debloater-Alliance/universal-android-debloater-next-generation 处在 早期观察项目 区间：7.7K stars / 333 forks，维护非常活跃。README 把重点放在「Universal Android Debloater Next Generation」，适合判断它是否能在 构建、调试、交付或依赖管理的效率瓶颈 上形成真实工程收益。 这次更新更值得关注的是其可迁移机制：命令行、插件系统、构建管线或 SDK 抽象 能否被拆成小样本验证，而不是把项目整体搬进生产。",
         "engineeringRead": "Rust · 阅读型或源码集成。建议按“入口示例 -> 数据/配置 -> 失败处理 -> CI/release -> issue 反例”的顺序读；重点回答 它解决的是「构建、调试、交付或依赖管理的效率瓶颈」的主矛盾，还是只会给现有流程增加新的维护面？",
         "architectureSignals": [
           "架构机制：命令行、插件系统、构建管线或 SDK 抽象；阅读时把 Rust 代码入口、数据/配置形态、自动化脚本和边界条件连起来看，而不是只看 README 的安装示例。",
@@ -2385,12 +2385,12 @@
               },
               {
                 "label": "Forks",
-                "value": "330",
+                "value": "333",
                 "note": "二次采用"
               },
               {
                 "label": "Issues",
-                "value": "244",
+                "value": "246",
                 "note": "维护压力"
               },
               {
@@ -2451,7 +2451,7 @@
           }
         },
         "maturity": {
-          "community": 85,
+          "community": 86,
           "maintenance": 100,
           "production": 90,
           "complexity": 55
@@ -2473,9 +2473,9 @@
         "visualUrl": "https://opengraph.githubassets.com/20260618/mattpocock/skills",
         "url": "https://github.com/mattpocock/skills",
         "description": "Skills for Real Engineers. Straight from my .claude directory.",
-        "stars": 133928,
+        "stars": 134217,
         "starsToday": 1523,
-        "forks": 11627,
+        "forks": 11653,
         "openIssues": 80,
         "language": "Shell",
         "topics": [],
@@ -2490,7 +2490,7 @@
         "method": "codex-research-refresh",
         "category": "工程师技能库 / AI 辅助开发方法",
         "oneLiner": "Skills for Real Engineers. Straight from my .claude directory.；关键看 面向真实工程任务的技能说明、上下文约束、命令模式和可复制实践清单 是否能被小范围验证。",
-        "whyItMatters": "mattpocock/skills 值得看，是因为 AI 项目真正的分水岭已经从“能跑 demo”转向“能被治理、能接工具、能失败恢复”。当前 133.9K stars / 11.6K forks，维护非常活跃，足够进入 Agent 工程雷达。 这次更新更值得关注的是其可迁移机制：面向真实工程任务的技能说明、上下文约束、命令模式和可复制实践清单 能否被拆成小样本验证，而不是把项目整体搬进生产。",
+        "whyItMatters": "mattpocock/skills 值得看，是因为 AI 项目真正的分水岭已经从“能跑 demo”转向“能被治理、能接工具、能失败恢复”。当前 134.2K stars / 11.7K forks，维护非常活跃，足够进入 Agent 工程雷达。 这次更新更值得关注的是其可迁移机制：面向真实工程任务的技能说明、上下文约束、命令模式和可复制实践清单 能否被拆成小样本验证，而不是把项目整体搬进生产。",
         "engineeringRead": "Shell · 阅读型或源码集成。建议按“入口示例 -> 数据/配置 -> 失败处理 -> CI/release -> issue 反例”的顺序读；重点回答 它解决的是「个人工程经验分散在提示词和笔记里，难以转成可执行、可复用的 AI 工作流」的主矛盾，还是只会给现有流程增加新的维护面？",
         "architectureSignals": [
           "架构机制：面向真实工程任务的技能说明、上下文约束、命令模式和可复制实践清单；阅读时把 Shell 代码入口、数据/配置形态、自动化脚本和边界条件连起来看，而不是只看 README 的安装示例。",
@@ -2546,7 +2546,7 @@
         },
         "diagram": {
           "title": "skills 工业级采用图解",
-          "caption": "工程师技能库 / AI 辅助开发方法 · Shell · 133.9K stars",
+          "caption": "工程师技能库 / AI 辅助开发方法 · Shell · 134.2K stars",
           "summary": "用 面向真实工程任务的技能说明、上下文约束、命令模式和可复制实践清单 解决 个人工程经验分散在提示词和笔记里，难以转成可执行、可复用的 AI 工作流，先经由 挑 2 个团队高频任务，把对应技能改写成本地规范并在真实 PR 中验证一次 验证 技能调用成功率、PR 返工率、上下文补充次数、任务完成时间，再决定是否扩大。",
           "nodes": [
             {
@@ -2583,12 +2583,12 @@
             "metrics": [
               {
                 "label": "Stars",
-                "value": "133.9K",
+                "value": "134.2K",
                 "note": "社区关注"
               },
               {
                 "label": "Forks",
-                "value": "11.6K",
+                "value": "11.7K",
                 "note": "二次采用"
               },
               {
@@ -2669,11 +2669,66 @@
   ],
   "frontier": {
     "title": "搜广推技术前沿",
-    "subtitle": "混合跟踪搜索、广告、推荐、排序、召回相关的新论文和大厂工程实践。",
-    "source": "Big Tech Engineering/RSS + arXiv API",
+    "subtitle": "专门跟踪搜索、广告、推荐、排序、召回、特征、实验平台与大厂工程实践。",
+    "source": "Meta Engineering + Pinterest Engineering + Dropbox Tech + Netflix TechBlog + Meituan Tech + Alibaba Cloud Developer + arXiv",
     "items": [
       {
         "rank": 1,
+        "title": "SilverTorch: Index as Model — A New Retrieval Paradigm for Recommendation Systems",
+        "url": "https://engineering.fb.com/2026/05/26/ml-applications/silvertorch-index-as-model-new-retrieval-paradigm-recommendation-systems/",
+        "publishedAt": "2026-05-26T16:00:00Z",
+        "source": "Meta Engineering",
+        "sourceType": "industry",
+        "imageUrl": "https://www.google.com/s2/favicons?domain=engineering.fb.com&sz=128",
+        "tags": [
+          "recommendation",
+          "retrieval",
+          "index",
+          "ranking"
+        ],
+        "summary": "Meta 将推荐检索组件统一到 index-as-model 架构，公开强调吞吐、成本效率和准确率的系统级权衡，是本轮推荐召回架构最值得跟踪的工程信号。",
+        "interpretation": {
+          "businessProblem": "UGC 推荐需要在海量内容中做低延迟召回，传统多路召回、索引和排序特征割裂，导致候选质量、成本和后续排序目标难以统一优化。",
+          "systemMechanism": "把索引本身视为可训练模型，让检索、向量表示、候选生成和排序目标共享同一套优化视角；核心不是多加一路召回，而是重构“索引如何表达用户-内容匹配”。",
+          "metricsAndExperiment": "重点看 recall@K、候选覆盖率、后续 ranker lift、P95/P99 召回延迟、单位查询成本、索引刷新时延和线上 CTR/CVR 的一致改善。",
+          "borrowable": "中大型推荐团队可先在一个垂类候选池做旁路 index-as-model，对比现有 ANN/规则/协同过滤召回的互补收益，再决定是否进入主召回链路。",
+          "boundary": "物料规模不大、候选质量主要受规则约束、或没有检索与排序共同 owner 的团队，不应直接复制复杂统一索引架构。"
+        },
+        "diagram": {
+          "title": "Meta Engineering 搜广推机制图",
+          "caption": "recommendation / retrieval / index / ranking",
+          "nodes": [
+            {
+              "label": "业务问题",
+              "detail": "UGC 推荐需要在海量内容中做低延迟召回，传统多路召回、索引和排序特征割裂，导致候选质量、成本和后续排序目标难以统一优化。",
+              "type": "input"
+            },
+            {
+              "label": "系统机制",
+              "detail": "把索引本身视为可训练模型，让检索、向量表示、候选生成和排序目标共享同一套优化视角；核心不是多加一路召回，而是重构“索引如何表达用户-内容匹配”。",
+              "type": "core"
+            },
+            {
+              "label": "指标实验",
+              "detail": "重点看 recall@K、候选覆盖率、后续 ranker lift、P95/P99 召回延迟、单位查询成本、索引刷新时延和线上 CTR/CVR 的一致改善。",
+              "type": "measure"
+            },
+            {
+              "label": "采用边界",
+              "detail": "物料规模不大、候选质量主要受规则约束、或没有检索与排序共同 owner 的团队，不应直接复制复杂统一索引架构。",
+              "type": "risk"
+            }
+          ],
+          "links": [
+            "业务目标",
+            "链路机制",
+            "实验验收",
+            "边界治理"
+          ]
+        }
+      },
+      {
+        "rank": 2,
         "title": "Meta Adaptive Ranking Model: Bending the Inference Scaling Curve to Serve LLM-Scale Models for Ads",
         "url": "https://engineering.fb.com/2026/03/31/ml-applications/meta-adaptive-ranking-model-bending-the-inference-scaling-curve-to-serve-llm-scale-models-for-ads/",
         "publishedAt": "2026-03-31T16:00:00Z",
@@ -2681,52 +2736,329 @@
         "sourceType": "industry",
         "imageUrl": "https://www.google.com/s2/favicons?domain=engineering.fb.com&sz=128",
         "tags": [
-          "ranking",
           "ads",
-          "llm"
+          "ranking",
+          "llm",
+          "inference"
         ],
-        "summary": "Meta 讨论在实时广告推荐中服务 LLM-scale 排序模型的复杂度/效率矛盾，核心是让模型容量、延迟预算和广告业务目标共同优化。",
+        "summary": "Meta 讨论如何在实时广告排序中服务 LLM-scale 模型，把模型容量、延迟预算和广告收益放到同一个系统优化问题里。",
         "interpretation": {
-          "businessProblem": "广告候选、排序和竞价需要同时控制转化价值、用户体验、延迟与算力成本，单点模型提升很难直接证明业务收益。",
-          "systemMechanism": "把用户行为序列、实时上下文、候选生成、轻量排序、精排/重排和预算约束拆成可观测阶段，并在高价值候选上投入更重模型。",
-          "metricsAndExperiment": "优先看 CTR、CVR、CPA/ROAS、广告质量、P95 延迟、推理成本和预算消耗；在线实验要同时观察广告主价值与用户负反馈。",
-          "borrowable": "可借鉴分阶段候选裁剪、实时特征注入、模型容量自适应和在线/离线差异诊断，把算力预算变成排序策略的一部分。",
-          "boundary": "流量小、转化回传慢、成本归因不清或缺少在线实验平台时，不适合直接复制大厂多阶段广告架构。"
+          "businessProblem": "广告排序既要提升转化和广告主价值，又要满足用户体验、竞价公平、延迟和推理成本约束，单纯放大模型容易让收益被成本吃掉。",
+          "systemMechanism": "通过自适应推理把轻量筛选、候选价值判断、重模型调用和预算约束分层，让更昂贵的模型只服务于更值得精算的请求或候选。",
+          "metricsAndExperiment": "线上必须同时观察 CTR、CVR、CPA/ROAS、广告质量、负反馈、P95 延迟、GPU/CPU 成本和预算消耗速度，避免只看离线 AUC。",
+          "borrowable": "可把“算力预算也是排序策略”迁移到商业化推荐：先做请求/候选分桶，再按价值密度分配不同模型容量。",
+          "boundary": "转化回传慢、归因不稳、流量不足或实验平台无法分层观测时，自适应重模型会制造成本黑箱。"
         },
         "diagram": {
           "title": "Meta Engineering 搜广推机制图",
-          "caption": "ranking / ads / llm",
+          "caption": "ads / ranking / llm / inference",
           "nodes": [
             {
               "label": "业务问题",
-              "detail": "广告候选、排序和竞价需要同时控制转化价值、用户体验、延迟与算力成本，单点模型提升很难直接证明业务收益。",
+              "detail": "广告排序既要提升转化和广告主价值，又要满足用户体验、竞价公平、延迟和推理成本约束，单纯放大模型容易让收益被成本吃掉。",
               "type": "input"
             },
             {
               "label": "系统机制",
-              "detail": "把用户行为序列、实时上下文、候选生成、轻量排序、精排/重排和预算约束拆成可观测阶段，并在高价值候选上投入更重模型。",
+              "detail": "通过自适应推理把轻量筛选、候选价值判断、重模型调用和预算约束分层，让更昂贵的模型只服务于更值得精算的请求或候选。",
               "type": "core"
             },
             {
               "label": "指标实验",
-              "detail": "优先看 CTR、CVR、CPA/ROAS、广告质量、P95 延迟、推理成本和预算消耗；在线实验要同时观察广告主价值与用户负反馈。",
+              "detail": "线上必须同时观察 CTR、CVR、CPA/ROAS、广告质量、负反馈、P95 延迟、GPU/CPU 成本和预算消耗速度，避免只看离线 AUC。",
               "type": "measure"
             },
             {
               "label": "采用边界",
-              "detail": "流量小、转化回传慢、成本归因不清或缺少在线实验平台时，不适合直接复制大厂多阶段广告架构。",
+              "detail": "转化回传慢、归因不稳、流量不足或实验平台无法分层观测时，自适应重模型会制造成本黑箱。",
               "type": "risk"
             }
           ],
           "links": [
-            "定义目标",
-            "拆解链路",
-            "实验验收"
+            "业务目标",
+            "链路机制",
+            "实验验收",
+            "边界治理"
           ]
         }
       },
       {
-        "rank": 2,
+        "rank": 3,
+        "title": "Ranking Engineer Agent (REA): The Autonomous AI Agent Accelerating Meta Ads Ranking Innovation",
+        "url": "https://engineering.fb.com/2026/03/17/developer-tools/ranking-engineer-agent-rea-autonomous-ai-system-accelerating-meta-ads-ranking-innovation/",
+        "publishedAt": "2026-03-17T16:00:00Z",
+        "source": "Meta Engineering",
+        "sourceType": "industry",
+        "imageUrl": "https://www.google.com/s2/favicons?domain=engineering.fb.com&sz=128",
+        "tags": [
+          "ads",
+          "ranking",
+          "agent",
+          "experiment"
+        ],
+        "summary": "Meta 把 Agent 用到广告排序模型研发流程，覆盖假设生成、训练任务、失败调试和结果迭代，说明搜广推平台工程正在被 Agent 化。",
+        "interpretation": {
+          "businessProblem": "广告排序迭代依赖大量实验假设、训练配置、失败排查和指标复盘，高级工程师时间被重复平台操作消耗。",
+          "systemMechanism": "让 Agent 连接实验平台、训练作业、日志、指标面板和代码仓库，围绕 ranking hypothesis 自动发起、监控和解释实验。",
+          "metricsAndExperiment": "需要看实验周转时间、成功启动率、失败定位时间、有效 hypothesis 占比、线上 lift 转化率和人工接管次数。",
+          "borrowable": "推荐/广告平台团队可先让 Agent 做只读复盘和配置建议，再逐步开放低风险训练任务提交权限。",
+          "boundary": "没有标准化实验平台、指标定义混乱或权限审计不足时，Agent 可能放大错误实验和资源浪费。"
+        },
+        "diagram": {
+          "title": "Meta Engineering 搜广推机制图",
+          "caption": "ads / ranking / agent / experiment",
+          "nodes": [
+            {
+              "label": "业务问题",
+              "detail": "广告排序迭代依赖大量实验假设、训练配置、失败排查和指标复盘，高级工程师时间被重复平台操作消耗。",
+              "type": "input"
+            },
+            {
+              "label": "系统机制",
+              "detail": "让 Agent 连接实验平台、训练作业、日志、指标面板和代码仓库，围绕 ranking hypothesis 自动发起、监控和解释实验。",
+              "type": "core"
+            },
+            {
+              "label": "指标实验",
+              "detail": "需要看实验周转时间、成功启动率、失败定位时间、有效 hypothesis 占比、线上 lift 转化率和人工接管次数。",
+              "type": "measure"
+            },
+            {
+              "label": "采用边界",
+              "detail": "没有标准化实验平台、指标定义混乱或权限审计不足时，Agent 可能放大错误实验和资源浪费。",
+              "type": "risk"
+            }
+          ],
+          "links": [
+            "业务目标",
+            "链路机制",
+            "实验验收",
+            "边界治理"
+          ]
+        }
+      },
+      {
+        "rank": 4,
+        "title": "From Clicks to Conversions: Architecting Shopping Conversion Candidate Generation at Pinterest",
+        "url": "https://medium.com/pinterest-engineering/from-clicks-to-conversions-architecting-shopping-conversion-candidate-generation-at-pinterest-04cae5e1455b",
+        "publishedAt": "2026-05-01T16:00:00Z",
+        "source": "Pinterest Engineering",
+        "sourceType": "industry",
+        "imageUrl": "https://www.google.com/s2/favicons?domain=medium.com&sz=128",
+        "tags": [
+          "ads",
+          "candidate generation",
+          "conversion",
+          "shopping"
+        ],
+        "summary": "Pinterest 介绍购物转化候选生成模型，从点击优化转向转化目标，并强调面向 6 亿级月活的上线挑战。",
+        "interpretation": {
+          "businessProblem": "购物广告如果只围绕点击建模，会把“好奇点击”与真实购买意图混在一起，候选生成阶段就可能错过高转化商品。",
+          "systemMechanism": "用转化历史、商品/广告主信号和用户购物序列训练候选生成模型，把候选池从点击相似性推进到转化概率驱动。",
+          "metricsAndExperiment": "除 CTR 外重点看 CVR、iCVR、ROAS、转化量、候选去重率、召回覆盖和下游 auction/ranker 的边际收益。",
+          "borrowable": "电商和内容商业化团队可把“点击候选”和“转化候选”拆成两条召回源，通过粗排层评估互补性。",
+          "boundary": "转化样本稀疏、归因窗口长、广告主商品结构变化快时，转化候选生成容易滞后或过拟合头部广告主。"
+        },
+        "diagram": {
+          "title": "Pinterest Engineering 搜广推机制图",
+          "caption": "ads / candidate generation / conversion / shopping",
+          "nodes": [
+            {
+              "label": "业务问题",
+              "detail": "购物广告如果只围绕点击建模，会把“好奇点击”与真实购买意图混在一起，候选生成阶段就可能错过高转化商品。",
+              "type": "input"
+            },
+            {
+              "label": "系统机制",
+              "detail": "用转化历史、商品/广告主信号和用户购物序列训练候选生成模型，把候选池从点击相似性推进到转化概率驱动。",
+              "type": "core"
+            },
+            {
+              "label": "指标实验",
+              "detail": "除 CTR 外重点看 CVR、iCVR、ROAS、转化量、候选去重率、召回覆盖和下游 auction/ranker 的边际收益。",
+              "type": "measure"
+            },
+            {
+              "label": "采用边界",
+              "detail": "转化样本稀疏、归因窗口长、广告主商品结构变化快时，转化候选生成容易滞后或过拟合头部广告主。",
+              "type": "risk"
+            }
+          ],
+          "links": [
+            "业务目标",
+            "链路机制",
+            "实验验收",
+            "边界治理"
+          ]
+        }
+      },
+      {
+        "rank": 5,
+        "title": "Enhancing Ad Relevance: Integrating Real-Time Context into Sequential Recommender Models",
+        "url": "https://medium.com/pinterest-engineering/enhancing-ad-relevance-integrating-real-time-context-into-sequential-recommender-models-bc3a2f9b682e",
+        "publishedAt": "2026-05-08T19:01:00Z",
+        "source": "Pinterest Engineering",
+        "sourceType": "industry",
+        "imageUrl": "https://www.google.com/s2/favicons?domain=medium.com&sz=128",
+        "tags": [
+          "ads",
+          "sequential model",
+          "real-time features",
+          "CVR"
+        ],
+        "summary": "Pinterest 将实时上下文接入序列推荐模型，核心价值在于补齐用户购物旅程的即时状态，而不是只依赖静态兴趣。",
+        "interpretation": {
+          "businessProblem": "广告候选生成如果只看历史行为，会错过会话内意图变化，尤其购物链路中“刚看过什么、刚加购什么”会迅速改变转化概率。",
+          "systemMechanism": "在 Transformer/two-tower 序列建模中注入实时上下文特征，让 offsite conversion history 与当前会话信号共同影响候选。",
+          "metricsAndExperiment": "关注 iCVR、ROAS、实时特征命中率、特征延迟、训练/ serving skew、用户负反馈和冷启动用户收益。",
+          "borrowable": "可借鉴为“实时特征先旁路、再进入主 ranker”的路径：先验证会话特征是否稳定提升，再扩大到多场景。",
+          "boundary": "实时数据链路不稳定、特征口径无法回放或缺少在线/离线一致性校验时，实时上下文会带来难查的波动。"
+        },
+        "diagram": {
+          "title": "Pinterest Engineering 搜广推机制图",
+          "caption": "ads / sequential model / real-time features / CVR",
+          "nodes": [
+            {
+              "label": "业务问题",
+              "detail": "广告候选生成如果只看历史行为，会错过会话内意图变化，尤其购物链路中“刚看过什么、刚加购什么”会迅速改变转化概率。",
+              "type": "input"
+            },
+            {
+              "label": "系统机制",
+              "detail": "在 Transformer/two-tower 序列建模中注入实时上下文特征，让 offsite conversion history 与当前会话信号共同影响候选。",
+              "type": "core"
+            },
+            {
+              "label": "指标实验",
+              "detail": "关注 iCVR、ROAS、实时特征命中率、特征延迟、训练/ serving skew、用户负反馈和冷启动用户收益。",
+              "type": "measure"
+            },
+            {
+              "label": "采用边界",
+              "detail": "实时数据链路不稳定、特征口径无法回放或缺少在线/离线一致性校验时，实时上下文会带来难查的波动。",
+              "type": "risk"
+            }
+          ],
+          "links": [
+            "业务目标",
+            "链路机制",
+            "实验验收",
+            "边界治理"
+          ]
+        }
+      },
+      {
+        "rank": 6,
+        "title": "How we optimized Dash's relevance judge with DSPy",
+        "url": "https://dropbox.tech/machine-learning/optimizing-dropbox-dash-relevance-judge-with-dspy",
+        "publishedAt": "2026-03-17T17:00:00Z",
+        "source": "Dropbox Tech",
+        "sourceType": "industry",
+        "imageUrl": "https://www.google.com/s2/favicons?domain=dropbox.tech&sz=128",
+        "tags": [
+          "search",
+          "relevance",
+          "LLM judge",
+          "DSPy"
+        ],
+        "summary": "Dropbox 用 DSPy 将 Dash 搜索相关性 judge 的提示词优化变成可测量、可迁移的自动化循环，重点是让低成本模型接近人工一致性。",
+        "interpretation": {
+          "businessProblem": "企业搜索需要大量 query-document 相关性标签，但人工标注覆盖不了长尾，强模型 judge 又太贵，提示词手调也不稳定。",
+          "systemMechanism": "把相关性判定定义成可优化程序，利用 DSPy/GEPA 按人工金标反馈迭代 judge，使低成本模型在明确指标下逼近强模型和人工判断。",
+          "metricsAndExperiment": "重点看与人工评分的一致性、NDCG/MRR、judge 成本、跨模型迁移、长尾 query 覆盖和误判样例类型。",
+          "borrowable": "RAG、企业搜索和客服知识库可先建立小而可信的金标集，再用可优化 judge 扩大评测覆盖。",
+          "boundary": "没有金标校准、权限过滤复杂或相关性定义频繁变化时，LLM judge 会把偏差制度化。"
+        },
+        "diagram": {
+          "title": "Dropbox Tech 搜广推机制图",
+          "caption": "search / relevance / LLM judge / DSPy",
+          "nodes": [
+            {
+              "label": "业务问题",
+              "detail": "企业搜索需要大量 query-document 相关性标签，但人工标注覆盖不了长尾，强模型 judge 又太贵，提示词手调也不稳定。",
+              "type": "input"
+            },
+            {
+              "label": "系统机制",
+              "detail": "把相关性判定定义成可优化程序，利用 DSPy/GEPA 按人工金标反馈迭代 judge，使低成本模型在明确指标下逼近强模型和人工判断。",
+              "type": "core"
+            },
+            {
+              "label": "指标实验",
+              "detail": "重点看与人工评分的一致性、NDCG/MRR、judge 成本、跨模型迁移、长尾 query 覆盖和误判样例类型。",
+              "type": "measure"
+            },
+            {
+              "label": "采用边界",
+              "detail": "没有金标校准、权限过滤复杂或相关性定义频繁变化时，LLM judge 会把偏差制度化。",
+              "type": "risk"
+            }
+          ],
+          "links": [
+            "业务目标",
+            "链路机制",
+            "实验验收",
+            "边界治理"
+          ]
+        }
+      },
+      {
+        "rank": 7,
+        "title": "Using LLMs to amplify human labeling and improve Dash search relevance",
+        "url": "https://dropbox.tech/machine-learning/llm-human-labeling-improving-search-relevance-dropbox-dash",
+        "publishedAt": "2026-02-26T17:00:00Z",
+        "source": "Dropbox Tech",
+        "sourceType": "industry",
+        "imageUrl": "https://www.google.com/s2/favicons?domain=dropbox.tech&sz=128",
+        "tags": [
+          "search",
+          "ranking",
+          "labeling",
+          "enterprise"
+        ],
+        "summary": "Dropbox Dash 用少量人工标注加 LLM 辅助标注训练搜索排序模型，是企业搜索低标注场景的可借鉴样本。",
+        "interpretation": {
+          "businessProblem": "企业内容分散在多应用和权限域内，搜索排序需要相关性标签，但人工标注贵、慢、难覆盖用户真实长尾。",
+          "systemMechanism": "先用内部人工标注定义相关性标准，再让 LLM 扩大 query-document 标签规模，最后把标签用于训练和评估 search ranker。",
+          "metricsAndExperiment": "观察 NDCG、MRR、搜索成功率、二次查询率、人工一致性、权限误召率和标签生成成本。",
+          "borrowable": "适合给企业知识搜索建立“人类少量校准 + LLM 大规模扩标 + 在线行为验证”的闭环。",
+          "boundary": "如果企业权限和数据新鲜度不能被 judge 感知，模型会给“看似相关但不可访问/已过期”的文档高分。"
+        },
+        "diagram": {
+          "title": "Dropbox Tech 搜广推机制图",
+          "caption": "search / ranking / labeling / enterprise",
+          "nodes": [
+            {
+              "label": "业务问题",
+              "detail": "企业内容分散在多应用和权限域内，搜索排序需要相关性标签，但人工标注贵、慢、难覆盖用户真实长尾。",
+              "type": "input"
+            },
+            {
+              "label": "系统机制",
+              "detail": "先用内部人工标注定义相关性标准，再让 LLM 扩大 query-document 标签规模，最后把标签用于训练和评估 search ranker。",
+              "type": "core"
+            },
+            {
+              "label": "指标实验",
+              "detail": "观察 NDCG、MRR、搜索成功率、二次查询率、人工一致性、权限误召率和标签生成成本。",
+              "type": "measure"
+            },
+            {
+              "label": "采用边界",
+              "detail": "如果企业权限和数据新鲜度不能被 judge 感知，模型会给“看似相关但不可访问/已过期”的文档高分。",
+              "type": "risk"
+            }
+          ],
+          "links": [
+            "业务目标",
+            "链路机制",
+            "实验验收",
+            "边界治理"
+          ]
+        }
+      },
+      {
+        "rank": 8,
         "title": "Towards Generalizable and Efficient Large-Scale Generative Recommenders",
         "url": "https://netflixtechblog.com/towards-generalizable-and-efficient-large-scale-generative-recommenders-a7db648aa257",
         "publishedAt": "2026-01-13T16:00:00Z",
@@ -2734,362 +3066,163 @@
         "sourceType": "industry",
         "imageUrl": "https://www.google.com/s2/favicons?domain=netflixtechblog.com&sz=128",
         "tags": [
-          "frontier"
+          "recommendation",
+          "generative model",
+          "personalization"
         ],
-        "summary": "Netflix 讨论大规模生成式推荐的泛化与效率，重点是如何让生成式模型服务个性化推荐而不牺牲工程成本。",
+        "summary": "Netflix 讨论将生成式推荐模型从百万级扩展到十亿级参数，同时控制泛化、效率和个性化收益。",
         "interpretation": {
-          "businessProblem": "推荐系统需要在巨大候选池里兼顾兴趣匹配、新鲜度、多样性和商业目标，传统召回/排序割裂会造成离线提升难以上线转化。",
-          "systemMechanism": "把候选生成、向量/索引、用户序列、ranker 表征和反馈学习联合设计，让召回质量与后续排序目标保持一致。",
-          "metricsAndExperiment": "关注 recall@K、覆盖率、多样性、CTR/CVR、停留/满意度、延迟和索引刷新时延；实验要看离线召回是否转化为在线核心指标。",
-          "borrowable": "可借鉴模型化索引、可编辑生成式召回、多目标排序和实时行为特征，将推荐漏斗从组件拼接改为端到端协同。",
-          "boundary": "物料规模不大、业务目标单一或团队没有检索/排序联合 owner 时，复杂联合建模会增加维护成本。"
+          "businessProblem": "传统推荐模型专门化程度高，跨场景迁移成本大；生成式推荐有潜力统一兴趣表达，但训练和 serving 成本容易失控。",
+          "systemMechanism": "用大规模生成式模型学习用户-内容序列表示，并通过工程优化让模型容量、候选生成和个性化排序在成本边界内协同。",
+          "metricsAndExperiment": "需要同时看观看/点击/满意度代理指标、冷启动表现、多样性、推理成本、训练吞吐和线上实验长期效应。",
+          "borrowable": "推荐平台可先把生成式模型作为候选补充或 rerank 解释层，验证是否带来跨域泛化和冷启动收益。",
+          "boundary": "内容库小、用户行为稀疏或没有强实验平台时，十亿级生成式推荐模型更可能带来复杂度而非收益。"
         },
         "diagram": {
           "title": "Netflix TechBlog 搜广推机制图",
-          "caption": "frontier",
+          "caption": "recommendation / generative model / personalization",
           "nodes": [
             {
               "label": "业务问题",
-              "detail": "推荐系统需要在巨大候选池里兼顾兴趣匹配、新鲜度、多样性和商业目标，传统召回/排序割裂会造成离线提升难以上线转化。",
+              "detail": "传统推荐模型专门化程度高，跨场景迁移成本大；生成式推荐有潜力统一兴趣表达，但训练和 serving 成本容易失控。",
               "type": "input"
             },
             {
               "label": "系统机制",
-              "detail": "把候选生成、向量/索引、用户序列、ranker 表征和反馈学习联合设计，让召回质量与后续排序目标保持一致。",
+              "detail": "用大规模生成式模型学习用户-内容序列表示，并通过工程优化让模型容量、候选生成和个性化排序在成本边界内协同。",
               "type": "core"
             },
             {
               "label": "指标实验",
-              "detail": "关注 recall@K、覆盖率、多样性、CTR/CVR、停留/满意度、延迟和索引刷新时延；实验要看离线召回是否转化为在线核心指标。",
+              "detail": "需要同时看观看/点击/满意度代理指标、冷启动表现、多样性、推理成本、训练吞吐和线上实验长期效应。",
               "type": "measure"
             },
             {
               "label": "采用边界",
-              "detail": "物料规模不大、业务目标单一或团队没有检索/排序联合 owner 时，复杂联合建模会增加维护成本。",
+              "detail": "内容库小、用户行为稀疏或没有强实验平台时，十亿级生成式推荐模型更可能带来复杂度而非收益。",
               "type": "risk"
             }
           ],
           "links": [
-            "定义目标",
-            "拆解链路",
-            "实验验收"
-          ]
-        }
-      },
-      {
-        "rank": 3,
-        "title": "Using LLMs to amplify human labeling and improve Dash search relevance",
-        "url": "https://dropbox.tech/machine-learning/llm-human-labeling-improving-search-relevance-dropbox-dash",
-        "publishedAt": "Thu, 26 Feb 2026 09:00:00 -0800",
-        "source": "Dropbox Tech",
-        "sourceType": "industry",
-        "imageUrl": "https://www.google.com/s2/favicons?domain=dropbox.tech&sz=128",
-        "tags": [
-          "ranking",
-          "retrieval",
-          "llm"
-        ],
-        "summary": "How we train Dash's search ranking models with a mix of human and LLM-assisted labeling.",
-        "interpretation": {
-          "businessProblem": "企业搜索和社区搜索的长尾查询、权限边界、语义漂移和标注稀缺会拉低相关性，人工标注又难以覆盖全部候选。",
-          "systemMechanism": "通过混合检索、模型化相关性评估、LLM 辅助标注或自动化 judge，把查询理解、召回、排序和质量评估串成闭环。",
-          "metricsAndExperiment": "重点看 NDCG/MRR、answer match、人工一致性、长尾覆盖、权限误召、P95 延迟和标注成本；线上需要观察搜索成功率与二次查询率。",
-          "borrowable": "适合迁移到企业知识库、RAG、客服搜索和社区内容搜索：先建立可靠评测集，再让 LLM 扩大标注覆盖。",
-          "boundary": "如果文档权限复杂但审计不足，或 LLM judge 没有金标校准，自动评估会把错误相关性放大到生产排序。"
-        },
-        "diagram": {
-          "title": "Dropbox Tech 搜广推机制图",
-          "caption": "ranking / retrieval / llm",
-          "nodes": [
-            {
-              "label": "业务问题",
-              "detail": "企业搜索和社区搜索的长尾查询、权限边界、语义漂移和标注稀缺会拉低相关性，人工标注又难以覆盖全部候选。",
-              "type": "input"
-            },
-            {
-              "label": "系统机制",
-              "detail": "通过混合检索、模型化相关性评估、LLM 辅助标注或自动化 judge，把查询理解、召回、排序和质量评估串成闭环。",
-              "type": "core"
-            },
-            {
-              "label": "指标实验",
-              "detail": "重点看 NDCG/MRR、answer match、人工一致性、长尾覆盖、权限误召、P95 延迟和标注成本；线上需要观察搜索成功率与二次查询率。",
-              "type": "measure"
-            },
-            {
-              "label": "采用边界",
-              "detail": "如果文档权限复杂但审计不足，或 LLM judge 没有金标校准，自动评估会把错误相关性放大到生产排序。",
-              "type": "risk"
-            }
-          ],
-          "links": [
-            "定义目标",
-            "拆解链路",
-            "实验验收"
-          ]
-        }
-      },
-      {
-        "rank": 4,
-        "title": "Democratizing Machine Learning at Netflix: Building the Model Lifecycle Graph",
-        "url": "https://netflixtechblog.com/democratizing-machine-learning-at-netflix-building-the-model-lifecycle-graph-5cc6d5828bb1",
-        "publishedAt": "2026-05-12T16:00:00Z",
-        "source": "Netflix TechBlog",
-        "sourceType": "industry",
-        "imageUrl": "https://www.google.com/s2/favicons?domain=netflixtechblog.com&sz=128",
-        "tags": [
-          "frontier"
-        ],
-        "summary": "Netflix 将模型、特征、训练、部署和消费关系建成生命周期图，推荐和个性化团队可借此治理实验资产和依赖影响面。",
-        "interpretation": {
-          "businessProblem": "推荐系统需要在巨大候选池里兼顾兴趣匹配、新鲜度、多样性和商业目标，传统召回/排序割裂会造成离线提升难以上线转化。",
-          "systemMechanism": "把候选生成、向量/索引、用户序列、ranker 表征和反馈学习联合设计，让召回质量与后续排序目标保持一致。",
-          "metricsAndExperiment": "关注 recall@K、覆盖率、多样性、CTR/CVR、停留/满意度、延迟和索引刷新时延；实验要看离线召回是否转化为在线核心指标。",
-          "borrowable": "可借鉴模型化索引、可编辑生成式召回、多目标排序和实时行为特征，将推荐漏斗从组件拼接改为端到端协同。",
-          "boundary": "物料规模不大、业务目标单一或团队没有检索/排序联合 owner 时，复杂联合建模会增加维护成本。"
-        },
-        "diagram": {
-          "title": "Netflix TechBlog 搜广推机制图",
-          "caption": "frontier",
-          "nodes": [
-            {
-              "label": "业务问题",
-              "detail": "推荐系统需要在巨大候选池里兼顾兴趣匹配、新鲜度、多样性和商业目标，传统召回/排序割裂会造成离线提升难以上线转化。",
-              "type": "input"
-            },
-            {
-              "label": "系统机制",
-              "detail": "把候选生成、向量/索引、用户序列、ranker 表征和反馈学习联合设计，让召回质量与后续排序目标保持一致。",
-              "type": "core"
-            },
-            {
-              "label": "指标实验",
-              "detail": "关注 recall@K、覆盖率、多样性、CTR/CVR、停留/满意度、延迟和索引刷新时延；实验要看离线召回是否转化为在线核心指标。",
-              "type": "measure"
-            },
-            {
-              "label": "采用边界",
-              "detail": "物料规模不大、业务目标单一或团队没有检索/排序联合 owner 时，复杂联合建模会增加维护成本。",
-              "type": "risk"
-            }
-          ],
-          "links": [
-            "定义目标",
-            "拆解链路",
-            "实验验收"
-          ]
-        }
-      },
-      {
-        "rank": 5,
-        "title": "PAI-Rec推荐开发平台：企业级智能推荐解决方案，驱动业务全域增长",
-        "url": "https://developer.aliyun.com/article/1724027",
-        "publishedAt": "2026-04-04T00:00:00Z",
-        "source": "Alibaba Cloud Developer",
-        "sourceType": "industry",
-        "imageUrl": "https://www.google.com/s2/favicons?domain=developer.aliyun.com&sz=128",
-        "tags": [
-          "frontier"
-        ],
-        "summary": "阿里云 PAI-Rec 介绍企业级推荐平台，多路召回、多目标精排、GPU 推理和实验迭代面向电商、直播、音视频等场景。",
-        "interpretation": {
-          "businessProblem": "推荐系统需要在巨大候选池里兼顾兴趣匹配、新鲜度、多样性和商业目标，传统召回/排序割裂会造成离线提升难以上线转化。",
-          "systemMechanism": "把候选生成、向量/索引、用户序列、ranker 表征和反馈学习联合设计，让召回质量与后续排序目标保持一致。",
-          "metricsAndExperiment": "关注 recall@K、覆盖率、多样性、CTR/CVR、停留/满意度、延迟和索引刷新时延；实验要看离线召回是否转化为在线核心指标。",
-          "borrowable": "可借鉴模型化索引、可编辑生成式召回、多目标排序和实时行为特征，将推荐漏斗从组件拼接改为端到端协同。",
-          "boundary": "物料规模不大、业务目标单一或团队没有检索/排序联合 owner 时，复杂联合建模会增加维护成本。"
-        },
-        "diagram": {
-          "title": "Alibaba Cloud Developer 搜广推机制图",
-          "caption": "frontier",
-          "nodes": [
-            {
-              "label": "业务问题",
-              "detail": "推荐系统需要在巨大候选池里兼顾兴趣匹配、新鲜度、多样性和商业目标，传统召回/排序割裂会造成离线提升难以上线转化。",
-              "type": "input"
-            },
-            {
-              "label": "系统机制",
-              "detail": "把候选生成、向量/索引、用户序列、ranker 表征和反馈学习联合设计，让召回质量与后续排序目标保持一致。",
-              "type": "core"
-            },
-            {
-              "label": "指标实验",
-              "detail": "关注 recall@K、覆盖率、多样性、CTR/CVR、停留/满意度、延迟和索引刷新时延；实验要看离线召回是否转化为在线核心指标。",
-              "type": "measure"
-            },
-            {
-              "label": "采用边界",
-              "detail": "物料规模不大、业务目标单一或团队没有检索/排序联合 owner 时，复杂联合建模会增加维护成本。",
-              "type": "risk"
-            }
-          ],
-          "links": [
-            "定义目标",
-            "拆解链路",
-            "实验验收"
-          ]
-        }
-      },
-      {
-        "rank": 6,
-        "title": "召回在美团到店推荐广告的应用",
-        "url": "https://tech.meituan.com/",
-        "publishedAt": "2026-04-27T00:00:00Z",
-        "source": "Meituan Tech",
-        "sourceType": "industry",
-        "imageUrl": "https://www.google.com/s2/favicons?domain=tech.meituan.com&sz=128",
-        "tags": [
-          "frontier"
-        ],
-        "summary": "美团技术首页近期收录到店推荐广告召回实践，适合跟踪本地生活场景中广告召回、排序和多业务商品排序的工程约束。",
-        "interpretation": {
-          "businessProblem": "广告候选、排序和竞价需要同时控制转化价值、用户体验、延迟与算力成本，单点模型提升很难直接证明业务收益。",
-          "systemMechanism": "把用户行为序列、实时上下文、候选生成、轻量排序、精排/重排和预算约束拆成可观测阶段，并在高价值候选上投入更重模型。",
-          "metricsAndExperiment": "优先看 CTR、CVR、CPA/ROAS、广告质量、P95 延迟、推理成本和预算消耗；在线实验要同时观察广告主价值与用户负反馈。",
-          "borrowable": "可借鉴分阶段候选裁剪、实时特征注入、模型容量自适应和在线/离线差异诊断，把算力预算变成排序策略的一部分。",
-          "boundary": "流量小、转化回传慢、成本归因不清或缺少在线实验平台时，不适合直接复制大厂多阶段广告架构。"
-        },
-        "diagram": {
-          "title": "Meituan Tech 搜广推机制图",
-          "caption": "frontier",
-          "nodes": [
-            {
-              "label": "业务问题",
-              "detail": "广告候选、排序和竞价需要同时控制转化价值、用户体验、延迟与算力成本，单点模型提升很难直接证明业务收益。",
-              "type": "input"
-            },
-            {
-              "label": "系统机制",
-              "detail": "把用户行为序列、实时上下文、候选生成、轻量排序、精排/重排和预算约束拆成可观测阶段，并在高价值候选上投入更重模型。",
-              "type": "core"
-            },
-            {
-              "label": "指标实验",
-              "detail": "优先看 CTR、CVR、CPA/ROAS、广告质量、P95 延迟、推理成本和预算消耗；在线实验要同时观察广告主价值与用户负反馈。",
-              "type": "measure"
-            },
-            {
-              "label": "采用边界",
-              "detail": "流量小、转化回传慢、成本归因不清或缺少在线实验平台时，不适合直接复制大厂多阶段广告架构。",
-              "type": "risk"
-            }
-          ],
-          "links": [
-            "定义目标",
-            "拆解链路",
-            "实验验收"
-          ]
-        }
-      },
-      {
-        "rank": 7,
-        "title": "SproutRAG: Attention-Guided Tree Search with Progressive Embeddings for Long-Document RAG",
-        "url": "http://arxiv.org/abs/2606.18381v1",
-        "publishedAt": "2026-06-16T18:28:00Z",
-        "source": "arXiv",
-        "sourceType": "paper",
-        "imageUrl": "https://dummyimage.com/960x540/eef2ff/1f2a44.png&text=Search%20Ads%20RecSys",
-        "tags": [
-          "retrieval",
-          "vector",
-          "llm"
-        ],
-        "summary": "Retrieval-augmented generation (RAG) systems must balance retrieval granularity with contextual coherence, a challenge that existing methods address through LLM-guided chunking, single-level context expansion, or hierarchical summarization. These approaches variously depend on costly LLM calls during indexing or retrieval, limit context aggregation to a single granularity level, or introduce information loss through summarization. We present SproutRAG, an attention-guided hierarchical RAG framework that addresses this trade-off by organizing sentence-level chunks into progressively larger but semantically coherent units, using learned inter-sentence attention to construct a binary chunking tree. Unlike prior approaches that rely on external LLMs, fixed context expansion, or lossy summarization, SproutRAG learns which attention heads and layers best capture semantic document structure, enabling multi-granularity retrieval without additional LLM calls or compressed summaries. At retrieval time, SproutRAG uses hierarchical beam search to retrieve candidates at multiple granularities, capturing multi-sentence relevance beyond flat retrieval. The framework is trained end-to-end with a joint objective that improves both embeddings and tree structure. Experiments across four benchmarks spanning scientific, legal, and open-domain settings demonstrate that SproutRAG improves information efficiency (IE) by 6.1% on average over the strongest baseline. Code is available on https://github.com/AmirAbaskohi/SproutRAG.",
-        "interpretation": {
-          "businessProblem": "企业搜索和社区搜索的长尾查询、权限边界、语义漂移和标注稀缺会拉低相关性，人工标注又难以覆盖全部候选。",
-          "systemMechanism": "通过混合检索、模型化相关性评估、LLM 辅助标注或自动化 judge，把查询理解、召回、排序和质量评估串成闭环。",
-          "metricsAndExperiment": "重点看 NDCG/MRR、answer match、人工一致性、长尾覆盖、权限误召、P95 延迟和标注成本；线上需要观察搜索成功率与二次查询率。",
-          "borrowable": "适合迁移到企业知识库、RAG、客服搜索和社区内容搜索：先建立可靠评测集，再让 LLM 扩大标注覆盖。",
-          "boundary": "如果文档权限复杂但审计不足，或 LLM judge 没有金标校准，自动评估会把错误相关性放大到生产排序。"
-        },
-        "diagram": {
-          "title": "arXiv 搜广推机制图",
-          "caption": "retrieval / vector / llm",
-          "nodes": [
-            {
-              "label": "业务问题",
-              "detail": "企业搜索和社区搜索的长尾查询、权限边界、语义漂移和标注稀缺会拉低相关性，人工标注又难以覆盖全部候选。",
-              "type": "input"
-            },
-            {
-              "label": "系统机制",
-              "detail": "通过混合检索、模型化相关性评估、LLM 辅助标注或自动化 judge，把查询理解、召回、排序和质量评估串成闭环。",
-              "type": "core"
-            },
-            {
-              "label": "指标实验",
-              "detail": "重点看 NDCG/MRR、answer match、人工一致性、长尾覆盖、权限误召、P95 延迟和标注成本；线上需要观察搜索成功率与二次查询率。",
-              "type": "measure"
-            },
-            {
-              "label": "采用边界",
-              "detail": "如果文档权限复杂但审计不足，或 LLM judge 没有金标校准，自动评估会把错误相关性放大到生产排序。",
-              "type": "risk"
-            }
-          ],
-          "links": [
-            "定义目标",
-            "拆解链路",
-            "实验验收"
-          ]
-        }
-      },
-      {
-        "rank": 8,
-        "title": "Understanding the Behaviors of Environment-aware Information Retrieval",
-        "url": "http://arxiv.org/abs/2606.16817v1",
-        "publishedAt": "2026-06-15T15:02:52Z",
-        "source": "arXiv",
-        "sourceType": "paper",
-        "imageUrl": "https://dummyimage.com/960x540/eef2ff/1f2a44.png&text=Search%20Ads%20RecSys",
-        "tags": [
-          "retrieval",
-          "vector",
-          "llm"
-        ],
-        "summary": "Recent retrieval-augmented generation (RAG) approaches have demonstrated strong capability in handling complex queries, yet current research overlooks a critical challenge: different retrievers require fundamentally different query formulation strategies for optimal performance. In this work, we present the first systematic analysis of how LLMs can learn to adapt their query formulation strategies for different retrievers via reinforcement learning (RL). Our empirical study reveals that RL effectively teaches an LLM to tailor its queries to specific retriever characteristics. We discover that different retrievers exhibit surprisingly distinct optimal query styles (e.g., descriptive vs. question-like), suggesting strategies learned for one retriever ineffective for another. We further show that performance can be enhanced by incorporating retriever-specific human guidance and by scaling model size. To facilitate learning over multi-retrieval-step trajectories, we introduce a branching-based rollout technique that improves training stability. Our work provides the first empirical evidence and actionable insights for building truly retriever-aware RAG systems. Code and resources are available at https://github.com/LCO-Embedding/Envs-aware-Information-Retrieval.",
-        "interpretation": {
-          "businessProblem": "企业搜索和社区搜索的长尾查询、权限边界、语义漂移和标注稀缺会拉低相关性，人工标注又难以覆盖全部候选。",
-          "systemMechanism": "通过混合检索、模型化相关性评估、LLM 辅助标注或自动化 judge，把查询理解、召回、排序和质量评估串成闭环。",
-          "metricsAndExperiment": "重点看 NDCG/MRR、answer match、人工一致性、长尾覆盖、权限误召、P95 延迟和标注成本；线上需要观察搜索成功率与二次查询率。",
-          "borrowable": "适合迁移到企业知识库、RAG、客服搜索和社区内容搜索：先建立可靠评测集，再让 LLM 扩大标注覆盖。",
-          "boundary": "如果文档权限复杂但审计不足，或 LLM judge 没有金标校准，自动评估会把错误相关性放大到生产排序。"
-        },
-        "diagram": {
-          "title": "arXiv 搜广推机制图",
-          "caption": "retrieval / vector / llm",
-          "nodes": [
-            {
-              "label": "业务问题",
-              "detail": "企业搜索和社区搜索的长尾查询、权限边界、语义漂移和标注稀缺会拉低相关性，人工标注又难以覆盖全部候选。",
-              "type": "input"
-            },
-            {
-              "label": "系统机制",
-              "detail": "通过混合检索、模型化相关性评估、LLM 辅助标注或自动化 judge，把查询理解、召回、排序和质量评估串成闭环。",
-              "type": "core"
-            },
-            {
-              "label": "指标实验",
-              "detail": "重点看 NDCG/MRR、answer match、人工一致性、长尾覆盖、权限误召、P95 延迟和标注成本；线上需要观察搜索成功率与二次查询率。",
-              "type": "measure"
-            },
-            {
-              "label": "采用边界",
-              "detail": "如果文档权限复杂但审计不足，或 LLM judge 没有金标校准，自动评估会把错误相关性放大到生产排序。",
-              "type": "risk"
-            }
-          ],
-          "links": [
-            "定义目标",
-            "拆解链路",
-            "实验验收"
+            "业务目标",
+            "链路机制",
+            "实验验收",
+            "边界治理"
           ]
         }
       },
       {
         "rank": 9,
+        "title": "MTGR：美团外卖生成式推荐 Scaling Law 落地实践",
+        "url": "https://tech.meituan.com/",
+        "publishedAt": "2026-06-18T00:00:00+08:00",
+        "source": "Meituan Tech",
+        "sourceType": "industry",
+        "imageUrl": "https://www.google.com/s2/favicons?domain=tech.meituan.com&sz=128",
+        "tags": [
+          "推荐",
+          "生成式推荐",
+          "HSTU",
+          "Scaling Law"
+        ],
+        "summary": "美团技术首页近期重点展示外卖生成式推荐 MTGR：对齐传统特征体系，多序列 Transformer 统一建模，并披露 FLOPs、推理成本和全量上线收益。",
+        "interpretation": {
+          "businessProblem": "外卖推荐同时受用户短期意图、商家供给、时段、距离和履约约束影响，传统特征工程迭代遇到容量和表达上限。",
+          "systemMechanism": "基于 HSTU/Transformer 将多条行为序列和传统特征体系对齐，借生成式推荐 Scaling Law 扩大模型容量，同时通过工程优化控制推理成本。",
+          "metricsAndExperiment": "重点看离线收益是否转成在线订单/CTR/CVR、样本前向 FLOPs、推理成本、训练成本、P95 延迟和分城市/分时段稳定性。",
+          "borrowable": "本地生活、即时零售和内容推荐可借鉴“先对齐现有特征体系，再用序列大模型增量替换”的迁移路径。",
+          "boundary": "供给约束强、实时库存/履约信号缺失或延迟预算极紧时，大模型收益可能被业务规则和 serving 成本抵消。"
+        },
+        "diagram": {
+          "title": "Meituan Tech 搜广推机制图",
+          "caption": "推荐 / 生成式推荐 / HSTU / Scaling Law",
+          "nodes": [
+            {
+              "label": "业务问题",
+              "detail": "外卖推荐同时受用户短期意图、商家供给、时段、距离和履约约束影响，传统特征工程迭代遇到容量和表达上限。",
+              "type": "input"
+            },
+            {
+              "label": "系统机制",
+              "detail": "基于 HSTU/Transformer 将多条行为序列和传统特征体系对齐，借生成式推荐 Scaling Law 扩大模型容量，同时通过工程优化控制推理成本。",
+              "type": "core"
+            },
+            {
+              "label": "指标实验",
+              "detail": "重点看离线收益是否转成在线订单/CTR/CVR、样本前向 FLOPs、推理成本、训练成本、P95 延迟和分城市/分时段稳定性。",
+              "type": "measure"
+            },
+            {
+              "label": "采用边界",
+              "detail": "供给约束强、实时库存/履约信号缺失或延迟预算极紧时，大模型收益可能被业务规则和 serving 成本抵消。",
+              "type": "risk"
+            }
+          ],
+          "links": [
+            "业务目标",
+            "链路机制",
+            "实验验收",
+            "边界治理"
+          ]
+        }
+      },
+      {
+        "rank": 10,
+        "title": "PAI-Rec 推荐开发平台：企业级智能推荐解决方案，驱动业务全域增长",
+        "url": "https://developer.aliyun.com/article/1724027",
+        "publishedAt": "2026-04-04T00:00:00+08:00",
+        "source": "Alibaba Cloud Developer",
+        "sourceType": "industry",
+        "imageUrl": "https://www.google.com/s2/favicons?domain=developer.aliyun.com&sz=128",
+        "tags": [
+          "推荐",
+          "多路召回",
+          "精排",
+          "实验迭代"
+        ],
+        "summary": "阿里云 PAI-Rec 汇总企业级推荐平台能力，覆盖多路召回、多目标精排、GPU 推理和灵活迭代，适合中台化推荐建设参考。",
+        "interpretation": {
+          "businessProblem": "企业想做推荐时常卡在召回、特征、排序、推理和实验链路分散，算法 demo 很快但生产系统难维护。",
+          "systemMechanism": "用平台化方式把多路召回、过滤、特征工程、多目标精排、GPU 推理和实验配置串起来，降低从场景到上线的工程门槛。",
+          "metricsAndExperiment": "关注点击率、转化率、ROI、召回覆盖、精排延迟、GPU 利用率、实验迭代周期和线上回滚时间。",
+          "borrowable": "推荐中台可借鉴其模块边界：召回引擎、特征算子、排序模型、在线服务和实验配置需要有统一 schema。",
+          "boundary": "业务目标高度定制、数据权限复杂或团队已有成熟自研平台时，通用平台可能限制深度优化。"
+        },
+        "diagram": {
+          "title": "Alibaba Cloud Developer 搜广推机制图",
+          "caption": "推荐 / 多路召回 / 精排 / 实验迭代",
+          "nodes": [
+            {
+              "label": "业务问题",
+              "detail": "企业想做推荐时常卡在召回、特征、排序、推理和实验链路分散，算法 demo 很快但生产系统难维护。",
+              "type": "input"
+            },
+            {
+              "label": "系统机制",
+              "detail": "用平台化方式把多路召回、过滤、特征工程、多目标精排、GPU 推理和实验配置串起来，降低从场景到上线的工程门槛。",
+              "type": "core"
+            },
+            {
+              "label": "指标实验",
+              "detail": "关注点击率、转化率、ROI、召回覆盖、精排延迟、GPU 利用率、实验迭代周期和线上回滚时间。",
+              "type": "measure"
+            },
+            {
+              "label": "采用边界",
+              "detail": "业务目标高度定制、数据权限复杂或团队已有成熟自研平台时，通用平台可能限制深度优化。",
+              "type": "risk"
+            }
+          ],
+          "links": [
+            "业务目标",
+            "链路机制",
+            "实验验收",
+            "边界治理"
+          ]
+        }
+      },
+      {
+        "rank": 11,
         "title": "OneRank: Unified Transformer-Native Ranking Architecture for Multi-Task Recommendation",
         "url": "http://arxiv.org/abs/2606.16838v1",
         "publishedAt": "2026-06-15T15:16:17Z",
@@ -3098,50 +3231,53 @@
         "imageUrl": "https://dummyimage.com/960x540/eef2ff/1f2a44.png&text=Search%20Ads%20RecSys",
         "tags": [
           "recsys",
-          "ranking"
+          "ranking",
+          "multi-task",
+          "transformer"
         ],
-        "summary": "Multi-task learning (MTL) is essential in recommender systems to enable complementary learning among diverse user feedback. While modern industrial practices have shifted from DNNs to Transformer-centric architectures to strengthen sequence modeling and scaling capacity, they still decouple feature encoding from multi-task prediction, treating the Transformer as a task-agnostic encoder. This design fundamentally limits the performance and scalability by (1) creating an information bottleneck under heterogeneous task objectives, (2) inducing gradient interference that leads to the seesaw phenomenon, and (3) forcing a dataflow transition in which attention-based, context-adaptive representation learning is converted to static feed-forward task prediction with incompatible information read-write dynamics. We propose OneRank, a Transformer-native multi-task ranking framework that eliminates encoder-predictor separation and introduces task-private channels for forward representation learning and backward optimization, enabling task-specialized learning while reducing inter-task interference. In the forward pass, OneRank learns task-specific representations bottom-up through task-conditioned information selection, candidate-aware contextualization, and controlled cross-task interaction. In the backward pass, cross-task gradient detachment isolates task-private parameter updates from shared knowledge extraction modules, preventing negative transfer. We further replace static task-specific MLP scorers with dynamic matching-based scoring for context-aware personalized ranking. By internalizing multi-task reasoning within the Transformer stack, OneRank establishes a unified and scalable architectural paradigm. Offline and online experiments on large-scale industrial datasets show that OneRank significantly outperforms state-of-the-art baselines while maintaining computational efficiency.",
+        "summary": "OneRank 试图把多任务推荐排序中的共享编码器与任务预测分离问题收进 Transformer 原生架构，降低多任务梯度干扰。",
         "interpretation": {
-          "businessProblem": "推荐系统需要在巨大候选池里兼顾兴趣匹配、新鲜度、多样性和商业目标，传统召回/排序割裂会造成离线提升难以上线转化。",
-          "systemMechanism": "把候选生成、向量/索引、用户序列、ranker 表征和反馈学习联合设计，让召回质量与后续排序目标保持一致。",
-          "metricsAndExperiment": "关注 recall@K、覆盖率、多样性、CTR/CVR、停留/满意度、延迟和索引刷新时延；实验要看离线召回是否转化为在线核心指标。",
-          "borrowable": "可借鉴模型化索引、可编辑生成式召回、多目标排序和实时行为特征，将推荐漏斗从组件拼接改为端到端协同。",
-          "boundary": "物料规模不大、业务目标单一或团队没有检索/排序联合 owner 时，复杂联合建模会增加维护成本。"
+          "businessProblem": "推荐排序常同时优化点击、转化、停留、负反馈等目标，共享表征容易出现任务冲突，离线指标提升不稳定。",
+          "systemMechanism": "通过任务私有通道、候选感知上下文化和梯度隔离，让多任务信息在 Transformer 内部完成选择、交互和反向更新控制。",
+          "metricsAndExperiment": "离线看 AUC/NDCG/多任务 Pareto 改善，线上看 CTR/CVR/满意度、负反馈、推理延迟和任务间跷跷板是否缓解。",
+          "borrowable": "适合多目标排序团队作为下一代 ranker 结构候选，先离线复现任务冲突场景，再做单场景灰度。",
+          "boundary": "如果业务目标单一或样本量不足，复杂多任务 Transformer 会增加训练不稳定和 serving 成本。"
         },
         "diagram": {
           "title": "arXiv 搜广推机制图",
-          "caption": "recsys / ranking",
+          "caption": "recsys / ranking / multi-task / transformer",
           "nodes": [
             {
               "label": "业务问题",
-              "detail": "推荐系统需要在巨大候选池里兼顾兴趣匹配、新鲜度、多样性和商业目标，传统召回/排序割裂会造成离线提升难以上线转化。",
+              "detail": "推荐排序常同时优化点击、转化、停留、负反馈等目标，共享表征容易出现任务冲突，离线指标提升不稳定。",
               "type": "input"
             },
             {
               "label": "系统机制",
-              "detail": "把候选生成、向量/索引、用户序列、ranker 表征和反馈学习联合设计，让召回质量与后续排序目标保持一致。",
+              "detail": "通过任务私有通道、候选感知上下文化和梯度隔离，让多任务信息在 Transformer 内部完成选择、交互和反向更新控制。",
               "type": "core"
             },
             {
               "label": "指标实验",
-              "detail": "关注 recall@K、覆盖率、多样性、CTR/CVR、停留/满意度、延迟和索引刷新时延；实验要看离线召回是否转化为在线核心指标。",
+              "detail": "离线看 AUC/NDCG/多任务 Pareto 改善，线上看 CTR/CVR/满意度、负反馈、推理延迟和任务间跷跷板是否缓解。",
               "type": "measure"
             },
             {
               "label": "采用边界",
-              "detail": "物料规模不大、业务目标单一或团队没有检索/排序联合 owner 时，复杂联合建模会增加维护成本。",
+              "detail": "如果业务目标单一或样本量不足，复杂多任务 Transformer 会增加训练不稳定和 serving 成本。",
               "type": "risk"
             }
           ],
           "links": [
-            "定义目标",
-            "拆解链路",
-            "实验验收"
+            "业务目标",
+            "链路机制",
+            "实验验收",
+            "边界治理"
           ]
         }
       },
       {
-        "rank": 10,
+        "rank": 12,
         "title": "SHIFT: Semantic Harmonization via Index-side Feature Transformation for Multilingual Information Retrieval",
         "url": "http://arxiv.org/abs/2606.18801v1",
         "publishedAt": "2026-06-17T08:14:51Z",
@@ -3150,45 +3286,48 @@
         "imageUrl": "https://dummyimage.com/960x540/eef2ff/1f2a44.png&text=Search%20Ads%20RecSys",
         "tags": [
           "retrieval",
-          "vector"
+          "vector",
+          "multilingual",
+          "index"
         ],
-        "summary": "With the rapid expansion of massive multilingual corpora, Multilingual Information Retrieval (MLIR) has emerged as a critical technology for global information access. MLIR enables users to retrieve semantically relevant documents from multilingual text collections using a single-language query. However, recent multilingual dense retrieval models often exhibit a strong preference for documents in the same language as the query. This leads to severe language bias, where top-ranked results are dominated by documents of specific languages, even when documents in other languages contain more semantically relevant information. To address this issue, we propose SHIFT, a training-free method applicable in the indexing stage. Specifically, SHIFT utilizes parallel translation pairs to estimate a relative language vector for each target language with respect to a source language. Subsequently, SHIFT corrects the language-specific offset by subtracting this relative language vector from document embeddings during indexing. Our comprehensive evaluation across four MLIR benchmarks and diverse dense retrieval models confirms that SHIFT can effectively mitigate language bias and enhance MLIR performance.",
+        "summary": "SHIFT 从索引侧修正多语向量空间的语言偏置，提示跨语言搜索/RAG 不一定要重训检索模型。",
         "interpretation": {
-          "businessProblem": "企业搜索和社区搜索的长尾查询、权限边界、语义漂移和标注稀缺会拉低相关性，人工标注又难以覆盖全部候选。",
-          "systemMechanism": "通过混合检索、模型化相关性评估、LLM 辅助标注或自动化 judge，把查询理解、召回、排序和质量评估串成闭环。",
-          "metricsAndExperiment": "重点看 NDCG/MRR、answer match、人工一致性、长尾覆盖、权限误召、P95 延迟和标注成本；线上需要观察搜索成功率与二次查询率。",
-          "borrowable": "适合迁移到企业知识库、RAG、客服搜索和社区内容搜索：先建立可靠评测集，再让 LLM 扩大标注覆盖。",
-          "boundary": "如果文档权限复杂但审计不足，或 LLM judge 没有金标校准，自动评估会把错误相关性放大到生产排序。"
+          "businessProblem": "跨语言搜索中，查询语言会让 dense retriever 偏向同语文档，即使其他语言文档语义更相关，也可能排不上来。",
+          "systemMechanism": "利用平行翻译对估计语言偏移向量，在索引阶段对文档 embedding 做语义调和，降低语言特定偏置。",
+          "metricsAndExperiment": "重点看跨语 NDCG/MRR、语言覆盖、公平性指标、索引构建成本、查询延迟和对不同 embedding 模型的迁移性。",
+          "borrowable": "全球化知识库、客服搜索和多语 RAG 可先在索引侧做低侵入校正，不必立即重训检索器。",
+          "boundary": "语料领域差异大、翻译对质量低或权限/地域规则强绑定语言时，单纯 embedding 校正可能误召。"
         },
         "diagram": {
           "title": "arXiv 搜广推机制图",
-          "caption": "retrieval / vector",
+          "caption": "retrieval / vector / multilingual / index",
           "nodes": [
             {
               "label": "业务问题",
-              "detail": "企业搜索和社区搜索的长尾查询、权限边界、语义漂移和标注稀缺会拉低相关性，人工标注又难以覆盖全部候选。",
+              "detail": "跨语言搜索中，查询语言会让 dense retriever 偏向同语文档，即使其他语言文档语义更相关，也可能排不上来。",
               "type": "input"
             },
             {
               "label": "系统机制",
-              "detail": "通过混合检索、模型化相关性评估、LLM 辅助标注或自动化 judge，把查询理解、召回、排序和质量评估串成闭环。",
+              "detail": "利用平行翻译对估计语言偏移向量，在索引阶段对文档 embedding 做语义调和，降低语言特定偏置。",
               "type": "core"
             },
             {
               "label": "指标实验",
-              "detail": "重点看 NDCG/MRR、answer match、人工一致性、长尾覆盖、权限误召、P95 延迟和标注成本；线上需要观察搜索成功率与二次查询率。",
+              "detail": "重点看跨语 NDCG/MRR、语言覆盖、公平性指标、索引构建成本、查询延迟和对不同 embedding 模型的迁移性。",
               "type": "measure"
             },
             {
               "label": "采用边界",
-              "detail": "如果文档权限复杂但审计不足，或 LLM judge 没有金标校准，自动评估会把错误相关性放大到生产排序。",
+              "detail": "语料领域差异大、翻译对质量低或权限/地域规则强绑定语言时，单纯 embedding 校正可能误召。",
               "type": "risk"
             }
           ],
           "links": [
-            "定义目标",
-            "拆解链路",
-            "实验验收"
+            "业务目标",
+            "链路机制",
+            "实验验收",
+            "边界治理"
           ]
         }
       }
@@ -3197,7 +3336,7 @@
   "aiNews": {
     "title": "AI 新闻",
     "subtitle": "汇总 AIHOT 精选、官方博客、A 社 Anthropic 动态与技术社区更新，并提炼信号、影响和行动建议。",
-    "source": "AIHOT RSS + Official RSS feeds + A社 Anthropic",
+    "source": "AIHOT RSS/API + Official AI RSS feeds + Anthropic official News/Research/Engineering pages",
     "sourceBrief": {
       "kicker": "AIHOT Source",
       "title": "AIHOT 可作为 AI 资讯上游：日报、精选、分类、RSS/API/Skill",
@@ -3215,7 +3354,7 @@
       "source": "AIHOT Public API",
       "date": "2026-06-18",
       "generatedAt": "2026-06-18T00:00:00.162Z",
-      "summary": "日报收录 29 条结构化内容，重点分布在 产品发布/更新 8 条、行业动态 8 条、技巧与观点 6 条。今日优先关注「cuTile Rust：安全无数据竞争的 GPU 内核系统」，它会进入下方 AI 新闻流做进一步信号、影响和动作拆解。",
+      "summary": "日报收录 29 条结构化内容，重点分布在 产品发布/更新 8 条、行业动态 8 条、技巧与观点 6 条。今日优先关注「MOSS-TTS-Local-Transformer-v1.5 在 SGLang-Omni 上：原生流式 48 kHz 语音服务」，它会进入下方 AI 新闻流做进一步信号、影响和动作拆解。",
       "stats": [
         {
           "label": "精选条目",
@@ -3366,6 +3505,19 @@
       ],
       "selected": [
         {
+          "title": "MOSS-TTS-Local-Transformer-v1.5 在 SGLang-Omni 上：原生流式 48 kHz 语音服务",
+          "url": "https://www.lmsys.org/blog/2026-06-17-moss-tts-local-v15",
+          "source": "LMSYS：Blog（Chatbot Arena 团队）",
+          "publishedAt": "2026-06-18T05:56:08.548Z",
+          "summary": "MOSS-TTS-Local-Transformer-v1.5 是一款开源 TTS 模型，支持 48 kHz 立体声、零样本声音克隆、最长 10 分钟长文本合成、时长控制及 31 种语言。其核心采用 Qwen3-4B 骨干与约 2B 参数的 MOSS-Audio-Tokenizer-v2 音频编解码器，通过 12 个 RVQ 码本运行。SGLang-Omni 以三阶段流水线部署该模型。在 Seed-TTS-Eval ...",
+          "category": "产品更新",
+          "signal": "音频生成信号：声音库、长音频和端侧模型并行推进，内容生产工具会继续向专业工作流靠近。",
+          "tags": [
+            "模型",
+            "多模态"
+          ]
+        },
+        {
           "title": "cuTile Rust：安全无数据竞争的 GPU 内核系统",
           "url": "https://github.com/nvlabs/cutile-rs",
           "source": "Hacker News 热门（buzzing.cc 中文翻译）",
@@ -3452,18 +3604,6 @@
             "多模态",
             "工程/基础设施"
           ]
-        },
-        {
-          "title": "库克：AI 浪潮引发存储芯片价格暴涨，iPhone 等苹果产品涨价已\"不可避免\"",
-          "url": "https://www.ithome.com/0/965/694.htm",
-          "source": "IT之家（RSS）",
-          "publishedAt": "2026-06-17T22:41:15.000Z",
-          "summary": "苹果CEO库克确认，AI热潮导致存储芯片严重短缺和价格暴涨，苹果产品涨价已\"不可避免\"。库克未透露涨价具体细节。华尔街日报指出，全球AI巨头大幅增加资本开支，高带宽内存需求激增，挤压消费电子芯片供应。自2024年以来内存和存储芯片价格已翻四倍，涨势预计延续至2027年。研究机构估算，下一代iPhone 18 Pro售价或需增加约270美元。苹果已在上月提高Mac Mini起售价。摩根士丹利预测，今年美国智能手机和PC...",
-          "category": "行业动态",
-          "signal": "行业动态信号，适合纳入周度技术雷达观察。",
-          "tags": [
-            "AI"
-          ]
         }
       ],
       "recentDailies": [
@@ -3514,6 +3654,25 @@
     "items": [
       {
         "source": "AIHOT 精选",
+        "sourceDetail": "LMSYS：Blog（Chatbot Arena 团队）",
+        "domain": "aihot.virxact.com",
+        "title": "MOSS-TTS-Local-Transformer-v1.5 在 SGLang-Omni 上：原生流式 48 kHz 语音服务",
+        "url": "https://www.lmsys.org/blog/2026-06-17-moss-tts-local-v15",
+        "publishedAt": "Thu, 18 Jun 2026 05:56:08 GMT",
+        "summary": "MOSS-TTS-Local-Transformer-v1.5 是一款开源 TTS 模型，支持 48 kHz 立体声、零样本声音克隆、最长 10 分钟长文本合成、时长控制及 31 种语言。其核心采用 Qwen3-4B 骨干与约 2B 参数的 MOSS-Audio-Tokenizer-v2 音频编解码器，通过 12 个 RVQ 码本运行。SGLang-Omni 以三阶段流水线部署该模型。在 Seed-TTS-Eval 上词错误率 5.10%、语音相似度 69.23%，CV3-Eval 上 WER 7.48%、SIM 61.59%，MiniMax Multilingual 上 WER 6.37%、...",
+        "imageUrl": "https://www.google.com/s2/favicons?domain=aihot.virxact.com&sz=128",
+        "priority": 3,
+        "rank": 1,
+        "interpretation": "音频生成信号：声音库、长音频和端侧模型并行推进，内容生产工具会继续向专业工作流靠近。",
+        "impact": "多模态生成开始从玩具效果进入专业工作流，关键评估点会变成一致性、时长、成本和可编辑性。",
+        "action": "建议收集样例和失败案例，比较一致性、可控性、生成时长和商业版权风险。",
+        "tags": [
+          "模型",
+          "多模态"
+        ]
+      },
+      {
+        "source": "AIHOT 精选",
         "sourceDetail": "Hacker News 热门（buzzing.cc 中文翻译）",
         "domain": "aihot.virxact.com",
         "title": "cuTile Rust：安全无数据竞争的 GPU 内核系统",
@@ -3522,7 +3681,7 @@
         "summary": "cuTile Rust 是一个基于 tile 的 GPU 编程系统，允许用 Rust 编写内存安全、无数据竞争的内核。它通过 `#【cutile：：module】` 宏将内核 AST 嵌入主机二进制，在运行时经 CUDA Tile IR JIT 编译为 GPU cubin。可变张量在启动前分割，不可变张量共享，启动器在 GPU 工作期间保持所有权。在 NVIDIA B200 上，逐元素操作达 7 TB/s（约 91% 峰值带宽），GEMM 达 2 PFlop/s（约 92% 密集 f16 峰值）。基于 cuTile Rust 构建的 Grout 推理引擎在 RTX 5090 上解码 Qwen3...",
         "imageUrl": "https://www.google.com/s2/favicons?domain=aihot.virxact.com&sz=128",
         "priority": 3,
-        "rank": 1,
+        "rank": 2,
         "interpretation": "推理基础设施信号：量化、缓存和并行化继续把长上下文、多模态和视频生成推向可部署。",
         "impact": "AI 生成内容和搜索结果会被系统性攻击，后续要把来源证明、反作弊和审计纳入基础架构。",
         "action": "建议沉淀到 AI 安全清单，跟踪攻击方式、检测指标和平台级防御策略。",
@@ -3541,7 +3700,7 @@
         "summary": "LOGOS 由 ATH-Token Foundry 联合中国人民大学高瓴人工智能学院开源，是首个基于统一\"科学语法\"的多领域科学生成基础模型。LOGOS-1B（1B参数）在六大科学任务上匹配或超越领域专用方法：口袋条件配体生成纯序列范式首次超越3D扩散模型，超越NatureLM（8×7B）；逆合成预测Top-1准确率74.8%；口袋位点识别仅靠序列达58.5% Top-n准确率；MOF材料生成NBB提升至17.78%。模型采用统一词汇表将蛋白质、小分子等编码为离散Token，通过空间交互离散化实现无需3D坐标的序列预测。预训练与下游任务形式与目标一致，跨领域知识迁移经实验验证有效。已完整开源模...",
         "imageUrl": "https://www.google.com/s2/favicons?domain=aihot.virxact.com&sz=128",
         "priority": 3,
-        "rank": 2,
+        "rank": 3,
         "interpretation": "行业动态信号，适合纳入周度技术雷达观察。",
         "impact": "这条动态适合放进周度观察池，重点看它是否会改变模型选型、产品入口或工程成本结构。",
         "action": "建议保留原文链接，等后续出现产品实测、开发者反馈或生态跟进时再升级权重。",
@@ -3559,30 +3718,12 @@
         "summary": "我们全新\"Midjourney Scanner\"的技术深潜。",
         "imageUrl": "https://www.google.com/s2/favicons?domain=aihot.virxact.com&sz=128",
         "priority": 3,
-        "rank": 3,
-        "interpretation": "行业动态信号，适合纳入周度技术雷达观察。",
-        "impact": "这条动态适合放进周度观察池，重点看它是否会改变模型选型、产品入口或工程成本结构。",
-        "action": "建议保留原文链接，等后续出现产品实测、开发者反馈或生态跟进时再升级权重。",
-        "tags": [
-          "AI"
-        ]
-      },
-      {
-        "source": "AIHOT 精选",
-        "sourceDetail": "IT之家（RSS）",
-        "domain": "aihot.virxact.com",
-        "title": "上交所发布指引：AI大模型企业可适用科创板第五套上市标准",
-        "url": "https://www.ithome.com/0/965/735.htm",
-        "publishedAt": "Thu, 18 Jun 2026 00:49:16 GMT",
-        "summary": "上海证券交易所6月17日发布指引，支持尚未形成稳定收入的优质人工智能大模型企业通过科创板第五套上市标准发行上市。申报企业需在行业地位、产业链优势、目标市场需求、研发进度及关键指标方面具备突出竞争力。指引明确，申报时至少有一个大模型产品已完成上线发布并实现规模化应用，以验证商业模式可行性。下一步，上交所将在中国证监会指导下推进符合标准的企业上市。",
-        "imageUrl": "https://www.google.com/s2/favicons?domain=aihot.virxact.com&sz=128",
-        "priority": 3,
         "rank": 4,
         "interpretation": "行业动态信号，适合纳入周度技术雷达观察。",
         "impact": "这条动态适合放进周度观察池，重点看它是否会改变模型选型、产品入口或工程成本结构。",
         "action": "建议保留原文链接，等后续出现产品实测、开发者反馈或生态跟进时再升级权重。",
         "tags": [
-          "模型"
+          "AI"
         ]
       },
       {
@@ -3640,227 +3781,438 @@
         ]
       },
       {
-        "source": "A社 Anthropic",
-        "sourceDetail": "Anthropic 官方 News",
-        "domain": "anthropic.com",
-        "title": "Introducing Claude Opus 4.8",
-        "url": "https://www.anthropic.com/news/claude-opus-4-8",
-        "publishedAt": "2026-05-27T16:00:00.000Z",
-        "summary": "Our latest model, Claude Opus 4.8, is an upgrade to our Opus class of models, with stronger performance across coding, agentic tasks, and professional work, and the consistency to handle long-running work.",
-        "imageUrl": "https://cdn.sanity.io/images/4zrzovbb/website/0eaa0ed2dce9810169112e1c77de2585fcf1f5c2-2880x1620.jpg",
-        "priority": 4,
-        "anthropicScore": 22,
-        "rank": 8,
-        "interpretation": "A 社 Agent 信号：Claude 正在把工具使用、电脑操作和企业流程连接起来，重点看权限、审计和失败接管。",
-        "impact": "Claude 生态的变化会直接影响 Agent 选型、企业采购、权限治理和安全评测，不能只按模型跑分决策。",
-        "action": "建议更新 Claude 评测清单：模型能力、Claude Code/Agent 工作流、权限隔离、审计日志和供应连续性分开验证。",
-        "tags": [
-          "A社/Claude",
-          "Agent",
-          "模型"
-        ]
-      },
-      {
         "source": "A社 Anthropic Research",
         "sourceDetail": "Anthropic 官方 Research",
         "domain": "anthropic.com",
         "title": "Agentic coding and persistent returns to expertise",
         "url": "https://www.anthropic.com/research/claude-code-expertise",
-        "publishedAt": "2026-06-15T16:00:00.000Z",
-        "summary": "We evaluate the composition of tasks, human-AI collaboration, and success rates.",
-        "imageUrl": "https://www.anthropic.com/api/opengraph-illustration?name=Hand%20Abacus&backgroundColor=cactus",
+        "publishedAt": "2026-06-16T00:00:00.000Z",
+        "summary": "Anthropic 用 Claude Code 使用数据观察 agentic coding：项目中 coding agent 活动占比继续上升，专业经验仍影响任务拆解、验收和成功率。",
+        "imageUrl": "https://www.google.com/s2/favicons?domain=anthropic.com&sz=128",
         "priority": 4,
-        "anthropicScore": 30,
-        "rank": 9,
-        "interpretation": "A 社 Agent 信号：Claude 正在把工具使用、电脑操作和企业流程连接起来，重点看权限、审计和失败接管。",
-        "impact": "Claude 生态的变化会直接影响 Agent 选型、企业采购、权限治理和安全评测，不能只按模型跑分决策。",
-        "action": "建议更新 Claude 评测清单：模型能力、Claude Code/Agent 工作流、权限隔离、审计日志和供应连续性分开验证。",
+        "interpretation": "A 社 Agent 信号：Claude Code 的扩散不是“人人替代工程师”，而是把专家的架构判断、上下文组织和验收能力放大。",
+        "impact": "企业引入 coding agent 时，应把培训重点放在任务定义、评测、代码审查和失败接管，而不是只采购更强模型。",
+        "action": "更新 Claude Code 试点指标：采纳率、返工率、review 缺陷、上下文补充次数和专家/非专家差异分开看。",
         "tags": [
           "A社/Claude",
-          "Agent"
-        ]
+          "Agent",
+          "Claude Code"
+        ],
+        "rank": 8
+      },
+      {
+        "source": "A社 Anthropic",
+        "sourceDetail": "Anthropic 官方 News",
+        "domain": "anthropic.com",
+        "title": "Claude Fable 5 and Claude Mythos 5",
+        "url": "https://www.anthropic.com/news/claude-fable-5-mythos-5",
+        "publishedAt": "2026-06-09T00:00:00.000Z",
+        "summary": "Anthropic 发布 Fable 5 与 Mythos 5，并在 6 月 12 日标注访问暂停；核心信号是更强模型能力与更保守安全闸门同时出现。",
+        "imageUrl": "https://www.google.com/s2/favicons?domain=anthropic.com&sz=128",
+        "priority": 4,
+        "interpretation": "A 社模型治理信号：高能力模型上线正在与访问分层、安全策略、误拒率和可信用户计划绑定。",
+        "impact": "模型选型不能只看 benchmark；供应连续性、访问策略和高风险能力闸门会直接影响企业生产计划。",
+        "action": "把 Fable/Mythos 放入观察而非立即依赖：记录可用性、价格、授权条件、误拒样例和替代模型回退路径。",
+        "tags": [
+          "A社/Claude",
+          "模型",
+          "安全/可信"
+        ],
+        "rank": 9
+      },
+      {
+        "source": "A社 Anthropic Research",
+        "sourceDetail": "Anthropic 官方 Research",
+        "domain": "anthropic.com",
+        "title": "Paving the way for agents in biology",
+        "url": "https://www.anthropic.com/research/agents-in-biology",
+        "publishedAt": "2026-06-08T00:00:00.000Z",
+        "summary": "Anthropic 讨论让生物数据基础设施更适合 Agent 使用，重点从模型能力转向工具、数据、权限和可复现实验环境。",
+        "imageUrl": "https://www.google.com/s2/favicons?domain=anthropic.com&sz=128",
+        "priority": 4,
+        "interpretation": "A 社垂直 Agent 信号：生命科学 Agent 的瓶颈不只是推理，而是能否可靠访问结构化数据、实验工具和审计链路。",
+        "impact": "行业 Agent 会逼迫企业整理 API、元数据、权限、实验记录和安全边界，数据工程成熟度会决定上限。",
+        "action": "面向垂直 Agent 做一次数据 readiness 盘点：数据 schema、工具调用、权限隔离、审计和失败回滚是否齐全。",
+        "tags": [
+          "A社/Claude",
+          "Agent",
+          "科学"
+        ],
+        "rank": 10
+      },
+      {
+        "source": "A社 Anthropic Research",
+        "sourceDetail": "Anthropic 官方 Research",
+        "domain": "anthropic.com",
+        "title": "Measuring LLMs’ impact on N-day exploits",
+        "url": "https://www.anthropic.com/research/measuring-llms-impact-on-n-day-exploits",
+        "publishedAt": "2026-06-08T00:00:00.000Z",
+        "summary": "Anthropic Frontier Red Team 跟踪 LLM 对已知漏洞利用的影响，把安全能力评估从抽象问答推进到可操作风险。",
+        "imageUrl": "https://www.google.com/s2/favicons?domain=anthropic.com&sz=128",
+        "priority": 4,
+        "interpretation": "A 社安全研究信号：Agent 能力越强，漏洞复现、利用链组合和防御验证都需要更细粒度评测。",
+        "impact": "企业安全团队需要把模型能力、工具权限、网络边界和漏洞情报联动起来，不应只依赖内容过滤。",
+        "action": "补充 AI 安全评测：N-day exploit 复现、工具调用权限、日志留存、红队样例和响应流程。",
+        "tags": [
+          "A社/Claude",
+          "安全/可信",
+          "研究"
+        ],
+        "rank": 11
+      },
+      {
+        "source": "A社 Anthropic Research",
+        "sourceDetail": "Anthropic 官方 Research",
+        "domain": "anthropic.com",
+        "title": "Mapping AI-enabled cyber threats: Insights from the LLM ATT&CK Navigator",
+        "url": "https://www.anthropic.com/research/llm-attack-navigator",
+        "publishedAt": "2026-06-03T00:00:00.000Z",
+        "summary": "Anthropic 用 LLM ATT&CK Navigator 梳理 AI 赋能网络威胁，强调把攻击阶段、模型帮助方式和防御措施结构化。",
+        "imageUrl": "https://www.google.com/s2/favicons?domain=anthropic.com&sz=128",
+        "priority": 4,
+        "interpretation": "A 社安全治理信号：AI 风险正在从“是否会被滥用”变成“在哪个攻击阶段放大了什么能力”。",
+        "impact": "安全团队可以把模型滥用检测映射到 kill chain，形成更可执行的日志、策略和红队任务。",
+        "action": "将 ATT&CK 风格映射加入内部 AI 安全清单：按侦察、利用、横移、数据外泄拆检测与拦截。",
+        "tags": [
+          "A社/Claude",
+          "安全/可信",
+          "网络安全"
+        ],
+        "rank": 12
+      },
+      {
+        "source": "A社 Anthropic",
+        "sourceDetail": "Anthropic 官方 News",
+        "domain": "anthropic.com",
+        "title": "Introducing Claude Opus 4.8",
+        "url": "https://www.anthropic.com/news/claude-opus-4-8",
+        "publishedAt": "2026-05-28T00:00:00.000Z",
+        "summary": "Opus 4.8 强调编码、agentic skills、computer use、长任务协作和更低成本 fast mode，同时上线 Claude Code dynamic workflows。",
+        "imageUrl": "https://www.google.com/s2/favicons?domain=anthropic.com&sz=128",
+        "priority": 4,
+        "interpretation": "A 社模型更新信号：Opus 4.8 的重点是长程 Agent 可靠性、工具调用效率和不确定性表达，而不只是跑分提升。",
+        "impact": "对 Claude Code/Agent 用户，升级价值要看端到端任务完成率、错误自检、上下文保持和单位任务成本。",
+        "action": "在内部评测中加入长会话、多工具、浏览器/电脑操作、代码审查和“能否主动标注不确定性”的样例。",
+        "tags": [
+          "A社/Claude",
+          "模型",
+          "Agent",
+          "Claude Code"
+        ],
+        "rank": 13
+      },
+      {
+        "source": "A社 Anthropic Engineering",
+        "sourceDetail": "Anthropic 官方 Engineering",
+        "domain": "anthropic.com",
+        "title": "An update on recent Claude Code quality reports",
+        "url": "https://www.anthropic.com/engineering/april-23-postmortem",
+        "publishedAt": "2026-04-23T00:00:00.000Z",
+        "summary": "Anthropic 复盘 Claude Code、Claude Agent SDK 和 Claude Cowork 的质量报告，指出 reasoning effort、缓存清理和提示词变更带来的产品层问题。",
+        "imageUrl": "https://www.google.com/s2/favicons?domain=anthropic.com&sz=128",
+        "priority": 4,
+        "interpretation": "A 社工程透明度信号：Agent 质量波动可能来自产品层、上下文缓存和提示词，而不是底层模型能力。",
+        "impact": "企业自建 Agent 平台也会遇到相同问题：默认 effort、上下文裁剪、系统提示和版本灰度都需要可观测。",
+        "action": "建立 Agent 变更审计：每次 prompt、effort、cache、SDK 和工具策略变更都要能回放到质量指标。",
+        "tags": [
+          "A社/Claude",
+          "Claude Code",
+          "工程/基础设施"
+        ],
+        "rank": 14
+      },
+      {
+        "source": "A社 Anthropic Engineering",
+        "sourceDetail": "Anthropic 官方 Engineering",
+        "domain": "anthropic.com",
+        "title": "Scaling Managed Agents: Decoupling the brain from the hands",
+        "url": "https://www.anthropic.com/engineering/managed-agents",
+        "publishedAt": "2026-04-08T00:00:00.000Z",
+        "summary": "Anthropic 介绍 Managed Agents：将 brain/harness、hands/sandbox 和 session log 解耦，支持长程任务、VPC 连接、安全凭据隔离和可恢复会话。",
+        "imageUrl": "https://www.google.com/s2/favicons?domain=anthropic.com&sz=128",
+        "priority": 4,
+        "interpretation": "A 社 Agent 基建信号：长程 Agent 的生产化核心是接口、沙箱、会话日志和凭据边界，而不是把模型放进一个大容器。",
+        "impact": "企业 Agent 平台需要把执行环境、凭据、上下文存储和 harness 做成可替换组件，才能承受模型与工具快速演进。",
+        "action": "评估现有 Agent 架构是否有 durable session、sandbox 隔离、MCP proxy、凭据 vault 和 harness crash 恢复。",
+        "tags": [
+          "A社/Claude",
+          "Agent",
+          "工程/基础设施",
+          "安全/可信"
+        ],
+        "rank": 15
       },
       {
         "source": "A社 Anthropic",
         "sourceDetail": "Anthropic 官方 News",
         "domain": "anthropic.com",
         "title": "Anthropic opens Seoul office and announces new partnerships across the Korean AI ecosystem",
-        "url": "https://www.anthropic.com/news/seoul-office-partnerships-korean-ai-ecosystem",
-        "publishedAt": "2026-06-16T16:00:00.000Z",
-        "summary": "Anthropic opens Seoul and announces new partnerships across the Korean AI ecosystem—with the enterprises, startups, and researchers behind some of the most ambitious deployments of Claude.",
-        "imageUrl": "https://www.anthropic.com/api/opengraph-illustration?name=Object%20Globe&backgroundColor=heather",
+        "url": "https://www.anthropic.com/news/seoul-office-korea-partnerships",
+        "publishedAt": "2026-06-16T00:00:00.000Z",
+        "summary": "Anthropic 宣布首尔办公室和韩国 AI 生态合作，显示 Claude 企业落地正在走区域办公室、合作伙伴和本地生态路线。",
+        "imageUrl": "https://www.google.com/s2/favicons?domain=anthropic.com&sz=128",
         "priority": 4,
-        "anthropicScore": 19,
-        "rank": 10,
-        "interpretation": "A 社企业生态信号：合作、算力和区域办公室会影响 Claude 的可用额度、企业采购路径和本地生态扩散。",
-        "impact": "Claude 生态的变化会直接影响 Agent 选型、企业采购、权限治理和安全评测，不能只按模型跑分决策。",
-        "action": "建议更新 Claude 评测清单：模型能力、Claude Code/Agent 工作流、权限隔离、审计日志和供应连续性分开验证。",
+        "interpretation": "A 社企业生态信号：区域办公室和合作伙伴会影响企业采购、合规沟通、行业方案和本地开发者生态。",
+        "impact": "对跨国团队，模型供应可用性、数据区域、合作伙伴支持和本地合规会成为采购决策变量。",
+        "action": "将 Anthropic 区域合作纳入供应商评估：可用区域、支持 SLA、合规材料和伙伴交付能力分开检查。",
         "tags": [
           "A社/Claude",
-          "模型"
-        ]
-      },
-      {
-        "source": "A社 Anthropic Research",
-        "sourceDetail": "Anthropic 官方 Research",
-        "domain": "anthropic.com",
-        "title": "Teaching Claude why",
-        "url": "https://www.anthropic.com/research/teaching-claude-why",
-        "publishedAt": "2026-05-07T16:00:00.000Z",
-        "summary": "New research on how we've reduced agentic misalignment",
-        "imageUrl": "https://www.anthropic.com/api/opengraph-illustration?name=Hand%20Knot&backgroundColor=cactus",
-        "priority": 4,
-        "anthropicScore": 22,
-        "rank": 11,
-        "interpretation": "A 社 Agent 信号：Claude 正在把工具使用、电脑操作和企业流程连接起来，重点看权限、审计和失败接管。",
-        "impact": "Claude 生态的变化会直接影响 Agent 选型、企业采购、权限治理和安全评测，不能只按模型跑分决策。",
-        "action": "建议更新 Claude 评测清单：模型能力、Claude Code/Agent 工作流、权限隔离、审计日志和供应连续性分开验证。",
-        "tags": [
-          "A社/Claude",
-          "Agent",
-          "模型"
-        ]
-      },
-      {
-        "source": "A社 Anthropic Engineering",
-        "sourceDetail": "Anthropic 官方 Engineering",
-        "domain": "anthropic.com",
-        "title": "Quantifying infrastructure noise in agentic coding evals",
-        "url": "https://www.anthropic.com/engineering/infrastructure-noise",
-        "publishedAt": "",
-        "summary": "Agentic coding benchmarks like SWE-bench and Terminal-Bench are commonly used to compare the software engineering capabilities of frontier models—with top spots on leaderboards often separated by just a few percentage points.",
-        "imageUrl": "https://cdn.sanity.io/images/4zrzovbb/website/16ff27ee039d98cf3391433f6f3df23aa96b1e91-2400x1260.png",
-        "priority": 4,
-        "anthropicScore": 22,
-        "rank": 12,
-        "interpretation": "A 社 Agent 信号：Claude 正在把工具使用、电脑操作和企业流程连接起来，重点看权限、审计和失败接管。",
-        "impact": "Claude 生态的变化会直接影响 Agent 选型、企业采购、权限治理和安全评测，不能只按模型跑分决策。",
-        "action": "建议更新 Claude 评测清单：模型能力、Claude Code/Agent 工作流、权限隔离、审计日志和供应连续性分开验证。",
-        "tags": [
-          "A社/Claude",
-          "Agent",
-          "模型"
-        ]
+          "企业合作"
+        ],
+        "rank": 16
       }
     ]
   },
   "anthropic": {
     "title": "A社 Anthropic 动态",
-    "subtitle": "覆盖 Anthropic 官方 News、Research、Engineering、Claude 模型、Claude Code/Agent、企业合作与安全研究。",
+    "subtitle": "覆盖 Anthropic 官方 News、Research、Engineering、Claude 模型更新、Claude Code/Agent/Computer Use、企业合作与安全研究。",
     "source": "Anthropic 官方 News + Anthropic 官方 Research + Anthropic 官方 Engineering",
     "items": [
-      {
-        "source": "A社 Anthropic",
-        "sourceDetail": "Anthropic 官方 News",
-        "domain": "anthropic.com",
-        "title": "Introducing Claude Opus 4.8",
-        "url": "https://www.anthropic.com/news/claude-opus-4-8",
-        "publishedAt": "2026-05-27T16:00:00.000Z",
-        "summary": "Our latest model, Claude Opus 4.8, is an upgrade to our Opus class of models, with stronger performance across coding, agentic tasks, and professional work, and the consistency to handle long-running work.",
-        "imageUrl": "https://cdn.sanity.io/images/4zrzovbb/website/0eaa0ed2dce9810169112e1c77de2585fcf1f5c2-2880x1620.jpg",
-        "priority": 4,
-        "anthropicScore": 22,
-        "rank": 8,
-        "interpretation": "A 社 Agent 信号：Claude 正在把工具使用、电脑操作和企业流程连接起来，重点看权限、审计和失败接管。",
-        "impact": "Claude 生态的变化会直接影响 Agent 选型、企业采购、权限治理和安全评测，不能只按模型跑分决策。",
-        "action": "建议更新 Claude 评测清单：模型能力、Claude Code/Agent 工作流、权限隔离、审计日志和供应连续性分开验证。",
-        "tags": [
-          "A社/Claude",
-          "Agent",
-          "模型"
-        ]
-      },
       {
         "source": "A社 Anthropic Research",
         "sourceDetail": "Anthropic 官方 Research",
         "domain": "anthropic.com",
         "title": "Agentic coding and persistent returns to expertise",
         "url": "https://www.anthropic.com/research/claude-code-expertise",
-        "publishedAt": "2026-06-15T16:00:00.000Z",
-        "summary": "We evaluate the composition of tasks, human-AI collaboration, and success rates.",
-        "imageUrl": "https://www.anthropic.com/api/opengraph-illustration?name=Hand%20Abacus&backgroundColor=cactus",
+        "publishedAt": "2026-06-16T00:00:00.000Z",
+        "summary": "Anthropic 用 Claude Code 使用数据观察 agentic coding：项目中 coding agent 活动占比继续上升，专业经验仍影响任务拆解、验收和成功率。",
+        "imageUrl": "https://www.google.com/s2/favicons?domain=anthropic.com&sz=128",
         "priority": 4,
-        "anthropicScore": 30,
-        "rank": 9,
-        "interpretation": "A 社 Agent 信号：Claude 正在把工具使用、电脑操作和企业流程连接起来，重点看权限、审计和失败接管。",
-        "impact": "Claude 生态的变化会直接影响 Agent 选型、企业采购、权限治理和安全评测，不能只按模型跑分决策。",
-        "action": "建议更新 Claude 评测清单：模型能力、Claude Code/Agent 工作流、权限隔离、审计日志和供应连续性分开验证。",
+        "interpretation": "A 社 Agent 信号：Claude Code 的扩散不是“人人替代工程师”，而是把专家的架构判断、上下文组织和验收能力放大。",
+        "impact": "企业引入 coding agent 时，应把培训重点放在任务定义、评测、代码审查和失败接管，而不是只采购更强模型。",
+        "action": "更新 Claude Code 试点指标：采纳率、返工率、review 缺陷、上下文补充次数和专家/非专家差异分开看。",
         "tags": [
           "A社/Claude",
-          "Agent"
-        ]
+          "Agent",
+          "Claude Code"
+        ],
+        "rank": 1
+      },
+      {
+        "source": "A社 Anthropic",
+        "sourceDetail": "Anthropic 官方 News",
+        "domain": "anthropic.com",
+        "title": "Claude Fable 5 and Claude Mythos 5",
+        "url": "https://www.anthropic.com/news/claude-fable-5-mythos-5",
+        "publishedAt": "2026-06-09T00:00:00.000Z",
+        "summary": "Anthropic 发布 Fable 5 与 Mythos 5，并在 6 月 12 日标注访问暂停；核心信号是更强模型能力与更保守安全闸门同时出现。",
+        "imageUrl": "https://www.google.com/s2/favicons?domain=anthropic.com&sz=128",
+        "priority": 4,
+        "interpretation": "A 社模型治理信号：高能力模型上线正在与访问分层、安全策略、误拒率和可信用户计划绑定。",
+        "impact": "模型选型不能只看 benchmark；供应连续性、访问策略和高风险能力闸门会直接影响企业生产计划。",
+        "action": "把 Fable/Mythos 放入观察而非立即依赖：记录可用性、价格、授权条件、误拒样例和替代模型回退路径。",
+        "tags": [
+          "A社/Claude",
+          "模型",
+          "安全/可信"
+        ],
+        "rank": 2
+      },
+      {
+        "source": "A社 Anthropic Research",
+        "sourceDetail": "Anthropic 官方 Research",
+        "domain": "anthropic.com",
+        "title": "Paving the way for agents in biology",
+        "url": "https://www.anthropic.com/research/agents-in-biology",
+        "publishedAt": "2026-06-08T00:00:00.000Z",
+        "summary": "Anthropic 讨论让生物数据基础设施更适合 Agent 使用，重点从模型能力转向工具、数据、权限和可复现实验环境。",
+        "imageUrl": "https://www.google.com/s2/favicons?domain=anthropic.com&sz=128",
+        "priority": 4,
+        "interpretation": "A 社垂直 Agent 信号：生命科学 Agent 的瓶颈不只是推理，而是能否可靠访问结构化数据、实验工具和审计链路。",
+        "impact": "行业 Agent 会逼迫企业整理 API、元数据、权限、实验记录和安全边界，数据工程成熟度会决定上限。",
+        "action": "面向垂直 Agent 做一次数据 readiness 盘点：数据 schema、工具调用、权限隔离、审计和失败回滚是否齐全。",
+        "tags": [
+          "A社/Claude",
+          "Agent",
+          "科学"
+        ],
+        "rank": 3
+      },
+      {
+        "source": "A社 Anthropic Research",
+        "sourceDetail": "Anthropic 官方 Research",
+        "domain": "anthropic.com",
+        "title": "Measuring LLMs’ impact on N-day exploits",
+        "url": "https://www.anthropic.com/research/measuring-llms-impact-on-n-day-exploits",
+        "publishedAt": "2026-06-08T00:00:00.000Z",
+        "summary": "Anthropic Frontier Red Team 跟踪 LLM 对已知漏洞利用的影响，把安全能力评估从抽象问答推进到可操作风险。",
+        "imageUrl": "https://www.google.com/s2/favicons?domain=anthropic.com&sz=128",
+        "priority": 4,
+        "interpretation": "A 社安全研究信号：Agent 能力越强，漏洞复现、利用链组合和防御验证都需要更细粒度评测。",
+        "impact": "企业安全团队需要把模型能力、工具权限、网络边界和漏洞情报联动起来，不应只依赖内容过滤。",
+        "action": "补充 AI 安全评测：N-day exploit 复现、工具调用权限、日志留存、红队样例和响应流程。",
+        "tags": [
+          "A社/Claude",
+          "安全/可信",
+          "研究"
+        ],
+        "rank": 4
+      },
+      {
+        "source": "A社 Anthropic Research",
+        "sourceDetail": "Anthropic 官方 Research",
+        "domain": "anthropic.com",
+        "title": "Mapping AI-enabled cyber threats: Insights from the LLM ATT&CK Navigator",
+        "url": "https://www.anthropic.com/research/llm-attack-navigator",
+        "publishedAt": "2026-06-03T00:00:00.000Z",
+        "summary": "Anthropic 用 LLM ATT&CK Navigator 梳理 AI 赋能网络威胁，强调把攻击阶段、模型帮助方式和防御措施结构化。",
+        "imageUrl": "https://www.google.com/s2/favicons?domain=anthropic.com&sz=128",
+        "priority": 4,
+        "interpretation": "A 社安全治理信号：AI 风险正在从“是否会被滥用”变成“在哪个攻击阶段放大了什么能力”。",
+        "impact": "安全团队可以把模型滥用检测映射到 kill chain，形成更可执行的日志、策略和红队任务。",
+        "action": "将 ATT&CK 风格映射加入内部 AI 安全清单：按侦察、利用、横移、数据外泄拆检测与拦截。",
+        "tags": [
+          "A社/Claude",
+          "安全/可信",
+          "网络安全"
+        ],
+        "rank": 5
+      },
+      {
+        "source": "A社 Anthropic",
+        "sourceDetail": "Anthropic 官方 News",
+        "domain": "anthropic.com",
+        "title": "Introducing Claude Opus 4.8",
+        "url": "https://www.anthropic.com/news/claude-opus-4-8",
+        "publishedAt": "2026-05-28T00:00:00.000Z",
+        "summary": "Opus 4.8 强调编码、agentic skills、computer use、长任务协作和更低成本 fast mode，同时上线 Claude Code dynamic workflows。",
+        "imageUrl": "https://www.google.com/s2/favicons?domain=anthropic.com&sz=128",
+        "priority": 4,
+        "interpretation": "A 社模型更新信号：Opus 4.8 的重点是长程 Agent 可靠性、工具调用效率和不确定性表达，而不只是跑分提升。",
+        "impact": "对 Claude Code/Agent 用户，升级价值要看端到端任务完成率、错误自检、上下文保持和单位任务成本。",
+        "action": "在内部评测中加入长会话、多工具、浏览器/电脑操作、代码审查和“能否主动标注不确定性”的样例。",
+        "tags": [
+          "A社/Claude",
+          "模型",
+          "Agent",
+          "Claude Code"
+        ],
+        "rank": 6
+      },
+      {
+        "source": "A社 Anthropic Engineering",
+        "sourceDetail": "Anthropic 官方 Engineering",
+        "domain": "anthropic.com",
+        "title": "An update on recent Claude Code quality reports",
+        "url": "https://www.anthropic.com/engineering/april-23-postmortem",
+        "publishedAt": "2026-04-23T00:00:00.000Z",
+        "summary": "Anthropic 复盘 Claude Code、Claude Agent SDK 和 Claude Cowork 的质量报告，指出 reasoning effort、缓存清理和提示词变更带来的产品层问题。",
+        "imageUrl": "https://www.google.com/s2/favicons?domain=anthropic.com&sz=128",
+        "priority": 4,
+        "interpretation": "A 社工程透明度信号：Agent 质量波动可能来自产品层、上下文缓存和提示词，而不是底层模型能力。",
+        "impact": "企业自建 Agent 平台也会遇到相同问题：默认 effort、上下文裁剪、系统提示和版本灰度都需要可观测。",
+        "action": "建立 Agent 变更审计：每次 prompt、effort、cache、SDK 和工具策略变更都要能回放到质量指标。",
+        "tags": [
+          "A社/Claude",
+          "Claude Code",
+          "工程/基础设施"
+        ],
+        "rank": 7
+      },
+      {
+        "source": "A社 Anthropic Engineering",
+        "sourceDetail": "Anthropic 官方 Engineering",
+        "domain": "anthropic.com",
+        "title": "Scaling Managed Agents: Decoupling the brain from the hands",
+        "url": "https://www.anthropic.com/engineering/managed-agents",
+        "publishedAt": "2026-04-08T00:00:00.000Z",
+        "summary": "Anthropic 介绍 Managed Agents：将 brain/harness、hands/sandbox 和 session log 解耦，支持长程任务、VPC 连接、安全凭据隔离和可恢复会话。",
+        "imageUrl": "https://www.google.com/s2/favicons?domain=anthropic.com&sz=128",
+        "priority": 4,
+        "interpretation": "A 社 Agent 基建信号：长程 Agent 的生产化核心是接口、沙箱、会话日志和凭据边界，而不是把模型放进一个大容器。",
+        "impact": "企业 Agent 平台需要把执行环境、凭据、上下文存储和 harness 做成可替换组件，才能承受模型与工具快速演进。",
+        "action": "评估现有 Agent 架构是否有 durable session、sandbox 隔离、MCP proxy、凭据 vault 和 harness crash 恢复。",
+        "tags": [
+          "A社/Claude",
+          "Agent",
+          "工程/基础设施",
+          "安全/可信"
+        ],
+        "rank": 8
       },
       {
         "source": "A社 Anthropic",
         "sourceDetail": "Anthropic 官方 News",
         "domain": "anthropic.com",
         "title": "Anthropic opens Seoul office and announces new partnerships across the Korean AI ecosystem",
-        "url": "https://www.anthropic.com/news/seoul-office-partnerships-korean-ai-ecosystem",
-        "publishedAt": "2026-06-16T16:00:00.000Z",
-        "summary": "Anthropic opens Seoul and announces new partnerships across the Korean AI ecosystem—with the enterprises, startups, and researchers behind some of the most ambitious deployments of Claude.",
-        "imageUrl": "https://www.anthropic.com/api/opengraph-illustration?name=Object%20Globe&backgroundColor=heather",
+        "url": "https://www.anthropic.com/news/seoul-office-korea-partnerships",
+        "publishedAt": "2026-06-16T00:00:00.000Z",
+        "summary": "Anthropic 宣布首尔办公室和韩国 AI 生态合作，显示 Claude 企业落地正在走区域办公室、合作伙伴和本地生态路线。",
+        "imageUrl": "https://www.google.com/s2/favicons?domain=anthropic.com&sz=128",
         "priority": 4,
-        "anthropicScore": 19,
-        "rank": 10,
-        "interpretation": "A 社企业生态信号：合作、算力和区域办公室会影响 Claude 的可用额度、企业采购路径和本地生态扩散。",
-        "impact": "Claude 生态的变化会直接影响 Agent 选型、企业采购、权限治理和安全评测，不能只按模型跑分决策。",
-        "action": "建议更新 Claude 评测清单：模型能力、Claude Code/Agent 工作流、权限隔离、审计日志和供应连续性分开验证。",
+        "interpretation": "A 社企业生态信号：区域办公室和合作伙伴会影响企业采购、合规沟通、行业方案和本地开发者生态。",
+        "impact": "对跨国团队，模型供应可用性、数据区域、合作伙伴支持和本地合规会成为采购决策变量。",
+        "action": "将 Anthropic 区域合作纳入供应商评估：可用区域、支持 SLA、合规材料和伙伴交付能力分开检查。",
         "tags": [
           "A社/Claude",
-          "模型"
-        ]
-      },
-      {
-        "source": "A社 Anthropic Research",
-        "sourceDetail": "Anthropic 官方 Research",
-        "domain": "anthropic.com",
-        "title": "Teaching Claude why",
-        "url": "https://www.anthropic.com/research/teaching-claude-why",
-        "publishedAt": "2026-05-07T16:00:00.000Z",
-        "summary": "New research on how we've reduced agentic misalignment",
-        "imageUrl": "https://www.anthropic.com/api/opengraph-illustration?name=Hand%20Knot&backgroundColor=cactus",
-        "priority": 4,
-        "anthropicScore": 22,
-        "rank": 11,
-        "interpretation": "A 社 Agent 信号：Claude 正在把工具使用、电脑操作和企业流程连接起来，重点看权限、审计和失败接管。",
-        "impact": "Claude 生态的变化会直接影响 Agent 选型、企业采购、权限治理和安全评测，不能只按模型跑分决策。",
-        "action": "建议更新 Claude 评测清单：模型能力、Claude Code/Agent 工作流、权限隔离、审计日志和供应连续性分开验证。",
-        "tags": [
-          "A社/Claude",
-          "Agent",
-          "模型"
-        ]
-      },
-      {
-        "source": "A社 Anthropic Engineering",
-        "sourceDetail": "Anthropic 官方 Engineering",
-        "domain": "anthropic.com",
-        "title": "Quantifying infrastructure noise in agentic coding evals",
-        "url": "https://www.anthropic.com/engineering/infrastructure-noise",
-        "publishedAt": "",
-        "summary": "Agentic coding benchmarks like SWE-bench and Terminal-Bench are commonly used to compare the software engineering capabilities of frontier models—with top spots on leaderboards often separated by just a few percentage points.",
-        "imageUrl": "https://cdn.sanity.io/images/4zrzovbb/website/16ff27ee039d98cf3391433f6f3df23aa96b1e91-2400x1260.png",
-        "priority": 4,
-        "anthropicScore": 22,
-        "rank": 12,
-        "interpretation": "A 社 Agent 信号：Claude 正在把工具使用、电脑操作和企业流程连接起来，重点看权限、审计和失败接管。",
-        "impact": "Claude 生态的变化会直接影响 Agent 选型、企业采购、权限治理和安全评测，不能只按模型跑分决策。",
-        "action": "建议更新 Claude 评测清单：模型能力、Claude Code/Agent 工作流、权限隔离、审计日志和供应连续性分开验证。",
-        "tags": [
-          "A社/Claude",
-          "Agent",
-          "模型"
-        ]
+          "企业合作"
+        ],
+        "rank": 9
       }
     ]
   },
   "searchAdsRec": {
     "title": "搜广推工程前沿",
-    "subtitle": "聚焦 recommendation/recommender、ranking、retrieval、search、ads、auction、personalization、feed、embedding/vector、CTR/CVR 与实验平台。",
-    "source": "Meta Engineering + Netflix TechBlog + Dropbox Tech + Alibaba Cloud Developer + Meituan Tech + arXiv",
+    "subtitle": "聚焦 recommendation/recommender、ranking、retrieval、search、ads/advertising、auction/bidding、personalization、feed、marketplace、embedding/vector、query/index、CTR/CVR、召回、粗排、精排、重排、特征、实验平台。",
+    "source": "Meta Engineering + Pinterest Engineering + Dropbox Tech + Netflix TechBlog + Meituan Tech + Alibaba Cloud Developer + arXiv",
     "items": [
       {
         "rank": 1,
+        "title": "SilverTorch: Index as Model — A New Retrieval Paradigm for Recommendation Systems",
+        "url": "https://engineering.fb.com/2026/05/26/ml-applications/silvertorch-index-as-model-new-retrieval-paradigm-recommendation-systems/",
+        "publishedAt": "2026-05-26T16:00:00Z",
+        "source": "Meta Engineering",
+        "sourceType": "industry",
+        "imageUrl": "https://www.google.com/s2/favicons?domain=engineering.fb.com&sz=128",
+        "tags": [
+          "recommendation",
+          "retrieval",
+          "index",
+          "ranking"
+        ],
+        "summary": "Meta 将推荐检索组件统一到 index-as-model 架构，公开强调吞吐、成本效率和准确率的系统级权衡，是本轮推荐召回架构最值得跟踪的工程信号。",
+        "interpretation": {
+          "businessProblem": "UGC 推荐需要在海量内容中做低延迟召回，传统多路召回、索引和排序特征割裂，导致候选质量、成本和后续排序目标难以统一优化。",
+          "systemMechanism": "把索引本身视为可训练模型，让检索、向量表示、候选生成和排序目标共享同一套优化视角；核心不是多加一路召回，而是重构“索引如何表达用户-内容匹配”。",
+          "metricsAndExperiment": "重点看 recall@K、候选覆盖率、后续 ranker lift、P95/P99 召回延迟、单位查询成本、索引刷新时延和线上 CTR/CVR 的一致改善。",
+          "borrowable": "中大型推荐团队可先在一个垂类候选池做旁路 index-as-model，对比现有 ANN/规则/协同过滤召回的互补收益，再决定是否进入主召回链路。",
+          "boundary": "物料规模不大、候选质量主要受规则约束、或没有检索与排序共同 owner 的团队，不应直接复制复杂统一索引架构。"
+        },
+        "diagram": {
+          "title": "Meta Engineering 搜广推机制图",
+          "caption": "recommendation / retrieval / index / ranking",
+          "nodes": [
+            {
+              "label": "业务问题",
+              "detail": "UGC 推荐需要在海量内容中做低延迟召回，传统多路召回、索引和排序特征割裂，导致候选质量、成本和后续排序目标难以统一优化。",
+              "type": "input"
+            },
+            {
+              "label": "系统机制",
+              "detail": "把索引本身视为可训练模型，让检索、向量表示、候选生成和排序目标共享同一套优化视角；核心不是多加一路召回，而是重构“索引如何表达用户-内容匹配”。",
+              "type": "core"
+            },
+            {
+              "label": "指标实验",
+              "detail": "重点看 recall@K、候选覆盖率、后续 ranker lift、P95/P99 召回延迟、单位查询成本、索引刷新时延和线上 CTR/CVR 的一致改善。",
+              "type": "measure"
+            },
+            {
+              "label": "采用边界",
+              "detail": "物料规模不大、候选质量主要受规则约束、或没有检索与排序共同 owner 的团队，不应直接复制复杂统一索引架构。",
+              "type": "risk"
+            }
+          ],
+          "links": [
+            "业务目标",
+            "链路机制",
+            "实验验收",
+            "边界治理"
+          ]
+        }
+      },
+      {
+        "rank": 2,
         "title": "Meta Adaptive Ranking Model: Bending the Inference Scaling Curve to Serve LLM-Scale Models for Ads",
         "url": "https://engineering.fb.com/2026/03/31/ml-applications/meta-adaptive-ranking-model-bending-the-inference-scaling-curve-to-serve-llm-scale-models-for-ads/",
         "publishedAt": "2026-03-31T16:00:00Z",
@@ -3868,52 +4220,329 @@
         "sourceType": "industry",
         "imageUrl": "https://www.google.com/s2/favicons?domain=engineering.fb.com&sz=128",
         "tags": [
-          "ranking",
           "ads",
-          "llm"
+          "ranking",
+          "llm",
+          "inference"
         ],
-        "summary": "Meta 讨论在实时广告推荐中服务 LLM-scale 排序模型的复杂度/效率矛盾，核心是让模型容量、延迟预算和广告业务目标共同优化。",
+        "summary": "Meta 讨论如何在实时广告排序中服务 LLM-scale 模型，把模型容量、延迟预算和广告收益放到同一个系统优化问题里。",
         "interpretation": {
-          "businessProblem": "广告候选、排序和竞价需要同时控制转化价值、用户体验、延迟与算力成本，单点模型提升很难直接证明业务收益。",
-          "systemMechanism": "把用户行为序列、实时上下文、候选生成、轻量排序、精排/重排和预算约束拆成可观测阶段，并在高价值候选上投入更重模型。",
-          "metricsAndExperiment": "优先看 CTR、CVR、CPA/ROAS、广告质量、P95 延迟、推理成本和预算消耗；在线实验要同时观察广告主价值与用户负反馈。",
-          "borrowable": "可借鉴分阶段候选裁剪、实时特征注入、模型容量自适应和在线/离线差异诊断，把算力预算变成排序策略的一部分。",
-          "boundary": "流量小、转化回传慢、成本归因不清或缺少在线实验平台时，不适合直接复制大厂多阶段广告架构。"
+          "businessProblem": "广告排序既要提升转化和广告主价值，又要满足用户体验、竞价公平、延迟和推理成本约束，单纯放大模型容易让收益被成本吃掉。",
+          "systemMechanism": "通过自适应推理把轻量筛选、候选价值判断、重模型调用和预算约束分层，让更昂贵的模型只服务于更值得精算的请求或候选。",
+          "metricsAndExperiment": "线上必须同时观察 CTR、CVR、CPA/ROAS、广告质量、负反馈、P95 延迟、GPU/CPU 成本和预算消耗速度，避免只看离线 AUC。",
+          "borrowable": "可把“算力预算也是排序策略”迁移到商业化推荐：先做请求/候选分桶，再按价值密度分配不同模型容量。",
+          "boundary": "转化回传慢、归因不稳、流量不足或实验平台无法分层观测时，自适应重模型会制造成本黑箱。"
         },
         "diagram": {
           "title": "Meta Engineering 搜广推机制图",
-          "caption": "ranking / ads / llm",
+          "caption": "ads / ranking / llm / inference",
           "nodes": [
             {
               "label": "业务问题",
-              "detail": "广告候选、排序和竞价需要同时控制转化价值、用户体验、延迟与算力成本，单点模型提升很难直接证明业务收益。",
+              "detail": "广告排序既要提升转化和广告主价值，又要满足用户体验、竞价公平、延迟和推理成本约束，单纯放大模型容易让收益被成本吃掉。",
               "type": "input"
             },
             {
               "label": "系统机制",
-              "detail": "把用户行为序列、实时上下文、候选生成、轻量排序、精排/重排和预算约束拆成可观测阶段，并在高价值候选上投入更重模型。",
+              "detail": "通过自适应推理把轻量筛选、候选价值判断、重模型调用和预算约束分层，让更昂贵的模型只服务于更值得精算的请求或候选。",
               "type": "core"
             },
             {
               "label": "指标实验",
-              "detail": "优先看 CTR、CVR、CPA/ROAS、广告质量、P95 延迟、推理成本和预算消耗；在线实验要同时观察广告主价值与用户负反馈。",
+              "detail": "线上必须同时观察 CTR、CVR、CPA/ROAS、广告质量、负反馈、P95 延迟、GPU/CPU 成本和预算消耗速度，避免只看离线 AUC。",
               "type": "measure"
             },
             {
               "label": "采用边界",
-              "detail": "流量小、转化回传慢、成本归因不清或缺少在线实验平台时，不适合直接复制大厂多阶段广告架构。",
+              "detail": "转化回传慢、归因不稳、流量不足或实验平台无法分层观测时，自适应重模型会制造成本黑箱。",
               "type": "risk"
             }
           ],
           "links": [
-            "定义目标",
-            "拆解链路",
-            "实验验收"
+            "业务目标",
+            "链路机制",
+            "实验验收",
+            "边界治理"
           ]
         }
       },
       {
-        "rank": 2,
+        "rank": 3,
+        "title": "Ranking Engineer Agent (REA): The Autonomous AI Agent Accelerating Meta Ads Ranking Innovation",
+        "url": "https://engineering.fb.com/2026/03/17/developer-tools/ranking-engineer-agent-rea-autonomous-ai-system-accelerating-meta-ads-ranking-innovation/",
+        "publishedAt": "2026-03-17T16:00:00Z",
+        "source": "Meta Engineering",
+        "sourceType": "industry",
+        "imageUrl": "https://www.google.com/s2/favicons?domain=engineering.fb.com&sz=128",
+        "tags": [
+          "ads",
+          "ranking",
+          "agent",
+          "experiment"
+        ],
+        "summary": "Meta 把 Agent 用到广告排序模型研发流程，覆盖假设生成、训练任务、失败调试和结果迭代，说明搜广推平台工程正在被 Agent 化。",
+        "interpretation": {
+          "businessProblem": "广告排序迭代依赖大量实验假设、训练配置、失败排查和指标复盘，高级工程师时间被重复平台操作消耗。",
+          "systemMechanism": "让 Agent 连接实验平台、训练作业、日志、指标面板和代码仓库，围绕 ranking hypothesis 自动发起、监控和解释实验。",
+          "metricsAndExperiment": "需要看实验周转时间、成功启动率、失败定位时间、有效 hypothesis 占比、线上 lift 转化率和人工接管次数。",
+          "borrowable": "推荐/广告平台团队可先让 Agent 做只读复盘和配置建议，再逐步开放低风险训练任务提交权限。",
+          "boundary": "没有标准化实验平台、指标定义混乱或权限审计不足时，Agent 可能放大错误实验和资源浪费。"
+        },
+        "diagram": {
+          "title": "Meta Engineering 搜广推机制图",
+          "caption": "ads / ranking / agent / experiment",
+          "nodes": [
+            {
+              "label": "业务问题",
+              "detail": "广告排序迭代依赖大量实验假设、训练配置、失败排查和指标复盘，高级工程师时间被重复平台操作消耗。",
+              "type": "input"
+            },
+            {
+              "label": "系统机制",
+              "detail": "让 Agent 连接实验平台、训练作业、日志、指标面板和代码仓库，围绕 ranking hypothesis 自动发起、监控和解释实验。",
+              "type": "core"
+            },
+            {
+              "label": "指标实验",
+              "detail": "需要看实验周转时间、成功启动率、失败定位时间、有效 hypothesis 占比、线上 lift 转化率和人工接管次数。",
+              "type": "measure"
+            },
+            {
+              "label": "采用边界",
+              "detail": "没有标准化实验平台、指标定义混乱或权限审计不足时，Agent 可能放大错误实验和资源浪费。",
+              "type": "risk"
+            }
+          ],
+          "links": [
+            "业务目标",
+            "链路机制",
+            "实验验收",
+            "边界治理"
+          ]
+        }
+      },
+      {
+        "rank": 4,
+        "title": "From Clicks to Conversions: Architecting Shopping Conversion Candidate Generation at Pinterest",
+        "url": "https://medium.com/pinterest-engineering/from-clicks-to-conversions-architecting-shopping-conversion-candidate-generation-at-pinterest-04cae5e1455b",
+        "publishedAt": "2026-05-01T16:00:00Z",
+        "source": "Pinterest Engineering",
+        "sourceType": "industry",
+        "imageUrl": "https://www.google.com/s2/favicons?domain=medium.com&sz=128",
+        "tags": [
+          "ads",
+          "candidate generation",
+          "conversion",
+          "shopping"
+        ],
+        "summary": "Pinterest 介绍购物转化候选生成模型，从点击优化转向转化目标，并强调面向 6 亿级月活的上线挑战。",
+        "interpretation": {
+          "businessProblem": "购物广告如果只围绕点击建模，会把“好奇点击”与真实购买意图混在一起，候选生成阶段就可能错过高转化商品。",
+          "systemMechanism": "用转化历史、商品/广告主信号和用户购物序列训练候选生成模型，把候选池从点击相似性推进到转化概率驱动。",
+          "metricsAndExperiment": "除 CTR 外重点看 CVR、iCVR、ROAS、转化量、候选去重率、召回覆盖和下游 auction/ranker 的边际收益。",
+          "borrowable": "电商和内容商业化团队可把“点击候选”和“转化候选”拆成两条召回源，通过粗排层评估互补性。",
+          "boundary": "转化样本稀疏、归因窗口长、广告主商品结构变化快时，转化候选生成容易滞后或过拟合头部广告主。"
+        },
+        "diagram": {
+          "title": "Pinterest Engineering 搜广推机制图",
+          "caption": "ads / candidate generation / conversion / shopping",
+          "nodes": [
+            {
+              "label": "业务问题",
+              "detail": "购物广告如果只围绕点击建模，会把“好奇点击”与真实购买意图混在一起，候选生成阶段就可能错过高转化商品。",
+              "type": "input"
+            },
+            {
+              "label": "系统机制",
+              "detail": "用转化历史、商品/广告主信号和用户购物序列训练候选生成模型，把候选池从点击相似性推进到转化概率驱动。",
+              "type": "core"
+            },
+            {
+              "label": "指标实验",
+              "detail": "除 CTR 外重点看 CVR、iCVR、ROAS、转化量、候选去重率、召回覆盖和下游 auction/ranker 的边际收益。",
+              "type": "measure"
+            },
+            {
+              "label": "采用边界",
+              "detail": "转化样本稀疏、归因窗口长、广告主商品结构变化快时，转化候选生成容易滞后或过拟合头部广告主。",
+              "type": "risk"
+            }
+          ],
+          "links": [
+            "业务目标",
+            "链路机制",
+            "实验验收",
+            "边界治理"
+          ]
+        }
+      },
+      {
+        "rank": 5,
+        "title": "Enhancing Ad Relevance: Integrating Real-Time Context into Sequential Recommender Models",
+        "url": "https://medium.com/pinterest-engineering/enhancing-ad-relevance-integrating-real-time-context-into-sequential-recommender-models-bc3a2f9b682e",
+        "publishedAt": "2026-05-08T19:01:00Z",
+        "source": "Pinterest Engineering",
+        "sourceType": "industry",
+        "imageUrl": "https://www.google.com/s2/favicons?domain=medium.com&sz=128",
+        "tags": [
+          "ads",
+          "sequential model",
+          "real-time features",
+          "CVR"
+        ],
+        "summary": "Pinterest 将实时上下文接入序列推荐模型，核心价值在于补齐用户购物旅程的即时状态，而不是只依赖静态兴趣。",
+        "interpretation": {
+          "businessProblem": "广告候选生成如果只看历史行为，会错过会话内意图变化，尤其购物链路中“刚看过什么、刚加购什么”会迅速改变转化概率。",
+          "systemMechanism": "在 Transformer/two-tower 序列建模中注入实时上下文特征，让 offsite conversion history 与当前会话信号共同影响候选。",
+          "metricsAndExperiment": "关注 iCVR、ROAS、实时特征命中率、特征延迟、训练/ serving skew、用户负反馈和冷启动用户收益。",
+          "borrowable": "可借鉴为“实时特征先旁路、再进入主 ranker”的路径：先验证会话特征是否稳定提升，再扩大到多场景。",
+          "boundary": "实时数据链路不稳定、特征口径无法回放或缺少在线/离线一致性校验时，实时上下文会带来难查的波动。"
+        },
+        "diagram": {
+          "title": "Pinterest Engineering 搜广推机制图",
+          "caption": "ads / sequential model / real-time features / CVR",
+          "nodes": [
+            {
+              "label": "业务问题",
+              "detail": "广告候选生成如果只看历史行为，会错过会话内意图变化，尤其购物链路中“刚看过什么、刚加购什么”会迅速改变转化概率。",
+              "type": "input"
+            },
+            {
+              "label": "系统机制",
+              "detail": "在 Transformer/two-tower 序列建模中注入实时上下文特征，让 offsite conversion history 与当前会话信号共同影响候选。",
+              "type": "core"
+            },
+            {
+              "label": "指标实验",
+              "detail": "关注 iCVR、ROAS、实时特征命中率、特征延迟、训练/ serving skew、用户负反馈和冷启动用户收益。",
+              "type": "measure"
+            },
+            {
+              "label": "采用边界",
+              "detail": "实时数据链路不稳定、特征口径无法回放或缺少在线/离线一致性校验时，实时上下文会带来难查的波动。",
+              "type": "risk"
+            }
+          ],
+          "links": [
+            "业务目标",
+            "链路机制",
+            "实验验收",
+            "边界治理"
+          ]
+        }
+      },
+      {
+        "rank": 6,
+        "title": "How we optimized Dash's relevance judge with DSPy",
+        "url": "https://dropbox.tech/machine-learning/optimizing-dropbox-dash-relevance-judge-with-dspy",
+        "publishedAt": "2026-03-17T17:00:00Z",
+        "source": "Dropbox Tech",
+        "sourceType": "industry",
+        "imageUrl": "https://www.google.com/s2/favicons?domain=dropbox.tech&sz=128",
+        "tags": [
+          "search",
+          "relevance",
+          "LLM judge",
+          "DSPy"
+        ],
+        "summary": "Dropbox 用 DSPy 将 Dash 搜索相关性 judge 的提示词优化变成可测量、可迁移的自动化循环，重点是让低成本模型接近人工一致性。",
+        "interpretation": {
+          "businessProblem": "企业搜索需要大量 query-document 相关性标签，但人工标注覆盖不了长尾，强模型 judge 又太贵，提示词手调也不稳定。",
+          "systemMechanism": "把相关性判定定义成可优化程序，利用 DSPy/GEPA 按人工金标反馈迭代 judge，使低成本模型在明确指标下逼近强模型和人工判断。",
+          "metricsAndExperiment": "重点看与人工评分的一致性、NDCG/MRR、judge 成本、跨模型迁移、长尾 query 覆盖和误判样例类型。",
+          "borrowable": "RAG、企业搜索和客服知识库可先建立小而可信的金标集，再用可优化 judge 扩大评测覆盖。",
+          "boundary": "没有金标校准、权限过滤复杂或相关性定义频繁变化时，LLM judge 会把偏差制度化。"
+        },
+        "diagram": {
+          "title": "Dropbox Tech 搜广推机制图",
+          "caption": "search / relevance / LLM judge / DSPy",
+          "nodes": [
+            {
+              "label": "业务问题",
+              "detail": "企业搜索需要大量 query-document 相关性标签，但人工标注覆盖不了长尾，强模型 judge 又太贵，提示词手调也不稳定。",
+              "type": "input"
+            },
+            {
+              "label": "系统机制",
+              "detail": "把相关性判定定义成可优化程序，利用 DSPy/GEPA 按人工金标反馈迭代 judge，使低成本模型在明确指标下逼近强模型和人工判断。",
+              "type": "core"
+            },
+            {
+              "label": "指标实验",
+              "detail": "重点看与人工评分的一致性、NDCG/MRR、judge 成本、跨模型迁移、长尾 query 覆盖和误判样例类型。",
+              "type": "measure"
+            },
+            {
+              "label": "采用边界",
+              "detail": "没有金标校准、权限过滤复杂或相关性定义频繁变化时，LLM judge 会把偏差制度化。",
+              "type": "risk"
+            }
+          ],
+          "links": [
+            "业务目标",
+            "链路机制",
+            "实验验收",
+            "边界治理"
+          ]
+        }
+      },
+      {
+        "rank": 7,
+        "title": "Using LLMs to amplify human labeling and improve Dash search relevance",
+        "url": "https://dropbox.tech/machine-learning/llm-human-labeling-improving-search-relevance-dropbox-dash",
+        "publishedAt": "2026-02-26T17:00:00Z",
+        "source": "Dropbox Tech",
+        "sourceType": "industry",
+        "imageUrl": "https://www.google.com/s2/favicons?domain=dropbox.tech&sz=128",
+        "tags": [
+          "search",
+          "ranking",
+          "labeling",
+          "enterprise"
+        ],
+        "summary": "Dropbox Dash 用少量人工标注加 LLM 辅助标注训练搜索排序模型，是企业搜索低标注场景的可借鉴样本。",
+        "interpretation": {
+          "businessProblem": "企业内容分散在多应用和权限域内，搜索排序需要相关性标签，但人工标注贵、慢、难覆盖用户真实长尾。",
+          "systemMechanism": "先用内部人工标注定义相关性标准，再让 LLM 扩大 query-document 标签规模，最后把标签用于训练和评估 search ranker。",
+          "metricsAndExperiment": "观察 NDCG、MRR、搜索成功率、二次查询率、人工一致性、权限误召率和标签生成成本。",
+          "borrowable": "适合给企业知识搜索建立“人类少量校准 + LLM 大规模扩标 + 在线行为验证”的闭环。",
+          "boundary": "如果企业权限和数据新鲜度不能被 judge 感知，模型会给“看似相关但不可访问/已过期”的文档高分。"
+        },
+        "diagram": {
+          "title": "Dropbox Tech 搜广推机制图",
+          "caption": "search / ranking / labeling / enterprise",
+          "nodes": [
+            {
+              "label": "业务问题",
+              "detail": "企业内容分散在多应用和权限域内，搜索排序需要相关性标签，但人工标注贵、慢、难覆盖用户真实长尾。",
+              "type": "input"
+            },
+            {
+              "label": "系统机制",
+              "detail": "先用内部人工标注定义相关性标准，再让 LLM 扩大 query-document 标签规模，最后把标签用于训练和评估 search ranker。",
+              "type": "core"
+            },
+            {
+              "label": "指标实验",
+              "detail": "观察 NDCG、MRR、搜索成功率、二次查询率、人工一致性、权限误召率和标签生成成本。",
+              "type": "measure"
+            },
+            {
+              "label": "采用边界",
+              "detail": "如果企业权限和数据新鲜度不能被 judge 感知，模型会给“看似相关但不可访问/已过期”的文档高分。",
+              "type": "risk"
+            }
+          ],
+          "links": [
+            "业务目标",
+            "链路机制",
+            "实验验收",
+            "边界治理"
+          ]
+        }
+      },
+      {
+        "rank": 8,
         "title": "Towards Generalizable and Efficient Large-Scale Generative Recommenders",
         "url": "https://netflixtechblog.com/towards-generalizable-and-efficient-large-scale-generative-recommenders-a7db648aa257",
         "publishedAt": "2026-01-13T16:00:00Z",
@@ -3921,362 +4550,163 @@
         "sourceType": "industry",
         "imageUrl": "https://www.google.com/s2/favicons?domain=netflixtechblog.com&sz=128",
         "tags": [
-          "frontier"
+          "recommendation",
+          "generative model",
+          "personalization"
         ],
-        "summary": "Netflix 讨论大规模生成式推荐的泛化与效率，重点是如何让生成式模型服务个性化推荐而不牺牲工程成本。",
+        "summary": "Netflix 讨论将生成式推荐模型从百万级扩展到十亿级参数，同时控制泛化、效率和个性化收益。",
         "interpretation": {
-          "businessProblem": "推荐系统需要在巨大候选池里兼顾兴趣匹配、新鲜度、多样性和商业目标，传统召回/排序割裂会造成离线提升难以上线转化。",
-          "systemMechanism": "把候选生成、向量/索引、用户序列、ranker 表征和反馈学习联合设计，让召回质量与后续排序目标保持一致。",
-          "metricsAndExperiment": "关注 recall@K、覆盖率、多样性、CTR/CVR、停留/满意度、延迟和索引刷新时延；实验要看离线召回是否转化为在线核心指标。",
-          "borrowable": "可借鉴模型化索引、可编辑生成式召回、多目标排序和实时行为特征，将推荐漏斗从组件拼接改为端到端协同。",
-          "boundary": "物料规模不大、业务目标单一或团队没有检索/排序联合 owner 时，复杂联合建模会增加维护成本。"
+          "businessProblem": "传统推荐模型专门化程度高，跨场景迁移成本大；生成式推荐有潜力统一兴趣表达，但训练和 serving 成本容易失控。",
+          "systemMechanism": "用大规模生成式模型学习用户-内容序列表示，并通过工程优化让模型容量、候选生成和个性化排序在成本边界内协同。",
+          "metricsAndExperiment": "需要同时看观看/点击/满意度代理指标、冷启动表现、多样性、推理成本、训练吞吐和线上实验长期效应。",
+          "borrowable": "推荐平台可先把生成式模型作为候选补充或 rerank 解释层，验证是否带来跨域泛化和冷启动收益。",
+          "boundary": "内容库小、用户行为稀疏或没有强实验平台时，十亿级生成式推荐模型更可能带来复杂度而非收益。"
         },
         "diagram": {
           "title": "Netflix TechBlog 搜广推机制图",
-          "caption": "frontier",
+          "caption": "recommendation / generative model / personalization",
           "nodes": [
             {
               "label": "业务问题",
-              "detail": "推荐系统需要在巨大候选池里兼顾兴趣匹配、新鲜度、多样性和商业目标，传统召回/排序割裂会造成离线提升难以上线转化。",
+              "detail": "传统推荐模型专门化程度高，跨场景迁移成本大；生成式推荐有潜力统一兴趣表达，但训练和 serving 成本容易失控。",
               "type": "input"
             },
             {
               "label": "系统机制",
-              "detail": "把候选生成、向量/索引、用户序列、ranker 表征和反馈学习联合设计，让召回质量与后续排序目标保持一致。",
+              "detail": "用大规模生成式模型学习用户-内容序列表示，并通过工程优化让模型容量、候选生成和个性化排序在成本边界内协同。",
               "type": "core"
             },
             {
               "label": "指标实验",
-              "detail": "关注 recall@K、覆盖率、多样性、CTR/CVR、停留/满意度、延迟和索引刷新时延；实验要看离线召回是否转化为在线核心指标。",
+              "detail": "需要同时看观看/点击/满意度代理指标、冷启动表现、多样性、推理成本、训练吞吐和线上实验长期效应。",
               "type": "measure"
             },
             {
               "label": "采用边界",
-              "detail": "物料规模不大、业务目标单一或团队没有检索/排序联合 owner 时，复杂联合建模会增加维护成本。",
+              "detail": "内容库小、用户行为稀疏或没有强实验平台时，十亿级生成式推荐模型更可能带来复杂度而非收益。",
               "type": "risk"
             }
           ],
           "links": [
-            "定义目标",
-            "拆解链路",
-            "实验验收"
-          ]
-        }
-      },
-      {
-        "rank": 3,
-        "title": "Using LLMs to amplify human labeling and improve Dash search relevance",
-        "url": "https://dropbox.tech/machine-learning/llm-human-labeling-improving-search-relevance-dropbox-dash",
-        "publishedAt": "Thu, 26 Feb 2026 09:00:00 -0800",
-        "source": "Dropbox Tech",
-        "sourceType": "industry",
-        "imageUrl": "https://www.google.com/s2/favicons?domain=dropbox.tech&sz=128",
-        "tags": [
-          "ranking",
-          "retrieval",
-          "llm"
-        ],
-        "summary": "How we train Dash's search ranking models with a mix of human and LLM-assisted labeling.",
-        "interpretation": {
-          "businessProblem": "企业搜索和社区搜索的长尾查询、权限边界、语义漂移和标注稀缺会拉低相关性，人工标注又难以覆盖全部候选。",
-          "systemMechanism": "通过混合检索、模型化相关性评估、LLM 辅助标注或自动化 judge，把查询理解、召回、排序和质量评估串成闭环。",
-          "metricsAndExperiment": "重点看 NDCG/MRR、answer match、人工一致性、长尾覆盖、权限误召、P95 延迟和标注成本；线上需要观察搜索成功率与二次查询率。",
-          "borrowable": "适合迁移到企业知识库、RAG、客服搜索和社区内容搜索：先建立可靠评测集，再让 LLM 扩大标注覆盖。",
-          "boundary": "如果文档权限复杂但审计不足，或 LLM judge 没有金标校准，自动评估会把错误相关性放大到生产排序。"
-        },
-        "diagram": {
-          "title": "Dropbox Tech 搜广推机制图",
-          "caption": "ranking / retrieval / llm",
-          "nodes": [
-            {
-              "label": "业务问题",
-              "detail": "企业搜索和社区搜索的长尾查询、权限边界、语义漂移和标注稀缺会拉低相关性，人工标注又难以覆盖全部候选。",
-              "type": "input"
-            },
-            {
-              "label": "系统机制",
-              "detail": "通过混合检索、模型化相关性评估、LLM 辅助标注或自动化 judge，把查询理解、召回、排序和质量评估串成闭环。",
-              "type": "core"
-            },
-            {
-              "label": "指标实验",
-              "detail": "重点看 NDCG/MRR、answer match、人工一致性、长尾覆盖、权限误召、P95 延迟和标注成本；线上需要观察搜索成功率与二次查询率。",
-              "type": "measure"
-            },
-            {
-              "label": "采用边界",
-              "detail": "如果文档权限复杂但审计不足，或 LLM judge 没有金标校准，自动评估会把错误相关性放大到生产排序。",
-              "type": "risk"
-            }
-          ],
-          "links": [
-            "定义目标",
-            "拆解链路",
-            "实验验收"
-          ]
-        }
-      },
-      {
-        "rank": 4,
-        "title": "Democratizing Machine Learning at Netflix: Building the Model Lifecycle Graph",
-        "url": "https://netflixtechblog.com/democratizing-machine-learning-at-netflix-building-the-model-lifecycle-graph-5cc6d5828bb1",
-        "publishedAt": "2026-05-12T16:00:00Z",
-        "source": "Netflix TechBlog",
-        "sourceType": "industry",
-        "imageUrl": "https://www.google.com/s2/favicons?domain=netflixtechblog.com&sz=128",
-        "tags": [
-          "frontier"
-        ],
-        "summary": "Netflix 将模型、特征、训练、部署和消费关系建成生命周期图，推荐和个性化团队可借此治理实验资产和依赖影响面。",
-        "interpretation": {
-          "businessProblem": "推荐系统需要在巨大候选池里兼顾兴趣匹配、新鲜度、多样性和商业目标，传统召回/排序割裂会造成离线提升难以上线转化。",
-          "systemMechanism": "把候选生成、向量/索引、用户序列、ranker 表征和反馈学习联合设计，让召回质量与后续排序目标保持一致。",
-          "metricsAndExperiment": "关注 recall@K、覆盖率、多样性、CTR/CVR、停留/满意度、延迟和索引刷新时延；实验要看离线召回是否转化为在线核心指标。",
-          "borrowable": "可借鉴模型化索引、可编辑生成式召回、多目标排序和实时行为特征，将推荐漏斗从组件拼接改为端到端协同。",
-          "boundary": "物料规模不大、业务目标单一或团队没有检索/排序联合 owner 时，复杂联合建模会增加维护成本。"
-        },
-        "diagram": {
-          "title": "Netflix TechBlog 搜广推机制图",
-          "caption": "frontier",
-          "nodes": [
-            {
-              "label": "业务问题",
-              "detail": "推荐系统需要在巨大候选池里兼顾兴趣匹配、新鲜度、多样性和商业目标，传统召回/排序割裂会造成离线提升难以上线转化。",
-              "type": "input"
-            },
-            {
-              "label": "系统机制",
-              "detail": "把候选生成、向量/索引、用户序列、ranker 表征和反馈学习联合设计，让召回质量与后续排序目标保持一致。",
-              "type": "core"
-            },
-            {
-              "label": "指标实验",
-              "detail": "关注 recall@K、覆盖率、多样性、CTR/CVR、停留/满意度、延迟和索引刷新时延；实验要看离线召回是否转化为在线核心指标。",
-              "type": "measure"
-            },
-            {
-              "label": "采用边界",
-              "detail": "物料规模不大、业务目标单一或团队没有检索/排序联合 owner 时，复杂联合建模会增加维护成本。",
-              "type": "risk"
-            }
-          ],
-          "links": [
-            "定义目标",
-            "拆解链路",
-            "实验验收"
-          ]
-        }
-      },
-      {
-        "rank": 5,
-        "title": "PAI-Rec推荐开发平台：企业级智能推荐解决方案，驱动业务全域增长",
-        "url": "https://developer.aliyun.com/article/1724027",
-        "publishedAt": "2026-04-04T00:00:00Z",
-        "source": "Alibaba Cloud Developer",
-        "sourceType": "industry",
-        "imageUrl": "https://www.google.com/s2/favicons?domain=developer.aliyun.com&sz=128",
-        "tags": [
-          "frontier"
-        ],
-        "summary": "阿里云 PAI-Rec 介绍企业级推荐平台，多路召回、多目标精排、GPU 推理和实验迭代面向电商、直播、音视频等场景。",
-        "interpretation": {
-          "businessProblem": "推荐系统需要在巨大候选池里兼顾兴趣匹配、新鲜度、多样性和商业目标，传统召回/排序割裂会造成离线提升难以上线转化。",
-          "systemMechanism": "把候选生成、向量/索引、用户序列、ranker 表征和反馈学习联合设计，让召回质量与后续排序目标保持一致。",
-          "metricsAndExperiment": "关注 recall@K、覆盖率、多样性、CTR/CVR、停留/满意度、延迟和索引刷新时延；实验要看离线召回是否转化为在线核心指标。",
-          "borrowable": "可借鉴模型化索引、可编辑生成式召回、多目标排序和实时行为特征，将推荐漏斗从组件拼接改为端到端协同。",
-          "boundary": "物料规模不大、业务目标单一或团队没有检索/排序联合 owner 时，复杂联合建模会增加维护成本。"
-        },
-        "diagram": {
-          "title": "Alibaba Cloud Developer 搜广推机制图",
-          "caption": "frontier",
-          "nodes": [
-            {
-              "label": "业务问题",
-              "detail": "推荐系统需要在巨大候选池里兼顾兴趣匹配、新鲜度、多样性和商业目标，传统召回/排序割裂会造成离线提升难以上线转化。",
-              "type": "input"
-            },
-            {
-              "label": "系统机制",
-              "detail": "把候选生成、向量/索引、用户序列、ranker 表征和反馈学习联合设计，让召回质量与后续排序目标保持一致。",
-              "type": "core"
-            },
-            {
-              "label": "指标实验",
-              "detail": "关注 recall@K、覆盖率、多样性、CTR/CVR、停留/满意度、延迟和索引刷新时延；实验要看离线召回是否转化为在线核心指标。",
-              "type": "measure"
-            },
-            {
-              "label": "采用边界",
-              "detail": "物料规模不大、业务目标单一或团队没有检索/排序联合 owner 时，复杂联合建模会增加维护成本。",
-              "type": "risk"
-            }
-          ],
-          "links": [
-            "定义目标",
-            "拆解链路",
-            "实验验收"
-          ]
-        }
-      },
-      {
-        "rank": 6,
-        "title": "召回在美团到店推荐广告的应用",
-        "url": "https://tech.meituan.com/",
-        "publishedAt": "2026-04-27T00:00:00Z",
-        "source": "Meituan Tech",
-        "sourceType": "industry",
-        "imageUrl": "https://www.google.com/s2/favicons?domain=tech.meituan.com&sz=128",
-        "tags": [
-          "frontier"
-        ],
-        "summary": "美团技术首页近期收录到店推荐广告召回实践，适合跟踪本地生活场景中广告召回、排序和多业务商品排序的工程约束。",
-        "interpretation": {
-          "businessProblem": "广告候选、排序和竞价需要同时控制转化价值、用户体验、延迟与算力成本，单点模型提升很难直接证明业务收益。",
-          "systemMechanism": "把用户行为序列、实时上下文、候选生成、轻量排序、精排/重排和预算约束拆成可观测阶段，并在高价值候选上投入更重模型。",
-          "metricsAndExperiment": "优先看 CTR、CVR、CPA/ROAS、广告质量、P95 延迟、推理成本和预算消耗；在线实验要同时观察广告主价值与用户负反馈。",
-          "borrowable": "可借鉴分阶段候选裁剪、实时特征注入、模型容量自适应和在线/离线差异诊断，把算力预算变成排序策略的一部分。",
-          "boundary": "流量小、转化回传慢、成本归因不清或缺少在线实验平台时，不适合直接复制大厂多阶段广告架构。"
-        },
-        "diagram": {
-          "title": "Meituan Tech 搜广推机制图",
-          "caption": "frontier",
-          "nodes": [
-            {
-              "label": "业务问题",
-              "detail": "广告候选、排序和竞价需要同时控制转化价值、用户体验、延迟与算力成本，单点模型提升很难直接证明业务收益。",
-              "type": "input"
-            },
-            {
-              "label": "系统机制",
-              "detail": "把用户行为序列、实时上下文、候选生成、轻量排序、精排/重排和预算约束拆成可观测阶段，并在高价值候选上投入更重模型。",
-              "type": "core"
-            },
-            {
-              "label": "指标实验",
-              "detail": "优先看 CTR、CVR、CPA/ROAS、广告质量、P95 延迟、推理成本和预算消耗；在线实验要同时观察广告主价值与用户负反馈。",
-              "type": "measure"
-            },
-            {
-              "label": "采用边界",
-              "detail": "流量小、转化回传慢、成本归因不清或缺少在线实验平台时，不适合直接复制大厂多阶段广告架构。",
-              "type": "risk"
-            }
-          ],
-          "links": [
-            "定义目标",
-            "拆解链路",
-            "实验验收"
-          ]
-        }
-      },
-      {
-        "rank": 7,
-        "title": "SproutRAG: Attention-Guided Tree Search with Progressive Embeddings for Long-Document RAG",
-        "url": "http://arxiv.org/abs/2606.18381v1",
-        "publishedAt": "2026-06-16T18:28:00Z",
-        "source": "arXiv",
-        "sourceType": "paper",
-        "imageUrl": "https://dummyimage.com/960x540/eef2ff/1f2a44.png&text=Search%20Ads%20RecSys",
-        "tags": [
-          "retrieval",
-          "vector",
-          "llm"
-        ],
-        "summary": "Retrieval-augmented generation (RAG) systems must balance retrieval granularity with contextual coherence, a challenge that existing methods address through LLM-guided chunking, single-level context expansion, or hierarchical summarization. These approaches variously depend on costly LLM calls during indexing or retrieval, limit context aggregation to a single granularity level, or introduce information loss through summarization. We present SproutRAG, an attention-guided hierarchical RAG framework that addresses this trade-off by organizing sentence-level chunks into progressively larger but semantically coherent units, using learned inter-sentence attention to construct a binary chunking tree. Unlike prior approaches that rely on external LLMs, fixed context expansion, or lossy summarization, SproutRAG learns which attention heads and layers best capture semantic document structure, enabling multi-granularity retrieval without additional LLM calls or compressed summaries. At retrieval time, SproutRAG uses hierarchical beam search to retrieve candidates at multiple granularities, capturing multi-sentence relevance beyond flat retrieval. The framework is trained end-to-end with a joint objective that improves both embeddings and tree structure. Experiments across four benchmarks spanning scientific, legal, and open-domain settings demonstrate that SproutRAG improves information efficiency (IE) by 6.1% on average over the strongest baseline. Code is available on https://github.com/AmirAbaskohi/SproutRAG.",
-        "interpretation": {
-          "businessProblem": "企业搜索和社区搜索的长尾查询、权限边界、语义漂移和标注稀缺会拉低相关性，人工标注又难以覆盖全部候选。",
-          "systemMechanism": "通过混合检索、模型化相关性评估、LLM 辅助标注或自动化 judge，把查询理解、召回、排序和质量评估串成闭环。",
-          "metricsAndExperiment": "重点看 NDCG/MRR、answer match、人工一致性、长尾覆盖、权限误召、P95 延迟和标注成本；线上需要观察搜索成功率与二次查询率。",
-          "borrowable": "适合迁移到企业知识库、RAG、客服搜索和社区内容搜索：先建立可靠评测集，再让 LLM 扩大标注覆盖。",
-          "boundary": "如果文档权限复杂但审计不足，或 LLM judge 没有金标校准，自动评估会把错误相关性放大到生产排序。"
-        },
-        "diagram": {
-          "title": "arXiv 搜广推机制图",
-          "caption": "retrieval / vector / llm",
-          "nodes": [
-            {
-              "label": "业务问题",
-              "detail": "企业搜索和社区搜索的长尾查询、权限边界、语义漂移和标注稀缺会拉低相关性，人工标注又难以覆盖全部候选。",
-              "type": "input"
-            },
-            {
-              "label": "系统机制",
-              "detail": "通过混合检索、模型化相关性评估、LLM 辅助标注或自动化 judge，把查询理解、召回、排序和质量评估串成闭环。",
-              "type": "core"
-            },
-            {
-              "label": "指标实验",
-              "detail": "重点看 NDCG/MRR、answer match、人工一致性、长尾覆盖、权限误召、P95 延迟和标注成本；线上需要观察搜索成功率与二次查询率。",
-              "type": "measure"
-            },
-            {
-              "label": "采用边界",
-              "detail": "如果文档权限复杂但审计不足，或 LLM judge 没有金标校准，自动评估会把错误相关性放大到生产排序。",
-              "type": "risk"
-            }
-          ],
-          "links": [
-            "定义目标",
-            "拆解链路",
-            "实验验收"
-          ]
-        }
-      },
-      {
-        "rank": 8,
-        "title": "Understanding the Behaviors of Environment-aware Information Retrieval",
-        "url": "http://arxiv.org/abs/2606.16817v1",
-        "publishedAt": "2026-06-15T15:02:52Z",
-        "source": "arXiv",
-        "sourceType": "paper",
-        "imageUrl": "https://dummyimage.com/960x540/eef2ff/1f2a44.png&text=Search%20Ads%20RecSys",
-        "tags": [
-          "retrieval",
-          "vector",
-          "llm"
-        ],
-        "summary": "Recent retrieval-augmented generation (RAG) approaches have demonstrated strong capability in handling complex queries, yet current research overlooks a critical challenge: different retrievers require fundamentally different query formulation strategies for optimal performance. In this work, we present the first systematic analysis of how LLMs can learn to adapt their query formulation strategies for different retrievers via reinforcement learning (RL). Our empirical study reveals that RL effectively teaches an LLM to tailor its queries to specific retriever characteristics. We discover that different retrievers exhibit surprisingly distinct optimal query styles (e.g., descriptive vs. question-like), suggesting strategies learned for one retriever ineffective for another. We further show that performance can be enhanced by incorporating retriever-specific human guidance and by scaling model size. To facilitate learning over multi-retrieval-step trajectories, we introduce a branching-based rollout technique that improves training stability. Our work provides the first empirical evidence and actionable insights for building truly retriever-aware RAG systems. Code and resources are available at https://github.com/LCO-Embedding/Envs-aware-Information-Retrieval.",
-        "interpretation": {
-          "businessProblem": "企业搜索和社区搜索的长尾查询、权限边界、语义漂移和标注稀缺会拉低相关性，人工标注又难以覆盖全部候选。",
-          "systemMechanism": "通过混合检索、模型化相关性评估、LLM 辅助标注或自动化 judge，把查询理解、召回、排序和质量评估串成闭环。",
-          "metricsAndExperiment": "重点看 NDCG/MRR、answer match、人工一致性、长尾覆盖、权限误召、P95 延迟和标注成本；线上需要观察搜索成功率与二次查询率。",
-          "borrowable": "适合迁移到企业知识库、RAG、客服搜索和社区内容搜索：先建立可靠评测集，再让 LLM 扩大标注覆盖。",
-          "boundary": "如果文档权限复杂但审计不足，或 LLM judge 没有金标校准，自动评估会把错误相关性放大到生产排序。"
-        },
-        "diagram": {
-          "title": "arXiv 搜广推机制图",
-          "caption": "retrieval / vector / llm",
-          "nodes": [
-            {
-              "label": "业务问题",
-              "detail": "企业搜索和社区搜索的长尾查询、权限边界、语义漂移和标注稀缺会拉低相关性，人工标注又难以覆盖全部候选。",
-              "type": "input"
-            },
-            {
-              "label": "系统机制",
-              "detail": "通过混合检索、模型化相关性评估、LLM 辅助标注或自动化 judge，把查询理解、召回、排序和质量评估串成闭环。",
-              "type": "core"
-            },
-            {
-              "label": "指标实验",
-              "detail": "重点看 NDCG/MRR、answer match、人工一致性、长尾覆盖、权限误召、P95 延迟和标注成本；线上需要观察搜索成功率与二次查询率。",
-              "type": "measure"
-            },
-            {
-              "label": "采用边界",
-              "detail": "如果文档权限复杂但审计不足，或 LLM judge 没有金标校准，自动评估会把错误相关性放大到生产排序。",
-              "type": "risk"
-            }
-          ],
-          "links": [
-            "定义目标",
-            "拆解链路",
-            "实验验收"
+            "业务目标",
+            "链路机制",
+            "实验验收",
+            "边界治理"
           ]
         }
       },
       {
         "rank": 9,
+        "title": "MTGR：美团外卖生成式推荐 Scaling Law 落地实践",
+        "url": "https://tech.meituan.com/",
+        "publishedAt": "2026-06-18T00:00:00+08:00",
+        "source": "Meituan Tech",
+        "sourceType": "industry",
+        "imageUrl": "https://www.google.com/s2/favicons?domain=tech.meituan.com&sz=128",
+        "tags": [
+          "推荐",
+          "生成式推荐",
+          "HSTU",
+          "Scaling Law"
+        ],
+        "summary": "美团技术首页近期重点展示外卖生成式推荐 MTGR：对齐传统特征体系，多序列 Transformer 统一建模，并披露 FLOPs、推理成本和全量上线收益。",
+        "interpretation": {
+          "businessProblem": "外卖推荐同时受用户短期意图、商家供给、时段、距离和履约约束影响，传统特征工程迭代遇到容量和表达上限。",
+          "systemMechanism": "基于 HSTU/Transformer 将多条行为序列和传统特征体系对齐，借生成式推荐 Scaling Law 扩大模型容量，同时通过工程优化控制推理成本。",
+          "metricsAndExperiment": "重点看离线收益是否转成在线订单/CTR/CVR、样本前向 FLOPs、推理成本、训练成本、P95 延迟和分城市/分时段稳定性。",
+          "borrowable": "本地生活、即时零售和内容推荐可借鉴“先对齐现有特征体系，再用序列大模型增量替换”的迁移路径。",
+          "boundary": "供给约束强、实时库存/履约信号缺失或延迟预算极紧时，大模型收益可能被业务规则和 serving 成本抵消。"
+        },
+        "diagram": {
+          "title": "Meituan Tech 搜广推机制图",
+          "caption": "推荐 / 生成式推荐 / HSTU / Scaling Law",
+          "nodes": [
+            {
+              "label": "业务问题",
+              "detail": "外卖推荐同时受用户短期意图、商家供给、时段、距离和履约约束影响，传统特征工程迭代遇到容量和表达上限。",
+              "type": "input"
+            },
+            {
+              "label": "系统机制",
+              "detail": "基于 HSTU/Transformer 将多条行为序列和传统特征体系对齐，借生成式推荐 Scaling Law 扩大模型容量，同时通过工程优化控制推理成本。",
+              "type": "core"
+            },
+            {
+              "label": "指标实验",
+              "detail": "重点看离线收益是否转成在线订单/CTR/CVR、样本前向 FLOPs、推理成本、训练成本、P95 延迟和分城市/分时段稳定性。",
+              "type": "measure"
+            },
+            {
+              "label": "采用边界",
+              "detail": "供给约束强、实时库存/履约信号缺失或延迟预算极紧时，大模型收益可能被业务规则和 serving 成本抵消。",
+              "type": "risk"
+            }
+          ],
+          "links": [
+            "业务目标",
+            "链路机制",
+            "实验验收",
+            "边界治理"
+          ]
+        }
+      },
+      {
+        "rank": 10,
+        "title": "PAI-Rec 推荐开发平台：企业级智能推荐解决方案，驱动业务全域增长",
+        "url": "https://developer.aliyun.com/article/1724027",
+        "publishedAt": "2026-04-04T00:00:00+08:00",
+        "source": "Alibaba Cloud Developer",
+        "sourceType": "industry",
+        "imageUrl": "https://www.google.com/s2/favicons?domain=developer.aliyun.com&sz=128",
+        "tags": [
+          "推荐",
+          "多路召回",
+          "精排",
+          "实验迭代"
+        ],
+        "summary": "阿里云 PAI-Rec 汇总企业级推荐平台能力，覆盖多路召回、多目标精排、GPU 推理和灵活迭代，适合中台化推荐建设参考。",
+        "interpretation": {
+          "businessProblem": "企业想做推荐时常卡在召回、特征、排序、推理和实验链路分散，算法 demo 很快但生产系统难维护。",
+          "systemMechanism": "用平台化方式把多路召回、过滤、特征工程、多目标精排、GPU 推理和实验配置串起来，降低从场景到上线的工程门槛。",
+          "metricsAndExperiment": "关注点击率、转化率、ROI、召回覆盖、精排延迟、GPU 利用率、实验迭代周期和线上回滚时间。",
+          "borrowable": "推荐中台可借鉴其模块边界：召回引擎、特征算子、排序模型、在线服务和实验配置需要有统一 schema。",
+          "boundary": "业务目标高度定制、数据权限复杂或团队已有成熟自研平台时，通用平台可能限制深度优化。"
+        },
+        "diagram": {
+          "title": "Alibaba Cloud Developer 搜广推机制图",
+          "caption": "推荐 / 多路召回 / 精排 / 实验迭代",
+          "nodes": [
+            {
+              "label": "业务问题",
+              "detail": "企业想做推荐时常卡在召回、特征、排序、推理和实验链路分散，算法 demo 很快但生产系统难维护。",
+              "type": "input"
+            },
+            {
+              "label": "系统机制",
+              "detail": "用平台化方式把多路召回、过滤、特征工程、多目标精排、GPU 推理和实验配置串起来，降低从场景到上线的工程门槛。",
+              "type": "core"
+            },
+            {
+              "label": "指标实验",
+              "detail": "关注点击率、转化率、ROI、召回覆盖、精排延迟、GPU 利用率、实验迭代周期和线上回滚时间。",
+              "type": "measure"
+            },
+            {
+              "label": "采用边界",
+              "detail": "业务目标高度定制、数据权限复杂或团队已有成熟自研平台时，通用平台可能限制深度优化。",
+              "type": "risk"
+            }
+          ],
+          "links": [
+            "业务目标",
+            "链路机制",
+            "实验验收",
+            "边界治理"
+          ]
+        }
+      },
+      {
+        "rank": 11,
         "title": "OneRank: Unified Transformer-Native Ranking Architecture for Multi-Task Recommendation",
         "url": "http://arxiv.org/abs/2606.16838v1",
         "publishedAt": "2026-06-15T15:16:17Z",
@@ -4285,50 +4715,53 @@
         "imageUrl": "https://dummyimage.com/960x540/eef2ff/1f2a44.png&text=Search%20Ads%20RecSys",
         "tags": [
           "recsys",
-          "ranking"
+          "ranking",
+          "multi-task",
+          "transformer"
         ],
-        "summary": "Multi-task learning (MTL) is essential in recommender systems to enable complementary learning among diverse user feedback. While modern industrial practices have shifted from DNNs to Transformer-centric architectures to strengthen sequence modeling and scaling capacity, they still decouple feature encoding from multi-task prediction, treating the Transformer as a task-agnostic encoder. This design fundamentally limits the performance and scalability by (1) creating an information bottleneck under heterogeneous task objectives, (2) inducing gradient interference that leads to the seesaw phenomenon, and (3) forcing a dataflow transition in which attention-based, context-adaptive representation learning is converted to static feed-forward task prediction with incompatible information read-write dynamics. We propose OneRank, a Transformer-native multi-task ranking framework that eliminates encoder-predictor separation and introduces task-private channels for forward representation learning and backward optimization, enabling task-specialized learning while reducing inter-task interference. In the forward pass, OneRank learns task-specific representations bottom-up through task-conditioned information selection, candidate-aware contextualization, and controlled cross-task interaction. In the backward pass, cross-task gradient detachment isolates task-private parameter updates from shared knowledge extraction modules, preventing negative transfer. We further replace static task-specific MLP scorers with dynamic matching-based scoring for context-aware personalized ranking. By internalizing multi-task reasoning within the Transformer stack, OneRank establishes a unified and scalable architectural paradigm. Offline and online experiments on large-scale industrial datasets show that OneRank significantly outperforms state-of-the-art baselines while maintaining computational efficiency.",
+        "summary": "OneRank 试图把多任务推荐排序中的共享编码器与任务预测分离问题收进 Transformer 原生架构，降低多任务梯度干扰。",
         "interpretation": {
-          "businessProblem": "推荐系统需要在巨大候选池里兼顾兴趣匹配、新鲜度、多样性和商业目标，传统召回/排序割裂会造成离线提升难以上线转化。",
-          "systemMechanism": "把候选生成、向量/索引、用户序列、ranker 表征和反馈学习联合设计，让召回质量与后续排序目标保持一致。",
-          "metricsAndExperiment": "关注 recall@K、覆盖率、多样性、CTR/CVR、停留/满意度、延迟和索引刷新时延；实验要看离线召回是否转化为在线核心指标。",
-          "borrowable": "可借鉴模型化索引、可编辑生成式召回、多目标排序和实时行为特征，将推荐漏斗从组件拼接改为端到端协同。",
-          "boundary": "物料规模不大、业务目标单一或团队没有检索/排序联合 owner 时，复杂联合建模会增加维护成本。"
+          "businessProblem": "推荐排序常同时优化点击、转化、停留、负反馈等目标，共享表征容易出现任务冲突，离线指标提升不稳定。",
+          "systemMechanism": "通过任务私有通道、候选感知上下文化和梯度隔离，让多任务信息在 Transformer 内部完成选择、交互和反向更新控制。",
+          "metricsAndExperiment": "离线看 AUC/NDCG/多任务 Pareto 改善，线上看 CTR/CVR/满意度、负反馈、推理延迟和任务间跷跷板是否缓解。",
+          "borrowable": "适合多目标排序团队作为下一代 ranker 结构候选，先离线复现任务冲突场景，再做单场景灰度。",
+          "boundary": "如果业务目标单一或样本量不足，复杂多任务 Transformer 会增加训练不稳定和 serving 成本。"
         },
         "diagram": {
           "title": "arXiv 搜广推机制图",
-          "caption": "recsys / ranking",
+          "caption": "recsys / ranking / multi-task / transformer",
           "nodes": [
             {
               "label": "业务问题",
-              "detail": "推荐系统需要在巨大候选池里兼顾兴趣匹配、新鲜度、多样性和商业目标，传统召回/排序割裂会造成离线提升难以上线转化。",
+              "detail": "推荐排序常同时优化点击、转化、停留、负反馈等目标，共享表征容易出现任务冲突，离线指标提升不稳定。",
               "type": "input"
             },
             {
               "label": "系统机制",
-              "detail": "把候选生成、向量/索引、用户序列、ranker 表征和反馈学习联合设计，让召回质量与后续排序目标保持一致。",
+              "detail": "通过任务私有通道、候选感知上下文化和梯度隔离，让多任务信息在 Transformer 内部完成选择、交互和反向更新控制。",
               "type": "core"
             },
             {
               "label": "指标实验",
-              "detail": "关注 recall@K、覆盖率、多样性、CTR/CVR、停留/满意度、延迟和索引刷新时延；实验要看离线召回是否转化为在线核心指标。",
+              "detail": "离线看 AUC/NDCG/多任务 Pareto 改善，线上看 CTR/CVR/满意度、负反馈、推理延迟和任务间跷跷板是否缓解。",
               "type": "measure"
             },
             {
               "label": "采用边界",
-              "detail": "物料规模不大、业务目标单一或团队没有检索/排序联合 owner 时，复杂联合建模会增加维护成本。",
+              "detail": "如果业务目标单一或样本量不足，复杂多任务 Transformer 会增加训练不稳定和 serving 成本。",
               "type": "risk"
             }
           ],
           "links": [
-            "定义目标",
-            "拆解链路",
-            "实验验收"
+            "业务目标",
+            "链路机制",
+            "实验验收",
+            "边界治理"
           ]
         }
       },
       {
-        "rank": 10,
+        "rank": 12,
         "title": "SHIFT: Semantic Harmonization via Index-side Feature Transformation for Multilingual Information Retrieval",
         "url": "http://arxiv.org/abs/2606.18801v1",
         "publishedAt": "2026-06-17T08:14:51Z",
@@ -4337,45 +4770,48 @@
         "imageUrl": "https://dummyimage.com/960x540/eef2ff/1f2a44.png&text=Search%20Ads%20RecSys",
         "tags": [
           "retrieval",
-          "vector"
+          "vector",
+          "multilingual",
+          "index"
         ],
-        "summary": "With the rapid expansion of massive multilingual corpora, Multilingual Information Retrieval (MLIR) has emerged as a critical technology for global information access. MLIR enables users to retrieve semantically relevant documents from multilingual text collections using a single-language query. However, recent multilingual dense retrieval models often exhibit a strong preference for documents in the same language as the query. This leads to severe language bias, where top-ranked results are dominated by documents of specific languages, even when documents in other languages contain more semantically relevant information. To address this issue, we propose SHIFT, a training-free method applicable in the indexing stage. Specifically, SHIFT utilizes parallel translation pairs to estimate a relative language vector for each target language with respect to a source language. Subsequently, SHIFT corrects the language-specific offset by subtracting this relative language vector from document embeddings during indexing. Our comprehensive evaluation across four MLIR benchmarks and diverse dense retrieval models confirms that SHIFT can effectively mitigate language bias and enhance MLIR performance.",
+        "summary": "SHIFT 从索引侧修正多语向量空间的语言偏置，提示跨语言搜索/RAG 不一定要重训检索模型。",
         "interpretation": {
-          "businessProblem": "企业搜索和社区搜索的长尾查询、权限边界、语义漂移和标注稀缺会拉低相关性，人工标注又难以覆盖全部候选。",
-          "systemMechanism": "通过混合检索、模型化相关性评估、LLM 辅助标注或自动化 judge，把查询理解、召回、排序和质量评估串成闭环。",
-          "metricsAndExperiment": "重点看 NDCG/MRR、answer match、人工一致性、长尾覆盖、权限误召、P95 延迟和标注成本；线上需要观察搜索成功率与二次查询率。",
-          "borrowable": "适合迁移到企业知识库、RAG、客服搜索和社区内容搜索：先建立可靠评测集，再让 LLM 扩大标注覆盖。",
-          "boundary": "如果文档权限复杂但审计不足，或 LLM judge 没有金标校准，自动评估会把错误相关性放大到生产排序。"
+          "businessProblem": "跨语言搜索中，查询语言会让 dense retriever 偏向同语文档，即使其他语言文档语义更相关，也可能排不上来。",
+          "systemMechanism": "利用平行翻译对估计语言偏移向量，在索引阶段对文档 embedding 做语义调和，降低语言特定偏置。",
+          "metricsAndExperiment": "重点看跨语 NDCG/MRR、语言覆盖、公平性指标、索引构建成本、查询延迟和对不同 embedding 模型的迁移性。",
+          "borrowable": "全球化知识库、客服搜索和多语 RAG 可先在索引侧做低侵入校正，不必立即重训检索器。",
+          "boundary": "语料领域差异大、翻译对质量低或权限/地域规则强绑定语言时，单纯 embedding 校正可能误召。"
         },
         "diagram": {
           "title": "arXiv 搜广推机制图",
-          "caption": "retrieval / vector",
+          "caption": "retrieval / vector / multilingual / index",
           "nodes": [
             {
               "label": "业务问题",
-              "detail": "企业搜索和社区搜索的长尾查询、权限边界、语义漂移和标注稀缺会拉低相关性，人工标注又难以覆盖全部候选。",
+              "detail": "跨语言搜索中，查询语言会让 dense retriever 偏向同语文档，即使其他语言文档语义更相关，也可能排不上来。",
               "type": "input"
             },
             {
               "label": "系统机制",
-              "detail": "通过混合检索、模型化相关性评估、LLM 辅助标注或自动化 judge，把查询理解、召回、排序和质量评估串成闭环。",
+              "detail": "利用平行翻译对估计语言偏移向量，在索引阶段对文档 embedding 做语义调和，降低语言特定偏置。",
               "type": "core"
             },
             {
               "label": "指标实验",
-              "detail": "重点看 NDCG/MRR、answer match、人工一致性、长尾覆盖、权限误召、P95 延迟和标注成本；线上需要观察搜索成功率与二次查询率。",
+              "detail": "重点看跨语 NDCG/MRR、语言覆盖、公平性指标、索引构建成本、查询延迟和对不同 embedding 模型的迁移性。",
               "type": "measure"
             },
             {
               "label": "采用边界",
-              "detail": "如果文档权限复杂但审计不足，或 LLM judge 没有金标校准，自动评估会把错误相关性放大到生产排序。",
+              "detail": "语料领域差异大、翻译对质量低或权限/地域规则强绑定语言时，单纯 embedding 校正可能误召。",
               "type": "risk"
             }
           ],
           "links": [
-            "定义目标",
-            "拆解链路",
-            "实验验收"
+            "业务目标",
+            "链路机制",
+            "实验验收",
+            "边界治理"
           ]
         }
       }
