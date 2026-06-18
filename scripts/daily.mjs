@@ -105,6 +105,8 @@ async function buildReport({ reportDate, limit, days, language }) {
     buildFrontierSection(frontierLimit),
     buildAiNewsSection(newsLimit),
   ]);
+  const anthropic = buildAnthropicSection(aiNews);
+  const searchAdsRec = buildSearchAdsRecSection(frontier);
 
   return {
     date: reportDate,
@@ -120,6 +122,8 @@ async function buildReport({ reportDate, limit, days, language }) {
     items,
     frontier,
     aiNews,
+    anthropic,
+    searchAdsRec,
   };
 }
 
@@ -1698,6 +1702,33 @@ function isAnthropicOfficialItem(item = {}) {
   return source.includes("anthropic") || source.includes("a社") || url.includes("anthropic.com");
 }
 
+function buildAnthropicSection(aiNews = {}) {
+  const items = (aiNews.items || []).filter(isAnthropicItem);
+  const officialSections = uniqueList(
+    items
+      .map((item) => item.sourceDetail || item.source || "")
+      .filter(Boolean)
+      .map((source) => source.replace(/^Anthropic\s+/i, "Anthropic ")),
+  );
+  return {
+    title: "A社 Anthropic 动态",
+    subtitle: "覆盖 Anthropic 官方 News、Research、Engineering、Claude 模型、Claude Code/Agent、企业合作与安全研究。",
+    source: officialSections.length ? officialSections.join(" + ") : "Anthropic official pages / trusted mirrors",
+    items,
+  };
+}
+
+function buildSearchAdsRecSection(frontier = {}) {
+  const items = frontier.items || [];
+  const sources = uniqueList(items.map((item) => item.source).filter(Boolean)).slice(0, 8);
+  return {
+    title: "搜广推工程前沿",
+    subtitle: "聚焦 recommendation/recommender、ranking、retrieval、search、ads、auction、personalization、feed、embedding/vector、CTR/CVR 与实验平台。",
+    source: sources.length ? sources.join(" + ") : frontier.source || "Big Tech Engineering/RSS + arXiv",
+    items,
+  };
+}
+
 function selectAnthropicCoverage(items, maxItems) {
   const ranked = rankAnthropicItems(items);
   const buckets = [
@@ -2353,7 +2384,7 @@ async function updateIndex() {
     }));
   await fs.writeFile(
     path.join(publicReportsDir, "index.json"),
-    `${JSON.stringify({ reports }, null, 2)}\n`,
+    `${JSON.stringify({ latest: reports[0] || null, reports }, null, 2)}\n`,
   );
   await updateReportPayloadManifest(reports);
 }
