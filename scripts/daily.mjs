@@ -1440,10 +1440,10 @@ async function fetchIndustryFrontierItems(maxItems) {
   );
 
   return [
-    ...results
-    .flatMap((result) => (result.status === "fulfilled" ? result.value : []))
-      .map((item) => ({ ...item, sourceType: item.sourceType || "industry" })),
     ...seedIndustryFrontierItems(),
+    ...results
+      .flatMap((result) => (result.status === "fulfilled" ? result.value : []))
+      .map((item) => ({ ...item, sourceType: item.sourceType || "industry" })),
   ]
     .filter(dedupeByTitle)
     .sort((a, b) => b.frontierScore - a.frontierScore || new Date(b.publishedAt || 0) - new Date(a.publishedAt || 0))
@@ -1465,24 +1465,34 @@ async function fetchIndustryFrontierItems(maxItems) {
 function seedIndustryFrontierItems() {
   return [
     {
-      title: "Meta Adaptive Ranking Model: Bending the Inference Scaling Curve to Serve LLM-Scale Models for Ads",
-      url: "https://engineering.fb.com/2026/03/31/ml-applications/meta-adaptive-ranking-model-bending-the-inference-scaling-curve-to-serve-llm-scale-models-for-ads/",
-      publishedAt: "2026-03-31T16:00:00Z",
-      source: "Meta Engineering",
-      domain: "engineering.fb.com",
-      sourceType: "industry",
-      frontierScore: 42,
-      summary: "Meta 讨论在实时广告推荐中服务 LLM-scale 排序模型的复杂度/效率矛盾，核心是让模型容量、延迟预算和广告业务目标共同优化。",
-    },
-    {
       title: "SilverTorch: Index as Model — A New Retrieval Paradigm for Recommendation Systems",
       url: "https://engineering.fb.com/2026/05/26/ml-applications/silvertorch-index-as-model-new-retrieval-paradigm-recommendation-systems/",
       publishedAt: "2026-05-26T16:00:00Z",
       source: "Meta Engineering",
       domain: "engineering.fb.com",
       sourceType: "industry",
-      frontierScore: 41,
-      summary: "Meta 将推荐检索组件统一到 index-as-model 架构，强调吞吐、成本效率和准确率的系统级权衡。",
+      frontierScore: 48,
+      summary: "Meta 将推荐检索组件统一到 index-as-model 架构，报告相比既有方案最高 23.7x 吞吐、20.9x 计算成本效率提升，并强调准确率、GPU serving 和 UGC 召回的一体化权衡。",
+    },
+    {
+      title: "Unlocking dependable responses with Gemini Enterprise Agent Platform's Agentic RAG",
+      url: "https://research.google/blog/unlocking-dependable-responses-with-gemini-enterprise-agent-platforms-agentic-rag/",
+      publishedAt: "2026-06-05T16:00:00Z",
+      source: "Google Research",
+      domain: "research.google",
+      sourceType: "industry",
+      frontierScore: 47,
+      summary: "Google Research 与 Google Cloud 将企业 RAG 改造成多 Agent 检索工作流，用 sufficient context agent 反复补齐证据后再回答，面向跨语料、多跳企业搜索。",
+    },
+    {
+      title: "Meta Adaptive Ranking Model: Bending the Inference Scaling Curve to Serve LLM-Scale Models for Ads",
+      url: "https://engineering.fb.com/2026/03/31/ml-applications/meta-adaptive-ranking-model-bending-the-inference-scaling-curve-to-serve-llm-scale-models-for-ads/",
+      publishedAt: "2026-03-31T16:00:00Z",
+      source: "Meta Engineering",
+      domain: "engineering.fb.com",
+      sourceType: "industry",
+      frontierScore: 46,
+      summary: "Meta 讨论在实时广告推荐中服务 LLM-scale 排序模型的复杂度/效率矛盾，核心是让模型容量、延迟预算和广告业务目标共同优化。",
     },
     {
       title: "From Clicks to Conversions: Architecting Shopping Conversion Candidate Generation at Pinterest",
@@ -1491,7 +1501,7 @@ function seedIndustryFrontierItems() {
       source: "Pinterest Engineering",
       domain: "medium.com",
       sourceType: "industry",
-      frontierScore: 40,
+      frontierScore: 45,
       summary: "Pinterest 介绍购物转化候选生成模型，从点击信号转向转化目标，并讨论大规模上线到 6 亿月活用户的系统设计。",
     },
     {
@@ -1501,8 +1511,28 @@ function seedIndustryFrontierItems() {
       source: "Pinterest Engineering",
       domain: "medium.com",
       sourceType: "industry",
-      frontierScore: 39,
+      frontierScore: 44,
       summary: "Pinterest 将实时上下文接入序列推荐模型，报告转化相关 ROAS 指标提升，适合观察广告实时特征和在线实验闭环。",
+    },
+    {
+      title: "Building a Natural Language Interface to the Spotify Ads API with Claude Code Plugins",
+      url: "https://engineering.atspotify.com/2026/5/spotify-ads-api-claude-plugins",
+      publishedAt: "2026-05-01T16:00:00Z",
+      source: "Spotify Engineering",
+      domain: "engineering.atspotify.com",
+      sourceType: "industry",
+      frontierScore: 38,
+      summary: "Spotify 用 Claude Code plugin、OpenAPI spec、技能/Agent/Hook 把自然语言广告意图转成 campaign、ad set、ad 的多步 API 调用，适合观察广告平台的人机协同操作层。",
+    },
+    {
+      title: "Our Multi-Agent Architecture for Smarter Advertising",
+      url: "https://engineering.atspotify.com/2026/2/our-multi-agent-architecture-for-smarter-advertising",
+      publishedAt: "2026-02-19T16:00:00Z",
+      source: "Spotify Engineering",
+      domain: "engineering.atspotify.com",
+      sourceType: "industry",
+      frontierScore: 37,
+      summary: "Spotify 把广告业务的 Direct、Self-Serve、Programmatic 多渠道工作流抽象为多 Agent 架构，核心问题是统一共享后端上的渠道差异化决策逻辑。",
     },
     {
       title: "Using LLMs to amplify human labeling and improve Dash search relevance",
@@ -1666,7 +1696,7 @@ async function buildAiNewsSection(maxItems) {
     .sort((a, b) => (b.priority || 0) - (a.priority || 0) || new Date(b.publishedAt || 0) - new Date(a.publishedAt || 0))
     .filter(dedupeByCanonicalItem)
     .sort((a, b) => new Date(b.publishedAt || 0) - new Date(a.publishedAt || 0));
-  const anthropicQuota = Math.min(6, Math.max(5, Math.floor(maxItems * 0.45)));
+  const anthropicQuota = Math.min(8, Math.max(7, Math.ceil(maxItems * 0.55)));
   const anthropicItems = selectAnthropicCoverage(rawItems.filter(isAnthropicItem), anthropicQuota);
   const items = pickUniqueItems(
     [
@@ -1803,7 +1833,7 @@ async function fetchAnthropicNewsItems(maxItems) {
     const items = results
       .flatMap((result) => (result.status === "fulfilled" ? [result.value] : []))
       .filter((item) => item.title && item.url);
-    if (items.length) return rankAnthropicItems(items).slice(0, Math.max(maxItems, 24));
+    if (items.length) return rankAnthropicItems([...seedAnthropicOfficialItems(), ...items]).slice(0, Math.max(maxItems, 24));
   } catch {
     // Fall through to community-maintained feed mirrors when the official site blocks or changes markup.
   }
@@ -1837,10 +1867,60 @@ async function fetchAnthropicNewsItems(maxItems) {
       return parseFeedItems(xml, feed).slice(0, 3);
     }),
   );
-  return results
-    .flatMap((result) => (result.status === "fulfilled" ? result.value : []))
-    .filter(dedupeByTitle)
-    .slice(0, maxItems);
+  return rankAnthropicItems([
+    ...seedAnthropicOfficialItems(),
+    ...results.flatMap((result) => (result.status === "fulfilled" ? result.value : [])),
+  ]).slice(0, maxItems);
+}
+
+function seedAnthropicOfficialItems() {
+  const favicon = "https://www.google.com/s2/favicons?domain=anthropic.com&sz=128";
+  return [
+    {
+      source: "A社 Anthropic",
+      sourceDetail: "Anthropic 官方 News",
+      domain: "anthropic.com",
+      title: "Introducing Claude Opus 4.8",
+      url: "https://www.anthropic.com/news/claude-opus-4-8",
+      publishedAt: "2026-05-28T16:00:00Z",
+      summary: "Anthropic 发布 Claude Opus 4.8，官方重点放在 coding、agentic tasks、computer use、长会话协作、诚实性和企业工作流可靠性。",
+      imageUrl: favicon,
+      priority: 4,
+    },
+    {
+      source: "A社 Anthropic",
+      sourceDetail: "Anthropic 官方 News",
+      domain: "anthropic.com",
+      title: "Claude Fable 5 and Claude Mythos 5 access unavailable",
+      url: "https://www.anthropic.com/news/claude-fable-5-mythos-5",
+      publishedAt: "2026-06-12T16:00:00Z",
+      summary: "Anthropic 说明 Claude Fable 5 / Mythos 5 访问不可用，并将部分请求回退到 Claude Opus 4.8，体现高能力模型上线后的供应、安全和合规约束。",
+      imageUrl: favicon,
+      priority: 4,
+    },
+    {
+      source: "A社 Anthropic",
+      sourceDetail: "Anthropic 官方 News",
+      domain: "anthropic.com",
+      title: "Higher usage limits for Claude and a compute deal with SpaceX",
+      url: "https://www.anthropic.com/news/higher-limits-spacex",
+      publishedAt: "2026-05-20T16:00:00Z",
+      summary: "Anthropic 提高 Claude Code 与 Opus API 使用限制，并披露与 SpaceX 的算力合作，说明 Claude 企业和 Agent 用量正在受供给能力约束。",
+      imageUrl: favicon,
+      priority: 4,
+    },
+    {
+      source: "A社 Anthropic",
+      sourceDetail: "Anthropic 官方 News",
+      domain: "anthropic.com",
+      title: "Expanding Project Glasswing",
+      url: "https://www.anthropic.com/news/expanding-project-glasswing",
+      publishedAt: "2026-06-06T16:00:00Z",
+      summary: "Anthropic 扩展 Project Glasswing，并提到 Claude Security 使用 Opus 4.8 扫描代码和建议补丁，安全研究正在产品化到企业防御流程。",
+      imageUrl: favicon,
+      priority: 4,
+    },
+  ];
 }
 
 function isGenericAnthropicSummary(summary = "") {
