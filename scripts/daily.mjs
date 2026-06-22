@@ -1305,15 +1305,6 @@ function normalizeFrontierInterpretation(item) {
       boundary: "流量小、转化回传慢、成本归因不清或缺少在线实验平台时，不适合直接复制大厂多阶段广告架构。",
     };
   }
-  if (isSearch || isLabeling) {
-    return {
-      businessProblem: "企业搜索和社区搜索的长尾查询、权限边界、语义漂移和标注稀缺会拉低相关性，人工标注又难以覆盖全部候选。",
-      systemMechanism: "通过混合检索、模型化相关性评估、LLM 辅助标注或自动化 judge，把查询理解、召回、排序和质量评估串成闭环。",
-      metricsAndExperiment: "重点看 NDCG/MRR、answer match、人工一致性、长尾覆盖、权限误召、P95 延迟和标注成本；线上需要观察搜索成功率与二次查询率。",
-      borrowable: "适合迁移到企业知识库、RAG、客服搜索和社区内容搜索：先建立可靠评测集，再让 LLM 扩大标注覆盖。",
-      boundary: "如果文档权限复杂但审计不足，或 LLM judge 没有金标校准，自动评估会把错误相关性放大到生产排序。",
-    };
-  }
   if (isRec) {
     return {
       businessProblem: "推荐系统需要在巨大候选池里兼顾兴趣匹配、新鲜度、多样性和商业目标，传统召回/排序割裂会造成离线提升难以上线转化。",
@@ -1321,6 +1312,15 @@ function normalizeFrontierInterpretation(item) {
       metricsAndExperiment: "关注 recall@K、覆盖率、多样性、CTR/CVR、停留/满意度、延迟和索引刷新时延；实验要看离线召回是否转化为在线核心指标。",
       borrowable: "可借鉴模型化索引、可编辑生成式召回、多目标排序和实时行为特征，将推荐漏斗从组件拼接改为端到端协同。",
       boundary: "物料规模不大、业务目标单一或团队没有检索/排序联合 owner 时，复杂联合建模会增加维护成本。",
+    };
+  }
+  if (isSearch || isLabeling) {
+    return {
+      businessProblem: "企业搜索和社区搜索的长尾查询、权限边界、语义漂移和标注稀缺会拉低相关性，人工标注又难以覆盖全部候选。",
+      systemMechanism: "通过混合检索、模型化相关性评估、LLM 辅助标注或自动化 judge，把查询理解、召回、排序和质量评估串成闭环。",
+      metricsAndExperiment: "重点看 NDCG/MRR、answer match、人工一致性、长尾覆盖、权限误召、P95 延迟和标注成本；线上需要观察搜索成功率与二次查询率。",
+      borrowable: "适合迁移到企业知识库、RAG、客服搜索和社区内容搜索：先建立可靠评测集，再让 LLM 扩大标注覆盖。",
+      boundary: "如果文档权限复杂但审计不足，或 LLM judge 没有金标校准，自动评估会把错误相关性放大到生产排序。",
     };
   }
   if (isExperiment) {
@@ -1920,6 +1920,17 @@ function seedAnthropicOfficialItems() {
       imageUrl: favicon,
       priority: 4,
     },
+    {
+      source: "A社 Anthropic Engineering",
+      sourceDetail: "Anthropic 官方 Engineering",
+      domain: "anthropic.com",
+      title: "Quantifying infrastructure noise in agentic coding evals",
+      url: "https://www.anthropic.com/engineering/infrastructure-noise",
+      publishedAt: "2026-02-05T16:00:00Z",
+      summary: "Anthropic 讨论 agentic coding evals 中运行环境、资源预算和约束执行方式带来的基础设施噪声，提醒比较 Claude Code/Agent 能力时必须控制测试环境。",
+      imageUrl: favicon,
+      priority: 4,
+    },
   ];
 }
 
@@ -2315,10 +2326,17 @@ function interpretAiNews(item) {
 
 function enrichAiNews(item) {
   const tags = inferAiNewsTags(item);
+  const signal = interpretAiNews(item);
+  const impact = buildAiNewsImpact(item, tags);
+  const action = buildAiNewsAction(item, tags);
   return {
-    interpretation: interpretAiNews(item),
-    impact: buildAiNewsImpact(item, tags),
-    action: buildAiNewsAction(item, tags),
+    interpretation: {
+      signal,
+      impact,
+      action,
+    },
+    impact,
+    action,
     tags,
   };
 }
