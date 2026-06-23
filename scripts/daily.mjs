@@ -514,6 +514,18 @@ function specializeLens(repo, lens) {
       badFit: "需要稳定 SLA、强合规审计或涉及私域/敏感账号自动化",
       primaryRisk: "平台条款、账号风控、反爬变化、隐私边界和引用可追溯性是生产前置条件。",
     },
+    "mukul975/Anthropic-Cybersecurity-Skills": {
+      domain: "Agent 安全技能库 / 安全运营知识工程",
+      userPain: "安全团队希望把 ATT&CK、NIST、ATLAS、D3FEND 等框架转成可被 Claude Code、Codex、Copilot 等 Agent 调用的结构化技能",
+      coreMechanism: "按安全域组织的技能文件、框架映射、检测/响应流程、工具提示边界和跨平台 Agent skill 标准",
+      safeEntry: "先选威胁狩猎、漏洞 triage 或事件响应中的一个低风险流程，作为只读辅助技能接入",
+      businessValue: "减少安全分析上下文装配成本，提高告警研判、证据收集和处置建议的一致性",
+      successMetric: "误报降噪率、研判耗时、MITRE 映射准确率、人工复核通过率、越权/误操作次数",
+      inspectFirst: "先看技能目录、框架映射表、输入输出边界、权限提示、审计记录和与现有 SOAR/SIEM 的接入方式",
+      bestFit: "有成熟安全流程、人工复核机制和框架化知识资产的 SOC、DevSecOps 或红蓝队平台团队",
+      badFit: "想让 Agent 自动执行高危处置、缺少审计闭环或安全知识库尚未标准化",
+      primaryRisk: "安全技能会放大 Agent 行为边界问题，必须限制凭据、网络、写操作和外部命令，并保留人工确认。",
+    },
     "obra/superpowers": {
       domain: "Agentic 软件工程方法 / 技能框架",
       userPain: "团队把 AI 编码当聊天工具使用，缺少可复用流程、检查点和质量门禁",
@@ -2350,7 +2362,9 @@ function interpretFrontier(item) {
 
 function interpretAiNews(item) {
   const text = `${item.title} ${item.summary}`.toLowerCase();
+  if (text.includes("daybreak") || text.includes("codex security") || text.includes("gpt-5.5-cyber") || text.includes("ai cyber threats") || text.includes("网络威胁")) return "AI 安全工程信号：安全 Agent 和攻击 Agent 同时进入实战窗口，关键看漏洞验证、权限隔离、自动补丁和人工审查闭环。";
   if (isAnthropicOfficialItem(item) || text.includes("anthropic")) {
+    if (text.includes("claude code") && (text.includes("sandbox") || text.includes("filesystem") || text.includes("network isolation"))) return "A 社 Claude Code 基建信号：sandboxing 把文件系统、网络和权限提示变成 Agent 自主性的前置条件，适合直接转成企业编码 Agent 安全基线。";
     if (text.includes("agent") || text.includes("computer") || text.includes("tool")) return "A 社 Agent 信号：Claude 正在把工具使用、电脑操作和企业流程连接起来，重点看权限、审计和失败接管。";
     if (text.includes("partnership") || text.includes("office") || text.includes("ecosystem") || text.includes("enterprise") || text.includes("compute")) return "A 社企业生态信号：合作、算力和区域办公室会影响 Claude 的可用额度、企业采购路径和本地生态扩散。";
     if (text.includes("research") || text.includes("alignment") || text.includes("safety") || text.includes("contain")) return "A 社安全研究信号：值得跟进其评测、可解释性和对齐方法是否能转化为内部模型治理清单。";
@@ -2425,6 +2439,7 @@ function hasSearchSignal(text) {
 
 function buildAiNewsImpact(item, tags) {
   const text = `${item.title} ${item.summary}`.toLowerCase();
+  if (text.includes("daybreak") || text.includes("codex security") || text.includes("gpt-5.5-cyber")) return "安全 Agent 正从“辅助写脚本”进入漏洞发现、验证和修复建议链路，企业需要把它纳入 DevSecOps、审计和变更管理，而不是当成普通聊天能力。";
   if (text.includes("a2ui") || text.includes("mcp apps")) return "Google 把 A2UI 与 MCP Apps 放在同一组集成架构里，信号是 AI 应用入口正在从单点插件走向标准化应用协议。";
   if (text.includes("workload identity federation")) return "Claude Platform 接入开始强调无长期密钥的身份联合，影响企业把 Claude 接入云上工作负载和 CI/CD 的安全基线。";
   if (text.includes("claude design")) return "Claude Design 与 Claude Code 协同意味着品牌资产、设计规范和代码生成会更紧密，设计系统会成为 Agent 工作流输入。";
@@ -2440,6 +2455,7 @@ function buildAiNewsImpact(item, tags) {
 
 function buildAiNewsAction(item, tags) {
   const text = `${item.title} ${item.summary}`.toLowerCase();
+  if (text.includes("daybreak") || text.includes("codex security") || text.includes("gpt-5.5-cyber")) return "建议建立安全 Agent 试点清单：只读扫描、人工确认补丁、沙箱执行、审计日志和误报/漏报复盘必须同时验证。";
   if (text.includes("a2ui") || text.includes("mcp apps")) return "建议把 A2UI/MCP Apps 放入 Agent 集成雷达，比较权限模型、上下文传递、应用发现和前端承载边界。";
   if (text.includes("workload identity federation")) return "建议更新 Claude Platform 接入规范，优先验证短期凭据、最小权限、审计日志和密钥轮换流程。";
   if (text.includes("claude design")) return "建议让设计系统 owner 试跑一次品牌一致性流程，检查 token、组件、文案和 Claude Code 交付物是否可追踪。";
