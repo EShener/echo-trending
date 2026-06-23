@@ -13,6 +13,8 @@ const dataReportsDir = path.join(rootDir, "data", "reports");
 const publicPayloadsDir = path.join(publicReportsDir, "payloads");
 const publicIndexHtmlPath = path.join(rootDir, "public", "index.html");
 const gzipAsync = promisify(gzip);
+const browserUserAgent =
+  "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/124.0.0.0 Safari/537.36";
 
 const args = parseArgs(process.argv.slice(2));
 const reportTimezone = process.env.REPORT_TIMEZONE || "Asia/Shanghai";
@@ -241,7 +243,7 @@ async function githubJson(url) {
 async function fetchText(url) {
   const response = await fetch(url, {
     headers: {
-      "User-Agent": "echo-trending",
+      "User-Agent": browserUserAgent,
       Accept: "application/rss+xml, application/atom+xml, text/xml, text/plain, */*",
     },
   });
@@ -252,7 +254,7 @@ async function fetchText(url) {
 async function fetchJson(url) {
   const response = await fetch(url, {
     headers: {
-      "User-Agent": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 Chrome/125 Safari/537.36",
+      "User-Agent": browserUserAgent,
       Accept: "application/json, text/plain, */*",
     },
   });
@@ -430,6 +432,138 @@ function codexResearchRefresh({ repo, readme, languages, fallback }) {
 
 function specializeLens(repo, lens) {
   const overrides = {
+    "calesthio/OpenMontage": {
+      domain: "Agentic 视频生产 / 多工具创作流水线",
+      userPain: "内容团队想把脚本、素材、配音、剪辑、字幕和封面从手工串联变成可回放的候选稿生产线",
+      coreMechanism: "12 条生产流水线、工具注册、素材状态管理、Agent skills、FFmpeg/生成模型适配和人工审稿关口",
+      safeEntry: "选一类低风险视频模板，只让 Agent 产出候选稿，不接自动发布",
+      businessValue: "缩短素材处理周期、提高版本生成能力，并把创作流程中的失败点显性化",
+      successMetric: "端到端完成率、人工修改轮次、单条视频成本、素材复用率、审稿通过率",
+      inspectFirst: "先看 pipeline 配置、工具注册、素材目录、失败日志、模型密钥和人工审批点",
+      bestFit: "增长、品牌、开发者内容、课程和内部培训团队，且有稳定模板和素材授权",
+      badFit: "素材版权不清、品牌审核薄弱或希望跳过人工终审直接发布",
+      primaryRisk: "版权、肖像权、品牌一致性、长任务中断、模型费用和错误成片回滚必须先治理。",
+    },
+    "ZhuLinsen/daily_stock_analysis": {
+      domain: "LLM 投研工作台 / 多源行情自动化",
+      userPain: "个人或小团队需要把行情、新闻、指标、策略解释和定时推送聚合成可复盘的投研流程",
+      coreMechanism: "行情数据源、新闻抓取、LLM 总结/推理、决策看板、定时任务和通知推送组合",
+      safeEntry: "只读观察组合或历史回测日报，不接自动下单",
+      businessValue: "把分散信息收敛成可追踪的投研记录，减少人工扫新闻和整理指标的时间",
+      successMetric: "数据缺失率、新闻引用可追溯率、预测校准度、误报率、推送准时率",
+      inspectFirst: "先看数据源、缓存/重试、prompt、免责声明、推送配置和历史输出样例",
+      bestFit: "量化学习、个人投研、内部市场观察和低风险信息看板",
+      badFit: "需要合规投顾、自动交易、真实资金风控或机构级数据授权",
+      primaryRisk: "LLM 投资结论容易放大数据错误和叙事偏差，必须保留来源、置信度和人工决策边界。",
+    },
+    "garrytan/gstack": {
+      domain: "Claude Code 管理栈 / 创业公司角色化工作流",
+      userPain: "小团队希望把 CEO、设计、工程管理、发布、文档和 QA 等角色知识沉淀成可复用 Agent 工具",
+      coreMechanism: "23 个意见化工具、角色提示、命令入口、任务交接规范和 Claude Code 工作流约束",
+      safeEntry: "挑一个非核心 PR 或发布任务，验证角色分工是否减少上下文遗漏",
+      businessValue: "把创始人/负责人经验转成可执行流程，提升小团队决策和交付节奏",
+      successMetric: "返工率、review 缺陷、任务交接次数、文档补齐率、发布遗漏数",
+      inspectFirst: "先看每个工具的输入输出、权限假设、适用场景和与本地流程冲突点",
+      bestFit: "已经重度使用 Claude Code、任务类型重复且愿意维护本地工作流的创业团队",
+      badFit: "组织角色、代码规范或发布流程与原作者假设差异很大",
+      primaryRisk: "照搬个人工作流会把隐性偏好固化到团队流程，必须先做本地化和权限约束。",
+    },
+    "bytedance/deer-flow": {
+      domain: "长周期 SuperAgent Harness / 多 Agent 任务执行",
+      userPain: "研究、编码和内容生成任务需要跨分钟到小时运行，但普通 Agent 容易丢状态、失控或难以接管",
+      coreMechanism: "sandbox、memory、tool、skill、subagent、message gateway 和长任务状态机协同",
+      safeEntry: "先用公开资料研究或内部脚手架生成做旁路任务，禁用高风险写操作",
+      businessValue: "提高长任务完成率，把研究、代码和产物生成纳入可观测的 Agent 编排层",
+      successMetric: "任务完成率、人工接管率、上下文恢复成功率、沙箱失败率、单位任务成本",
+      inspectFirst: "先看任务状态、消息网关、工具权限、沙箱隔离、memory schema 和失败恢复",
+      bestFit: "研究助手、开发者平台、自动化内容生产和内部 Agent 平台团队",
+      badFit: "任务边界不清、缺少审计日志或无法容忍长任务偶发错误",
+      primaryRisk: "长周期 Agent 会放大权限、成本、状态污染和失败恢复问题，必须先定义中止/回滚机制。",
+    },
+    "koala73/worldmonitor": {
+      domain: "OSINT 情报看板 / 全球态势监控",
+      userPain: "团队需要把新闻、地缘政治、基础设施和事件信号聚合到一个可扫读态势界面",
+      coreMechanism: "多源新闻聚合、AI 摘要、地理/事件分类、监控看板和统一态势 UI",
+      safeEntry: "只接公开来源和低风险主题，作为人工研判前的线索池",
+      businessValue: "缩短信号发现时间，帮助安全、运营、供应链或公共事务团队建立早期预警",
+      successMetric: "来源覆盖率、去重率、误报率、引用可追溯率、事件更新延迟",
+      inspectFirst: "先看来源列表、抓取频率、去重逻辑、地理标注、引用保真和权限边界",
+      bestFit: "OSINT、风险监控、企业安全、供应链和新闻情报团队",
+      badFit: "需要保密情报、强 SLA 或没有人工复核的自动决策场景",
+      primaryRisk: "公开新闻聚合容易产生误报、偏见和来源污染，必须保留引用、时间戳和人工确认。",
+    },
+    "palmier-io/palmier-pro": {
+      domain: "AI 原生桌面视频编辑器 / macOS 创作工具",
+      userPain: "视频创作者希望在本地编辑器里直接调用生成、剪辑、配音和 MCP 工具，而不是在多个 SaaS 间搬运素材",
+      coreMechanism: "Swift/macOS 原生 UI、视频时间线、AI 模型连接、MCP/Claude 集成和本地素材工作区",
+      safeEntry: "个人创作或内部素材粗剪，不处理敏感客户素材",
+      businessValue: "减少素材导入导出和工具切换成本，把 AI 生成能力嵌进桌面编辑流程",
+      successMetric: "导入成功率、时间线稳定性、生成等待时间、崩溃率、人工修正次数",
+      inspectFirst: "先看媒体处理管线、文件权限、模型凭据、MCP 工具边界和导出质量",
+      bestFit: "macOS 创作者、内部内容团队和 AI 视频原型团队",
+      badFit: "需要多人协作、企业 DAM 集成或严格审计的品牌生产线",
+      primaryRisk: "桌面媒体工具的稳定性、素材隐私、模型费用和导出一致性决定真实可用性。",
+    },
+    "anthropics/claude-plugins-official": {
+      domain: "Claude Code 插件目录 / 官方能力分发",
+      userPain: "团队需要判断哪些 Claude Code 插件值得信任、如何安装、如何治理更新和权限",
+      coreMechanism: "Anthropic 管理的插件目录、质量准入、插件元数据、安装入口和 MCP/skill 能力分发",
+      safeEntry: "只读插件评估清单，先安装低权限插件并记录权限差异",
+      businessValue: "降低插件发现和信任成本，为企业 Claude Code 工作流建立可审计白名单",
+      successMetric: "插件可用率、权限最小化程度、更新频率、安装失败率、安全审查通过率",
+      inspectFirst: "先看插件 manifest、权限、来源、版本、安装脚本和官方维护边界",
+      bestFit: "已经在企业内推广 Claude Code 的平台工程、安全和研发效能团队",
+      badFit: "希望无审查安装第三方插件或缺少插件生命周期 owner",
+      primaryRisk: "插件会扩大工具权限和供应链风险，必须建立白名单、版本锁定和撤销流程。",
+    },
+    "shanraisshan/claude-code-best-practice": {
+      domain: "Agentic Engineering 方法库 / Claude Code 实践",
+      userPain: "团队从 vibe coding 过渡到工程化 Agent 使用时，缺少上下文工程、命令、技能和复盘规范",
+      coreMechanism: "最佳实践文档、命令模式、skills、agentic workflow、上下文工程和案例沉淀",
+      safeEntry: "抽 2-3 条与本地流程匹配的实践，在真实 PR 中验证一次",
+      businessValue: "减少 Agent 使用中的上下文遗漏、返工和不可复现输出",
+      successMetric: "任务一次通过率、补充上下文次数、review 缺陷、技能复用次数",
+      inspectFirst: "先看实践粒度、触发条件、与本地测试/CI/review 的衔接和过期风险",
+      bestFit: "已经使用 Claude Code 且想建立团队级操作规范的研发组织",
+      badFit: "没有统一工程流程或把外部最佳实践当作强制规范照搬",
+      primaryRisk: "实践库容易随 Claude Code 能力快速过期，必须持续复盘并做本地化。",
+    },
+    "revfactory/harness": {
+      domain: "Agent Harness 生成器 / 领域团队编排",
+      userPain: "复杂任务需要临时组织多个专业 Agent，但手工写角色、技能和交接规则成本高",
+      coreMechanism: "meta-skill 根据领域目标设计 Agent 团队、生成专用技能、定义交接和验证边界",
+      safeEntry: "选择一个只读分析或文档生成任务，让 harness 产出团队配置后人工复核",
+      businessValue: "把 Agent 团队设计从一次性提示词变成可复用、可审查的工程资产",
+      successMetric: "生成技能可用率、交接缺陷、任务完成率、人工修改量、越权风险",
+      inspectFirst: "先看 meta-skill 输出格式、权限假设、验证清单和失败回退路径",
+      bestFit: "多角色研究、产品设计、代码迁移和复杂运营流程自动化团队",
+      badFit: "任务简单、领域知识不足或不愿维护生成后的技能资产",
+      primaryRisk: "自动生成 Agent 团队会放大错误角色假设，必须人工审查权限、目标和验证标准。",
+    },
+    "jamiepine/voicebox": {
+      domain: "开源 AI 语音工作室 / 本地语音生成",
+      userPain: "创作者和产品团队需要克隆、听写和生成语音，但希望保留本地控制和可替换模型",
+      coreMechanism: "TTS/ASR 模型、voice clone、CUDA/MLX 推理、本地 UI 和音频处理管线",
+      safeEntry: "用授权样本做内部旁白或原型配音，不处理未经授权的人声",
+      businessValue: "降低语音内容生产和原型成本，同时保留本地部署与模型切换空间",
+      successMetric: "相似度、WER、生成延迟、显存占用、失败率、授权样本覆盖",
+      inspectFirst: "先看模型许可证、音频样本管理、推理后端、导出格式和滥用防护",
+      bestFit: "播客、课程、游戏、无障碍和内部内容原型团队",
+      badFit: "缺少声音授权、需要企业级审计或对声音一致性有广播级要求",
+      primaryRisk: "声音克隆涉及授权、欺诈和品牌安全，必须限制样本来源并保留水印/审计策略。",
+    },
+    "JCodesMore/ai-website-cloner-template": {
+      domain: "AI 网站复刻脚手架 / 前端原型自动化",
+      userPain: "设计和前端团队想快速把参考站点转成可编辑原型，但手工拆布局、样式和组件耗时",
+      coreMechanism: "网页抓取、截图/DOM 提取、AI coding agent、Next.js/React/shadcn/Tailwind 模板和生成命令",
+      safeEntry: "只复刻公开参考站的布局结构，用于内部原型，不复制品牌资产和受版权保护素材",
+      businessValue: "缩短竞品拆解、原型搭建和组件草稿生成时间",
+      successMetric: "首屏还原度、移动端适配、组件可维护性、生成后修正时间、版权风险项",
+      inspectFirst: "先看抓取边界、生成 prompt、组件结构、样式 token、素材处理和合规提示",
+      bestFit: "增长页、内部工具原型、竞品研究和设计工程团队",
+      badFit: "直接复制上线、绕过授权或需要高保真交互/无障碍质量",
+      primaryRisk: "网站克隆容易触碰版权、商标、隐私和反爬边界，必须限定为学习和内部原型。",
+    },
     "teslamate-org/teslamate": {
       domain: "IoT 数据记录 / 自托管观测",
       userPain: "车联网个人数据留存、可视化和自动化分析",
@@ -1721,10 +1855,23 @@ async function buildAiNewsSection(maxItems) {
     fetchAnthropicNewsItems(Math.max(12, maxItems)).catch(() => []),
   ]);
   const aiHotDigest = await buildAiHotDigest();
+  const aiHotItems = (aiHotDigest.selected || [])
+    .slice(0, Math.min(8, maxItems))
+    .map((item) => ({
+      source: "AIHOT 精选",
+      sourceDetail: item.source || "AIHOT 精选",
+      domain: "aihot.virxact.com",
+      title: item.title,
+      url: item.url,
+      publishedAt: item.publishedAt,
+      summary: item.summary || item.signal || "",
+      imageUrl: "https://www.google.com/s2/favicons?domain=aihot.virxact.com&sz=128",
+      priority: 3,
+    }));
 
   const rawItems = feedResults
     .flatMap((result) => (result.status === "fulfilled" ? result.value : []))
-    .concat(anthropicResult)
+    .concat(aiHotItems, anthropicResult)
     .sort((a, b) => (b.priority || 0) - (a.priority || 0) || new Date(b.publishedAt || 0) - new Date(a.publishedAt || 0))
     .filter(dedupeByCanonicalItem)
     .sort((a, b) => new Date(b.publishedAt || 0) - new Date(a.publishedAt || 0));
