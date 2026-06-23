@@ -21,8 +21,8 @@ const reportDate = args.date || today;
 const limit = Number(args.limit || process.env.TRENDING_LIMIT || 12);
 const days = Number(args.days || process.env.TRENDING_DAYS || 7);
 const language = args.language || process.env.TRENDING_LANGUAGE || "";
-const frontierLimit = Number(process.env.FRONTIER_LIMIT || 10);
-const newsLimit = Number(process.env.AI_NEWS_LIMIT || 12);
+const frontierLimit = Number(process.env.FRONTIER_LIMIT || 18);
+const newsLimit = Number(process.env.AI_NEWS_LIMIT || 20);
 const reportRetentionDays = Number(args.retentionDays || process.env.REPORT_RETENTION_DAYS || 90);
 
 await fs.mkdir(publicReportsDir, { recursive: true });
@@ -1253,7 +1253,7 @@ async function buildFrontierSection(maxItems) {
 
   const arxivItems = arxivResult.status === "fulfilled" ? arxivResult.value : [];
   const industryItems = industryResult.status === "fulfilled" ? industryResult.value : [];
-  const industryTarget = Math.min(maxItems, Math.max(4, Math.ceil(maxItems * 0.6)));
+  const industryTarget = Math.min(maxItems, Math.max(16, Math.ceil(maxItems * 0.85)));
   const selected = pickUniqueItems(
     [
       ...industryItems.slice(0, industryTarget),
@@ -1565,6 +1565,16 @@ function seedIndustryFrontierItems() {
       summary: "Netflix 讨论大规模生成式推荐的泛化与效率，重点是如何让生成式模型服务个性化推荐而不牺牲工程成本。",
     },
     {
+      title: "Improving Search Ranking for Maps",
+      url: "https://medium.com/airbnb-engineering/improving-search-ranking-for-maps-13b03f2c2cca",
+      publishedAt: "2024-12-01T16:00:00Z",
+      source: "Airbnb Engineering",
+      domain: "medium.com",
+      sourceType: "industry",
+      frontierScore: 33,
+      summary: "Airbnb 讨论地图搜索排序如何在列表排序之外处理空间位置、预订概率、注意力分配和双边市场目标，适合作为 marketplace search ranking 的系统样本。",
+    },
+    {
       title: "Democratizing Machine Learning at Netflix: Building the Model Lifecycle Graph",
       url: "https://netflixtechblog.com/democratizing-machine-learning-at-netflix-building-the-model-lifecycle-graph-5cc6d5828bb1",
       publishedAt: "2026-05-12T16:00:00Z",
@@ -1603,6 +1613,16 @@ function seedIndustryFrontierItems() {
       sourceType: "industry",
       frontierScore: 26,
       summary: "Amazon Search 关注短查询中的属性推荐，属性理解会同时影响排序、广告和推荐。",
+    },
+    {
+      title: "Surface-Form Neural Sparse Retrieval: Robust Fuzzy Matching for Industrial Music Search",
+      url: "https://www.amazon.science/publications/surface-form-neural-sparse-retrieval-robust-fuzzy-matching-for-industrial-music-search",
+      publishedAt: "2026-06-01T00:00:00Z",
+      source: "Amazon Science",
+      domain: "amazon.science",
+      sourceType: "industry",
+      frontierScore: 25,
+      summary: "Amazon Music 搜索论文关注拼写错误、音译、转置和语音相近查询，在毫秒级延迟约束下用 neural sparse retrieval 补强 High Confidence Index 的探索盲区。",
     },
   ];
 }
@@ -1696,7 +1716,7 @@ async function buildAiNewsSection(maxItems) {
     .sort((a, b) => (b.priority || 0) - (a.priority || 0) || new Date(b.publishedAt || 0) - new Date(a.publishedAt || 0))
     .filter(dedupeByCanonicalItem)
     .sort((a, b) => new Date(b.publishedAt || 0) - new Date(a.publishedAt || 0));
-  const anthropicQuota = Math.min(8, Math.max(7, Math.ceil(maxItems * 0.55)));
+  const anthropicQuota = Math.min(16, Math.max(12, Math.ceil(maxItems * 0.8)));
   const anthropicItems = selectAnthropicCoverage(rawItems.filter(isAnthropicItem), anthropicQuota);
   const items = pickUniqueItems(
     [
@@ -1913,10 +1933,43 @@ function seedAnthropicOfficialItems() {
       source: "A社 Anthropic",
       sourceDetail: "Anthropic 官方 News",
       domain: "anthropic.com",
+      title: "Anthropic opens Seoul office and announces new partnerships across the Korean AI ecosystem",
+      url: "https://www.anthropic.com/news/seoul-office-partnerships-korean-ai-ecosystem",
+      publishedAt: "2026-06-17T16:00:00Z",
+      summary: "Anthropic 宣布首尔办公室和韩国生态合作，强调 startup teams、Claude Code、企业客户和本地伙伴网络，说明 Claude 正从模型 API 扩展到区域产业落地。",
+      imageUrl: favicon,
+      priority: 4,
+    },
+    {
+      source: "A社 Anthropic",
+      sourceDetail: "Anthropic 官方 News",
+      domain: "anthropic.com",
+      title: "TCS and Anthropic partner to bring Claude to regulated industries",
+      url: "https://www.anthropic.com/news/tcs-anthropic-partnership",
+      publishedAt: "2026-06-12T16:00:00Z",
+      summary: "Anthropic 与 TCS 合作，将 Claude 提供给 TCS 56 个国家的 50,000 名员工，并面向金融、医疗、公共部门等强监管行业构建可审计的 Claude 产品。",
+      imageUrl: favicon,
+      priority: 4,
+    },
+    {
+      source: "A社 Anthropic",
+      sourceDetail: "Anthropic 官方 News",
+      domain: "anthropic.com",
       title: "Expanding Project Glasswing",
       url: "https://www.anthropic.com/news/expanding-project-glasswing",
       publishedAt: "2026-06-06T16:00:00Z",
       summary: "Anthropic 扩展 Project Glasswing，并提到 Claude Security 使用 Opus 4.8 扫描代码和建议补丁，安全研究正在产品化到企业防御流程。",
+      imageUrl: favicon,
+      priority: 4,
+    },
+    {
+      source: "A社 Anthropic",
+      sourceDetail: "Anthropic 官方 News",
+      domain: "anthropic.com",
+      title: "What we learned mapping a year's worth of AI-enabled cyber threats",
+      url: "https://www.anthropic.com/news/AI-enabled-cyber-threats-mitre-attack",
+      publishedAt: "2026-06-09T16:00:00Z",
+      summary: "Anthropic 将一年 AI-enabled cyber threats 映射到 MITRE ATT&CK，并将 Project Glasswing、数据集和防御协作作为安全研究产品化路径。",
       imageUrl: favicon,
       priority: 4,
     },
@@ -1928,6 +1981,17 @@ function seedAnthropicOfficialItems() {
       url: "https://www.anthropic.com/engineering/infrastructure-noise",
       publishedAt: "2026-02-05T16:00:00Z",
       summary: "Anthropic 讨论 agentic coding evals 中运行环境、资源预算和约束执行方式带来的基础设施噪声，提醒比较 Claude Code/Agent 能力时必须控制测试环境。",
+      imageUrl: favicon,
+      priority: 4,
+    },
+    {
+      source: "A社 Anthropic Research",
+      sourceDetail: "Anthropic 官方 Research",
+      domain: "anthropic.com",
+      title: "Building Effective AI Agents",
+      url: "https://www.anthropic.com/research/building-effective-agents",
+      publishedAt: "2024-12-19T16:00:00Z",
+      summary: "Anthropic 总结 agent workflows 与 agents 的差异，并把 coding agent、tool use 和 computer use reference implementation 作为可复用模式。",
       imageUrl: favicon,
       priority: 4,
     },
