@@ -23,7 +23,7 @@ const reportDate = args.date || today;
 const limit = Number(args.limit || process.env.TRENDING_LIMIT || 12);
 const days = Number(args.days || process.env.TRENDING_DAYS || 7);
 const language = args.language || process.env.TRENDING_LANGUAGE || "";
-const frontierLimit = Number(process.env.FRONTIER_LIMIT || 18);
+const frontierLimit = Number(process.env.FRONTIER_LIMIT || 22);
 const newsLimit = Number(process.env.AI_NEWS_LIMIT || 20);
 const reportRetentionDays = Number(args.retentionDays || process.env.REPORT_RETENTION_DAYS || 90);
 
@@ -1817,6 +1817,36 @@ function seedIndustryFrontierItems() {
       frontierScore: 34,
       summary: "Amazon Music 搜索论文关注拼写错误、音译、转置和语音相近查询，在毫秒级延迟约束下用 neural sparse retrieval 补强 High Confidence Index 的探索盲区。",
     },
+    {
+      title: "Agentforce: Scaling Agentic AI for Enterprise Automation",
+      url: "https://engineering.salesforce.com/agentforce-scaling-agentic-ai-for-enterprise-automation-observability-powering-2-billion-predictions-monthly/",
+      publishedAt: "2025-04-01T16:00:00Z",
+      source: "Salesforce Engineering",
+      domain: "engineering.salesforce.com",
+      sourceType: "industry",
+      frontierScore: 33,
+      summary: "Salesforce 讨论 Agentforce 在 Data Cloud 规模下的 RAG、multi-source retrieval、query optimization、ranking intelligence、batching、embedding search 与缓存，适合企业搜索和客服 Agent 评测参考。",
+    },
+    {
+      title: "Academic Publications & Airbnb Tech: 2025 Year in Review",
+      url: "https://airbnb.tech/infrastructure/academic-publications-airbnb-tech-2025-year-in-review/",
+      publishedAt: "2026-01-15T16:00:00Z",
+      source: "Airbnb Engineering",
+      domain: "airbnb.tech",
+      sourceType: "industry",
+      frontierScore: 33,
+      summary: "Airbnb 回顾 Relevance and Personalization 团队在 CIKM 2025 的搜索与推荐论文，重点是双边 marketplace 中搜索排序、位置检索、反事实评估和长期预订意图建模。",
+    },
+    {
+      title: "推荐系统为啥都长一个样？聊聊「离线训练 + 在线召回 + 排序」这套大数据架构",
+      url: "https://cloud.tencent.com/developer/article/2625122",
+      publishedAt: "2026-01-28T13:33:51Z",
+      source: "Tencent Cloud Developer",
+      domain: "cloud.tencent.com",
+      sourceType: "industry",
+      frontierScore: 32,
+      summary: "腾讯云开发者社区文章从离线训练、在线召回、排序与反馈闭环解释推荐系统通用架构，适合用来校准中小团队搭建搜推链路时的数据、实时性和模型复杂度边界。",
+    },
   ];
 }
 
@@ -1983,7 +2013,7 @@ function buildAnthropicSection(aiNews = {}) {
 
 function buildSearchAdsRecSection(frontier = {}) {
   const items = frontier.items || [];
-  const sources = uniqueList(items.map((item) => item.source).filter(Boolean)).slice(0, 8);
+  const sources = uniqueList(items.map((item) => item.source).filter(Boolean)).slice(0, 12);
   return {
     title: "搜广推工程前沿",
     subtitle: "聚焦 recommendation/recommender、ranking、retrieval、search、ads、auction、personalization、feed、embedding/vector、CTR/CVR 与实验平台。",
@@ -2710,7 +2740,7 @@ function buildExecutiveSummary(items, frontier, aiNews) {
     .filter(Boolean);
   const repoSignalText = uniqueList(repoSignals).join("、") || "当前项目的架构机制、落地路径和生产风险";
   const frontierItems = frontier.items || [];
-  const frontierSources = uniqueList(frontierItems.map((item) => item.source).filter(Boolean)).slice(0, 8);
+  const frontierSources = uniqueList(frontierItems.map((item) => item.source).filter(Boolean)).slice(0, 12);
   const frontierTags = uniqueList(frontierItems.flatMap((item) => item.tags || [])).slice(0, 5);
   const anthropicItems = (aiNews.items || []).filter((item) => isAnthropicItem(item));
   const aiHotCount = (aiNews.items || []).filter((item) => item.source?.includes("AIHOT")).length;
