@@ -2622,6 +2622,7 @@ function enrichAiNews(item) {
   const impact = buildAiNewsImpact(item, tags);
   const action = buildAiNewsAction(item, tags);
   return {
+    signal,
     interpretation: {
       signal,
       impact,
