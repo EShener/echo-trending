@@ -67,6 +67,7 @@ async function buildReport({ reportDate, limit, days, language }) {
   const since = offsetDate(reportDate, -days);
   const languageQuery = language ? ` language:${language}` : "";
   const query = `pushed:>=${since} stars:>100 archived:false${languageQuery}`;
+  const previousReport = await readExistingReport(reportDate);
   let repoSource = await fetchTrendingRepos({ limit, language }).catch(async (error) => ({
     provider: `GitHub Trending daily failed: ${String(error.message || error).slice(0, 120)}`,
     repos: [],
@@ -87,14 +88,16 @@ async function buildReport({ reportDate, limit, days, language }) {
 
   for (const [index, repo] of repos.entries()) {
     const fullName = repo.full_name;
+    const previousLanguages = previousReport?.items?.find((item) => item.repo?.fullName === fullName)?.repo?.languages || {};
     const [readme, languages] = await Promise.all([
       fetchReadme(fullName, repo.default_branch),
       fetchLanguages(fullName),
     ]);
-    const analysis = await analyzeRepo({ repo, readme, languages });
+    const stableLanguages = Object.keys(languages || {}).length ? languages : previousLanguages;
+    const analysis = await analyzeRepo({ repo, readme, languages: stableLanguages });
     items.push({
       rank: index + 1,
-      repo: normalizeRepo(repo, languages, reportDate),
+      repo: normalizeRepo(repo, stableLanguages, reportDate),
       analysis,
       evidence: {
         readmeExcerpt: trimText(cleanMarkdown(readme || repo.description || ""), 900),
@@ -127,6 +130,20 @@ async function buildReport({ reportDate, limit, days, language }) {
     anthropic,
     searchAdsRec,
   };
+}
+
+async function readExistingReport(reportDate) {
+  for (const filePath of [
+    path.join(dataReportsDir, `${reportDate}.json`),
+    path.join(publicReportsDir, `${reportDate}.json`),
+  ]) {
+    try {
+      return JSON.parse(await fs.readFile(filePath, "utf8"));
+    } catch {
+      // Existing reports are an optional quality fallback for transient API gaps.
+    }
+  }
+  return null;
 }
 
 async function fetchTrendingRepos({ limit, language }) {
@@ -1942,7 +1959,7 @@ function selectAnthropicCoverage(items, maxItems) {
   const ranked = rankAnthropicItems(items);
   const buckets = [
     (item) => /introducing claude opus|claude opus|claude sonnet|claude haiku/i.test(`${item.title} ${item.summary}`),
-    (item) => /claude code|agentic coding|computer use|dynamic workflows|managed agents|auto mode/i.test(`${item.source} ${item.title} ${item.summary}`),
+    (item) => /claude tag|@claude|claude code|agentic coding|computer use|dynamic workflows|managed agents|auto mode/i.test(`${item.source} ${item.title} ${item.summary}`),
     (item) => /partnership|alliance|regulated|compute|enterprise|tcs|dxc|spacex|seoul|corps/i.test(`${item.title} ${item.summary}`),
     (item) => /cyber|safety|alignment|misuse|autonomy|trustworthy|contain|teaching claude why|attack/i.test(`${item.source} ${item.title} ${item.summary}`),
     (item) => /engineering|managed agents|auto mode|sandbox|contain|harness|tool use|context engineering/i.test(`${item.source} ${item.title} ${item.summary}`),
@@ -2055,6 +2072,17 @@ async function fetchAnthropicNewsItems(maxItems) {
 function seedAnthropicOfficialItems() {
   const favicon = "https://www.google.com/s2/favicons?domain=anthropic.com&sz=128";
   return [
+    {
+      source: "A社 Anthropic",
+      sourceDetail: "Anthropic 官方 News",
+      domain: "anthropic.com",
+      title: "Introducing Claude Tag",
+      url: "https://www.anthropic.com/news/introducing-claude-tag",
+      publishedAt: "2026-06-23T16:00:00Z",
+      summary: "Anthropic 发布 Claude Tag，把 Claude 作为 Slack 团队成员接入频道、工具、数据和代码库；它支持频道级记忆、异步任务、主动跟进、预算上限和审计日志，是 Claude Code/Cowork 从个人 Agent 走向团队协作 Agent 的重要信号。",
+      imageUrl: favicon,
+      priority: 4,
+    },
     {
       source: "A社 Anthropic",
       sourceDetail: "Anthropic 官方 News",
@@ -2182,6 +2210,8 @@ function rankAnthropicItems(items) {
     ["sonnet", 8],
     ["fable", 8],
     ["mythos", 8],
+    ["claude tag", 10],
+    ["@claude", 10],
     ["claude code", 9],
     ["agentic coding", 9],
     ["dynamic workflows", 8],
@@ -2641,21 +2671,27 @@ function buildExecutiveSummary(items, frontier, aiNews) {
     .map((item) => item.analysis?.category)
     .filter(Boolean);
   const frontierItems = frontier.items || [];
-  const frontierSources = uniqueList(frontierItems.map((item) => item.source).filter(Boolean)).slice(0, 4);
+  const frontierSources = uniqueList(frontierItems.map((item) => item.source).filter(Boolean)).slice(0, 8);
   const frontierTags = uniqueList(frontierItems.flatMap((item) => item.tags || [])).slice(0, 5);
   const anthropicItems = (aiNews.items || []).filter((item) => isAnthropicItem(item));
   const aiHotCount = (aiNews.items || []).filter((item) => item.source?.includes("AIHOT")).length;
   const firstRepoAction = items[0]?.analysis?.deepDive?.recommendedAction || items[0]?.analysis?.watchSignals?.[0] || "";
   const firstFrontier = frontierItems[0];
-  const firstAnthropic = anthropicItems[0];
+  const claudeTag = anthropicItems.find((item) => /claude tag/i.test(item.title));
+  const claudeCodeSignals = anthropicItems
+    .filter((item) => /claude code|agentic coding|sandbox|managed agents|auto mode|contain/i.test(`${item.title} ${item.summary}`))
+    .map((item) => item.title)
+    .slice(0, 3);
+  const firstAnthropic = claudeTag || anthropicItems[0];
+  const aiHotLead = (aiNews.items || []).find((item) => item.source?.includes("AIHOT"));
   return {
-    headline: `今日雷达主线：${topCategory} 继续升温，搜广推关注 ${frontierTags.join(" / ") || "召回排序"}，A 社动态聚焦 Claude 生态治理。`,
+    headline: `今日雷达主线：${topCategory} 继续升温，搜广推关注 ${frontierTags.join(" / ") || "召回排序"}，A 社从 Claude Code 走向团队协作 Agent。`,
     bullets: [
-      topRepos.length ? `GitHub 热门前三为 ${topRepos.join("、")}；主要语言是 ${mostCommon(languages) || "多语言生态"}，主题集中在 ${uniqueList(repoSignals).slice(0, 3).join("、") || "工程效率和 AI 基建"}。` : "今日暂无 GitHub 项目数据。",
-      firstRepoAction ? `开源项目的采用动作：${trimText(firstRepoAction, 150)}` : "开源项目先按架构机制、适用团队、落地路径和生产风险做小样本验证。",
-      firstFrontier ? `搜广推收录 ${frontierItems.length} 条，来源覆盖 ${frontierSources.join("、") || frontier.source}；首要信号是「${firstFrontier.title}」，适合按业务问题、系统机制、指标实验和采用边界拆解。` : `搜广推板块收录 ${frontierItems.length} 条前沿论文/研究信号。`,
-      firstAnthropic ? `A 社覆盖 ${anthropicItems.length} 条官方 News/Research/Engineering 动态，重点包括「${firstAnthropic.title}」；动作是把模型更新、Claude Code/Agent、企业合作和安全治理分开评估。` : "A 社动态本次未抓到足够官方条目，下次优先重试 Anthropic News/Research/Engineering 页面。",
-      `AIHOT/官方 AI 新闻共 ${aiNews.items?.length || 0} 条，其中 AIHOT ${aiHotCount} 条；阅读口径统一为“信号 -> 影响 -> 动作”，避免只收藏新闻标题。`,
+      topRepos.length ? `GitHub 热门仍由 ${topRepos.join("、")} 领跑；采用判断应看视频生产流水线、只读投研、安全技能库、角色化 Claude Code 工作流和长任务 harness，而不是只看 star 增长。` : "今日暂无 GitHub 项目数据。",
+      firstRepoAction ? `开源项目解读已按“架构机制 -> 适用团队 -> 落地路径 -> 生产风险 -> 决策问题 -> 观察信号”展开；本轮更适合旁路 spike 的入口是：${trimText(firstRepoAction, 120)}` : "开源项目先按架构机制、适用团队、落地路径和生产风险做小样本验证。",
+      firstFrontier ? `搜广推收录 ${frontierItems.length} 条工程/研究信号，覆盖 ${frontierSources.join("、") || frontier.source}；重点从「${firstFrontier.title}」延伸到广告排序、实时上下文、企业搜索 relevance judge、模型生命周期图和工业搜索属性推荐。` : `搜广推板块收录 ${frontierItems.length} 条前沿论文/研究信号。`,
+      firstAnthropic ? `A 社覆盖 ${anthropicItems.length} 条官方 News/Research/Engineering 动态，新增重点是「${firstAnthropic.title}」；Claude Code 相关信号包括 ${claudeCodeSignals.join("、") || "sandboxing、managed agents、auto mode"}，评估动作应拆成模型能力、权限隔离、长任务恢复、团队协作记忆、预算上限和审计边界。` : "A 社动态本次未抓到足够官方条目，下次优先重试 Anthropic News/Research/Engineering 页面。",
+      `AIHOT/官方 AI 新闻共 ${aiNews.items?.length || 0} 条，其中 AIHOT ${aiHotCount} 条；今日先看「${aiHotLead?.title || "AIHOT 精选"}」，并把招聘筛选偏见、模型/视频产品更新、企业 AI 投入和部署门槛统一改写为“信号 -> 影响 -> 动作”。`,
     ],
   };
 }
