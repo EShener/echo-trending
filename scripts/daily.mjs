@@ -1959,7 +1959,14 @@ function isAnthropicOfficialItem(item = {}) {
 }
 
 function buildAnthropicSection(aiNews = {}) {
-  const items = (aiNews.items || []).filter(isAnthropicItem);
+  const items = (aiNews.items || [])
+    .filter(isAnthropicItem)
+    .sort((a, b) => {
+      const bDate = Date.parse(b.publishedAt || "");
+      const aDate = Date.parse(a.publishedAt || "");
+      if (!Number.isNaN(bDate) || !Number.isNaN(aDate)) return (Number.isNaN(bDate) ? 0 : bDate) - (Number.isNaN(aDate) ? 0 : aDate);
+      return (b.anthropicScore || 0) - (a.anthropicScore || 0);
+    });
   const officialSections = uniqueList(
     items
       .map((item) => item.sourceDetail || item.source || "")
@@ -2700,6 +2707,7 @@ function buildExecutiveSummary(items, frontier, aiNews) {
     .slice(0, 4)
     .map((item) => item.analysis?.category)
     .filter(Boolean);
+  const repoSignalText = uniqueList(repoSignals).join("、") || "当前项目的架构机制、落地路径和生产风险";
   const frontierItems = frontier.items || [];
   const frontierSources = uniqueList(frontierItems.map((item) => item.source).filter(Boolean)).slice(0, 8);
   const frontierTags = uniqueList(frontierItems.flatMap((item) => item.tags || [])).slice(0, 5);
@@ -2717,7 +2725,7 @@ function buildExecutiveSummary(items, frontier, aiNews) {
   return {
     headline: `今日雷达主线：${topCategory} 继续升温，搜广推关注 ${frontierTags.join(" / ") || "召回排序"}，A 社从 Claude Code 走向团队协作 Agent。`,
     bullets: [
-      topRepos.length ? `GitHub 热门仍由 ${topRepos.join("、")} 领跑；采用判断应看视频生产流水线、只读投研、安全技能库、角色化 Claude Code 工作流和长任务 harness，而不是只看 star 增长。` : "今日暂无 GitHub 项目数据。",
+      topRepos.length ? `GitHub 热门仍由 ${topRepos.join("、")} 领跑；采用判断应看 ${repoSignalText}，而不是只看 star 增长。` : "今日暂无 GitHub 项目数据。",
       firstRepoAction ? `开源项目解读已按“架构机制 -> 适用团队 -> 落地路径 -> 生产风险 -> 决策问题 -> 观察信号”展开；本轮更适合旁路 spike 的入口是：${trimText(firstRepoAction, 120)}` : "开源项目先按架构机制、适用团队、落地路径和生产风险做小样本验证。",
       firstFrontier ? `搜广推收录 ${frontierItems.length} 条工程/研究信号，覆盖 ${frontierSources.join("、") || frontier.source}；重点从「${firstFrontier.title}」延伸到广告排序、实时上下文、企业搜索 relevance judge、模型生命周期图和工业搜索属性推荐。` : `搜广推板块收录 ${frontierItems.length} 条前沿论文/研究信号。`,
       firstAnthropic ? `A 社覆盖 ${anthropicItems.length} 条官方 News/Research/Engineering 动态，新增重点是「${firstAnthropic.title}」；Claude Code 相关信号包括 ${claudeCodeSignals.join("、") || "sandboxing、managed agents、auto mode"}，评估动作应拆成模型能力、权限隔离、长任务恢复、团队协作记忆、预算上限和审计边界。` : "A 社动态本次未抓到足够官方条目，下次优先重试 Anthropic News/Research/Engineering 页面。",
