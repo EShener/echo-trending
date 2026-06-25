@@ -655,6 +655,18 @@ function specializeLens(repo, lens) {
       badFit: "直接复制上线、绕过授权或需要高保真交互/无障碍质量",
       primaryRisk: "网站克隆容易触碰版权、商标、隐私和反爬边界，必须限定为学习和内部原型。",
     },
+    "every-app/open-seo": {
+      domain: "开源 SEO 增长情报工作台 / Agent 可接入营销数据层",
+      userPain: "增长、内容和开发者关系团队需要把关键词研究、站点审计、反链分析和 Google Search Console 数据从昂贵 SaaS 里拆出来，变成可自托管、可被 Agent 调用的工作流",
+      coreMechanism: "TypeScript Web 应用、DataForSEO API、Google Search Console MCP、站点审计、关键词/反链对象模型、自托管部署和预置 Agent skills",
+      safeEntry: "先接一个非核心站点，只做只读关键词、反链和技术 SEO 审计，不让 Agent 自动改页面或提交 sitemap",
+      businessValue: "降低 SEO 工具成本，把增长数据纳入可审计的内部工作台，并让 Agent 能按固定技能生成诊断和内容机会清单",
+      successMetric: "API 成本/站点、关键词覆盖率、审计误报率、GSC 数据同步成功率、人工复核通过率、Agent 建议采纳率",
+      inspectFirst: "先看 DataForSEO/GSC 凭据管理、MCP 权限、站点抓取边界、任务队列、成本控制和自托管数据备份",
+      bestFit: "有多个内容站、开发者文档站或增长落地页，且愿意维护自托管数据和 API 成本预算的团队",
+      badFit: "只做一次性 SEO 体检、没有 GSC/API 权限治理，或希望 Agent 自动发布/改写生产页面",
+      primaryRisk: "SEO 数据来自第三方 API 和搜索平台，成本、配额、抓取合规、凭据泄露和错误建议上线都要前置治理。",
+    },
     "apple/container": {
       domain: "Apple Silicon 容器运行时 / 本地开发基础设施",
       userPain: "Mac 开发者需要接近 Linux 的容器体验，但又希望利用轻量虚拟机隔离、OCI 镜像和 Apple Silicon 性能",
@@ -2118,7 +2130,7 @@ async function buildAiNewsSection(maxItems) {
 
   const rawItems = feedResults
     .flatMap((result) => (result.status === "fulfilled" ? result.value : []))
-    .concat(aiHotItems, anthropicResult)
+    .concat(seedOfficialAiNewsItems(), aiHotItems, anthropicResult)
     .sort((a, b) => (b.priority || 0) - (a.priority || 0) || new Date(b.publishedAt || 0) - new Date(a.publishedAt || 0))
     .filter(dedupeByCanonicalItem)
     .sort((a, b) => new Date(b.publishedAt || 0) - new Date(a.publishedAt || 0));
@@ -2126,6 +2138,7 @@ async function buildAiNewsSection(maxItems) {
   const anthropicItems = selectAnthropicCoverage(rawItems.filter(isAnthropicItem), anthropicQuota);
   const items = pickUniqueItems(
     [
+      ...seedOfficialAiNewsItems(),
       ...rawItems.slice(0, Math.max(4, maxItems - anthropicItems.length)),
       ...anthropicItems,
       ...rawItems,
@@ -2418,6 +2431,47 @@ function seedAnthropicOfficialItems() {
       summary: "Anthropic 总结 agent workflows 与 agents 的差异，并把 coding agent、tool use 和 computer use reference implementation 作为可复用模式。",
       imageUrl: favicon,
       priority: 4,
+    },
+  ];
+}
+
+function seedOfficialAiNewsItems() {
+  return [
+    {
+      source: "OpenAI 官方",
+      sourceDetail: "OpenAI Economic Research",
+      domain: "openai.com",
+      title: "How agents are transforming work",
+      url: "https://openai.com/index/how-agents-are-transforming-work/",
+      publishedAt: "2026-06-25T16:00:00Z",
+      summary:
+        "OpenAI 发布 Codex 经济研究：Agentic AI 把知识工作单位从短聊天变成长任务委托；到 2026 年 5 月，80.6% 抽样个人用户至少提交过一次估计超过 30 分钟人类工作量的 Codex 请求，OpenAI 内部 Codex 已成为跨部门主要 AI 工具。",
+      imageUrl: "https://www.google.com/s2/favicons?domain=openai.com&sz=128",
+      priority: 4,
+    },
+    {
+      source: "Google AI 官方",
+      sourceDetail: "Gemini API Release Notes",
+      domain: "ai.google.dev",
+      title: "Gemini API Computer Use tool public preview for Gemini 3.5 Flash",
+      url: "https://ai.google.dev/gemini-api/docs/changelog",
+      publishedAt: "2026-06-24T16:00:00Z",
+      summary:
+        "Google Gemini API 更新：Gemini 3.5 Flash 的 Computer Use 工具进入 public preview，包含 intent 化动作、浏览器/移动/桌面环境支持、可配置安全策略和 prompt injection 检测。",
+      imageUrl: "https://www.google.com/s2/favicons?domain=ai.google.dev&sz=128",
+      priority: 4,
+    },
+    {
+      source: "Microsoft 官方",
+      sourceDetail: "Microsoft AI / Copilot",
+      domain: "blogs.microsoft.com",
+      title: "Achieving success with AI",
+      url: "https://blogs.microsoft.com/blog/2026/06/16/achieving-success-with-ai/",
+      publishedAt: "2026-06-16T16:00:00Z",
+      summary:
+        "Microsoft 将 Copilot Cowork、Microsoft 365 Copilot 和 GitHub Copilot 放进统一商业化叙事，强调企业 Agent 采用正在从许可证转向可计量使用、组织数据上下文和工作流改造。",
+      imageUrl: "https://www.google.com/s2/favicons?domain=blogs.microsoft.com&sz=128",
+      priority: 3,
     },
   ];
 }
@@ -2776,6 +2830,8 @@ function interpretFrontier(item) {
 
 function interpretAiNews(item) {
   const text = `${item.title} ${item.summary}`.toLowerCase();
+  if (text.includes("how agents are transforming work") || text.includes("codex 已占") || text.includes("99.8%") || (text.includes("codex") && (text.includes("economic research") || text.includes("output tokens")))) return "官方 Agent 采用信号：Codex 正从工程师工具扩展到跨部门长任务委托，重点看任务时长、并行 Agent、非技术岗位采用和组织级治理。";
+  if (text.includes("computer use") && text.includes("gemini")) return "官方 Computer Use 信号：浏览器、移动和桌面操作正在被纳入模型原生工具链，关键看动作空间、安全策略和 prompt injection 防护。";
   if (text.includes("daybreak") || text.includes("codex security") || text.includes("gpt-5.5-cyber") || text.includes("ai cyber threats") || text.includes("网络威胁")) return "AI 安全工程信号：安全 Agent 和攻击 Agent 同时进入实战窗口，关键看漏洞验证、权限隔离、自动补丁和人工审查闭环。";
   if (isAnthropicOfficialItem(item) || text.includes("anthropic")) {
     if (text.includes("claude code") && (text.includes("sandbox") || text.includes("filesystem") || text.includes("network isolation"))) return "A 社 Claude Code 基建信号：sandboxing 把文件系统、网络和权限提示变成 Agent 自主性的前置条件，适合直接转成企业编码 Agent 安全基线。";
@@ -2854,6 +2910,8 @@ function hasSearchSignal(text) {
 
 function buildAiNewsImpact(item, tags) {
   const text = `${item.title} ${item.summary}`.toLowerCase();
+  if (text.includes("how agents are transforming work") || text.includes("codex 已占") || text.includes("99.8%") || (text.includes("codex") && (text.includes("economic research") || text.includes("output tokens")))) return "Agent 采用的核心指标正在从“回答质量”转向“可委托工时、跨岗位渗透、并行任务量和组织流程重构”，研发效能、法务、招聘、财务等团队都需要重新定义可交付任务边界。";
+  if (text.includes("computer use") && text.includes("gemini")) return "Computer Use 进入主流 API 预览后，GUI 自动化会从单厂商能力变成多模型竞争点；企业评估要同时比较动作准确率、注入防护、权限隔离和失败接管。";
   if (text.includes("daybreak") || text.includes("codex security") || text.includes("gpt-5.5-cyber")) return "安全 Agent 正从“辅助写脚本”进入漏洞发现、验证和修复建议链路，企业需要把它纳入 DevSecOps、审计和变更管理，而不是当成普通聊天能力。";
   if (text.includes("a2ui") || text.includes("mcp apps")) return "Google 把 A2UI 与 MCP Apps 放在同一组集成架构里，信号是 AI 应用入口正在从单点插件走向标准化应用协议。";
   if (text.includes("workload identity federation")) return "Claude Platform 接入开始强调无长期密钥的身份联合，影响企业把 Claude 接入云上工作负载和 CI/CD 的安全基线。";
@@ -2870,6 +2928,8 @@ function buildAiNewsImpact(item, tags) {
 
 function buildAiNewsAction(item, tags) {
   const text = `${item.title} ${item.summary}`.toLowerCase();
+  if (text.includes("how agents are transforming work") || text.includes("codex 已占") || text.includes("99.8%") || (text.includes("codex") && (text.includes("economic research") || text.includes("output tokens")))) return "建议把内部 Agent 试点指标改成任务级：人类等效工时、完成率、返工率、并行任务上限、敏感数据访问和跨部门 owner，而不是只统计使用人数。";
+  if (text.includes("computer use") && text.includes("gemini")) return "建议建立跨模型 GUI Agent 评测集：同一批网页/桌面任务分别跑 Claude、Gemini 和现有 RPA，记录误点击、注入命中、人工接管和审计日志完整性。";
   if (text.includes("daybreak") || text.includes("codex security") || text.includes("gpt-5.5-cyber")) return "建议建立安全 Agent 试点清单：只读扫描、人工确认补丁、沙箱执行、审计日志和误报/漏报复盘必须同时验证。";
   if (text.includes("a2ui") || text.includes("mcp apps")) return "建议把 A2UI/MCP Apps 放入 Agent 集成雷达，比较权限模型、上下文传递、应用发现和前端承载边界。";
   if (text.includes("workload identity federation")) return "建议更新 Claude Platform 接入规范，优先验证短期凭据、最小权限、审计日志和密钥轮换流程。";
