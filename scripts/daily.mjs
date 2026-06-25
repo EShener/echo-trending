@@ -117,7 +117,7 @@ async function buildReport({ reportDate, limit, days, language }) {
     date: reportDate,
     generatedAt: new Date().toISOString(),
     source: {
-      provider: `${repoSource.provider} + arXiv + RSS`,
+      provider: `${repoSource.provider} + arXiv + RSS + Codex curated official/source review`,
       query,
       since,
       limit,
@@ -346,8 +346,10 @@ function codexResearchRefresh({ repo, readme, languages, fallback }) {
   const profile = extractRepoProfile({ repo, readme, languages });
   const primaryLang = Object.keys(languages)[0] || repo.language || "unknown";
   const project = repo.full_name;
-  const teamFit = describeTeamFit(lens, repo);
-  const landingPath = describeLandingPath(lens, repo, profile);
+  const teamFit = lens.bestFit || describeTeamFit(lens, repo);
+  const landingPath = lens.safeEntry
+    ? `${lens.safeEntry}；先保留人工复核、指标记录和回滚路径。`
+    : describeLandingPath(lens, repo, profile);
   const productionRisk = describeProductionRisk(lens, repo);
   const watchSignal = describeWatchSignal(lens, repo, profile);
   const decisionQuestion = describeDecisionQuestion(lens, repo);
@@ -484,6 +486,78 @@ function specializeLens(repo, lens) {
       bestFit: "已经重度使用 Claude Code、任务类型重复且愿意维护本地工作流的创业团队",
       badFit: "组织角色、代码规范或发布流程与原作者假设差异很大",
       primaryRisk: "照搬个人工作流会把隐性偏好固化到团队流程，必须先做本地化和权限约束。",
+    },
+    "xbtlin/ai-berkshire": {
+      domain: "Claude Code 投研 Agent / 价值投资研究框架",
+      userPain: "投研个人或小团队希望把公司资料、财报、估值、反方观点和大师方法论整理成可复盘研究流程",
+      coreMechanism: "多 Agent 并行研究、价值投资 rubric、资料抓取/整理、交叉质询、投资备忘录和 Claude Code 工作流",
+      safeEntry: "只做历史公司研究复盘或观察名单，不连接券商、不生成自动交易指令",
+      businessValue: "减少资料整理和观点遗漏，把投研假设、反证和结论沉淀成可追踪记录",
+      successMetric: "来源可追溯率、人工修正率、反方观点覆盖、估值假设复核耗时、研究结论复盘命中率",
+      inspectFirst: "先看 prompt/rubric、数据来源、引用保真、免责声明、输出模板和人工确认点",
+      bestFit: "个人投研、内部市场观察、投资教育和低风险研究自动化团队",
+      badFit: "需要持牌投顾、自动交易、实时风控或无法验证数据来源的投资决策",
+      primaryRisk: "投研 Agent 容易把叙事、幻觉和过期数据包装成确定结论，必须保留来源、置信度和人工决策边界。",
+    },
+    "mauriceboe/TREK": {
+      domain: "自托管协同旅行规划 / 个人云产品",
+      userPain: "家庭、朋友或小团队旅行规划分散在表格、聊天、地图、预算和清单里，难以协同和复盘",
+      coreMechanism: "自托管 Web/PWA、实时协作、交互地图、SSO、预算、packing list、行程对象模型和权限控制",
+      safeEntry: "先部署给一个非敏感旅行计划，验证多人编辑、移动端离线体验、地图成本和备份恢复",
+      businessValue: "把碎片化旅行协同收敛为一个可共享工作区，并给自托管个人云增加高频生活场景",
+      successMetric: "多人编辑冲突率、移动端完成率、地图加载延迟、预算/清单使用率、备份恢复时间",
+      inspectFirst: "先看实时同步模型、地图 provider、SSO/权限、PWA 缓存、数据导出和容器部署路径",
+      bestFit: "自托管爱好者、家庭/小团队协同、旅行社区和需要私有化行程数据的组织",
+      badFit: "需要企业级商旅审批、供应商预订整合或对地图/协同 SLA 要求很高的场景",
+      primaryRisk: "旅行数据涉及位置、时间和同行人隐私；地图 API 成本、实时协作冲突和备份恢复要先验证。",
+    },
+    "aws/agent-toolkit-for-aws": {
+      domain: "AWS 官方 Agent 工具包 / 云操作 MCP 与 Skills",
+      userPain: "企业想让 Agent 安全地理解和操作 AWS，但自建 MCP/skills 容易缺少权限边界、服务覆盖和官方维护承诺",
+      coreMechanism: "AWS 支持的 MCP servers、skills、plugins、服务 API 封装、最小权限配置和面向云资源的 Agent 工具分发",
+      safeEntry: "只启用只读账号和低风险服务，把资源查询、成本解释或 IaC 辅助作为首个试点",
+      businessValue: "降低 Agent 接入 AWS 的集成成本，为云平台团队建立可审计的官方工具白名单",
+      successMetric: "只读任务完成率、越权拦截率、权限策略覆盖、审计日志完整性、人工接管耗时",
+      inspectFirst: "先看每个 MCP server/skill 的 IAM 权限、写操作边界、日志、版本发布和与现有云治理的冲突点",
+      bestFit: "已经使用 AWS 且正在建设内部 Agent 平台、云成本助手、DevOps 助手或 IaC 辅助的团队",
+      badFit: "没有云权限治理、希望让 Agent 直接改生产资源或缺少审计/回滚流程",
+      primaryRisk: "云 Agent 会放大 IAM、成本、误操作和供应链风险；必须先做只读、最小权限、审计和人工确认。",
+    },
+    "alibaba/page-agent": {
+      domain: "浏览器内 GUI Agent / Web 自动化执行层",
+      userPain: "Agent 需要操作复杂网页界面，但传统 DOM 脚本和截图点击都难以稳定表达页面状态、动作和失败原因",
+      coreMechanism: "页面内 JavaScript agent、DOM/视觉状态抽取、自然语言动作映射、浏览器执行上下文和可观测操作日志",
+      safeEntry: "选择内部低风险后台或测试页面，只做只读导航、表单草稿和截图验收，不直接提交生产变更",
+      businessValue: "把 GUI 操作从脆弱脚本转为可解释的 Agent 执行层，补齐无 API 系统的自动化入口",
+      successMetric: "任务完成率、误点击率、页面状态识别准确率、人工接管率、P95 操作时延",
+      inspectFirst: "先看页面状态 schema、动作空间、沙箱/权限、错误恢复、日志和对动态前端框架的兼容性",
+      bestFit: "内部运营后台、QA 自动化、RPA 替代和 Agent 浏览器平台团队",
+      badFit: "页面包含高风险交易、验证码/反自动化限制或缺少人工确认的生产写操作",
+      primaryRisk: "GUI Agent 的误操作、状态误判和权限扩散风险高，必须限制域名、动作和提交权限。",
+    },
+    "IceWhaleTech/CasaOS": {
+      domain: "个人云操作系统 / 自托管家庭基础设施",
+      userPain: "个人和小团队想运行 NAS、媒体、备份、下载和家庭自动化服务，但容器、网络和存储配置门槛高",
+      coreMechanism: "Web 控制台、应用商店、Docker/服务编排、存储与账号管理、家庭网络入口和轻量运维界面",
+      safeEntry: "先在家庭实验室或备用设备上部署非关键服务，验证备份、升级、权限和远程访问边界",
+      businessValue: "把自托管从命令行运维降到产品化入口，扩大个人数据和家庭服务的本地控制能力",
+      successMetric: "应用安装成功率、升级失败率、备份恢复时间、资源占用、远程访问安全事件",
+      inspectFirst: "先看应用商店来源、容器权限、数据目录、备份恢复、远程访问和安全公告响应",
+      bestFit: "自托管爱好者、家庭服务器、小型工作室和需要低门槛私有云的场景",
+      badFit: "需要企业级 SLA、多租户隔离、合规审计或无人值守生产环境",
+      primaryRisk: "个人云把数据、网络入口和第三方容器集中在一起，供应链、备份和公网暴露要先治理。",
+    },
+    "opendatalab/MinerU": {
+      domain: "文档解析到 LLM 数据层 / Agentic Workflow 入口",
+      userPain: "PDF、Office 和复杂版面文档难以稳定转成可检索、可引用、可进入 RAG/Agent 的结构化数据",
+      coreMechanism: "版面分析、OCR/表格/公式解析、文档结构恢复、Markdown/JSON 输出和批处理管线",
+      safeEntry: "选一批非敏感历史文档做离线解析评测，只进入只读 RAG 索引，不直接覆盖原始文档",
+      businessValue: "降低企业知识库、科研资料和合同/报告进入 LLM 工作流的前处理成本",
+      successMetric: "解析成功率、表格/公式准确率、引用定位准确率、人工修正耗时、批处理吞吐",
+      inspectFirst: "先看版面模型、OCR 依赖、输出 schema、失败样本、GPU/CPU 成本和与现有 RAG 索引的接入方式",
+      bestFit: "知识库、科研、法务、金融报告、教育资料和 Agent 文档处理平台团队",
+      badFit: "扫描质量差、强合规敏感文档无脱敏流程或需要 100% 自动抽取正确性的场景",
+      primaryRisk: "文档解析错误会被下游 RAG 放大，必须保留原文引用、置信度、人工校验和失败回退。",
     },
     "bytedance/deer-flow": {
       domain: "长周期 SuperAgent Harness / 多 Agent 任务执行",
@@ -2850,13 +2924,13 @@ function buildExecutiveSummary(items, frontier, aiNews) {
   const firstAnthropic = claudeTag || anthropicItems[0];
   const aiHotLead = (aiNews.items || []).find((item) => item.source?.includes("AIHOT"));
   return {
-    headline: `今日雷达主线：${topCategory} 继续升温，搜广推关注 ${frontierTags.join(" / ") || "召回排序"}，A 社从 Claude Code 走向团队协作 Agent。`,
+    headline: `今日雷达主线：GitHub 热门继续围绕 Agent 工作流、个人云和文档/设计上下文扩散；搜广推从单模型优化转向召回、排序、serving 成本和实验血缘协同；A 社把 Claude 推向团队频道、长任务执行和安全治理。`,
     bullets: [
-      topRepos.length ? `GitHub 热门仍由 ${topRepos.join("、")} 领跑；采用判断应看 ${repoSignalText}，而不是只看 star 增长。` : "今日暂无 GitHub 项目数据。",
+      topRepos.length ? `GitHub 本轮由 ${topRepos.join("、")} 领跑；解读重点落在 ${repoSignalText}，采用判断不按 star 排序，而按架构机制、适用团队、落地路径、生产风险、决策问题和观察信号拆解。` : "今日暂无 GitHub 项目数据。",
       firstRepoAction ? `开源项目解读已按“架构机制 -> 适用团队 -> 落地路径 -> 生产风险 -> 决策问题 -> 观察信号”展开；本轮更适合旁路 spike 的入口是：${trimText(firstRepoAction, 120)}` : "开源项目先按架构机制、适用团队、落地路径和生产风险做小样本验证。",
       firstFrontier ? `搜广推收录 ${frontierItems.length} 条工程/研究信号，覆盖 ${frontierSources.join("、") || frontier.source}；重点从「${firstFrontier.title}」延伸到广告排序、实时上下文、企业搜索 relevance judge、模型生命周期图和工业搜索属性推荐。` : `搜广推板块收录 ${frontierItems.length} 条前沿论文/研究信号。`,
       firstAnthropic ? `A 社覆盖 ${anthropicItems.length} 条官方 News/Research/Engineering 动态，新增重点是「${firstAnthropic.title}」；Claude Code 相关信号包括 ${claudeCodeSignals.join("、") || "sandboxing、managed agents、auto mode"}，评估动作应拆成模型能力、权限隔离、长任务恢复、团队协作记忆、预算上限和审计边界。` : "A 社动态本次未抓到足够官方条目，下次优先重试 Anthropic News/Research/Engineering 页面。",
-      `AIHOT/官方 AI 新闻共 ${aiNews.items?.length || 0} 条，其中 AIHOT ${aiHotCount} 条；今日先看「${aiHotLead?.title || "AIHOT 精选"}」，并把招聘筛选偏见、模型/视频产品更新、企业 AI 投入和部署门槛统一改写为“信号 -> 影响 -> 动作”。`,
+      `AIHOT/官方 AI 新闻共 ${aiNews.items?.length || 0} 条，其中 AIHOT ${aiHotCount} 条；今日先看「${aiHotLead?.title || "AIHOT 精选"}」，所有新闻统一写成“信号 -> 影响 -> 动作”，动作聚焦评测回放、预算治理、工具白名单、权限审计和真实工作流验证。`,
     ],
   };
 }
