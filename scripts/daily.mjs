@@ -2134,7 +2134,7 @@ async function buildAiNewsSection(maxItems) {
     .sort((a, b) => (b.priority || 0) - (a.priority || 0) || new Date(b.publishedAt || 0) - new Date(a.publishedAt || 0))
     .filter(dedupeByCanonicalItem)
     .sort((a, b) => new Date(b.publishedAt || 0) - new Date(a.publishedAt || 0));
-  const anthropicQuota = Math.min(16, Math.max(12, Math.ceil(maxItems * 0.8)));
+  const anthropicQuota = Math.min(18, Math.max(12, Math.ceil(maxItems * 0.8)));
   const anthropicItems = selectAnthropicCoverage(rawItems.filter(isAnthropicItem), anthropicQuota);
   const items = pickUniqueItems(
     [
