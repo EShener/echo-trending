@@ -2309,6 +2309,7 @@ function selectAnthropicCoverage(items, maxItems) {
     (item) => /partnership|alliance|regulated|compute|enterprise|tcs|dxc|spacex|seoul|corps/i.test(`${item.title} ${item.summary}`),
     (item) => /cyber|safety|alignment|misuse|autonomy|trustworthy|contain|teaching claude why|attack/i.test(`${item.source} ${item.title} ${item.summary}`),
     (item) => /engineering|managed agents|auto mode|sandbox|contain|harness|tool use|context engineering/i.test(`${item.source} ${item.title} ${item.summary}`),
+    (item) => /economic index|cadences|survey|work|labor|automation/i.test(`${item.source} ${item.title} ${item.summary}`),
   ];
   const selected = [];
   for (const matches of buckets) {
@@ -2418,6 +2419,17 @@ async function fetchAnthropicNewsItems(maxItems) {
 function seedAnthropicOfficialItems() {
   const favicon = "https://www.google.com/s2/favicons?domain=anthropic.com&sz=128";
   return [
+    {
+      source: "A社 Anthropic Research",
+      sourceDetail: "Anthropic 官方 Research",
+      domain: "anthropic.com",
+      title: "Anthropic Economic Index report: Cadences",
+      url: "https://www.anthropic.com/research/economic-index-june-2026-report",
+      publishedAt: "2026-06-26T16:00:00Z",
+      summary: "Anthropic Economic Index 6 月报告从小时级 Claude 使用节奏、产出类型和问卷感知三条线观察 AI 如何进入工作；它把 Claude/Agent 采用问题从单次能力评测推进到任务节奏、自动化意愿和组织影响评估。",
+      imageUrl: favicon,
+      priority: 4,
+    },
     {
       source: "A社 Anthropic",
       sourceDetail: "Anthropic 官方 News",
@@ -2615,6 +2627,10 @@ function rankAnthropicItems(items) {
     ["alliance", 6],
     ["compute", 6],
     ["enterprise", 5],
+    ["economic index", 7],
+    ["cadences", 6],
+    ["survey", 4],
+    ["automation", 4],
   ];
   return items
     .map((item) => {
