@@ -2591,9 +2591,31 @@ function seedAnthropicOfficialItems() {
       source: "A社 Anthropic",
       sourceDetail: "Anthropic 官方 News",
       domain: "anthropic.com",
+      title: "Introducing Claude Sonnet 5",
+      url: "https://www.anthropic.com/news/claude-sonnet-5",
+      publishedAt: "2026-06-30T16:00:00Z",
+      summary: "Anthropic 发布 Claude Sonnet 5，定位为最 agentic 的 Sonnet 模型；官方强调它可规划、调用浏览器和终端工具，并在 Claude Code、Claude Platform 和各套餐中可用。企业评估应把成本曲线、BrowseComp/OSWorld-Verified 表现、长任务权限和审计边界放在同一张表里。",
+      imageUrl: favicon,
+      priority: 5,
+    },
+    {
+      source: "A社 Anthropic",
+      sourceDetail: "Anthropic 官方 News",
+      domain: "anthropic.com",
+      title: "Claude Science, an AI workbench for scientists, is now available",
+      url: "https://www.anthropic.com/news/claude-science-ai-workbench",
+      publishedAt: "2026-06-30T16:00:00Z",
+      summary: "Anthropic 推出 Claude Science，把文献分析、多步骤研究、常用科研工具、计算资源和可审计 artifact 放进统一工作台；这说明 Claude 产品线正在从通用助手扩展到高价值专业工作流，采用时要优先验证数据权限、可复现记录、专家复核和远程算力边界。",
+      imageUrl: favicon,
+      priority: 5,
+    },
+    {
+      source: "A社 Anthropic",
+      sourceDetail: "Anthropic 官方 News",
+      domain: "anthropic.com",
       title: "Introducing Claude Corps",
       url: "https://www.anthropic.com/news/claude-corps",
-      publishedAt: "2026-06-30T16:00:00Z",
+      publishedAt: "2026-06-11T16:00:00Z",
       summary: "Anthropic 发布 Claude Corps fellowship，面向早期职业人群招募并训练 Claude 原生工作方式；这不是模型能力更新，而是把 Claude Code、Claude Cowork 和 Agent 工作流扩展到人才培养与组织采用路径的生态信号。",
       imageUrl: favicon,
       priority: 4,
@@ -2770,6 +2792,42 @@ function seedOfficialAiNewsItems() {
   return [
     {
       source: "OpenAI 官方",
+      sourceDetail: "OpenAI Research",
+      domain: "openai.com",
+      title: "Introducing GeneBench-Pro",
+      url: "https://openai.com/news/research/",
+      publishedAt: "2026-06-30T16:00:00Z",
+      summary:
+        "OpenAI Research 最新研究页把 GeneBench-Pro 放在 6 月 30 日首位；信号不是单点 benchmark，而是生命科学评测从问答走向专业任务集。动作上应先看任务定义、数据泄露防护、专家评分和实验复现，而不是直接把模型结论接入研发决策。",
+      imageUrl: "https://www.google.com/s2/favicons?domain=openai.com&sz=128",
+      priority: 5,
+    },
+    {
+      source: "Hugging Face 官方",
+      sourceDetail: "Hugging Face Blog",
+      domain: "huggingface.co",
+      title: "Every Eval Ever Results on Hugging Face Model Pages",
+      url: "https://huggingface.co/blog",
+      publishedAt: "2026-06-30T16:00:00Z",
+      summary:
+        "Hugging Face 最新博客流把模型页评测结果、企业 Java 迁移 Agent benchmark 和开源工具链更新放在一起；信号是开源生态正在把 eval 元数据前置到模型选择入口。动作是把模型卡、任务评测和本地回放纳入选型流程，避免只按排行榜或单篇 release 决策。",
+      imageUrl: "https://www.google.com/s2/favicons?domain=huggingface.co&sz=128",
+      priority: 4,
+    },
+    {
+      source: "Google AI 官方",
+      sourceDetail: "Google Developers Blog",
+      domain: "developers.googleblog.com",
+      title: "Build reliable multi-agent applications with ADK Go 2.0",
+      url: "https://developers.googleblog.com/",
+      publishedAt: "2026-06-30T16:00:00Z",
+      summary:
+        "Google Developers 最新流强调 ADK Go 2.0 的图式 workflow、人类介入和动态编排；这把 Gemini/Agent 平台竞争从模型能力推进到可治理 orchestration。动作是评估状态机、人工审批、失败恢复和跨语言 SDK，而不是只比较单次代码生成能力。",
+      imageUrl: "https://www.google.com/s2/favicons?domain=developers.googleblog.com&sz=128",
+      priority: 4,
+    },
+    {
+      source: "OpenAI 官方",
       sourceDetail: "OpenAI Economic Research",
       domain: "openai.com",
       title: "How agents are transforming work",
@@ -2852,6 +2910,9 @@ function rankAnthropicItems(items) {
     ["enterprise", 5],
     ["economic index", 7],
     ["cadences", 6],
+    ["claude science", 9],
+    ["science", 5],
+    ["workbench", 5],
     ["survey", 4],
     ["automation", 4],
   ];
@@ -3311,12 +3372,15 @@ function buildExecutiveSummary(items, frontier, aiNews) {
   const aiHotCount = (aiNews.items || []).filter((item) => item.source?.includes("AIHOT")).length;
   const firstRepoAction = items[0]?.analysis?.deepDive?.recommendedAction || items[0]?.analysis?.watchSignals?.[0] || "";
   const firstFrontier = frontierItems[0];
+  const primaryAnthropic =
+    anthropicItems.find((item) => /sonnet 5/i.test(item.title)) ||
+    anthropicItems.find((item) => /claude science/i.test(item.title));
   const claudeTag = anthropicItems.find((item) => /claude tag/i.test(item.title));
   const claudeCodeSignals = anthropicItems
     .filter((item) => /claude code|agentic coding|sandbox|managed agents|auto mode|contain/i.test(`${item.title} ${item.summary}`))
     .map((item) => item.title)
     .slice(0, 3);
-  const firstAnthropic = claudeTag || anthropicItems[0];
+  const firstAnthropic = primaryAnthropic || claudeTag || anthropicItems[0];
   const aiHotLead = (aiNews.items || []).find((item) => item.source?.includes("AIHOT"));
   return {
     headline: `今日雷达主线：GitHub 热门继续围绕 Agent 工作流、个人云和文档/设计上下文扩散；搜广推从单模型优化转向召回、排序、serving 成本和实验血缘协同；A 社把 Claude 推向团队频道、长任务执行和安全治理。`,
