@@ -1955,6 +1955,16 @@ async function fetchIndustryFrontierItems(maxItems) {
 function seedIndustryFrontierItems() {
   return [
     {
+      title: "GenPage: Towards End-to-End Generative Homepage Construction at Netflix",
+      url: "https://netflixtechblog.com/genpage-towards-end-to-end-generative-homepage-construction-at-netflix-77146fba8a08",
+      publishedAt: "2026-06-30T16:00:00Z",
+      source: "Netflix TechBlog",
+      domain: "netflixtechblog.com",
+      sourceType: "industry",
+      frontierScore: 49,
+      summary: "Netflix 将首页从行级推荐推进到端到端生成式页面构建：模型结合长期偏好、分页上下文和实时会话反馈逐步生成下一组推荐，适合观察大规模推荐从候选排序走向页面级决策的系统边界。",
+    },
+    {
       title: "SilverTorch: Index as Model — A New Retrieval Paradigm for Recommendation Systems",
       url: "https://engineering.fb.com/2026/05/26/ml-applications/silvertorch-index-as-model-new-retrieval-paradigm-recommendation-systems/",
       publishedAt: "2026-05-26T16:00:00Z",
@@ -2505,6 +2515,17 @@ async function fetchAnthropicNewsItems(maxItems) {
 function seedAnthropicOfficialItems() {
   const favicon = "https://www.google.com/s2/favicons?domain=anthropic.com&sz=128";
   return [
+    {
+      source: "A社 Anthropic",
+      sourceDetail: "Anthropic 官方 News",
+      domain: "anthropic.com",
+      title: "Introducing Claude Corps",
+      url: "https://www.anthropic.com/news/claude-corps",
+      publishedAt: "2026-06-30T16:00:00Z",
+      summary: "Anthropic 发布 Claude Corps fellowship，面向早期职业人群招募并训练 Claude 原生工作方式；这不是模型能力更新，而是把 Claude Code、Claude Cowork 和 Agent 工作流扩展到人才培养与组织采用路径的生态信号。",
+      imageUrl: favicon,
+      priority: 4,
+    },
     {
       source: "A社 Anthropic Research",
       sourceDetail: "Anthropic 官方 Research",
