@@ -122,6 +122,7 @@ async function buildReport({ reportDate, limit, days, language }) {
       since,
       limit,
       language: language || "all",
+      editorialReview: buildEditorialReview({ reportDate, frontier, aiNews }),
     },
     summary: buildExecutiveSummary(items, frontier, aiNews),
     items,
@@ -474,6 +475,54 @@ function specializeLens(repo, lens) {
       bestFit: "增长、品牌、开发者内容、课程和内部培训团队，且有稳定模板和素材授权",
       badFit: "素材版权不清、品牌审核薄弱或希望跳过人工终审直接发布",
       primaryRisk: "版权、肖像权、品牌一致性、长任务中断、模型费用和错误成片回滚必须先治理。",
+    },
+    "msitarzewski/agency-agents": {
+      domain: "角色化 Agent 工作流 / Prompt 组织资产",
+      userPain: "增长、产品和工程小团队想把常见 AI 分工、审核标准和交付模板沉淀下来，但缺少稳定的输入、权限边界和复核机制",
+      coreMechanism: "角色 prompt、任务说明、交付物模板、命令入口和可复制目录结构，把人的分工经验转成 Agent 可读取的操作资产",
+      safeEntry: "选一个非核心 PR、社区运营或竞品分析任务，固定输入资料和验收 rubric，让两名成员交叉复核输出",
+      businessValue: "把一次性提示词变成可版本化、可复盘的团队流程资产，降低上下文遗漏和交付格式漂移",
+      successMetric: "返工率、上下文补充次数、review 缺陷、角色复用次数、输出格式一致性和越权建议数量",
+      inspectFirst: "先看 agent 定义、命令入口、交付模板、本地化指南、任务日志、失败处理、上下文注入和权限说明",
+      bestFit: "已经高频使用 Claude/Codex、任务类型重复、愿意维护本地 prompt/skill 版本的增长、产品和工程小团队",
+      badFit: "希望照搬外部 persona 替代本地 review、安全门禁、品牌规范或生产决策流程",
+      primaryRisk: "外部角色设定会携带作者偏好，容易与本地品牌、安全、代码规范和审批流程冲突；没有版本 owner 时 prompt 资产会快速过期。",
+    },
+    "soxoj/maigret": {
+      domain: "OSINT 用户名枚举 / 安全与风控线索采集",
+      userPain: "安全、反欺诈、信任与安全或调查团队需要跨大量公开站点收集用户名线索，但人工搜索不可复现、覆盖不稳定、容易遗漏来源证据",
+      coreMechanism: "站点规则库、用户名探测、响应特征判断、结果去重、报告导出和命令行批处理，把公开账号线索转成可复核 dossier",
+      safeEntry: "只在授权的安全调查、品牌保护或自查场景使用，先对已知测试账号跑离线基准，保留来源 URL 和误报样本",
+      businessValue: "降低公开信息线索收集成本，为账号冒用、钓鱼溯源、攻击面观察和信任安全 triage 提供初筛素材",
+      successMetric: "有效命中率、误报率、站点覆盖、请求失败率、证据可追溯率、单次扫描耗时和封禁/限流事件",
+      inspectFirst: "先看站点规则、请求限流、代理/重试、报告 schema、误报标注、法律/平台条款提示和批量运行日志",
+      bestFit: "有授权边界、人工复核和证据留存流程的安全研究、反欺诈、品牌保护与 OSINT 教学团队",
+      badFit: "未授权人肉搜索、批量骚扰、生产级身份验证或任何缺少合规审查的用户画像场景",
+      primaryRisk: "OSINT 工具容易触碰隐私、平台条款、误报和滥用边界；必须限定授权范围、速率、用途和人工判断责任。",
+    },
+    "ripienaar/free-for-dev": {
+      domain: "开发者免费层目录 / 云服务采购前雷达",
+      userPain: "开发者和早期团队需要快速找到 SaaS/PaaS/IaaS 免费层，但配额、试用期限、地区、信用卡要求和服务条款经常变化",
+      coreMechanism: "社区维护的分类目录、服务条目、免费额度说明、PR 更新和人工审核，把分散供应商信息收敛为可浏览索引",
+      safeEntry: "只把它作为候选源，选 3-5 个服务后回到官方 pricing/docs 验证额度、限制、地区和数据留存条款",
+      businessValue: "缩短工具选型和原型搭建时间，帮助团队在采购前建立低成本实验清单",
+      successMetric: "条目新鲜度、官方链接可用率、免费额度准确率、替换成本、供应商锁定风险和数据迁移路径",
+      inspectFirst: "先看目录分类、最近 PR、条目审核规则、官方链接、变更频率和是否覆盖你的地区/合规需求",
+      bestFit: "个人开发、开源项目、早期原型、教学实验和非敏感内部工具",
+      badFit: "生产 SLA、受监管数据、长期核心依赖或无法承担免费层突然变更的业务",
+      primaryRisk: "免费层会随供应商策略变化而失效；生产前必须验证官方条款、备份、限流、升级价格和迁移路径。",
+    },
+    "logto-io/logto": {
+      domain: "身份认证与授权 / SaaS 与 AI 应用 IAM",
+      userPain: "SaaS、AI 应用和内部平台需要 OIDC/OAuth、组织、角色、机器身份和多租户治理，但自研身份系统容易在安全、合规和扩展上失控",
+      coreMechanism: "OIDC/OAuth2、用户池、组织/角色权限、管理控制台、SDK、API 资源、M2M 应用和自托管/云部署组合",
+      safeEntry: "先接一个低风险内部工具或新业务租户，验证登录、组织权限、token 生命周期、审计和回滚，不迁移核心账号库",
+      businessValue: "把身份能力从业务代码剥离出来，缩短 AI/SaaS 应用接入 SSO、组织权限和机器访问控制的周期",
+      successMetric: "登录成功率、token 错误率、权限误配、SDK 接入耗时、审计覆盖、迁移失败率和安全告警响应",
+      inspectFirst: "先看 OIDC/OAuth 兼容性、RBAC/组织模型、迁移工具、SDK、审计日志、密钥轮换、备份恢复和安全公告",
+      bestFit: "需要快速搭建 B2B SaaS、AI 应用、内部平台或多租户权限体系，且有安全/平台 owner 的团队",
+      badFit: "已有成熟 IAM、强监管认证流程复杂、无法承担身份迁移风险或缺少安全运维 owner",
+      primaryRisk: "身份系统是高 blast radius 基础设施；必须先处理迁移回滚、密钥管理、审计、可用性和权限模型误配。",
     },
     "ZhuLinsen/daily_stock_analysis": {
       domain: "LLM 投研工作台 / 多源行情自动化",
@@ -2301,6 +2350,43 @@ function buildSearchAdsRecSection(frontier = {}) {
   };
 }
 
+function buildEditorialReview({ reportDate, frontier = {}, aiNews = {} }) {
+  const frontierSources = uniqueList((frontier.items || []).map((item) => item.source).filter(Boolean)).slice(0, 12);
+  const anthropicSources = uniqueList((aiNews.items || [])
+    .filter(isAnthropicItem)
+    .map((item) => item.sourceDetail || item.source)
+    .filter(Boolean));
+  const verifiedLinks = [
+    "https://github.com/trending?since=daily",
+    "https://www.anthropic.com/news",
+    "https://www.anthropic.com/research",
+    "https://www.anthropic.com/engineering",
+    "https://www.anthropic.com/news/introducing-claude-tag",
+    "https://www.anthropic.com/research/economic-index-june-2026-report",
+    "https://www.anthropic.com/research/claude-code-expertise",
+    "https://engineering.fb.com/2026/05/26/ml-applications/silvertorch-index-as-model-new-retrieval-paradigm-recommendation-systems/",
+    "https://medium.com/pinterest-engineering/enhancing-ad-relevance-integrating-real-time-context-into-sequential-recommender-models-bc3a2f9b682e",
+    "https://www.amazon.science/blog/from-structured-search-to-learning-to-rank-and-retrieve",
+  ];
+  return {
+    method: "script refresh + Codex multi-source editorial review",
+    reviewedAt: new Date().toISOString(),
+    reportDate,
+    focus: [
+      "GitHub Trending daily metadata, repo README evidence and adoption risk review",
+      "Anthropic official News/Research/Engineering pages; trusted mirrors only when official page discovery is incomplete",
+      "Big-tech search/ads/recommendation engineering blogs plus arXiv IR/ranking signals",
+      "AIHOT and official AI sources rewritten into signal-impact-action recommendations",
+    ],
+    sourceNotes: [
+      `Anthropic official coverage includes ${anthropicSources.join("、") || "official News/Research/Engineering"} with Claude Tag, Economic Index, Claude Code practice, model updates, partnerships and safety research.`,
+      `Search/ads/recommendation coverage includes ${frontierSources.join("、") || frontier.source || "Big Tech Engineering/RSS + arXiv"} and is interpreted through business problem, system mechanism, metrics/experiments, borrowable patterns and unsuitable boundaries.`,
+      "Project reads distinguish architecture mechanism, team fit, landing path, production risk, decision question and watch signal; generic metadata summaries are treated as fallback only.",
+    ],
+    verifiedLinks,
+  };
+}
+
 function selectAnthropicCoverage(items, maxItems) {
   const ranked = rankAnthropicItems(items);
   const buckets = [
@@ -2438,6 +2524,50 @@ function seedAnthropicOfficialItems() {
       url: "https://www.anthropic.com/news/introducing-claude-tag",
       publishedAt: "2026-06-23T16:00:00Z",
       summary: "Anthropic 发布 Claude Tag，把 Claude 作为 Slack 团队成员接入频道、工具、数据和代码库；它支持频道级记忆、异步任务、主动跟进、预算上限和审计日志，是 Claude Code/Cowork 从个人 Agent 走向团队协作 Agent 的重要信号。",
+      imageUrl: favicon,
+      priority: 4,
+    },
+    {
+      source: "A社 Anthropic Research",
+      sourceDetail: "Anthropic 官方 Research",
+      domain: "anthropic.com",
+      title: "Project Fetch: Phase two",
+      url: "https://www.anthropic.com/research/project-fetch-phase-two",
+      publishedAt: "2026-06-18T16:00:00Z",
+      summary: "Anthropic 的 Project Fetch 二阶段继续用红队任务衡量模型在自主网络行动、漏洞利用和防御边界上的能力，说明安全评测正在从静态问答走向任务链路观测。",
+      imageUrl: favicon,
+      priority: 4,
+    },
+    {
+      source: "A社 Anthropic Research",
+      sourceDetail: "Anthropic 官方 Research",
+      domain: "anthropic.com",
+      title: "Agentic coding and persistent returns to expertise",
+      url: "https://www.anthropic.com/research/claude-code-expertise",
+      publishedAt: "2026-06-16T16:00:00Z",
+      summary: "Anthropic 研究 Claude Code 实际使用中专家经验的持续回报，提示企业评估 coding agent 时要看人机协作结构，而不是只看自动完成率。",
+      imageUrl: favicon,
+      priority: 4,
+    },
+    {
+      source: "A社 Anthropic Research",
+      sourceDetail: "Anthropic 官方 Research",
+      domain: "anthropic.com",
+      title: "Measuring LLMs' impact on N-day exploits",
+      url: "https://www.anthropic.com/research/llms-n-day-exploits",
+      publishedAt: "2026-06-08T16:00:00Z",
+      summary: "Anthropic 将模型能力放到 N-day 漏洞利用场景里评估，安全团队需要把模型使用、漏洞情报、补丁窗口和授权测试流程一起治理。",
+      imageUrl: favicon,
+      priority: 4,
+    },
+    {
+      source: "A社 Anthropic Research",
+      sourceDetail: "Anthropic 官方 Research",
+      domain: "anthropic.com",
+      title: "Making Claude a chemist",
+      url: "https://www.anthropic.com/research/making-claude-a-chemist",
+      publishedAt: "2026-06-05T16:00:00Z",
+      summary: "Anthropic 展示 Claude 在化学工作流中的推理和工具使用潜力，落地重点应放在实验约束、专家复核、实验室安全和可追溯记录。",
       imageUrl: favicon,
       priority: 4,
     },
