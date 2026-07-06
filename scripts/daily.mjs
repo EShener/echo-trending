@@ -1852,6 +1852,8 @@ function normalizeFrontierInterpretation(item) {
   if (item.interpretation && typeof item.interpretation === "object" && item.interpretation.businessProblem) {
     return item.interpretation;
   }
+  const curated = curatedFrontierInterpretation(item);
+  if (curated) return curated;
   const text = `${item.title || ""} ${item.summary || ""} ${(item.tags || []).join(" ")}`.toLowerCase();
   const isAds = /\bads?\b|advertis|auction|bidding|\bctr\b|\bcvr\b|conversion|\bcpa\b|\bcpm\b|广告|竞价|出价|转化/.test(text);
   const isSearch = /search|retrieval|query|index|relevance|rag|搜索|检索|查询|索引/.test(text);
@@ -1901,6 +1903,97 @@ function normalizeFrontierInterpretation(item) {
     borrowable: "适合沉淀为候选技术卡片：记录输入输出、依赖数据、可替换组件和最小验证路径。",
     boundary: "如果论文数据不可复现、业务指标不匹配或系统约束被简化，暂时只应观察，不应进入主链路。",
   };
+}
+
+function curatedFrontierInterpretation(item) {
+  const title = normalizeTitle(item.title || "");
+  const map = {
+    [normalizeTitle("GenPage: Towards End-to-End Generative Homepage Construction at Netflix")]: {
+      businessProblem: "Netflix 首页不只是给一行内容排序，而是要在整个首屏/分页层面同时决定行类型、行内实体、观看意图、多样性和长期满意度；传统“逐行候选 + 局部排序”很难优化页面整体体验。",
+      systemMechanism: "把用户历史、画像、请求上下文和结构化 homepage layout token 化为同一序列，由生成式 transformer 直接生成页面结构；再用强化学习后训练把离线行为目标和页面多样性校准到上线策略。",
+      metricsAndExperiment: "离线看页面级 engagement 代理指标、行/实体多样性、序列有效性和 cold-start 表现；线上必须同时看播放转化、浏览深度、长期留存、重复曝光和 P95 生成延迟。",
+      borrowable: "适合借鉴“页面即序列”的建模方式：先把推荐结果、广告位、运营位统一成可验证 layout token，再用小流量 shadow serving 对比传统漏斗。",
+      boundary: "如果业务页面结构简单、样本量不足或运营规则强依赖人工编排，端到端生成会让解释、干预和回滚成本明显上升。",
+    },
+    [normalizeTitle("SilverTorch: Index as Model — A New Retrieval Paradigm for Recommendation Systems")]: {
+      businessProblem: "UGC 推荐的召回阶段要在毫秒级从海量内容缩到千级候选，传统微服务、ANN 索引和神经模型分散部署会造成准确率、吞吐和运维边界彼此牵制。",
+      systemMechanism: "Meta 将检索索引本身模型化，把 candidate generation、embedding 表征、GPU serving 和 ranker 对齐放进统一架构，让检索结果直接服务后续排序目标。",
+      metricsAndExperiment: "关注吞吐、单位请求计算成本、recall/precision、候选新鲜度、P95/P99 延迟、GPU 利用率和线上 CTR/停留转化；离线召回提升必须能解释到 ranker 输入质量。",
+      borrowable: "中大型推荐团队可先做一条垂直召回路的 index-as-model 旁路，把原 ANN/规则召回与模型化召回做 interleaving 或 shadow 对比。",
+      boundary: "内容规模小、GPU serving 能力不足、召回和排序 owner 分裂时，不宜直接复制整套架构；先解决特征/样本/评测对齐。",
+    },
+    [normalizeTitle("Unlocking dependable responses with Gemini Enterprise Agent Platform's Agentic RAG")]: {
+      businessProblem: "企业 RAG 常见失败不是模型不会回答，而是权限文档、跨系统证据和长尾查询没有被充分检索，导致答案看似完整但依据不足。",
+      systemMechanism: "Google 的 Agentic RAG 把检索拆成多步 agent 流程，由 sufficient-context 判断是否需要继续检索、改写查询或补充证据，再进入回答生成。",
+      metricsAndExperiment: "应同时评估 answer groundedness、证据覆盖率、权限误召、二次检索次数、用户追问率、P95 延迟和每答案检索成本。",
+      borrowable: "企业知识库可把“证据是否足够”做成独立 judge，在高风险答案前触发补检索和人工复核，而不是只调大 topK。",
+      boundary: "权限模型不清、审计日志不完整或知识库质量差时，多 Agent 检索会放大错误证据和延迟。",
+    },
+    [normalizeTitle("Meta Adaptive Ranking Model: Bending the Inference Scaling Curve to Serve LLM-Scale Models for Ads")]: {
+      businessProblem: "广告排序想引入更大模型理解用户意图和广告价值，但广告请求要求亚秒级返回，且算力成本必须被 ROAS 覆盖。",
+      systemMechanism: "Meta 用 request-centric routing、硬件感知模型/系统协同和多卡 serving，让不同请求按价值、上下文和延迟预算选择合适模型复杂度。",
+      metricsAndExperiment: "线上核心看 ad conversions、CTR、广告主价值、用户负反馈、P95/P99 延迟、MFU、单位转化推理成本和预算消耗稳定性。",
+      borrowable: "广告团队可先把“请求价值分层 + 模型复杂度路由”用于高商业价值流量，低价值请求继续走轻模型，逐步验证边际 ROI。",
+      boundary: "若转化回传慢、归因链路弱或缺少请求级成本核算，大模型排序的收益很容易被平均成本吞掉。",
+    },
+    [normalizeTitle("Reel Friends: Building Social Discovery that Scales to Billions")]: {
+      businessProblem: "短视频发现不只靠兴趣相似，还要把好友关系、互动意图和内容消费场景纳入推荐，否则社交分发与纯兴趣分发会互相稀释。",
+      systemMechanism: "将社交图谱、Reels 内容理解、互动候选生成和排序融合，在召回阶段引入关系强度与内容相关性，再由排序控制体验质量和规模化分发。",
+      metricsAndExperiment: "重点观察好友互动率、分享/评论、观看完成率、重复曝光、冷启动覆盖、关系链噪声和长期社交活跃度。",
+      borrowable: "社区/内容产品可把社交召回作为独立候选路，先通过多路召回配额和重排约束验证增量，而不是让社交信号直接替换兴趣模型。",
+      boundary: "关系链稀疏、隐私边界严格或内容质量不可控时，社交发现会带来噪声、骚扰和同质化风险。",
+    },
+    [normalizeTitle("From Clicks to Conversions: Architecting Shopping Conversion Candidate Generation at Pinterest")]: {
+      businessProblem: "购物推荐如果只优化点击，会把流量导向好奇心内容而非购买意图；候选生成阶段必须更早感知转化概率和商品可购性。",
+      systemMechanism: "Pinterest 将 shopping conversion 目标前移到候选生成，用转化样本、商品上下文、用户购物行为和大规模 serving 约束共同训练候选路。",
+      metricsAndExperiment: "除 CTR 外重点看 CVR、GMV/ROAS、add-to-cart、商品覆盖、新商家曝光、候选去重率和召回到精排的转化保真。",
+      borrowable: "电商和内容电商可拆出“转化候选路”，与点击候选路并行进入精排，通过配额、校准和重排避免点击目标绑架购买目标。",
+      boundary: "转化样本稀疏、商品库存/价格不稳定或归因窗口很长时，转化候选容易过拟合头部商家和短期促销。",
+    },
+    [normalizeTitle("Modernizing the Facebook Groups Search to Unlock the Power of Community Knowledge")]: {
+      businessProblem: "群组搜索面对口语化查询、社区语境、权限可见性和新旧帖子混杂，单纯关键词匹配难以找到真正可用的社区知识。",
+      systemMechanism: "把查询理解、语义召回、社区/帖子质量信号和排序重构到同一搜索链路，并在权限过滤后做相关性与新鲜度平衡。",
+      metricsAndExperiment: "看搜索成功率、query reformulation、NDCG/MRR、点击后停留、权限误召、举报率和社区长尾覆盖。",
+      borrowable: "企业论坛、客服社区和内部知识库可以先建立 query-intent 分层，再为高价值问答引入语义召回与质量重排。",
+      boundary: "如果内容审核和权限模型不足，语义搜索会把低质、过期或不可见内容更高效地暴露出来。",
+    },
+    [normalizeTitle("Enhancing Ad Relevance: Integrating Real-Time Context into Sequential Recommender Models")]: {
+      businessProblem: "广告序列模型常能学习长期偏好，但对刚发生的搜索、浏览、保存等实时意图响应慢，错过高转化窗口。",
+      systemMechanism: "Pinterest 将实时上下文注入 sequential recommender，让用户近期行为、会话意图和广告候选在排序前被共同编码。",
+      metricsAndExperiment: "重点看实时特征新鲜度、CVR/ROAS、CTR、负反馈、feature serving 延迟、特征缺失率和线上离线差异。",
+      borrowable: "可先对高意图行为建立实时特征通道，用短 TTL、降级值和特征审计保护排序稳定性。",
+      boundary: "实时特征噪声大、会话行为易被操纵或特征平台延迟不稳时，短期意图会伤害长期相关性和广告质量。",
+    },
+    [normalizeTitle("Building a Natural Language Interface to the Spotify Ads API with Claude Code Plugins")]: {
+      businessProblem: "广告主和运营人员理解投放目标，但创建 campaign/ad set/ad 的 API 参数多、约束复杂，人工配置慢且容易出错。",
+      systemMechanism: "Spotify 用 Claude Code plugins、OpenAPI schema、skills 和 hooks，把自然语言投放意图翻译成多步 API 调用，同时保留校验和人工确认。",
+      metricsAndExperiment: "应看任务完成率、参数错误率、人工修改轮次、创建耗时、预算误配、审计日志完整性和回滚成功率。",
+      borrowable: "适合把复杂广告后台先做成“草稿生成 + 参数校验 + 人工提交”的 Agent 工作流，降低操作门槛但不跳过审批。",
+      boundary: "不适合让 Agent 直接改生产预算或投放状态；权限、预算上限、可解释 diff 和审批链必须先到位。",
+    },
+    [normalizeTitle("Our Multi-Agent Architecture for Smarter Advertising")]: {
+      businessProblem: "广告平台通常同时服务直销、自助、程序化等渠道，业务规则不同但又共享受众、预算、库存和测量基础设施。",
+      systemMechanism: "Spotify 用多 Agent 架构把渠道特定决策、共享后端能力和广告工作流编排分层，让各 Agent 处理目标拆解、查询、生成和校验。",
+      metricsAndExperiment: "关注跨渠道任务完成率、人工接管率、预算/库存一致性、策略冲突、调用成本、延迟和错误恢复。",
+      borrowable: "广告中台可用 domain agents 包装受众、预算、创意、报表等能力，由统一 orchestrator 做权限和审计。",
+      boundary: "渠道规则尚未标准化、数据口径不一致或缺少统一权限模型时，多 Agent 会把组织复杂度转成系统复杂度。",
+    },
+    [normalizeTitle("Using LLMs to amplify human labeling and improve Dash search relevance")]: {
+      businessProblem: "企业搜索 relevance 依赖高质量标注，但长尾查询、私有文档和权限上下文让纯人工标注覆盖慢且成本高。",
+      systemMechanism: "Dropbox 用少量人工金标校准 LLM 辅助标注，再把扩展标签用于 Dash 搜索排序模型和 relevance 评测。",
+      metricsAndExperiment: "必须看标注一致性、金标校准误差、NDCG/MRR、搜索成功率、权限误判、长尾 query 覆盖和标注单位成本。",
+      borrowable: "企业 RAG/搜索团队可把 LLM 标注作为扩容器，不作为真值源；每轮训练都保留人工抽检和 disagreement review。",
+      boundary: "如果查询意图高度专业、文档权限复杂或没有金标集，LLM 标注会把偏差系统性写进排序模型。",
+    },
+    [normalizeTitle("PAI-Rec 多路召回截断实践：用 PriorityAdjustCountFilter 和 SnakeFilter 控制精排入口数量")]: {
+      businessProblem: "多路召回能提高覆盖，但进入精排的候选过多会拖垮延迟，过少又会牺牲新内容、运营配额和多样性。",
+      systemMechanism: "PAI-Rec 用优先级截断和蛇形混排控制各召回路进入精排的数量，把业务配额、召回质量和精排成本变成可配置策略。",
+      metricsAndExperiment: "看各召回路贡献、精排入口规模、P95 延迟、CTR/CVR、覆盖率、多样性、运营位达成率和新内容冷启动表现。",
+      borrowable: "中小推荐团队可先把召回结果统一打标签，再用可解释的截断/混排策略替代隐式 if-else，便于实验和回滚。",
+      boundary: "如果召回路质量没有可观测归因，截断策略会变成拍脑袋配额，长期压制探索和新路验证。",
+    },
+  };
+  return map[title] || null;
 }
 
 function buildFrontierDiagram(item, interpretation) {
@@ -3306,8 +3399,14 @@ function hasSearchSignal(text) {
 
 function buildAiNewsImpact(item, tags) {
   const text = `${item.title} ${item.summary}`.toLowerCase();
+  if (text.includes("every eval ever")) return "模型选择入口正在从单一排行榜转向模型页内的多任务评测矩阵；这会降低初筛成本，但也会让团队更容易忽略本地任务和数据分布差异。";
+  if (text.includes("adk go 2.0")) return "多 Agent 框架开始把 workflow、人类介入和动态编排作为基础能力，企业自建 Agent 应从 prompt demo 转向可观测状态机。";
   if (text.includes("how agents are transforming work") || text.includes("codex 已占") || text.includes("99.8%") || (text.includes("codex") && (text.includes("economic research") || text.includes("output tokens")))) return "Agent 采用的核心指标正在从“回答质量”转向“可委托工时、跨岗位渗透、并行任务量和组织流程重构”，研发效能、法务、招聘、财务等团队都需要重新定义可交付任务边界。";
   if (text.includes("computer use") && text.includes("gemini")) return "Computer Use 进入主流 API 预览后，GUI 自动化会从单厂商能力变成多模型竞争点；企业评估要同时比较动作准确率、注入防护、权限隔离和失败接管。";
+  if (text.includes("achieving success with ai") || text.includes("copilot cowork")) return "微软把 Copilot 从席位销售推向 Cowork、M365 和 GitHub 的组合工作流，企业采购会更关注组织数据权限、可计量使用和流程改造收益。";
+  if (text.includes("lerobot v0.6.0")) return "开源机器人栈正在把仿真、评估和改进循环产品化，具身智能团队会更依赖可复现实验而不是单次演示视频。";
+  if (text.includes("prx part 4")) return "Hugging Face 持续公开数据策略，说明开源模型竞争正在回到数据构造、过滤、评测和可追溯治理。";
+  if (text.includes("sglang") && (text.includes("dspark") || text.includes("speculative"))) return "推测解码从固定 draft 长度走向按请求置信度自适应，推理平台的竞争点会变成吞吐、尾延迟和无效验证成本的联合优化。";
   if (text.includes("daybreak") || text.includes("codex security") || text.includes("gpt-5.5-cyber")) return "安全 Agent 正从“辅助写脚本”进入漏洞发现、验证和修复建议链路，企业需要把它纳入 DevSecOps、审计和变更管理，而不是当成普通聊天能力。";
   if (text.includes("a2ui") || text.includes("mcp apps")) return "Google 把 A2UI 与 MCP Apps 放在同一组集成架构里，信号是 AI 应用入口正在从单点插件走向标准化应用协议。";
   if (text.includes("workload identity federation")) return "Claude Platform 接入开始强调无长期密钥的身份联合，影响企业把 Claude 接入云上工作负载和 CI/CD 的安全基线。";
@@ -3324,8 +3423,14 @@ function buildAiNewsImpact(item, tags) {
 
 function buildAiNewsAction(item, tags) {
   const text = `${item.title} ${item.summary}`.toLowerCase();
+  if (text.includes("every eval ever")) return "建议把 Hugging Face 模型页评测作为候选筛选入口，但最终仍用内部任务集、成本、延迟和失败样本做回放验收。";
+  if (text.includes("adk go 2.0")) return "建议用一个低风险多 Agent 流程验证 ADK：状态持久化、人类审批、失败恢复、工具权限和 trace 可读性必须一起测。";
   if (text.includes("how agents are transforming work") || text.includes("codex 已占") || text.includes("99.8%") || (text.includes("codex") && (text.includes("economic research") || text.includes("output tokens")))) return "建议把内部 Agent 试点指标改成任务级：人类等效工时、完成率、返工率、并行任务上限、敏感数据访问和跨部门 owner，而不是只统计使用人数。";
   if (text.includes("computer use") && text.includes("gemini")) return "建议建立跨模型 GUI Agent 评测集：同一批网页/桌面任务分别跑 Claude、Gemini 和现有 RPA，记录误点击、注入命中、人工接管和审计日志完整性。";
+  if (text.includes("achieving success with ai") || text.includes("copilot cowork")) return "建议把 Copilot 采购评估拆成三张表：数据访问边界、真实工作流节省、审计/留痕能力，避免只按许可证折扣决策。";
+  if (text.includes("lerobot v0.6.0")) return "建议机器人/自动化团队下载复现实验，记录数据采集、仿真到真机差距、评测指标和硬件失败样本。";
+  if (text.includes("prx part 4")) return "建议跟踪其数据配方和过滤策略，把可追溯数据治理纳入开源模型采用清单。";
+  if (text.includes("sglang") && (text.includes("dspark") || text.includes("speculative"))) return "建议在现有推理网关用离线流量回放测试 DSpark 类策略，比较吞吐、P99、显存、接受率和输出一致性。";
   if (text.includes("daybreak") || text.includes("codex security") || text.includes("gpt-5.5-cyber")) return "建议建立安全 Agent 试点清单：只读扫描、人工确认补丁、沙箱执行、审计日志和误报/漏报复盘必须同时验证。";
   if (text.includes("a2ui") || text.includes("mcp apps")) return "建议把 A2UI/MCP Apps 放入 Agent 集成雷达，比较权限模型、上下文传递、应用发现和前端承载边界。";
   if (text.includes("workload identity federation")) return "建议更新 Claude Platform 接入规范，优先验证短期凭据、最小权限、审计日志和密钥轮换流程。";
