@@ -1908,6 +1908,27 @@ function normalizeFrontierInterpretation(item) {
 function curatedFrontierInterpretation(item) {
   const title = normalizeTitle(item.title || "");
   const map = {
+    [normalizeTitle("Recommending for Long-Term Member Satisfaction at Netflix")]: {
+      businessProblem: "Netflix 的推荐目标不能只追逐播放/点击，因为短期 CTR 会奖励标题党和一次性消费；业务真正要优化的是会员长期满意度，但续费/留存信号慢、噪声大且难归因。",
+      systemMechanism: "把推荐看成 contextual bandit：用播放、完成、点赞/踩、延迟反馈等行为构造更贴近长期满意度的 proxy reward，再训练策略并通过 A/B 测试验证 reward engineering 是否真的改善长期指标。",
+      metricsAndExperiment: "离线不要只看 AUC/CTR，应对比 proxy reward、完成质量、延迟反馈预测和反例；线上同时看播放、完成、满意度代理、留存敏感人群、长期负反馈和在线/离线指标背离。",
+      borrowable: "适合把“指标工程”纳入推荐平台：先定义会伤害长期体验的短期奖励，再用历史行为构造可训练 proxy，最后通过小流量实验验证指标是否与北极星一致。",
+      boundary: "如果业务没有足够延迟反馈、A/B 实验周期太短或北极星本身不清楚，reward engineering 容易变成更复杂的 CTR 包装。",
+    },
+    [normalizeTitle("Achieving Near-Linear Training Scalability for Pinterest’s Foundation Models")]: {
+      businessProblem: "Pinterest 的 Home feed 与 Related Pins ranking 依赖超大行为序列 foundation model；模型越大越能吃下两年用户活动数据，但多节点训练若扩展效率差，会直接把推荐效果提升变成不可承受的 GPU 成本。",
+      systemMechanism: "Pinterest 从网络层、EFA、通信重叠、数据管线和训练瓶颈逐层排查，把 2 节点扩展从 1.13x 提到 2.0x、4 节点从 1.21x 提到 3.9x，并扩展到 8 节点 7.5x。",
+      metricsAndExperiment: "核心指标不只是训练吞吐，还包括 scaling factor、GPU 利用率、通信等待、样本吞吐、训练成本、模型收敛、线上 engagement gain 和 Home/Related Pins 排名收益。",
+      borrowable: "推荐团队做大模型前应先建立训练扩展基线：单机、2 节点、4 节点逐级 profile，只有在吞吐接近线性后再扩大模型和样本窗口。",
+      boundary: "如果线上瓶颈仍在特征、样本质量或 serving 延迟，盲目扩大训练集群只会提高成本；基础设施团队和推荐建模团队必须共同 owner。",
+    },
+    [normalizeTitle("How we used DSPy to turn AI evaluations into better responses in Dash chat")]: {
+      businessProblem: "Dropbox Dash 的企业搜索/Agent 体验不再是单条结果相关性，而是多轮意图理解、工具调用、上下文选择、证据使用和完整回答质量；人工调 prompt 难以稳定覆盖长尾失败。",
+      systemMechanism: "先用人工标签校准 LLM-as-judge，再用 DSPy/GEPA/MIPROv2 在历史真实 trace 上回放候选 prompt，用生产对齐的 judge 反馈优化 chat agent。",
+      metricsAndExperiment: "评估维度包括语义相关性、answer quality、证据使用、tool calling、context selection、完整性、token 成本和统计显著性；Dropbox 报告 incomplete answers 降 26%、missed key aspects 降 13%、token 用量降 5.4%。",
+      borrowable: "企业 RAG/搜索可把 eval 先产品化：沉淀 trace、人工金标、failure code、回放系统和发布门禁，再让优化器生成候选改动。",
+      boundary: "没有代表性回放集、人工标签和结构化 failure taxonomy 时，自动 prompt 优化会把 judge 偏差放大，甚至优化出更会取悦评测器但更差的 Agent。",
+    },
     [normalizeTitle("GenPage: Towards End-to-End Generative Homepage Construction at Netflix")]: {
       businessProblem: "Netflix 首页不只是给一行内容排序，而是要在整个首屏/分页层面同时决定行类型、行内实体、观看意图、多样性和长期满意度；传统“逐行候选 + 局部排序”很难优化页面整体体验。",
       systemMechanism: "把用户历史、画像、请求上下文和结构化 homepage layout token 化为同一序列，由生成式 transformer 直接生成页面结构；再用强化学习后训练把离线行为目标和页面多样性校准到上线策略。",
@@ -2119,6 +2140,36 @@ async function fetchIndustryFrontierItems(maxItems) {
 
 function seedIndustryFrontierItems() {
   return [
+    {
+      title: "Recommending for Long-Term Member Satisfaction at Netflix",
+      url: "https://netflixtechblog.com/recommending-for-long-term-member-satisfaction-at-netflix-ac15cada49ef",
+      publishedAt: "2026-07-01T16:00:00Z",
+      source: "Netflix TechBlog",
+      domain: "netflixtechblog.com",
+      sourceType: "industry",
+      frontierScore: 52,
+      summary: "Netflix 将推荐目标从短期播放/CTR 推进到长期会员满意度，用 contextual bandit 与 reward engineering 处理延迟反馈、在线/离线指标背离和长期体验代理指标。",
+    },
+    {
+      title: "Achieving Near-Linear Training Scalability for Pinterest’s Foundation Models",
+      url: "https://medium.com/pinterest-engineering/achieving-near-linear-training-scalability-for-pinterests-foundation-models-14d4f59fe6f6",
+      publishedAt: "2026-06-25T16:00:00Z",
+      source: "Pinterest Engineering",
+      domain: "medium.com",
+      sourceType: "industry",
+      frontierScore: 51,
+      summary: "Pinterest foundation model 已部署到 Home feed 与 Related Pins ranking；文章拆解多节点训练从低扩展效率走向 4 节点 3.9x、8 节点 7.5x 的系统优化路径。",
+    },
+    {
+      title: "How we used DSPy to turn AI evaluations into better responses in Dash chat",
+      url: "https://dropbox.tech/machine-learning/how-we-turned-ai-evaluations-into-better-responses-in-dash-chat",
+      publishedAt: "2026-06-25T17:00:00Z",
+      source: "Dropbox Tech",
+      domain: "dropbox.tech",
+      sourceType: "industry",
+      frontierScore: 50,
+      summary: "Dropbox Dash 用人工标签校准 LLM judge，再通过 DSPy 优化企业搜索/Agent chat prompt；报告 incomplete answers 降 26%、missed key aspects 降 13%、token 用量降 5.4%。",
+    },
     {
       title: "GenPage: Towards End-to-End Generative Homepage Construction at Netflix",
       url: "https://netflixtechblog.com/genpage-towards-end-to-end-generative-homepage-construction-at-netflix-77146fba8a08",
@@ -2545,6 +2596,9 @@ function buildEditorialReview({ reportDate, frontier = {}, aiNews = {} }) {
     "https://www.anthropic.com/news/introducing-claude-tag",
     "https://www.anthropic.com/research/economic-index-june-2026-report",
     "https://www.anthropic.com/research/claude-code-expertise",
+    "https://netflixtechblog.com/recommending-for-long-term-member-satisfaction-at-netflix-ac15cada49ef",
+    "https://medium.com/pinterest-engineering/achieving-near-linear-training-scalability-for-pinterests-foundation-models-14d4f59fe6f6",
+    "https://dropbox.tech/machine-learning/how-we-turned-ai-evaluations-into-better-responses-in-dash-chat",
     "https://engineering.fb.com/2026/05/26/ml-applications/silvertorch-index-as-model-new-retrieval-paradigm-recommendation-systems/",
     "https://medium.com/pinterest-engineering/enhancing-ad-relevance-integrating-real-time-context-into-sequential-recommender-models-bc3a2f9b682e",
     "https://engineering.atspotify.com/2026/1/why-we-use-separate-tech-stacks-for-personalization-and-experimentation",
@@ -2915,6 +2969,42 @@ function seedAnthropicOfficialItems() {
 
 function seedOfficialAiNewsItems() {
   return [
+    {
+      source: "Hugging Face 官方",
+      sourceDetail: "Hugging Face Blog",
+      domain: "huggingface.co",
+      title: "Hugging Face Models on Foundry Managed Compute",
+      url: "https://huggingface.co/blog",
+      publishedAt: "2026-07-07T16:00:00Z",
+      summary:
+        "Hugging Face 博客最新流把模型托管到 Foundry managed compute 放在 7 月 7 日首位；信号是开源模型分发正在从下载权重扩展到托管算力、企业部署和运行时成本治理。动作是把模型卡、运行环境、权限和成本回放放到同一张选型表里。",
+      imageUrl: "https://www.google.com/s2/favicons?domain=huggingface.co&sz=128",
+      priority: 5,
+    },
+    {
+      source: "Hugging Face 官方",
+      sourceDetail: "Hugging Face Blog / Robotics",
+      domain: "huggingface.co",
+      title: "LeRobot v0.6.0: Imagine, Evaluate, Improve",
+      url: "https://huggingface.co/blog",
+      publishedAt: "2026-07-07T16:00:00Z",
+      summary:
+        "Hugging Face LeRobot v0.6.0 把机器人工作流组织成想象、评估、改进的闭环；信号是具身智能开始强调可复现实验、数据采集和评测流程，而不是单次演示。动作是优先复现离线 benchmark、仿真到真机差距和失败样本记录。",
+      imageUrl: "https://www.google.com/s2/favicons?domain=huggingface.co&sz=128",
+      priority: 4,
+    },
+    {
+      source: "Google Cloud 官方",
+      sourceDetail: "Google Cloud AI",
+      domain: "cloud.google.com",
+      title: "What Google Cloud announced in AI this month",
+      url: "https://cloud.google.com/blog/products/ai-machine-learning/what-google-cloud-announced-in-ai-this-month",
+      publishedAt: "2026-07-01T16:00:00Z",
+      summary:
+        "Google Cloud 月度 AI 汇总把 Gemini 3.5、Gemini Omni、Antigravity、Gemini Spark、Managed Agents API 和 CodeMender 放在同一组企业 Agent 更新里；信号是模型、托管 Agent、安全修复和 Workspace 自动化正在合并成平台能力。动作是按托管沙箱、权限、审计、成本和人工接管拆分验证。",
+      imageUrl: "https://www.google.com/s2/favicons?domain=cloud.google.com&sz=128",
+      priority: 4,
+    },
     {
       source: "OpenAI 官方",
       sourceDetail: "OpenAI Research",
