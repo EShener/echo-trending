@@ -2477,6 +2477,7 @@ async function buildAiNewsSection(maxItems) {
     source: "AIHOT RSS + Official RSS feeds + A社 Anthropic",
     sourceBrief: buildAiHotSourceBrief(),
     aihot: aiHotDigest,
+    anthropicCoverage: anthropicItems,
     items: items.length ? items : fallbackAiNewsItems(),
   };
 }
@@ -2492,7 +2493,7 @@ function isAnthropicOfficialItem(item = {}) {
 }
 
 function buildAnthropicSection(aiNews = {}) {
-  const items = (aiNews.items || [])
+  const items = (aiNews.anthropicCoverage || aiNews.items || [])
     .filter(isAnthropicItem)
     .sort((a, b) => {
       const bDate = Date.parse(b.publishedAt || "");
@@ -2527,7 +2528,7 @@ function buildSearchAdsRecSection(frontier = {}) {
 
 function buildEditorialReview({ reportDate, frontier = {}, aiNews = {} }) {
   const frontierSources = uniqueList((frontier.items || []).map((item) => item.source).filter(Boolean)).slice(0, 12);
-  const anthropicSources = uniqueList((aiNews.items || [])
+  const anthropicSources = uniqueList(((aiNews.anthropicCoverage || aiNews.items || []))
     .filter(isAnthropicItem)
     .map((item) => item.sourceDetail || item.source)
     .filter(Boolean));
@@ -2536,11 +2537,19 @@ function buildEditorialReview({ reportDate, frontier = {}, aiNews = {} }) {
     "https://www.anthropic.com/news",
     "https://www.anthropic.com/research",
     "https://www.anthropic.com/engineering",
+    "https://www.anthropic.com/research/global-workspace",
+    "https://www.anthropic.com/engineering/how-we-contain-claude",
+    "https://www.anthropic.com/news/fable-safeguards-jailbreak-framework",
+    "https://www.anthropic.com/news/claude-sonnet-5",
+    "https://www.anthropic.com/news/claude-science-ai-workbench",
     "https://www.anthropic.com/news/introducing-claude-tag",
     "https://www.anthropic.com/research/economic-index-june-2026-report",
     "https://www.anthropic.com/research/claude-code-expertise",
     "https://engineering.fb.com/2026/05/26/ml-applications/silvertorch-index-as-model-new-retrieval-paradigm-recommendation-systems/",
     "https://medium.com/pinterest-engineering/enhancing-ad-relevance-integrating-real-time-context-into-sequential-recommender-models-bc3a2f9b682e",
+    "https://engineering.atspotify.com/2026/1/why-we-use-separate-tech-stacks-for-personalization-and-experimentation",
+    "https://dropbox.tech/machine-learning/optimizing-dropbox-dash-relevance-judge-with-dspy",
+    "https://engineering.salesforce.com/ai-powered-personalization-in-under-100ms-optimizing-real-time-decisioning-at-scale/",
     "https://www.amazon.science/blog/from-structured-search-to-learning-to-rank-and-retrieve",
   ];
   return {
@@ -2565,10 +2574,11 @@ function buildEditorialReview({ reportDate, frontier = {}, aiNews = {} }) {
 function selectAnthropicCoverage(items, maxItems) {
   const ranked = rankAnthropicItems(items);
   const buckets = [
+    (item) => /global workspace|j-space|interpretability|internal thoughts|hidden intent/i.test(`${item.title} ${item.summary}`),
     (item) => /introducing claude opus|claude opus|claude sonnet|claude haiku/i.test(`${item.title} ${item.summary}`),
     (item) => /claude tag|@claude|claude code|agentic coding|computer use|dynamic workflows|managed agents|auto mode/i.test(`${item.source} ${item.title} ${item.summary}`),
     (item) => /partnership|alliance|regulated|compute|enterprise|tcs|dxc|spacex|seoul|corps/i.test(`${item.title} ${item.summary}`),
-    (item) => /cyber|safety|alignment|misuse|autonomy|trustworthy|contain|teaching claude why|attack/i.test(`${item.source} ${item.title} ${item.summary}`),
+    (item) => /cyber|safety|safeguards|jailbreak|alignment|misuse|autonomy|trustworthy|contain|teaching claude why|attack/i.test(`${item.source} ${item.title} ${item.summary}`),
     (item) => /engineering|managed agents|auto mode|sandbox|contain|harness|tool use|context engineering/i.test(`${item.source} ${item.title} ${item.summary}`),
     (item) => /economic index|cadences|survey|work|labor|automation/i.test(`${item.source} ${item.title} ${item.summary}`),
   ];
@@ -2680,6 +2690,28 @@ async function fetchAnthropicNewsItems(maxItems) {
 function seedAnthropicOfficialItems() {
   const favicon = "https://www.google.com/s2/favicons?domain=anthropic.com&sz=128";
   return [
+    {
+      source: "A社 Anthropic Research",
+      sourceDetail: "Anthropic 官方 Research / Interpretability",
+      domain: "anthropic.com",
+      title: "A global workspace in language models",
+      url: "https://www.anthropic.com/research/global-workspace",
+      publishedAt: "2026-07-06T16:00:00Z",
+      summary: "Anthropic 发布 Claude J-space / global workspace 研究，显示模型内部存在可被读取、干预并参与多步推理的“静默工作区”；这把 Claude 安全监控从输出审查推进到内部表征、隐式意图和评测感知的可观测治理。",
+      imageUrl: favicon,
+      priority: 5,
+    },
+    {
+      source: "A社 Anthropic",
+      sourceDetail: "Anthropic 官方 News / Safeguards",
+      domain: "anthropic.com",
+      title: "More details on Fable 5’s cyber safeguards and our jailbreak framework",
+      url: "https://www.anthropic.com/news/fable-safeguards-jailbreak-framework",
+      publishedAt: "2026-07-02T16:00:00Z",
+      summary: "Anthropic 补充 Fable 5 网络安全防护和 jailbreak 严重度框架，说明前沿 Claude 模型发布正在同时绑定能力开放、滥用分级、跨厂商协作、地区可用性和上线治理。",
+      imageUrl: favicon,
+      priority: 5,
+    },
     {
       source: "A社 Anthropic",
       sourceDetail: "Anthropic 官方 News",
@@ -2983,6 +3015,11 @@ function rankAnthropicItems(items) {
     ["sonnet", 8],
     ["fable", 8],
     ["mythos", 8],
+    ["global workspace", 12],
+    ["j-space", 12],
+    ["interpretability", 8],
+    ["jailbreak", 8],
+    ["safeguards", 8],
     ["claude tag", 10],
     ["@claude", 10],
     ["claude code", 9],
@@ -3473,11 +3510,13 @@ function buildExecutiveSummary(items, frontier, aiNews) {
   const frontierItems = frontier.items || [];
   const frontierSources = uniqueList(frontierItems.map((item) => item.source).filter(Boolean)).slice(0, 12);
   const frontierTags = uniqueList(frontierItems.flatMap((item) => item.tags || [])).slice(0, 5);
-  const anthropicItems = (aiNews.items || []).filter((item) => isAnthropicItem(item));
+  const anthropicItems = (aiNews.anthropicCoverage || aiNews.items || []).filter((item) => isAnthropicItem(item));
   const aiHotCount = (aiNews.items || []).filter((item) => item.source?.includes("AIHOT")).length;
   const firstRepoAction = items[0]?.analysis?.deepDive?.recommendedAction || items[0]?.analysis?.watchSignals?.[0] || "";
   const firstFrontier = frontierItems[0];
   const primaryAnthropic =
+    anthropicItems.find((item) => /global workspace/i.test(item.title)) ||
+    anthropicItems.find((item) => /fable.*safeguards|jailbreak framework/i.test(item.title)) ||
     anthropicItems.find((item) => /sonnet 5/i.test(item.title)) ||
     anthropicItems.find((item) => /claude science/i.test(item.title));
   const claudeTag = anthropicItems.find((item) => /claude tag/i.test(item.title));
