@@ -2588,6 +2588,7 @@ function buildEditorialReview({ reportDate, frontier = {}, aiNews = {} }) {
     "https://www.anthropic.com/news",
     "https://www.anthropic.com/research",
     "https://www.anthropic.com/engineering",
+    "https://www.anthropic.com/features/making-of-claude-code",
     "https://www.anthropic.com/research/global-workspace",
     "https://www.anthropic.com/engineering/how-we-contain-claude",
     "https://www.anthropic.com/news/fable-safeguards-jailbreak-framework",
@@ -2744,6 +2745,17 @@ async function fetchAnthropicNewsItems(maxItems) {
 function seedAnthropicOfficialItems() {
   const favicon = "https://www.google.com/s2/favicons?domain=anthropic.com&sz=128";
   return [
+    {
+      source: "A社 Anthropic",
+      sourceDetail: "Anthropic 官方 News / Claude Code",
+      domain: "anthropic.com",
+      title: "The Making of Claude Code",
+      url: "https://www.anthropic.com/features/making-of-claude-code",
+      publishedAt: "2026-07-06T16:00:00Z",
+      summary: "Anthropic 新闻页把 Claude Code 从内部 CLI 演进为 coding agent 的故事放在 7 月 6 日头条；信号不是单个功能发布，而是 Claude Code 已经成为可产品化、可企业化、可被早期用户反复使用的 Agent 工程范式。评估动作应聚焦任务边界、工具权限、上下文恢复、审计日志和团队采用模式。",
+      imageUrl: favicon,
+      priority: 5,
+    },
     {
       source: "A社 Anthropic Research",
       sourceDetail: "Anthropic 官方 Research / Interpretability",
@@ -3612,6 +3624,7 @@ function buildExecutiveSummary(items, frontier, aiNews) {
   const claudeTag = anthropicItems.find((item) => /claude tag/i.test(item.title));
   const claudeCodeSignals = anthropicItems
     .filter((item) => /claude code|agentic coding|sandbox|managed agents|auto mode|contain/i.test(`${item.title} ${item.summary}`))
+    .sort((a, b) => (Number(/making of claude code/i.test(b.title)) - Number(/making of claude code/i.test(a.title))) || new Date(b.publishedAt || 0) - new Date(a.publishedAt || 0))
     .map((item) => item.title)
     .slice(0, 3);
   const firstAnthropic = primaryAnthropic || claudeTag || anthropicItems[0];
