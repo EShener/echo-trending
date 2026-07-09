@@ -2589,6 +2589,7 @@ function buildEditorialReview({ reportDate, frontier = {}, aiNews = {} }) {
     "https://www.anthropic.com/research",
     "https://www.anthropic.com/engineering",
     "https://www.anthropic.com/features/making-of-claude-code",
+    "https://www.anthropic.com/research/off-switch-dual-use",
     "https://www.anthropic.com/research/global-workspace",
     "https://www.anthropic.com/engineering/how-we-contain-claude",
     "https://www.anthropic.com/news/fable-safeguards-jailbreak-framework",
@@ -2766,6 +2767,36 @@ function seedAnthropicOfficialItems() {
       summary: "Anthropic 发布 Claude J-space / global workspace 研究，显示模型内部存在可被读取、干预并参与多步推理的“静默工作区”；这把 Claude 安全监控从输出审查推进到内部表征、隐式意图和评测感知的可观测治理。",
       imageUrl: favicon,
       priority: 5,
+    },
+    {
+      source: "A社 Anthropic Research",
+      sourceDetail: "Anthropic 官方 Research / Alignment",
+      domain: "anthropic.com",
+      title: "An off switch for dual use knowledge in AI models",
+      url: "https://www.anthropic.com/research/off-switch-dual-use",
+      publishedAt: "2026-07-08T16:00:00Z",
+      summary: "Anthropic 与 AE Studio 提出 GRAM，把病毒学、网络安全、核物理等双重用途知识路由到可移除模块；同一次训练可按部署场景打开或删除能力模块，但官方明确这仍是早期研究，尚未用于 Claude 生产模型。",
+      imageUrl: favicon,
+      priority: 6,
+      signal: "安全架构信号：模型治理开始从“输出拒答/分类器”前移到训练时的能力分区和部署时的模块化访问控制。",
+      impact: "如果后续能扩展到 frontier-scale，企业模型供应会出现“同基座、不同能力开关”的合规形态；短期仍只能作为研发方向，不能替代现有红队、拒答和审计。",
+      action: "安全/平台团队应把它纳入模型供应商尽调问题：双重用途能力如何隔离、如何验证删除效果、如何防止小样本微调恢复、以及生产模型是否真的使用该机制。",
+      interpretation: {
+        signal: "安全架构信号：GRAM 把双重用途知识放进可移除模块，而不是只依赖输出层拒答。",
+        impact: "长期可能改变企业对同一模型在可信/非可信部署中的能力分级方式；当前限制是未在 Claude 生产训练线验证。",
+        action: "只作为安全路线观察项，评审时重点追问 frontier-scale、下游任务评测、模块恢复攻击和审计证据。",
+      },
+      diagram: {
+        title: "GRAM 双重用途能力开关图解",
+        caption: "Anthropic Research · Alignment · Jul 8 2026",
+        nodes: [
+          { label: "双重用途数据", detail: "网络安全、病毒学、核物理等高风险知识源", type: "input" },
+          { label: "梯度路由模块", detail: "冻结通用权重，把类别知识写入对应辅助模块", type: "core" },
+          { label: "部署配置", detail: "可信场景保留模块，非可信场景删除模块", type: "integration" },
+          { label: "验证边界", detail: "未上生产；需验证下游任务、恢复攻击和规模化成本", type: "risk" },
+        ],
+        links: ["能力分区", "模块开关", "安全评估"],
+      },
     },
     {
       source: "A社 Anthropic",
@@ -3118,6 +3149,10 @@ function rankAnthropicItems(items) {
     ["fable", 8],
     ["mythos", 8],
     ["global workspace", 12],
+    ["off switch", 12],
+    ["dual use", 10],
+    ["dual-use", 10],
+    ["gram", 10],
     ["j-space", 12],
     ["interpretability", 8],
     ["jailbreak", 8],
@@ -3617,6 +3652,7 @@ function buildExecutiveSummary(items, frontier, aiNews) {
   const firstRepoAction = items[0]?.analysis?.deepDive?.recommendedAction || items[0]?.analysis?.watchSignals?.[0] || "";
   const firstFrontier = frontierItems[0];
   const primaryAnthropic =
+    anthropicItems.find((item) => /off switch|dual[- ]use|gram/i.test(`${item.title} ${item.summary}`)) ||
     anthropicItems.find((item) => /global workspace/i.test(item.title)) ||
     anthropicItems.find((item) => /fable.*safeguards|jailbreak framework/i.test(item.title)) ||
     anthropicItems.find((item) => /sonnet 5/i.test(item.title)) ||
@@ -3630,7 +3666,7 @@ function buildExecutiveSummary(items, frontier, aiNews) {
   const firstAnthropic = primaryAnthropic || claudeTag || anthropicItems[0];
   const aiHotLead = (aiNews.items || []).find((item) => item.source?.includes("AIHOT"));
   return {
-    headline: `今日雷达主线：GitHub 热门继续围绕 Agent 工作流、个人云和文档/设计上下文扩散；搜广推从单模型优化转向召回、排序、serving 成本和实验血缘协同；A 社把 Claude 推向团队频道、长任务执行和安全治理。`,
+    headline: `今日雷达主线：GitHub 热门继续围绕 Agent 工作流、个人云和文档/设计上下文扩散；搜广推从单模型优化转向召回、排序、serving 成本和实验血缘协同；A 社把安全治理推进到可移除知识模块。`,
     bullets: [
       topRepos.length ? `GitHub 本轮由 ${topRepos.join("、")} 领跑；解读重点落在 ${repoSignalText}，采用判断不按 star 排序，而按架构机制、适用团队、落地路径、生产风险、决策问题和观察信号拆解。` : "今日暂无 GitHub 项目数据。",
       firstRepoAction ? `开源项目解读已按“架构机制 -> 适用团队 -> 落地路径 -> 生产风险 -> 决策问题 -> 观察信号”展开；本轮更适合旁路 spike 的入口是：${trimText(firstRepoAction, 120)}` : "开源项目先按架构机制、适用团队、落地路径和生产风险做小样本验证。",
