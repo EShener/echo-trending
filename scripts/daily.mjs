@@ -4071,7 +4071,7 @@ function fallbackAiNewsItems() {
 function inferFrontierTags(text) {
   const lower = text.toLowerCase();
   const tags = [];
-  if (frontierTermHit(lower, "recommend") || frontierTermHit(lower, "recommendation") || frontierTermHit(lower, "recommender") || frontierTermHit(lower, "personalization") || frontierTermHit(lower, "feed") || frontierTermHit(lower, "candidate generation")) tags.push("recsys");
+  if (frontierTermHit(lower, "recommend") || frontierTermHit(lower, "recommending") || frontierTermHit(lower, "recommendation") || frontierTermHit(lower, "recommender") || frontierTermHit(lower, "personalization") || frontierTermHit(lower, "feed") || frontierTermHit(lower, "candidate generation")) tags.push("recsys");
   if (frontierTermHit(lower, "rank") || frontierTermHit(lower, "ranking")) tags.push("ranking");
   if (frontierTermHit(lower, "retrieval") || frontierTermHit(lower, "search") || frontierTermHit(lower, "query") || frontierTermHit(lower, "index")) tags.push("retrieval");
   if (frontierTermHit(lower, "advertising") || frontierTermHit(lower, "ads") || frontierTermHit(lower, "auction") || frontierTermHit(lower, "bidding") || frontierTermHit(lower, "conversion")) tags.push("ads");
