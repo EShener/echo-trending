@@ -3088,7 +3088,7 @@ function seedOfficialAiNewsItems() {
       domain: "openai.com",
       title: "GPT-5.6: Frontier intelligence that scales with your ambition",
       url: "https://openai.com/index/gpt-5-6/",
-      publishedAt: "2026-07-10T00:00:00Z",
+      publishedAt: "2026-07-09T00:00:00Z",
       summary:
         "OpenAI 发布 GPT-5.6 Sol/Terra/Luna，强调更强的知识工作、浏览、computer use、artifact 生成、Programmatic Tool Calling、多 Agent beta、显式缓存断点和更可预测的价格/缓存策略。信号是前沿模型竞争正在从单次推理分数转向长任务代理、可编辑交付物、工具编排和成本可控性；动作是用真实报告、表格、代码修复、浏览任务和 ZDR/缓存约束做回放评测。",
       imageUrl: "https://www.google.com/s2/favicons?domain=openai.com&sz=128",
@@ -3597,6 +3597,11 @@ function interpretFrontier(item) {
 
 function interpretAiNews(item) {
   const text = `${item.title} ${item.summary}`.toLowerCase();
+  if (text.includes("gpt-5.6")) return "模型产品化信号：GPT-5.6 把前沿推理、浏览/computer use、artifact 生成、缓存断点和多 Agent 能力打包成面向知识工作的生产套件，竞争焦点从单次 benchmark 转到可交付任务。";
+  if (text.includes("gpt-live")) return "实时语音 Agent 信号：OpenAI 把低延迟对话层与后台深度任务层拆开，语音入口不再只是聊天，而是可委托搜索、推理和操作的前台控制面。";
+  if (text.includes("foundry managed compute")) return "开源模型企业部署信号：Hugging Face 模型进入 Foundry managed compute，说明开源权重分发正在和云端合规运行时、预置镜像、账单与观测能力绑定。";
+  if (text.includes("genebench-pro")) return "专业评测信号：生命科学模型评测正在从通用问答推进到专家任务集，模型是否可用于研发决策取决于任务定义、泄露防护、专家评分和复现实验。";
+  if (text.includes("google cloud announced in ai this month")) return "平台整合信号：Google Cloud 把 Gemini、Agent API、代码/安全自动化和 Workspace 能力放进同一企业 AI 更新面，客户评估会从单模型能力转向托管平台边界。";
   if (text.includes("how agents are transforming work") || text.includes("codex 已占") || text.includes("99.8%") || (text.includes("codex") && (text.includes("economic research") || text.includes("output tokens")))) return "官方 Agent 采用信号：Codex 正从工程师工具扩展到跨部门长任务委托，重点看任务时长、并行 Agent、非技术岗位采用和组织级治理。";
   if (text.includes("computer use") && text.includes("gemini")) return "官方 Computer Use 信号：浏览器、移动和桌面操作正在被纳入模型原生工具链，关键看动作空间、安全策略和 prompt injection 防护。";
   if (text.includes("daybreak") || text.includes("codex security") || text.includes("gpt-5.5-cyber") || text.includes("ai cyber threats") || text.includes("网络威胁")) return "AI 安全工程信号：安全 Agent 和攻击 Agent 同时进入实战窗口，关键看漏洞验证、权限隔离、自动补丁和人工审查闭环。";
@@ -3677,6 +3682,11 @@ function hasSearchSignal(text) {
 
 function buildAiNewsImpact(item, tags) {
   const text = `${item.title} ${item.summary}`.toLowerCase();
+  if (text.includes("gpt-5.6")) return "对企业团队的直接影响是评测口径要变：不能只看推理分数，要把浏览、文件修改、代码修复、长任务恢复、缓存成本、ZDR/合规限制和人工接管放进同一回放集。";
+  if (text.includes("gpt-live")) return "实时语音会把 Agent 带进客服、销售、运营和个人助理场景，但也会放大误听、越权委托、隐私提示不足和后台任务不可见的问题。";
+  if (text.includes("foundry managed compute")) return "开源模型采用门槛会从“能否下载和跑起来”转为“是否有受管运行时、供应链扫描、权限治理、成本观测和企业支持”，平台锁定与开放生态会同时增强。";
+  if (text.includes("genebench-pro")) return "生命科学场景会更快把模型引入候选假设、文献分析和实验设计，但错误结论的代价高，必须把专家复核和实验复现作为默认流程。";
+  if (text.includes("google cloud announced in ai this month")) return "云厂商正在把 Agent、代码、安全、搜索和办公入口合并售卖；平台团队需要比较的是权限模型、沙箱、审计、数据驻留和成本，而不是单个 demo。";
   if (text.includes("every eval ever")) return "模型选择入口正在从单一排行榜转向模型页内的多任务评测矩阵；这会降低初筛成本，但也会让团队更容易忽略本地任务和数据分布差异。";
   if (text.includes("adk go 2.0")) return "多 Agent 框架开始把 workflow、人类介入和动态编排作为基础能力，企业自建 Agent 应从 prompt demo 转向可观测状态机。";
   if (text.includes("how agents are transforming work") || text.includes("codex 已占") || text.includes("99.8%") || (text.includes("codex") && (text.includes("economic research") || text.includes("output tokens")))) return "Agent 采用的核心指标正在从“回答质量”转向“可委托工时、跨岗位渗透、并行任务量和组织流程重构”，研发效能、法务、招聘、财务等团队都需要重新定义可交付任务边界。";
@@ -3701,6 +3711,11 @@ function buildAiNewsImpact(item, tags) {
 
 function buildAiNewsAction(item, tags) {
   const text = `${item.title} ${item.summary}`.toLowerCase();
+  if (text.includes("gpt-5.6")) return "建议建立 10-20 个真实知识工作回放任务：报告、表格、代码修复、网页调查和跨工具执行分别记录完成率、人工修改、成本、延迟、权限触发和失败样本。";
+  if (text.includes("gpt-live")) return "建议先做低风险语音 Agent 试点，强制展示后台任务状态、可撤销操作、敏感信息提示、人工接管按钮和完整 transcript 审计。";
+  if (text.includes("foundry managed compute")) return "建议把 Hugging Face 候选模型按“模型卡 -> 托管运行时 -> 合规扫描 -> 成本/延迟 -> 回滚路径”做选型表，不要只比较开源许可证。";
+  if (text.includes("genebench-pro")) return "建议生命科学/医疗研发团队只把它作为评测参考，先抽查数据集、任务定义、专家评分协议和泄露控制，再决定是否进入内部 benchmark。";
+  if (text.includes("google cloud announced in ai this month")) return "建议用一个内部 Agent 流程做云平台横评：同一任务分别验证 Google、OpenAI、Anthropic 和自建方案的权限、审计、成本、失败恢复和数据边界。";
   if (text.includes("every eval ever")) return "建议把 Hugging Face 模型页评测作为候选筛选入口，但最终仍用内部任务集、成本、延迟和失败样本做回放验收。";
   if (text.includes("adk go 2.0")) return "建议用一个低风险多 Agent 流程验证 ADK：状态持久化、人类审批、失败恢复、工具权限和 trace 可读性必须一起测。";
   if (text.includes("how agents are transforming work") || text.includes("codex 已占") || text.includes("99.8%") || (text.includes("codex") && (text.includes("economic research") || text.includes("output tokens")))) return "建议把内部 Agent 试点指标改成任务级：人类等效工时、完成率、返工率、并行任务上限、敏感数据访问和跨部门 owner，而不是只统计使用人数。";
