@@ -2676,6 +2676,7 @@ function selectAnthropicCoverage(items, maxItems) {
     (item) => /partnership|alliance|regulated|compute|enterprise|tcs|dxc|spacex|seoul|corps/i.test(`${item.title} ${item.summary}`),
     (item) => /reflect|reflection|usage recap|monthly recap|memory|time and focus/i.test(`${item.title} ${item.summary}`),
     (item) => /ltbt|long-term benefit trust|bernanke|governance|benefit trust/i.test(`${item.title} ${item.summary}`),
+    (item) => /hard questions|public questions|policy|accountability|publicly respond|公开回应|公共问责/i.test(`${item.title} ${item.summary}`),
     (item) => /cyber|safety|safeguards|jailbreak|alignment|misuse|autonomy|trustworthy|contain|teaching claude why|attack/i.test(`${item.source} ${item.title} ${item.summary}`),
     (item) => /engineering|managed agents|auto mode|sandbox|contain|harness|tool use|context engineering/i.test(`${item.source} ${item.title} ${item.summary}`),
     (item) => /economic index|cadences|survey|work|labor|automation/i.test(`${item.source} ${item.title} ${item.summary}`),
@@ -2788,6 +2789,34 @@ async function fetchAnthropicNewsItems(maxItems) {
 function seedAnthropicOfficialItems() {
   const favicon = "https://www.google.com/s2/favicons?domain=anthropic.com&sz=128";
   return [
+    {
+      source: "A社 Anthropic",
+      sourceDetail: "Anthropic 官方 News / Enterprise",
+      domain: "anthropic.com",
+      title: "UST is bringing Claude to physical AI",
+      url: "https://www.anthropic.com/news/ust-claude",
+      publishedAt: "2026-07-09T16:00:00Z",
+      summary: "Anthropic 报道 UST 正把 Claude 用到 physical AI 场景。信号是 Claude 的企业合作不再只围绕知识工作和代码，而是向机器人、工业流程和现实世界系统理解延伸；落地时要把仿真验证、现场安全、数据权限、工具调用边界和人工接管作为第一层架构，而不是把通用 Agent 直接接到物理执行链路。",
+      imageUrl: favicon,
+      priority: 8,
+      signal: "企业合作信号：Claude 正从办公/代码 Agent 扩展到 physical AI 和现实世界工作流。",
+      impact: "对机器人、制造、物流和现场服务团队有方向意义，但风险从输出错误升级为物理动作、设备安全和责任归属。",
+      action: "评估 physical AI Agent 时先建仿真、只读观测、人工审批和事故回放链路，再考虑让 Claude 触发任何执行动作。",
+    },
+    {
+      source: "A社 Anthropic",
+      sourceDetail: "Anthropic 官方 News / Policy",
+      domain: "anthropic.com",
+      title: "Inviting hard questions",
+      url: "https://www.anthropic.com/news/hard-questions",
+      publishedAt: "2026-07-09T16:00:00Z",
+      summary: "Anthropic 邀请公众提出关于 AI 的 hard questions，并承诺公开回应。信号是 A 社把安全、社会影响和政策沟通继续前置到公司叙事；企业用户应把供应商问责问题写进评估清单，包括模型边界、滥用事件响应、数据处理、成本透明度、监管冲突和产品撤回机制。",
+      imageUrl: favicon,
+      priority: 8,
+      signal: "公共问责信号：Anthropic 主动把外部质询纳入安全与政策沟通节奏。",
+      impact: "短期不改变模型能力，但会影响企业采购、政府合作和高风险行业对 Claude 的信任评估。",
+      action: "采购/治理团队可把这类公开问答转成供应商尽调模板，持续追踪承诺是否落到产品、文档和事件响应里。",
+    },
     {
       source: "A社 Anthropic",
       sourceDetail: "Anthropic 官方 News / Governance",
@@ -3284,6 +3313,10 @@ function rankAnthropicItems(items) {
     ["claude science", 9],
     ["science", 5],
     ["workbench", 5],
+    ["physical ai", 8],
+    ["ust", 5],
+    ["hard questions", 8],
+    ["public questions", 5],
     ["survey", 4],
     ["automation", 4],
   ];
@@ -3294,7 +3327,8 @@ function rankAnthropicItems(items) {
       const signalBoost = priorityTerms.reduce((sum, [term, score]) => sum + (text.includes(term) ? score : 0), 0);
       const age = item.publishedAt ? daysBetween(new Date(item.publishedAt), new Date()) : 999;
       const recencyBoost = age <= 7 ? 8 : age <= 30 ? 5 : age <= 90 ? 2 : 0;
-      return { ...item, anthropicScore: sectionBoost + signalBoost + recencyBoost };
+      const explicitPriorityBoost = Number(item.priority || 0) * 3;
+      return { ...item, anthropicScore: sectionBoost + signalBoost + recencyBoost + explicitPriorityBoost };
     })
     .sort((a, b) => b.anthropicScore - a.anthropicScore || new Date(b.publishedAt || 0) - new Date(a.publishedAt || 0))
     .filter(dedupeByTitle);
