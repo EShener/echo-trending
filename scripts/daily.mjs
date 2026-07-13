@@ -88,13 +88,15 @@ async function buildReport({ reportDate, limit, days, language }) {
 
   for (const [index, repo] of repos.entries()) {
     const fullName = repo.full_name;
-    const previousLanguages = previousReport?.items?.find((item) => item.repo?.fullName === fullName)?.repo?.languages || {};
+    const previousItem = previousReport?.items?.find((item) => item.repo?.fullName === fullName);
+    const previousLanguages = previousItem?.repo?.languages || {};
     const [readme, languages] = await Promise.all([
       fetchReadme(fullName, repo.default_branch),
       fetchLanguages(fullName),
     ]);
     const stableLanguages = Object.keys(languages || {}).length ? languages : previousLanguages;
-    const analysis = await analyzeRepo({ repo, readme, languages: stableLanguages });
+    const generatedAnalysis = await analyzeRepo({ repo, readme, languages: stableLanguages });
+    const analysis = preserveEditorialAnalysis(previousItem?.analysis, generatedAnalysis);
     items.push({
       rank: index + 1,
       repo: normalizeRepo(repo, stableLanguages, reportDate),
@@ -340,6 +342,22 @@ async function analyzeRepo({ repo, readme, languages }) {
       note: `LLM analysis failed, used deterministic analysis: ${String(error.message || error).slice(0, 160)}`,
     };
   }
+}
+
+function preserveEditorialAnalysis(previousAnalysis, generatedAnalysis) {
+  const previousMethod = String(previousAnalysis?.method || "");
+  const generatedMethod = String(generatedAnalysis?.method || "");
+  if (!previousAnalysis || !previousMethod.includes("manual-deep-update")) return generatedAnalysis;
+  if (!generatedMethod || generatedMethod === "llm") return generatedAnalysis;
+  return {
+    ...previousAnalysis,
+    method: previousAnalysis.method,
+    maturity: {
+      ...(previousAnalysis.maturity || {}),
+      ...(generatedAnalysis?.maturity || {}),
+    },
+    score: generatedAnalysis?.score ?? previousAnalysis.score,
+  };
 }
 
 function codexResearchRefresh({ repo, readme, languages, fallback }) {
