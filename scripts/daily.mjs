@@ -1933,6 +1933,13 @@ function curatedFrontierInterpretation(item) {
       borrowable: "适合把“指标工程”纳入推荐平台：先定义会伤害长期体验的短期奖励，再用历史行为构造可训练 proxy，最后通过小流量实验验证指标是否与北极星一致。",
       boundary: "如果业务没有足够延迟反馈、A/B 实验周期太短或北极星本身不清楚，reward engineering 容易变成更复杂的 CTR 包装。",
     },
+    [normalizeTitle("Modernizing the Meta Ads Service With an Open-Source Kernel Scheduler")]: {
+      businessProblem: "Meta 广告 retrieval 和 ranking 链路每天处理数千亿请求，P99 延迟的几毫秒波动会直接减少可检索/可排序广告数，影响用户相关性、广告主 ROI 和机房功耗。",
+      systemMechanism: "Meta 在 Linux 6.9 上用 upstream sched_ext / BPF 写 workload-specific scheduler，把通用 CFS/EEVDF 换成理解广告服务线程形态、CPU 争用和 tail latency 的调度策略，并通过 launch-candidate review 与全局回放验证。",
+      metricsAndExperiment: "核心指标不是平均延迟，而是 ads retrieval P99、weighted-ads-ranked、CPU 利用率、功耗、错误率、广告相关性和 holdout/backtest 口径；官方披露 P99 降 28%、节省 3.28MW、weighted-ads-ranked 提升 1.1%。",
+      borrowable: "大规模广告/推荐 serving 团队可把 kernel scheduler、runtime、模型服务和业务指标放进同一实验面板，先在最大机型或高峰流量上做 shadow/backtest，再逐步扩大。",
+      boundary: "没有足够请求规模、内核工程能力、回放体系和业务指标归因时，不应直接定制调度器；中小团队通常先优化特征服务、批处理、缓存、限流和模型路由更有效。",
+    },
     [normalizeTitle("Achieving Near-Linear Training Scalability for Pinterest’s Foundation Models")]: {
       businessProblem: "Pinterest 的 Home feed 与 Related Pins ranking 依赖超大行为序列 foundation model；模型越大越能吃下两年用户活动数据，但多节点训练若扩展效率差，会直接把推荐效果提升变成不可承受的 GPU 成本。",
       systemMechanism: "Pinterest 从网络层、EFA、通信重叠、数据管线和训练瓶颈逐层排查，把 2 节点扩展从 1.13x 提到 2.0x、4 节点从 1.21x 提到 3.9x，并扩展到 8 节点 7.5x。",
@@ -2172,6 +2179,16 @@ async function fetchIndustryFrontierItems(maxItems) {
 
 function seedIndustryFrontierItems() {
   return [
+    {
+      title: "Modernizing the Meta Ads Service With an Open-Source Kernel Scheduler",
+      url: "https://engineering.fb.com/2026/07/13/ml-applications/modernizing-the-meta-ads-service-with-an-open-source-kernel-scheduler/",
+      publishedAt: "2026-07-13T16:00:00Z",
+      source: "Meta Engineering",
+      domain: "engineering.fb.com",
+      sourceType: "industry",
+      frontierScore: 56,
+      summary: "Meta Ads 与 Linux Kernel 团队用 upstream sched_ext / BPF 为广告投放负载定制调度策略，全球回放后广告 retrieval 路径 P99 延迟降低 28%、节省 3.28MW、weighted-ads-ranked 提升 1.1%。",
+    },
     {
       title: "Recommending for Long-Term Member Satisfaction at Netflix",
       url: "https://netflixtechblog.com/recommending-for-long-term-member-satisfaction-at-netflix-ac15cada49ef",
@@ -2655,6 +2672,7 @@ function buildEditorialReview({ reportDate, frontier = {}, aiNews = {} }) {
     "https://openai.com/index/gpt-5-6/",
     "https://openai.com/index/introducing-gpt-live/",
     "https://netflixtechblog.com/recommending-for-long-term-member-satisfaction-at-netflix-ac15cada49ef",
+    "https://engineering.fb.com/2026/07/13/ml-applications/modernizing-the-meta-ads-service-with-an-open-source-kernel-scheduler/",
     "https://medium.com/pinterest-engineering/achieving-near-linear-training-scalability-for-pinterests-foundation-models-14d4f59fe6f6",
     "https://dropbox.tech/machine-learning/how-we-turned-ai-evaluations-into-better-responses-in-dash-chat",
     "https://engineering.fb.com/2026/05/26/ml-applications/silvertorch-index-as-model-new-retrieval-paradigm-recommendation-systems/",
@@ -2872,7 +2890,10 @@ function seedAnthropicOfficialItems() {
       publishedAt: "2026-07-06T16:00:00Z",
       summary: "Anthropic 新闻页把 Claude Code 从内部 CLI 演进为 coding agent 的故事放在 7 月 6 日头条；信号不是单个功能发布，而是 Claude Code 已经成为可产品化、可企业化、可被早期用户反复使用的 Agent 工程范式。评估动作应聚焦任务边界、工具权限、上下文恢复、审计日志和团队采用模式。",
       imageUrl: favicon,
-      priority: 5,
+      priority: 9,
+      signal: "Claude Code 产品化信号：A 社把内部 CLI 的演进路径公开成 coding agent 工程故事，说明采用重点已从模型能力转向真实团队工作流。",
+      impact: "企业评估 Claude Code 时会更关注工具权限、任务边界、上下文恢复、审计日志和团队协作模式，而不是只看单次代码生成成绩。",
+      action: "把 Claude Code 试点拆成 issue/PR 级任务、长任务迁移、代码审查和文档维护四类回放，逐项记录权限、失败接管、成本和 review 缺陷。",
     },
     {
       source: "A社 Anthropic Research",
