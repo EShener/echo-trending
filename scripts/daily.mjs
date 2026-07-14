@@ -89,21 +89,22 @@ async function buildReport({ reportDate, limit, days, language }) {
   for (const [index, repo] of repos.entries()) {
     const fullName = repo.full_name;
     const previousItem = previousReport?.items?.find((item) => item.repo?.fullName === fullName);
+    const stableRepo = mergeRepoWithPrevious(repo, previousItem?.repo);
     const previousLanguages = previousItem?.repo?.languages || {};
     const [readme, languages] = await Promise.all([
-      fetchReadme(fullName, repo.default_branch),
+      fetchReadme(fullName, stableRepo.default_branch),
       fetchLanguages(fullName),
     ]);
     const stableLanguages = Object.keys(languages || {}).length ? languages : previousLanguages;
-    const generatedAnalysis = await analyzeRepo({ repo, readme, languages: stableLanguages });
+    const generatedAnalysis = await analyzeRepo({ repo: stableRepo, readme, languages: stableLanguages });
     const analysis = preserveEditorialAnalysis(previousItem?.analysis, generatedAnalysis);
     items.push({
       rank: index + 1,
-      repo: normalizeRepo(repo, stableLanguages, reportDate),
+      repo: normalizeRepo(stableRepo, stableLanguages, reportDate),
       analysis,
       evidence: {
         readmeExcerpt: trimText(cleanMarkdown(readme || repo.description || ""), 900),
-        githubUrl: repo.html_url,
+        githubUrl: stableRepo.html_url,
       },
     });
   }
@@ -3888,6 +3889,29 @@ function normalizeRepo(repo, languages, reportDate) {
     pushedAt: repo.pushed_at,
     createdAt: repo.created_at,
     languages,
+  };
+}
+
+function mergeRepoWithPrevious(repo, previousRepo = {}) {
+  if (!previousRepo?.fullName) return repo;
+  const isFallbackRepo = !repo.created_at || !repo.license || !(repo.topics || []).length;
+  if (!isFallbackRepo) return repo;
+
+  return {
+    ...repo,
+    owner: {
+      ...(repo.owner || {}),
+      login: repo.owner?.login || previousRepo.owner,
+      avatar_url: previousRepo.avatarUrl || repo.owner?.avatar_url,
+    },
+    description: cleanupXml(repo.description || "") || previousRepo.description || "",
+    forks_count: repo.forks_count || previousRepo.forks || 0,
+    open_issues_count: previousRepo.openIssues ?? repo.open_issues_count ?? 0,
+    topics: (repo.topics || []).length ? repo.topics : previousRepo.topics || [],
+    license: repo.license || (previousRepo.license ? { spdx_id: previousRepo.license } : null),
+    pushed_at: repo.created_at ? repo.pushed_at : previousRepo.pushedAt || repo.pushed_at,
+    created_at: repo.created_at || previousRepo.createdAt || "",
+    default_branch: repo.default_branch || "main",
   };
 }
 
