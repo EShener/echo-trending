@@ -1,6 +1,6 @@
 {
   "date": "2026-07-16",
-  "generatedAt": "2026-07-15T18:00:00.258Z",
+  "generatedAt": "2026-07-15T21:00:39.814Z",
   "source": {
     "provider": "GitHub Trending daily + arXiv + RSS + Codex curated official/source review",
     "query": "pushed:>=2026-07-09 stars:>100 archived:false",
@@ -8,8 +8,8 @@
     "limit": 12,
     "language": "all",
     "editorialReview": {
-      "method": "script refresh + Codex multi-source editorial review",
-      "reviewedAt": "2026-07-15T18:00:00.258Z",
+      "method": "script refresh + Codex verified editorial rewrite",
+      "reviewedAt": "2026-07-15T21:00:39.816Z",
       "reportDate": "2026-07-16",
       "focus": [
         "GitHub Trending daily metadata, repo README evidence and adoption risk review",
@@ -57,17 +57,31 @@
         "https://engineering.salesforce.com/ai-powered-personalization-in-under-100ms-optimizing-real-time-decisioning-at-scale/",
         "https://www.amazon.science/publications/design-and-evaluation-of-whole-page-experience-optimization-for-e-commerce-search",
         "https://www.amazon.science/blog/from-structured-search-to-learning-to-rank-and-retrieve"
+      ],
+      "verifiedSources": [
+        "GitHub Trending and OpenCut repository/issues",
+        "Anthropic official Research/News/Engineering pages",
+        "Meta Engineering Ads Service scheduler article",
+        "Netflix TechBlog personalized notification article",
+        "Hugging Face official blog July 15 updates",
+        "OpenAI official GPT-5.6 and GPT-Live launch pages"
+      ],
+      "codexNotes": [
+        "OpenCut 解读补入 rewrite 方向：Editor API、插件优先架构、Rust core、MCP server、headless/batch rendering 与脚本入口。",
+        "OpenCut 风险补入 7 月 14-15 日 issue 信号：导出丢失、bun 安装步骤、Rust edition、headless panic、lockfile、macOS/Xcode/Metal。",
+        "AI 新闻补入 Hugging Face 7 月 15 日 Inkling 与 Real World VoiceEQ，避免只停留在脚本抓到的 7 月 9 日官方新闻。",
+        "搜广推板块保留 Meta/Netflix/Pinterest/Dropbox/Google/美团/阿里等来源，并按业务问题、机制、指标实验、可借鉴点和边界重写。"
       ]
     }
   },
   "summary": {
     "headline": "今日雷达主线：GitHub 热门继续围绕 Agent 工作流、个人云和文档/设计上下文扩散；搜广推从单模型优化转向召回、排序、serving 成本和实验血缘协同；A 社把安全治理推进到可移除知识模块。",
     "bullets": [
-      "GitHub 本轮由 OpenCut-app/OpenCut、Nutlope/hallmark、mattpocock/skills 领跑；解读重点落在 开源视频编辑器 / 创作者工具链、AI 前端设计技能 / 反模板化生成约束、工程师技能库 / AI 辅助开发方法、自托管 AI 伴侣 / 实时虚拟角色运行时，采用判断不按 star 排序，而按架构机制、适用团队、落地路径、生产风险、决策问题和观察信号拆解。",
+      "GitHub 本轮由 OpenCut-app/OpenCut、Nutlope/hallmark、mattpocock/skills 领跑；OpenCut 已补入 rewrite 路线和 7 月 14-15 日 issue 风险，解读重点落在可编程视频编辑、AI 前端设计约束、工程师技能库和实时虚拟角色运行时。",
       "开源项目解读已按“架构机制 -> 适用团队 -> 落地路径 -> 生产风险 -> 决策问题 -> 观察信号”展开；本轮更适合旁路 spike 的入口是：进入观察/试点池：先用内部低风险短视频模板验证导入、剪切、字幕、导出、性能和素材版权，不替换正式非线编流程；先保留人工复核、指标记录和回滚路径。",
       "搜广推收录 24 条工程/研究信号，覆盖 Meta Engineering、Netflix TechBlog、Pinterest Engineering、Dropbox Tech、Google Research、Meituan Tech、Airbnb Engineering、Spotify Engineering、Tencent Cloud Developer、Amazon Science、Alibaba Cloud Developer、arXiv；重点从「Modernizing the Meta Ads Service With an Open-Source Kernel Scheduler」延伸到广告排序、实时上下文、企业搜索 relevance judge、模型生命周期图和工业搜索属性推荐。",
-      "A 社覆盖 18 条官方 News/Research/Engineering 动态，最新重点是「How Canada uses Claude: Findings from the Anthropic Economic Index」；安全研究主线继续观察「An off switch for dual use knowledge in AI models」，Claude Code 相关信号包括 The Making of Claude Code、Government of Alberta uses Claude to find and fix cybersecurity vulnerabilities、Introducing Claude Sonnet 5，评估动作应拆成模型能力、权限隔离、长任务恢复、团队协作记忆、预算上限和审计边界。",
-      "AIHOT/官方 AI 新闻共 24 条，其中 AIHOT 2 条；今日先看「Telegram 无服务器架构」，所有新闻统一写成“信号 -> 影响 -> 动作”，动作聚焦评测回放、预算治理、工具白名单、权限审计和真实工作流验证。"
+      "A 社覆盖 18 条官方 News/Research/Engineering 动态，最新官方研究是 7 月 14 日「How Canada uses Claude」和 7 月 13 日「Claude’s values across models and languages」；评估 Claude/Agent 生态时重点看跨语言行为画像、安全模块化、Claude Code、企业合作、预算上限和审计边界。",
+      "AIHOT/官方 AI 新闻共 24 条，已补入 Hugging Face 7 月 15 日 Inkling 与 Real World VoiceEQ；今日 AI 新闻统一写成“信号 -> 影响 -> 动作”，动作聚焦多模态部署成本、语音真实评测、评测回放、权限审计和业务场景验证。"
     ]
   },
   "items": [
@@ -81,10 +95,10 @@
         "visualUrl": "https://opengraph.githubassets.com/20260716/OpenCut-app/OpenCut",
         "url": "https://github.com/OpenCut-app/OpenCut",
         "description": "The open-source CapCut alternative",
-        "stars": 71022,
+        "stars": 71344,
         "starsToday": 1505,
-        "forks": 7309,
-        "openIssues": 346,
+        "forks": 7327,
+        "openIssues": 347,
         "language": "TypeScript",
         "topics": [
           "editor",
@@ -101,18 +115,18 @@
         }
       },
       "analysis": {
-        "method": "codex-research-refresh",
+        "method": "manual-deep-update+codex-research-refresh",
         "category": "开源视频编辑器 / 创作者工具链",
         "oneLiner": "The open-source CapCut alternative；关键看 Web/桌面视频时间线、素材管理、剪辑状态、导出管线、前端交互层和媒体处理后端组合，复刻 CapCut 类工作流的核心编辑体验 是否能被小范围验证。",
-        "whyItMatters": "OpenCut-app/OpenCut 值得看，是因为 AI 项目真正的分水岭已经从“能跑 demo”转向“能被治理、能接工具、能失败恢复”。当前 71K stars / 7.3K forks，近期仍在活跃迭代，足够进入 Agent 工程雷达。 这次更新更值得关注的是其可迁移机制：Web/桌面视频时间线、素材管理、剪辑状态、导出管线、前端交互层和媒体处理后端组合，复刻 CapCut 类工作流的核心编辑体验 能否被拆成小样本验证，而不是把项目整体搬进生产。",
-        "engineeringRead": "TypeScript · API/SDK 接入。建议按“入口示例 -> 数据/配置 -> 失败处理 -> CI/release -> issue 反例”的顺序读；重点回答 它解决的是「创作者、教育团队和增长团队需要低成本、可自托管或可改造的视频剪辑工具，但闭源剪辑软件在自动化、模板化和私有部署上受限」的主矛盾，还是只会给现有流程增加新的维护面？",
+        "whyItMatters": "OpenCut-app/OpenCut 值得看，是因为 AI 项目真正的分水岭已经从“能跑 demo”转向“能被治理、能接工具、能失败恢复”。当前 71.3K stars / 7.3K forks，近期仍在活跃迭代，足够进入 Agent 工程雷达。 这次更新更值得关注的是其可迁移机制：Web/桌面视频时间线、素材管理、剪辑状态、导出管线、前端交互层和媒体处理后端组合，复刻 CapCut 类工作流的核心编辑体验 能否被拆成小样本验证，而不是把项目整体搬进生产。",
+        "engineeringRead": "TypeScript/Rust · browser/desktop/media pipeline。阅读顺序应从 rewrite tracking、时间线数据模型、Rust core、插件 API、MCP/headless 导出入口、文件权限和近期 bug issue 开始；重点判断它是可改造的创作底座，还是只能作为开源视频编辑趋势样本。",
         "architectureSignals": [
-          "架构机制：Web/桌面视频时间线、素材管理、剪辑状态、导出管线、前端交互层和媒体处理后端组合，复刻 CapCut 类工作流的核心编辑体验；阅读时把 TypeScript 代码入口、数据/配置形态、自动化脚本和边界条件连起来看，而不是只看 README 的安装示例。",
-          "适用团队：内容增长、开发者教育、课程、内部培训和需要可定制视频工作台的小团队",
-          "落地路径：先用内部低风险短视频模板验证导入、剪切、字幕、导出、性能和素材版权，不替换正式非线编流程；先保留人工复核、指标记录和回滚路径。",
-          "生产风险：视频编辑器的真实成本在性能、导出稳定性、素材授权和跨平台兼容；生产前必须建立人工终审、版本回滚和素材来源治理。",
-          "决策问题：它解决的是「创作者、教育团队和增长团队需要低成本、可自托管或可改造的视频剪辑工具，但闭源剪辑软件在自动化、模板化和私有部署上受限」的主矛盾，还是只会给现有流程增加新的维护面？",
-          "观察信号：导入成功率、时间线操作延迟、导出成功率、字幕/音频同步误差、模板复用率、人工修正轮次和崩溃率、最近 release 质量、issue 响应速度和 API/SDK 接入 的集成反馈。"
+          "架构机制：时间线编辑器 + Rust core + 插件优先架构 + Editor API + MCP/headless 自动化入口，目标是把 CapCut 类交互和可编程视频流水线合并。",
+          "适用团队：内容增长、课程、开发者关系、内部培训和希望把短视频模板化/自动化的工程团队。",
+          "落地路径：先用非商业素材验证导入、剪切、字幕、导出、插件脚本、headless 批量渲染和失败恢复，不替换正式非线编。",
+          "生产风险：近期 issue 暴露导出丢失、依赖说明、Rust edition、headless panic、lockfile、macOS/Xcode/Metal 等工程成熟度问题；素材版权和人工终审必须前置。",
+          "决策问题：团队到底需要完整编辑器，还是只需要可脚本化的视频模板/导出 pipeline？如果是后者，应优先抽象项目文件格式和渲染 API。",
+          "观察信号：关注 rewrite 是否交付稳定 project schema、插件 API、MCP server、headless mode、跨平台 release、测试素材和可复现导出。"
         ],
         "valueHypothesis": [
           "如果团队确实存在「创作者、教育团队和增长团队需要低成本、可自托管或可改造的视频剪辑工具，但闭源剪辑软件在自动化、模板化和私有部署上受限」，OpenCut-app/OpenCut 的收益应体现为 导入成功率、时间线操作延迟、导出成功率、字幕/音频同步误差、模板复用率、人工修正轮次和崩溃率 的改善。",
@@ -140,27 +154,27 @@
           "issue/讨论区是否出现与你的目标场景相似的真实案例和失败反馈。"
         ],
         "deepDive": {
-          "strategicValue": "OpenCut-app/OpenCut 的价值不应按 star 数直接外推；更合理的读法是把它当作 开源视频编辑器 / 创作者工具链 的工程样本，判断其机制是否能降低你现有链路的复杂度、人工成本或质量波动。",
+          "strategicValue": "OpenCut 的本轮价值不是“免费 CapCut”本身，而是开源视频编辑器正在向插件、Rust core、MCP、headless 渲染和脚本化生产靠拢；这让内容团队有机会把剪辑从手工 UI 操作改造成可复现流水线。",
           "implementationPath": [
             "先用内部低风险短视频模板验证导入、剪切、字幕、导出、性能和素材版权，不替换正式非线编流程；先保留人工复核、指标记录和回滚路径。",
             "用一个可回放样本验证 导入成功率、时间线操作延迟、导出成功率、字幕/音频同步误差、模板复用率、人工修正轮次和崩溃率，同时记录接入时间、失败样本和回滚步骤。",
             "只在指标改善、维护 owner 明确、风险可隔离后，再从旁路验证扩大到核心流程。"
           ],
           "productionConcerns": [
-            "视频编辑器的真实成本在性能、导出稳定性、素材授权和跨平台兼容；生产前必须建立人工终审、版本回滚和素材来源治理。",
-            "与现有 TypeScript / API/SDK 接入 工具链的耦合要先做最小集成验证。",
-            "当前 open issues 偏高，必须抽查最近 issue 的响应质量和 release 节奏。"
+            "近期 issue 显示导出状态、依赖说明、Rust edition、headless 环境、lockfile 和 macOS/Metal 构建仍需稳定，不能直接承担核心内容生产。",
+            "视频工具的真实风险在导出一致性、素材路径、版权/肖像权、浏览器/桌面权限、GPU/编码差异和崩溃恢复。",
+            "如果团队没有媒体工程 owner 和人工终审流程，OpenCut 更适合作为趋势观察和原型，而不是生产依赖。"
           ],
           "decisionQuestions": [
             "它解决的是「创作者、教育团队和增长团队需要低成本、可自托管或可改造的视频剪辑工具，但闭源剪辑软件在自动化、模板化和私有部署上受限」的主矛盾，还是只会给现有流程增加新的维护面？",
             "如果两周 spike 只能证明“能跑”，不能证明 导入成功率、时间线操作延迟、导出成功率、字幕/音频同步误差、模板复用率、人工修正轮次和崩溃率 改善，是否应降级为观察项？",
             "谁负责上线后的升级、告警、回滚和安全审计？"
           ],
-          "recommendedAction": "进入观察/试点池：先用内部低风险短视频模板验证导入、剪切、字幕、导出、性能和素材版权，不替换正式非线编流程；先保留人工复核、指标记录和回滚路径。"
+          "recommendedAction": "进入观察/试点池：用一条内部短视频模板验证导入、时间线操作、字幕、导出、插件/脚本、headless 渲染、素材授权和人工终审，不接入外部发布。"
         },
         "diagram": {
           "title": "OpenCut 工业级采用图解",
-          "caption": "开源视频编辑器 / 创作者工具链 · TypeScript · 71K stars",
+          "caption": "开源视频编辑器 / 创作者工具链 · TypeScript · 71.3K stars",
           "summary": "用 Web/桌面视频时间线、素材管理、剪辑状态、导出管线、前端交互层和媒体处理后端组合，复刻 CapCut 类工作流的核心编辑体验 解决 创作者、教育团队和增长团队需要低成本、可自托管或可改造的视频剪辑工具，但闭源剪辑软件在自动化、模板化和私有部署上受限，先经由 先用内部低风险短视频模板验证导入、剪切、字幕、导出、性能和素材版权，不替换正式非线编流程 验证 导入成功率、时间线操作延迟、导出成功率、字幕/音频同步误差、模板复用率、人工修正轮次和崩溃率，再决定是否扩大。",
           "nodes": [
             {
@@ -197,7 +211,7 @@
             "metrics": [
               {
                 "label": "Stars",
-                "value": "71K",
+                "value": "71.3K",
                 "note": "社区关注"
               },
               {
@@ -207,7 +221,7 @@
               },
               {
                 "label": "Issues",
-                "value": "346",
+                "value": "347",
                 "note": "维护压力"
               },
               {
@@ -264,7 +278,7 @@
                 "detail": "它解决的是「创作者、教育团队和增长团队需要低成本、可自托管或可改造的视频剪辑工具，但闭源剪辑软件在自动化、模板化和私有部署上受限」的主矛盾，还是只会给现有流程增加新的维护面？"
               }
             ],
-            "warning": "广播级剪辑、复杂调色/音频生产、版权来源不清或没有人工终审的自动发布链路"
+            "warning": "当前 rewrite 与近期 issue 说明项目处在高速变化期；生产采用前必须验证导出、构建、插件 API、headless mode、素材授权和回滚。"
           }
         },
         "maturity": {
@@ -273,7 +287,8 @@
           "production": 90,
           "complexity": 67
         },
-        "score": 91
+        "score": 91,
+        "editorialUpdate": "2026-07-16 人工核验：项目 README 显示正在重写，路线包括 Editor API、插件优先架构、Rust core 跨桌面/移动/浏览器、MCP server、headless/batch rendering 和脚本 tab；最新 issue 反映导出状态、依赖安装、Rust edition、headless 窗口、lockfile 与 macOS/Metal 工具链仍是早期生产风险。"
       },
       "evidence": {
         "readmeExcerpt": "<table width=\"100%\" <tr <td align=\"left\" width=\"120\" <img src=\"https://assets.opencut.app/branding/symbol.svg\" alt=\"OpenCut Logo\" width=\"100\" / </td <td align=\"right\" <h1 OpenCut</h1 <h3 style=\"margin top: 10px;\" A free and open source video editor for web, desktop, and mobile.</h3 </td </tr </table Status OpenCut is being rewritten from the ground up. What's coming: An Editor API First class third party plugins (made possible by a plugin first architecture) Desktop, mobile, and browser from one codebase (Rust core) MCP server (for AI agents) Headless mode (automation, batch rendering) A scripting tab directly in the editor You can still find the previous version at opencut app/opencut classic, which is the one to reach for today. opencut.app still runs the classic version. The rewrite will live at new.opencut.app until it's ready to take over. Development Install proto if you haven't al...",
@@ -290,9 +305,9 @@
         "visualUrl": "https://opengraph.githubassets.com/20260716/Nutlope/hallmark",
         "url": "https://github.com/Nutlope/hallmark",
         "description": "Anti-AI-slop design skill for Claude Code, Cursor, and Codex.",
-        "stars": 7765,
+        "stars": 8126,
         "starsToday": 1119,
-        "forks": 409,
+        "forks": 426,
         "openIssues": 13,
         "language": "CSS",
         "topics": [],
@@ -309,7 +324,7 @@
         "method": "codex-research-refresh",
         "category": "AI 前端设计技能 / 反模板化生成约束",
         "oneLiner": "Anti-AI-slop design skill for Claude Code, Cursor, and Codex.；关键看 用设计 skill 固定宏观结构选择、20 个主题、4 类动词、57 个 slop test gate 和 emit 前自我批评，把生成前端从风格随机漂移改成可审查约束系统 是否能被小范围验证。",
-        "whyItMatters": "Nutlope/hallmark 处在 早期观察项目 区间：7.8K stars / 409 forks，需要确认近期维护强度。README 把重点放在「Hallmark」，适合判断它是否能在 产品界面交付、组件复用或交互体验一致性 上形成真实工程收益。 这次更新更值得关注的是其可迁移机制：用设计 skill 固定宏观结构选择、20 个主题、4 类动词、57 个 slop test gate 和 emit 前自我批评，把生成前端从风格随机漂移改成可审查约束系统 能否被拆成小样本验证，而不是把项目整体搬进生产。",
+        "whyItMatters": "Nutlope/hallmark 处在 快速扩散项目 区间：8.1K stars / 426 forks，需要确认近期维护强度。README 把重点放在「Hallmark」，适合判断它是否能在 产品界面交付、组件复用或交互体验一致性 上形成真实工程收益。 这次更新更值得关注的是其可迁移机制：用设计 skill 固定宏观结构选择、20 个主题、4 类动词、57 个 slop test gate 和 emit 前自我批评，把生成前端从风格随机漂移改成可审查约束系统 能否被拆成小样本验证，而不是把项目整体搬进生产。",
         "engineeringRead": "CSS · API/SDK 接入。建议按“入口示例 -> 数据/配置 -> 失败处理 -> CI/release -> issue 反例”的顺序读；重点回答 它解决的是「产品和前端团队用 Claude Code、Cursor 或 Codex 生成页面时，经常得到同质化卡片、紫蓝渐变、空洞 hero 和无法落地的“AI 味”界面」的主矛盾，还是只会给现有流程增加新的维护面？",
         "architectureSignals": [
           "架构机制：用设计 skill 固定宏观结构选择、20 个主题、4 类动词、57 个 slop test gate 和 emit 前自我批评，把生成前端从风格随机漂移改成可审查约束系统；阅读时把 CSS 代码入口、数据/配置形态、自动化脚本和边界条件连起来看，而不是只看 README 的安装示例。",
@@ -365,7 +380,7 @@
         },
         "diagram": {
           "title": "hallmark 工业级采用图解",
-          "caption": "AI 前端设计技能 / 反模板化生成约束 · CSS · 7.8K stars",
+          "caption": "AI 前端设计技能 / 反模板化生成约束 · CSS · 8.1K stars",
           "summary": "用 用设计 skill 固定宏观结构选择、20 个主题、4 类动词、57 个 slop test gate 和 emit 前自我批评，把生成前端从风格随机漂移改成可审查约束系统 解决 产品和前端团队用 Claude Code、Cursor 或 Codex 生成页面时，经常得到同质化卡片、紫蓝渐变、空洞 hero 和无法落地的“AI 味”界面，先经由 先对一个内部页面做 build/audit 两种模式对照，只让它产出候选稿和 punch list，再由设计/前端人工合并 验证 设计 review 返工率、移动端布局缺陷、组件复用率、可访问性问题、生成后手工修改时间和品牌一致性评分，再决定是否扩大。",
           "nodes": [
             {
@@ -397,17 +412,17 @@
           "poster": {
             "eyebrow": "Project Blueprint",
             "headline": "AI 前端设计技能 / 反模板化生成约束",
-            "subhead": "Nutlope/hallmark · 观察期 · CSS",
+            "subhead": "Nutlope/hallmark · 快速破圈 · CSS",
             "thesis": "把「产品和前端团队用 Claude Code、Cursor 或 Codex 生成页面时，经常得到同质化卡片、紫蓝渐变、空洞 hero 和无法落地的“AI 味”界面」通过「用设计 skill 固定宏观结构选择、20 个主题、4 类动词、57 个 slop test gate 和 emit 前自我批评，把生成前端从风格随机漂移改成可审查约束系统」转化为「减少 AI 生成界面的同质化返工，让团队把品牌、信息架构、响应式和可访问性约束前置给 coding agent」。",
             "metrics": [
               {
                 "label": "Stars",
-                "value": "7.8K",
+                "value": "8.1K",
                 "note": "社区关注"
               },
               {
                 "label": "Forks",
-                "value": "409",
+                "value": "426",
                 "note": "二次采用"
               },
               {
@@ -495,9 +510,9 @@
         "visualUrl": "https://opengraph.githubassets.com/20260716/mattpocock/skills",
         "url": "https://github.com/mattpocock/skills",
         "description": "Skills for Real Engineers. Straight from my .claude directory.",
-        "stars": 171967,
+        "stars": 172111,
         "starsToday": 2160,
-        "forks": 14768,
+        "forks": 14783,
         "openIssues": 168,
         "language": "Shell",
         "topics": [],
@@ -513,7 +528,7 @@
         "method": "codex-research-refresh",
         "category": "工程师技能库 / AI 辅助开发方法",
         "oneLiner": "Skills for Real Engineers. Straight from my .claude directory.；关键看 面向真实工程任务的技能说明、上下文约束、命令模式和可复制实践清单 是否能被小范围验证。",
-        "whyItMatters": "mattpocock/skills 值得看，是因为 AI 项目真正的分水岭已经从“能跑 demo”转向“能被治理、能接工具、能失败恢复”。当前 172K stars / 14.8K forks，维护非常活跃，足够进入 Agent 工程雷达。 这次更新更值得关注的是其可迁移机制：面向真实工程任务的技能说明、上下文约束、命令模式和可复制实践清单 能否被拆成小样本验证，而不是把项目整体搬进生产。",
+        "whyItMatters": "mattpocock/skills 值得看，是因为 AI 项目真正的分水岭已经从“能跑 demo”转向“能被治理、能接工具、能失败恢复”。当前 172.1K stars / 14.8K forks，维护非常活跃，足够进入 Agent 工程雷达。 这次更新更值得关注的是其可迁移机制：面向真实工程任务的技能说明、上下文约束、命令模式和可复制实践清单 能否被拆成小样本验证，而不是把项目整体搬进生产。",
         "engineeringRead": "Shell · 阅读型或源码集成。建议按“入口示例 -> 数据/配置 -> 失败处理 -> CI/release -> issue 反例”的顺序读；重点回答 它解决的是「个人工程经验分散在提示词和笔记里，难以转成可执行、可复用的 AI 工作流」的主矛盾，还是只会给现有流程增加新的维护面？",
         "architectureSignals": [
           "架构机制：面向真实工程任务的技能说明、上下文约束、命令模式和可复制实践清单；阅读时把 Shell 代码入口、数据/配置形态、自动化脚本和边界条件连起来看，而不是只看 README 的安装示例。",
@@ -569,7 +584,7 @@
         },
         "diagram": {
           "title": "skills 工业级采用图解",
-          "caption": "工程师技能库 / AI 辅助开发方法 · Shell · 172K stars",
+          "caption": "工程师技能库 / AI 辅助开发方法 · Shell · 172.1K stars",
           "summary": "用 面向真实工程任务的技能说明、上下文约束、命令模式和可复制实践清单 解决 个人工程经验分散在提示词和笔记里，难以转成可执行、可复用的 AI 工作流，先经由 挑 2 个团队高频任务，把对应技能改写成本地规范并在真实 PR 中验证一次 验证 技能调用成功率、PR 返工率、上下文补充次数、任务完成时间，再决定是否扩大。",
           "nodes": [
             {
@@ -606,7 +621,7 @@
             "metrics": [
               {
                 "label": "Stars",
-                "value": "172K",
+                "value": "172.1K",
                 "note": "社区关注"
               },
               {
@@ -699,10 +714,10 @@
         "visualUrl": "https://opengraph.githubassets.com/20260716/moeru-ai/airi",
         "url": "https://github.com/moeru-ai/airi",
         "description": "💖🧸 Self hosted, you-owned Grok Companion, a container of souls of waifu, cyber livings to bring them into our worlds, wishing to achieve Neuro-sama's altitude. Capable of realtime voice chat, Minecraft, Factorio playing. Web / macOS / Windows supported.",
-        "stars": 42419,
+        "stars": 42457,
         "starsToday": 144,
-        "forks": 4242,
-        "openIssues": 185,
+        "forks": 4246,
+        "openIssues": 184,
         "language": "TypeScript",
         "topics": [
           "ai-companion",
@@ -742,7 +757,7 @@
         "method": "codex-research-refresh",
         "category": "自托管 AI 伴侣 / 实时虚拟角色运行时",
         "oneLiner": "💖🧸 Self hosted, you-owned Grok Companion, a container of souls of waifu, cyber livings to bring them into our worlds, wishing to achieve Neuro-sama's altitude. Capable of realtime voice chat, Minecraft, Factorio playing. Web / macOS / Windows supported.；关键看 Web/macOS/Windows 客户端、实时语音聊天、角色状态、模型/工具连接、Live2D/VRM 表现层、Minecraft/Factorio 等环境交互和本地可控部署组合 是否能被小范围验证。",
-        "whyItMatters": "moeru-ai/airi 处在 成熟热门项目 区间：42.4K stars / 4.2K forks，维护非常活跃。README 把重点放在「Recent DevLogs & Stories」，适合判断它是否能在 产品界面交付、组件复用或交互体验一致性 上形成真实工程收益。 这次更新更值得关注的是其可迁移机制：Web/macOS/Windows 客户端、实时语音聊天、角色状态、模型/工具连接、Live2D/VRM 表现层、Minecraft/Factorio 等环境交互和本地可控部署组合 能否被拆成小样本验证，而不是把项目整体搬进生产。",
+        "whyItMatters": "moeru-ai/airi 处在 成熟热门项目 区间：42.5K stars / 4.2K forks，维护非常活跃。README 把重点放在「Recent DevLogs & Stories」，适合判断它是否能在 产品界面交付、组件复用或交互体验一致性 上形成真实工程收益。 这次更新更值得关注的是其可迁移机制：Web/macOS/Windows 客户端、实时语音聊天、角色状态、模型/工具连接、Live2D/VRM 表现层、Minecraft/Factorio 等环境交互和本地可控部署组合 能否被拆成小样本验证，而不是把项目整体搬进生产。",
         "engineeringRead": "TypeScript · Node 包/前端工程。建议按“入口示例 -> 数据/配置 -> 失败处理 -> CI/release -> issue 反例”的顺序读；重点回答 它解决的是「创作者、AI VTuber 和虚拟角色团队想把实时语音、Live2D/VRM、记忆、游戏控制和多端客户端整合到可自托管角色系统里」的主矛盾，还是只会给现有流程增加新的维护面？",
         "architectureSignals": [
           "架构机制：Web/macOS/Windows 客户端、实时语音聊天、角色状态、模型/工具连接、Live2D/VRM 表现层、Minecraft/Factorio 等环境交互和本地可控部署组合；阅读时把 TypeScript 代码入口、数据/配置形态、自动化脚本和边界条件连起来看，而不是只看 README 的安装示例。",
@@ -798,7 +813,7 @@
         },
         "diagram": {
           "title": "airi 工业级采用图解",
-          "caption": "自托管 AI 伴侣 / 实时虚拟角色运行时 · TypeScript · 42.4K stars",
+          "caption": "自托管 AI 伴侣 / 实时虚拟角色运行时 · TypeScript · 42.5K stars",
           "summary": "用 Web/macOS/Windows 客户端、实时语音聊天、角色状态、模型/工具连接、Live2D/VRM 表现层、Minecraft/Factorio 等环境交互和本地可控部署组合 解决 创作者、AI VTuber 和虚拟角色团队想把实时语音、Live2D/VRM、记忆、游戏控制和多端客户端整合到可自托管角色系统里，先经由 先用公开角色和低风险频道做离线/私域 demo，验证延迟、打断、记忆、内容安全、模型费用和人工接管，不接入真实粉丝私聊或付费服务 验证 端到端语音延迟、轮次完成率、角色一致性、记忆错误率、内容安全拦截率、崩溃率、模型成本和人工接管次数，再决定是否扩大。",
           "nodes": [
             {
@@ -835,7 +850,7 @@
             "metrics": [
               {
                 "label": "Stars",
-                "value": "42.4K",
+                "value": "42.5K",
                 "note": "社区关注"
               },
               {
@@ -845,7 +860,7 @@
               },
               {
                 "label": "Issues",
-                "value": "185",
+                "value": "184",
                 "note": "维护压力"
               },
               {
@@ -928,10 +943,10 @@
         "visualUrl": "https://opengraph.githubassets.com/20260716/Dicklesworthstone/destructive_command_guard",
         "url": "https://github.com/Dicklesworthstone/destructive_command_guard",
         "description": "The Destructive Command Guard (dcg) is for blocking dangerous git and shell commands from being executed by agents.",
-        "stars": 4667,
+        "stars": 4717,
         "starsToday": 497,
-        "forks": 176,
-        "openIssues": 6,
+        "forks": 178,
+        "openIssues": 9,
         "language": "Rust",
         "topics": [
           "ai-agents",
@@ -942,7 +957,7 @@
           "safety"
         ],
         "license": "NOASSERTION",
-        "pushedAt": "2026-07-15T07:41:25Z",
+        "pushedAt": "2026-07-15T19:55:42Z",
         "createdAt": "2026-01-07T22:27:34Z",
         "languages": {
           "Rust": 6978417,
@@ -956,7 +971,7 @@
         "method": "codex-research-refresh",
         "category": "Agent 命令安全护栏 / 本地 shell 防误操作",
         "oneLiner": "The Destructive Command Guard (dcg) is for blocking dangerous git and shell commands from being executed by agents.；关键看 Rust CLI/守护检查、危险命令模式识别、git/shell 操作拦截、策略配置和 agent 前置执行路径，把本地命令风险转成可审计 gate 是否能被小范围验证。",
-        "whyItMatters": "Dicklesworthstone/destructive_command_guard 值得看，是因为 AI 项目真正的分水岭已经从“能跑 demo”转向“能被治理、能接工具、能失败恢复”。当前 4.7K stars / 176 forks，维护非常活跃，足够进入 Agent 工程雷达。 这次更新更值得关注的是其可迁移机制：Rust CLI/守护检查、危险命令模式识别、git/shell 操作拦截、策略配置和 agent 前置执行路径，把本地命令风险转成可审计 gate 能否被拆成小样本验证，而不是把项目整体搬进生产。",
+        "whyItMatters": "Dicklesworthstone/destructive_command_guard 值得看，是因为 AI 项目真正的分水岭已经从“能跑 demo”转向“能被治理、能接工具、能失败恢复”。当前 4.7K stars / 178 forks，维护非常活跃，足够进入 Agent 工程雷达。 这次更新更值得关注的是其可迁移机制：Rust CLI/守护检查、危险命令模式识别、git/shell 操作拦截、策略配置和 agent 前置执行路径，把本地命令风险转成可审计 gate 能否被拆成小样本验证，而不是把项目整体搬进生产。",
         "engineeringRead": "Rust · 容器化部署。建议按“入口示例 -> 数据/配置 -> 失败处理 -> CI/release -> issue 反例”的顺序读；重点回答 它解决的是「Coding agent 能执行 shell 后，误删文件、错误 git reset、危险 rm/chmod/chown 或未确认的破坏性命令会把一次自动化任务变成不可恢复事故」的主矛盾，还是只会给现有流程增加新的维护面？",
         "architectureSignals": [
           "架构机制：Rust CLI/守护检查、危险命令模式识别、git/shell 操作拦截、策略配置和 agent 前置执行路径，把本地命令风险转成可审计 gate；阅读时把 Rust 代码入口、数据/配置形态、自动化脚本和边界条件连起来看，而不是只看 README 的安装示例。",
@@ -1054,12 +1069,12 @@
               },
               {
                 "label": "Forks",
-                "value": "176",
+                "value": "178",
                 "note": "二次采用"
               },
               {
                 "label": "Issues",
-                "value": "6",
+                "value": "9",
                 "note": "维护压力"
               },
               {
@@ -1142,10 +1157,10 @@
         "visualUrl": "https://opengraph.githubassets.com/20260716/HKUDS/Vibe-Trading",
         "url": "https://github.com/HKUDS/Vibe-Trading",
         "description": "\"Vibe-Trading: Your Personal Trading Agent\"",
-        "stars": 23538,
+        "stars": 23598,
         "starsToday": 924,
-        "forks": 4021,
-        "openIssues": 16,
+        "forks": 4029,
+        "openIssues": 19,
         "language": "Python",
         "topics": [
           "ai-agent",
@@ -1177,7 +1192,7 @@
         "method": "codex-research-refresh",
         "category": "交易研究 Agent / 投资决策辅助",
         "oneLiner": "\"Vibe-Trading: Your Personal Trading Agent\"；关键看 行情/新闻数据接入、策略 prompt、技术指标计算、Agent 推理、交易计划输出、回测/复盘和风险提示 是否能被小范围验证。",
-        "whyItMatters": "HKUDS/Vibe-Trading 值得看，是因为 AI 项目真正的分水岭已经从“能跑 demo”转向“能被治理、能接工具、能失败恢复”。当前 23.5K stars / 4K forks，维护非常活跃，足够进入 Agent 工程雷达。 这次更新更值得关注的是其可迁移机制：行情/新闻数据接入、策略 prompt、技术指标计算、Agent 推理、交易计划输出、回测/复盘和风险提示 能否被拆成小样本验证，而不是把项目整体搬进生产。",
+        "whyItMatters": "HKUDS/Vibe-Trading 值得看，是因为 AI 项目真正的分水岭已经从“能跑 demo”转向“能被治理、能接工具、能失败恢复”。当前 23.6K stars / 4K forks，维护非常活跃，足够进入 Agent 工程雷达。 这次更新更值得关注的是其可迁移机制：行情/新闻数据接入、策略 prompt、技术指标计算、Agent 推理、交易计划输出、回测/复盘和风险提示 能否被拆成小样本验证，而不是把项目整体搬进生产。",
         "engineeringRead": "Python · 容器化部署。建议按“入口示例 -> 数据/配置 -> 失败处理 -> CI/release -> issue 反例”的顺序读；重点回答 它解决的是「个人交易者和投研团队想把行情、新闻、技术指标、策略解释和执行建议串成可对话流程，但容易把模型输出误当成确定性交易信号」的主矛盾，还是只会给现有流程增加新的维护面？",
         "architectureSignals": [
           "架构机制：行情/新闻数据接入、策略 prompt、技术指标计算、Agent 推理、交易计划输出、回测/复盘和风险提示；阅读时把 Python 代码入口、数据/配置形态、自动化脚本和边界条件连起来看，而不是只看 README 的安装示例。",
@@ -1233,7 +1248,7 @@
         },
         "diagram": {
           "title": "Vibe-Trading 工业级采用图解",
-          "caption": "交易研究 Agent / 投资决策辅助 · Python · 23.5K stars",
+          "caption": "交易研究 Agent / 投资决策辅助 · Python · 23.6K stars",
           "summary": "用 行情/新闻数据接入、策略 prompt、技术指标计算、Agent 推理、交易计划输出、回测/复盘和风险提示 解决 个人交易者和投研团队想把行情、新闻、技术指标、策略解释和执行建议串成可对话流程，但容易把模型输出误当成确定性交易信号，先经由 只做历史回放、模拟盘或观察名单分析，不接真实下单，不把单次模型建议作为交易指令 验证 数据延迟、来源可追溯率、回测一致性、建议命中/误报、最大回撤、人工覆写率，再决定是否扩大。",
           "nodes": [
             {
@@ -1270,7 +1285,7 @@
             "metrics": [
               {
                 "label": "Stars",
-                "value": "23.5K",
+                "value": "23.6K",
                 "note": "社区关注"
               },
               {
@@ -1280,7 +1295,7 @@
               },
               {
                 "label": "Issues",
-                "value": "16",
+                "value": "19",
                 "note": "维护压力"
               },
               {
@@ -1363,9 +1378,9 @@
         "visualUrl": "https://opengraph.githubassets.com/20260716/openinterpreter/openinterpreter",
         "url": "https://github.com/openinterpreter/openinterpreter",
         "description": "A coding agent for low-cost models",
-        "stars": 65309,
+        "stars": 65388,
         "starsToday": 345,
-        "forks": 5647,
+        "forks": 5650,
         "openIssues": 274,
         "language": "Rust",
         "topics": [
@@ -1377,7 +1392,7 @@
           "rust"
         ],
         "license": "Apache-2.0",
-        "pushedAt": "2026-07-15T17:50:16Z",
+        "pushedAt": "2026-07-15T19:19:47Z",
         "createdAt": "2023-07-14T07:10:44Z",
         "languages": {
           "Rust": 41590086,
@@ -1402,7 +1417,7 @@
         "method": "codex-research-refresh",
         "category": "低成本模型 Coding Agent / 本地解释器执行层",
         "oneLiner": "A coding agent for low-cost models；关键看 Rust/终端 agent、ACP/模型适配、命令执行、文件编辑、上下文压缩和低成本模型优化，把本地开发任务封装成可交互执行循环 是否能被小范围验证。",
-        "whyItMatters": "openinterpreter/openinterpreter 值得看，是因为 AI 项目真正的分水岭已经从“能跑 demo”转向“能被治理、能接工具、能失败恢复”。当前 65.3K stars / 5.6K forks，维护非常活跃，足够进入 Agent 工程雷达。 这次更新更值得关注的是其可迁移机制：Rust/终端 agent、ACP/模型适配、命令执行、文件编辑、上下文压缩和低成本模型优化，把本地开发任务封装成可交互执行循环 能否被拆成小样本验证，而不是把项目整体搬进生产。",
+        "whyItMatters": "openinterpreter/openinterpreter 值得看，是因为 AI 项目真正的分水岭已经从“能跑 demo”转向“能被治理、能接工具、能失败恢复”。当前 65.4K stars / 5.7K forks，维护非常活跃，足够进入 Agent 工程雷达。 这次更新更值得关注的是其可迁移机制：Rust/终端 agent、ACP/模型适配、命令执行、文件编辑、上下文压缩和低成本模型优化，把本地开发任务封装成可交互执行循环 能否被拆成小样本验证，而不是把项目整体搬进生产。",
         "engineeringRead": "Rust · 阅读型或源码集成。建议按“入口示例 -> 数据/配置 -> 失败处理 -> CI/release -> issue 反例”的顺序读；重点回答 它解决的是「团队希望用 DeepSeek、Kimi、Qwen 等低成本模型完成代码修改和终端任务，但普通聊天式助手缺少文件、命令、上下文和失败恢复的执行框架」的主矛盾，还是只会给现有流程增加新的维护面？",
         "architectureSignals": [
           "架构机制：Rust/终端 agent、ACP/模型适配、命令执行、文件编辑、上下文压缩和低成本模型优化，把本地开发任务封装成可交互执行循环；阅读时把 Rust 代码入口、数据/配置形态、自动化脚本和边界条件连起来看，而不是只看 README 的安装示例。",
@@ -1458,7 +1473,7 @@
         },
         "diagram": {
           "title": "openinterpreter 工业级采用图解",
-          "caption": "低成本模型 Coding Agent / 本地解释器执行层 · Rust · 65.3K stars",
+          "caption": "低成本模型 Coding Agent / 本地解释器执行层 · Rust · 65.4K stars",
           "summary": "用 Rust/终端 agent、ACP/模型适配、命令执行、文件编辑、上下文压缩和低成本模型优化，把本地开发任务封装成可交互执行循环 解决 团队希望用 DeepSeek、Kimi、Qwen 等低成本模型完成代码修改和终端任务，但普通聊天式助手缺少文件、命令、上下文和失败恢复的执行框架，先经由 先在只读问答、文档修订或测试生成任务上对比低成本模型与高端模型，禁止生产凭据和破坏性 shell 操作 验证 任务完成率、人工接管率、单任务成本、P95 延迟、错误补丁率、命令失败恢复和上下文遗漏次数，再决定是否扩大。",
           "nodes": [
             {
@@ -1495,12 +1510,12 @@
             "metrics": [
               {
                 "label": "Stars",
-                "value": "65.3K",
+                "value": "65.4K",
                 "note": "社区关注"
               },
               {
                 "label": "Forks",
-                "value": "5.6K",
+                "value": "5.7K",
                 "note": "二次采用"
               },
               {
@@ -1588,9 +1603,9 @@
         "visualUrl": "https://opengraph.githubassets.com/20260716/HKUDS/DeepTutor",
         "url": "https://github.com/HKUDS/DeepTutor",
         "description": "DeepTutor: Lifelong Personalized Tutoring. https://deeptutor.info/.",
-        "stars": 26145,
+        "stars": 26198,
         "starsToday": 128,
-        "forks": 3557,
+        "forks": 3559,
         "openIssues": 58,
         "language": "Python",
         "topics": [
@@ -1621,7 +1636,7 @@
         "method": "codex-research-refresh",
         "category": "终身个性化 AI Tutor / 多 Agent 教学系统",
         "oneLiner": "DeepTutor: Lifelong Personalized Tutoring. https://deeptutor.info/.；关键看 多 Agent 教学编排、RAG/知识库、学习者画像、CLI/交互工具、长期记忆和个性化反馈循环，把 tutoring 从问答推进到持续学习路径 是否能被小范围验证。",
-        "whyItMatters": "HKUDS/DeepTutor 值得看，是因为 AI 项目真正的分水岭已经从“能跑 demo”转向“能被治理、能接工具、能失败恢复”。当前 26.1K stars / 3.6K forks，近期仍在活跃迭代，足够进入 Agent 工程雷达。 这次更新更值得关注的是其可迁移机制：多 Agent 教学编排、RAG/知识库、学习者画像、CLI/交互工具、长期记忆和个性化反馈循环，把 tutoring 从问答推进到持续学习路径 能否被拆成小样本验证，而不是把项目整体搬进生产。",
+        "whyItMatters": "HKUDS/DeepTutor 值得看，是因为 AI 项目真正的分水岭已经从“能跑 demo”转向“能被治理、能接工具、能失败恢复”。当前 26.2K stars / 3.6K forks，近期仍在活跃迭代，足够进入 Agent 工程雷达。 这次更新更值得关注的是其可迁移机制：多 Agent 教学编排、RAG/知识库、学习者画像、CLI/交互工具、长期记忆和个性化反馈循环，把 tutoring 从问答推进到持续学习路径 能否被拆成小样本验证，而不是把项目整体搬进生产。",
         "engineeringRead": "Python · 容器化部署。建议按“入口示例 -> 数据/配置 -> 失败处理 -> CI/release -> issue 反例”的顺序读；重点回答 它解决的是「学习产品需要长期跟踪学习者知识状态、生成个性化解释和练习，但通用聊天机器人缺少课程目标、记忆、评估和教学路径控制」的主矛盾，还是只会给现有流程增加新的维护面？",
         "architectureSignals": [
           "架构机制：多 Agent 教学编排、RAG/知识库、学习者画像、CLI/交互工具、长期记忆和个性化反馈循环，把 tutoring 从问答推进到持续学习路径；阅读时把 Python 代码入口、数据/配置形态、自动化脚本和边界条件连起来看，而不是只看 README 的安装示例。",
@@ -1677,7 +1692,7 @@
         },
         "diagram": {
           "title": "DeepTutor 工业级采用图解",
-          "caption": "终身个性化 AI Tutor / 多 Agent 教学系统 · Python · 26.1K stars",
+          "caption": "终身个性化 AI Tutor / 多 Agent 教学系统 · Python · 26.2K stars",
           "summary": "用 多 Agent 教学编排、RAG/知识库、学习者画像、CLI/交互工具、长期记忆和个性化反馈循环，把 tutoring 从问答推进到持续学习路径 解决 学习产品需要长期跟踪学习者知识状态、生成个性化解释和练习，但通用聊天机器人缺少课程目标、记忆、评估和教学路径控制，先经由 先在单门课程或内部培训材料上做只读辅导试点，保留教师/专家复核，不让系统单独决定成绩或学习诊断 验证 学习完成率、练习正确率、知识点覆盖、解释满意度、幻觉率、教师修正率和长期记忆准确性，再决定是否扩大。",
           "nodes": [
             {
@@ -1714,7 +1729,7 @@
             "metrics": [
               {
                 "label": "Stars",
-                "value": "26.1K",
+                "value": "26.2K",
                 "note": "社区关注"
               },
               {
@@ -1807,9 +1822,9 @@
         "visualUrl": "https://opengraph.githubassets.com/20260716/HenryNdubuaku/maths-cs-ai-compendium",
         "url": "https://github.com/HenryNdubuaku/maths-cs-ai-compendium",
         "description": "Become a cracked AI/ML Research Engineer",
-        "stars": 5774,
+        "stars": 5831,
         "starsToday": 729,
-        "forks": 738,
+        "forks": 739,
         "openIssues": 7,
         "language": "TypeScript",
         "topics": [
@@ -1845,7 +1860,7 @@
         "method": "codex-research-refresh",
         "category": "AI/ML 研究工程教材 / 知识体系工程",
         "oneLiner": "Become a cracked AI/ML Research Engineer；关键看 开源在线教材、章节化知识结构、数学/CS/AI 贯通叙事、现实语境解释和持续更新的学习路线，把个人笔记转成可浏览知识资产 是否能被小范围验证。",
-        "whyItMatters": "HenryNdubuaku/maths-cs-ai-compendium 值得看，是因为 AI 项目真正的分水岭已经从“能跑 demo”转向“能被治理、能接工具、能失败恢复”。当前 5.8K stars / 738 forks，维护非常活跃，足够进入 Agent 工程雷达。 这次更新更值得关注的是其可迁移机制：开源在线教材、章节化知识结构、数学/CS/AI 贯通叙事、现实语境解释和持续更新的学习路线，把个人笔记转成可浏览知识资产 能否被拆成小样本验证，而不是把项目整体搬进生产。",
+        "whyItMatters": "HenryNdubuaku/maths-cs-ai-compendium 值得看，是因为 AI 项目真正的分水岭已经从“能跑 demo”转向“能被治理、能接工具、能失败恢复”。当前 5.8K stars / 739 forks，维护非常活跃，足够进入 Agent 工程雷达。 这次更新更值得关注的是其可迁移机制：开源在线教材、章节化知识结构、数学/CS/AI 贯通叙事、现实语境解释和持续更新的学习路线，把个人笔记转成可浏览知识资产 能否被拆成小样本验证，而不是把项目整体搬进生产。",
         "engineeringRead": "TypeScript · 容器化部署。建议按“入口示例 -> 数据/配置 -> 失败处理 -> CI/release -> issue 反例”的顺序读；重点回答 它解决的是「工程师转向 AI/ML 研究时，数学、计算机科学和现代 AI 材料分散且符号密集，难以建立从直觉到实现的连续路径」的主矛盾，还是只会给现有流程增加新的维护面？",
         "architectureSignals": [
           "架构机制：开源在线教材、章节化知识结构、数学/CS/AI 贯通叙事、现实语境解释和持续更新的学习路线，把个人笔记转成可浏览知识资产；阅读时把 TypeScript 代码入口、数据/配置形态、自动化脚本和边界条件连起来看，而不是只看 README 的安装示例。",
@@ -1943,7 +1958,7 @@
               },
               {
                 "label": "Forks",
-                "value": "738",
+                "value": "739",
                 "note": "二次采用"
               },
               {
@@ -2010,11 +2025,11 @@
         },
         "maturity": {
           "community": 83,
-          "maintenance": 100,
-          "production": 89,
+          "maintenance": 97,
+          "production": 88,
           "complexity": 55
         },
-        "score": 100
+        "score": 99
       },
       "evidence": {
         "readmeExcerpt": "Maths, CS & AI Compendium <img src=\"images/logo.png\" alt=\"Logo\" style=\"border radius: 30px; width: 100%;\" Read online : henryndubuaku.github.io/maths cs ai compendium Overview Most textbooks bury good ideas under dense notation, skip the intuition, assume you already know half the material, and quickly get outdated in fast moving fields like AI. This is an open, unconventional textbook covering maths, computing, and artificial intelligence from the ground up. Written for curious practitioners looking to deeply understand the stuff, not just survive an exam/interview. Background Over the past years working in AI/ML, I filled notebooks with intuition first, real world context, no hand waving explanations of maths, computing and AI concepts. In 2025, a few friends used these notes to prep for interviews at DeepMind, OpenAI, Nvidia etc. They all got in and currently perform well in their rol...",
@@ -2031,9 +2046,9 @@
         "visualUrl": "https://opengraph.githubassets.com/20260716/Shubhamsaboo/awesome-llm-apps",
         "url": "https://github.com/Shubhamsaboo/awesome-llm-apps",
         "description": "100+ AI Agent & RAG apps you can actually run — clone, customize, ship.",
-        "stars": 121741,
+        "stars": 121818,
         "starsToday": 1278,
-        "forks": 17975,
+        "forks": 17985,
         "openIssues": 21,
         "language": "Python",
         "topics": [
@@ -2061,7 +2076,7 @@
         "method": "codex-research-refresh",
         "category": "LLM App 样例目录 / Agent 与 RAG 原型库",
         "oneLiner": "100+ AI Agent & RAG apps you can actually run — clone, customize, ship.；关键看 100+ 可运行 AI Agent/RAG 应用、分类目录、示例代码、模型/框架适配和 clone-customize-ship 路径，把应用模式沉淀为原型库 是否能被小范围验证。",
-        "whyItMatters": "Shubhamsaboo/awesome-llm-apps 值得看，是因为 AI 项目真正的分水岭已经从“能跑 demo”转向“能被治理、能接工具、能失败恢复”。当前 121.7K stars / 18K forks，维护非常活跃，足够进入 Agent 工程雷达。 这次更新更值得关注的是其可迁移机制：100+ 可运行 AI Agent/RAG 应用、分类目录、示例代码、模型/框架适配和 clone-customize-ship 路径，把应用模式沉淀为原型库 能否被拆成小样本验证，而不是把项目整体搬进生产。",
+        "whyItMatters": "Shubhamsaboo/awesome-llm-apps 值得看，是因为 AI 项目真正的分水岭已经从“能跑 demo”转向“能被治理、能接工具、能失败恢复”。当前 121.8K stars / 18K forks，维护非常活跃，足够进入 Agent 工程雷达。 这次更新更值得关注的是其可迁移机制：100+ 可运行 AI Agent/RAG 应用、分类目录、示例代码、模型/框架适配和 clone-customize-ship 路径，把应用模式沉淀为原型库 能否被拆成小样本验证，而不是把项目整体搬进生产。",
         "engineeringRead": "Python · Python 包/脚本。建议按“入口示例 -> 数据/配置 -> 失败处理 -> CI/release -> issue 反例”的顺序读；重点回答 它解决的是「团队想快速理解 Agent、RAG、多模态和工具调用能落到哪些应用，但从零找样例、跑依赖、判断质量很耗时」的主矛盾，还是只会给现有流程增加新的维护面？",
         "architectureSignals": [
           "架构机制：100+ 可运行 AI Agent/RAG 应用、分类目录、示例代码、模型/框架适配和 clone-customize-ship 路径，把应用模式沉淀为原型库；阅读时把 Python 代码入口、数据/配置形态、自动化脚本和边界条件连起来看，而不是只看 README 的安装示例。",
@@ -2117,7 +2132,7 @@
         },
         "diagram": {
           "title": "awesome-llm-apps 工业级采用图解",
-          "caption": "LLM App 样例目录 / Agent 与 RAG 原型库 · Python · 121.7K stars",
+          "caption": "LLM App 样例目录 / Agent 与 RAG 原型库 · Python · 121.8K stars",
           "summary": "用 100+ 可运行 AI Agent/RAG 应用、分类目录、示例代码、模型/框架适配和 clone-customize-ship 路径，把应用模式沉淀为原型库 解决 团队想快速理解 Agent、RAG、多模态和工具调用能落到哪些应用，但从零找样例、跑依赖、判断质量很耗时，先经由 先挑 3 个与业务相近的样例在沙箱运行，只复制架构模式和评测清单，不直接复制凭据、prompt 或第三方数据接入 验证 样例可运行率、依赖安装耗时、模式复用率、原型到生产改造成本、模型费用和安全审查缺陷，再决定是否扩大。",
           "nodes": [
             {
@@ -2154,7 +2169,7 @@
             "metrics": [
               {
                 "label": "Stars",
-                "value": "121.7K",
+                "value": "121.8K",
                 "note": "社区关注"
               },
               {
@@ -2226,11 +2241,11 @@
         },
         "maturity": {
           "community": 100,
-          "maintenance": 97,
-          "production": 95,
+          "maintenance": 94,
+          "production": 94,
           "complexity": 55
         },
-        "score": 99
+        "score": 98
       },
       "evidence": {
         "readmeExcerpt": "<p align=\"center\" <a href=\"http://www.theunwindai.com\" <img src=\"docs/banner/unwind black.png\" width=\"900px\" alt=\"Unwind AI\" </a </p <div align=\"center\" Awesome LLM Apps 100+ open source AI agents, agent skills, and RAG apps. Hand built, tested end to end, Apache 2.0. Clone it, ship it, sell it 100% free and open source Works with Claude, Gemini, GPT, DeepSeek, Llama, Qwen and other open source models. Step by step tutorials on Unwind AI · Quick start · Browse all templates <a href=\"https://trendshift.io/repositories/9876\" target=\" blank\" <img src=\"https://trendshift.io/api/badge/repositories/9876\" width=\"220\" alt=\"Featured on Trendshift as the 1 repository of the day\" </a <br </div <table <tr <td width=\"33.3%\" align=\"center\" <a href=\"agent skills/project graveyard/\" <img src=\"docs/gallery/project graveyard.png\" alt=\"Project Graveyard: an agent that autopsies your dead side projects\" </a...",
@@ -2247,10 +2262,10 @@
         "visualUrl": "https://opengraph.githubassets.com/20260716/coreyhaines31/marketingskills",
         "url": "https://github.com/coreyhaines31/marketingskills",
         "description": "Marketing skills for Claude Code and AI agents. CRO, copywriting, SEO, analytics, and growth engineering.",
-        "stars": 39582,
+        "stars": 39664,
         "starsToday": 390,
-        "forks": 6305,
-        "openIssues": 60,
+        "forks": 6310,
+        "openIssues": 59,
         "language": "JavaScript",
         "topics": [
           "claude",
@@ -2270,7 +2285,7 @@
         "method": "codex-research-refresh",
         "category": "营销 Agent 技能库 / 增长工作流知识资产",
         "oneLiner": "Marketing skills for Claude Code and AI agents. CRO, copywriting, SEO, analytics, and growth engineering.；关键看 按营销任务组织的 Claude Code / AI agent skills、rubric、文案/SEO/分析流程和可复制工作流，把增长经验转成版本化技能资产 是否能被小范围验证。",
-        "whyItMatters": "coreyhaines31/marketingskills 值得看，是因为 AI 项目真正的分水岭已经从“能跑 demo”转向“能被治理、能接工具、能失败恢复”。当前 39.6K stars / 6.3K forks，维护非常活跃，足够进入 Agent 工程雷达。 这次更新更值得关注的是其可迁移机制：按营销任务组织的 Claude Code / AI agent skills、rubric、文案/SEO/分析流程和可复制工作流，把增长经验转成版本化技能资产 能否被拆成小样本验证，而不是把项目整体搬进生产。",
+        "whyItMatters": "coreyhaines31/marketingskills 值得看，是因为 AI 项目真正的分水岭已经从“能跑 demo”转向“能被治理、能接工具、能失败恢复”。当前 39.7K stars / 6.3K forks，维护非常活跃，足够进入 Agent 工程雷达。 这次更新更值得关注的是其可迁移机制：按营销任务组织的 Claude Code / AI agent skills、rubric、文案/SEO/分析流程和可复制工作流，把增长经验转成版本化技能资产 能否被拆成小样本验证，而不是把项目整体搬进生产。",
         "engineeringRead": "JavaScript · 阅读型或源码集成。建议按“入口示例 -> 数据/配置 -> 失败处理 -> CI/release -> issue 反例”的顺序读；重点回答 它解决的是「增长和营销团队想让 AI 处理 CRO、copywriting、SEO、analytics 和 growth engineering，但缺少统一输入、品牌约束和效果复盘模板」的主矛盾，还是只会给现有流程增加新的维护面？",
         "architectureSignals": [
           "架构机制：按营销任务组织的 Claude Code / AI agent skills、rubric、文案/SEO/分析流程和可复制工作流，把增长经验转成版本化技能资产；阅读时把 JavaScript 代码入口、数据/配置形态、自动化脚本和边界条件连起来看，而不是只看 README 的安装示例。",
@@ -2326,7 +2341,7 @@
         },
         "diagram": {
           "title": "marketingskills 工业级采用图解",
-          "caption": "营销 Agent 技能库 / 增长工作流知识资产 · JavaScript · 39.6K stars",
+          "caption": "营销 Agent 技能库 / 增长工作流知识资产 · JavaScript · 39.7K stars",
           "summary": "用 按营销任务组织的 Claude Code / AI agent skills、rubric、文案/SEO/分析流程和可复制工作流，把增长经验转成版本化技能资产 解决 增长和营销团队想让 AI 处理 CRO、copywriting、SEO、analytics 和 growth engineering，但缺少统一输入、品牌约束和效果复盘模板，先经由 先选一个低风险 landing page、SEO brief 或 analytics audit，让技能产出草稿和检查表，由营销 owner 审核后才进入发布 验证 草稿采纳率、文案修改轮次、SEO issue 命中率、转化实验产出数、品牌合规缺陷和人工审核耗时，再决定是否扩大。",
           "nodes": [
             {
@@ -2363,7 +2378,7 @@
             "metrics": [
               {
                 "label": "Stars",
-                "value": "39.6K",
+                "value": "39.7K",
                 "note": "社区关注"
               },
               {
@@ -2373,7 +2388,7 @@
               },
               {
                 "label": "Issues",
-                "value": "60",
+                "value": "59",
                 "note": "维护压力"
               },
               {
@@ -2456,9 +2471,9 @@
         "visualUrl": "https://opengraph.githubassets.com/20260716/YimMenu/YimMenuV2",
         "url": "https://github.com/YimMenu/YimMenuV2",
         "description": "Experimental menu for GTA 5: Enhanced",
-        "stars": 1390,
+        "stars": 1399,
         "starsToday": 21,
-        "forks": 351,
+        "forks": 353,
         "openIssues": 238,
         "language": "C++",
         "topics": [],
@@ -2475,7 +2490,7 @@
         "method": "codex-research-refresh",
         "category": "游戏 Mod / 逆向工程风险样本",
         "oneLiner": "Experimental menu for GTA 5: Enhanced；关键看 GTA V Enhanced 注入式菜单、FSL/version.dll、外部 injector、BattlEye 禁用参数、运行时 Hook 和本地菜单交互组合 是否能被小范围验证。",
-        "whyItMatters": "YimMenu/YimMenuV2 的热度来自“可持续维护的公共资料面”：1.4K stars / 351 forks，维护非常活跃。README 把重点放在「YimMenuV2」，说明它的价值更多在分类、治理和更新节奏，而不是某个单点技术实现。 这次更新更值得关注的是其可迁移机制：GTA V Enhanced 注入式菜单、FSL/version.dll、外部 injector、BattlEye 禁用参数、运行时 Hook 和本地菜单交互组合 能否被拆成小样本验证，而不是把项目整体搬进生产。",
+        "whyItMatters": "YimMenu/YimMenuV2 的热度来自“可持续维护的公共资料面”：1.4K stars / 353 forks，维护非常活跃。README 把重点放在「YimMenuV2」，说明它的价值更多在分类、治理和更新节奏，而不是某个单点技术实现。 这次更新更值得关注的是其可迁移机制：GTA V Enhanced 注入式菜单、FSL/version.dll、外部 injector、BattlEye 禁用参数、运行时 Hook 和本地菜单交互组合 能否被拆成小样本验证，而不是把项目整体搬进生产。",
         "engineeringRead": "C++ · 阅读型或源码集成。建议按“入口示例 -> 数据/配置 -> 失败处理 -> CI/release -> issue 反例”的顺序读；重点回答 它解决的是「游戏 Mod 和逆向工程社区需要实验性菜单验证客户端行为，但这类工具经常触碰反作弊、服务条款、账号安全和多人游戏公平性边界」的主矛盾，还是只会给现有流程增加新的维护面？",
         "architectureSignals": [
           "架构机制：GTA V Enhanced 注入式菜单、FSL/version.dll、外部 injector、BattlEye 禁用参数、运行时 Hook 和本地菜单交互组合；阅读时把 C++ 代码入口、数据/配置形态、自动化脚本和边界条件连起来看，而不是只看 README 的安装示例。",
@@ -2573,7 +2588,7 @@
               },
               {
                 "label": "Forks",
-                "value": "351",
+                "value": "353",
                 "note": "二次采用"
               },
               {
@@ -4505,271 +4520,6 @@
     ],
     "items": [
       {
-        "source": "OpenAI 官方",
-        "sourceDetail": "OpenAI Product / Models",
-        "domain": "openai.com",
-        "title": "GPT-5.6: Frontier intelligence that scales with your ambition",
-        "url": "https://openai.com/index/gpt-5-6/",
-        "publishedAt": "2026-07-09T00:00:00Z",
-        "summary": "OpenAI 发布 GPT-5.6 Sol/Terra/Luna，强调更强的知识工作、浏览、computer use、artifact 生成、Programmatic Tool Calling、多 Agent beta、显式缓存断点和更可预测的价格/缓存策略。信号是前沿模型竞争正在从单次推理分数转向长任务代理、可编辑交付物、工具编排和成本可控性；动作是用真实报告、表格、代码修复、浏览任务和 ZDR/缓存约束做回放评测。",
-        "imageUrl": "https://www.google.com/s2/favicons?domain=openai.com&sz=128",
-        "priority": 7,
-        "rank": 1,
-        "signal": "模型产品化信号：GPT-5.6 把前沿推理、浏览/computer use、artifact 生成、缓存断点和多 Agent 能力打包成面向知识工作的生产套件，竞争焦点从单次 benchmark 转到可交付任务。",
-        "interpretation": {
-          "signal": "模型产品化信号：GPT-5.6 把前沿推理、浏览/computer use、artifact 生成、缓存断点和多 Agent 能力打包成面向知识工作的生产套件，竞争焦点从单次 benchmark 转到可交付任务。",
-          "impact": "对企业团队的直接影响是评测口径要变：不能只看推理分数，要把浏览、文件修改、代码修复、长任务恢复、缓存成本、ZDR/合规限制和人工接管放进同一回放集。",
-          "action": "建议建立 10-20 个真实知识工作回放任务：报告、表格、代码修复、网页调查和跨工具执行分别记录完成率、人工修改、成本、延迟、权限触发和失败样本。"
-        },
-        "impact": "对企业团队的直接影响是评测口径要变：不能只看推理分数，要把浏览、文件修改、代码修复、长任务恢复、缓存成本、ZDR/合规限制和人工接管放进同一回放集。",
-        "action": "建议建立 10-20 个真实知识工作回放任务：报告、表格、代码修复、网页调查和跨工具执行分别记录完成率、人工修改、成本、延迟、权限触发和失败样本。",
-        "tags": [
-          "Agent",
-          "模型",
-          "工程/基础设施"
-        ]
-      },
-      {
-        "source": "OpenAI 官方",
-        "sourceDetail": "OpenAI Product / Voice Agents",
-        "domain": "openai.com",
-        "title": "Introducing GPT-Live",
-        "url": "https://openai.com/index/introducing-gpt-live/",
-        "publishedAt": "2026-07-09T00:00:00Z",
-        "summary": "OpenAI 推出 GPT-Live，把连续语音交互与后台深度工作解耦：前台保持自然对话，复杂任务可委托给更强模型做搜索、推理和 Agent 操作。信号是语音助手架构从单模型实时应答走向“实时层 + 后台任务层”；动作是验证中断处理、委托可见性、长任务恢复、隐私提示和客服场景的人工接管。",
-        "imageUrl": "https://www.google.com/s2/favicons?domain=openai.com&sz=128",
-        "priority": 6,
-        "rank": 2,
-        "signal": "实时语音 Agent 信号：OpenAI 把低延迟对话层与后台深度任务层拆开，语音入口不再只是聊天，而是可委托搜索、推理和操作的前台控制面。",
-        "interpretation": {
-          "signal": "实时语音 Agent 信号：OpenAI 把低延迟对话层与后台深度任务层拆开，语音入口不再只是聊天，而是可委托搜索、推理和操作的前台控制面。",
-          "impact": "实时语音会把 Agent 带进客服、销售、运营和个人助理场景，但也会放大误听、越权委托、隐私提示不足和后台任务不可见的问题。",
-          "action": "建议先做低风险语音 Agent 试点，强制展示后台任务状态、可撤销操作、敏感信息提示、人工接管按钮和完整 transcript 审计。"
-        },
-        "impact": "实时语音会把 Agent 带进客服、销售、运营和个人助理场景，但也会放大误听、越权委托、隐私提示不足和后台任务不可见的问题。",
-        "action": "建议先做低风险语音 Agent 试点，强制展示后台任务状态、可撤销操作、敏感信息提示、人工接管按钮和完整 transcript 审计。",
-        "tags": [
-          "Agent",
-          "模型",
-          "搜索",
-          "多模态"
-        ]
-      },
-      {
-        "source": "Hugging Face 官方",
-        "sourceDetail": "Hugging Face Blog",
-        "domain": "huggingface.co",
-        "title": "Hugging Face Models on Foundry Managed Compute",
-        "url": "https://huggingface.co/blog",
-        "publishedAt": "2026-07-07T16:00:00Z",
-        "summary": "Hugging Face 博客最新流把模型托管到 Foundry managed compute 放在 7 月 7 日首位；信号是开源模型分发正在从下载权重扩展到托管算力、企业部署和运行时成本治理。动作是把模型卡、运行环境、权限和成本回放放到同一张选型表里。",
-        "imageUrl": "https://www.google.com/s2/favicons?domain=huggingface.co&sz=128",
-        "priority": 5,
-        "rank": 3,
-        "signal": "开源模型企业部署信号：Hugging Face 模型进入 Foundry managed compute，说明开源权重分发正在和云端合规运行时、预置镜像、账单与观测能力绑定。",
-        "interpretation": {
-          "signal": "开源模型企业部署信号：Hugging Face 模型进入 Foundry managed compute，说明开源权重分发正在和云端合规运行时、预置镜像、账单与观测能力绑定。",
-          "impact": "开源模型采用门槛会从“能否下载和跑起来”转为“是否有受管运行时、供应链扫描、权限治理、成本观测和企业支持”，平台锁定与开放生态会同时增强。",
-          "action": "建议把 Hugging Face 候选模型按“模型卡 -> 托管运行时 -> 合规扫描 -> 成本/延迟 -> 回滚路径”做选型表，不要只比较开源许可证。"
-        },
-        "impact": "开源模型采用门槛会从“能否下载和跑起来”转为“是否有受管运行时、供应链扫描、权限治理、成本观测和企业支持”，平台锁定与开放生态会同时增强。",
-        "action": "建议把 Hugging Face 候选模型按“模型卡 -> 托管运行时 -> 合规扫描 -> 成本/延迟 -> 回滚路径”做选型表，不要只比较开源许可证。",
-        "tags": [
-          "模型"
-        ]
-      },
-      {
-        "source": "Hugging Face 官方",
-        "sourceDetail": "Hugging Face Blog / Robotics",
-        "domain": "huggingface.co",
-        "title": "LeRobot v0.6.0: Imagine, Evaluate, Improve",
-        "url": "https://huggingface.co/blog",
-        "publishedAt": "2026-07-07T16:00:00Z",
-        "summary": "Hugging Face LeRobot v0.6.0 把机器人工作流组织成想象、评估、改进的闭环；信号是具身智能开始强调可复现实验、数据采集和评测流程，而不是单次演示。动作是优先复现离线 benchmark、仿真到真机差距和失败样本记录。",
-        "imageUrl": "https://www.google.com/s2/favicons?domain=huggingface.co&sz=128",
-        "priority": 4,
-        "rank": 4,
-        "signal": "模型能力或评测更新，建议关注是否改变内部模型选型和评估基线。",
-        "interpretation": {
-          "signal": "模型能力或评测更新，建议关注是否改变内部模型选型和评估基线。",
-          "impact": "开源机器人栈正在把仿真、评估和改进循环产品化，具身智能团队会更依赖可复现实验而不是单次演示视频。",
-          "action": "建议机器人/自动化团队下载复现实验，记录数据采集、仿真到真机差距、评测指标和硬件失败样本。"
-        },
-        "impact": "开源机器人栈正在把仿真、评估和改进循环产品化，具身智能团队会更依赖可复现实验而不是单次演示视频。",
-        "action": "建议机器人/自动化团队下载复现实验，记录数据采集、仿真到真机差距、评测指标和硬件失败样本。",
-        "tags": [
-          "AI"
-        ]
-      },
-      {
-        "source": "Google Cloud 官方",
-        "sourceDetail": "Google Cloud AI",
-        "domain": "cloud.google.com",
-        "title": "What Google Cloud announced in AI this month",
-        "url": "https://cloud.google.com/blog/products/ai-machine-learning/what-google-cloud-announced-in-ai-this-month",
-        "publishedAt": "2026-07-01T16:00:00Z",
-        "summary": "Google Cloud 月度 AI 汇总把 Gemini 3.5、Gemini Omni、Antigravity、Gemini Spark、Managed Agents API 和 CodeMender 放在同一组企业 Agent 更新里；信号是模型、托管 Agent、安全修复和 Workspace 自动化正在合并成平台能力。动作是按托管沙箱、权限、审计、成本和人工接管拆分验证。",
-        "imageUrl": "https://www.google.com/s2/favicons?domain=cloud.google.com&sz=128",
-        "priority": 4,
-        "rank": 5,
-        "signal": "平台整合信号：Google Cloud 把 Gemini、Agent API、代码/安全自动化和 Workspace 能力放进同一企业 AI 更新面，客户评估会从单模型能力转向托管平台边界。",
-        "interpretation": {
-          "signal": "平台整合信号：Google Cloud 把 Gemini、Agent API、代码/安全自动化和 Workspace 能力放进同一企业 AI 更新面，客户评估会从单模型能力转向托管平台边界。",
-          "impact": "云厂商正在把 Agent、代码、安全、搜索和办公入口合并售卖；平台团队需要比较的是权限模型、沙箱、审计、数据驻留和成本，而不是单个 demo。",
-          "action": "建议用一个内部 Agent 流程做云平台横评：同一任务分别验证 Google、OpenAI、Anthropic 和自建方案的权限、审计、成本、失败恢复和数据边界。"
-        },
-        "impact": "云厂商正在把 Agent、代码、安全、搜索和办公入口合并售卖；平台团队需要比较的是权限模型、沙箱、审计、数据驻留和成本，而不是单个 demo。",
-        "action": "建议用一个内部 Agent 流程做云平台横评：同一任务分别验证 Google、OpenAI、Anthropic 和自建方案的权限、审计、成本、失败恢复和数据边界。",
-        "tags": [
-          "Agent",
-          "模型",
-          "多模态",
-          "安全/可信"
-        ]
-      },
-      {
-        "source": "OpenAI 官方",
-        "sourceDetail": "OpenAI Research",
-        "domain": "openai.com",
-        "title": "Introducing GeneBench-Pro",
-        "url": "https://openai.com/news/research/",
-        "publishedAt": "2026-06-30T16:00:00Z",
-        "summary": "OpenAI Research 最新研究页把 GeneBench-Pro 放在 6 月 30 日首位；信号不是单点 benchmark，而是生命科学评测从问答走向专业任务集。动作上应先看任务定义、数据泄露防护、专家评分和实验复现，而不是直接把模型结论接入研发决策。",
-        "imageUrl": "https://www.google.com/s2/favicons?domain=openai.com&sz=128",
-        "priority": 5,
-        "rank": 6,
-        "signal": "专业评测信号：生命科学模型评测正在从通用问答推进到专家任务集，模型是否可用于研发决策取决于任务定义、泄露防护、专家评分和复现实验。",
-        "interpretation": {
-          "signal": "专业评测信号：生命科学模型评测正在从通用问答推进到专家任务集，模型是否可用于研发决策取决于任务定义、泄露防护、专家评分和复现实验。",
-          "impact": "生命科学场景会更快把模型引入候选假设、文献分析和实验设计，但错误结论的代价高，必须把专家复核和实验复现作为默认流程。",
-          "action": "建议生命科学/医疗研发团队只把它作为评测参考，先抽查数据集、任务定义、专家评分协议和泄露控制，再决定是否进入内部 benchmark。"
-        },
-        "impact": "生命科学场景会更快把模型引入候选假设、文献分析和实验设计，但错误结论的代价高，必须把专家复核和实验复现作为默认流程。",
-        "action": "建议生命科学/医疗研发团队只把它作为评测参考，先抽查数据集、任务定义、专家评分协议和泄露控制，再决定是否进入内部 benchmark。",
-        "tags": [
-          "模型"
-        ]
-      },
-      {
-        "source": "Hugging Face 官方",
-        "sourceDetail": "Hugging Face Blog",
-        "domain": "huggingface.co",
-        "title": "Every Eval Ever Results on Hugging Face Model Pages",
-        "url": "https://huggingface.co/blog",
-        "publishedAt": "2026-06-30T16:00:00Z",
-        "summary": "Hugging Face 最新博客流把模型页评测结果、企业 Java 迁移 Agent benchmark 和开源工具链更新放在一起；信号是开源生态正在把 eval 元数据前置到模型选择入口。动作是把模型卡、任务评测和本地回放纳入选型流程，避免只按排行榜或单篇 release 决策。",
-        "imageUrl": "https://www.google.com/s2/favicons?domain=huggingface.co&sz=128",
-        "priority": 4,
-        "rank": 7,
-        "signal": "模型能力或评测更新，建议关注是否改变内部模型选型和评估基线。",
-        "interpretation": {
-          "signal": "模型能力或评测更新，建议关注是否改变内部模型选型和评估基线。",
-          "impact": "模型选择入口正在从单一排行榜转向模型页内的多任务评测矩阵；这会降低初筛成本，但也会让团队更容易忽略本地任务和数据分布差异。",
-          "action": "建议把 Hugging Face 模型页评测作为候选筛选入口，但最终仍用内部任务集、成本、延迟和失败样本做回放验收。"
-        },
-        "impact": "模型选择入口正在从单一排行榜转向模型页内的多任务评测矩阵；这会降低初筛成本，但也会让团队更容易忽略本地任务和数据分布差异。",
-        "action": "建议把 Hugging Face 模型页评测作为候选筛选入口，但最终仍用内部任务集、成本、延迟和失败样本做回放验收。",
-        "tags": [
-          "Agent",
-          "模型"
-        ]
-      },
-      {
-        "source": "Google AI 官方",
-        "sourceDetail": "Google Developers Blog",
-        "domain": "developers.googleblog.com",
-        "title": "Build reliable multi-agent applications with ADK Go 2.0",
-        "url": "https://developers.googleblog.com/",
-        "publishedAt": "2026-06-30T16:00:00Z",
-        "summary": "Google Developers 最新流强调 ADK Go 2.0 的图式 workflow、人类介入和动态编排；这把 Gemini/Agent 平台竞争从模型能力推进到可治理 orchestration。动作是评估状态机、人工审批、失败恢复和跨语言 SDK，而不是只比较单次代码生成能力。",
-        "imageUrl": "https://www.google.com/s2/favicons?domain=developers.googleblog.com&sz=128",
-        "priority": 4,
-        "rank": 8,
-        "signal": "平台发布信号：开发者大会类更新适合拆成模型、工具、分发渠道三条线跟进。",
-        "interpretation": {
-          "signal": "平台发布信号：开发者大会类更新适合拆成模型、工具、分发渠道三条线跟进。",
-          "impact": "多 Agent 框架开始把 workflow、人类介入和动态编排作为基础能力，企业自建 Agent 应从 prompt demo 转向可观测状态机。",
-          "action": "建议用一个低风险多 Agent 流程验证 ADK：状态持久化、人类审批、失败恢复、工具权限和 trace 可读性必须一起测。"
-        },
-        "impact": "多 Agent 框架开始把 workflow、人类介入和动态编排作为基础能力，企业自建 Agent 应从 prompt demo 转向可观测状态机。",
-        "action": "建议用一个低风险多 Agent 流程验证 ADK：状态持久化、人类审批、失败恢复、工具权限和 trace 可读性必须一起测。",
-        "tags": [
-          "Agent",
-          "模型"
-        ]
-      },
-      {
-        "source": "OpenAI 官方",
-        "sourceDetail": "OpenAI Economic Research",
-        "domain": "openai.com",
-        "title": "How agents are transforming work",
-        "url": "https://openai.com/index/how-agents-are-transforming-work/",
-        "publishedAt": "2026-06-25T16:00:00Z",
-        "summary": "OpenAI 发布 Codex 经济研究：Agentic AI 把知识工作单位从短聊天变成长任务委托；到 2026 年 5 月，80.6% 抽样个人用户至少提交过一次估计超过 30 分钟人类工作量的 Codex 请求，OpenAI 内部 Codex 已成为跨部门主要 AI 工具。",
-        "imageUrl": "https://www.google.com/s2/favicons?domain=openai.com&sz=128",
-        "priority": 4,
-        "rank": 9,
-        "signal": "官方 Agent 采用信号：Codex 正从工程师工具扩展到跨部门长任务委托，重点看任务时长、并行 Agent、非技术岗位采用和组织级治理。",
-        "interpretation": {
-          "signal": "官方 Agent 采用信号：Codex 正从工程师工具扩展到跨部门长任务委托，重点看任务时长、并行 Agent、非技术岗位采用和组织级治理。",
-          "impact": "Agent 采用的核心指标正在从“回答质量”转向“可委托工时、跨岗位渗透、并行任务量和组织流程重构”，研发效能、法务、招聘、财务等团队都需要重新定义可交付任务边界。",
-          "action": "建议把内部 Agent 试点指标改成任务级：人类等效工时、完成率、返工率、并行任务上限、敏感数据访问和跨部门 owner，而不是只统计使用人数。"
-        },
-        "impact": "Agent 采用的核心指标正在从“回答质量”转向“可委托工时、跨岗位渗透、并行任务量和组织流程重构”，研发效能、法务、招聘、财务等团队都需要重新定义可交付任务边界。",
-        "action": "建议把内部 Agent 试点指标改成任务级：人类等效工时、完成率、返工率、并行任务上限、敏感数据访问和跨部门 owner，而不是只统计使用人数。",
-        "tags": [
-          "Agent"
-        ]
-      },
-      {
-        "source": "Google AI 官方",
-        "sourceDetail": "Gemini API Release Notes",
-        "domain": "ai.google.dev",
-        "title": "Gemini API Computer Use tool public preview for Gemini 3.5 Flash",
-        "url": "https://ai.google.dev/gemini-api/docs/changelog",
-        "publishedAt": "2026-06-24T16:00:00Z",
-        "summary": "Google Gemini API 更新：Gemini 3.5 Flash 的 Computer Use 工具进入 public preview，包含 intent 化动作、浏览器/移动/桌面环境支持、可配置安全策略和 prompt injection 检测。",
-        "imageUrl": "https://www.google.com/s2/favicons?domain=ai.google.dev&sz=128",
-        "priority": 4,
-        "rank": 10,
-        "signal": "官方 Computer Use 信号：浏览器、移动和桌面操作正在被纳入模型原生工具链，关键看动作空间、安全策略和 prompt injection 防护。",
-        "interpretation": {
-          "signal": "官方 Computer Use 信号：浏览器、移动和桌面操作正在被纳入模型原生工具链，关键看动作空间、安全策略和 prompt injection 防护。",
-          "impact": "Computer Use 进入主流 API 预览后，GUI 自动化会从单厂商能力变成多模型竞争点；企业评估要同时比较动作准确率、注入防护、权限隔离和失败接管。",
-          "action": "建议建立跨模型 GUI Agent 评测集：同一批网页/桌面任务分别跑 Claude、Gemini 和现有 RPA，记录误点击、注入命中、人工接管和审计日志完整性。"
-        },
-        "impact": "Computer Use 进入主流 API 预览后，GUI 自动化会从单厂商能力变成多模型竞争点；企业评估要同时比较动作准确率、注入防护、权限隔离和失败接管。",
-        "action": "建议建立跨模型 GUI Agent 评测集：同一批网页/桌面任务分别跑 Claude、Gemini 和现有 RPA，记录误点击、注入命中、人工接管和审计日志完整性。",
-        "tags": [
-          "模型",
-          "安全/可信",
-          "工程/基础设施"
-        ]
-      },
-      {
-        "source": "Microsoft 官方",
-        "sourceDetail": "Microsoft AI / Copilot",
-        "domain": "blogs.microsoft.com",
-        "title": "Achieving success with AI",
-        "url": "https://blogs.microsoft.com/blog/2026/06/16/achieving-success-with-ai/",
-        "publishedAt": "2026-06-16T16:00:00Z",
-        "summary": "Microsoft 将 Copilot Cowork、Microsoft 365 Copilot 和 GitHub Copilot 放进统一商业化叙事，强调企业 Agent 采用正在从许可证转向可计量使用、组织数据上下文和工作流改造。",
-        "imageUrl": "https://www.google.com/s2/favicons?domain=blogs.microsoft.com&sz=128",
-        "priority": 3,
-        "rank": 11,
-        "signal": "上下文工程信号：更少 token、更准上下文正在成为搜索和 Agent 体验的核心优化点。",
-        "interpretation": {
-          "signal": "上下文工程信号：更少 token、更准上下文正在成为搜索和 Agent 体验的核心优化点。",
-          "impact": "微软把 Copilot 从席位销售推向 Cowork、M365 和 GitHub 的组合工作流，企业采购会更关注组织数据权限、可计量使用和流程改造收益。",
-          "action": "建议把 Copilot 采购评估拆成三张表：数据访问边界、真实工作流节省、审计/留痕能力，避免只按许可证折扣决策。"
-        },
-        "impact": "微软把 Copilot 从席位销售推向 Cowork、M365 和 GitHub 的组合工作流，企业采购会更关注组织数据权限、可计量使用和流程改造收益。",
-        "action": "建议把 Copilot 采购评估拆成三张表：数据访问边界、真实工作流节省、审计/留痕能力，避免只按许可证折扣决策。",
-        "tags": [
-          "Agent"
-        ]
-      },
-      {
         "source": "Hugging Face",
         "sourceDetail": "Hugging Face",
         "domain": "huggingface.co",
@@ -4779,7 +4529,7 @@
         "summary": "Hugging Face 发布新动态：What building Shippy taught us about building agents",
         "imageUrl": "https://www.google.com/s2/favicons?domain=huggingface.co&sz=128",
         "priority": 0,
-        "rank": 12,
+        "rank": 1,
         "signal": "Agent/工具调用方向，适合评估能否进入研发工作流或数据分析流程。",
         "interpretation": {
           "signal": "Agent/工具调用方向，适合评估能否进入研发工作流或数据分析流程。",
@@ -4802,7 +4552,7 @@
         "summary": "Hugging Face 发布新动态：Model Routing Is Simple. Until It Isn’t.",
         "imageUrl": "https://www.google.com/s2/favicons?domain=huggingface.co&sz=128",
         "priority": 0,
-        "rank": 13,
+        "rank": 2,
         "signal": "模型路由工程信号：缓存命中、会话粘滞和供应商切换正在变成多模型基础设施关键点。",
         "interpretation": {
           "signal": "模型路由工程信号：缓存命中、会话粘滞和供应商切换正在变成多模型基础设施关键点。",
@@ -4817,29 +4567,6 @@
         ]
       },
       {
-        "source": "AIHOT 精选",
-        "sourceDetail": "Hacker News 热门（buzzing.cc 中文翻译）",
-        "domain": "aihot.virxact.com",
-        "title": "Telegram 无服务器架构",
-        "url": "https://core.telegram.org/bots/serverless",
-        "publishedAt": "2026-07-15T15:37:19.450Z",
-        "summary": "Telegram Serverless 允许开发者直接在 Telegram 基础设施上运行 Bot 和 Mini App 的后端代码，无需配置服务器或容器。开发者编写普通 JavaScript 模块，通过 `npx tgcloud push` 单命令部署，代码在靠近 Bot API 和内建数据库的轻量级 V8 隔离沙箱中执行。",
-        "imageUrl": "https://www.google.com/s2/favicons?domain=aihot.virxact.com&sz=128",
-        "priority": 3,
-        "rank": 14,
-        "signal": "Agent 集成信号：外部 API 连接正在从逐个适配走向通用技能层，集成成本会决定 Agent 的业务覆盖面。",
-        "interpretation": {
-          "signal": "Agent 集成信号：外部 API 连接正在从逐个适配走向通用技能层，集成成本会决定 Agent 的业务覆盖面。",
-          "impact": "模型供应链会更像云资源管理：容量、缓存、路由和成本控制会成为应用护城河。",
-          "action": "建议纳入成本与架构评估，关注 API 价格、路由策略、缓存命中和供应商锁定。"
-        },
-        "impact": "模型供应链会更像云资源管理：容量、缓存、路由和成本控制会成为应用护城河。",
-        "action": "建议纳入成本与架构评估，关注 API 价格、路由策略、缓存命中和供应商锁定。",
-        "tags": [
-          "工程/基础设施"
-        ]
-      },
-      {
         "source": "OpenAI",
         "sourceDetail": "OpenAI",
         "domain": "openai.com",
@@ -4849,7 +4576,7 @@
         "summary": "OpenAI outlines a “reverse federalism” approach to AI governance, where state laws help build a national framework for safe, democratic AI.",
         "imageUrl": "https://www.google.com/s2/favicons?domain=openai.com&sz=128",
         "priority": 0,
-        "rank": 15,
+        "rank": 3,
         "signal": "行业动态信号，适合纳入周度技术雷达观察。",
         "interpretation": {
           "signal": "行业动态信号，适合纳入周度技术雷达观察。",
@@ -4872,7 +4599,7 @@
         "summary": "阿里巴巴的Qwen模型将被集成到Apple Intelligence中，为中国的iOS、iPadOS、macOS和visionOS用户提供文本与图像理解、内容生成等AI功能。中国网信办已公布包括Apple Intelligence、华为小艺大模型、OPPO AndesGPT在内的七项移动端生成式AI服务备案信息。阿里巴巴董事会主席蔡崇信表示，苹果在选定阿里前曾与多家中国公司洽谈。 🔗 阅读原文：https://x.com/thexpin/status/2077346752219521469 via AI HOT · https://aihot.virxact.com/items/cmrlz5...",
         "imageUrl": "https://www.google.com/s2/favicons?domain=aihot.virxact.com&sz=128",
         "priority": 3,
-        "rank": 16,
+        "rank": 4,
         "signal": "多模态产品信号：模型正在从单一生成走向图文视频一体化和可编辑工作流，重点看一致性、成本和版权边界。",
         "interpretation": {
           "signal": "多模态产品信号：模型正在从单一生成走向图文视频一体化和可编辑工作流，重点看一致性、成本和版权边界。",
@@ -4887,28 +4614,78 @@
         ]
       },
       {
-        "source": "A社 Anthropic Research",
-        "sourceDetail": "Anthropic 官方 Research / Economic Research",
-        "domain": "anthropic.com",
-        "title": "How Canada uses Claude: Findings from the Anthropic Economic Index",
-        "url": "https://www.anthropic.com/research/how-canada-uses-claude",
-        "publishedAt": "2026-07-14T16:00:00Z",
-        "summary": "Anthropic Economic Index 加拿大简报显示，加拿大占 Claude.ai 全球流量 2.6%，总量排名第八，人均采用率超过人口预测的四倍；省级采用更受专业、科学和技术服务业占比影响，而不是单纯收入水平。信号是 AI 采用评估正在从宏观热度转向真实工作结构和地域产业结构。",
-        "imageUrl": "https://www.google.com/s2/favicons?domain=anthropic.com&sz=128",
+        "source": "Hugging Face 官方",
+        "sourceDetail": "Hugging Face Blog / Multimodal Models",
+        "domain": "huggingface.co",
+        "title": "Welcome Inkling by Thinking Machines",
+        "url": "https://huggingface.co/blog/thinkingmachines-inkling",
+        "publishedAt": "2026-07-15T16:00:00Z",
+        "summary": "Hugging Face 上线 Thinking Machines 的 Inkling：约 1T 参数、41B active 的多模态 MoE，原生接收文本、图像和音频，支持 1M context，并在 transformers、SGLang、vLLM、llama.cpp 等推理栈提供 day-0 接入。信号是开放模型竞争正在从“能不能开权重”推进到超大上下文、多模态路由、推理引擎适配和部署成本透明化。",
+        "imageUrl": "https://www.google.com/s2/favicons?domain=huggingface.co&sz=128",
         "priority": 8,
-        "signal": "A 社生态信号：Anthropic 的产品、研究和企业合作会影响 Claude 生态、模型选型和 Agent 工作流落地节奏。",
-        "impact": "Claude 生态的变化会直接影响 Agent 选型、企业采购、权限治理和安全评测，不能只按模型跑分决策。",
-        "action": "建议更新 Claude 评测清单：模型能力、Claude Code/Agent 工作流、权限隔离、审计日志和供应连续性分开验证。",
-        "anthropicScore": 44,
-        "rank": 17,
+        "signal": "开放多模态基础模型信号：Inkling 把文本、图像、音频、长上下文和 agentic coding 放到同一个开源生态入口，但部署成本仍是第一道门槛。",
         "interpretation": {
-          "signal": "A 社生态信号：Anthropic 的产品、研究和企业合作会影响 Claude 生态、模型选型和 Agent 工作流落地节奏。",
-          "impact": "Claude 生态的变化会直接影响 Agent 选型、企业采购、权限治理和安全评测，不能只按模型跑分决策。",
-          "action": "建议更新 Claude 评测清单：模型能力、Claude Code/Agent 工作流、权限隔离、审计日志和供应连续性分开验证。"
+          "signal": "开放多模态基础模型信号：Inkling 把文本、图像、音频、长上下文和 agentic coding 放到同一个开源生态入口，但部署成本仍是第一道门槛。",
+          "impact": "对企业和研究团队的影响是评估模型时不能只看 benchmark，要同时看 active 参数、上下文成本、音频/视觉输入质量、推理引擎兼容、量化损耗和供应商路由。",
+          "action": "先通过 Hugging Face Inference Providers 或受控多 GPU 环境做小样本回放；记录多模态正确率、token/显存成本、延迟、上下文截断和安全过滤，再决定是否微调或自托管。"
         },
+        "impact": "对企业和研究团队的影响是评估模型时不能只看 benchmark，要同时看 active 参数、上下文成本、音频/视觉输入质量、推理引擎兼容、量化损耗和供应商路由。",
+        "action": "先通过 Hugging Face Inference Providers 或受控多 GPU 环境做小样本回放；记录多模态正确率、token/显存成本、延迟、上下文截断和安全过滤，再决定是否微调或自托管。",
         "tags": [
-          "A社/Claude",
-          "模型"
+          "开源模型",
+          "多模态",
+          "推理/Serving",
+          "Agent"
+        ],
+        "rank": 5
+      },
+      {
+        "source": "Hugging Face 官方",
+        "sourceDetail": "Hugging Face Blog / Voice Evaluation",
+        "domain": "huggingface.co",
+        "title": "Introducing Real World VoiceEQ: Measuring the human quality of voice AI",
+        "url": "https://huggingface.co/blog/real-world-voiceeq",
+        "publishedAt": "2026-07-15T16:00:00Z",
+        "summary": "Hugging Face 与 Hume AI 介绍 Real World VoiceEQ，用 15+ 维度、60+ 指标和超过百万条人类评分评估 40 多个语音模型，重点覆盖 ASR、TTS、S2S、语音理解、情绪、噪声、口音和长对话。信号是语音 AI 的评估正在从 WER/延迟走向真实人类感知与场景质量。",
+        "imageUrl": "https://www.google.com/s2/favicons?domain=huggingface.co&sz=128",
+        "priority": 7,
+        "signal": "语音评测信号：声学线索、情绪、犹豫、身份一致性和噪声鲁棒性正在成为语音 Agent 的核心质量门槛。",
+        "interpretation": {
+          "signal": "语音评测信号：声学线索、情绪、犹豫、身份一致性和噪声鲁棒性正在成为语音 Agent 的核心质量门槛。",
+          "impact": "对客服、教育、医疗和个人助理团队而言，传统 ASR/TTS 分数会高估真实体验；上线前必须把口音、背景噪声、打断、情绪误读和长会话一致性放进评测。",
+          "action": "建立业务语音回放集：同一句文本用不同语气、噪声、口音和多人打断测试，人工评分与自动指标并行，按场景选择模型而不是追求单一总分第一。"
+        },
+        "impact": "对客服、教育、医疗和个人助理团队而言，传统 ASR/TTS 分数会高估真实体验；上线前必须把口音、背景噪声、打断、情绪误读和长会话一致性放进评测。",
+        "action": "建立业务语音回放集：同一句文本用不同语气、噪声、口音和多人打断测试，人工评分与自动指标并行，按场景选择模型而不是追求单一总分第一。",
+        "tags": [
+          "语音 AI",
+          "评测",
+          "Agent",
+          "用户体验"
+        ],
+        "rank": 6
+      },
+      {
+        "source": "AIHOT 精选",
+        "sourceDetail": "Hacker News 热门（buzzing.cc 中文翻译）",
+        "domain": "aihot.virxact.com",
+        "title": "Telegram 无服务器架构",
+        "url": "https://core.telegram.org/bots/serverless",
+        "publishedAt": "2026-07-15T15:37:19.450Z",
+        "summary": "Telegram Serverless 允许开发者直接在 Telegram 基础设施上运行 Bot 和 Mini App 的后端代码，无需配置服务器或容器。开发者编写普通 JavaScript 模块，通过 `npx tgcloud push` 单命令部署，代码在靠近 Bot API 和内建数据库的轻量级 V8 隔离沙箱中执行。",
+        "imageUrl": "https://www.google.com/s2/favicons?domain=aihot.virxact.com&sz=128",
+        "priority": 3,
+        "rank": 7,
+        "signal": "Agent 集成信号：外部 API 连接正在从逐个适配走向通用技能层，集成成本会决定 Agent 的业务覆盖面。",
+        "interpretation": {
+          "signal": "Agent 集成信号：外部 API 连接正在从逐个适配走向通用技能层，集成成本会决定 Agent 的业务覆盖面。",
+          "impact": "模型供应链会更像云资源管理：容量、缓存、路由和成本控制会成为应用护城河。",
+          "action": "建议纳入成本与架构评估，关注 API 价格、路由策略、缓存命中和供应商锁定。"
+        },
+        "impact": "模型供应链会更像云资源管理：容量、缓存、路由和成本控制会成为应用护城河。",
+        "action": "建议纳入成本与架构评估，关注 API 价格、路由策略、缓存命中和供应商锁定。",
+        "tags": [
+          "工程/基础设施"
         ]
       },
       {
@@ -4925,7 +4702,7 @@
         "impact": "Claude 生态的变化会直接影响 Agent 选型、企业采购、权限治理和安全评测，不能只按模型跑分决策。",
         "action": "建议更新 Claude 评测清单：模型能力、Claude Code/Agent 工作流、权限隔离、审计日志和供应连续性分开验证。",
         "anthropicScore": 42,
-        "rank": 18,
+        "rank": 8,
         "interpretation": {
           "signal": "A 社安全研究信号：值得跟进其评测、可解释性和对齐方法是否能转化为内部模型治理清单。",
           "impact": "Claude 生态的变化会直接影响 Agent 选型、企业采购、权限治理和安全评测，不能只按模型跑分决策。",
@@ -4935,6 +4712,31 @@
           "A社/Claude",
           "模型",
           "安全/可信"
+        ]
+      },
+      {
+        "source": "A社 Anthropic Research",
+        "sourceDetail": "Anthropic 官方 Research / Economic Research",
+        "domain": "anthropic.com",
+        "title": "How Canada uses Claude: Findings from the Anthropic Economic Index",
+        "url": "https://www.anthropic.com/research/how-canada-uses-claude",
+        "publishedAt": "2026-07-14T16:00:00Z",
+        "summary": "Anthropic Economic Index 加拿大简报显示，加拿大占 Claude.ai 全球流量 2.6%，总量排名第八，人均采用率超过人口预测的四倍；省级采用更受专业、科学和技术服务业占比影响，而不是单纯收入水平。信号是 AI 采用评估正在从宏观热度转向真实工作结构和地域产业结构。",
+        "imageUrl": "https://www.google.com/s2/favicons?domain=anthropic.com&sz=128",
+        "priority": 8,
+        "signal": "A 社生态信号：Anthropic 的产品、研究和企业合作会影响 Claude 生态、模型选型和 Agent 工作流落地节奏。",
+        "impact": "Claude 生态的变化会直接影响 Agent 选型、企业采购、权限治理和安全评测，不能只按模型跑分决策。",
+        "action": "建议更新 Claude 评测清单：模型能力、Claude Code/Agent 工作流、权限隔离、审计日志和供应连续性分开验证。",
+        "anthropicScore": 44,
+        "rank": 9,
+        "interpretation": {
+          "signal": "A 社生态信号：Anthropic 的产品、研究和企业合作会影响 Claude 生态、模型选型和 Agent 工作流落地节奏。",
+          "impact": "Claude 生态的变化会直接影响 Agent 选型、企业采购、权限治理和安全评测，不能只按模型跑分决策。",
+          "action": "建议更新 Claude 评测清单：模型能力、Claude Code/Agent 工作流、权限隔离、审计日志和供应连续性分开验证。"
+        },
+        "tags": [
+          "A社/Claude",
+          "模型"
         ]
       },
       {
@@ -4951,7 +4753,7 @@
         "impact": "Claude 生态的变化会直接影响 Agent 选型、企业采购、权限治理和安全评测，不能只按模型跑分决策。",
         "action": "建议更新 Claude 评测清单：模型能力、Claude Code/Agent 工作流、权限隔离、审计日志和供应连续性分开验证。",
         "anthropicScore": 58,
-        "rank": 19,
+        "rank": 10,
         "interpretation": {
           "signal": "A 社模型信号：Claude 系列更新需要重点拆编码能力、长任务稳定性、上下文管理和企业成本边界。",
           "impact": "Claude 生态的变化会直接影响 Agent 选型、企业采购、权限治理和安全评测，不能只按模型跑分决策。",
@@ -4977,7 +4779,7 @@
         "impact": "Claude 生态的变化会直接影响 Agent 选型、企业采购、权限治理和安全评测，不能只按模型跑分决策。",
         "action": "建议更新 Claude 评测清单：模型能力、Claude Code/Agent 工作流、权限隔离、审计日志和供应连续性分开验证。",
         "anthropicScore": 61,
-        "rank": 20,
+        "rank": 11,
         "interpretation": {
           "signal": "A 社 Agent 信号：Claude 正在把工具使用、电脑操作和企业流程连接起来，重点看权限、审计和失败接管。",
           "impact": "Claude 生态的变化会直接影响 Agent 选型、企业采购、权限治理和安全评测，不能只按模型跑分决策。",
@@ -4987,6 +4789,103 @@
           "A社/Claude",
           "Agent",
           "模型"
+        ]
+      },
+      {
+        "source": "OpenAI 官方",
+        "sourceDetail": "OpenAI Product / Models",
+        "domain": "openai.com",
+        "title": "GPT-5.6: Frontier intelligence that scales with your ambition",
+        "url": "https://openai.com/index/gpt-5-6/",
+        "publishedAt": "2026-07-09T00:00:00Z",
+        "summary": "OpenAI 发布 GPT-5.6 Sol/Terra/Luna，强调更强的知识工作、浏览、computer use、artifact 生成、Programmatic Tool Calling、多 Agent beta、显式缓存断点和更可预测的价格/缓存策略。信号是前沿模型竞争正在从单次推理分数转向长任务代理、可编辑交付物、工具编排和成本可控性；动作是用真实报告、表格、代码修复、浏览任务和 ZDR/缓存约束做回放评测。",
+        "imageUrl": "https://www.google.com/s2/favicons?domain=openai.com&sz=128",
+        "priority": 7,
+        "rank": 12,
+        "signal": "模型产品化信号：GPT-5.6 把前沿推理、浏览/computer use、artifact 生成、缓存断点和多 Agent 能力打包成面向知识工作的生产套件，竞争焦点从单次 benchmark 转到可交付任务。",
+        "interpretation": {
+          "signal": "模型产品化信号：GPT-5.6 把前沿推理、浏览/computer use、artifact 生成、缓存断点和多 Agent 能力打包成面向知识工作的生产套件，竞争焦点从单次 benchmark 转到可交付任务。",
+          "impact": "对企业团队的直接影响是评测口径要变：不能只看推理分数，要把浏览、文件修改、代码修复、长任务恢复、缓存成本、ZDR/合规限制和人工接管放进同一回放集。",
+          "action": "建议建立 10-20 个真实知识工作回放任务：报告、表格、代码修复、网页调查和跨工具执行分别记录完成率、人工修改、成本、延迟、权限触发和失败样本。"
+        },
+        "impact": "对企业团队的直接影响是评测口径要变：不能只看推理分数，要把浏览、文件修改、代码修复、长任务恢复、缓存成本、ZDR/合规限制和人工接管放进同一回放集。",
+        "action": "建议建立 10-20 个真实知识工作回放任务：报告、表格、代码修复、网页调查和跨工具执行分别记录完成率、人工修改、成本、延迟、权限触发和失败样本。",
+        "tags": [
+          "Agent",
+          "模型",
+          "工程/基础设施"
+        ]
+      },
+      {
+        "source": "OpenAI 官方",
+        "sourceDetail": "OpenAI Product / Voice Agents",
+        "domain": "openai.com",
+        "title": "Introducing GPT-Live",
+        "url": "https://openai.com/index/introducing-gpt-live/",
+        "publishedAt": "2026-07-09T00:00:00Z",
+        "summary": "OpenAI 推出 GPT-Live，把连续语音交互与后台深度工作解耦：前台保持自然对话，复杂任务可委托给更强模型做搜索、推理和 Agent 操作。信号是语音助手架构从单模型实时应答走向“实时层 + 后台任务层”；动作是验证中断处理、委托可见性、长任务恢复、隐私提示和客服场景的人工接管。",
+        "imageUrl": "https://www.google.com/s2/favicons?domain=openai.com&sz=128",
+        "priority": 6,
+        "rank": 13,
+        "signal": "实时语音 Agent 信号：OpenAI 把低延迟对话层与后台深度任务层拆开，语音入口不再只是聊天，而是可委托搜索、推理和操作的前台控制面。",
+        "interpretation": {
+          "signal": "实时语音 Agent 信号：OpenAI 把低延迟对话层与后台深度任务层拆开，语音入口不再只是聊天，而是可委托搜索、推理和操作的前台控制面。",
+          "impact": "实时语音会把 Agent 带进客服、销售、运营和个人助理场景，但也会放大误听、越权委托、隐私提示不足和后台任务不可见的问题。",
+          "action": "建议先做低风险语音 Agent 试点，强制展示后台任务状态、可撤销操作、敏感信息提示、人工接管按钮和完整 transcript 审计。"
+        },
+        "impact": "实时语音会把 Agent 带进客服、销售、运营和个人助理场景，但也会放大误听、越权委托、隐私提示不足和后台任务不可见的问题。",
+        "action": "建议先做低风险语音 Agent 试点，强制展示后台任务状态、可撤销操作、敏感信息提示、人工接管按钮和完整 transcript 审计。",
+        "tags": [
+          "Agent",
+          "模型",
+          "搜索",
+          "多模态"
+        ]
+      },
+      {
+        "source": "Hugging Face 官方",
+        "sourceDetail": "Hugging Face Blog",
+        "domain": "huggingface.co",
+        "title": "Hugging Face Models on Foundry Managed Compute",
+        "url": "https://huggingface.co/blog",
+        "publishedAt": "2026-07-07T16:00:00Z",
+        "summary": "Hugging Face 博客最新流把模型托管到 Foundry managed compute 放在 7 月 7 日首位；信号是开源模型分发正在从下载权重扩展到托管算力、企业部署和运行时成本治理。动作是把模型卡、运行环境、权限和成本回放放到同一张选型表里。",
+        "imageUrl": "https://www.google.com/s2/favicons?domain=huggingface.co&sz=128",
+        "priority": 5,
+        "rank": 14,
+        "signal": "开源模型企业部署信号：Hugging Face 模型进入 Foundry managed compute，说明开源权重分发正在和云端合规运行时、预置镜像、账单与观测能力绑定。",
+        "interpretation": {
+          "signal": "开源模型企业部署信号：Hugging Face 模型进入 Foundry managed compute，说明开源权重分发正在和云端合规运行时、预置镜像、账单与观测能力绑定。",
+          "impact": "开源模型采用门槛会从“能否下载和跑起来”转为“是否有受管运行时、供应链扫描、权限治理、成本观测和企业支持”，平台锁定与开放生态会同时增强。",
+          "action": "建议把 Hugging Face 候选模型按“模型卡 -> 托管运行时 -> 合规扫描 -> 成本/延迟 -> 回滚路径”做选型表，不要只比较开源许可证。"
+        },
+        "impact": "开源模型采用门槛会从“能否下载和跑起来”转为“是否有受管运行时、供应链扫描、权限治理、成本观测和企业支持”，平台锁定与开放生态会同时增强。",
+        "action": "建议把 Hugging Face 候选模型按“模型卡 -> 托管运行时 -> 合规扫描 -> 成本/延迟 -> 回滚路径”做选型表，不要只比较开源许可证。",
+        "tags": [
+          "模型"
+        ]
+      },
+      {
+        "source": "Hugging Face 官方",
+        "sourceDetail": "Hugging Face Blog / Robotics",
+        "domain": "huggingface.co",
+        "title": "LeRobot v0.6.0: Imagine, Evaluate, Improve",
+        "url": "https://huggingface.co/blog",
+        "publishedAt": "2026-07-07T16:00:00Z",
+        "summary": "Hugging Face LeRobot v0.6.0 把机器人工作流组织成想象、评估、改进的闭环；信号是具身智能开始强调可复现实验、数据采集和评测流程，而不是单次演示。动作是优先复现离线 benchmark、仿真到真机差距和失败样本记录。",
+        "imageUrl": "https://www.google.com/s2/favicons?domain=huggingface.co&sz=128",
+        "priority": 4,
+        "rank": 15,
+        "signal": "模型能力或评测更新，建议关注是否改变内部模型选型和评估基线。",
+        "interpretation": {
+          "signal": "模型能力或评测更新，建议关注是否改变内部模型选型和评估基线。",
+          "impact": "开源机器人栈正在把仿真、评估和改进循环产品化，具身智能团队会更依赖可复现实验而不是单次演示视频。",
+          "action": "建议机器人/自动化团队下载复现实验，记录数据采集、仿真到真机差距、评测指标和硬件失败样本。"
+        },
+        "impact": "开源机器人栈正在把仿真、评估和改进循环产品化，具身智能团队会更依赖可复现实验而不是单次演示视频。",
+        "action": "建议机器人/自动化团队下载复现实验，记录数据采集、仿真到真机差距、评测指标和硬件失败样本。",
+        "tags": [
+          "AI"
         ]
       },
       {
@@ -5000,7 +4899,7 @@
         "imageUrl": "https://www.google.com/s2/favicons?domain=anthropic.com&sz=128",
         "priority": 5,
         "anthropicScore": 55,
-        "rank": 21,
+        "rank": 16,
         "signal": "A 社模型信号：Claude 系列更新需要重点拆编码能力、长任务稳定性、上下文管理和企业成本边界。",
         "interpretation": {
           "signal": "A 社模型信号：Claude 系列更新需要重点拆编码能力、长任务稳定性、上下文管理和企业成本边界。",
@@ -5020,32 +4919,6 @@
         "source": "A社 Anthropic",
         "sourceDetail": "Anthropic 官方 News",
         "domain": "anthropic.com",
-        "title": "Introducing Claude Sonnet 5",
-        "url": "https://www.anthropic.com/news/claude-sonnet-5",
-        "publishedAt": "2026-06-30T16:00:00Z",
-        "summary": "Anthropic 发布 Claude Sonnet 5，定位为最 agentic 的 Sonnet 模型；官方强调它可规划、调用浏览器和终端工具，并在 Claude Code、Claude Platform 和各套餐中可用。企业评估应把成本曲线、BrowseComp/OSWorld-Verified 表现、长任务权限和审计边界放在同一张表里。",
-        "imageUrl": "https://www.google.com/s2/favicons?domain=anthropic.com&sz=128",
-        "priority": 5,
-        "anthropicScore": 45,
-        "rank": 22,
-        "signal": "A 社 Agent 信号：Claude 正在把工具使用、电脑操作和企业流程连接起来，重点看权限、审计和失败接管。",
-        "interpretation": {
-          "signal": "A 社 Agent 信号：Claude 正在把工具使用、电脑操作和企业流程连接起来，重点看权限、审计和失败接管。",
-          "impact": "Claude 生态的变化会直接影响 Agent 选型、企业采购、权限治理和安全评测，不能只按模型跑分决策。",
-          "action": "建议更新 Claude 评测清单：模型能力、Claude Code/Agent 工作流、权限隔离、审计日志和供应连续性分开验证。"
-        },
-        "impact": "Claude 生态的变化会直接影响 Agent 选型、企业采购、权限治理和安全评测，不能只按模型跑分决策。",
-        "action": "建议更新 Claude 评测清单：模型能力、Claude Code/Agent 工作流、权限隔离、审计日志和供应连续性分开验证。",
-        "tags": [
-          "A社/Claude",
-          "Agent",
-          "模型"
-        ]
-      },
-      {
-        "source": "A社 Anthropic",
-        "sourceDetail": "Anthropic 官方 News",
-        "domain": "anthropic.com",
         "title": "Government of Alberta uses Claude to find and fix cybersecurity vulnerabilities",
         "url": "https://www.anthropic.com/news/alberta-government-claude-cybersecurity",
         "publishedAt": "2026-07-05T16:00:00.000Z",
@@ -5053,7 +4926,7 @@
         "imageUrl": "https://www.anthropic.com/api/opengraph-illustration?name=Object-LaptopSecure&backgroundColor=sky",
         "priority": 4,
         "anthropicScore": 50,
-        "rank": 23,
+        "rank": 17,
         "signal": "A 社模型信号：Claude 系列更新需要重点拆编码能力、长任务稳定性、上下文管理和企业成本边界。",
         "interpretation": {
           "signal": "A 社模型信号：Claude 系列更新需要重点拆编码能力、长任务稳定性、上下文管理和企业成本边界。",
@@ -5069,17 +4942,66 @@
         ]
       },
       {
+        "source": "Google Cloud 官方",
+        "sourceDetail": "Google Cloud AI",
+        "domain": "cloud.google.com",
+        "title": "What Google Cloud announced in AI this month",
+        "url": "https://cloud.google.com/blog/products/ai-machine-learning/what-google-cloud-announced-in-ai-this-month",
+        "publishedAt": "2026-07-01T16:00:00Z",
+        "summary": "Google Cloud 月度 AI 汇总把 Gemini 3.5、Gemini Omni、Antigravity、Gemini Spark、Managed Agents API 和 CodeMender 放在同一组企业 Agent 更新里；信号是模型、托管 Agent、安全修复和 Workspace 自动化正在合并成平台能力。动作是按托管沙箱、权限、审计、成本和人工接管拆分验证。",
+        "imageUrl": "https://www.google.com/s2/favicons?domain=cloud.google.com&sz=128",
+        "priority": 4,
+        "rank": 18,
+        "signal": "平台整合信号：Google Cloud 把 Gemini、Agent API、代码/安全自动化和 Workspace 能力放进同一企业 AI 更新面，客户评估会从单模型能力转向托管平台边界。",
+        "interpretation": {
+          "signal": "平台整合信号：Google Cloud 把 Gemini、Agent API、代码/安全自动化和 Workspace 能力放进同一企业 AI 更新面，客户评估会从单模型能力转向托管平台边界。",
+          "impact": "云厂商正在把 Agent、代码、安全、搜索和办公入口合并售卖；平台团队需要比较的是权限模型、沙箱、审计、数据驻留和成本，而不是单个 demo。",
+          "action": "建议用一个内部 Agent 流程做云平台横评：同一任务分别验证 Google、OpenAI、Anthropic 和自建方案的权限、审计、成本、失败恢复和数据边界。"
+        },
+        "impact": "云厂商正在把 Agent、代码、安全、搜索和办公入口合并售卖；平台团队需要比较的是权限模型、沙箱、审计、数据驻留和成本，而不是单个 demo。",
+        "action": "建议用一个内部 Agent 流程做云平台横评：同一任务分别验证 Google、OpenAI、Anthropic 和自建方案的权限、审计、成本、失败恢复和数据边界。",
+        "tags": [
+          "Agent",
+          "模型",
+          "多模态",
+          "安全/可信"
+        ]
+      },
+      {
+        "source": "OpenAI 官方",
+        "sourceDetail": "OpenAI Research",
+        "domain": "openai.com",
+        "title": "Introducing GeneBench-Pro",
+        "url": "https://openai.com/news/research/",
+        "publishedAt": "2026-06-30T16:00:00Z",
+        "summary": "OpenAI Research 最新研究页把 GeneBench-Pro 放在 6 月 30 日首位；信号不是单点 benchmark，而是生命科学评测从问答走向专业任务集。动作上应先看任务定义、数据泄露防护、专家评分和实验复现，而不是直接把模型结论接入研发决策。",
+        "imageUrl": "https://www.google.com/s2/favicons?domain=openai.com&sz=128",
+        "priority": 5,
+        "rank": 19,
+        "signal": "专业评测信号：生命科学模型评测正在从通用问答推进到专家任务集，模型是否可用于研发决策取决于任务定义、泄露防护、专家评分和复现实验。",
+        "interpretation": {
+          "signal": "专业评测信号：生命科学模型评测正在从通用问答推进到专家任务集，模型是否可用于研发决策取决于任务定义、泄露防护、专家评分和复现实验。",
+          "impact": "生命科学场景会更快把模型引入候选假设、文献分析和实验设计，但错误结论的代价高，必须把专家复核和实验复现作为默认流程。",
+          "action": "建议生命科学/医疗研发团队只把它作为评测参考，先抽查数据集、任务定义、专家评分协议和泄露控制，再决定是否进入内部 benchmark。"
+        },
+        "impact": "生命科学场景会更快把模型引入候选假设、文献分析和实验设计，但错误结论的代价高，必须把专家复核和实验复现作为默认流程。",
+        "action": "建议生命科学/医疗研发团队只把它作为评测参考，先抽查数据集、任务定义、专家评分协议和泄露控制，再决定是否进入内部 benchmark。",
+        "tags": [
+          "模型"
+        ]
+      },
+      {
         "source": "A社 Anthropic",
         "sourceDetail": "Anthropic 官方 News",
         "domain": "anthropic.com",
-        "title": "Higher usage limits for Claude and a compute deal with SpaceX",
-        "url": "https://www.anthropic.com/news/higher-limits-spacex",
-        "publishedAt": "2026-05-20T16:00:00Z",
-        "summary": "Anthropic 提高 Claude Code 与 Opus API 使用限制，并披露与 SpaceX 的算力合作，说明 Claude 企业和 Agent 用量正在受供给能力约束。",
+        "title": "Introducing Claude Sonnet 5",
+        "url": "https://www.anthropic.com/news/claude-sonnet-5",
+        "publishedAt": "2026-06-30T16:00:00Z",
+        "summary": "Anthropic 发布 Claude Sonnet 5，定位为最 agentic 的 Sonnet 模型；官方强调它可规划、调用浏览器和终端工具，并在 Claude Code、Claude Platform 和各套餐中可用。企业评估应把成本曲线、BrowseComp/OSWorld-Verified 表现、长任务权限和审计边界放在同一张表里。",
         "imageUrl": "https://www.google.com/s2/favicons?domain=anthropic.com&sz=128",
-        "priority": 4,
-        "anthropicScore": 46,
-        "rank": 24,
+        "priority": 5,
+        "anthropicScore": 45,
+        "rank": 20,
         "signal": "A 社 Agent 信号：Claude 正在把工具使用、电脑操作和企业流程连接起来，重点看权限、审计和失败接管。",
         "interpretation": {
           "signal": "A 社 Agent 信号：Claude 正在把工具使用、电脑操作和企业流程连接起来，重点看权限、审计和失败接管。",
@@ -5091,7 +5013,102 @@
         "tags": [
           "A社/Claude",
           "Agent",
+          "模型"
+        ]
+      },
+      {
+        "source": "Hugging Face 官方",
+        "sourceDetail": "Hugging Face Blog",
+        "domain": "huggingface.co",
+        "title": "Every Eval Ever Results on Hugging Face Model Pages",
+        "url": "https://huggingface.co/blog",
+        "publishedAt": "2026-06-30T16:00:00Z",
+        "summary": "Hugging Face 最新博客流把模型页评测结果、企业 Java 迁移 Agent benchmark 和开源工具链更新放在一起；信号是开源生态正在把 eval 元数据前置到模型选择入口。动作是把模型卡、任务评测和本地回放纳入选型流程，避免只按排行榜或单篇 release 决策。",
+        "imageUrl": "https://www.google.com/s2/favicons?domain=huggingface.co&sz=128",
+        "priority": 4,
+        "rank": 21,
+        "signal": "模型能力或评测更新，建议关注是否改变内部模型选型和评估基线。",
+        "interpretation": {
+          "signal": "模型能力或评测更新，建议关注是否改变内部模型选型和评估基线。",
+          "impact": "模型选择入口正在从单一排行榜转向模型页内的多任务评测矩阵；这会降低初筛成本，但也会让团队更容易忽略本地任务和数据分布差异。",
+          "action": "建议把 Hugging Face 模型页评测作为候选筛选入口，但最终仍用内部任务集、成本、延迟和失败样本做回放验收。"
+        },
+        "impact": "模型选择入口正在从单一排行榜转向模型页内的多任务评测矩阵；这会降低初筛成本，但也会让团队更容易忽略本地任务和数据分布差异。",
+        "action": "建议把 Hugging Face 模型页评测作为候选筛选入口，但最终仍用内部任务集、成本、延迟和失败样本做回放验收。",
+        "tags": [
+          "Agent",
+          "模型"
+        ]
+      },
+      {
+        "source": "Google AI 官方",
+        "sourceDetail": "Google Developers Blog",
+        "domain": "developers.googleblog.com",
+        "title": "Build reliable multi-agent applications with ADK Go 2.0",
+        "url": "https://developers.googleblog.com/",
+        "publishedAt": "2026-06-30T16:00:00Z",
+        "summary": "Google Developers 最新流强调 ADK Go 2.0 的图式 workflow、人类介入和动态编排；这把 Gemini/Agent 平台竞争从模型能力推进到可治理 orchestration。动作是评估状态机、人工审批、失败恢复和跨语言 SDK，而不是只比较单次代码生成能力。",
+        "imageUrl": "https://www.google.com/s2/favicons?domain=developers.googleblog.com&sz=128",
+        "priority": 4,
+        "rank": 22,
+        "signal": "平台发布信号：开发者大会类更新适合拆成模型、工具、分发渠道三条线跟进。",
+        "interpretation": {
+          "signal": "平台发布信号：开发者大会类更新适合拆成模型、工具、分发渠道三条线跟进。",
+          "impact": "多 Agent 框架开始把 workflow、人类介入和动态编排作为基础能力，企业自建 Agent 应从 prompt demo 转向可观测状态机。",
+          "action": "建议用一个低风险多 Agent 流程验证 ADK：状态持久化、人类审批、失败恢复、工具权限和 trace 可读性必须一起测。"
+        },
+        "impact": "多 Agent 框架开始把 workflow、人类介入和动态编排作为基础能力，企业自建 Agent 应从 prompt demo 转向可观测状态机。",
+        "action": "建议用一个低风险多 Agent 流程验证 ADK：状态持久化、人类审批、失败恢复、工具权限和 trace 可读性必须一起测。",
+        "tags": [
+          "Agent",
+          "模型"
+        ]
+      },
+      {
+        "source": "OpenAI 官方",
+        "sourceDetail": "OpenAI Economic Research",
+        "domain": "openai.com",
+        "title": "How agents are transforming work",
+        "url": "https://openai.com/index/how-agents-are-transforming-work/",
+        "publishedAt": "2026-06-25T16:00:00Z",
+        "summary": "OpenAI 发布 Codex 经济研究：Agentic AI 把知识工作单位从短聊天变成长任务委托；到 2026 年 5 月，80.6% 抽样个人用户至少提交过一次估计超过 30 分钟人类工作量的 Codex 请求，OpenAI 内部 Codex 已成为跨部门主要 AI 工具。",
+        "imageUrl": "https://www.google.com/s2/favicons?domain=openai.com&sz=128",
+        "priority": 4,
+        "rank": 23,
+        "signal": "官方 Agent 采用信号：Codex 正从工程师工具扩展到跨部门长任务委托，重点看任务时长、并行 Agent、非技术岗位采用和组织级治理。",
+        "interpretation": {
+          "signal": "官方 Agent 采用信号：Codex 正从工程师工具扩展到跨部门长任务委托，重点看任务时长、并行 Agent、非技术岗位采用和组织级治理。",
+          "impact": "Agent 采用的核心指标正在从“回答质量”转向“可委托工时、跨岗位渗透、并行任务量和组织流程重构”，研发效能、法务、招聘、财务等团队都需要重新定义可交付任务边界。",
+          "action": "建议把内部 Agent 试点指标改成任务级：人类等效工时、完成率、返工率、并行任务上限、敏感数据访问和跨部门 owner，而不是只统计使用人数。"
+        },
+        "impact": "Agent 采用的核心指标正在从“回答质量”转向“可委托工时、跨岗位渗透、并行任务量和组织流程重构”，研发效能、法务、招聘、财务等团队都需要重新定义可交付任务边界。",
+        "action": "建议把内部 Agent 试点指标改成任务级：人类等效工时、完成率、返工率、并行任务上限、敏感数据访问和跨部门 owner，而不是只统计使用人数。",
+        "tags": [
+          "Agent"
+        ]
+      },
+      {
+        "source": "Google AI 官方",
+        "sourceDetail": "Gemini API Release Notes",
+        "domain": "ai.google.dev",
+        "title": "Gemini API Computer Use tool public preview for Gemini 3.5 Flash",
+        "url": "https://ai.google.dev/gemini-api/docs/changelog",
+        "publishedAt": "2026-06-24T16:00:00Z",
+        "summary": "Google Gemini API 更新：Gemini 3.5 Flash 的 Computer Use 工具进入 public preview，包含 intent 化动作、浏览器/移动/桌面环境支持、可配置安全策略和 prompt injection 检测。",
+        "imageUrl": "https://www.google.com/s2/favicons?domain=ai.google.dev&sz=128",
+        "priority": 4,
+        "rank": 24,
+        "signal": "官方 Computer Use 信号：浏览器、移动和桌面操作正在被纳入模型原生工具链，关键看动作空间、安全策略和 prompt injection 防护。",
+        "interpretation": {
+          "signal": "官方 Computer Use 信号：浏览器、移动和桌面操作正在被纳入模型原生工具链，关键看动作空间、安全策略和 prompt injection 防护。",
+          "impact": "Computer Use 进入主流 API 预览后，GUI 自动化会从单厂商能力变成多模型竞争点；企业评估要同时比较动作准确率、注入防护、权限隔离和失败接管。",
+          "action": "建议建立跨模型 GUI Agent 评测集：同一批网页/桌面任务分别跑 Claude、Gemini 和现有 RPA，记录误点击、注入命中、人工接管和审计日志完整性。"
+        },
+        "impact": "Computer Use 进入主流 API 预览后，GUI 自动化会从单厂商能力变成多模型竞争点；企业评估要同时比较动作准确率、注入防护、权限隔离和失败接管。",
+        "action": "建议建立跨模型 GUI Agent 评测集：同一批网页/桌面任务分别跑 Claude、Gemini 和现有 RPA，记录误点击、注入命中、人工接管和审计日志完整性。",
+        "tags": [
           "模型",
+          "安全/可信",
           "工程/基础设施"
         ]
       }
