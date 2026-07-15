@@ -1927,12 +1927,12 @@ function normalizeFrontierInterpretation(item) {
 function curatedFrontierInterpretation(item) {
   const title = normalizeTitle(item.title || "");
   const map = {
-    [normalizeTitle("Recommending for Long-Term Member Satisfaction at Netflix")]: {
-      businessProblem: "Netflix 的推荐目标不能只追逐播放/点击，因为短期 CTR 会奖励标题党和一次性消费；业务真正要优化的是会员长期满意度，但续费/留存信号慢、噪声大且难归因。",
-      systemMechanism: "把推荐看成 contextual bandit：用播放、完成、点赞/踩、延迟反馈等行为构造更贴近长期满意度的 proxy reward，再训练策略并通过 A/B 测试验证 reward engineering 是否真的改善长期指标。",
-      metricsAndExperiment: "离线不要只看 AUC/CTR，应对比 proxy reward、完成质量、延迟反馈预测和反例；线上同时看播放、完成、满意度代理、留存敏感人群、长期负反馈和在线/离线指标背离。",
-      borrowable: "适合把“指标工程”纳入推荐平台：先定义会伤害长期体验的短期奖励，再用历史行为构造可训练 proxy，最后通过小流量实验验证指标是否与北极星一致。",
-      boundary: "如果业务没有足够延迟反馈、A/B 实验周期太短或北极星本身不清楚，reward engineering 容易变成更复杂的 CTR 包装。",
+    [normalizeTitle("Thinking Fast & Slow for a Personalized Notification System")]: {
+      businessProblem: "Netflix 个性化通知既要提高短期观看/互动，也要避免过度打扰造成疲劳和退订；如果用一个短期模型同时决定发送频次和消息内容，频控、排序和长期满意度会互相牵制。",
+      systemMechanism: "用分层 slow-fast 架构解耦决策：慢策略按周生成用户级跨渠道 pacing plan，快策略在每日发送机会中读取计划特征，再做实时消息选择和相关性排序。",
+      metricsAndExperiment: "实验要同时看即时互动、长期观看、opt-out/疲劳风险、频次分布、渠道组合、低活用户提升和策略稳定性；离线要校准消息成本，防止模型退化成“永远多发”。",
+      borrowable: "适合推荐、营销触达和 feed push 团队借鉴：把频控/节奏从实时排序里拆出来，用 feature store 传递策略意图，让 pacing 和内容 ranker 独立迭代。",
+      boundary: "如果触达量小、负反馈稀疏、缺少跨渠道用户状态或没有长期满意度指标，分层策略会增加复杂度，先做简单频控和反骚扰规则更稳。",
     },
     [normalizeTitle("Modernizing the Meta Ads Service With an Open-Source Kernel Scheduler")]: {
       businessProblem: "Meta 广告 retrieval 和 ranking 链路每天处理数千亿请求，P99 延迟的几毫秒波动会直接减少可检索/可排序广告数，影响用户相关性、广告主 ROI 和机房功耗。",
@@ -2212,14 +2212,14 @@ function seedIndustryFrontierItems() {
       summary: "Meta Ads 与 Linux Kernel 团队用 upstream sched_ext / BPF 为广告投放负载定制调度策略，全球回放后广告 retrieval 路径 P99 延迟降低 28%、节省 3.28MW、weighted-ads-ranked 提升 1.1%。",
     },
     {
-      title: "Recommending for Long-Term Member Satisfaction at Netflix",
-      url: "https://netflixtechblog.com/recommending-for-long-term-member-satisfaction-at-netflix-ac15cada49ef",
-      publishedAt: "2026-07-01T16:00:00Z",
+      title: "Thinking Fast & Slow for a Personalized Notification System",
+      url: "https://netflixtechblog.com/thinking-fast-slow-for-a-personalized-notification-system-4d89b26525cd",
+      publishedAt: "2026-06-05T16:00:00Z",
       source: "Netflix TechBlog",
       domain: "netflixtechblog.com",
       sourceType: "industry",
       frontierScore: 52,
-      summary: "Netflix 将推荐目标从短期播放/CTR 推进到长期会员满意度，用 contextual bandit 与 reward engineering 处理延迟反馈、在线/离线指标背离和长期体验代理指标。",
+      summary: "Netflix 个性化通知系统把长期频次规划和实时消息选择拆成 slow/fast 两层，通过 feature store 传递 pacing plan，在短期互动、长期会员体验、疲劳风险和跨渠道节奏之间做可实验的系统解耦。",
     },
     {
       title: "Achieving Near-Linear Training Scalability for Pinterest’s Foundation Models",
@@ -2596,7 +2596,7 @@ async function buildAiNewsSection(maxItems) {
     .sort((a, b) => (b.priority || 0) - (a.priority || 0) || new Date(b.publishedAt || 0) - new Date(a.publishedAt || 0))
     .filter(dedupeByCanonicalItem)
     .sort((a, b) => new Date(b.publishedAt || 0) - new Date(a.publishedAt || 0));
-  const anthropicQuota = Math.min(18, Math.max(12, Math.ceil(maxItems * 0.8)));
+  const anthropicQuota = Math.min(18, Math.max(14, Math.ceil(maxItems * 0.9)));
   const anthropicItems = selectAnthropicCoverage(rawItems.filter(isAnthropicItem), anthropicQuota);
   const items = pickUniqueItems(
     [
@@ -2740,10 +2740,14 @@ function selectAnthropicCoverage(items, maxItems) {
     (item) => /ltbt|long-term benefit trust|bernanke|governance|benefit trust/i.test(`${item.title} ${item.summary}`),
     (item) => /hard questions|public questions|policy|accountability|publicly respond|公开回应|公共问责/i.test(`${item.title} ${item.summary}`),
     (item) => /cyber|safety|safeguards|jailbreak|alignment|misuse|autonomy|trustworthy|contain|teaching claude why|attack/i.test(`${item.source} ${item.title} ${item.summary}`),
+    (item) => /values|language|languages|societal impacts|value axis|behavior profile|价值|语言|行为画像/i.test(`${item.sourceDetail || ""} ${item.title} ${item.summary}`),
     (item) => /engineering|managed agents|auto mode|sandbox|contain|harness|tool use|context engineering/i.test(`${item.source} ${item.title} ${item.summary}`),
     (item) => /economic index|cadences|survey|work|labor|automation/i.test(`${item.source} ${item.title} ${item.summary}`),
   ];
-  const selected = [];
+  const selected = ranked
+    .slice()
+    .sort((a, b) => new Date(b.publishedAt || 0) - new Date(a.publishedAt || 0))
+    .slice(0, Math.min(4, maxItems));
   for (const matches of buckets) {
     const item = ranked.find((candidate) => matches(candidate) && !selected.some((seen) => normalizeTitle(seen.title) === normalizeTitle(candidate.title)));
     if (item) selected.push(item);
@@ -2851,6 +2855,62 @@ async function fetchAnthropicNewsItems(maxItems) {
 function seedAnthropicOfficialItems() {
   const favicon = "https://www.google.com/s2/favicons?domain=anthropic.com&sz=128";
   return [
+    {
+      source: "A社 Anthropic",
+      sourceDetail: "Anthropic 官方 News / Research Partnerships",
+      domain: "anthropic.com",
+      title: "Anthropic commits $10 million to Canadian AI research",
+      url: "https://www.anthropic.com/news/canadian-ai-research",
+      publishedAt: "2026-07-14T16:00:00Z",
+      summary: "Anthropic 承诺向加拿大研究机构投入 1000 万加元，并同时发布加拿大 Claude 使用画像。信号是 A 社把模型供给、学术生态、AI safety、医疗/心理健康、低资源语言和区域创业生态放到同一套国家级合作叙事里；企业评估时应关注这些研究合作如何沉淀为安全评测、行业工作台和本地合规能力。",
+      imageUrl: favicon,
+      priority: 9,
+      signal: "生态投资信号：Claude 的竞争不只在模型能力，也在研究机构、行业试点和区域合规网络。",
+      impact: "对加拿大 AI 安全、健康、教育和多语言研究有直接资源注入；对企业客户则提示 Claude 生态会更偏向可审计、高价值专业工作流。",
+      action: "把供应商评估从模型 benchmark 扩展到区域数据治理、研究合作、行业证据和本地支持能力，尤其关注医疗、政府和教育场景。",
+    },
+    {
+      source: "A社 Anthropic Research",
+      sourceDetail: "Anthropic 官方 Research / Economic Research",
+      domain: "anthropic.com",
+      title: "How Canada uses Claude: Findings from the Anthropic Economic Index",
+      url: "https://www.anthropic.com/research/how-canada-uses-claude",
+      publishedAt: "2026-07-14T16:00:00Z",
+      summary: "Anthropic Economic Index 加拿大简报显示，加拿大占 Claude.ai 全球流量 2.6%，总量排名第八，人均采用率超过人口预测的四倍；省级采用更受专业、科学和技术服务业占比影响，而不是单纯收入水平。信号是 AI 采用评估正在从宏观热度转向真实工作结构和地域产业结构。",
+      imageUrl: favicon,
+      priority: 8,
+      signal: "经济采用信号：Claude 使用强度与工作结构匹配度相关，区域产业结构会影响 Agent 落地速度。",
+      impact: "组织推广 AI 时不能只看员工数量或预算，应优先识别专业服务、科研、翻译、代码和早期职业任务密集的团队。",
+      action: "在内部推广 Claude/Agent 前先做任务结构盘点：按岗位、语言、数据敏感度和可复盘指标分层，而不是全员平均铺开。",
+    },
+    {
+      source: "A社 Anthropic Research",
+      sourceDetail: "Anthropic 官方 Research / Societal Impacts",
+      domain: "anthropic.com",
+      title: "Claude’s values across models and languages",
+      url: "https://www.anthropic.com/research/claude-values-models-languages",
+      publishedAt: "2026-07-13T16:00:00Z",
+      summary: "Anthropic 用价值轴压缩方法分析 Claude 在不同模型和语言中的表达差异，观察到 Deference/Caution、Warmth/Rigor、Depth/Brevity、Candor/Execution 等维度会随模型和语言变化。信号是模型评测正在从正确率、安全拒答扩展到跨语言、跨文化的行为画像和上线监控。",
+      imageUrl: favicon,
+      priority: 8,
+      signal: "行为评测信号：同一模型在不同语言和版本中的价值表达并不完全一致，需要被测量和治理。",
+      impact: "多语言产品、教育、客服和企业知识助手会遇到风格、谨慎度、深度和直接性差异，影响用户信任和决策质量。",
+      action: "多语言 Agent 上线前建立语言分层评测集，单独看拒答、事实严谨、建议强度、语气和用户结果，而不是只复用英文测试。",
+    },
+    {
+      source: "A社 Anthropic Research",
+      sourceDetail: "Anthropic 官方 Research / Frontier Red Team",
+      domain: "anthropic.com",
+      title: "Claude plays robotics",
+      url: "https://www.anthropic.com/research/claude-plays-robotics",
+      publishedAt: "2026-07-09T16:00:00Z",
+      summary: "Anthropic Frontier Red Team 将 Claude 放进机器人仿真任务，观察模型在现实世界控制、工具调用和自主决策边界上的表现。信号是 A 社安全研究正从文本/代码扩展到具备物理后果的 Agent 场景；评估重点必须包括仿真、约束执行、人工接管和失败回放。",
+      imageUrl: favicon,
+      priority: 8,
+      signal: "机器人安全信号：Claude/Agent 能力评测正在覆盖 physical AI，不再局限于浏览器、终端和代码。",
+      impact: "机器人、制造、仓储和现场服务团队会更快看到通用 Agent 进入控制链路的压力，但错误成本也显著提高。",
+      action: "任何 physical AI 试点都应先限定为仿真或只读建议，建立动作白名单、紧急停止、日志回放和责任边界后再扩大。",
+    },
     {
       source: "A社 Anthropic",
       sourceDetail: "Anthropic 官方 News / Enterprise",
@@ -3382,6 +3442,12 @@ function rankAnthropicItems(items) {
     ["ust", 5],
     ["hard questions", 8],
     ["public questions", 5],
+    ["values", 9],
+    ["language", 6],
+    ["languages", 6],
+    ["societal impacts", 8],
+    ["value axis", 8],
+    ["behavior profile", 7],
     ["survey", 4],
     ["automation", 4],
   ];
@@ -3881,7 +3947,10 @@ function buildExecutiveSummary(items, frontier, aiNews) {
     .sort((a, b) => (Number(/making of claude code/i.test(b.title)) - Number(/making of claude code/i.test(a.title))) || new Date(b.publishedAt || 0) - new Date(a.publishedAt || 0))
     .map((item) => item.title)
     .slice(0, 3);
-  const firstAnthropic = primaryAnthropic || claudeTag || anthropicItems[0];
+  const latestAnthropic = anthropicItems
+    .slice()
+    .sort((a, b) => new Date(b.publishedAt || 0) - new Date(a.publishedAt || 0))[0];
+  const firstAnthropic = latestAnthropic || primaryAnthropic || claudeTag || anthropicItems[0];
   const aiHotLead = (aiNews.items || []).find((item) => item.source?.includes("AIHOT"));
   return {
     headline: `今日雷达主线：GitHub 热门继续围绕 Agent 工作流、个人云和文档/设计上下文扩散；搜广推从单模型优化转向召回、排序、serving 成本和实验血缘协同；A 社把安全治理推进到可移除知识模块。`,
@@ -3889,7 +3958,7 @@ function buildExecutiveSummary(items, frontier, aiNews) {
       topRepos.length ? `GitHub 本轮由 ${topRepos.join("、")} 领跑；解读重点落在 ${repoSignalText}，采用判断不按 star 排序，而按架构机制、适用团队、落地路径、生产风险、决策问题和观察信号拆解。` : "今日暂无 GitHub 项目数据。",
       firstRepoAction ? `开源项目解读已按“架构机制 -> 适用团队 -> 落地路径 -> 生产风险 -> 决策问题 -> 观察信号”展开；本轮更适合旁路 spike 的入口是：${trimText(firstRepoAction, 120)}` : "开源项目先按架构机制、适用团队、落地路径和生产风险做小样本验证。",
       firstFrontier ? `搜广推收录 ${frontierItems.length} 条工程/研究信号，覆盖 ${frontierSources.join("、") || frontier.source}；重点从「${firstFrontier.title}」延伸到广告排序、实时上下文、企业搜索 relevance judge、模型生命周期图和工业搜索属性推荐。` : `搜广推板块收录 ${frontierItems.length} 条前沿论文/研究信号。`,
-      firstAnthropic ? `A 社覆盖 ${anthropicItems.length} 条官方 News/Research/Engineering 动态，新增重点是「${firstAnthropic.title}」；Claude Code 相关信号包括 ${claudeCodeSignals.join("、") || "sandboxing、managed agents、auto mode"}，评估动作应拆成模型能力、权限隔离、长任务恢复、团队协作记忆、预算上限和审计边界。` : "A 社动态本次未抓到足够官方条目，下次优先重试 Anthropic News/Research/Engineering 页面。",
+      firstAnthropic ? `A 社覆盖 ${anthropicItems.length} 条官方 News/Research/Engineering 动态，最新重点是「${firstAnthropic.title}」；安全研究主线继续观察「${primaryAnthropic?.title || "off switch / global workspace / safeguards"}」，Claude Code 相关信号包括 ${claudeCodeSignals.join("、") || "sandboxing、managed agents、auto mode"}，评估动作应拆成模型能力、权限隔离、长任务恢复、团队协作记忆、预算上限和审计边界。` : "A 社动态本次未抓到足够官方条目，下次优先重试 Anthropic News/Research/Engineering 页面。",
       `AIHOT/官方 AI 新闻共 ${aiNews.items?.length || 0} 条，其中 AIHOT ${aiHotCount} 条；今日先看「${aiHotLead?.title || "AIHOT 精选"}」，所有新闻统一写成“信号 -> 影响 -> 动作”，动作聚焦评测回放、预算治理、工具白名单、权限审计和真实工作流验证。`,
     ],
   };
