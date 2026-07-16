@@ -2015,7 +2015,7 @@ async function buildFrontierSection(maxItems) {
   const arxivItems = arxivResult.status === "fulfilled" ? arxivResult.value : [];
   const industryItems = industryResult.status === "fulfilled" ? industryResult.value : [];
   const industryTarget = Math.min(maxItems, Math.max(16, Math.ceil(maxItems * 0.85)));
-  const selected = pickUniqueItems(
+  const selected = ensureFrontierPriorityCoverage(pickUniqueItems(
     [
       ...industryItems.slice(0, industryTarget),
       ...arxivItems.slice(0, Math.max(0, maxItems - industryTarget)),
@@ -2023,7 +2023,7 @@ async function buildFrontierSection(maxItems) {
       ...arxivItems,
     ],
     maxItems,
-  ).map((item, index) => {
+  ), industryItems, maxItems).map((item, index) => {
     const interpretation = normalizeFrontierInterpretation(item);
     return {
       ...item,
@@ -2045,6 +2045,38 @@ async function buildFrontierSection(maxItems) {
     source: sourceNotes.length ? sourceNotes.join(" + ") : "fallback",
     items: selected.length ? selected : fallbackFrontierItems(),
   };
+}
+
+function ensureFrontierPriorityCoverage(selected, industryItems, maxItems) {
+  const prioritySources = ["Meituan Tech", "Tencent Cloud Developer", "Alibaba Cloud Developer"];
+  const covered = new Set(selected.map((item) => item.source).filter(Boolean));
+  const next = [...selected];
+  for (const source of prioritySources) {
+    if (covered.has(source)) continue;
+    const candidate = industryItems.find((item) => item.source === source && !next.some((selectedItem) => normalizeTitle(selectedItem.title) === normalizeTitle(item.title)));
+    if (!candidate) continue;
+    if (next.length < maxItems) {
+      next.push(candidate);
+    } else {
+      const replaceIndex = findFrontierCoverageReplacementIndex(next, prioritySources);
+      if (replaceIndex === -1) continue;
+      covered.delete(next[replaceIndex].source);
+      next[replaceIndex] = candidate;
+    }
+    covered.add(source);
+  }
+  return next.slice(0, maxItems);
+}
+
+function findFrontierCoverageReplacementIndex(items, prioritySources) {
+  const priority = new Set(prioritySources);
+  for (let index = items.length - 1; index >= 0; index -= 1) {
+    if (items[index].sourceType === "paper") return index;
+  }
+  for (let index = items.length - 1; index >= 0; index -= 1) {
+    if (!priority.has(items[index].source)) return index;
+  }
+  return -1;
 }
 
 function normalizeFrontierInterpretation(item) {
