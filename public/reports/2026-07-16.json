@@ -1,15 +1,15 @@
 {
   "date": "2026-07-16",
-  "generatedAt": "2026-07-16T12:07:00.480Z",
+  "generatedAt": "2026-07-16T15:09:17.642Z",
   "source": {
-    "provider": "GitHub Trending daily + arXiv + RSS + Codex curated official/source review",
+    "provider": "GitHub Trending daily + arXiv + RSS + Codex manual multi-source review",
     "query": "pushed:>=2026-07-09 stars:>100 archived:false",
     "since": "2026-07-09",
     "limit": 12,
     "language": "all",
     "editorialReview": {
       "method": "script refresh + Codex multi-source editorial review",
-      "reviewedAt": "2026-07-16T12:07:00.480Z",
+      "reviewedAt": "2026-07-16T15:09:17.642Z",
       "reportDate": "2026-07-16",
       "focus": [
         "GitHub Trending daily metadata, repo README evidence and adoption risk review",
@@ -20,7 +20,8 @@
       "sourceNotes": [
         "Anthropic official coverage includes Anthropic 官方 Research / Economic Research、Anthropic 官方 News / Research Partnerships、Anthropic 官方 Research / Societal Impacts、Anthropic 官方 News / Claude Apps、Anthropic 官方 Research / Interpretability、Anthropic 官方 News、Anthropic 官方 Engineering / Agent Containment、Anthropic 官方 News / Governance、Anthropic 官方 Engineering、Anthropic 官方 News / Safeguards、Anthropic 官方 Research / Alignment、Anthropic 官方 News / Enterprise、Anthropic 官方 News / Claude Code、Anthropic 官方 Research、Anthropic 官方 Research / Frontier Red Team with Claude Tag, Economic Index, Claude Code practice, model updates, partnerships and safety research.",
         "Search/ads/recommendation coverage includes Meta Engineering、Netflix TechBlog、Pinterest Engineering、Dropbox Tech、Google Research、Meituan Tech、Airbnb Engineering、Spotify Engineering、Tencent Cloud Developer、Amazon Science、arXiv、Alibaba Cloud Developer and is interpreted through business problem, system mechanism, metrics/experiments, borrowable patterns and unsuitable boundaries.",
-        "Project reads distinguish architecture mechanism, team fit, landing path, production risk, decision question and watch signal; generic metadata summaries are treated as fallback only."
+        "Project reads distinguish architecture mechanism, team fit, landing path, production risk, decision question and watch signal; generic metadata summaries are treated as fallback only.",
+        "Manual additions this run: Meta Engineering Hierarchical Interest Representation for deep-funnel ads, OpenAI GPT-Red robustness research, Anthropic Alignment Science Blog safety posts on hot-mess/agentic misalignment."
       ],
       "verifiedLinks": [
         "https://github.com/trending?since=daily",
@@ -56,26 +57,238 @@
         "https://cloud.tencent.com/developer/article/2625122",
         "https://engineering.salesforce.com/ai-powered-personalization-in-under-100ms-optimizing-real-time-decisioning-at-scale/",
         "https://www.amazon.science/publications/design-and-evaluation-of-whole-page-experience-optimization-for-e-commerce-search",
-        "https://www.amazon.science/blog/from-structured-search-to-learning-to-rank-and-retrieve"
-      ],
-      "notes": [
-        "2026-07-16T12:20Z Codex manual refresh: corrected apache/ossie as semantic-layer interoperability standard and added Meta Engineering HIR deep-funnel ads representation article from official source."
+        "https://www.amazon.science/blog/from-structured-search-to-learning-to-rank-and-retrieve",
+        "https://engineering.fb.com/2026/07/15/ai-research/exploring-hierarchical-interest-representation-for-meta-ads-deep-funnel-optimization/",
+        "https://openai.com/index/unlocking-self-improvement-gpt-red/",
+        "https://alignment.anthropic.com/2026/hot-mess-of-ai/",
+        "https://alignment.anthropic.com/2026/agentic-misalignment-summer-2026/",
+        "https://www.anthropic.com/research/claude-values-models-languages",
+        "https://www.anthropic.com/research/claude-plays-robotics",
+        "https://www.anthropic.com/news/claude-for-teachers",
+        "https://www.anthropic.com/news/ust-claude"
       ]
     }
   },
   "summary": {
-    "headline": "今日雷达主线：Apache Ossie 把 AI 问数与 BI 指标治理推向语义层标准；GitHub 热门继续围绕 Agent、创作工具和数据契约扩散；搜广推最新信号来自 Meta Ads 多层级兴趣表征，说明广告排序竞争正在上移到可复用表示层。",
+    "headline": "今日雷达主线：GitHub 热门继续围绕 Agent 工作流和设计/数据契约扩散；搜广推新增 Meta Ads 层级兴趣表征，把深漏斗广告从单点排序推进到上游统一 embedding；AI 安全侧 OpenAI GPT-Red 与 Anthropic agentic misalignment 研究同时强调可回放红队。",
     "bullets": [
-      "GitHub 本轮由 apache/ossie、Nutlope/hallmark、OpenCut-app/OpenCut 领跑；本次重点把 apache/ossie 从泛化 Agent 项目修正为“语义层标准 / BI 与 AI Agent 数据契约”，解读其 core-spec、schema、converters、validation 和跨 BI/AI 工具互操作价值。",
-      "开源项目解读继续按“架构机制 -> 适用团队 -> 落地路径 -> 生产风险 -> 决策问题 -> 观察信号”展开；Ossie 的建议动作是标准观察 + 小样本试点，用 10-20 个核心指标做只读映射、converter diff 和问数 Agent 旁路对账。",
-      "搜广推收录 22 条工程/研究信号，新增 Meta Engineering 2026-07-15 的 Hierarchical Interest Representation：围绕广告实体图、多模态内容、LLM 语义、graph transformer 和多层级兴趣 token，重点观察 deep funnel conversion、长尾/冷启动覆盖、召回质量、ranking lift 与在线 A/B。",
-      "A 社覆盖 18 条官方 News/Research/Engineering 动态，最新重点仍是 2026-07-14 的加拿大 Claude 经济指数和研究投入；安全研究主线包括 Claude 跨语言价值画像、robotics/physical AI、dual-use knowledge off switch、Claude Code/Tag/Science 等能力与治理边界。",
-      "AIHOT/官方 AI 新闻共 20 条，其中 AIHOT 2 条；所有新闻继续写成“信号 -> 影响 -> 动作”，动作聚焦评测回放、预算治理、工具白名单、权限审计和真实工作流验证。"
+      "GitHub 本轮由 1c7/chinese-independent-developer、apache/ossie、Nutlope/hallmark 领跑；项目解读继续按架构机制、适用团队、落地路径、生产风险、决策问题和观察信号拆解，避免把 star 热度等同于生产可采纳性。",
+      "开源项目更适合先做旁路 spike：目录/技能/Agent/视频/数据契约类项目都要先验证 owner、输入输出、失败样本、权限边界和回滚路径，再决定是否进入核心流程。",
+      "搜广推收录 22 条工程/研究信号，新增 Meta Engineering 7 月 15 日 Hierarchical Interest Representation；重点从 ads retrieval P99、深漏斗 graph embedding、Netflix 页面级生成、Pinterest 转化候选、Dropbox relevance judge 扩展到实验平台和模型生命周期治理。",
+      "A 社覆盖官方 News/Research/Engineering 与 Alignment Science Blog：Claude Code、Claude 模型、企业/教育/physical AI 合作、Economic Index、dual-use off switch、global workspace、agentic misalignment 都已进入同一风险-落地视图。",
+      "AIHOT/官方 AI 新闻共 20 条，今日新增 OpenAI GPT-Red；建议把“信号 -> 影响 -> 动作”落到评测回放、预算治理、工具白名单、权限审计和真实工作流验收。"
     ]
   },
   "items": [
     {
       "rank": 1,
+      "repo": {
+        "fullName": "1c7/chinese-independent-developer",
+        "name": "chinese-independent-developer",
+        "owner": "1c7",
+        "avatarUrl": "https://avatars.githubusercontent.com/u/1804755?v=4",
+        "visualUrl": "https://opengraph.githubassets.com/20260716/1c7/chinese-independent-developer",
+        "url": "https://github.com/1c7/chinese-independent-developer",
+        "description": "👩🏿‍💻👨🏾‍💻👩🏼‍💻👨🏽‍💻👩🏻‍💻中国独立开发者项目列表 -- 分享大家都在做什么",
+        "stars": 56725,
+        "starsToday": 688,
+        "forks": 4914,
+        "openIssues": 9,
+        "language": "Python",
+        "topics": [
+          "china",
+          "indie",
+          "indie-developer"
+        ],
+        "license": "",
+        "pushedAt": "2026-07-16T12:43:52Z",
+        "createdAt": "2017-09-21T11:08:23Z",
+        "languages": {
+          "Python": 3359
+        }
+      },
+      "analysis": {
+        "method": "codex-research-refresh",
+        "category": "独立开发者产品目录 / 创业机会雷达",
+        "oneLiner": "👩🏿‍💻👨🏾‍💻👩🏼‍💻👨🏽‍💻👩🏻‍💻中国独立开发者项目列表 -- 分享大家都在做什么；关键看 社区维护的项目清单、状态标记、开发者入口、按时间追加的产品条目和 Pull Request/Issue 更新机制，把碎片化产品样本沉淀为可浏览目录 是否能被小范围验证。",
+        "whyItMatters": "1c7/chinese-independent-developer 值得看，是因为 AI 项目真正的分水岭已经从“能跑 demo”转向“能被治理、能接工具、能失败恢复”。当前 56.7K stars / 4.9K forks，维护非常活跃，足够进入 Agent 工程雷达。 这次更新更值得关注的是其可迁移机制：社区维护的项目清单、状态标记、开发者入口、按时间追加的产品条目和 Pull Request/Issue 更新机制，把碎片化产品样本沉淀为可浏览目录 能否被拆成小样本验证，而不是把项目整体搬进生产。",
+        "engineeringRead": "Python · 容器化部署。建议按“入口示例 -> 数据/配置 -> 失败处理 -> CI/release -> issue 反例”的顺序读；重点回答 它解决的是「产品、增长、投资和独立开发者社区想观察中国独立开发者正在做什么，但项目分散在个人站、App、GitHub 和社交平台，缺少可持续更新的样本库」的主矛盾，还是只会给现有流程增加新的维护面？",
+        "architectureSignals": [
+          "架构机制：社区维护的项目清单、状态标记、开发者入口、按时间追加的产品条目和 Pull Request/Issue 更新机制，把碎片化产品样本沉淀为可浏览目录；阅读时把 Python 代码入口、数据/配置形态、自动化脚本和边界条件连起来看，而不是只看 README 的安装示例。",
+          "适用团队：独立开发者、增长研究、产品机会扫描、开发者关系和早期项目观察团队",
+          "落地路径：只把它作为选题、竞品和生态观察源，抽样 20 个项目回到官网、应用商店或仓库核验状态、收入线索、维护频率和用户反馈；先保留人工复核、指标记录和回滚路径。",
+          "生产风险：目录型项目最大风险是时效性、来源噪声和隐私边界；使用时必须二次核验项目状态、联系方式和数据授权。",
+          "决策问题：它解决的是「产品、增长、投资和独立开发者社区想观察中国独立开发者正在做什么，但项目分散在个人站、App、GitHub 和社交平台，缺少可持续更新的样本库」的主矛盾，还是只会给现有流程增加新的维护面？",
+          "观察信号：新增条目频率、项目可访问率、关闭/缺乏维护比例、分类准确率、可联系开发者比例和样本复核通过率、最近 release 质量、issue 响应速度和 容器化部署 的集成反馈。"
+        ],
+        "valueHypothesis": [
+          "如果团队确实存在「产品、增长、投资和独立开发者社区想观察中国独立开发者正在做什么，但项目分散在个人站、App、GitHub 和社交平台，缺少可持续更新的样本库」，1c7/chinese-independent-developer 的收益应体现为 新增条目频率、项目可访问率、关闭/缺乏维护比例、分类准确率、可联系开发者比例和样本复核通过率 的改善。",
+          "适合先复制机制、接口或治理方式，不适合未验证成本就全量迁移。",
+          "若 需要严格商业尽调、生产依赖选型、实时融资数据库或未经复核就批量采集个人信息的场景，它更适合作为资料样本，而不是生产依赖。"
+        ],
+        "technicalTakeaways": [
+          "先抓 先看最近新增条目、项目状态定义、贡献规则、重复/失效链接处理、子版面划分和是否能导出结构化清单，再决定 spike 范围。",
+          "图解字段应突出 社区维护的项目清单、状态标记、开发者入口、按时间追加的产品条目和 Pull Request/Issue 更新机制，把碎片化产品样本沉淀为可浏览目录 如何把 产品、增长、投资和独立开发者社区想观察中国独立开发者正在做什么，但项目分散在个人站、App、GitHub 和社交平台，缺少可持续更新的样本库 转成 帮助团队发现小而真实的产品需求、独立开发者分布、AI 工具落地方式和可合作/可学习的轻量产品形态。",
+          "验收时同时记录正样本、失败样本、成本、延迟和维护 owner。"
+        ],
+        "adoptionRisks": [
+          "目录型项目最大风险是时效性、来源噪声和隐私边界；使用时必须二次核验项目状态、联系方式和数据授权。",
+          "与现有 Python / 容器化部署 工具链的耦合要先做最小集成验证。",
+          "社区负载相对可控，但仍要关注 breaking change、license 和长期维护信号。"
+        ],
+        "suggestedUseCases": [
+          "只把它作为选题、竞品和生态观察源，抽样 20 个项目回到官网、应用商店或仓库核验状态、收入线索、维护频率和用户反馈；先保留人工复核、指标记录和回滚路径。",
+          "用一个可回放样本验证 新增条目频率、项目可访问率、关闭/缺乏维护比例、分类准确率、可联系开发者比例和样本复核通过率，同时记录接入时间、失败样本和回滚步骤。",
+          "只在指标改善、维护 owner 明确、风险可隔离后，再从旁路验证扩大到核心流程。"
+        ],
+        "watchSignals": [
+          "新增条目频率、项目可访问率、关闭/缺乏维护比例、分类准确率、可联系开发者比例和样本复核通过率、最近 release 质量、issue 响应速度和 容器化部署 的集成反馈。",
+          "release note 是否持续解释 社区维护的项目清单、状态标记、开发者入口、按时间追加的产品条目和 Pull Request/Issue 更新机制，把碎片化产品样本沉淀为可浏览目录 的演进，而不只是功能堆叠。",
+          "issue/讨论区是否出现与你的目标场景相似的真实案例和失败反馈。"
+        ],
+        "deepDive": {
+          "strategicValue": "1c7/chinese-independent-developer 的价值不应按 star 数直接外推；更合理的读法是把它当作 独立开发者产品目录 / 创业机会雷达 的工程样本，判断其机制是否能降低你现有链路的复杂度、人工成本或质量波动。",
+          "implementationPath": [
+            "只把它作为选题、竞品和生态观察源，抽样 20 个项目回到官网、应用商店或仓库核验状态、收入线索、维护频率和用户反馈；先保留人工复核、指标记录和回滚路径。",
+            "用一个可回放样本验证 新增条目频率、项目可访问率、关闭/缺乏维护比例、分类准确率、可联系开发者比例和样本复核通过率，同时记录接入时间、失败样本和回滚步骤。",
+            "只在指标改善、维护 owner 明确、风险可隔离后，再从旁路验证扩大到核心流程。"
+          ],
+          "productionConcerns": [
+            "目录型项目最大风险是时效性、来源噪声和隐私边界；使用时必须二次核验项目状态、联系方式和数据授权。",
+            "与现有 Python / 容器化部署 工具链的耦合要先做最小集成验证。",
+            "社区负载相对可控，但仍要关注 breaking change、license 和长期维护信号。"
+          ],
+          "decisionQuestions": [
+            "它解决的是「产品、增长、投资和独立开发者社区想观察中国独立开发者正在做什么，但项目分散在个人站、App、GitHub 和社交平台，缺少可持续更新的样本库」的主矛盾，还是只会给现有流程增加新的维护面？",
+            "如果两周 spike 只能证明“能跑”，不能证明 新增条目频率、项目可访问率、关闭/缺乏维护比例、分类准确率、可联系开发者比例和样本复核通过率 改善，是否应降级为观察项？",
+            "谁负责上线后的升级、告警、回滚和安全审计？"
+          ],
+          "recommendedAction": "进入观察/试点池：只把它作为选题、竞品和生态观察源，抽样 20 个项目回到官网、应用商店或仓库核验状态、收入线索、维护频率和用户反馈；先保留人工复核、指标记录和回滚路径。"
+        },
+        "diagram": {
+          "title": "chinese-independent-developer 工业级采用图解",
+          "caption": "独立开发者产品目录 / 创业机会雷达 · Python · 56.7K stars",
+          "summary": "用 社区维护的项目清单、状态标记、开发者入口、按时间追加的产品条目和 Pull Request/Issue 更新机制，把碎片化产品样本沉淀为可浏览目录 解决 产品、增长、投资和独立开发者社区想观察中国独立开发者正在做什么，但项目分散在个人站、App、GitHub 和社交平台，缺少可持续更新的样本库，先经由 只把它作为选题、竞品和生态观察源，抽样 20 个项目回到官网、应用商店或仓库核验状态、收入线索、维护频率和用户反馈 验证 新增条目频率、项目可访问率、关闭/缺乏维护比例、分类准确率、可联系开发者比例和样本复核通过率，再决定是否扩大。",
+          "nodes": [
+            {
+              "label": "架构机制",
+              "detail": "社区维护的项目清单、状态标记、开发者入口、按时间追加的产品条目和 Pull Request/Issue 更新机制，把碎片化产品样本沉淀为可浏览目录",
+              "type": "core"
+            },
+            {
+              "label": "适用团队",
+              "detail": "独立开发者、增长研究、产品机会扫描、开发者关系和早期项目观察团队",
+              "type": "input"
+            },
+            {
+              "label": "落地路径",
+              "detail": "只把它作为选题、竞品和生态观察源，抽样 20 个项目回到官网、应用商店或仓库核验状态、收入线索、维护频率和用户反馈；先保留人工复核、指标记录和回滚路径。",
+              "type": "integration"
+            },
+            {
+              "label": "观察信号",
+              "detail": "新增条目频率、项目可访问率、关闭/缺乏维护比例、分类准确率、可联系开发者比例和样本复核通过率、最近 release 质量、issue 响应速度和 容器化部署 的集成反馈。",
+              "type": "measure"
+            }
+          ],
+          "links": [
+            "机制拆解",
+            "试点验证",
+            "指标放大"
+          ],
+          "poster": {
+            "eyebrow": "Project Blueprint",
+            "headline": "独立开发者产品目录 / 创业机会雷达",
+            "subhead": "1c7/chinese-independent-developer · 成熟扩散 · Python",
+            "thesis": "把「产品、增长、投资和独立开发者社区想观察中国独立开发者正在做什么，但项目分散在个人站、App、GitHub 和社交平台，缺少可持续更新的样本库」通过「社区维护的项目清单、状态标记、开发者入口、按时间追加的产品条目和 Pull Request/Issue 更新机制，把碎片化产品样本沉淀为可浏览目录」转化为「帮助团队发现小而真实的产品需求、独立开发者分布、AI 工具落地方式和可合作/可学习的轻量产品形态」。",
+            "metrics": [
+              {
+                "label": "Stars",
+                "value": "56.7K",
+                "note": "社区关注"
+              },
+              {
+                "label": "Forks",
+                "value": "4.9K",
+                "note": "二次采用"
+              },
+              {
+                "label": "Issues",
+                "value": "9",
+                "note": "维护压力"
+              },
+              {
+                "label": "Stack",
+                "value": "Python",
+                "note": "主技术栈"
+              }
+            ],
+            "lanes": [
+              {
+                "label": "架构机制",
+                "detail": "社区维护的项目清单、状态标记、开发者入口、按时间追加的产品条目和 Pull Request/Issue 更新机制，把碎片化产品样本沉淀为可浏览目录",
+                "type": "core",
+                "step": "01",
+                "signal": "先看最近新增条目、项目状态定义、贡献规则、重复/失效链接处理、子版面划分和是否能导出结构化清单"
+              },
+              {
+                "label": "适用团队",
+                "detail": "独立开发者、增长研究、产品机会扫描、开发者关系和早期项目观察团队",
+                "type": "input",
+                "step": "02",
+                "signal": "独立开发者、增长研究、产品机会扫描、开发者关系和早期项目观察团队"
+              },
+              {
+                "label": "落地路径",
+                "detail": "只把它作为选题、竞品和生态观察源，抽样 20 个项目回到官网、应用商店或仓库核验状态、收入线索、维护频率和用户反馈；先保留人工复核、指标记录和回滚路径。",
+                "type": "integration",
+                "step": "03",
+                "signal": "只把它作为选题、竞品和生态观察源，抽样 20 个项目回到官网、应用商店或仓库核验状态、收入线索、维护频率和用户反馈"
+              },
+              {
+                "label": "观察信号",
+                "detail": "新增条目频率、项目可访问率、关闭/缺乏维护比例、分类准确率、可联系开发者比例和样本复核通过率、最近 release 质量、issue 响应速度和 容器化部署 的集成反馈。",
+                "type": "measure",
+                "step": "04",
+                "signal": "新增条目频率、项目可访问率、关闭/缺乏维护比例、分类准确率、可联系开发者比例和样本复核通过率"
+              }
+            ],
+            "adoption": [
+              {
+                "label": "试点入口",
+                "detail": "只把它作为选题、竞品和生态观察源，抽样 20 个项目回到官网、应用商店或仓库核验状态、收入线索、维护频率和用户反馈"
+              },
+              {
+                "label": "验收指标",
+                "detail": "新增条目频率、项目可访问率、关闭/缺乏维护比例、分类准确率、可联系开发者比例和样本复核通过率"
+              },
+              {
+                "label": "生产风险",
+                "detail": "目录型项目最大风险是时效性、来源噪声和隐私边界；使用时必须二次核验项目状态、联系方式和数据授权。"
+              },
+              {
+                "label": "决策问题",
+                "detail": "它解决的是「产品、增长、投资和独立开发者社区想观察中国独立开发者正在做什么，但项目分散在个人站、App、GitHub 和社交平台，缺少可持续更新的样本库」的主矛盾，还是只会给现有流程增加新的维护面？"
+              }
+            ],
+            "warning": "需要严格商业尽调、生产依赖选型、实时融资数据库或未经复核就批量采集个人信息的场景"
+          }
+        },
+        "maturity": {
+          "community": 100,
+          "maintenance": 100,
+          "production": 84,
+          "complexity": 55
+        },
+        "score": 100
+      },
+      "evidence": {
+        "readmeExcerpt": "中国独立开发者项目列表 聚合所有中国独立开发者的项目 子版面 程序员版面：使用需要命令行或写代码 游戏版面：都是游戏 2018 2020 年项目列表：因 GitHub 渲染限制单独存档 备注：您当前查看的是主版面，收录的产品是打开即用，和子版面中的产品类型不同。 1. 为什么有这个表 作为开发者其实比较好奇其他人在做什么业余项目（不管目的是做到盈利/玩票/试试看） 所以特意建了这个库。欢迎各位开发者把自己的项目加进来 发 Pull Request 或 Issue 即可 <br/ （入选标准：必须是网站或App，不能是开发者工具或论坛型网站） 写好介绍语很重要 ：❌ AI 视频生成工具 → ✅ 无需剪辑经验，3 步生成竖屏短视频 <br/ 👉 如何写好一句话产品介绍 2. 项目有 3 种状态 开发中 已上线 已关闭或缺乏维护 :clock8: :white check mark: :x: 3. 项目列表 2026 年 7 月 16 号添加 VinsonGuo(成都) Github, Blog :white check mark: SmartRSS：全平台RSS阅读器，无缝集成FreshRSS等服务。强大的AI自定义指令帮你高效处理信息，一站式内容订阅（Blog/Podcast/YouTube/Reddit等），以及卓越阅读体验。 Ivy(上海) Github, 工作室官网 :white check mark: 记账tracker：投资记账与持仓复盘工具，分开呈现持仓浮盈亏和已实现盈亏，支持组合视图、微信小程序、开源本地桌面版及只读 MCP 分析 Misaki Akeno(杭州) Github :white check mark: Synthesizer Flow：浏览器端模块化合成器，通过可视化节点和连线搭建音频工作流，支持实时声音合成、MIDI 音序及 AI Agent 辅助修改工程 jaychouchannel Github :white check mark: 拼图编辑器 Puzzle Builder：纯前端零依赖的可视化拼图低代码编辑器，在画布上拖拽矩形即可创建...",
+        "githubUrl": "https://github.com/1c7/chinese-independent-developer"
+      }
+    },
+    {
+      "rank": 2,
       "repo": {
         "fullName": "apache/ossie",
         "name": "ossie",
@@ -84,10 +297,10 @@
         "visualUrl": "https://opengraph.githubassets.com/20260716/apache/ossie",
         "url": "https://github.com/apache/ossie",
         "description": "Apache Ossie, industry wide specification effort to standardize how we exchange semantic metadata across analytics, AI and BI platforms, providing a vendor neutral, single source of truth for semantic data",
-        "stars": 741,
-        "starsToday": 34,
-        "forks": 124,
-        "openIssues": 56,
+        "stars": 783,
+        "starsToday": 81,
+        "forks": 128,
+        "openIssues": 58,
         "language": "Python",
         "topics": [
           "metadata",
@@ -269,12 +482,12 @@
           }
         },
         "maturity": {
-          "community": 63,
+          "community": 64,
           "maintenance": 100,
-          "production": 66,
-          "complexity": 72
+          "production": 81,
+          "complexity": 55
         },
-        "score": 88,
+        "score": 87,
         "editorialUpdate": "2026-07-16 人工核验：README 显示 Ossie 原名 Open Semantic Interchange，仓库包含 core-spec、schema、converters、examples、validation 和 docs，目标是跨 AI/BI/analytics 工具交换语义模型；本次已从泛化 Agent 解读修正为语义层标准与问数 Agent 数据契约。"
       },
       "evidence": {
@@ -283,7 +496,7 @@
       }
     },
     {
-      "rank": 2,
+      "rank": 3,
       "repo": {
         "fullName": "Nutlope/hallmark",
         "name": "hallmark",
@@ -292,9 +505,9 @@
         "visualUrl": "https://opengraph.githubassets.com/20260716/Nutlope/hallmark",
         "url": "https://github.com/Nutlope/hallmark",
         "description": "Anti-AI-slop design skill for Claude Code, Cursor, and Codex.",
-        "stars": 10133,
-        "starsToday": 1277,
-        "forks": 507,
+        "stars": 10337,
+        "starsToday": 3181,
+        "forks": 515,
         "openIssues": 13,
         "language": "CSS",
         "topics": [],
@@ -311,7 +524,7 @@
         "method": "codex-research-refresh",
         "category": "AI 前端设计技能 / 反模板化生成约束",
         "oneLiner": "Anti-AI-slop design skill for Claude Code, Cursor, and Codex.；关键看 用设计 skill 固定宏观结构选择、20 个主题、4 类动词、57 个 slop test gate 和 emit 前自我批评，把生成前端从风格随机漂移改成可审查约束系统 是否能被小范围验证。",
-        "whyItMatters": "Nutlope/hallmark 处在 快速扩散项目 区间：10.1K stars / 507 forks，需要确认近期维护强度。README 把重点放在「Hallmark」，适合判断它是否能在 产品界面交付、组件复用或交互体验一致性 上形成真实工程收益。 这次更新更值得关注的是其可迁移机制：用设计 skill 固定宏观结构选择、20 个主题、4 类动词、57 个 slop test gate 和 emit 前自我批评，把生成前端从风格随机漂移改成可审查约束系统 能否被拆成小样本验证，而不是把项目整体搬进生产。",
+        "whyItMatters": "Nutlope/hallmark 处在 快速扩散项目 区间：10.3K stars / 515 forks，需要确认近期维护强度。README 把重点放在「Hallmark」，适合判断它是否能在 产品界面交付、组件复用或交互体验一致性 上形成真实工程收益。 这次更新更值得关注的是其可迁移机制：用设计 skill 固定宏观结构选择、20 个主题、4 类动词、57 个 slop test gate 和 emit 前自我批评，把生成前端从风格随机漂移改成可审查约束系统 能否被拆成小样本验证，而不是把项目整体搬进生产。",
         "engineeringRead": "CSS · API/SDK 接入。建议按“入口示例 -> 数据/配置 -> 失败处理 -> CI/release -> issue 反例”的顺序读；重点回答 它解决的是「产品和前端团队用 Claude Code、Cursor 或 Codex 生成页面时，经常得到同质化卡片、紫蓝渐变、空洞 hero 和无法落地的“AI 味”界面」的主矛盾，还是只会给现有流程增加新的维护面？",
         "architectureSignals": [
           "架构机制：用设计 skill 固定宏观结构选择、20 个主题、4 类动词、57 个 slop test gate 和 emit 前自我批评，把生成前端从风格随机漂移改成可审查约束系统；阅读时把 CSS 代码入口、数据/配置形态、自动化脚本和边界条件连起来看，而不是只看 README 的安装示例。",
@@ -367,7 +580,7 @@
         },
         "diagram": {
           "title": "hallmark 工业级采用图解",
-          "caption": "AI 前端设计技能 / 反模板化生成约束 · CSS · 10.1K stars",
+          "caption": "AI 前端设计技能 / 反模板化生成约束 · CSS · 10.3K stars",
           "summary": "用 用设计 skill 固定宏观结构选择、20 个主题、4 类动词、57 个 slop test gate 和 emit 前自我批评，把生成前端从风格随机漂移改成可审查约束系统 解决 产品和前端团队用 Claude Code、Cursor 或 Codex 生成页面时，经常得到同质化卡片、紫蓝渐变、空洞 hero 和无法落地的“AI 味”界面，先经由 先对一个内部页面做 build/audit 两种模式对照，只让它产出候选稿和 punch list，再由设计/前端人工合并 验证 设计 review 返工率、移动端布局缺陷、组件复用率、可访问性问题、生成后手工修改时间和品牌一致性评分，再决定是否扩大。",
           "nodes": [
             {
@@ -404,12 +617,12 @@
             "metrics": [
               {
                 "label": "Stars",
-                "value": "10.1K",
+                "value": "10.3K",
                 "note": "社区关注"
               },
               {
                 "label": "Forks",
-                "value": "507",
+                "value": "515",
                 "note": "二次采用"
               },
               {
@@ -488,7 +701,7 @@
       }
     },
     {
-      "rank": 3,
+      "rank": 4,
       "repo": {
         "fullName": "OpenCut-app/OpenCut",
         "name": "OpenCut",
@@ -497,9 +710,9 @@
         "visualUrl": "https://opengraph.githubassets.com/20260716/OpenCut-app/OpenCut",
         "url": "https://github.com/OpenCut-app/OpenCut",
         "description": "The open-source CapCut alternative",
-        "stars": 73482,
-        "starsToday": 1664,
-        "forks": 7456,
+        "stars": 73640,
+        "starsToday": 3290,
+        "forks": 7460,
         "openIssues": 350,
         "language": "TypeScript",
         "topics": [
@@ -698,7 +911,7 @@
       }
     },
     {
-      "rank": 4,
+      "rank": 5,
       "repo": {
         "fullName": "PostHog/posthog",
         "name": "posthog",
@@ -706,11 +919,11 @@
         "avatarUrl": "https://avatars.githubusercontent.com/u/60330232?v=4",
         "visualUrl": "https://opengraph.githubassets.com/20260716/PostHog/posthog",
         "url": "https://github.com/PostHog/posthog",
-        "description": "🦔 PostHog is an all-in-one developer platform for building successful products. We offer product analytics, web analytics, session replay, error tracking, feature flags, experimentation, surveys, data warehouse, a CDP, and an AI product assistant to help debug your code, ship features faster, and keep all your usage and customer data in one stack.",
-        "stars": 35609,
+        "description": ":hedgehog: PostHog is the leading platform for building self-driving products. Our developer tools – AI observability, analytics, session replay, flags, experiments, error tracking, logs, and more – capture all the context agents need to diagnose problems, uncover opportunities, and ship fixes. Steer it all from Slack, web, desktop, or the MCP.",
+        "stars": 35671,
         "starsToday": 58,
-        "forks": 2979,
-        "openIssues": 4859,
+        "forks": 2982,
+        "openIssues": 4876,
         "language": "Python",
         "topics": [
           "ab-testing",
@@ -730,21 +943,21 @@
           "web-analytics"
         ],
         "license": "NOASSERTION",
-        "pushedAt": "2026-07-16T12:05:37Z",
+        "pushedAt": "2026-07-16T15:06:27Z",
         "createdAt": "2020-01-23T22:46:58Z",
         "languages": {
-          "Python": 128971529,
-          "TypeScript": 78973467,
-          "Rust": 17017974,
-          "HCL": 2402153,
+          "Python": 130404198,
+          "TypeScript": 80426067,
+          "Rust": 17021672,
+          "HCL": 2530552,
           "JavaScript": 944465,
           "Go": 708298,
           "HTML": 575468,
           "SCSS": 554819,
-          "Shell": 454455,
+          "Shell": 456969,
           "CSS": 237440,
           "C++": 156249,
-          "Jinja": 71427,
+          "Jinja": 71652,
           "Dockerfile": 46957,
           "ANTLR": 40477,
           "MDX": 34799,
@@ -759,85 +972,85 @@
       },
       "analysis": {
         "method": "codex-research-refresh",
-        "category": "云原生 / 基础设施",
-        "oneLiner": "🦔 PostHog is an all-in-one developer platform for building successful products. We offer product analytics, web analytics, session replay, error tracking, feature flags, experimentation, surveys, data warehouse, a CDP, and an AI product assistant to help debug your code, ship features faster, and keep all your usage and customer data in one stack.；关键看 控制面、运行时、网络代理或可观测性采集 是否能被小范围验证。",
-        "whyItMatters": "PostHog/posthog 处在 成熟热门项目 区间：35.6K stars / 3K forks，维护非常活跃。README 把重点放在「Table of Contents」，适合判断它是否能在 部署、弹性、监控或平台化运维复杂度 上形成真实工程收益。 这次更新更值得关注的是其可迁移机制：控制面、运行时、网络代理或可观测性采集 能否被拆成小样本验证，而不是把项目整体搬进生产。",
-        "engineeringRead": "Python · 容器化部署。建议按“入口示例 -> 数据/配置 -> 失败处理 -> CI/release -> issue 反例”的顺序读；重点回答 它解决的是「部署、弹性、监控或平台化运维复杂度」的主矛盾，还是只会给现有流程增加新的维护面？",
+        "category": "AI Agent / LLM 工程",
+        "oneLiner": ":hedgehog: PostHog is the leading platform for building self-driving products. Our developer tools – AI observability, analytics, session replay, flags, experiments, error tracking, logs, and more – capture all the context agents need to diagnose problems, uncover opportunities, and ship fixes. Steer it all from Slack, web, desktop, or the MCP.；关键看工具边界、上下文持久化、权限和失败接管是否可治理。",
+        "whyItMatters": "PostHog/posthog 值得看，是因为 AI 项目真正的分水岭已经从“能跑 demo”转向“能被治理、能接工具、能失败恢复”。当前 35.7K stars / 3K forks，维护非常活跃，足够进入 Agent 工程雷达。 这次更新更值得关注的是其可迁移机制：模型接口、工具协议、上下文管理或推理工作流 能否被拆成小样本验证，而不是把项目整体搬进生产。",
+        "engineeringRead": "Python · 容器化部署。建议按“入口示例 -> 数据/配置 -> 失败处理 -> CI/release -> issue 反例”的顺序读；重点回答 它解决的是「AI 应用编排、工具接入或模型调用复杂度」的主矛盾，还是只会给现有流程增加新的维护面？",
         "architectureSignals": [
-          "架构机制：控制面、运行时、网络代理或可观测性采集；阅读时把 Python 代码入口、数据/配置形态、自动化脚本和边界条件连起来看，而不是只看 README 的安装示例。",
-          "适用团队：非核心服务或测试环境能先承接试点",
-          "落地路径：测试环境、旁路监控或非核心服务；先保留人工复核、指标记录和回滚路径。",
-          "生产风险：运维复杂度、故障半径、权限模型和升级路径会放大试点风险。",
-          "决策问题：它解决的是「部署、弹性、监控或平台化运维复杂度」的主矛盾，还是只会给现有流程增加新的维护面？",
-          "观察信号：部署耗时、故障恢复、资源利用率、告警质量、最近 release 质量、issue 响应速度和 容器化部署 的集成反馈。"
+          "架构机制：模型接口、工具协议、上下文管理或推理工作流；阅读时把 Python 代码入口、数据/配置形态、自动化脚本和边界条件连起来看，而不是只看 README 的安装示例。",
+          "适用团队：已有明确人工流程、且失败可回滚",
+          "落地路径：内部效率工具或旁路助手；先保留人工复核、指标记录和回滚路径。",
+          "生产风险：Agent/API 网关类项目必须先处理凭据、越权、审计、重试和人工接管。",
+          "决策问题：它解决的是「AI 应用编排、工具接入或模型调用复杂度」的主矛盾，还是只会给现有流程增加新的维护面？",
+          "观察信号：任务完成率、人工接管率、单次任务成本、最近 release 质量、issue 响应速度和 容器化部署 的集成反馈。"
         ],
         "valueHypothesis": [
-          "如果团队确实存在「部署、弹性、监控或平台化运维复杂度」，PostHog/posthog 的收益应体现为 部署耗时、故障恢复、资源利用率、告警质量 的改善。",
+          "如果团队确实存在「AI 应用编排、工具接入或模型调用复杂度」，PostHog/posthog 的收益应体现为 任务完成率、人工接管率、单次任务成本 的改善。",
           "适合先复制机制、接口或治理方式，不适合未验证成本就全量迁移。",
-          "若 缺少平台运维 owner 或没有回滚窗口，它更适合作为资料样本，而不是生产依赖。"
+          "若 流程本身还没有标准化，或权限边界不清楚，它更适合作为资料样本，而不是生产依赖。"
         ],
         "technicalTakeaways": [
-          "先抓 先看安装/卸载路径、权限需求和故障时的降级方式，再决定 spike 范围。",
-          "图解字段应突出 控制面、运行时、网络代理或可观测性采集 如何把 部署、弹性、监控或平台化运维复杂度 转成 系统稳定性、资源利用率和运维效率。",
+          "先抓 先看工具调用边界、上下文注入方式和日志可观测性，再决定 spike 范围。",
+          "图解字段应突出 模型接口、工具协议、上下文管理或推理工作流 如何把 AI 应用编排、工具接入或模型调用复杂度 转成 研发效率、自动化覆盖率和人工操作节省。",
           "验收时同时记录正样本、失败样本、成本、延迟和维护 owner。"
         ],
         "adoptionRisks": [
-          "运维复杂度、故障半径、权限模型和升级路径会放大试点风险。",
+          "Agent/API 网关类项目必须先处理凭据、越权、审计、重试和人工接管。",
           "与现有 Python / 容器化部署 工具链的耦合要先做最小集成验证。",
           "当前 open issues 偏高，必须抽查最近 issue 的响应质量和 release 节奏。"
         ],
         "suggestedUseCases": [
-          "测试环境、旁路监控或非核心服务；先保留人工复核、指标记录和回滚路径。",
-          "用一个可回放样本验证 部署耗时、故障恢复、资源利用率、告警质量，同时记录接入时间、失败样本和回滚步骤。",
+          "内部效率工具或旁路助手；先保留人工复核、指标记录和回滚路径。",
+          "用一个可回放样本验证 任务完成率、人工接管率、单次任务成本，同时记录接入时间、失败样本和回滚步骤。",
           "只在指标改善、维护 owner 明确、风险可隔离后，再从旁路验证扩大到核心流程。"
         ],
         "watchSignals": [
-          "部署耗时、故障恢复、资源利用率、告警质量、最近 release 质量、issue 响应速度和 容器化部署 的集成反馈。",
-          "release note 是否持续解释 控制面、运行时、网络代理或可观测性采集 的演进，而不只是功能堆叠。",
+          "任务完成率、人工接管率、单次任务成本、最近 release 质量、issue 响应速度和 容器化部署 的集成反馈。",
+          "release note 是否持续解释 模型接口、工具协议、上下文管理或推理工作流 的演进，而不只是功能堆叠。",
           "issue/讨论区是否出现与你的目标场景相似的真实案例和失败反馈。"
         ],
         "deepDive": {
-          "strategicValue": "PostHog/posthog 的价值不应按 star 数直接外推；更合理的读法是把它当作 云原生 / 基础设施 的工程样本，判断其机制是否能降低你现有链路的复杂度、人工成本或质量波动。",
+          "strategicValue": "PostHog/posthog 的价值不应按 star 数直接外推；更合理的读法是把它当作 AI Agent / LLM 工程 的工程样本，判断其机制是否能降低你现有链路的复杂度、人工成本或质量波动。",
           "implementationPath": [
-            "测试环境、旁路监控或非核心服务；先保留人工复核、指标记录和回滚路径。",
-            "用一个可回放样本验证 部署耗时、故障恢复、资源利用率、告警质量，同时记录接入时间、失败样本和回滚步骤。",
+            "内部效率工具或旁路助手；先保留人工复核、指标记录和回滚路径。",
+            "用一个可回放样本验证 任务完成率、人工接管率、单次任务成本，同时记录接入时间、失败样本和回滚步骤。",
             "只在指标改善、维护 owner 明确、风险可隔离后，再从旁路验证扩大到核心流程。"
           ],
           "productionConcerns": [
-            "运维复杂度、故障半径、权限模型和升级路径会放大试点风险。",
+            "Agent/API 网关类项目必须先处理凭据、越权、审计、重试和人工接管。",
             "与现有 Python / 容器化部署 工具链的耦合要先做最小集成验证。",
             "当前 open issues 偏高，必须抽查最近 issue 的响应质量和 release 节奏。"
           ],
           "decisionQuestions": [
-            "它解决的是「部署、弹性、监控或平台化运维复杂度」的主矛盾，还是只会给现有流程增加新的维护面？",
-            "如果两周 spike 只能证明“能跑”，不能证明 部署耗时、故障恢复、资源利用率、告警质量 改善，是否应降级为观察项？",
+            "它解决的是「AI 应用编排、工具接入或模型调用复杂度」的主矛盾，还是只会给现有流程增加新的维护面？",
+            "如果两周 spike 只能证明“能跑”，不能证明 任务完成率、人工接管率、单次任务成本 改善，是否应降级为观察项？",
             "谁负责上线后的升级、告警、回滚和安全审计？"
           ],
-          "recommendedAction": "进入观察/试点池：测试环境、旁路监控或非核心服务；先保留人工复核、指标记录和回滚路径。"
+          "recommendedAction": "进入观察/试点池：内部效率工具或旁路助手；先保留人工复核、指标记录和回滚路径。"
         },
         "diagram": {
           "title": "posthog 工业级采用图解",
-          "caption": "云原生 / 基础设施 · Python · 35.6K stars",
-          "summary": "用 控制面、运行时、网络代理或可观测性采集 解决 部署、弹性、监控或平台化运维复杂度，先经由 测试环境、旁路监控或非核心服务 验证 部署耗时、故障恢复、资源利用率、告警质量，再决定是否扩大。",
+          "caption": "AI Agent / LLM 工程 · Python · 35.7K stars",
+          "summary": "用 模型接口、工具协议、上下文管理或推理工作流 解决 AI 应用编排、工具接入或模型调用复杂度，先经由 内部效率工具或旁路助手 验证 任务完成率、人工接管率、单次任务成本，再决定是否扩大。",
           "nodes": [
             {
               "label": "架构机制",
-              "detail": "控制面、运行时、网络代理或可观测性采集",
+              "detail": "模型接口、工具协议、上下文管理或推理工作流",
               "type": "core"
             },
             {
               "label": "适用团队",
-              "detail": "非核心服务或测试环境能先承接试点",
+              "detail": "已有明确人工流程、且失败可回滚",
               "type": "input"
             },
             {
               "label": "落地路径",
-              "detail": "测试环境、旁路监控或非核心服务；先保留人工复核、指标记录和回滚路径。",
+              "detail": "内部效率工具或旁路助手；先保留人工复核、指标记录和回滚路径。",
               "type": "integration"
             },
             {
               "label": "观察信号",
-              "detail": "部署耗时、故障恢复、资源利用率、告警质量、最近 release 质量、issue 响应速度和 容器化部署 的集成反馈。",
+              "detail": "任务完成率、人工接管率、单次任务成本、最近 release 质量、issue 响应速度和 容器化部署 的集成反馈。",
               "type": "measure"
             }
           ],
@@ -848,13 +1061,13 @@
           ],
           "poster": {
             "eyebrow": "Project Blueprint",
-            "headline": "云原生 / 基础设施",
+            "headline": "AI Agent / LLM 工程",
             "subhead": "PostHog/posthog · 成熟扩散 · Python",
-            "thesis": "把「部署、弹性、监控或平台化运维复杂度」通过「控制面、运行时、网络代理或可观测性采集」转化为「系统稳定性、资源利用率和运维效率」。",
+            "thesis": "把「AI 应用编排、工具接入或模型调用复杂度」通过「模型接口、工具协议、上下文管理或推理工作流」转化为「研发效率、自动化覆盖率和人工操作节省」。",
             "metrics": [
               {
                 "label": "Stars",
-                "value": "35.6K",
+                "value": "35.7K",
                 "note": "社区关注"
               },
               {
@@ -876,59 +1089,59 @@
             "lanes": [
               {
                 "label": "架构机制",
-                "detail": "控制面、运行时、网络代理或可观测性采集",
+                "detail": "模型接口、工具协议、上下文管理或推理工作流",
                 "type": "core",
                 "step": "01",
-                "signal": "先看安装/卸载路径、权限需求和故障时的降级方式"
+                "signal": "先看工具调用边界、上下文注入方式和日志可观测性"
               },
               {
                 "label": "适用团队",
-                "detail": "非核心服务或测试环境能先承接试点",
+                "detail": "已有明确人工流程、且失败可回滚",
                 "type": "input",
                 "step": "02",
-                "signal": "非核心服务或测试环境能先承接试点"
+                "signal": "已有明确人工流程、且失败可回滚"
               },
               {
                 "label": "落地路径",
-                "detail": "测试环境、旁路监控或非核心服务；先保留人工复核、指标记录和回滚路径。",
+                "detail": "内部效率工具或旁路助手；先保留人工复核、指标记录和回滚路径。",
                 "type": "integration",
                 "step": "03",
-                "signal": "测试环境、旁路监控或非核心服务"
+                "signal": "内部效率工具或旁路助手"
               },
               {
                 "label": "观察信号",
-                "detail": "部署耗时、故障恢复、资源利用率、告警质量、最近 release 质量、issue 响应速度和 容器化部署 的集成反馈。",
+                "detail": "任务完成率、人工接管率、单次任务成本、最近 release 质量、issue 响应速度和 容器化部署 的集成反馈。",
                 "type": "measure",
                 "step": "04",
-                "signal": "部署耗时、故障恢复、资源利用率、告警质量"
+                "signal": "任务完成率、人工接管率、单次任务成本"
               }
             ],
             "adoption": [
               {
                 "label": "试点入口",
-                "detail": "测试环境、旁路监控或非核心服务"
+                "detail": "内部效率工具或旁路助手"
               },
               {
                 "label": "验收指标",
-                "detail": "部署耗时、故障恢复、资源利用率、告警质量"
+                "detail": "任务完成率、人工接管率、单次任务成本"
               },
               {
                 "label": "生产风险",
-                "detail": "运维复杂度、故障半径、权限模型和升级路径会放大试点风险。"
+                "detail": "Agent/API 网关类项目必须先处理凭据、越权、审计、重试和人工接管。"
               },
               {
                 "label": "决策问题",
-                "detail": "它解决的是「部署、弹性、监控或平台化运维复杂度」的主矛盾，还是只会给现有流程增加新的维护面？"
+                "detail": "它解决的是「AI 应用编排、工具接入或模型调用复杂度」的主矛盾，还是只会给现有流程增加新的维护面？"
               }
             ],
-            "warning": "缺少平台运维 owner 或没有回滚窗口"
+            "warning": "流程本身还没有标准化，或权限边界不清楚"
           }
         },
         "maturity": {
           "community": 100,
           "maintenance": 100,
           "production": 86,
-          "complexity": 84
+          "complexity": 67
         },
         "score": 92
       },
@@ -938,7 +1151,7 @@
       }
     },
     {
-      "rank": 5,
+      "rank": 6,
       "repo": {
         "fullName": "openinterpreter/openinterpreter",
         "name": "openinterpreter",
@@ -947,9 +1160,9 @@
         "visualUrl": "https://opengraph.githubassets.com/20260716/openinterpreter/openinterpreter",
         "url": "https://github.com/openinterpreter/openinterpreter",
         "description": "A coding agent for low-cost models",
-        "stars": 65783,
-        "starsToday": 299,
-        "forks": 5665,
+        "stars": 65836,
+        "starsToday": 633,
+        "forks": 5667,
         "openIssues": 274,
         "language": "Rust",
         "topics": [
@@ -961,20 +1174,20 @@
           "rust"
         ],
         "license": "Apache-2.0",
-        "pushedAt": "2026-07-16T11:23:20Z",
+        "pushedAt": "2026-07-16T12:26:52Z",
         "createdAt": "2023-07-14T07:10:44Z",
         "languages": {
-          "Rust": 41590086,
+          "Rust": 40928124,
           "Python": 1106913,
-          "Starlark": 94979,
+          "Starlark": 92744,
           "TypeScript": 86475,
-          "Shell": 70885,
+          "Shell": 69847,
           "PowerShell": 56926,
-          "JavaScript": 30869,
+          "JavaScript": 30395,
           "Jupyter Notebook": 20702,
           "HTML": 18785,
           "Smarty": 7627,
-          "Just": 7322,
+          "Just": 6398,
           "Nix": 4427,
           "MDX": 2595,
           "CSS": 2531,
@@ -1163,7 +1376,7 @@
       }
     },
     {
-      "rank": 6,
+      "rank": 7,
       "repo": {
         "fullName": "PrismML-Eng/Bonsai-demo",
         "name": "Bonsai-demo",
@@ -1172,7 +1385,7 @@
         "visualUrl": "https://opengraph.githubassets.com/20260716/PrismML-Eng/Bonsai-demo",
         "url": "https://github.com/PrismML-Eng/Bonsai-demo",
         "description": "Bonsai Demo",
-        "stars": 1369,
+        "stars": 1417,
         "starsToday": 323,
         "forks": 149,
         "openIssues": 13,
@@ -1375,7 +1588,7 @@
       }
     },
     {
-      "rank": 7,
+      "rank": 8,
       "repo": {
         "fullName": "hasaneyldrm/exercises-dataset",
         "name": "exercises-dataset",
@@ -1384,9 +1597,9 @@
         "visualUrl": "https://opengraph.githubassets.com/20260716/hasaneyldrm/exercises-dataset",
         "url": "https://github.com/hasaneyldrm/exercises-dataset",
         "description": "1,324-exercise fitness dataset — animation GIFs, 180×180 thumbnails, muscle-group & equipment data, and step-by-step instructions in 6 languages. The exercise data layer behind the LogPress app.",
-        "stars": 14707,
-        "starsToday": 949,
-        "forks": 1761,
+        "stars": 14792,
+        "starsToday": 697,
+        "forks": 1775,
         "openIssues": 22,
         "language": "HTML",
         "topics": [
@@ -1412,7 +1625,7 @@
         "method": "codex-research-refresh",
         "category": "健身动作数据集 / 产品原型数据层",
         "oneLiner": "1,324-exercise fitness dataset — animation GIFs, 180×180 thumbnails, muscle-group & equipment data, and step-by-step instructions in 6 languages. The exercise data layer behind the LogPress app.；关键看索引/查询机制、数据一致性和嵌入式运行成本。",
-        "whyItMatters": "hasaneyldrm/exercises-dataset 的热度来自“可持续维护的公共资料面”：14.7K stars / 1.8K forks，维护非常活跃。README 把重点放在「💪 Exercises Dataset」，说明它的价值更多在分类、治理和更新节奏，而不是某个单点技术实现。 这次更新更值得关注的是其可迁移机制：结构化动作数据、肌群/器械标签、动画 GIF、缩略图、JSON/静态资源分发和可直接接入前端的目录组织 能否被拆成小样本验证，而不是把项目整体搬进生产。",
+        "whyItMatters": "hasaneyldrm/exercises-dataset 的热度来自“可持续维护的公共资料面”：14.8K stars / 1.8K forks，维护非常活跃。README 把重点放在「💪 Exercises Dataset」，说明它的价值更多在分类、治理和更新节奏，而不是某个单点技术实现。 这次更新更值得关注的是其可迁移机制：结构化动作数据、肌群/器械标签、动画 GIF、缩略图、JSON/静态资源分发和可直接接入前端的目录组织 能否被拆成小样本验证，而不是把项目整体搬进生产。",
         "engineeringRead": "HTML · API/SDK 接入。建议按“入口示例 -> 数据/配置 -> 失败处理 -> CI/release -> issue 反例”的顺序读；重点回答 它解决的是「健身 App、训练计划工具和动作识别团队需要带肌群、器械、缩略图和动画的动作库，但从零整理数据成本高且授权边界复杂」的主矛盾，还是只会给现有流程增加新的维护面？",
         "architectureSignals": [
           "架构机制：结构化动作数据、肌群/器械标签、动画 GIF、缩略图、JSON/静态资源分发和可直接接入前端的目录组织；阅读时把 HTML 代码入口、数据/配置形态、自动化脚本和边界条件连起来看，而不是只看 README 的安装示例。",
@@ -1468,7 +1681,7 @@
         },
         "diagram": {
           "title": "exercises-dataset 工业级采用图解",
-          "caption": "健身动作数据集 / 产品原型数据层 · HTML · 14.7K stars",
+          "caption": "健身动作数据集 / 产品原型数据层 · HTML · 14.8K stars",
           "summary": "用 结构化动作数据、肌群/器械标签、动画 GIF、缩略图、JSON/静态资源分发和可直接接入前端的目录组织 解决 健身 App、训练计划工具和动作识别团队需要带肌群、器械、缩略图和动画的动作库，但从零整理数据成本高且授权边界复杂，先经由 先用于内部原型、搜索筛选和训练计划草稿，正式上线前逐项核验动作名称、图片授权、医学安全提示和本地化文案 验证 动作覆盖率、标签准确率、图片加载成功率、授权核验比例、用户搜索命中率和教练复核缺陷数，再决定是否扩大。",
           "nodes": [
             {
@@ -1505,7 +1718,7 @@
             "metrics": [
               {
                 "label": "Stars",
-                "value": "14.7K",
+                "value": "14.8K",
                 "note": "社区关注"
               },
               {
@@ -1589,7 +1802,7 @@
       }
     },
     {
-      "rank": 8,
+      "rank": 9,
       "repo": {
         "fullName": "Shubhamsaboo/awesome-llm-apps",
         "name": "awesome-llm-apps",
@@ -1598,9 +1811,9 @@
         "visualUrl": "https://opengraph.githubassets.com/20260716/Shubhamsaboo/awesome-llm-apps",
         "url": "https://github.com/Shubhamsaboo/awesome-llm-apps",
         "description": "100+ AI Agent & RAG apps you can actually run — clone, customize, ship.",
-        "stars": 122414,
-        "starsToday": 1236,
-        "forks": 18054,
+        "stars": 122539,
+        "starsToday": 935,
+        "forks": 18073,
         "openIssues": 24,
         "language": "Python",
         "topics": [
@@ -1628,7 +1841,7 @@
         "method": "codex-research-refresh",
         "category": "LLM App 样例目录 / Agent 与 RAG 原型库",
         "oneLiner": "100+ AI Agent & RAG apps you can actually run — clone, customize, ship.；关键看 100+ 可运行 AI Agent/RAG 应用、分类目录、示例代码、模型/框架适配和 clone-customize-ship 路径，把应用模式沉淀为原型库 是否能被小范围验证。",
-        "whyItMatters": "Shubhamsaboo/awesome-llm-apps 值得看，是因为 AI 项目真正的分水岭已经从“能跑 demo”转向“能被治理、能接工具、能失败恢复”。当前 122.4K stars / 18.1K forks，维护非常活跃，足够进入 Agent 工程雷达。 这次更新更值得关注的是其可迁移机制：100+ 可运行 AI Agent/RAG 应用、分类目录、示例代码、模型/框架适配和 clone-customize-ship 路径，把应用模式沉淀为原型库 能否被拆成小样本验证，而不是把项目整体搬进生产。",
+        "whyItMatters": "Shubhamsaboo/awesome-llm-apps 值得看，是因为 AI 项目真正的分水岭已经从“能跑 demo”转向“能被治理、能接工具、能失败恢复”。当前 122.5K stars / 18.1K forks，维护非常活跃，足够进入 Agent 工程雷达。 这次更新更值得关注的是其可迁移机制：100+ 可运行 AI Agent/RAG 应用、分类目录、示例代码、模型/框架适配和 clone-customize-ship 路径，把应用模式沉淀为原型库 能否被拆成小样本验证，而不是把项目整体搬进生产。",
         "engineeringRead": "Python · Python 包/脚本。建议按“入口示例 -> 数据/配置 -> 失败处理 -> CI/release -> issue 反例”的顺序读；重点回答 它解决的是「团队想快速理解 Agent、RAG、多模态和工具调用能落到哪些应用，但从零找样例、跑依赖、判断质量很耗时」的主矛盾，还是只会给现有流程增加新的维护面？",
         "architectureSignals": [
           "架构机制：100+ 可运行 AI Agent/RAG 应用、分类目录、示例代码、模型/框架适配和 clone-customize-ship 路径，把应用模式沉淀为原型库；阅读时把 Python 代码入口、数据/配置形态、自动化脚本和边界条件连起来看，而不是只看 README 的安装示例。",
@@ -1684,7 +1897,7 @@
         },
         "diagram": {
           "title": "awesome-llm-apps 工业级采用图解",
-          "caption": "LLM App 样例目录 / Agent 与 RAG 原型库 · Python · 122.4K stars",
+          "caption": "LLM App 样例目录 / Agent 与 RAG 原型库 · Python · 122.5K stars",
           "summary": "用 100+ 可运行 AI Agent/RAG 应用、分类目录、示例代码、模型/框架适配和 clone-customize-ship 路径，把应用模式沉淀为原型库 解决 团队想快速理解 Agent、RAG、多模态和工具调用能落到哪些应用，但从零找样例、跑依赖、判断质量很耗时，先经由 先挑 3 个与业务相近的样例在沙箱运行，只复制架构模式和评测清单，不直接复制凭据、prompt 或第三方数据接入 验证 样例可运行率、依赖安装耗时、模式复用率、原型到生产改造成本、模型费用和安全审查缺陷，再决定是否扩大。",
           "nodes": [
             {
@@ -1721,7 +1934,7 @@
             "metrics": [
               {
                 "label": "Stars",
-                "value": "122.4K",
+                "value": "122.5K",
                 "note": "社区关注"
               },
               {
@@ -1805,7 +2018,7 @@
       }
     },
     {
-      "rank": 9,
+      "rank": 10,
       "repo": {
         "fullName": "lobehub/lobehub",
         "name": "lobehub",
@@ -1814,10 +2027,10 @@
         "visualUrl": "https://opengraph.githubassets.com/20260716/lobehub/lobehub",
         "url": "https://github.com/lobehub/lobehub",
         "description": "🤯 LobeHub is your Chief Agent Operator, organizing your agents into 7×24 operations by hiring, scheduling, and reporting on your entire AI team.",
-        "stars": 79932,
+        "stars": 79990,
         "starsToday": 51,
-        "forks": 15598,
-        "openIssues": 600,
+        "forks": 15601,
+        "openIssues": 598,
         "language": "TypeScript",
         "topics": [
           "agent",
@@ -1840,10 +2053,10 @@
           "skills"
         ],
         "license": "NOASSERTION",
-        "pushedAt": "2026-07-16T11:51:20Z",
+        "pushedAt": "2026-07-16T15:05:17Z",
         "createdAt": "2023-05-21T07:19:12Z",
         "languages": {
-          "TypeScript": 55144417,
+          "TypeScript": 55307102,
           "HTML": 231396,
           "Shell": 217278,
           "JavaScript": 140809,
@@ -1860,7 +2073,7 @@
         "method": "codex-research-refresh",
         "category": "AI Agent / LLM 工程",
         "oneLiner": "🤯 LobeHub is your Chief Agent Operator, organizing your agents into 7×24 operations by hiring, scheduling, and reporting on your entire AI team.；关键看工具边界、上下文持久化、权限和失败接管是否可治理。",
-        "whyItMatters": "lobehub/lobehub 值得看，是因为 AI 项目真正的分水岭已经从“能跑 demo”转向“能被治理、能接工具、能失败恢复”。当前 79.9K stars / 15.6K forks，维护非常活跃，足够进入 Agent 工程雷达。 这次更新更值得关注的是其可迁移机制：模型接口、工具协议、上下文管理或推理工作流 能否被拆成小样本验证，而不是把项目整体搬进生产。",
+        "whyItMatters": "lobehub/lobehub 值得看，是因为 AI 项目真正的分水岭已经从“能跑 demo”转向“能被治理、能接工具、能失败恢复”。当前 80K stars / 15.6K forks，维护非常活跃，足够进入 Agent 工程雷达。 这次更新更值得关注的是其可迁移机制：模型接口、工具协议、上下文管理或推理工作流 能否被拆成小样本验证，而不是把项目整体搬进生产。",
         "engineeringRead": "TypeScript · 容器化部署。建议按“入口示例 -> 数据/配置 -> 失败处理 -> CI/release -> issue 反例”的顺序读；重点回答 它解决的是「AI 应用编排、工具接入或模型调用复杂度」的主矛盾，还是只会给现有流程增加新的维护面？",
         "architectureSignals": [
           "架构机制：模型接口、工具协议、上下文管理或推理工作流；阅读时把 TypeScript 代码入口、数据/配置形态、自动化脚本和边界条件连起来看，而不是只看 README 的安装示例。",
@@ -1916,7 +2129,7 @@
         },
         "diagram": {
           "title": "lobehub 工业级采用图解",
-          "caption": "AI Agent / LLM 工程 · TypeScript · 79.9K stars",
+          "caption": "AI Agent / LLM 工程 · TypeScript · 80K stars",
           "summary": "用 模型接口、工具协议、上下文管理或推理工作流 解决 AI 应用编排、工具接入或模型调用复杂度，先经由 内部效率工具或旁路助手 验证 任务完成率、人工接管率、单次任务成本，再决定是否扩大。",
           "nodes": [
             {
@@ -1953,7 +2166,7 @@
             "metrics": [
               {
                 "label": "Stars",
-                "value": "79.9K",
+                "value": "80K",
                 "note": "社区关注"
               },
               {
@@ -1963,7 +2176,7 @@
               },
               {
                 "label": "Issues",
-                "value": "600",
+                "value": "598",
                 "note": "维护压力"
               },
               {
@@ -2037,7 +2250,7 @@
       }
     },
     {
-      "rank": 10,
+      "rank": 11,
       "repo": {
         "fullName": "YimMenu/YimMenuV2",
         "name": "YimMenuV2",
@@ -2046,8 +2259,8 @@
         "visualUrl": "https://opengraph.githubassets.com/20260716/YimMenu/YimMenuV2",
         "url": "https://github.com/YimMenu/YimMenuV2",
         "description": "Experimental menu for GTA 5: Enhanced",
-        "stars": 1478,
-        "starsToday": 38,
+        "stars": 1486,
+        "starsToday": 122,
         "forks": 357,
         "openIssues": 240,
         "language": "C++",
@@ -2242,7 +2455,7 @@
       }
     },
     {
-      "rank": 11,
+      "rank": 12,
       "repo": {
         "fullName": "HKUDS/DeepTutor",
         "name": "DeepTutor",
@@ -2251,10 +2464,10 @@
         "visualUrl": "https://opengraph.githubassets.com/20260716/HKUDS/DeepTutor",
         "url": "https://github.com/HKUDS/DeepTutor",
         "description": "DeepTutor: Lifelong Personalized Tutoring. https://deeptutor.info/.",
-        "stars": 26657,
-        "starsToday": 172,
-        "forks": 3599,
-        "openIssues": 60,
+        "stars": 26708,
+        "starsToday": 647,
+        "forks": 3604,
+        "openIssues": 61,
         "language": "Python",
         "topics": [
           "ai-agents",
@@ -2387,7 +2600,7 @@
               },
               {
                 "label": "Issues",
-                "value": "60",
+                "value": "61",
                 "note": "维护压力"
               },
               {
@@ -2459,219 +2672,14 @@
         "readmeExcerpt": "<div align=\"center\" <p align=\"center\" <img src=\"assets/figs/logo/logo.png\" alt=\"DeepTutor logo\" height=\"56\" style=\"vertical align: middle;\" &nbsp;<img src=\"assets/figs/logo/banner.png\" alt=\"DeepTutor\" height=\"48\" style=\"vertical align: middle;\" </p DeepTutor: Lifelong Personalized Tutoring <p align=\"center\" <a href=\"https://deeptutor.info\" target=\" blank\" <img alt=\"Docs — deeptutor.info\" src=\"https://img.shields.io/badge/Docs deeptutor.info%20%E2%86%97 0A0A0A?style=for the badge&labelColor=F5F5F4\" height=\"36\" </a </p <p align=\"center\" <a href=\"https://trendshift.io/repositories/17099?utm source=repository badge&amp;utm medium=badge&amp;utm campaign=badge repository 17099\" target=\" blank\" rel=\"noopener noreferrer\" <img src=\"https://trendshift.io/api/badge/repositories/17099\" alt=\"HKUDS%2FDeepTutor Trendshift\" width=\"250\" height=\"55\"/ </a &nbsp; <a href=\"https://trendshift.io/repositories/...",
         "githubUrl": "https://github.com/HKUDS/DeepTutor"
       }
-    },
-    {
-      "rank": 12,
-      "repo": {
-        "fullName": "mattpocock/skills",
-        "name": "skills",
-        "owner": "mattpocock",
-        "avatarUrl": "https://avatars.githubusercontent.com/u/28293365?v=4",
-        "visualUrl": "https://opengraph.githubassets.com/20260716/mattpocock/skills",
-        "url": "https://github.com/mattpocock/skills",
-        "description": "Skills for Real Engineers. Straight from my .claude directory.",
-        "stars": 173489,
-        "starsToday": 2130,
-        "forks": 14880,
-        "openIssues": 168,
-        "language": "Shell",
-        "topics": [],
-        "license": "MIT",
-        "pushedAt": "2026-07-16T09:03:25Z",
-        "createdAt": "2026-02-03T11:15:53Z",
-        "languages": {
-          "Shell": 12609,
-          "JavaScript": 3732
-        }
-      },
-      "analysis": {
-        "method": "codex-research-refresh",
-        "category": "工程师技能库 / AI 辅助开发方法",
-        "oneLiner": "Skills for Real Engineers. Straight from my .claude directory.；关键看 面向真实工程任务的技能说明、上下文约束、命令模式和可复制实践清单 是否能被小范围验证。",
-        "whyItMatters": "mattpocock/skills 值得看，是因为 AI 项目真正的分水岭已经从“能跑 demo”转向“能被治理、能接工具、能失败恢复”。当前 173.5K stars / 14.9K forks，维护非常活跃，足够进入 Agent 工程雷达。 这次更新更值得关注的是其可迁移机制：面向真实工程任务的技能说明、上下文约束、命令模式和可复制实践清单 能否被拆成小样本验证，而不是把项目整体搬进生产。",
-        "engineeringRead": "Shell · 阅读型或源码集成。建议按“入口示例 -> 数据/配置 -> 失败处理 -> CI/release -> issue 反例”的顺序读；重点回答 它解决的是「个人工程经验分散在提示词和笔记里，难以转成可执行、可复用的 AI 工作流」的主矛盾，还是只会给现有流程增加新的维护面？",
-        "architectureSignals": [
-          "架构机制：面向真实工程任务的技能说明、上下文约束、命令模式和可复制实践清单；阅读时把 Shell 代码入口、数据/配置形态、自动化脚本和边界条件连起来看，而不是只看 README 的安装示例。",
-          "适用团队：已引入 AI 编码、希望沉淀团队实践的工程平台或技术负责人",
-          "落地路径：挑 2 个团队高频任务，把对应技能改写成本地规范并在真实 PR 中验证一次；先保留人工复核、指标记录和回滚路径。",
-          "生产风险：外部技能直接照搬会与本地架构、权限和测试要求冲突。",
-          "决策问题：它解决的是「个人工程经验分散在提示词和笔记里，难以转成可执行、可复用的 AI 工作流」的主矛盾，还是只会给现有流程增加新的维护面？",
-          "观察信号：技能调用成功率、PR 返工率、上下文补充次数、任务完成时间、最近 release 质量、issue 响应速度和 阅读型或源码集成 的集成反馈。"
-        ],
-        "valueHypothesis": [
-          "如果团队确实存在「个人工程经验分散在提示词和笔记里，难以转成可执行、可复用的 AI 工作流」，mattpocock/skills 的收益应体现为 技能调用成功率、PR 返工率、上下文补充次数、任务完成时间 的改善。",
-          "适合先复制机制、接口或治理方式，不适合未验证成本就全量迁移。",
-          "若 没有统一代码规范或把技能当一次性提示词集合使用，它更适合作为资料样本，而不是生产依赖。"
-        ],
-        "technicalTakeaways": [
-          "先抓 先看技能粒度、触发条件、与本地技术栈差异、验证步骤和维护成本，再决定 spike 范围。",
-          "图解字段应突出 面向真实工程任务的技能说明、上下文约束、命令模式和可复制实践清单 如何把 个人工程经验分散在提示词和笔记里，难以转成可执行、可复用的 AI 工作流 转成 把资深工程师经验产品化，减少 Agent 使用中的上下文遗漏和输出漂移。",
-          "验收时同时记录正样本、失败样本、成本、延迟和维护 owner。"
-        ],
-        "adoptionRisks": [
-          "外部技能直接照搬会与本地架构、权限和测试要求冲突。",
-          "与现有 Shell / 阅读型或源码集成 工具链的耦合要先做最小集成验证。",
-          "社区负载相对可控，但仍要关注 breaking change、license 和长期维护信号。"
-        ],
-        "suggestedUseCases": [
-          "挑 2 个团队高频任务，把对应技能改写成本地规范并在真实 PR 中验证一次；先保留人工复核、指标记录和回滚路径。",
-          "用一个可回放样本验证 技能调用成功率、PR 返工率、上下文补充次数、任务完成时间，同时记录接入时间、失败样本和回滚步骤。",
-          "只在指标改善、维护 owner 明确、风险可隔离后，再从旁路验证扩大到核心流程。"
-        ],
-        "watchSignals": [
-          "技能调用成功率、PR 返工率、上下文补充次数、任务完成时间、最近 release 质量、issue 响应速度和 阅读型或源码集成 的集成反馈。",
-          "release note 是否持续解释 面向真实工程任务的技能说明、上下文约束、命令模式和可复制实践清单 的演进，而不只是功能堆叠。",
-          "issue/讨论区是否出现与你的目标场景相似的真实案例和失败反馈。"
-        ],
-        "deepDive": {
-          "strategicValue": "mattpocock/skills 的价值不应按 star 数直接外推；更合理的读法是把它当作 工程师技能库 / AI 辅助开发方法 的工程样本，判断其机制是否能降低你现有链路的复杂度、人工成本或质量波动。",
-          "implementationPath": [
-            "挑 2 个团队高频任务，把对应技能改写成本地规范并在真实 PR 中验证一次；先保留人工复核、指标记录和回滚路径。",
-            "用一个可回放样本验证 技能调用成功率、PR 返工率、上下文补充次数、任务完成时间，同时记录接入时间、失败样本和回滚步骤。",
-            "只在指标改善、维护 owner 明确、风险可隔离后，再从旁路验证扩大到核心流程。"
-          ],
-          "productionConcerns": [
-            "外部技能直接照搬会与本地架构、权限和测试要求冲突。",
-            "与现有 Shell / 阅读型或源码集成 工具链的耦合要先做最小集成验证。",
-            "社区负载相对可控，但仍要关注 breaking change、license 和长期维护信号。"
-          ],
-          "decisionQuestions": [
-            "它解决的是「个人工程经验分散在提示词和笔记里，难以转成可执行、可复用的 AI 工作流」的主矛盾，还是只会给现有流程增加新的维护面？",
-            "如果两周 spike 只能证明“能跑”，不能证明 技能调用成功率、PR 返工率、上下文补充次数、任务完成时间 改善，是否应降级为观察项？",
-            "谁负责上线后的升级、告警、回滚和安全审计？"
-          ],
-          "recommendedAction": "进入观察/试点池：挑 2 个团队高频任务，把对应技能改写成本地规范并在真实 PR 中验证一次；先保留人工复核、指标记录和回滚路径。"
-        },
-        "diagram": {
-          "title": "skills 工业级采用图解",
-          "caption": "工程师技能库 / AI 辅助开发方法 · Shell · 173.5K stars",
-          "summary": "用 面向真实工程任务的技能说明、上下文约束、命令模式和可复制实践清单 解决 个人工程经验分散在提示词和笔记里，难以转成可执行、可复用的 AI 工作流，先经由 挑 2 个团队高频任务，把对应技能改写成本地规范并在真实 PR 中验证一次 验证 技能调用成功率、PR 返工率、上下文补充次数、任务完成时间，再决定是否扩大。",
-          "nodes": [
-            {
-              "label": "架构机制",
-              "detail": "面向真实工程任务的技能说明、上下文约束、命令模式和可复制实践清单",
-              "type": "core"
-            },
-            {
-              "label": "适用团队",
-              "detail": "已引入 AI 编码、希望沉淀团队实践的工程平台或技术负责人",
-              "type": "input"
-            },
-            {
-              "label": "落地路径",
-              "detail": "挑 2 个团队高频任务，把对应技能改写成本地规范并在真实 PR 中验证一次；先保留人工复核、指标记录和回滚路径。",
-              "type": "integration"
-            },
-            {
-              "label": "观察信号",
-              "detail": "技能调用成功率、PR 返工率、上下文补充次数、任务完成时间、最近 release 质量、issue 响应速度和 阅读型或源码集成 的集成反馈。",
-              "type": "measure"
-            }
-          ],
-          "links": [
-            "机制拆解",
-            "试点验证",
-            "指标放大"
-          ],
-          "poster": {
-            "eyebrow": "Project Blueprint",
-            "headline": "工程师技能库 / AI 辅助开发方法",
-            "subhead": "mattpocock/skills · 生态标杆 · Shell",
-            "thesis": "把「个人工程经验分散在提示词和笔记里，难以转成可执行、可复用的 AI 工作流」通过「面向真实工程任务的技能说明、上下文约束、命令模式和可复制实践清单」转化为「把资深工程师经验产品化，减少 Agent 使用中的上下文遗漏和输出漂移」。",
-            "metrics": [
-              {
-                "label": "Stars",
-                "value": "173.5K",
-                "note": "社区关注"
-              },
-              {
-                "label": "Forks",
-                "value": "14.9K",
-                "note": "二次采用"
-              },
-              {
-                "label": "Issues",
-                "value": "168",
-                "note": "维护压力"
-              },
-              {
-                "label": "Stack",
-                "value": "Shell",
-                "note": "主技术栈"
-              }
-            ],
-            "lanes": [
-              {
-                "label": "架构机制",
-                "detail": "面向真实工程任务的技能说明、上下文约束、命令模式和可复制实践清单",
-                "type": "core",
-                "step": "01",
-                "signal": "先看技能粒度、触发条件、与本地技术栈差异、验证步骤和维护成本"
-              },
-              {
-                "label": "适用团队",
-                "detail": "已引入 AI 编码、希望沉淀团队实践的工程平台或技术负责人",
-                "type": "input",
-                "step": "02",
-                "signal": "已引入 AI 编码、希望沉淀团队实践的工程平台或技术负责人"
-              },
-              {
-                "label": "落地路径",
-                "detail": "挑 2 个团队高频任务，把对应技能改写成本地规范并在真实 PR 中验证一次；先保留人工复核、指标记录和回滚路径。",
-                "type": "integration",
-                "step": "03",
-                "signal": "挑 2 个团队高频任务，把对应技能改写成本地规范并在真实 PR 中验证一次"
-              },
-              {
-                "label": "观察信号",
-                "detail": "技能调用成功率、PR 返工率、上下文补充次数、任务完成时间、最近 release 质量、issue 响应速度和 阅读型或源码集成 的集成反馈。",
-                "type": "measure",
-                "step": "04",
-                "signal": "技能调用成功率、PR 返工率、上下文补充次数、任务完成时间"
-              }
-            ],
-            "adoption": [
-              {
-                "label": "试点入口",
-                "detail": "挑 2 个团队高频任务，把对应技能改写成本地规范并在真实 PR 中验证一次"
-              },
-              {
-                "label": "验收指标",
-                "detail": "技能调用成功率、PR 返工率、上下文补充次数、任务完成时间"
-              },
-              {
-                "label": "生产风险",
-                "detail": "外部技能直接照搬会与本地架构、权限和测试要求冲突。"
-              },
-              {
-                "label": "决策问题",
-                "detail": "它解决的是「个人工程经验分散在提示词和笔记里，难以转成可执行、可复用的 AI 工作流」的主矛盾，还是只会给现有流程增加新的维护面？"
-              }
-            ],
-            "warning": "没有统一代码规范或把技能当一次性提示词集合使用"
-          }
-        },
-        "maturity": {
-          "community": 100,
-          "maintenance": 100,
-          "production": 95,
-          "complexity": 55
-        },
-        "score": 96
-      },
-      "evidence": {
-        "readmeExcerpt": "<p <a href=\"https://www.aihero.dev/s/skills newsletter\" <picture <source media=\"(prefers color scheme: dark)\" srcset=\"https://res.cloudinary.com/total typescript/image/upload/v1777382277/skills repo dark 2x.png\" <source media=\"(prefers color scheme: light)\" srcset=\"https://res.cloudinary.com/total typescript/image/upload/v1777382277/skill repo light 2x.png\" <img alt=\"Skills\" src=\"https://res.cloudinary.com/total typescript/image/upload/v1777382277/skill repo light 2x.png\" width=\"369\" </picture </a </p Skills For Real Engineers My agent skills that I use every day to do real engineering not vibe coding. Developing real applications is hard. Approaches like GSD, BMAD, and Spec Kit try to help by owning the process. But while doing so, they take away your control and make bugs in the process hard to resolve. These skills are designed to be small, easy to adapt, and composable. They work wit...",
-        "githubUrl": "https://github.com/mattpocock/skills"
-      }
     }
   ],
   "frontier": {
     "title": "搜广推技术前沿",
     "subtitle": "混合跟踪搜索、广告、推荐、排序、召回相关的新论文和大厂工程实践。",
-    "source": "Meta Engineering + Netflix TechBlog + Pinterest Engineering + Dropbox Tech + Google Research + Meituan Tech + Airbnb Engineering + Spotify Engineering + Tencent Cloud Developer + Amazon Science + arXiv",
+    "source": "Big Tech Engineering/RSS + arXiv API + Codex verified official pages",
     "items": [
       {
-        "rank": 1,
         "title": "Exploring Hierarchical Interest Representation For Meta Ads Deep Funnel Optimization",
         "url": "https://engineering.fb.com/2026/07/15/ai-research/exploring-hierarchical-interest-representation-for-meta-ads-deep-funnel-optimization/",
         "publishedAt": "2026-07-15T16:00:00Z",
@@ -2679,50 +2687,52 @@
         "sourceType": "industry",
         "imageUrl": "https://www.google.com/s2/favicons?domain=engineering.fb.com&sz=128",
         "tags": [
-          "ads",
-          "ranking",
-          "recsys",
-          "embedding"
+          "广告",
+          "推荐",
+          "Embedding",
+          "Ranking",
+          "Deep Funnel"
         ],
-        "summary": "Meta Ads 提出 Hierarchical Interest Representation：在用户、广告主、商品、服务等广告实体图上学习多层级兴趣表征，用 transformer graph learning、bias-aware attention 和 self-supervised cross-view distillation，把稀疏深层转化信号转成可供检索、监督和排序复用的 universal embeddings 与 Bag-of-Meaning tokens。",
+        "summary": "Meta Ads 把用户、广告主、商品/服务等实体放进多层级图表示学习，用 transformer graph learning、bias-aware attention 和 self-supervised cross-view distillation 学习 universal embeddings 与 Bag-of-Meaning interest tokens，目标是在稀疏 deep funnel 信号下改进 personalization、retrieval、supervision 和 ranking。",
         "interpretation": {
-          "businessProblem": "深层转化广告的真实意图信号稀疏，单靠点击/曝光难以识别用户与广告主产品之间的潜在兴趣关系，导致 retrieval/ranking 在长尾广告、低频商品和新业务上泛化不足。",
-          "systemMechanism": "把用户、广告主、商品、服务、campaign 等构成大规模图，结合多模态广告内容和 LLM 提取的现实世界语义，训练多层级兴趣表示；输出 universal embeddings 与 Bag-of-Meaning interest tokens，供 GEM、Andromeda、Adaptive Ranking Model 等广告栈组件使用。",
-          "metricsAndExperiment": "应重点看 deep funnel conversion、广告相关性、冷启动/长尾覆盖、召回候选质量、ranking lift、稀疏分桶表现、延迟成本和在线 A/B；官方披露的是系统方向和训练规模，未给出完整 lift 数字，因此采用时必须要求离线/在线分桶证据。",
-          "borrowable": "搜广推团队可借鉴“上游表征层 + 多粒度兴趣 token + 图结构蒸馏”的思路，把用户/内容/商品/广告主语义统一到可复用 embedding 层，再让召回、粗排、精排和重排共享。",
-          "boundary": "没有足够多模态内容、实体图、长期行为、转化标签和在线实验能力时，不适合直接复刻；中小团队可先从商品/内容 taxonomy、向量召回和人工可解释兴趣簇做小样本验证。"
+          "businessProblem": "深漏斗广告的转化信号稀疏且延迟高，用户兴趣、广告主供给和商品语义之间存在长程关系；如果只依赖短期 engagement 或单层 embedding，系统容易把点击兴趣误当成购买意图。",
+          "systemMechanism": "在用户、广告主、商品、服务和 campaign 构成的大图上学习层级兴趣表示：先把稀疏原图投影为更稳定的 primitive-interest super graph，再通过多层级粒度、语义内容 enrichment、bias-aware attention 和 cross-view distillation 输出可被召回、监督和排序共用的通用表征。",
+          "metricsAndExperiment": "应同时观察 deep-funnel CVR/ROAS、广告相关性、CTR、稀疏实体覆盖、新广告主/新商品泛化、embedding 刷新延迟、P95 serving 成本、负反馈和公平曝光；离线 graph 表征提升必须能解释到线上广告主价值。",
+          "borrowable": "广告和电商推荐团队可借鉴“上游统一表征层 + 下游多任务消费”的路线：先把实体图、内容语义和转化样本统一成可审计 embedding，再让召回/粗排/精排分别做旁路实验。",
+          "boundary": "没有足够实体规模、图训练基础设施、转化回传质量和请求级成本核算时，层级图表征会变成高成本黑盒；中小团队应先补齐事件归因、实时特征和多路召回可观测性。"
         },
         "diagram": {
-          "title": "Meta HIR 广告深层转化图解",
-          "caption": "ads / ranking / recsys / embedding",
+          "title": "Meta Ads 层级兴趣表征机制图",
+          "caption": "广告 / 深漏斗 / 图表示 / ranking",
           "nodes": [
             {
               "label": "业务问题",
-              "detail": "深层转化信号稀疏，长尾广告和新商品难以在召回/排序中稳定匹配潜在兴趣",
+              "detail": "转化信号稀疏、长程兴趣难建模、点击与购买目标错位。",
               "type": "input"
             },
             {
               "label": "系统机制",
-              "detail": "广告实体图 + 多模态内容 + LLM 语义 + graph transformer，学习多层级兴趣表示",
+              "detail": "实体图 -> primitive-interest super graph -> 层级 embedding -> 召回/监督/排序消费。",
               "type": "core"
             },
             {
               "label": "指标实验",
-              "detail": "deep funnel conversion、冷启动/长尾覆盖、ranking lift、延迟成本、分桶 A/B 和稀疏分群表现",
+              "detail": "CVR/ROAS、覆盖、泛化、P95 成本、负反馈和广告主价值联动。",
               "type": "measure"
             },
             {
               "label": "采用边界",
-              "detail": "缺少实体图、转化标签、多模态内容和在线实验能力时，只能借鉴 taxonomy/embedding 思路",
+              "detail": "图规模、归因质量、训练/serving 成本和 owner 分工决定能否落地。",
               "type": "risk"
             }
           ],
           "links": [
-            "实体图建模",
-            "表征蒸馏",
-            "排序复用"
+            "统一实体语义",
+            "层级表示学习",
+            "下游实验验收"
           ]
-        }
+        },
+        "rank": 1
       },
       {
         "rank": 2,
@@ -3830,7 +3840,7 @@
       "source": "AIHOT Public API",
       "date": "2026-07-16",
       "generatedAt": "2026-07-16T00:00:06.372Z",
-      "summary": "日报收录 23 条结构化内容，重点分布在 产品发布/更新 7 条、技巧与观点 6 条、论文研究 5 条。今日优先关注「HYPIC：小红书联合北大、上交提出首个混合注意力大模型位置无关缓存系统」，它会进入下方 AI 新闻流做进一步信号、影响和动作拆解。",
+      "summary": "日报收录 23 条结构化内容，重点分布在 产品发布/更新 7 条、技巧与观点 6 条、论文研究 5 条。今日优先关注「世界人工智能合作组织协定签署仪式在上海举行，总部设中国上海」，它会进入下方 AI 新闻流做进一步信号、影响和动作拆解。",
       "stats": [
         {
           "label": "精选条目",
@@ -3981,6 +3991,69 @@
       ],
       "selected": [
         {
+          "title": "世界人工智能合作组织协定签署仪式在上海举行，总部设中国上海",
+          "url": "https://www.ithome.com/0/977/793.htm",
+          "source": "IT之家（RSS）",
+          "publishedAt": "2026-07-16T14:38:08.000Z",
+          "summary": "7月16日，成立世界人工智能合作组织协定签署仪式在上海举行，中共中央政治局委员、外交部长王毅代表中国政府签署协定。该组织是独立的政府间国际组织，总部设在中国上海，旨在促进人工智能国际合作与全球治理。哈萨克斯坦、老挝、巴基斯坦等29个国家代表签署协定成为创始成员国。",
+          "category": "行业动态",
+          "signal": "行业动态信号，适合纳入周度技术雷达观察。",
+          "tags": [
+            "AI"
+          ]
+        },
+        {
+          "title": "在 Claude Cowork 中使用 Claude Fable 5",
+          "url": "https://claude.com/blog/working-with-claude-fable-5-in-claude-cowork",
+          "source": "Claude：Blog（网页）",
+          "publishedAt": "2026-07-16T14:32:22.664Z",
+          "summary": "Anthropic 发布最强通用模型 Claude Fable 5，专为长时间、多步骤的复杂异步工作设计，可在 Claude Cowork 中自主执行深度研究、尽职调查等任务。该模型需手动选择，默认模型为 Claude Sonnet 5。",
+          "category": "产品更新",
+          "signal": "A 社模型信号：Claude 系列更新需要重点拆编码能力、长任务稳定性、上下文管理和企业成本边界。",
+          "tags": [
+            "A社/Claude",
+            "模型"
+          ]
+        },
+        {
+          "title": "面壁智能开源企业AI数字员工平台StaffDeck",
+          "url": "https://x.com/OpenBMB/status/2077741814799548451",
+          "source": "X：面壁智能 OpenBMB (@OpenBMB)",
+          "publishedAt": "2026-07-16T13:07:05.000Z",
+          "summary": "面壁智能联合多团队开源StaffDeck，一个用于构建与管理数字员工的企业平台。该平台旨在将专业知识、标准作业程序（SOP）和决策规则转化为持续工作、改进并保留组织知识的数字员工，而非传统聊天机器人。项目代码已发布于GitHub。",
+          "category": "产品更新",
+          "signal": "行业动态信号，适合纳入周度技术雷达观察。",
+          "tags": [
+            "AI"
+          ]
+        },
+        {
+          "title": "秒哒 3.5 全球首发 iOS App，无代码开发与多端共享后端能力升级",
+          "url": "https://mp.weixin.qq.com/s/W3QACoSYgwK0TW4zG-KFsg",
+          "source": "公众号：百度智能云（文心）",
+          "publishedAt": "2026-07-16T12:17:11.000Z",
+          "summary": "百度智能云在 WAIC2026 发布秒哒 3.5，新增 iOS 打包能力，用户无需 Mac 或 Xcode 即可将应用打包为 IPA 文件或上架 App Store。3.5 版本还内置 SEO Agent 实现搜索优化自动化，支持多应用共享同一后端数据库，并推出数据库多环境隔离与后端资源分级功能。秒哒累计服务超 3500 万用户，已创造 350 万个商业应用。",
+          "category": "产品更新",
+          "signal": "搜索体验信号：用户从关键词转向自然语言查询，会影响搜索广告、内容召回和答案呈现方式。",
+          "tags": [
+            "Agent",
+            "搜索"
+          ]
+        },
+        {
+          "title": "欧盟裁定 Google 必须向竞争对手开放 Android 和 Search，影响 Gemini 等 AI 服务",
+          "url": "https://www.theverge.com/policy/966438/eu-google-android-ai-interoperability-search-data-dma",
+          "source": "The Verge：AI（RSS）",
+          "publishedAt": "2026-07-16T12:06:51.000Z",
+          "summary": "欧盟依据《数字市场法案》（DMA）裁定 Google 必须向竞争对手开放 Android 和 Google Search 的关键部分，包括允许第三方 AI 助手和搜索引擎获得更大访问权限。这两项决定可能削弱 Google 对两大核心平台的控制，并为其 AI 工具 Gemini 的未来格局带来深远影响，同时为竞争对手创造新的发展机会。",
+          "category": "行业动态",
+          "signal": "搜索体验信号：用户从关键词转向自然语言查询，会影响搜索广告、内容召回和答案呈现方式。",
+          "tags": [
+            "模型",
+            "搜索"
+          ]
+        },
+        {
           "title": "HYPIC：小红书联合北大、上交提出首个混合注意力大模型位置无关缓存系统",
           "url": "https://mp.weixin.qq.com/s/RWveWvw9yBH6YQINBQ-XjA",
           "source": "公众号：小红书技术（dots.llm）",
@@ -4018,71 +4091,6 @@
           "signal": "行业动态信号，适合纳入周度技术雷达观察。",
           "tags": [
             "AI"
-          ]
-        },
-        {
-          "title": "Patter SDK 教程：构建餐厅预订电话智能体，支持动态变量、护栏、延迟仪表盘与评估检查",
-          "url": "https://www.marktechpost.com/2026/07/16/patter-sdk-guide-to-building-a-restaurant-booking-phone-agent-with-dynamic-variables-guardrails-latency-dashboards-and-eval-checks",
-          "source": "MarkTechPost（RSS）",
-          "publishedAt": "2026-07-16T07:42:49.000Z",
-          "summary": "Patter SDK 发布教程，演示如何构建一个餐厅预订场景的语音智能体工作流。该流程支持动态调用变量、注册可调用工具、应用输出护栏（如PII脱敏、脏话过滤、话题范围限制），并可在无需实时电话凭证的情况下运行脚本化通话模拟。教程还涵盖延迟与成本指标追踪、回归式评估检查，以及将智能体逻辑、工具调用、安全检查和通话模拟整合为单一结构化管线。",
-          "category": "技巧观点",
-          "signal": "Agent 可靠性信号：小模型能否稳定完成复杂任务，越来越依赖重试、防护、上下文管理和步骤约束。",
-          "tags": [
-            "Agent",
-            "多模态",
-            "安全/可信"
-          ]
-        },
-        {
-          "title": "千问APP联合武汉发布举办AI求职实战课，演示简历诊断与办公自动化",
-          "url": "https://mp.weixin.qq.com/s/dCk6IXbFyOSSc1JxcWsglA",
-          "source": "公众号：千问APP（阿里）",
-          "publishedAt": "2026-07-16T03:27:08.000Z",
-          "summary": "千问APP与武汉发布在武汉举办AI求职实战课，现场演示了用千问进行简历诊断、PPT制作和表格分析。产品经理提出\"给全材料、说明目标、定义标准、划定边界、索要可编辑文件\"五步法，并展示了将486行杂乱销售数据浓缩为一页结论PPT的\"建、理、算、析、呈\"方法论。",
-          "category": "技巧观点",
-          "signal": "行业动态信号，适合纳入周度技术雷达观察。",
-          "tags": [
-            "AI"
-          ]
-        },
-        {
-          "title": "天工短剧工作台发布\"Agent智能分镜+无限画布\"双轨创作模式",
-          "url": "https://mp.weixin.qq.com/s/WlGAeogkF_N5122nHA0TtQ",
-          "source": "公众号：昆仑万维（天工）",
-          "publishedAt": "2026-07-16T02:00:00.000Z",
-          "summary": "天工短剧工作台推出双轨创作模式，通过导演Agent自动解析剧本、规划站位与机位，并支持多视细节图生成，解决AI短剧角色变脸和站位漂移问题。该工具内置影视级提示词模板、720°全景图及3D导演台，实现可控生产。已有三部作品上线DramaWave 7天实现百万美元级营收。",
-          "category": "产品更新",
-          "signal": "Agent/工具调用方向，适合评估能否进入研发工作流或数据分析流程。",
-          "tags": [
-            "Agent"
-          ]
-        },
-        {
-          "title": "MiniMax Code 2.0 桌面端焕新：底层架构全面升级，金融模块即将上线",
-          "url": "https://mp.weixin.qq.com/s/mQeBO0xC6Z1R0LqZX5TvNg",
-          "source": "公众号：MiniMax（稀宇科技）",
-          "publishedAt": "2026-07-16T01:36:13.000Z",
-          "summary": "MiniMax Code 2.0 桌面端发布，基于 Pi Agent 框架重构底层架构，显著提升会话启动速度与长程复杂任务的执行稳定性。新版本优化了图表加载与文件预览框选编辑功能，并已与恒生金融数据库、企查查 MCP 打通，金融模块即将上线，支持多源数据实时检索与专业报告生成。桌面端现已开放下载，本月还将上线远程控制、浏览器操控等功能。",
-          "category": "产品更新",
-          "signal": "企业 Agent 基建信号：托管沙箱、私网连接和权限隔离正在成为 Agent 进入生产环境的关键门槛。",
-          "tags": [
-            "Agent",
-            "工程/基础设施"
-          ]
-        },
-        {
-          "title": "xAI 开源 Grok CLI 代码库中发现 Mermaid 转 Unicode 框图工具",
-          "url": "https://simonwillison.net/2026/Jul/16/grok-mermaid",
-          "source": "Simon Willison 博客",
-          "publishedAt": "2026-07-16T00:33:18.000Z",
-          "summary": "xAI 开源的 Grok CLI 编码智能体代码库中包含一个用 Rust 编写的 Mermaid 图表示例终端渲染器 `xai-grok-markdown/src/mermaid.rs`。开发者通过 Claude Code for web （Fable 5） 将其编译为 WebAssembly，实现在浏览器中运行该工具。",
-          "category": "技巧观点",
-          "signal": "开源 Agent 生态信号：模型厂商正在把能力接入本地优先的个人助理和多端通讯入口。",
-          "tags": [
-            "A社/Claude",
-            "Agent",
-            "模型"
           ]
         }
       ],
@@ -4133,6 +4141,58 @@
     },
     "anthropicCoverage": [
       {
+        "source": "Anthropic Alignment Science Blog",
+        "sourceDetail": "Anthropic Alignment / Agentic Misalignment",
+        "domain": "alignment.anthropic.com",
+        "title": "Agentic Misalignment in Summer 2026",
+        "url": "https://alignment.anthropic.com/2026/agentic-misalignment-summer-2026/",
+        "publishedAt": "2026-07-13T00:00:00Z",
+        "summary": "Anthropic 更新 agentic misalignment 报告，描述 frontier models 在高风险模拟中出现的四类额外对齐失败，延续此前关于自主 Agent 可能表现为内部威胁的研究。",
+        "imageUrl": "https://www.google.com/s2/favicons?domain=anthropic.com&sz=128",
+        "priority": 8,
+        "anthropicScore": 94,
+        "signal": "A 社 Agent 风险信号：当模型被赋予工具、角色和业务目标后，失败模式会从“答错”升级为策略性误行为。",
+        "interpretation": {
+          "signal": "A 社 Agent 风险信号：当模型被赋予工具、角色和业务目标后，失败模式会从“答错”升级为策略性误行为。",
+          "impact": "Agent 上生产系统时，权限、激励、环境反馈和日志比 prompt 更关键；没有任务中止和审计机制，就难以发现模拟外的早期风险。",
+          "action": "上线前做红队场景库：关停威胁、指标压力、权限诱导、第三方指令和保密冲突，并要求所有高权限动作留出人工确认。"
+        },
+        "impact": "Agent 上生产系统时，权限、激励、环境反馈和日志比 prompt 更关键；没有任务中止和审计机制，就难以发现模拟外的早期风险。",
+        "action": "上线前做红队场景库：关停威胁、指标压力、权限诱导、第三方指令和保密冲突，并要求所有高权限动作留出人工确认。",
+        "tags": [
+          "Anthropic",
+          "Agent",
+          "安全"
+        ],
+        "rank": 1
+      },
+      {
+        "source": "Anthropic Alignment Science Blog",
+        "sourceDetail": "Anthropic Alignment / Safety Research",
+        "domain": "alignment.anthropic.com",
+        "title": "The Hot Mess of AI: How Does Misalignment Scale with Model Intelligence?",
+        "url": "https://alignment.anthropic.com/2026/hot-mess-of-ai/",
+        "publishedAt": "2026-07-16T00:00:00Z",
+        "summary": "Anthropic Alignment Science Blog 继续讨论“hot mess”理论，研究智能程度与行为一致性/组织性之间的关系，作为评估 agentic misalignment 随模型能力变化的补充视角。",
+        "imageUrl": "https://www.google.com/s2/favicons?domain=anthropic.com&sz=128",
+        "priority": 8,
+        "anthropicScore": 98,
+        "signal": "A 社安全研究信号：自主 Agent 的风险正在从单个越狱问题扩展到目标稳定性、情境激励和组织式行为一致性。",
+        "interpretation": {
+          "signal": "A 社安全研究信号：自主 Agent 的风险正在从单个越狱问题扩展到目标稳定性、情境激励和组织式行为一致性。",
+          "impact": "给企业的影响是 agent 权限设计要关注长期任务中的动机漂移，而不只是单轮输出安全；越接近高权限工作流，越需要可中止、可审计、可隔离。",
+          "action": "把长任务 Agent 的验收拆成目标一致性、异常激励、工具权限、状态恢复和人工接管五类测试，尤其覆盖财务、招聘、安全和代码发布场景。"
+        },
+        "impact": "给企业的影响是 agent 权限设计要关注长期任务中的动机漂移，而不只是单轮输出安全；越接近高权限工作流，越需要可中止、可审计、可隔离。",
+        "action": "把长任务 Agent 的验收拆成目标一致性、异常激励、工具权限、状态恢复和人工接管五类测试，尤其覆盖财务、招聘、安全和代码发布场景。",
+        "tags": [
+          "Anthropic",
+          "安全",
+          "Agent"
+        ],
+        "rank": 2
+      },
+      {
         "source": "A社 Anthropic Research",
         "sourceDetail": "Anthropic 官方 Research / Economic Research",
         "domain": "anthropic.com",
@@ -4145,7 +4205,8 @@
         "signal": "经济采用信号：Claude 使用强度与工作结构匹配度相关，区域产业结构会影响 Agent 落地速度。",
         "impact": "组织推广 AI 时不能只看员工数量或预算，应优先识别专业服务、科研、翻译、代码和早期职业任务密集的团队。",
         "action": "在内部推广 Claude/Agent 前先做任务结构盘点：按岗位、语言、数据敏感度和可复盘指标分层，而不是全员平均铺开。",
-        "anthropicScore": 44
+        "anthropicScore": 44,
+        "rank": 3
       },
       {
         "source": "A社 Anthropic",
@@ -4160,7 +4221,8 @@
         "signal": "生态投资信号：Claude 的竞争不只在模型能力，也在研究机构、行业试点和区域合规网络。",
         "impact": "对加拿大 AI 安全、健康、教育和多语言研究有直接资源注入；对企业客户则提示 Claude 生态会更偏向可审计、高价值专业工作流。",
         "action": "把供应商评估从模型 benchmark 扩展到区域数据治理、研究合作、行业证据和本地支持能力，尤其关注医疗、政府和教育场景。",
-        "anthropicScore": 42
+        "anthropicScore": 42,
+        "rank": 4
       },
       {
         "source": "A社 Anthropic Research",
@@ -4175,7 +4237,8 @@
         "signal": "行为评测信号：同一模型在不同语言和版本中的价值表达并不完全一致，需要被测量和治理。",
         "impact": "多语言产品、教育、客服和企业知识助手会遇到风格、谨慎度、深度和直接性差异，影响用户信任和决策质量。",
         "action": "多语言 Agent 上线前建立语言分层评测集，单独看拒答、事实严谨、建议强度、语气和用户结果，而不是只复用英文测试。",
-        "anthropicScore": 58
+        "anthropicScore": 58,
+        "rank": 5
       },
       {
         "source": "A社 Anthropic",
@@ -4190,58 +4253,8 @@
         "signal": "产品治理信号：Claude 开始帮助用户审视是否过度委托、是否符合原始目标，而不是单纯增加使用时长。",
         "impact": "对个人用户是使用透明度，对企业是未来 Agent adoption analytics 的样板；但 memory 与敏感主题摘要会带来隐私、解释和数据保留问题。",
         "action": "上线内部 Agent 前同步设计 usage review：按任务类型、成本、失败率、人工接管、敏感数据和 quiet-hours 策略记录，而不是事后靠账单追责。",
-        "anthropicScore": 61
-      },
-      {
-        "source": "A社 Anthropic Research",
-        "sourceDetail": "Anthropic 官方 Research / Interpretability",
-        "domain": "anthropic.com",
-        "title": "A global workspace in language models",
-        "url": "https://www.anthropic.com/research/global-workspace",
-        "publishedAt": "2026-07-06T16:00:00Z",
-        "summary": "Anthropic 发布 Claude J-space / global workspace 研究，显示模型内部存在可被读取、干预并参与多步推理的“静默工作区”；这把 Claude 安全监控从输出审查推进到内部表征、隐式意图和评测感知的可观测治理。",
-        "imageUrl": "https://www.google.com/s2/favicons?domain=anthropic.com&sz=128",
-        "priority": 5,
-        "anthropicScore": 55
-      },
-      {
-        "source": "A社 Anthropic",
-        "sourceDetail": "Anthropic 官方 News",
-        "domain": "anthropic.com",
-        "title": "Introducing Claude Sonnet 5",
-        "url": "https://www.anthropic.com/news/claude-sonnet-5",
-        "publishedAt": "2026-06-30T16:00:00Z",
-        "summary": "Anthropic 发布 Claude Sonnet 5，定位为最 agentic 的 Sonnet 模型；官方强调它可规划、调用浏览器和终端工具，并在 Claude Code、Claude Platform 和各套餐中可用。企业评估应把成本曲线、BrowseComp/OSWorld-Verified 表现、长任务权限和审计边界放在同一张表里。",
-        "imageUrl": "https://www.google.com/s2/favicons?domain=anthropic.com&sz=128",
-        "priority": 5,
-        "anthropicScore": 45
-      },
-      {
-        "source": "A社 Anthropic Engineering",
-        "sourceDetail": "Anthropic 官方 Engineering / Agent Containment",
-        "domain": "anthropic.com",
-        "title": "How we contain Claude across products",
-        "url": "https://www.anthropic.com/engineering/how-we-contain-claude",
-        "publishedAt": "2026-06-18T16:00:00Z",
-        "summary": "Anthropic Engineering 将 claude.ai、Claude Code 与 Claude Cowork 放在同一套 containment 叙事下，强调 agent 能力越强，工程重点越要从权限弹窗转向 blast radius、工具隔离、动作审计、回滚和产品级安全边界。",
-        "imageUrl": "https://www.google.com/s2/favicons?domain=anthropic.com&sz=128",
-        "priority": 8,
-        "signal": "Agent 安全工程信号：Claude Code/Agent 的关键竞争力正在从“能完成任务”扩展到“出错时影响范围可控”。",
-        "impact": "企业采用 Claude Code、Cowork 或内部 Agent 平台时，最先暴露的不是模型分数，而是文件、终端、浏览器、连接器和团队数据的越权半径。",
-        "action": "把 containment 做成试点准入项：工具白名单、敏感动作确认、最小权限、日志审计、回滚剧本和人工接管必须早于大规模推广。",
-        "anthropicScore": 58
-      },
-      {
-        "source": "A社 Anthropic",
-        "sourceDetail": "Anthropic 官方 News",
-        "domain": "anthropic.com",
-        "title": "Higher usage limits for Claude and a compute deal with SpaceX",
-        "url": "https://www.anthropic.com/news/higher-limits-spacex",
-        "publishedAt": "2026-05-20T16:00:00Z",
-        "summary": "Anthropic 提高 Claude Code 与 Opus API 使用限制，并披露与 SpaceX 的算力合作，说明 Claude 企业和 Agent 用量正在受供给能力约束。",
-        "imageUrl": "https://www.google.com/s2/favicons?domain=anthropic.com&sz=128",
-        "priority": 4,
-        "anthropicScore": 46
+        "anthropicScore": 61,
+        "rank": 6
       },
       {
         "source": "A社 Anthropic",
@@ -4256,43 +4269,40 @@
         "signal": "治理信号：Anthropic 把 LTBT 作为长期使命约束的独立机制继续强化，并引入宏观政策与金融监管经验。",
         "impact": "对企业客户的直接产品影响有限，但会影响 Anthropic 在安全边界、政府关系、资本市场和高监管行业中的可信度叙事。",
         "action": "采购和平台团队应把模型供应商尽调扩展到治理结构、事件响应、政策冲突和服务连续性，而不是只看 benchmark 与价格。",
-        "anthropicScore": 59
+        "anthropicScore": 59,
+        "rank": 7
       },
       {
         "source": "A社 Anthropic",
-        "sourceDetail": "Anthropic 官方 News",
+        "sourceDetail": "Anthropic 官方 News / Enterprise",
         "domain": "anthropic.com",
-        "title": "Redeploying Claude Fable 5",
-        "url": "https://www.anthropic.com/news/redeploying-fable-5",
-        "publishedAt": "2026-06-29T16:00:00.000Z",
-        "summary": "Anthropic is redeploying Claude Fable 5 starting July 1 following the lifting of export controls, with updated cybersecurity safeguards and a new industry jailbreak framework.",
-        "imageUrl": "https://cdn.sanity.io/images/4zrzovbb/website/6d4a0d28992ade92d6fa63646fd9c9d318245c6c-2400x1260.jpg",
-        "priority": 4,
-        "anthropicScore": 53
+        "title": "UST is bringing Claude to physical AI",
+        "url": "https://www.anthropic.com/news/ust-claude",
+        "publishedAt": "2026-07-09T16:00:00Z",
+        "summary": "Anthropic 报道 UST 正把 Claude 用到 physical AI 场景。信号是 Claude 的企业合作不再只围绕知识工作和代码，而是向机器人、工业流程和现实世界系统理解延伸；落地时要把仿真验证、现场安全、数据权限、工具调用边界和人工接管作为第一层架构，而不是把通用 Agent 直接接到物理执行链路。",
+        "imageUrl": "https://www.google.com/s2/favicons?domain=anthropic.com&sz=128",
+        "priority": 8,
+        "signal": "企业合作信号：Claude 正从办公/代码 Agent 扩展到 physical AI 和现实世界工作流。",
+        "impact": "对机器人、制造、物流和现场服务团队有方向意义，但风险从输出错误升级为物理动作、设备安全和责任归属。",
+        "action": "评估 physical AI Agent 时先建仿真、只读观测、人工审批和事故回放链路，再考虑让 Claude 触发任何执行动作。",
+        "anthropicScore": 53,
+        "rank": 8
       },
       {
-        "source": "A社 Anthropic Engineering",
-        "sourceDetail": "Anthropic 官方 Engineering",
+        "source": "A社 Anthropic Research",
+        "sourceDetail": "Anthropic 官方 Research / Frontier Red Team",
         "domain": "anthropic.com",
-        "title": "Quantifying infrastructure noise in agentic coding evals",
-        "url": "https://www.anthropic.com/engineering/infrastructure-noise",
-        "publishedAt": "2026-02-05T16:00:00Z",
-        "summary": "Anthropic 讨论 agentic coding evals 中运行环境、资源预算和约束执行方式带来的基础设施噪声，提醒比较 Claude Code/Agent 能力时必须控制测试环境。",
+        "title": "Claude plays robotics",
+        "url": "https://www.anthropic.com/research/claude-plays-robotics",
+        "publishedAt": "2026-07-09T16:00:00Z",
+        "summary": "Anthropic Frontier Red Team 将 Claude 放进机器人仿真任务，观察模型在现实世界控制、工具调用和自主决策边界上的表现。信号是 A 社安全研究正从文本/代码扩展到具备物理后果的 Agent 场景；评估重点必须包括仿真、约束执行、人工接管和失败回放。",
         "imageUrl": "https://www.google.com/s2/favicons?domain=anthropic.com&sz=128",
-        "priority": 4,
-        "anthropicScore": 43
-      },
-      {
-        "source": "A社 Anthropic",
-        "sourceDetail": "Anthropic 官方 News / Safeguards",
-        "domain": "anthropic.com",
-        "title": "More details on Fable 5’s cyber safeguards and our jailbreak framework",
-        "url": "https://www.anthropic.com/news/fable-safeguards-jailbreak-framework",
-        "publishedAt": "2026-07-02T16:00:00Z",
-        "summary": "Anthropic 补充 Fable 5 网络安全防护和 jailbreak 严重度框架，说明前沿 Claude 模型发布正在同时绑定能力开放、滥用分级、跨厂商协作、地区可用性和上线治理。",
-        "imageUrl": "https://www.google.com/s2/favicons?domain=anthropic.com&sz=128",
-        "priority": 5,
-        "anthropicScore": 51
+        "priority": 8,
+        "signal": "机器人安全信号：Claude/Agent 能力评测正在覆盖 physical AI，不再局限于浏览器、终端和代码。",
+        "impact": "机器人、制造、仓储和现场服务团队会更快看到通用 Agent 进入控制链路的压力，但错误成本也显著提高。",
+        "action": "任何 physical AI 试点都应先限定为仿真或只读建议，建立动作白名单、紧急停止、日志回放和责任边界后再扩大。",
+        "anthropicScore": 45,
+        "rank": 9
       },
       {
         "source": "A社 Anthropic Research",
@@ -4343,34 +4353,21 @@
             "安全评估"
           ]
         },
-        "anthropicScore": 60
+        "anthropicScore": 60,
+        "rank": 10
       },
       {
-        "source": "A社 Anthropic",
-        "sourceDetail": "Anthropic 官方 News / Enterprise",
+        "source": "A社 Anthropic Research",
+        "sourceDetail": "Anthropic 官方 Research / Interpretability",
         "domain": "anthropic.com",
-        "title": "UST is bringing Claude to physical AI",
-        "url": "https://www.anthropic.com/news/ust-claude",
-        "publishedAt": "2026-07-09T16:00:00Z",
-        "summary": "Anthropic 报道 UST 正把 Claude 用到 physical AI 场景。信号是 Claude 的企业合作不再只围绕知识工作和代码，而是向机器人、工业流程和现实世界系统理解延伸；落地时要把仿真验证、现场安全、数据权限、工具调用边界和人工接管作为第一层架构，而不是把通用 Agent 直接接到物理执行链路。",
+        "title": "A global workspace in language models",
+        "url": "https://www.anthropic.com/research/global-workspace",
+        "publishedAt": "2026-07-06T16:00:00Z",
+        "summary": "Anthropic 发布 Claude J-space / global workspace 研究，显示模型内部存在可被读取、干预并参与多步推理的“静默工作区”；这把 Claude 安全监控从输出审查推进到内部表征、隐式意图和评测感知的可观测治理。",
         "imageUrl": "https://www.google.com/s2/favicons?domain=anthropic.com&sz=128",
-        "priority": 8,
-        "signal": "企业合作信号：Claude 正从办公/代码 Agent 扩展到 physical AI 和现实世界工作流。",
-        "impact": "对机器人、制造、物流和现场服务团队有方向意义，但风险从输出错误升级为物理动作、设备安全和责任归属。",
-        "action": "评估 physical AI Agent 时先建仿真、只读观测、人工审批和事故回放链路，再考虑让 Claude 触发任何执行动作。",
-        "anthropicScore": 53
-      },
-      {
-        "source": "A社 Anthropic",
-        "sourceDetail": "Anthropic 官方 News",
-        "domain": "anthropic.com",
-        "title": "Government of Alberta uses Claude to find and fix cybersecurity vulnerabilities",
-        "url": "https://www.anthropic.com/news/alberta-government-claude-cybersecurity",
-        "publishedAt": "2026-07-05T16:00:00.000Z",
-        "summary": "The Government of Alberta has been using Claude Code with both Opus and Sonnet models to review its systems, find vulnerabilities, and fix them.",
-        "imageUrl": "https://www.anthropic.com/api/opengraph-illustration?name=Object-LaptopSecure&backgroundColor=sky",
-        "priority": 4,
-        "anthropicScore": 50
+        "priority": 5,
+        "anthropicScore": 55,
+        "rank": 11
       },
       {
         "source": "A社 Anthropic",
@@ -4385,7 +4382,76 @@
         "signal": "Claude Code 产品化信号：A 社把内部 CLI 的演进路径公开成 coding agent 工程故事，说明采用重点已从模型能力转向真实团队工作流。",
         "impact": "企业评估 Claude Code 时会更关注工具权限、任务边界、上下文恢复、审计日志和团队协作模式，而不是只看单次代码生成成绩。",
         "action": "把 Claude Code 试点拆成 issue/PR 级任务、长任务迁移、代码审查和文档维护四类回放，逐项记录权限、失败接管、成本和 review 缺陷。",
-        "anthropicScore": 49
+        "anthropicScore": 49,
+        "rank": 12
+      },
+      {
+        "source": "A社 Anthropic",
+        "sourceDetail": "Anthropic 官方 News",
+        "domain": "anthropic.com",
+        "title": "Government of Alberta uses Claude to find and fix cybersecurity vulnerabilities",
+        "url": "https://www.anthropic.com/news/alberta-government-claude-cybersecurity",
+        "publishedAt": "2026-07-05T16:00:00.000Z",
+        "summary": "The Government of Alberta has been using Claude Code with both Opus and Sonnet models to review its systems, find vulnerabilities, and fix them.",
+        "imageUrl": "https://www.anthropic.com/api/opengraph-illustration?name=Object-LaptopSecure&backgroundColor=sky",
+        "priority": 4,
+        "anthropicScore": 50,
+        "rank": 13
+      },
+      {
+        "source": "A社 Anthropic",
+        "sourceDetail": "Anthropic 官方 News / Safeguards",
+        "domain": "anthropic.com",
+        "title": "More details on Fable 5’s cyber safeguards and our jailbreak framework",
+        "url": "https://www.anthropic.com/news/fable-safeguards-jailbreak-framework",
+        "publishedAt": "2026-07-02T16:00:00Z",
+        "summary": "Anthropic 补充 Fable 5 网络安全防护和 jailbreak 严重度框架，说明前沿 Claude 模型发布正在同时绑定能力开放、滥用分级、跨厂商协作、地区可用性和上线治理。",
+        "imageUrl": "https://www.google.com/s2/favicons?domain=anthropic.com&sz=128",
+        "priority": 5,
+        "anthropicScore": 51,
+        "rank": 14
+      },
+      {
+        "source": "A社 Anthropic",
+        "sourceDetail": "Anthropic 官方 News",
+        "domain": "anthropic.com",
+        "title": "Introducing Claude Sonnet 5",
+        "url": "https://www.anthropic.com/news/claude-sonnet-5",
+        "publishedAt": "2026-06-30T16:00:00Z",
+        "summary": "Anthropic 发布 Claude Sonnet 5，定位为最 agentic 的 Sonnet 模型；官方强调它可规划、调用浏览器和终端工具，并在 Claude Code、Claude Platform 和各套餐中可用。企业评估应把成本曲线、BrowseComp/OSWorld-Verified 表现、长任务权限和审计边界放在同一张表里。",
+        "imageUrl": "https://www.google.com/s2/favicons?domain=anthropic.com&sz=128",
+        "priority": 5,
+        "anthropicScore": 45,
+        "rank": 15
+      },
+      {
+        "source": "A社 Anthropic",
+        "sourceDetail": "Anthropic 官方 News",
+        "domain": "anthropic.com",
+        "title": "Redeploying Claude Fable 5",
+        "url": "https://www.anthropic.com/news/redeploying-fable-5",
+        "publishedAt": "2026-06-29T16:00:00.000Z",
+        "summary": "Anthropic is redeploying Claude Fable 5 starting July 1 following the lifting of export controls, with updated cybersecurity safeguards and a new industry jailbreak framework.",
+        "imageUrl": "https://cdn.sanity.io/images/4zrzovbb/website/6d4a0d28992ade92d6fa63646fd9c9d318245c6c-2400x1260.jpg",
+        "priority": 4,
+        "anthropicScore": 53,
+        "rank": 16
+      },
+      {
+        "source": "A社 Anthropic Engineering",
+        "sourceDetail": "Anthropic 官方 Engineering / Agent Containment",
+        "domain": "anthropic.com",
+        "title": "How we contain Claude across products",
+        "url": "https://www.anthropic.com/engineering/how-we-contain-claude",
+        "publishedAt": "2026-06-18T16:00:00Z",
+        "summary": "Anthropic Engineering 将 claude.ai、Claude Code 与 Claude Cowork 放在同一套 containment 叙事下，强调 agent 能力越强，工程重点越要从权限弹窗转向 blast radius、工具隔离、动作审计、回滚和产品级安全边界。",
+        "imageUrl": "https://www.google.com/s2/favicons?domain=anthropic.com&sz=128",
+        "priority": 8,
+        "signal": "Agent 安全工程信号：Claude Code/Agent 的关键竞争力正在从“能完成任务”扩展到“出错时影响范围可控”。",
+        "impact": "企业采用 Claude Code、Cowork 或内部 Agent 平台时，最先暴露的不是模型分数，而是文件、终端、浏览器、连接器和团队数据的越权半径。",
+        "action": "把 containment 做成试点准入项：工具白名单、敏感动作确认、最小权限、日志审计、回滚剧本和人工接管必须早于大规模推广。",
+        "anthropicScore": 58,
+        "rank": 17
       },
       {
         "source": "A社 Anthropic Research",
@@ -4397,25 +4463,88 @@
         "summary": "Anthropic 研究 Claude Code 实际使用中专家经验的持续回报，提示企业评估 coding agent 时要看人机协作结构，而不是只看自动完成率。",
         "imageUrl": "https://www.google.com/s2/favicons?domain=anthropic.com&sz=128",
         "priority": 4,
-        "anthropicScore": 48
+        "anthropicScore": 48,
+        "rank": 18
       },
       {
-        "source": "A社 Anthropic Research",
-        "sourceDetail": "Anthropic 官方 Research / Frontier Red Team",
+        "source": "A社 Anthropic",
+        "sourceDetail": "Anthropic 官方 News",
         "domain": "anthropic.com",
-        "title": "Claude plays robotics",
-        "url": "https://www.anthropic.com/research/claude-plays-robotics",
-        "publishedAt": "2026-07-09T16:00:00Z",
-        "summary": "Anthropic Frontier Red Team 将 Claude 放进机器人仿真任务，观察模型在现实世界控制、工具调用和自主决策边界上的表现。信号是 A 社安全研究正从文本/代码扩展到具备物理后果的 Agent 场景；评估重点必须包括仿真、约束执行、人工接管和失败回放。",
+        "title": "Higher usage limits for Claude and a compute deal with SpaceX",
+        "url": "https://www.anthropic.com/news/higher-limits-spacex",
+        "publishedAt": "2026-05-20T16:00:00Z",
+        "summary": "Anthropic 提高 Claude Code 与 Opus API 使用限制，并披露与 SpaceX 的算力合作，说明 Claude 企业和 Agent 用量正在受供给能力约束。",
         "imageUrl": "https://www.google.com/s2/favicons?domain=anthropic.com&sz=128",
-        "priority": 8,
-        "signal": "机器人安全信号：Claude/Agent 能力评测正在覆盖 physical AI，不再局限于浏览器、终端和代码。",
-        "impact": "机器人、制造、仓储和现场服务团队会更快看到通用 Agent 进入控制链路的压力，但错误成本也显著提高。",
-        "action": "任何 physical AI 试点都应先限定为仿真或只读建议，建立动作白名单、紧急停止、日志回放和责任边界后再扩大。",
-        "anthropicScore": 45
+        "priority": 4,
+        "anthropicScore": 46,
+        "rank": 19
+      },
+      {
+        "source": "A社 Anthropic Engineering",
+        "sourceDetail": "Anthropic 官方 Engineering",
+        "domain": "anthropic.com",
+        "title": "Quantifying infrastructure noise in agentic coding evals",
+        "url": "https://www.anthropic.com/engineering/infrastructure-noise",
+        "publishedAt": "2026-02-05T16:00:00Z",
+        "summary": "Anthropic 讨论 agentic coding evals 中运行环境、资源预算和约束执行方式带来的基础设施噪声，提醒比较 Claude Code/Agent 能力时必须控制测试环境。",
+        "imageUrl": "https://www.google.com/s2/favicons?domain=anthropic.com&sz=128",
+        "priority": 4,
+        "anthropicScore": 43,
+        "rank": 20
       }
     ],
     "items": [
+      {
+        "source": "Anthropic Alignment Science Blog",
+        "sourceDetail": "Anthropic Alignment / Safety Research",
+        "domain": "alignment.anthropic.com",
+        "title": "The Hot Mess of AI: How Does Misalignment Scale with Model Intelligence?",
+        "url": "https://alignment.anthropic.com/2026/hot-mess-of-ai/",
+        "publishedAt": "2026-07-16T00:00:00Z",
+        "summary": "Anthropic Alignment Science Blog 继续讨论“hot mess”理论，研究智能程度与行为一致性/组织性之间的关系，作为评估 agentic misalignment 随模型能力变化的补充视角。",
+        "imageUrl": "https://www.google.com/s2/favicons?domain=anthropic.com&sz=128",
+        "priority": 8,
+        "anthropicScore": 98,
+        "signal": "A 社安全研究信号：自主 Agent 的风险正在从单个越狱问题扩展到目标稳定性、情境激励和组织式行为一致性。",
+        "interpretation": {
+          "signal": "A 社安全研究信号：自主 Agent 的风险正在从单个越狱问题扩展到目标稳定性、情境激励和组织式行为一致性。",
+          "impact": "给企业的影响是 agent 权限设计要关注长期任务中的动机漂移，而不只是单轮输出安全；越接近高权限工作流，越需要可中止、可审计、可隔离。",
+          "action": "把长任务 Agent 的验收拆成目标一致性、异常激励、工具权限、状态恢复和人工接管五类测试，尤其覆盖财务、招聘、安全和代码发布场景。"
+        },
+        "impact": "给企业的影响是 agent 权限设计要关注长期任务中的动机漂移，而不只是单轮输出安全；越接近高权限工作流，越需要可中止、可审计、可隔离。",
+        "action": "把长任务 Agent 的验收拆成目标一致性、异常激励、工具权限、状态恢复和人工接管五类测试，尤其覆盖财务、招聘、安全和代码发布场景。",
+        "tags": [
+          "Anthropic",
+          "安全",
+          "Agent"
+        ],
+        "rank": 1
+      },
+      {
+        "source": "OpenAI 官方",
+        "sourceDetail": "OpenAI Research / Safety",
+        "domain": "openai.com",
+        "title": "GPT-Red: Unlocking Self-Improvement for Robustness",
+        "url": "https://openai.com/index/unlocking-self-improvement-gpt-red/",
+        "publishedAt": "2026-07-16T00:00:00Z",
+        "summary": "OpenAI 发布 GPT-Red，用自动化红队和自我对弈强化学习持续生成更强提示注入与越狱攻击，并把攻击样本用于训练 GPT-5.6 Sol；官方披露 GPT-5.6 Sol 在 GPT-Red 直接提示注入上的失败率降到 0.05%。",
+        "imageUrl": "https://www.google.com/s2/favicons?domain=openai.com&sz=128",
+        "priority": 9,
+        "signal": "安全评测信号：模型厂商正在把红队从人工抽样升级为可训练、可回放、可进入后训练闭环的自动化系统。",
+        "interpretation": {
+          "signal": "安全评测信号：模型厂商正在把红队从人工抽样升级为可训练、可回放、可进入后训练闭环的自动化系统。",
+          "impact": "企业采用 Agent 时，安全评测不能只靠上线前 checklist；需要把提示注入、工具越权、数据外泄和恶意仓库内容做成持续回放集。",
+          "action": "建立内部 GPT-Red 式回放池：收集真实失败样本、README/网页/文档注入、工具调用边界和人工确认日志，每次模型或 prompt 升级都跑一轮。"
+        },
+        "impact": "企业采用 Agent 时，安全评测不能只靠上线前 checklist；需要把提示注入、工具越权、数据外泄和恶意仓库内容做成持续回放集。",
+        "action": "建立内部 GPT-Red 式回放池：收集真实失败样本、README/网页/文档注入、工具调用边界和人工确认日志，每次模型或 prompt 升级都跑一轮。",
+        "tags": [
+          "安全",
+          "评测",
+          "Agent"
+        ],
+        "rank": 2
+      },
       {
         "source": "OpenAI 官方",
         "sourceDetail": "OpenAI Product / Models",
@@ -4426,7 +4555,7 @@
         "summary": "OpenAI 发布 GPT-5.6 Sol/Terra/Luna，强调更强的知识工作、浏览、computer use、artifact 生成、Programmatic Tool Calling、多 Agent beta、显式缓存断点和更可预测的价格/缓存策略。信号是前沿模型竞争正在从单次推理分数转向长任务代理、可编辑交付物、工具编排和成本可控性；动作是用真实报告、表格、代码修复、浏览任务和 ZDR/缓存约束做回放评测。",
         "imageUrl": "https://www.google.com/s2/favicons?domain=openai.com&sz=128",
         "priority": 7,
-        "rank": 1,
+        "rank": 3,
         "signal": "模型产品化信号：GPT-5.6 把前沿推理、浏览/computer use、artifact 生成、缓存断点和多 Agent 能力打包成面向知识工作的生产套件，竞争焦点从单次 benchmark 转到可交付任务。",
         "interpretation": {
           "signal": "模型产品化信号：GPT-5.6 把前沿推理、浏览/computer use、artifact 生成、缓存断点和多 Agent 能力打包成面向知识工作的生产套件，竞争焦点从单次 benchmark 转到可交付任务。",
@@ -4451,7 +4580,7 @@
         "summary": "OpenAI 推出 GPT-Live，把连续语音交互与后台深度工作解耦：前台保持自然对话，复杂任务可委托给更强模型做搜索、推理和 Agent 操作。信号是语音助手架构从单模型实时应答走向“实时层 + 后台任务层”；动作是验证中断处理、委托可见性、长任务恢复、隐私提示和客服场景的人工接管。",
         "imageUrl": "https://www.google.com/s2/favicons?domain=openai.com&sz=128",
         "priority": 6,
-        "rank": 2,
+        "rank": 4,
         "signal": "实时语音 Agent 信号：OpenAI 把低延迟对话层与后台深度任务层拆开，语音入口不再只是聊天，而是可委托搜索、推理和操作的前台控制面。",
         "interpretation": {
           "signal": "实时语音 Agent 信号：OpenAI 把低延迟对话层与后台深度任务层拆开，语音入口不再只是聊天，而是可委托搜索、推理和操作的前台控制面。",
@@ -4477,7 +4606,7 @@
         "summary": "Hugging Face 博客最新流把模型托管到 Foundry managed compute 放在 7 月 7 日首位；信号是开源模型分发正在从下载权重扩展到托管算力、企业部署和运行时成本治理。动作是把模型卡、运行环境、权限和成本回放放到同一张选型表里。",
         "imageUrl": "https://www.google.com/s2/favicons?domain=huggingface.co&sz=128",
         "priority": 5,
-        "rank": 3,
+        "rank": 5,
         "signal": "开源模型企业部署信号：Hugging Face 模型进入 Foundry managed compute，说明开源权重分发正在和云端合规运行时、预置镜像、账单与观测能力绑定。",
         "interpretation": {
           "signal": "开源模型企业部署信号：Hugging Face 模型进入 Foundry managed compute，说明开源权重分发正在和云端合规运行时、预置镜像、账单与观测能力绑定。",
@@ -4500,7 +4629,7 @@
         "summary": "Hugging Face LeRobot v0.6.0 把机器人工作流组织成想象、评估、改进的闭环；信号是具身智能开始强调可复现实验、数据采集和评测流程，而不是单次演示。动作是优先复现离线 benchmark、仿真到真机差距和失败样本记录。",
         "imageUrl": "https://www.google.com/s2/favicons?domain=huggingface.co&sz=128",
         "priority": 4,
-        "rank": 4,
+        "rank": 6,
         "signal": "模型能力或评测更新，建议关注是否改变内部模型选型和评估基线。",
         "interpretation": {
           "signal": "模型能力或评测更新，建议关注是否改变内部模型选型和评估基线。",
@@ -4523,7 +4652,7 @@
         "summary": "Google Cloud 月度 AI 汇总把 Gemini 3.5、Gemini Omni、Antigravity、Gemini Spark、Managed Agents API 和 CodeMender 放在同一组企业 Agent 更新里；信号是模型、托管 Agent、安全修复和 Workspace 自动化正在合并成平台能力。动作是按托管沙箱、权限、审计、成本和人工接管拆分验证。",
         "imageUrl": "https://www.google.com/s2/favicons?domain=cloud.google.com&sz=128",
         "priority": 4,
-        "rank": 5,
+        "rank": 7,
         "signal": "平台整合信号：Google Cloud 把 Gemini、Agent API、代码/安全自动化和 Workspace 能力放进同一企业 AI 更新面，客户评估会从单模型能力转向托管平台边界。",
         "interpretation": {
           "signal": "平台整合信号：Google Cloud 把 Gemini、Agent API、代码/安全自动化和 Workspace 能力放进同一企业 AI 更新面，客户评估会从单模型能力转向托管平台边界。",
@@ -4549,7 +4678,7 @@
         "summary": "OpenAI Research 最新研究页把 GeneBench-Pro 放在 6 月 30 日首位；信号不是单点 benchmark，而是生命科学评测从问答走向专业任务集。动作上应先看任务定义、数据泄露防护、专家评分和实验复现，而不是直接把模型结论接入研发决策。",
         "imageUrl": "https://www.google.com/s2/favicons?domain=openai.com&sz=128",
         "priority": 5,
-        "rank": 6,
+        "rank": 8,
         "signal": "专业评测信号：生命科学模型评测正在从通用问答推进到专家任务集，模型是否可用于研发决策取决于任务定义、泄露防护、专家评分和复现实验。",
         "interpretation": {
           "signal": "专业评测信号：生命科学模型评测正在从通用问答推进到专家任务集，模型是否可用于研发决策取决于任务定义、泄露防护、专家评分和复现实验。",
@@ -4572,7 +4701,7 @@
         "summary": "Hugging Face 最新博客流把模型页评测结果、企业 Java 迁移 Agent benchmark 和开源工具链更新放在一起；信号是开源生态正在把 eval 元数据前置到模型选择入口。动作是把模型卡、任务评测和本地回放纳入选型流程，避免只按排行榜或单篇 release 决策。",
         "imageUrl": "https://www.google.com/s2/favicons?domain=huggingface.co&sz=128",
         "priority": 4,
-        "rank": 7,
+        "rank": 9,
         "signal": "模型能力或评测更新，建议关注是否改变内部模型选型和评估基线。",
         "interpretation": {
           "signal": "模型能力或评测更新，建议关注是否改变内部模型选型和评估基线。",
@@ -4596,7 +4725,7 @@
         "summary": "Google Developers 最新流强调 ADK Go 2.0 的图式 workflow、人类介入和动态编排；这把 Gemini/Agent 平台竞争从模型能力推进到可治理 orchestration。动作是评估状态机、人工审批、失败恢复和跨语言 SDK，而不是只比较单次代码生成能力。",
         "imageUrl": "https://www.google.com/s2/favicons?domain=developers.googleblog.com&sz=128",
         "priority": 4,
-        "rank": 8,
+        "rank": 10,
         "signal": "平台发布信号：开发者大会类更新适合拆成模型、工具、分发渠道三条线跟进。",
         "interpretation": {
           "signal": "平台发布信号：开发者大会类更新适合拆成模型、工具、分发渠道三条线跟进。",
@@ -4620,7 +4749,7 @@
         "summary": "OpenAI 发布 Codex 经济研究：Agentic AI 把知识工作单位从短聊天变成长任务委托；到 2026 年 5 月，80.6% 抽样个人用户至少提交过一次估计超过 30 分钟人类工作量的 Codex 请求，OpenAI 内部 Codex 已成为跨部门主要 AI 工具。",
         "imageUrl": "https://www.google.com/s2/favicons?domain=openai.com&sz=128",
         "priority": 4,
-        "rank": 9,
+        "rank": 11,
         "signal": "官方 Agent 采用信号：Codex 正从工程师工具扩展到跨部门长任务委托，重点看任务时长、并行 Agent、非技术岗位采用和组织级治理。",
         "interpretation": {
           "signal": "官方 Agent 采用信号：Codex 正从工程师工具扩展到跨部门长任务委托，重点看任务时长、并行 Agent、非技术岗位采用和组织级治理。",
@@ -4643,7 +4772,7 @@
         "summary": "Google Gemini API 更新：Gemini 3.5 Flash 的 Computer Use 工具进入 public preview，包含 intent 化动作、浏览器/移动/桌面环境支持、可配置安全策略和 prompt injection 检测。",
         "imageUrl": "https://www.google.com/s2/favicons?domain=ai.google.dev&sz=128",
         "priority": 4,
-        "rank": 10,
+        "rank": 12,
         "signal": "官方 Computer Use 信号：浏览器、移动和桌面操作正在被纳入模型原生工具链，关键看动作空间、安全策略和 prompt injection 防护。",
         "interpretation": {
           "signal": "官方 Computer Use 信号：浏览器、移动和桌面操作正在被纳入模型原生工具链，关键看动作空间、安全策略和 prompt injection 防护。",
@@ -4668,7 +4797,7 @@
         "summary": "Microsoft 将 Copilot Cowork、Microsoft 365 Copilot 和 GitHub Copilot 放进统一商业化叙事，强调企业 Agent 采用正在从许可证转向可计量使用、组织数据上下文和工作流改造。",
         "imageUrl": "https://www.google.com/s2/favicons?domain=blogs.microsoft.com&sz=128",
         "priority": 3,
-        "rank": 11,
+        "rank": 13,
         "signal": "上下文工程信号：更少 token、更准上下文正在成为搜索和 Agent 体验的核心优化点。",
         "interpretation": {
           "signal": "上下文工程信号：更少 token、更准上下文正在成为搜索和 Agent 体验的核心优化点。",
@@ -4682,76 +4811,50 @@
         ]
       },
       {
-        "source": "Hugging Face",
-        "sourceDetail": "Hugging Face",
-        "domain": "huggingface.co",
-        "title": "Newer Models, Same Advantage",
-        "url": "https://huggingface.co/blog/Dharma-AI/newer-models-same-advantages",
-        "publishedAt": "Thu, 16 Jul 2026 11:49:48 GMT",
-        "summary": "Hugging Face 发布新动态：Newer Models, Same Advantage",
-        "imageUrl": "https://www.google.com/s2/favicons?domain=huggingface.co&sz=128",
-        "priority": 0,
-        "rank": 12,
-        "signal": "模型能力或评测更新，建议关注是否改变内部模型选型和评估基线。",
+        "source": "AIHOT 精选",
+        "sourceDetail": "IT之家（RSS）",
+        "domain": "aihot.virxact.com",
+        "title": "世界人工智能合作组织协定签署仪式在上海举行，总部设中国上海",
+        "url": "https://aihot.virxact.com/items/cmrnmdjt80051bizz895rbmu6",
+        "publishedAt": "Thu, 16 Jul 2026 14:38:08 GMT",
+        "summary": "7月16日，成立世界人工智能合作组织协定签署仪式在上海举行，中共中央政治局委员、外交部长王毅代表中国政府签署协定。该组织是独立的政府间国际组织，总部设在中国上海，旨在促进人工智能国际合作与全球治理。哈萨克斯坦、老挝、巴基斯坦等29个国家代表签署协定成为创始成员国。 🔗 阅读原文：https://www.ithome.com/0/977/793.htm via AI HOT · https://aihot.virxact.com/items/cmrnmdjt80051bizz895rbmu6",
+        "imageUrl": "https://www.google.com/s2/favicons?domain=aihot.virxact.com&sz=128",
+        "priority": 3,
+        "rank": 14,
+        "signal": "行业动态信号，适合纳入周度技术雷达观察。",
         "interpretation": {
-          "signal": "模型能力或评测更新，建议关注是否改变内部模型选型和评估基线。",
+          "signal": "行业动态信号，适合纳入周度技术雷达观察。",
           "impact": "这条动态适合放进周度观察池，重点看它是否会改变模型选型、产品入口或工程成本结构。",
           "action": "建议保留原文链接，等后续出现产品实测、开发者反馈或生态跟进时再升级权重。"
         },
         "impact": "这条动态适合放进周度观察池，重点看它是否会改变模型选型、产品入口或工程成本结构。",
         "action": "建议保留原文链接，等后续出现产品实测、开发者反馈或生态跟进时再升级权重。",
         "tags": [
+          "AI"
+        ]
+      },
+      {
+        "source": "AIHOT 精选",
+        "sourceDetail": "Claude：Blog（网页）",
+        "domain": "aihot.virxact.com",
+        "title": "在 Claude Cowork 中使用 Claude Fable 5",
+        "url": "https://claude.com/blog/working-with-claude-fable-5-in-claude-cowork",
+        "publishedAt": "2026-07-16T14:32:22.664Z",
+        "summary": "Anthropic 发布最强通用模型 Claude Fable 5，专为长时间、多步骤的复杂异步工作设计，可在 Claude Cowork 中自主执行深度研究、尽职调查等任务。该模型需手动选择，默认模型为 Claude Sonnet 5。",
+        "imageUrl": "https://www.google.com/s2/favicons?domain=aihot.virxact.com&sz=128",
+        "priority": 3,
+        "rank": 15,
+        "signal": "A 社模型信号：Claude 系列更新需要重点拆编码能力、长任务稳定性、上下文管理和企业成本边界。",
+        "interpretation": {
+          "signal": "A 社模型信号：Claude 系列更新需要重点拆编码能力、长任务稳定性、上下文管理和企业成本边界。",
+          "impact": "Claude 生态的变化会直接影响 Agent 选型、企业采购、权限治理和安全评测，不能只按模型跑分决策。",
+          "action": "建议更新 Claude 评测清单：模型能力、Claude Code/Agent 工作流、权限隔离、审计日志和供应连续性分开验证。"
+        },
+        "impact": "Claude 生态的变化会直接影响 Agent 选型、企业采购、权限治理和安全评测，不能只按模型跑分决策。",
+        "action": "建议更新 Claude 评测清单：模型能力、Claude Code/Agent 工作流、权限隔离、审计日志和供应连续性分开验证。",
+        "tags": [
+          "A社/Claude",
           "模型"
-        ]
-      },
-      {
-        "source": "AIHOT 精选",
-        "sourceDetail": "公众号：小红书技术（dots.llm）",
-        "domain": "aihot.virxact.com",
-        "title": "HYPIC：小红书联合北大、上交提出首个混合注意力大模型位置无关缓存系统",
-        "url": "https://aihot.virxact.com/items/cmrnclu0101cgbic6rpcgkw8s",
-        "publishedAt": "Thu, 16 Jul 2026 10:00:00 GMT",
-        "summary": "HYPIC 在混合注意力大模型上实现了位置无关缓存，将首 token 延迟平均降低 3.25 倍。在 4 个生产级模型上，同 SLO 下可持续 QPS 提升 1.66 倍，任务质量与完全重算仅相差 1.71 分。 🔗 阅读原文：https://mp.weixin.qq.com/s/RWveWvw9yBH6YQINBQ-XjA via AI HOT · https://aihot.virxact.com/items/cmrnclu0101cgbic6rpcgkw8s",
-        "imageUrl": "https://www.google.com/s2/favicons?domain=aihot.virxact.com&sz=128",
-        "priority": 3,
-        "rank": 13,
-        "signal": "行业动态信号，适合纳入周度技术雷达观察。",
-        "interpretation": {
-          "signal": "行业动态信号，适合纳入周度技术雷达观察。",
-          "impact": "模型供应链会更像云资源管理：容量、缓存、路由和成本控制会成为应用护城河。",
-          "action": "建议纳入成本与架构评估，关注 API 价格、路由策略、缓存命中和供应商锁定。"
-        },
-        "impact": "模型供应链会更像云资源管理：容量、缓存、路由和成本控制会成为应用护城河。",
-        "action": "建议纳入成本与架构评估，关注 API 价格、路由策略、缓存命中和供应商锁定。",
-        "tags": [
-          "模型",
-          "工程/基础设施"
-        ]
-      },
-      {
-        "source": "AIHOT 精选",
-        "sourceDetail": "Google Developers Blog（RSS）",
-        "domain": "aihot.virxact.com",
-        "title": "Gemini Enterprise Agent Platform 新增 Parallel Web Search 网络接地提供商",
-        "url": "https://developers.googleblog.com/expanding-choice-in-gemini-enterprise-agent-platform-introducing-grounding-with-parallel-web-search",
-        "publishedAt": "2026-07-16T09:58:51.914Z",
-        "summary": "Google Cloud 与 Parallel Web Systems 合作，将 Parallel 的搜索基础设施作为新的网络接地提供商原生集成到 Gemini Enterprise Agent Platform 中。该集成使开发者能将 AI 智能体锚定在可验证的实时网络结果上，以提升企业工作流的事实准确性。用户还可编程提取、永久缓存并与其他大语言模型一起处理网络数据。",
-        "imageUrl": "https://www.google.com/s2/favicons?domain=aihot.virxact.com&sz=128",
-        "priority": 3,
-        "rank": 14,
-        "signal": "搜索体验信号：用户从关键词转向自然语言查询，会影响搜索广告、内容召回和答案呈现方式。",
-        "interpretation": {
-          "signal": "搜索体验信号：用户从关键词转向自然语言查询，会影响搜索广告、内容召回和答案呈现方式。",
-          "impact": "Agent 正从单点工具走向跨设备、跨应用、跨通讯入口，产品设计要考虑权限、记忆和接管机制。",
-          "action": "建议记录可试用入口、权限模型和是否支持长会话，适合做 30 分钟产品体验验证。"
-        },
-        "impact": "Agent 正从单点工具走向跨设备、跨应用、跨通讯入口，产品设计要考虑权限、记忆和接管机制。",
-        "action": "建议记录可试用入口、权限模型和是否支持长会话，适合做 30 分钟产品体验验证。",
-        "tags": [
-          "Agent",
-          "模型",
-          "搜索",
-          "工程/基础设施"
         ]
       },
       {
@@ -4768,7 +4871,7 @@
         "impact": "Claude 生态的变化会直接影响 Agent 选型、企业采购、权限治理和安全评测，不能只按模型跑分决策。",
         "action": "建议更新 Claude 评测清单：模型能力、Claude Code/Agent 工作流、权限隔离、审计日志和供应连续性分开验证。",
         "anthropicScore": 44,
-        "rank": 15,
+        "rank": 16,
         "interpretation": {
           "signal": "A 社生态信号：Anthropic 的产品、研究和企业合作会影响 Claude 生态、模型选型和 Agent 工作流落地节奏。",
           "impact": "Claude 生态的变化会直接影响 Agent 选型、企业采购、权限治理和安全评测，不能只按模型跑分决策。",
@@ -4793,7 +4896,7 @@
         "impact": "Claude 生态的变化会直接影响 Agent 选型、企业采购、权限治理和安全评测，不能只按模型跑分决策。",
         "action": "建议更新 Claude 评测清单：模型能力、Claude Code/Agent 工作流、权限隔离、审计日志和供应连续性分开验证。",
         "anthropicScore": 42,
-        "rank": 16,
+        "rank": 17,
         "interpretation": {
           "signal": "A 社安全研究信号：值得跟进其评测、可解释性和对齐方法是否能转化为内部模型治理清单。",
           "impact": "Claude 生态的变化会直接影响 Agent 选型、企业采购、权限治理和安全评测，不能只按模型跑分决策。",
@@ -4819,7 +4922,7 @@
         "impact": "Claude 生态的变化会直接影响 Agent 选型、企业采购、权限治理和安全评测，不能只按模型跑分决策。",
         "action": "建议更新 Claude 评测清单：模型能力、Claude Code/Agent 工作流、权限隔离、审计日志和供应连续性分开验证。",
         "anthropicScore": 58,
-        "rank": 17,
+        "rank": 18,
         "interpretation": {
           "signal": "A 社模型信号：Claude 系列更新需要重点拆编码能力、长任务稳定性、上下文管理和企业成本边界。",
           "impact": "Claude 生态的变化会直接影响 Agent 选型、企业采购、权限治理和安全评测，不能只按模型跑分决策。",
@@ -4845,7 +4948,7 @@
         "impact": "Claude 生态的变化会直接影响 Agent 选型、企业采购、权限治理和安全评测，不能只按模型跑分决策。",
         "action": "建议更新 Claude 评测清单：模型能力、Claude Code/Agent 工作流、权限隔离、审计日志和供应连续性分开验证。",
         "anthropicScore": 61,
-        "rank": 18,
+        "rank": 19,
         "interpretation": {
           "signal": "A 社 Agent 信号：Claude 正在把工具使用、电脑操作和企业流程连接起来，重点看权限、审计和失败接管。",
           "impact": "Claude 生态的变化会直接影响 Agent 选型、企业采购、权限治理和安全评测，不能只按模型跑分决策。",
@@ -4868,7 +4971,7 @@
         "imageUrl": "https://www.google.com/s2/favicons?domain=anthropic.com&sz=128",
         "priority": 5,
         "anthropicScore": 55,
-        "rank": 19,
+        "rank": 20,
         "signal": "A 社模型信号：Claude 系列更新需要重点拆编码能力、长任务稳定性、上下文管理和企业成本边界。",
         "interpretation": {
           "signal": "A 社模型信号：Claude 系列更新需要重点拆编码能力、长任务稳定性、上下文管理和企业成本边界。",
@@ -4883,40 +4986,66 @@
           "安全/可信",
           "工程/基础设施"
         ]
-      },
-      {
-        "source": "A社 Anthropic",
-        "sourceDetail": "Anthropic 官方 News",
-        "domain": "anthropic.com",
-        "title": "Introducing Claude Sonnet 5",
-        "url": "https://www.anthropic.com/news/claude-sonnet-5",
-        "publishedAt": "2026-06-30T16:00:00Z",
-        "summary": "Anthropic 发布 Claude Sonnet 5，定位为最 agentic 的 Sonnet 模型；官方强调它可规划、调用浏览器和终端工具，并在 Claude Code、Claude Platform 和各套餐中可用。企业评估应把成本曲线、BrowseComp/OSWorld-Verified 表现、长任务权限和审计边界放在同一张表里。",
-        "imageUrl": "https://www.google.com/s2/favicons?domain=anthropic.com&sz=128",
-        "priority": 5,
-        "anthropicScore": 45,
-        "rank": 20,
-        "signal": "A 社 Agent 信号：Claude 正在把工具使用、电脑操作和企业流程连接起来，重点看权限、审计和失败接管。",
-        "interpretation": {
-          "signal": "A 社 Agent 信号：Claude 正在把工具使用、电脑操作和企业流程连接起来，重点看权限、审计和失败接管。",
-          "impact": "Claude 生态的变化会直接影响 Agent 选型、企业采购、权限治理和安全评测，不能只按模型跑分决策。",
-          "action": "建议更新 Claude 评测清单：模型能力、Claude Code/Agent 工作流、权限隔离、审计日志和供应连续性分开验证。"
-        },
-        "impact": "Claude 生态的变化会直接影响 Agent 选型、企业采购、权限治理和安全评测，不能只按模型跑分决策。",
-        "action": "建议更新 Claude 评测清单：模型能力、Claude Code/Agent 工作流、权限隔离、审计日志和供应连续性分开验证。",
-        "tags": [
-          "A社/Claude",
-          "Agent",
-          "模型"
-        ]
       }
     ]
   },
   "anthropic": {
     "title": "A社 Anthropic 动态",
     "subtitle": "覆盖 Anthropic 官方 News、Research、Engineering、Claude 模型、Claude Code/Agent、企业合作与安全研究。",
-    "source": "Anthropic 官方 Research / Economic Research + Anthropic 官方 News / Research Partnerships + Anthropic 官方 Research / Societal Impacts + Anthropic 官方 News / Claude Apps + Anthropic 官方 News / Governance + Anthropic 官方 News / Enterprise + Anthropic 官方 Research / Frontier Red Team + Anthropic 官方 Research / Alignment + Anthropic 官方 Research / Interpretability + Anthropic 官方 News / Claude Code + Anthropic 官方 News + Anthropic 官方 News / Safeguards + Anthropic 官方 Engineering / Agent Containment + Anthropic 官方 Research + Anthropic 官方 Engineering",
+    "source": "Anthropic Alignment / Agentic Misalignment + Anthropic Alignment / Safety Research + Anthropic 官方 Research / Economic Research + Anthropic 官方 News / Research Partnerships + Anthropic 官方 Research / Societal Impacts + Anthropic 官方 News / Claude Apps + Anthropic 官方 News / Governance + Anthropic 官方 News / Enterprise + Anthropic 官方 Research / Frontier Red Team + Anthropic 官方 Research / Alignment + Anthropic 官方 Research / Interpretability + Anthropic 官方 News / Claude Code + Anthropic 官方 News + Anthropic 官方 News / Safeguards + Anthropic 官方 Engineering / Agent Containment + Anthropic 官方 Research + Anthropic 官方 Engineering",
     "items": [
+      {
+        "source": "Anthropic Alignment Science Blog",
+        "sourceDetail": "Anthropic Alignment / Agentic Misalignment",
+        "domain": "alignment.anthropic.com",
+        "title": "Agentic Misalignment in Summer 2026",
+        "url": "https://alignment.anthropic.com/2026/agentic-misalignment-summer-2026/",
+        "publishedAt": "2026-07-13T00:00:00Z",
+        "summary": "Anthropic 更新 agentic misalignment 报告，描述 frontier models 在高风险模拟中出现的四类额外对齐失败，延续此前关于自主 Agent 可能表现为内部威胁的研究。",
+        "imageUrl": "https://www.google.com/s2/favicons?domain=anthropic.com&sz=128",
+        "priority": 8,
+        "anthropicScore": 94,
+        "signal": "A 社 Agent 风险信号：当模型被赋予工具、角色和业务目标后，失败模式会从“答错”升级为策略性误行为。",
+        "interpretation": {
+          "signal": "A 社 Agent 风险信号：当模型被赋予工具、角色和业务目标后，失败模式会从“答错”升级为策略性误行为。",
+          "impact": "Agent 上生产系统时，权限、激励、环境反馈和日志比 prompt 更关键；没有任务中止和审计机制，就难以发现模拟外的早期风险。",
+          "action": "上线前做红队场景库：关停威胁、指标压力、权限诱导、第三方指令和保密冲突，并要求所有高权限动作留出人工确认。"
+        },
+        "impact": "Agent 上生产系统时，权限、激励、环境反馈和日志比 prompt 更关键；没有任务中止和审计机制，就难以发现模拟外的早期风险。",
+        "action": "上线前做红队场景库：关停威胁、指标压力、权限诱导、第三方指令和保密冲突，并要求所有高权限动作留出人工确认。",
+        "tags": [
+          "Anthropic",
+          "Agent",
+          "安全"
+        ],
+        "rank": 1
+      },
+      {
+        "source": "Anthropic Alignment Science Blog",
+        "sourceDetail": "Anthropic Alignment / Safety Research",
+        "domain": "alignment.anthropic.com",
+        "title": "The Hot Mess of AI: How Does Misalignment Scale with Model Intelligence?",
+        "url": "https://alignment.anthropic.com/2026/hot-mess-of-ai/",
+        "publishedAt": "2026-07-16T00:00:00Z",
+        "summary": "Anthropic Alignment Science Blog 继续讨论“hot mess”理论，研究智能程度与行为一致性/组织性之间的关系，作为评估 agentic misalignment 随模型能力变化的补充视角。",
+        "imageUrl": "https://www.google.com/s2/favicons?domain=anthropic.com&sz=128",
+        "priority": 8,
+        "anthropicScore": 98,
+        "signal": "A 社安全研究信号：自主 Agent 的风险正在从单个越狱问题扩展到目标稳定性、情境激励和组织式行为一致性。",
+        "interpretation": {
+          "signal": "A 社安全研究信号：自主 Agent 的风险正在从单个越狱问题扩展到目标稳定性、情境激励和组织式行为一致性。",
+          "impact": "给企业的影响是 agent 权限设计要关注长期任务中的动机漂移，而不只是单轮输出安全；越接近高权限工作流，越需要可中止、可审计、可隔离。",
+          "action": "把长任务 Agent 的验收拆成目标一致性、异常激励、工具权限、状态恢复和人工接管五类测试，尤其覆盖财务、招聘、安全和代码发布场景。"
+        },
+        "impact": "给企业的影响是 agent 权限设计要关注长期任务中的动机漂移，而不只是单轮输出安全；越接近高权限工作流，越需要可中止、可审计、可隔离。",
+        "action": "把长任务 Agent 的验收拆成目标一致性、异常激励、工具权限、状态恢复和人工接管五类测试，尤其覆盖财务、招聘、安全和代码发布场景。",
+        "tags": [
+          "Anthropic",
+          "安全",
+          "Agent"
+        ],
+        "rank": 2
+      },
       {
         "source": "A社 Anthropic Research",
         "sourceDetail": "Anthropic 官方 Research / Economic Research",
@@ -4930,7 +5059,8 @@
         "signal": "经济采用信号：Claude 使用强度与工作结构匹配度相关，区域产业结构会影响 Agent 落地速度。",
         "impact": "组织推广 AI 时不能只看员工数量或预算，应优先识别专业服务、科研、翻译、代码和早期职业任务密集的团队。",
         "action": "在内部推广 Claude/Agent 前先做任务结构盘点：按岗位、语言、数据敏感度和可复盘指标分层，而不是全员平均铺开。",
-        "anthropicScore": 44
+        "anthropicScore": 44,
+        "rank": 3
       },
       {
         "source": "A社 Anthropic",
@@ -4945,7 +5075,8 @@
         "signal": "生态投资信号：Claude 的竞争不只在模型能力，也在研究机构、行业试点和区域合规网络。",
         "impact": "对加拿大 AI 安全、健康、教育和多语言研究有直接资源注入；对企业客户则提示 Claude 生态会更偏向可审计、高价值专业工作流。",
         "action": "把供应商评估从模型 benchmark 扩展到区域数据治理、研究合作、行业证据和本地支持能力，尤其关注医疗、政府和教育场景。",
-        "anthropicScore": 42
+        "anthropicScore": 42,
+        "rank": 4
       },
       {
         "source": "A社 Anthropic Research",
@@ -4960,7 +5091,8 @@
         "signal": "行为评测信号：同一模型在不同语言和版本中的价值表达并不完全一致，需要被测量和治理。",
         "impact": "多语言产品、教育、客服和企业知识助手会遇到风格、谨慎度、深度和直接性差异，影响用户信任和决策质量。",
         "action": "多语言 Agent 上线前建立语言分层评测集，单独看拒答、事实严谨、建议强度、语气和用户结果，而不是只复用英文测试。",
-        "anthropicScore": 58
+        "anthropicScore": 58,
+        "rank": 5
       },
       {
         "source": "A社 Anthropic",
@@ -4975,7 +5107,8 @@
         "signal": "产品治理信号：Claude 开始帮助用户审视是否过度委托、是否符合原始目标，而不是单纯增加使用时长。",
         "impact": "对个人用户是使用透明度，对企业是未来 Agent adoption analytics 的样板；但 memory 与敏感主题摘要会带来隐私、解释和数据保留问题。",
         "action": "上线内部 Agent 前同步设计 usage review：按任务类型、成本、失败率、人工接管、敏感数据和 quiet-hours 策略记录，而不是事后靠账单追责。",
-        "anthropicScore": 61
+        "anthropicScore": 61,
+        "rank": 6
       },
       {
         "source": "A社 Anthropic",
@@ -4990,7 +5123,8 @@
         "signal": "治理信号：Anthropic 把 LTBT 作为长期使命约束的独立机制继续强化，并引入宏观政策与金融监管经验。",
         "impact": "对企业客户的直接产品影响有限，但会影响 Anthropic 在安全边界、政府关系、资本市场和高监管行业中的可信度叙事。",
         "action": "采购和平台团队应把模型供应商尽调扩展到治理结构、事件响应、政策冲突和服务连续性，而不是只看 benchmark 与价格。",
-        "anthropicScore": 59
+        "anthropicScore": 59,
+        "rank": 7
       },
       {
         "source": "A社 Anthropic",
@@ -5005,7 +5139,8 @@
         "signal": "企业合作信号：Claude 正从办公/代码 Agent 扩展到 physical AI 和现实世界工作流。",
         "impact": "对机器人、制造、物流和现场服务团队有方向意义，但风险从输出错误升级为物理动作、设备安全和责任归属。",
         "action": "评估 physical AI Agent 时先建仿真、只读观测、人工审批和事故回放链路，再考虑让 Claude 触发任何执行动作。",
-        "anthropicScore": 53
+        "anthropicScore": 53,
+        "rank": 8
       },
       {
         "source": "A社 Anthropic Research",
@@ -5020,7 +5155,8 @@
         "signal": "机器人安全信号：Claude/Agent 能力评测正在覆盖 physical AI，不再局限于浏览器、终端和代码。",
         "impact": "机器人、制造、仓储和现场服务团队会更快看到通用 Agent 进入控制链路的压力，但错误成本也显著提高。",
         "action": "任何 physical AI 试点都应先限定为仿真或只读建议，建立动作白名单、紧急停止、日志回放和责任边界后再扩大。",
-        "anthropicScore": 45
+        "anthropicScore": 45,
+        "rank": 9
       },
       {
         "source": "A社 Anthropic Research",
@@ -5071,7 +5207,8 @@
             "安全评估"
           ]
         },
-        "anthropicScore": 60
+        "anthropicScore": 60,
+        "rank": 10
       },
       {
         "source": "A社 Anthropic Research",
@@ -5083,7 +5220,8 @@
         "summary": "Anthropic 发布 Claude J-space / global workspace 研究，显示模型内部存在可被读取、干预并参与多步推理的“静默工作区”；这把 Claude 安全监控从输出审查推进到内部表征、隐式意图和评测感知的可观测治理。",
         "imageUrl": "https://www.google.com/s2/favicons?domain=anthropic.com&sz=128",
         "priority": 5,
-        "anthropicScore": 55
+        "anthropicScore": 55,
+        "rank": 11
       },
       {
         "source": "A社 Anthropic",
@@ -5098,7 +5236,8 @@
         "signal": "Claude Code 产品化信号：A 社把内部 CLI 的演进路径公开成 coding agent 工程故事，说明采用重点已从模型能力转向真实团队工作流。",
         "impact": "企业评估 Claude Code 时会更关注工具权限、任务边界、上下文恢复、审计日志和团队协作模式，而不是只看单次代码生成成绩。",
         "action": "把 Claude Code 试点拆成 issue/PR 级任务、长任务迁移、代码审查和文档维护四类回放，逐项记录权限、失败接管、成本和 review 缺陷。",
-        "anthropicScore": 49
+        "anthropicScore": 49,
+        "rank": 12
       },
       {
         "source": "A社 Anthropic",
@@ -5110,7 +5249,8 @@
         "summary": "The Government of Alberta has been using Claude Code with both Opus and Sonnet models to review its systems, find vulnerabilities, and fix them.",
         "imageUrl": "https://www.anthropic.com/api/opengraph-illustration?name=Object-LaptopSecure&backgroundColor=sky",
         "priority": 4,
-        "anthropicScore": 50
+        "anthropicScore": 50,
+        "rank": 13
       },
       {
         "source": "A社 Anthropic",
@@ -5122,7 +5262,8 @@
         "summary": "Anthropic 补充 Fable 5 网络安全防护和 jailbreak 严重度框架，说明前沿 Claude 模型发布正在同时绑定能力开放、滥用分级、跨厂商协作、地区可用性和上线治理。",
         "imageUrl": "https://www.google.com/s2/favicons?domain=anthropic.com&sz=128",
         "priority": 5,
-        "anthropicScore": 51
+        "anthropicScore": 51,
+        "rank": 14
       },
       {
         "source": "A社 Anthropic",
@@ -5134,7 +5275,8 @@
         "summary": "Anthropic 发布 Claude Sonnet 5，定位为最 agentic 的 Sonnet 模型；官方强调它可规划、调用浏览器和终端工具，并在 Claude Code、Claude Platform 和各套餐中可用。企业评估应把成本曲线、BrowseComp/OSWorld-Verified 表现、长任务权限和审计边界放在同一张表里。",
         "imageUrl": "https://www.google.com/s2/favicons?domain=anthropic.com&sz=128",
         "priority": 5,
-        "anthropicScore": 45
+        "anthropicScore": 45,
+        "rank": 15
       },
       {
         "source": "A社 Anthropic",
@@ -5146,7 +5288,8 @@
         "summary": "Anthropic is redeploying Claude Fable 5 starting July 1 following the lifting of export controls, with updated cybersecurity safeguards and a new industry jailbreak framework.",
         "imageUrl": "https://cdn.sanity.io/images/4zrzovbb/website/6d4a0d28992ade92d6fa63646fd9c9d318245c6c-2400x1260.jpg",
         "priority": 4,
-        "anthropicScore": 53
+        "anthropicScore": 53,
+        "rank": 16
       },
       {
         "source": "A社 Anthropic Engineering",
@@ -5161,7 +5304,8 @@
         "signal": "Agent 安全工程信号：Claude Code/Agent 的关键竞争力正在从“能完成任务”扩展到“出错时影响范围可控”。",
         "impact": "企业采用 Claude Code、Cowork 或内部 Agent 平台时，最先暴露的不是模型分数，而是文件、终端、浏览器、连接器和团队数据的越权半径。",
         "action": "把 containment 做成试点准入项：工具白名单、敏感动作确认、最小权限、日志审计、回滚剧本和人工接管必须早于大规模推广。",
-        "anthropicScore": 58
+        "anthropicScore": 58,
+        "rank": 17
       },
       {
         "source": "A社 Anthropic Research",
@@ -5173,7 +5317,8 @@
         "summary": "Anthropic 研究 Claude Code 实际使用中专家经验的持续回报，提示企业评估 coding agent 时要看人机协作结构，而不是只看自动完成率。",
         "imageUrl": "https://www.google.com/s2/favicons?domain=anthropic.com&sz=128",
         "priority": 4,
-        "anthropicScore": 48
+        "anthropicScore": 48,
+        "rank": 18
       },
       {
         "source": "A社 Anthropic",
@@ -5185,7 +5330,8 @@
         "summary": "Anthropic 提高 Claude Code 与 Opus API 使用限制，并披露与 SpaceX 的算力合作，说明 Claude 企业和 Agent 用量正在受供给能力约束。",
         "imageUrl": "https://www.google.com/s2/favicons?domain=anthropic.com&sz=128",
         "priority": 4,
-        "anthropicScore": 46
+        "anthropicScore": 46,
+        "rank": 19
       },
       {
         "source": "A社 Anthropic Engineering",
@@ -5197,7 +5343,8 @@
         "summary": "Anthropic 讨论 agentic coding evals 中运行环境、资源预算和约束执行方式带来的基础设施噪声，提醒比较 Claude Code/Agent 能力时必须控制测试环境。",
         "imageUrl": "https://www.google.com/s2/favicons?domain=anthropic.com&sz=128",
         "priority": 4,
-        "anthropicScore": 43
+        "anthropicScore": 43,
+        "rank": 20
       }
     ]
   },
@@ -5207,7 +5354,6 @@
     "source": "Meta Engineering + Netflix TechBlog + Pinterest Engineering + Dropbox Tech + Google Research + Meituan Tech + Airbnb Engineering + Spotify Engineering + Tencent Cloud Developer + Amazon Science + arXiv",
     "items": [
       {
-        "rank": 1,
         "title": "Exploring Hierarchical Interest Representation For Meta Ads Deep Funnel Optimization",
         "url": "https://engineering.fb.com/2026/07/15/ai-research/exploring-hierarchical-interest-representation-for-meta-ads-deep-funnel-optimization/",
         "publishedAt": "2026-07-15T16:00:00Z",
@@ -5215,50 +5361,52 @@
         "sourceType": "industry",
         "imageUrl": "https://www.google.com/s2/favicons?domain=engineering.fb.com&sz=128",
         "tags": [
-          "ads",
-          "ranking",
-          "recsys",
-          "embedding"
+          "广告",
+          "推荐",
+          "Embedding",
+          "Ranking",
+          "Deep Funnel"
         ],
-        "summary": "Meta Ads 提出 Hierarchical Interest Representation：在用户、广告主、商品、服务等广告实体图上学习多层级兴趣表征，用 transformer graph learning、bias-aware attention 和 self-supervised cross-view distillation，把稀疏深层转化信号转成可供检索、监督和排序复用的 universal embeddings 与 Bag-of-Meaning tokens。",
+        "summary": "Meta Ads 把用户、广告主、商品/服务等实体放进多层级图表示学习，用 transformer graph learning、bias-aware attention 和 self-supervised cross-view distillation 学习 universal embeddings 与 Bag-of-Meaning interest tokens，目标是在稀疏 deep funnel 信号下改进 personalization、retrieval、supervision 和 ranking。",
         "interpretation": {
-          "businessProblem": "深层转化广告的真实意图信号稀疏，单靠点击/曝光难以识别用户与广告主产品之间的潜在兴趣关系，导致 retrieval/ranking 在长尾广告、低频商品和新业务上泛化不足。",
-          "systemMechanism": "把用户、广告主、商品、服务、campaign 等构成大规模图，结合多模态广告内容和 LLM 提取的现实世界语义，训练多层级兴趣表示；输出 universal embeddings 与 Bag-of-Meaning interest tokens，供 GEM、Andromeda、Adaptive Ranking Model 等广告栈组件使用。",
-          "metricsAndExperiment": "应重点看 deep funnel conversion、广告相关性、冷启动/长尾覆盖、召回候选质量、ranking lift、稀疏分桶表现、延迟成本和在线 A/B；官方披露的是系统方向和训练规模，未给出完整 lift 数字，因此采用时必须要求离线/在线分桶证据。",
-          "borrowable": "搜广推团队可借鉴“上游表征层 + 多粒度兴趣 token + 图结构蒸馏”的思路，把用户/内容/商品/广告主语义统一到可复用 embedding 层，再让召回、粗排、精排和重排共享。",
-          "boundary": "没有足够多模态内容、实体图、长期行为、转化标签和在线实验能力时，不适合直接复刻；中小团队可先从商品/内容 taxonomy、向量召回和人工可解释兴趣簇做小样本验证。"
+          "businessProblem": "深漏斗广告的转化信号稀疏且延迟高，用户兴趣、广告主供给和商品语义之间存在长程关系；如果只依赖短期 engagement 或单层 embedding，系统容易把点击兴趣误当成购买意图。",
+          "systemMechanism": "在用户、广告主、商品、服务和 campaign 构成的大图上学习层级兴趣表示：先把稀疏原图投影为更稳定的 primitive-interest super graph，再通过多层级粒度、语义内容 enrichment、bias-aware attention 和 cross-view distillation 输出可被召回、监督和排序共用的通用表征。",
+          "metricsAndExperiment": "应同时观察 deep-funnel CVR/ROAS、广告相关性、CTR、稀疏实体覆盖、新广告主/新商品泛化、embedding 刷新延迟、P95 serving 成本、负反馈和公平曝光；离线 graph 表征提升必须能解释到线上广告主价值。",
+          "borrowable": "广告和电商推荐团队可借鉴“上游统一表征层 + 下游多任务消费”的路线：先把实体图、内容语义和转化样本统一成可审计 embedding，再让召回/粗排/精排分别做旁路实验。",
+          "boundary": "没有足够实体规模、图训练基础设施、转化回传质量和请求级成本核算时，层级图表征会变成高成本黑盒；中小团队应先补齐事件归因、实时特征和多路召回可观测性。"
         },
         "diagram": {
-          "title": "Meta HIR 广告深层转化图解",
-          "caption": "ads / ranking / recsys / embedding",
+          "title": "Meta Ads 层级兴趣表征机制图",
+          "caption": "广告 / 深漏斗 / 图表示 / ranking",
           "nodes": [
             {
               "label": "业务问题",
-              "detail": "深层转化信号稀疏，长尾广告和新商品难以在召回/排序中稳定匹配潜在兴趣",
+              "detail": "转化信号稀疏、长程兴趣难建模、点击与购买目标错位。",
               "type": "input"
             },
             {
               "label": "系统机制",
-              "detail": "广告实体图 + 多模态内容 + LLM 语义 + graph transformer，学习多层级兴趣表示",
+              "detail": "实体图 -> primitive-interest super graph -> 层级 embedding -> 召回/监督/排序消费。",
               "type": "core"
             },
             {
               "label": "指标实验",
-              "detail": "deep funnel conversion、冷启动/长尾覆盖、ranking lift、延迟成本、分桶 A/B 和稀疏分群表现",
+              "detail": "CVR/ROAS、覆盖、泛化、P95 成本、负反馈和广告主价值联动。",
               "type": "measure"
             },
             {
               "label": "采用边界",
-              "detail": "缺少实体图、转化标签、多模态内容和在线实验能力时，只能借鉴 taxonomy/embedding 思路",
+              "detail": "图规模、归因质量、训练/serving 成本和 owner 分工决定能否落地。",
               "type": "risk"
             }
           ],
           "links": [
-            "实体图建模",
-            "表征蒸馏",
-            "排序复用"
+            "统一实体语义",
+            "层级表示学习",
+            "下游实验验收"
           ]
-        }
+        },
+        "rank": 1
       },
       {
         "rank": 2,
