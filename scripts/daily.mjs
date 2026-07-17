@@ -2139,6 +2139,13 @@ function normalizeFrontierInterpretation(item) {
 function curatedFrontierInterpretation(item) {
   const title = normalizeTitle(item.title || "");
   const map = {
+    [normalizeTitle("Exploring Hierarchical Interest Representation For Meta Ads Deep Funnel Optimization")]: {
+      businessProblem: "深漏斗广告优化的核心矛盾是转化信号稀疏、长尾广告实体冷启动、用户兴趣层级复杂；只靠点击/互动模型会偏向短期可观测行为，难以把真实潜在购买意图与广告主供给匹配起来。",
+      systemMechanism: "Meta 把用户、广告主、产品、服务和互动构成大规模关系图，引入 LLM 处理的多模态广告/商品语义，再用 transformer 图学习、偏置感知 attention、自监督跨视图蒸馏和多层级投影，产出可供召回、排序和监督复用的统一兴趣向量与 Bag-of-Meaning interest tokens。",
+      metricsAndExperiment: "应关注 deep funnel conversion、稀疏/冷启动实体覆盖、retrieval recall、ranking AUC/校准、广告主 ROI、用户负反馈和模型 serving 成本；官方强调在真实 Meta ads 数据、十亿级互动规模上端到端训练，但线上指标和长期校准仍需持续跟踪。",
+      borrowable: "可借鉴的是“上游统一表示层 + 多层级兴趣 token + 多下游复用”的平台思路：先把用户/物品/商家/内容关系图和多模态语义统一，再让召回、粗排、精排共享表示，减少每条链路重复造特征。",
+      boundary: "没有足够实体图规模、跨域语义数据、负反馈治理和多目标实验体系的团队，不适合直接追求 universal ads embedding；中小广告系统应先补齐转化回传、特征新鲜度、召回覆盖和校准。",
+    },
     [normalizeTitle("Thinking Fast & Slow for a Personalized Notification System")]: {
       businessProblem: "Netflix 个性化通知既要提高短期观看/互动，也要避免过度打扰造成疲劳和退订；如果用一个短期模型同时决定发送频次和消息内容，频控、排序和长期满意度会互相牵制。",
       systemMechanism: "用分层 slow-fast 架构解耦决策：慢策略按周生成用户级跨渠道 pacing plan，快策略在每日发送机会中读取计划特征，再做实时消息选择和相关性排序。",
@@ -2413,6 +2420,16 @@ async function fetchIndustryFrontierItems(maxItems) {
 
 function seedIndustryFrontierItems() {
   return [
+    {
+      title: "Exploring Hierarchical Interest Representation For Meta Ads Deep Funnel Optimization",
+      url: "https://engineering.fb.com/2026/07/15/ai-research/exploring-hierarchical-interest-representation-for-meta-ads-deep-funnel-optimization/",
+      publishedAt: "2026-07-15T16:00:00Z",
+      source: "Meta Engineering",
+      domain: "engineering.fb.com",
+      sourceType: "industry",
+      frontierScore: 59,
+      summary: "Meta Ads 提出 Hierarchical Interest Representation：在用户、广告主、产品/服务等实体图上训练上游表示层，用 transformer graph learning、bias-aware attention 和 self-supervised cross-view distillation 生成 universal embeddings 与 Bag-of-Meaning interest tokens，服务 deep funnel ads 的 retrieval、supervision 和 specialized ranking。",
+    },
     {
       title: "Modernizing the Meta Ads Service With an Open-Source Kernel Scheduler",
       url: "https://engineering.fb.com/2026/07/13/ml-applications/modernizing-the-meta-ads-service-with-an-open-source-kernel-scheduler/",
@@ -2906,6 +2923,7 @@ function buildEditorialReview({ reportDate, frontier = {}, aiNews = {} }) {
     "https://openai.com/index/gpt-5-6/",
     "https://openai.com/index/introducing-gpt-live/",
     "https://netflixtechblog.com/recommending-for-long-term-member-satisfaction-at-netflix-ac15cada49ef",
+    "https://engineering.fb.com/2026/07/15/ai-research/exploring-hierarchical-interest-representation-for-meta-ads-deep-funnel-optimization/",
     "https://engineering.fb.com/2026/07/13/ml-applications/modernizing-the-meta-ads-service-with-an-open-source-kernel-scheduler/",
     "https://medium.com/pinterest-engineering/achieving-near-linear-training-scalability-for-pinterests-foundation-models-14d4f59fe6f6",
     "https://dropbox.tech/machine-learning/how-we-turned-ai-evaluations-into-better-responses-in-dash-chat",
