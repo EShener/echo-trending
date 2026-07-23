@@ -2192,7 +2192,7 @@ async function buildFrontierSection(maxItems) {
 }
 
 function ensureFrontierPriorityCoverage(selected, industryItems, maxItems) {
-  const prioritySources = ["Meituan Tech", "Tencent Cloud Developer", "Alibaba Cloud Developer"];
+  const prioritySources = ["Meituan Tech", "Tencent Cloud Developer", "Alibaba Cloud Developer", "Salesforce Engineering"];
   const covered = new Set(selected.map((item) => item.source).filter(Boolean));
   const next = [...selected];
   for (const source of prioritySources) {
@@ -2324,6 +2324,13 @@ function curatedFrontierInterpretation(item) {
       metricsAndExperiment: "离线看页面级 engagement 代理指标、行/实体多样性、序列有效性和 cold-start 表现；线上必须同时看播放转化、浏览深度、长期留存、重复曝光和 P95 生成延迟。",
       borrowable: "适合借鉴“页面即序列”的建模方式：先把推荐结果、广告位、运营位统一成可验证 layout token，再用小流量 shadow serving 对比传统漏斗。",
       boundary: "如果业务页面结构简单、样本量不足或运营规则强依赖人工编排，端到端生成会让解释、干预和回滚成本明显上升。",
+    },
+    [normalizeTitle("AI-Powered Personalization in Under 100ms: Optimizing Real-Time Decisioning at Scale")]: {
+      businessProblem: "企业个性化必须在 web、mobile、email 和 Agent 交互里即时决定内容/商品/下一步动作；多服务依赖、实时行为变化、库存/偏好新鲜度和租户流量峰值会同时挤压相关性和延迟预算。",
+      systemMechanism: "Salesforce DPRS 并行拉取用户画像、行为数据、ML 输出和推荐排序，配合 per-node cache、global distributed cache、stale-while-revalidate、fallback models、tenant-aware Kubernetes autoscaling 和 canary/staged rollout，把实时 decisioning 做成高可用管线。",
+      metricsAndExperiment: "核心看 P95/P99 延迟、sub-100ms 达成率、推荐 engagement、模型计算效率、缓存命中/雪崩、依赖超时、租户隔离、离线评估准确性和 staged rollout 期间的错误/回退。",
+      borrowable: "企业推荐、CRM 和客服 Agent 团队可借鉴“实时上下文 + 推荐服务 + 降级模型 + 分阶段发布”的组合；先把关键依赖并行化和缓存治理补齐，再谈更复杂的 contextual bandit 或 Agent decisioning。",
+      boundary: "如果业务没有实时反馈闭环、租户隔离和性能门禁，sub-100ms 个性化会变成脆弱的多服务调用链；早期团队应优先做离线评估、低风险客户灰度和人工可解释回退。",
     },
     [normalizeTitle("In-House LLM Serving at Netflix")]: {
       businessProblem: "搜索、推荐、内容理解和客服 Agent 都在引入 LLM，但如果每条业务线各自接入不同 serving 方案，模型打包、限流、输出约束、成本和回滚会迅速碎片化。",
@@ -2630,6 +2637,16 @@ function seedIndustryFrontierItems() {
       sourceType: "industry",
       frontierScore: 60,
       summary: "Netflix GenPage 把首页构建从多阶段候选、行级排序和业务规则编排推进到端到端生成式页面构建：模型以用户和请求上下文为 prompt，自回归生成多行结构化首页，并在工业部署中处理冷启动、模型新鲜度、业务规则和 serving 效率；官方披露 WBC 版本核心 engagement 指标 +0.24%、端到端 serving 延迟降低 20%。",
+    },
+    {
+      title: "AI-Powered Personalization in Under 100ms: Optimizing Real-Time Decisioning at Scale",
+      url: "https://engineering.salesforce.com/ai-powered-personalization-in-under-100ms-optimizing-real-time-decisioning-at-scale/",
+      publishedAt: "2025-03-12T16:00:00Z",
+      source: "Salesforce Engineering",
+      domain: "engineering.salesforce.com",
+      sourceType: "industry",
+      frontierScore: 42,
+      summary: "Salesforce DPRS 将用户画像、行为数据、item embeddings、推荐排序和多渠道 decisioning 放在低延迟管线里，强调 sub-100ms 响应、两层缓存、stale-while-revalidate、tenant-aware autoscaling、离线评估和 staged rollout，适合观察企业实时个性化与 Agentforce 场景的工程边界。",
     },
     {
       title: "In-House LLM Serving at Netflix",
@@ -3021,7 +3038,7 @@ function isAnthropicItem(item) {
 function isAnthropicOfficialItem(item = {}) {
   const source = `${item.source || ""} ${item.sourceDetail || ""}`.toLowerCase();
   const url = `${item.domain || ""} ${item.url || ""}`.toLowerCase();
-  return source.includes("anthropic") || source.includes("a社") || url.includes("anthropic.com");
+  return source.includes("anthropic") || source.includes("a社") || url.includes("anthropic.com") || url.includes("claude.com");
 }
 
 function buildAnthropicSection(aiNews = {}) {
@@ -3069,6 +3086,12 @@ function buildEditorialReview({ reportDate, frontier = {}, aiNews = {} }) {
     "https://www.anthropic.com/news",
     "https://www.anthropic.com/research",
     "https://www.anthropic.com/engineering",
+    "https://www.anthropic.com/news/anthropic-economic-index-connector",
+    "https://www.anthropic.com/news/economic-futures-research-fund-agenda",
+    "https://claude.com/blog/building-verification-loops-in-claude-code-with-skills",
+    "https://claude.com/blog/how-anthropic-secures-its-ai-native-software-development-lifecycle",
+    "https://claude.com/blog/how-datadog-built-a-universal-machine-tool-for-claude-code",
+    "https://claude.com/blog/working-at-the-frontier-rakuten",
     "https://www.anthropic.com/features/making-of-claude-code",
     "https://www.anthropic.com/research/off-switch-dual-use",
     "https://www.anthropic.com/research/global-workspace",
@@ -3246,6 +3269,90 @@ async function fetchAnthropicNewsItems(maxItems) {
 function seedAnthropicOfficialItems() {
   const favicon = "https://www.google.com/s2/favicons?domain=anthropic.com&sz=128";
   return [
+    {
+      source: "A社 Anthropic",
+      sourceDetail: "Anthropic 官方 News / Economic Research",
+      domain: "anthropic.com",
+      title: "Ask Claude about the Anthropic Economic Index",
+      url: "https://www.anthropic.com/news/anthropic-economic-index-connector",
+      publishedAt: "2026-07-22T16:00:00Z",
+      summary: "Anthropic 推出 Economic Index connector，让用户直接在 Claude 中查询 AI 使用与工作变化数据，并要求 Claude 展示底层数据和限制。信号是 A 社把经济影响研究从静态报告推进到可交互数据产品；影响是政策、HR 和业务团队能更快按行业、职业、地区追问 AI 采用证据；动作是把它用于假设生成和任务盘点，而不是把 Claude 使用样本当成完整劳动力市场事实。",
+      imageUrl: favicon,
+      priority: 12,
+      signal: "经济数据产品化信号：Anthropic 把 Economic Index 接入 Claude connector，让研究数据进入普通用户问答流。",
+      impact: "组织评估 AI 采用时会更容易按职业、地区和任务追问证据，但样本仍代表 Claude 使用而非全劳动力市场。",
+      action: "用 connector 做内部 AI 采用假设生成，再回到本公司任务日志、岗位访谈和业务指标做二次验证。",
+    },
+    {
+      source: "A社 Anthropic",
+      sourceDetail: "Anthropic 官方 News / Economic Research",
+      domain: "anthropic.com",
+      title: "A research agenda for the Economic Futures Research Fund",
+      url: "https://www.anthropic.com/news/economic-futures-research-fund-agenda",
+      publishedAt: "2026-07-22T16:00:00Z",
+      summary: "Anthropic 公布 Economic Futures Research Fund 研究议程，承诺 2 亿美元支持外部研究，重点覆盖企业和工作场所影响、转型支持、收入保障、AI 增长中的劳动者权益和公共投资证据。信号是 A 社将 AI 经济冲击治理从观点声明推进到资金和实证研究；影响是企业 AI adoption 会被更多问及劳动替代、收益分配和再培训证据；动作是把岗位影响评估和再培训计划纳入 Agent 推广路线图。",
+      imageUrl: favicon,
+      priority: 11,
+      signal: "经济治理信号：Anthropic 用大额研究基金押注 AI 工作冲击的实证干预。",
+      impact: "企业内部 Agent 推广会面对更具体的岗位影响、再培训、收益分配和治理透明度问题。",
+      action: "在推广 Claude/Agent 前建立任务级影响台账，明确哪些工作被增强、替代或需要再培训，而不是只报节省工时。",
+    },
+    {
+      source: "A社 Claude",
+      sourceDetail: "Claude 官方 Blog / Claude Code",
+      domain: "claude.com",
+      title: "Building verification loops in Claude Code with skills",
+      url: "https://claude.com/blog/building-verification-loops-in-claude-code-with-skills",
+      publishedAt: "2026-07-22T16:00:00Z",
+      summary: "Claude 官方博客介绍如何把人工检查转成 skills，让 Claude Code 在 gather context -> take action -> verify work -> repeat 循环中主动执行验证。信号是 Claude Code 的竞争点继续从生成代码转向可复用验证闭环；影响是团队可以把测试、截图、lint、数据校验和发布前检查做成 Agent 可调用资产；动作是优先沉淀高频失败模式的 verification skill，并把通过率、误报和人工接管记录进 PR 门禁。",
+      imageUrl: favicon,
+      priority: 11,
+      signal: "Claude Code 工程化信号：skills 正从提示模板升级为可复用验证环。",
+      impact: "Agent 写代码的质量差异会更多取决于团队是否把测试、lint、截图和业务校验做成可执行反馈循环。",
+      action: "先为一个高频 PR 类型编写 verification skill，要求 Claude Code 修改后自动运行并报告失败样本、成本和回滚建议。",
+    },
+    {
+      source: "A社 Claude",
+      sourceDetail: "Claude 官方 Blog / Claude Code",
+      domain: "claude.com",
+      title: "How Anthropic secures its AI-native software development lifecycle",
+      url: "https://claude.com/blog/how-anthropic-secures-its-ai-native-software-development-lifecycle",
+      publishedAt: "2026-07-21T16:00:00Z",
+      summary: "Claude 官方博客披露 Anthropic 如何治理 AI-native SDLC，强调权限、验证、审查和安全边界。信号是 Claude Code 企业化不只是提高开发速度，而是要求把 Agent 行为纳入软件生命周期安全控制；影响是研发效能、安全和平台团队必须共同定义工具白名单、审计日志、敏感操作确认和发布门禁；动作是把 AI 生成/修改路径纳入现有 secure SDLC，而不是另起一套例外流程。",
+      imageUrl: favicon,
+      priority: 10,
+      signal: "AI-native SDLC 信号：Anthropic 将 Claude Code 使用方式与安全开发生命周期绑定。",
+      impact: "企业采用 coding agent 会把风险从代码质量扩展到权限、供应链、审计和发布审批。",
+      action: "把 Agent 变更纳入同一套 threat modeling、code review、CI、secrets scanning 和变更追溯，不允许绕过发布控制。",
+    },
+    {
+      source: "A社 Claude",
+      sourceDetail: "Claude 官方 Blog / Enterprise",
+      domain: "claude.com",
+      title: "How Datadog built a universal machine tool for Claude Code",
+      url: "https://claude.com/blog/how-datadog-built-a-universal-machine-tool-for-claude-code",
+      publishedAt: "2026-07-21T16:00:00Z",
+      summary: "Claude 官方企业案例介绍 Datadog 的 Temper，把规格说明转成可验证、可进入生产的软件系统。信号是成熟工程团队开始把重点放在 Agent 工作环境、上下文、验证和安全，而不是让模型自由写代码；影响是企业 coding agent 平台会围绕任务规格、验证器和生产约束重构；动作是优先设计 Agent 的 machine tool 和验证协议，再扩大自动改代码权限。",
+      imageUrl: favicon,
+      priority: 10,
+      signal: "企业 Agent 平台信号：Datadog 关注的是为 Claude Code 设计机器环境和验证协议。",
+      impact: "大团队采用 Claude Code 的关键资产会是规格、上下文封装、验证器和安全边界，而不是单次 prompt。",
+      action: "把高价值工程任务改造成“规格 -> 生成 -> 自动验证 -> 人工审查”的固定管线，再衡量交付周期和缺陷率。",
+    },
+    {
+      source: "A社 Claude",
+      sourceDetail: "Claude 官方 Blog / Enterprise AI",
+      domain: "claude.com",
+      title: "Working at the frontier: How Rakuten builds agents overnight with Claude Fable 5",
+      url: "https://claude.com/blog/working-at-the-frontier-rakuten",
+      publishedAt: "2026-07-20T16:00:00Z",
+      summary: "Claude 官方企业案例介绍 Rakuten 使用 Claude Fable 5 构建可长时间运行的 enterprise agents。信号是 Claude 模型更新正在推动工作单元从短对话转向跨夜自主执行；影响是组织会更关注长任务恢复、自我验证、taste alignment、预算上限和人工接管；动作是在企业试点中先选可回放、低风险、结果可验收的 overnight agent 任务，不要直接接入不可逆生产操作。",
+      imageUrl: favicon,
+      priority: 9,
+      signal: "长周期 Agent 信号：Fable 5 被包装为能支撑跨夜企业 Agent 的 frontier 模型。",
+      impact: "企业委托粒度会从单步问答扩大到多小时任务，但失败恢复、权限和成本风险同步放大。",
+      action: "为长任务 Agent 设置预算、检查点、可中断恢复、验证器和人工审批，再比较跨夜执行与人工批处理的真实收益。",
+    },
     {
       source: "A社 Anthropic",
       sourceDetail: "Anthropic 官方 News / Research Partnerships",
