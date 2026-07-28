@@ -2581,6 +2581,13 @@ function curatedFrontierInterpretation(item) {
       borrowable: "marketplace 团队可先引入快速 pre-A/B 评估和反事实回放，把慢转化实验的候选缩小后再进入正式线上实验。",
       boundary: "库存稀疏、地域差异极大或历史日志偏差未校正时，反事实评估会高估排序收益；仍需正式 A/B 和业务分层验收。",
     },
+    [normalizeTitle("Personalizing Airbnb search by learning from the guest journey")]: {
+      businessProblem: "Airbnb 搜索个性化的难点不是单次 query，而是用户跨多年预订、取消、评价和近期浏览形成的旅程信号：预订很稀疏，浏览很噪声，双边 marketplace 又必须同时顾及客人转化和供给侧公平。",
+      systemMechanism: "Airbnb 将 guest journey 拆成长期序列与短期 view 序列，用 Transformer 编码用户偏好；训练端通过 search batching、长度 bucket 和 sparse search calculation 提升吞吐，服务端离线批量更新 embedding、在线 ranking 实时读取，再与 setwise ranker 联合优化候选相对关系。",
+      metricsAndExperiment: "官方披露离线 booking-label NDCG 总提升 3.78%；线上三阶段 A/B 观察 uncanceled bookers、uncanceled nights、views、booking requesters 和 email clicks，并使用 guardrail 确认没有负向副作用。",
+      borrowable: "可借鉴“长短期序列分离 + 离线 embedding 更新 + 在线 ranking 读实时 query + setwise ranker”的渐进路径；尤其适合电商、本地生活、招聘、房源和 B2B marketplace 这类慢转化排序。",
+      boundary: "若用户历史短、转化标签更稀疏、供给变化极快或无法承担离线 embedding 新鲜度治理，Transformer 序列化可能只会增加复杂度；应先验证序列覆盖、冷启动、延迟和供给侧公平。",
+    },
     [normalizeTitle("推荐系统为啥都长一个样？聊聊「离线训练 + 在线召回 + 排序」这套大数据架构")]: {
       businessProblem: "很多中小团队想上推荐系统时先追模型名字，却没有先处理海量候选、实时响应和复杂模型三者的基本矛盾。",
       systemMechanism: "文章用离线训练、在线召回、排序和反馈闭环解释经典推荐架构：离线负责全量特征和模型训练，在线召回快速缩小候选，排序/重排在延迟预算内优化业务目标。",
@@ -3033,6 +3040,16 @@ function seedIndustryFrontierItems() {
       summary: "Airbnb 回顾 Relevance and Personalization 团队在 CIKM 2025 的搜索与推荐论文，重点是双边 marketplace 中搜索排序、位置检索、反事实评估和长期预订意图建模。",
     },
     {
+      title: "Personalizing Airbnb search by learning from the guest journey",
+      url: "https://medium.com/airbnb-engineering/personalizing-airbnb-search-by-learning-from-the-guest-journey-bcefd1915624",
+      publishedAt: "2026-07-21T16:00:00Z",
+      source: "Airbnb Engineering",
+      domain: "medium.com",
+      sourceType: "industry",
+      frontierScore: 58,
+      summary: "Airbnb 用 Transformer 序列模型编码多年 guest journey：长期序列覆盖预订、评价、取消等高信号事件，短期序列覆盖 21 天浏览；训练端用 search batching、bucket 和 sparse calculation 提升约 4x 吞吐，服务端离线更新 guest embedding、在线 ranking 读取。官方披露离线 NDCG +3.78%，线上 uncanceled bookers、nights、views 和 email clicks 均有提升。",
+    },
+    {
       title: "推荐系统为啥都长一个样？聊聊「离线训练 + 在线召回 + 排序」这套大数据架构",
       url: "https://cloud.tencent.com/developer/article/2625122",
       publishedAt: "2026-01-28T13:33:51Z",
@@ -3233,6 +3250,7 @@ function buildEditorialReview({ reportDate, frontier = {}, aiNews = {} }) {
     "https://www.anthropic.com/news/position-open-weights-models",
     "https://www.anthropic.com/news/cognizant-anthropic",
     "https://www.anthropic.com/news/claude-opus-5",
+    "https://www.anthropic.com/research/discovering-cryptographic-weaknesses",
     "https://www.anthropic.com/research/project-pilot",
     "https://claude.com/blog",
     "https://claude.com/blog/context-engineering-claude-5",
@@ -3255,6 +3273,8 @@ function buildEditorialReview({ reportDate, frontier = {}, aiNews = {} }) {
     "https://www.anthropic.com/news/reflect-with-claude",
     "https://www.anthropic.com/research/economic-index-june-2026-report",
     "https://www.anthropic.com/research/claude-code-expertise",
+    "https://openai.com/news/research/",
+    "https://huggingface.co/blog/security-incident-july-2026",
     "https://openai.com/index/gpt-5-6/",
     "https://openai.com/index/introducing-gpt-live/",
     "https://netflixtechblog.com/recommending-for-long-term-member-satisfaction-at-netflix-ac15cada49ef",
@@ -3269,6 +3289,7 @@ function buildEditorialReview({ reportDate, frontier = {}, aiNews = {} }) {
     "https://dropbox.tech/machine-learning/optimizing-dropbox-dash-relevance-judge-with-dspy",
     "https://netflixtechblog.com/genpage-towards-end-to-end-generative-homepage-construction-at-netflix-77146fba8a08",
     "https://airbnb.tech/infrastructure/academic-publications-airbnb-tech-2025-year-in-review/",
+    "https://medium.com/airbnb-engineering/personalizing-airbnb-search-by-learning-from-the-guest-journey-bcefd1915624",
     "https://tech.meituan.com/2025/05/19/Meituan-Generative-Recommendation.html",
     "https://cloud.tencent.com/developer/article/2625122",
     "https://engineering.salesforce.com/ai-powered-personalization-in-under-100ms-optimizing-real-time-decisioning-at-scale/",
@@ -3422,6 +3443,20 @@ async function fetchAnthropicNewsItems(maxItems) {
 function seedAnthropicOfficialItems() {
   const favicon = "https://www.google.com/s2/favicons?domain=anthropic.com&sz=128";
   return [
+    {
+      source: "A社 Anthropic Research",
+      sourceDetail: "Anthropic 官方 Research / Frontier Red Team",
+      domain: "anthropic.com",
+      title: "Discovering cryptographic weaknesses with Claude",
+      url: "https://www.anthropic.com/research/discovering-cryptographic-weaknesses",
+      publishedAt: "2026-07-28T16:00:00Z",
+      summary: "Anthropic 发布 Claude Mythos Preview 辅助密码分析研究：研究者发现可显著削弱后量子签名方案 HAWK 的攻击思路，并找到 round-reduced AES 的新攻击路径；官方强调这些进展不影响当前生产系统。信号是 frontier model 已能参与高门槛安全研究；动作是密码、基础设施和安全团队把 AI-assisted cryptanalysis 纳入候选算法评审、红队和披露流程。",
+      imageUrl: favicon,
+      priority: 16,
+      signal: "安全研究信号：Claude Mythos Preview 正从漏洞扫描扩展到密码学推理和可验证数学攻击。",
+      impact: "后量子算法、加密库和安全标准评估会更频繁面对 AI 辅助发现的候选弱点，但短期仍需专家证明和负责任披露。",
+      action: "安全团队应建立 AI-assisted cryptanalysis 观察清单：区分生产影响、缩减轮实验、候选标准、专家复核和披露状态，不把研究结果直接等同于可利用漏洞。",
+    },
     {
       source: "A社 Anthropic",
       sourceDetail: "Anthropic 官方 News / Policy",
@@ -3985,6 +4020,30 @@ function seedAnthropicOfficialItems() {
 
 function seedOfficialAiNewsItems() {
   return [
+    {
+      source: "OpenAI 官方",
+      sourceDetail: "OpenAI Research / Agentic AI",
+      domain: "openai.com",
+      title: "Scientific computing in the age of agentic AI",
+      url: "https://openai.com/news/research/",
+      publishedAt: "2026-07-28T16:00:00Z",
+      summary:
+        "OpenAI 研究页 7 月 28 日新增 Scientific computing in the age of agentic AI。信号是 agentic AI 正从办公/编码扩展到科学计算与研究工作流；影响是模型要能连接代码、数值实验、数据验证和可复现 artifact；动作是科学/工程团队先用受控 notebook、基准数据和专家复核回放，验证 agent 是否减少实验周期而不是只生成看似合理的分析。",
+      imageUrl: "https://www.google.com/s2/favicons?domain=openai.com&sz=128",
+      priority: 9,
+    },
+    {
+      source: "Hugging Face 官方",
+      sourceDetail: "Hugging Face Blog / Security",
+      domain: "huggingface.co",
+      title: "Security incident disclosure — July 2026",
+      url: "https://huggingface.co/blog/security-incident-july-2026",
+      publishedAt: "2026-07-16T16:00:00Z",
+      summary:
+        "Hugging Face 披露 2026 年 7 月安全事件，攻击从数据处理管线进入并触及内部数据集和部分服务凭据；官方称未发现公开模型、数据集、Spaces 或软件供应链被篡改。信号是 AI 平台的 dataset processing、模板执行和凭据隔离已成为供应链安全重点；动作是企业自建/托管模型平台要审计远程代码加载、数据集处理沙箱、凭据轮换和模型制品完整性校验。",
+      imageUrl: "https://www.google.com/s2/favicons?domain=huggingface.co&sz=128",
+      priority: 8,
+    },
     {
       source: "OpenAI 官方",
       sourceDetail: "OpenAI Safety / Robustness",
