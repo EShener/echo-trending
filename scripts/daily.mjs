@@ -3253,6 +3253,7 @@ function buildEditorialReview({ reportDate, frontier = {}, aiNews = {} }) {
     "https://www.anthropic.com/research/discovering-cryptographic-weaknesses",
     "https://www.anthropic.com/research/project-pilot",
     "https://claude.com/blog",
+    "https://claude.com/blog/bringing-mcp-2026-07-28-to-claude",
     "https://claude.com/blog/context-engineering-claude-5",
     "https://claude.com/blog/claude-models-explained",
     "https://www.anthropic.com/news/anthropic-economic-index-connector",
@@ -3273,6 +3274,7 @@ function buildEditorialReview({ reportDate, frontier = {}, aiNews = {} }) {
     "https://www.anthropic.com/news/reflect-with-claude",
     "https://www.anthropic.com/research/economic-index-june-2026-report",
     "https://www.anthropic.com/research/claude-code-expertise",
+    "https://docs.anthropic.com/en/release-notes/api",
     "https://openai.com/news/research/",
     "https://huggingface.co/blog/security-incident-july-2026",
     "https://openai.com/index/gpt-5-6/",
@@ -3309,7 +3311,8 @@ function buildEditorialReview({ reportDate, frontier = {}, aiNews = {} }) {
     sourceNotes: [
       `Anthropic official coverage includes ${anthropicSources.join("、") || "official News/Research/Engineering"} with Claude Tag, Economic Index, Claude Code practice, model updates, partnerships and safety research.`,
       "Anthropic official pages checked this run: Newsroom latest includes Jul 27 open-weights position and Cognizant partnership, Jul 24 Claude Opus 5; Research latest includes Jul 24 drone-control frontier-red-team work; Engineering highlights Claude containment and Claude Code safety posts.",
-      "Claude Blog checked for Jul 24 Claude 5 context engineering/model guidance, Jul 22 verification loops with skills, Jul 21 Datadog Claude Code universal machine tool, and enterprise agent case studies.",
+      "Claude Blog checked for Jul 28 MCP 2026-07-28 support, Jul 24 Claude 5 context engineering/model guidance, Jul 22 verification loops with skills, Jul 21 Datadog Claude Code universal machine tool, and enterprise agent case studies.",
+      "Claude Platform release notes checked for Managed Agents lifecycle hooks, effort configuration, initial events, memory/environment webhooks and session thread deltas; Computer Use coverage is tracked through recent Claude model/browser-agent updates.",
       `Search/ads/recommendation coverage includes ${frontierSources.join("、") || frontier.source || "Big Tech Engineering/RSS + arXiv"} and is interpreted through business problem, system mechanism, metrics/experiments, borrowable patterns and unsuitable boundaries.`,
       "Project reads distinguish architecture mechanism, team fit, landing path, production risk, decision question and watch signal; generic metadata summaries are treated as fallback only.",
     ],
@@ -3458,6 +3461,34 @@ function seedAnthropicOfficialItems() {
       action: "安全团队应建立 AI-assisted cryptanalysis 观察清单：区分生产影响、缩减轮实验、候选标准、专家复核和披露状态，不把研究结果直接等同于可利用漏洞。",
     },
     {
+      source: "A社 Claude",
+      sourceDetail: "Claude 官方 Blog / MCP",
+      domain: "claude.com",
+      title: "Bringing MCP 2026-07-28 to Claude",
+      url: "https://claude.com/blog/bringing-mcp-2026-07-28-to-claude",
+      publishedAt: "2026-07-28T16:00:00Z",
+      summary: "Claude Blog 将 MCP 2026-07-28 能力带入 Claude 生态，信号是 Agent 工具协议正在从集成示例进入版本化、可治理的产品能力；影响是企业连接器、技能、权限和审计需要跟随协议版本管理；动作是把 MCP server 清单、权限范围、数据出境、回滚版本和工具调用日志纳入 Claude Code/Agent 试点验收。",
+      imageUrl: favicon,
+      priority: 13,
+      signal: "Agent 工具协议信号：Claude 正把 MCP 更新纳入产品化连接器和工具调用治理。",
+      impact: "企业会更容易把内部系统接给 Claude，但协议版本、权限边界和审计证据会成为上线前置条件。",
+      action: "为每个 MCP server 建立 owner、权限、数据分类、版本兼容和失败回退表，先在只读/低风险任务中验证。",
+    },
+    {
+      source: "A社 Claude Platform Docs",
+      sourceDetail: "Claude 官方 API Release Notes / Managed Agents",
+      domain: "docs.anthropic.com",
+      title: "Claude Managed Agents add effort, lifecycle webhooks and session deltas",
+      url: "https://docs.anthropic.com/en/release-notes/api",
+      publishedAt: "2026-07-22T16:00:00Z",
+      summary: "Claude Platform 7 月 22 日 release notes 更新 Managed Agents：agent 模型配置支持 effort，webhooks 覆盖 environment 与 memory store 生命周期，session 创建可带 initial_events，线程流支持 event deltas。信号是 A 社把 Agent 从聊天循环推进到可观测运行时；影响是企业可以少轮询、更细粒度恢复和审计长任务；动作是把环境/记忆生命周期、初始事件、子线程输出和成本预算写进 Agent 平台标准。",
+      imageUrl: favicon,
+      priority: 12,
+      signal: "Managed Agents 平台信号：A 社正在补齐长任务 Agent 的运行时生命周期和可观测接口。",
+      impact: "Agent 平台可把环境、记忆、子线程和模型 effort 纳入统一状态机，但也会增加权限、成本和恢复语义复杂度。",
+      action: "试点 Managed Agents 时先定义 session 状态、memory store 生命周期、webhook 重放、预算上限和人工接管流程。",
+    },
+    {
       source: "A社 Anthropic",
       sourceDetail: "Anthropic 官方 News / Policy",
       domain: "anthropic.com",
@@ -3498,6 +3529,20 @@ function seedAnthropicOfficialItems() {
       signal: "Claude 模型更新信号：Opus 5 把高能力 Agent 工作从旗舰稀缺资源下沉到日常专业工作流。",
       impact: "企业会更倾向把困难 coding、分析和长任务交给 Opus 档，但仍要衡量成本、速度、上下文和工具权限。",
       action: "为 Opus 5 建立任务级评测矩阵：代码迁移、debug、表格分析、研究报告、工具调用和视觉 artifact 各自看准确率、轮次、耗时和人工修正。",
+    },
+    {
+      source: "A社 Anthropic",
+      sourceDetail: "Anthropic 官方 News / Computer Use",
+      domain: "anthropic.com",
+      title: "Introducing Claude Opus 4.8",
+      url: "https://www.anthropic.com/news/claude-opus-4-8",
+      publishedAt: "2026-05-29T16:00:00Z",
+      summary: "Anthropic 将 Opus 4.8 描述为其测试过的最强 computer-use 与 browser-agent 模型之一，强调真实网页/企业工作流中的端到端可靠性。信号是 Computer Use 正从演示能力变成企业自动化的高风险执行层；影响是浏览器代理会绕过传统 API 集成边界；动作是所有 computer-use 试点必须有网站白名单、截图/动作日志、敏感字段遮蔽、人工确认和回滚预案。",
+      imageUrl: favicon,
+      priority: 10,
+      signal: "Computer Use 信号：Claude 模型更新继续把浏览器代理能力推向真实企业流程。",
+      impact: "没有 API 的遗留系统会更容易被自动化，但 prompt injection、误点击和凭据暴露风险同步上升。",
+      action: "先在只读或沙箱系统验证浏览器代理，记录每步截图、DOM/动作日志、权限边界和人工接管点。",
     },
     {
       source: "A社 Anthropic Research",
@@ -4250,6 +4295,7 @@ function rankAnthropicItems(items) {
     ["jailbreak", 8],
     ["safeguards", 8],
     ["claude tag", 10],
+    ["mcp", 8],
     ["@claude", 10],
     ["claude code", 9],
     ["agentic coding", 9],
@@ -4784,6 +4830,8 @@ function buildExecutiveSummary(items, frontier, aiNews) {
   const firstFrontier = frontierItems[0];
   const primaryAnthropic =
     anthropicItems.find((item) => /off switch|dual[- ]use|gram/i.test(`${item.title} ${item.summary}`)) ||
+    anthropicItems.find((item) => /cryptographic|weaknesses|hawk|aes/i.test(`${item.title} ${item.summary}`)) ||
+    anthropicItems.find((item) => /managed agents|mcp|computer use|browser-agent/i.test(`${item.title} ${item.summary}`)) ||
     anthropicItems.find((item) => /global workspace/i.test(item.title)) ||
     anthropicItems.find((item) => /fable.*safeguards|jailbreak framework/i.test(item.title)) ||
     anthropicItems.find((item) => /sonnet 5/i.test(item.title)) ||
@@ -4800,7 +4848,7 @@ function buildExecutiveSummary(items, frontier, aiNews) {
   const firstAnthropic = latestAnthropic || primaryAnthropic || claudeTag || anthropicItems[0];
   const aiHotLead = (aiNews.items || []).find((item) => item.source?.includes("AIHOT"));
   return {
-    headline: `今日雷达主线：GitHub 热门继续围绕 Agent 工作流、个人云和文档/设计上下文扩散；搜广推从单模型优化转向召回、排序、serving 成本和实验血缘协同；A 社把安全治理推进到可移除知识模块。`,
+    headline: `今日雷达主线：GitHub 热门继续围绕 Agent 工作流、个人云和文档/设计上下文扩散；搜广推从单模型优化转向召回、排序、serving 成本和实验血缘协同；A 社同时推进安全研究、Managed Agents/MCP 和 Claude Code 工程化。`,
     bullets: [
       topRepos.length ? `GitHub 本轮由 ${topRepos.join("、")} 领跑；解读重点落在 ${repoSignalText}，采用判断不按 star 排序，而按架构机制、适用团队、落地路径、生产风险、决策问题和观察信号拆解。` : "今日暂无 GitHub 项目数据。",
       firstRepoAction ? `开源项目解读已按“架构机制 -> 适用团队 -> 落地路径 -> 生产风险 -> 决策问题 -> 观察信号”展开；本轮更适合旁路 spike 的入口是：${trimText(firstRepoAction, 120)}` : "开源项目先按架构机制、适用团队、落地路径和生产风险做小样本验证。",
