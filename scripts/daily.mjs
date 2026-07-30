@@ -116,7 +116,7 @@ async function buildReport({ reportDate, limit, days, language }) {
   const anthropic = buildAnthropicSection(aiNews);
   const searchAdsRec = buildSearchAdsRecSection(frontier);
 
-  return {
+  return applyEditorialOverrides({
     date: reportDate,
     generatedAt: new Date().toISOString(),
     source: {
@@ -133,7 +133,82 @@ async function buildReport({ reportDate, limit, days, language }) {
     aiNews,
     anthropic,
     searchAdsRec,
+  });
+}
+
+function applyEditorialOverrides(report) {
+  const aiNewsOverrides = {
+    "Scientific computing in the age of agentic AI": {
+      signal: "Agentic scientific computing 信号：模型正在进入 notebook、代码执行、数据校验和可复现 artifact 的闭环，而不是只回答研究问题。",
+      impact: "科研和工程分析团队的评测口径要从“答案像不像”转向“实验是否可复跑、数据是否守恒、结论是否被专家复核”。",
+      action: "用受控 notebook、基准数据和专家复核建立回放集，记录实验周期、失败类型、人工修正、成本和可复现证据。",
+    },
+    "Security incident disclosure — July 2026": {
+      signal: "AI 平台供应链信号：dataset processing、模板执行、远程代码和凭据隔离已经成为模型平台的真实攻击面。",
+      impact: "企业自建或托管模型平台不能只审模型权重，还要审数据集处理沙箱、制品完整性、内部凭据和异常执行链路。",
+      action: "立即补做数据处理管线 threat model、凭据轮换、制品完整性校验、异常下载/执行告警和供应商事件响应演练。",
+    },
+    "GPT-Red: Unlocking Self-Improvement for Robustness": {
+      signal: "自动化红队信号：模型安全正在从一次性人工报告转为可持续运行的自我改进与回归评测流水线。",
+      impact: "Agent、浏览器和开发者工具攻击会随着产品版本变化复现，安全修复需要按版本保留样本、指标和失败证据。",
+      action: "把 prompt injection、tool misuse、browser attack、数据泄露和越权工具调用做成每日/每版本回放集。",
+    },
+    "Introducing Real World VoiceEQ: Measuring the human quality of voice AI": {
+      signal: "语音 AI 评测信号：质量判断正在从 demo 音色转向真实听感、人类偏好、场景鲁棒性和可比较基准。",
+      impact: "客服、陪伴、会议和无障碍场景会需要分场景 MOS、延迟、打断、噪声和用户疲劳评测，不能只看单条样音。",
+      action: "建立主观听评 + 客观指标混合集，按场景记录 WER、MOS、首包延迟、打断成功率、失败音频和版权边界。",
+    },
+    "Welcome Inkling by Thinking Machines": {
+      signal: "模型生态信号：新模型/研究团队通过 Hugging Face 分发时，开放入口、模型卡、推理样例和社区反馈会共同影响采用速度。",
+      impact: "团队会更快拿到候选模型，但供应连续性、许可、评测透明度和生产支持仍需要单独验证。",
+      action: "先把它放入候选模型观察池：检查模型卡、license、权重/推理入口、benchmark 可复现性和社区失败样本，再决定是否本地评测。",
+    },
+    "Gemini API Computer Use tool public preview for Gemini 3.5 Flash": {
+      signal: "官方 Computer Use 信号：浏览器、移动和桌面操作正在被纳入模型原生工具链，关键看动作空间、安全策略和 prompt injection 防护。",
+      impact: "Computer Use 进入主流 API 预览后，GUI 自动化会从单厂商能力变成多模型竞争点；企业评估要同时比较动作准确率、注入防护、权限隔离和失败接管。",
+      action: "建立跨模型 GUI Agent 评测集：同一批网页/桌面任务分别跑 Claude、Gemini 和现有 RPA，记录误点击、注入命中、人工接管和审计日志完整性。",
+    },
+    "法官称特朗普政府仍缺乏证据将Anthropic列为供应链风险": {
+      signal: "AI 供应链治理信号：模型供应商风险正在进入司法、政府采购和企业合规语境，但证据标准仍会被持续争论。",
+      impact: "企业采购 Claude 或同类模型时，法律和政策风险会影响供应商准入、地区可用性、合同条款和替代方案设计。",
+      action: "把供应商风险从模型能力评测中拆出来：单独跟踪法院文件、政府清单、数据处理条款、地区限制和业务连续性预案。",
+    },
+    "Gemini Spark 集成 Chrome 自动浏览功能": {
+      signal: "浏览器 Agent 入口信号：自动浏览能力正在从开发者 API 扩散到面向普通用户的 Chrome 工作流。",
+      impact: "产品团队需要提前处理网页注入、账号权限、敏感表单、付款/提交动作和用户接管，否则浏览器 Agent 很难进入生产。",
+      action: "用只读站点和沙箱账号先跑 20 个任务，记录动作成功率、误操作、敏感字段触达、人工接管次数和完整截图/DOM 证据。",
+    },
+    "Bringing MCP 2026-07-28 to Claude": {
+      signal: "Agent 工具协议信号：Claude 正把 MCP 更新纳入产品化连接器和工具调用治理。",
+      impact: "企业会更容易把内部系统接给 Claude，但协议版本、权限边界和审计证据会成为上线前置条件。",
+      action: "为每个 MCP server 建立 owner、权限、数据分类、版本兼容和失败回退表，先在只读/低风险任务中验证。",
+    },
+    "Discovering cryptographic weaknesses with Claude": {
+      signal: "安全研究信号：Claude Mythos Preview 正从漏洞扫描扩展到密码学推理和可验证数学攻击。",
+      impact: "后量子算法、加密库和安全标准评估会更频繁面对 AI 辅助发现的候选弱点，但短期仍需专家证明和负责任披露。",
+      action: "建立 AI-assisted cryptanalysis 观察清单：区分生产影响、缩减轮实验、候选标准、专家复核和披露状态，不把研究结果直接等同于可利用漏洞。",
+    },
+    "Cognizant and Anthropic expand their partnership to bring Claude to enterprise clients": {
+      signal: "企业渠道信号：Claude 正通过全球 SI 伙伴进入行业流程，而不是只靠 API 或聊天产品自助扩散。",
+      impact: "大型企业落地速度会提高，但责任边界会扩展到实施伙伴、流程改造、员工培训和数据治理。",
+      action: "在 Claude 项目立项时把 Anthropic、SI 伙伴和内部 owner 的权限、交付物、审计日志和业务指标写进同一验收表。",
+    },
+    "Our position on open-weights models": {
+      signal: "开放权重治理信号：Anthropic 将开放模型价值与前沿能力安全阈值拆开，而不是简单支持或反对开源。",
+      impact: "企业采用开源/开放权重模型时会被要求拿出更清晰的来源、能力、蒸馏和安全测试证据。",
+      action: "把 open-weight 模型选型拆成模型能力边界、供应链来源、微调/蒸馏策略、红队结果和地区合规五张清单。",
+    },
   };
+
+  for (const item of report.aiNews?.items || []) {
+    const override = aiNewsOverrides[item.title];
+    if (!override) continue;
+    Object.assign(item, override);
+    if (item.recommendation && typeof item.recommendation === "object") {
+      Object.assign(item.recommendation, override);
+    }
+  }
+  return report;
 }
 
 async function readExistingReport(reportDate) {
@@ -3806,6 +3881,9 @@ function seedAnthropicOfficialItems() {
       summary: "Anthropic 发布 Claude J-space / global workspace 研究，显示模型内部存在可被读取、干预并参与多步推理的“静默工作区”；这把 Claude 安全监控从输出审查推进到内部表征、隐式意图和评测感知的可观测治理。",
       imageUrl: favicon,
       priority: 5,
+      signal: "可解释性治理信号：Claude 的安全评测正在从输出层审查推进到内部表征、隐式意图和多步推理过程的观测。",
+      impact: "如果内部工作区信号能稳定复现，企业未来评估 Agent 不只会看回答结果，还会要求模型供应商解释隐藏推理、工具规划和评测感知风险。",
+      action: "把 global workspace 作为安全研究观察项：短期不把内部表征当生产控制面，但在高风险 Agent 评测中增加隐藏目标、工具规划和自我审查行为的回放样本。",
     },
     {
       source: "A社 Anthropic Research",
