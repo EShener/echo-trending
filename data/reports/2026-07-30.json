@@ -1,15 +1,15 @@
 {
   "date": "2026-07-30",
-  "generatedAt": "2026-07-30T07:22:56.329Z",
+  "generatedAt": "2026-07-30T10:21:38.018Z",
   "source": {
-    "provider": "GitHub Trending daily + AIHOT + official AI feeds + Anthropic official pages + big-tech engineering blogs + Codex manual deep rewrite",
+    "provider": "GitHub Trending daily + AIHOT + official AI feeds + Anthropic official pages + big-tech engineering blogs + Codex manual deep rewrite + 2026-07-30 Codex editorial synthesis",
     "query": "pushed:>=2026-07-23 stars:>100 archived:false",
     "since": "2026-07-23",
     "limit": 12,
     "language": "all",
     "editorialReview": {
       "method": "script refresh + Codex multi-source editorial review",
-      "reviewedAt": "2026-07-30T07:22:56.329Z",
+      "reviewedAt": "2026-07-30T10:24:16.171Z",
       "reportDate": "2026-07-30",
       "focus": [
         "GitHub Trending daily metadata, repo README evidence and adoption risk review",
@@ -80,17 +80,39 @@
         "https://engineering.salesforce.com/ai-powered-personalization-in-under-100ms-optimizing-real-time-decisioning-at-scale/",
         "https://www.amazon.science/publications/design-and-evaluation-of-whole-page-experience-optimization-for-e-commerce-search",
         "https://www.amazon.science/blog/from-structured-search-to-learning-to-rank-and-retrieve"
-      ]
+      ],
+      "thisRunSynthesis": {
+        "date": "2026-07-30",
+        "method": "先跑脚本刷新，再用官方页面/工程博客/可信 RSS 做中文人工选题复核与重写",
+        "githubFocus": [
+          "opengeos/GeoLibre：本地优先 GIS 和 DuckDB-WASM/MapLibre/deck.gl 多端工作台，适合先做非敏感空间数据包旁路试点。",
+          "moeru-ai/airi、huggingface/speech-to-speech、microsoft/VibeVoice：语音/伴侣/实时多模态项目热度高，但共同风险是隐私、授权、内容安全和端到端延迟。",
+          "affaan-m/ECC、1jehuang/jcode、different-ai/openwork、obra/superpowers：Agent harness 正从个人技巧转向可安装技能、任务状态、权限和团队工作流治理。",
+          "MoonshotAI/FlashKDA：推理内核优化应先离线 benchmark tokens/s、显存、输出一致性和驱动兼容，不直接接生产服务。"
+        ],
+        "searchAdsRecFocus": [
+          "Netflix GenPage 和 Airbnb guest journey 指向页面级/旅程级排序：推荐目标从单列表 ranking 扩展到结构化页面和长期转化。",
+          "Meta Ads scheduler、Adaptive Ranking、SilverTorch 说明大厂收益越来越来自模型、检索、GPU serving、内核调度和业务指标协同优化。",
+          "Dropbox Dash、Spotify LLM eval 和 Google Agentic RAG 表明企业搜索/RAG 的关键不只是 topK，而是证据充足性、judge 校准和实验漏斗。",
+          "美团 MTGR、阿里 PAI-Rec、腾讯推荐架构文章保留中文工程参照：适合校准召回、粗排、精排、重排和实验平台的落地边界。"
+        ],
+        "anthropicFocus": [
+          "官方 News/Research/Engineering 和 Claude Blog 已覆盖 MCP 2026-07-28、Claude Opus 5、Claude Code/Managed Agents、企业合作、开权重立场和安全研究。",
+          "本轮 A 社判断不是单看模型发布，而是把 Claude Code/Agent 能力、Computer Use 类风险、企业连接器、长任务恢复和安全研究放在同一评测清单。",
+          "若官方 RSS 不稳定，本报告优先使用 anthropic.com 与 claude.com 官方页面；AIHOT/镜像只作为补充线索并保留来源。"
+        ],
+        "decisionFrame": "今天适合进入试点池的不是“最大模型”或“最高 star”，而是能用 1-2 周旁路实验验证指标、权限、成本和失败样本的机制。"
+      }
     }
   },
   "summary": {
-    "headline": "今日雷达主线：GitHub 热门继续围绕 Agent 工作流、个人云和文档/设计上下文扩散；搜广推从单模型优化转向召回、排序、serving 成本和实验血缘协同；A 社同时推进安全研究、Managed Agents/MCP 和 Claude Code 工程化。",
+    "headline": "今日雷达主线：Agent harness、实时多模态和本地优先工具继续占据 GitHub 热榜；搜广推前沿从单点模型改进转向页面/旅程建模、模型化召回、LLM eval 和 serving 成本协同；A 社 Anthropic 则围绕 Claude Code/MCP、Opus 5、企业合作和安全研究同步推进。",
     "bullets": [
-      "GitHub 本轮由 opengeos/GeoLibre、moeru-ai/airi、affaan-m/ECC 领跑；解读重点落在 本地优先 GIS 工作台 / 云原生地理数据分析、自托管 AI 伴侣 / 实时虚拟角色运行时、Agent Harness 优化系统 / 跨工具技能与记忆层、本地语音 Agent 管线 / Realtime API 兼容后端，采用判断不按 star 排序，而按架构机制、适用团队、落地路径、生产风险、决策问题和观察信号拆解。",
-      "开源项目解读已按“架构机制 -> 适用团队 -> 落地路径 -> 生产风险 -> 决策问题 -> 观察信号”展开；本轮更适合旁路 spike 的入口是：进入观察/试点池：先选一个非敏感空间数据包，验证浏览器/桌面/Jupyter 三个入口的加载、空间查询、3D 渲染、离线数据、移动端交互和导出链路；先保留人工复核、指标记录和回滚路径。",
-      "搜广推收录 22 条工程/研究信号，覆盖 Netflix TechBlog、Meta Engineering、Airbnb Engineering、Pinterest Engineering、Dropbox Tech、Google Research、Meituan Tech、Salesforce Engineering、Spotify Engineering、arXiv、Alibaba Cloud Developer、Tencent Cloud Developer；重点从「GenPage: Towards End-to-End Generative Homepage Construction at Netflix」延伸到广告排序、实时上下文、企业搜索 relevance judge、模型生命周期图和工业搜索属性推荐。",
-      "A 社覆盖 18 条官方 News/Research/Engineering 动态，最新重点是「Bringing MCP 2026-07-28 to Claude」；安全研究主线继续观察「An off switch for dual use knowledge in AI models」，Claude Code 相关信号包括 Bringing MCP 2026-07-28 to Claude、Claude Managed Agents add effort, lifecycle webhooks and session deltas、Building verification loops in Claude Code with skills，评估动作应拆成模型能力、权限隔离、长任务恢复、团队协作记忆、预算上限和审计边界。",
-      "AIHOT/官方 AI 新闻共 20 条，其中 AIHOT 2 条；今日先看「OpenAI 总裁布罗克曼承认新版 ChatGPT 桌面应用\"有点乱\"，目标年底实现\"零标签\"」，所有新闻统一写成“信号 -> 影响 -> 动作”，动作聚焦评测回放、预算治理、工具白名单、权限审计和真实工作流验证。"
+      "GitHub 12 个项目中，GeoLibre、AIRI、ECC、speech-to-speech 和 jcode 代表了本地优先工作台、实时语音/角色 Agent、跨工具技能记忆层和轻量 coding harness 四条热线；每个项目均按架构机制、适用团队、落地路径、生产风险、决策问题和观察信号重写。",
+      "搜广推收录 22 条工程/研究信号，优先大厂工程博客：Netflix GenPage、Meta Ads scheduler/SilverTorch/Adaptive Ranking、Airbnb guest journey、Pinterest foundation model scaling、Dropbox Dash eval、Salesforce sub-100ms personalization，以及美团/阿里/腾讯中文工程文章。",
+      "搜广推解读统一写成“业务问题 -> 系统机制 -> 指标/实验 -> 可借鉴点 -> 不适用边界”：今天最值得复盘的是页面级生成式推荐、长短期序列个性化、模型化索引、请求价值分层、LLM judge 校准和召回截断治理。",
+      "A 社覆盖 18 条 Anthropic/Claude 官方动态，重点包括 MCP 2026-07-28、Claude Opus 5、Claude Code/Managed Agents、Cognizant 企业合作、open-weights 立场、cryptographic weaknesses、Project Pilot、dual-use off switch、global workspace 和 Claude containment。",
+      "AI 新闻 20 条已按“信号 -> 影响 -> 动作”改写：OpenAI agentic scientific computing/GPT-Red/GPT-Live、Hugging Face 安全事件与 VoiceEQ、Google Gemini/ADK/Computer Use、AIHOT MCP 线索都落到评测回放、权限审计、成本治理和人工接管。"
     ]
   },
   "items": [
@@ -104,10 +126,10 @@
         "visualUrl": "https://opengraph.githubassets.com/20260730/opengeos/GeoLibre",
         "url": "https://github.com/opengeos/GeoLibre",
         "description": "A lightweight, cloud-native GIS platform for visualizing, exploring, and analyzing geospatial data. It runs in the web browser, on the desktop, on mobile, and inside Jupyter notebooks.",
-        "stars": 4278,
+        "stars": 4382,
         "starsToday": 671,
-        "forks": 444,
-        "openIssues": 21,
+        "forks": 449,
+        "openIssues": 24,
         "language": "TypeScript",
         "topics": [
           "data-science",
@@ -119,7 +141,7 @@
           "tauri-app"
         ],
         "license": "MIT",
-        "pushedAt": "2026-07-30T05:59:18Z",
+        "pushedAt": "2026-07-30T10:12:13Z",
         "createdAt": "2026-05-27T19:34:31Z",
         "languages": {
           "TypeScript": 11697365,
@@ -325,10 +347,10 @@
         "visualUrl": "https://opengraph.githubassets.com/20260730/moeru-ai/airi",
         "url": "https://github.com/moeru-ai/airi",
         "description": "💖🧸 Self hosted, you-owned Grok Companion, a container of souls of waifu, cyber livings to bring them into our worlds, wishing to achieve Neuro-sama's altitude. Capable of realtime voice chat, Minecraft, Factorio playing. Web / macOS / Windows supported.",
-        "stars": 45586,
+        "stars": 45695,
         "starsToday": 682,
-        "forks": 4502,
-        "openIssues": 191,
+        "forks": 4511,
+        "openIssues": 194,
         "language": "TypeScript",
         "topics": [
           "ai-companion",
@@ -344,7 +366,7 @@
           "vtuber"
         ],
         "license": "MIT",
-        "pushedAt": "2026-07-30T06:36:26Z",
+        "pushedAt": "2026-07-30T09:16:30Z",
         "createdAt": "2024-12-01T16:33:36Z",
         "languages": {
           "TypeScript": 9209348,
@@ -555,10 +577,10 @@
         "visualUrl": "https://opengraph.githubassets.com/20260730/affaan-m/ECC",
         "url": "https://github.com/affaan-m/ECC",
         "description": "The agent harness performance optimization system. Skills, instincts, memory, security, and research-first development for Claude Code, Codex, Opencode, Cursor and beyond.",
-        "stars": 235812,
+        "stars": 235928,
         "starsToday": 857,
-        "forks": 35894,
-        "openIssues": 99,
+        "forks": 35898,
+        "openIssues": 100,
         "language": "JavaScript",
         "topics": [
           "ai-agents",
@@ -775,10 +797,10 @@
         "visualUrl": "https://opengraph.githubassets.com/20260730/huggingface/speech-to-speech",
         "url": "https://github.com/huggingface/speech-to-speech",
         "description": "Build local voice agents with open-source models",
-        "stars": 8073,
+        "stars": 8172,
         "starsToday": 827,
-        "forks": 1020,
-        "openIssues": 119,
+        "forks": 1023,
+        "openIssues": 120,
         "language": "Python",
         "topics": [
           "ai",
@@ -792,10 +814,10 @@
           "speech-translation"
         ],
         "license": "Apache-2.0",
-        "pushedAt": "2026-07-29T21:36:19Z",
+        "pushedAt": "2026-07-30T10:04:41Z",
         "createdAt": "2024-08-07T15:32:09Z",
         "languages": {
-          "Python": 1142348,
+          "Python": 1148282,
           "Dockerfile": 803
         }
       },
@@ -990,10 +1012,10 @@
         "visualUrl": "https://opengraph.githubassets.com/20260730/1jehuang/jcode",
         "url": "https://github.com/1jehuang/jcode",
         "description": "The most RAM efficient harness",
-        "stars": 13662,
+        "stars": 13803,
         "starsToday": 640,
-        "forks": 1498,
-        "openIssues": 168,
+        "forks": 1520,
+        "openIssues": 169,
         "language": "Rust",
         "topics": [
           "ai",
@@ -1010,10 +1032,10 @@
           "tui"
         ],
         "license": "MIT",
-        "pushedAt": "2026-07-30T06:42:03Z",
+        "pushedAt": "2026-07-30T10:12:17Z",
         "createdAt": "2026-01-05T09:43:36Z",
         "languages": {
-          "Rust": 23996092,
+          "Rust": 24013683,
           "Python": 1193678,
           "Shell": 327156,
           "Swift": 172618,
@@ -1214,10 +1236,10 @@
         "visualUrl": "https://opengraph.githubassets.com/20260730/grokability/snipe-it",
         "url": "https://github.com/grokability/snipe-it",
         "description": "A free open source IT asset/license management system",
-        "stars": 14551,
+        "stars": 14596,
         "starsToday": 164,
-        "forks": 3906,
-        "openIssues": 955,
+        "forks": 3908,
+        "openIssues": 954,
         "language": "PHP",
         "topics": [
           "asset-management",
@@ -1227,11 +1249,11 @@
           "license-management"
         ],
         "license": "AGPL-3.0",
-        "pushedAt": "2026-07-29T22:06:18Z",
+        "pushedAt": "2026-07-30T09:37:39Z",
         "createdAt": "2013-11-12T22:25:47Z",
         "languages": {
-          "PHP": 26377226,
-          "Blade": 1956987,
+          "PHP": 26399621,
+          "Blade": 1958076,
           "Less": 161673,
           "JavaScript": 159418,
           "Shell": 50432,
@@ -1432,9 +1454,9 @@
         "visualUrl": "https://opengraph.githubassets.com/20260730/deepfakes/faceswap",
         "url": "https://github.com/deepfakes/faceswap",
         "description": "Deepfakes Software For All",
-        "stars": 56518,
+        "stars": 56633,
         "starsToday": 166,
-        "forks": 13446,
+        "forks": 13450,
         "openIssues": 10,
         "language": "Python",
         "topics": [
@@ -1652,9 +1674,9 @@
         "visualUrl": "https://opengraph.githubassets.com/20260730/microsoft/VibeVoice",
         "url": "https://github.com/microsoft/VibeVoice",
         "description": "Open-Source Frontier Voice AI",
-        "stars": 51483,
+        "stars": 51557,
         "starsToday": 336,
-        "forks": 5722,
+        "forks": 5724,
         "openIssues": 178,
         "language": "Python",
         "topics": [],
@@ -1855,21 +1877,21 @@
         "visualUrl": "https://opengraph.githubassets.com/20260730/different-ai/openwork",
         "url": "https://github.com/different-ai/openwork",
         "description": "The open-source alternative to Claude Cowork (powered by opencode)",
-        "stars": 18183,
+        "stars": 18278,
         "starsToday": 97,
-        "forks": 1865,
+        "forks": 1869,
         "openIssues": 394,
         "language": "TypeScript",
         "topics": [],
         "license": "NOASSERTION",
-        "pushedAt": "2026-07-30T06:12:03Z",
+        "pushedAt": "2026-07-30T10:20:34Z",
         "createdAt": "2026-01-14T01:39:31Z",
         "languages": {
-          "TypeScript": 16542891,
-          "JavaScript": 5388531,
+          "TypeScript": 16684104,
+          "JavaScript": 5390444,
           "MDX": 227925,
           "CSS": 222424,
-          "Shell": 141223,
+          "Shell": 142321,
           "Swift": 126494,
           "PowerShell": 39192,
           "HTML": 9628,
@@ -2068,10 +2090,10 @@
         "visualUrl": "https://opengraph.githubassets.com/20260730/obra/superpowers",
         "url": "https://github.com/obra/superpowers",
         "description": "An agentic skills framework & software development methodology that works.",
-        "stars": 263531,
+        "stars": 263656,
         "starsToday": 616,
-        "forks": 23530,
-        "openIssues": 301,
+        "forks": 23541,
+        "openIssues": 302,
         "language": "Shell",
         "topics": [
           "ai",
@@ -2264,11 +2286,11 @@
         },
         "maturity": {
           "community": 100,
-          "maintenance": 97,
-          "production": 95,
+          "maintenance": 94,
+          "production": 94,
           "complexity": 67
         },
-        "score": 95
+        "score": 94
       },
       "evidence": {
         "readmeExcerpt": "Superpowers Superpowers is a complete software development methodology for your coding agents, built on top of a set of composable skills and some initial instructions that make sure your agent uses them. Quickstart Give your agent Superpowers: Claude Code, Antigravity, Codex App, Codex CLI, Cursor, Factory Droid, Gemini CLI, GitHub Copilot CLI, Kimi Code, OpenCode, Pi. How it works It starts from the moment you fire up your coding agent. As soon as it sees that you're building something, it doesn't just jump into trying to write code. Instead, it steps back and asks you what you're really trying to do. Once it's teased a spec out of the conversation, it shows it to you in chunks short enough to actually read and digest. After you've signed off on the design, your agent puts together an implementation plan that's clear enough for an enthusiastic junior engineer with poor taste, no judgem...",
@@ -2285,9 +2307,9 @@
         "visualUrl": "https://opengraph.githubassets.com/20260730/MoonshotAI/FlashKDA",
         "url": "https://github.com/MoonshotAI/FlashKDA",
         "description": "FlashKDA: high-performance Kimi Delta Attention kernels",
-        "stars": 1055,
+        "stars": 1078,
         "starsToday": 91,
-        "forks": 101,
+        "forks": 102,
         "openIssues": 18,
         "language": "Cuda",
         "topics": [],
@@ -2491,9 +2513,9 @@
         "visualUrl": "https://opengraph.githubassets.com/20260730/NanmiCoder/MediaCrawler",
         "url": "https://github.com/NanmiCoder/MediaCrawler",
         "description": "小红书笔记 | 评论爬虫、抖音视频 | 评论爬虫、快手视频 | 评论爬虫、B 站视频 ｜ 评论爬虫、微博帖子 ｜ 评论爬虫、百度贴吧帖子 ｜ 百度贴吧评论回复爬虫 | 知乎问答文章｜评论爬虫",
-        "stars": 59286,
+        "stars": 59393,
         "starsToday": 154,
-        "forks": 11697,
+        "forks": 11708,
         "openIssues": 183,
         "language": "Python",
         "topics": [],
@@ -3687,11 +3709,11 @@
         ],
         "summary": "Modern information retrieval systems typically operationalise relevance as a query-conditional score computed at inference time. This design choice has become dominant such that alternative decompositions of relevance are rarely discussed, despite the long history of document and query priors in probabilistic retrieval and large-scale search. As neural ranking models grow more computationally expensive and retrieval pipelines expand to include multi-stage ranking, recommendation, and retrieval-augmented generation, this monolithic view of query-time scoring becomes increasingly limiting. We argue that modern information access systems are more naturally understood as performing approximate posterior inference, in which relevance is refined through a staged combination of query-dependent likelihoods and query-independent priors. We extend classical probabilistic retrieval formalisms to contemporary learned systems and show how explicit likelihood-prior decomposition exposes new opportunities to shift computation offline while disentangling document-level and interaction-level beliefs. We present empirical evidence that incorporating query-independent document utility can complement existing rankers and improve effectiveness with minimal query-time computation (solely score fusion). Concretely, a learned prior improves first-stage retrieval through rank fusion (up to 0.046 nDCG@10 on TREC DL-2019 and 0.029 nDCG@10 on TREC DL-2020) and also improves downstream re-ranking, with the largest gains observed for the LLM re-ranker RankZephyr (up to 0.054 nDCG@10 on TREC DL-2020). Finally, we discuss how this decomposition connects to broader information access and outline research directions for designing retrieval systems that explicitly allocate modelling capacity between offline priors and online interaction.",
         "interpretation": {
-          "businessProblem": "推荐系统需要在巨大候选池里兼顾兴趣匹配、新鲜度、多样性和商业目标，传统召回/排序割裂会造成离线提升难以上线转化。",
-          "systemMechanism": "把候选生成、向量/索引、用户序列、ranker 表征和反馈学习联合设计，让召回质量与后续排序目标保持一致。",
-          "metricsAndExperiment": "关注 recall@K、覆盖率、多样性、CTR/CVR、停留/满意度、延迟和索引刷新时延；实验要看离线召回是否转化为在线核心指标。",
-          "borrowable": "可借鉴模型化索引、可编辑生成式召回、多目标排序和实时行为特征，将推荐漏斗从组件拼接改为端到端协同。",
-          "boundary": "物料规模不大、业务目标单一或团队没有检索/排序联合 owner 时，复杂联合建模会增加维护成本。"
+          "businessProblem": "神经信息获取系统越来越依赖 embedding 和生成式重排，但“相关性”本身有不确定性；单一分数会掩盖查询意图、文档证据和用户偏好的后验分布。",
+          "systemMechanism": "论文方向可理解为把 relevance 从点估计推进到 posterior：让模型输出相关性分布或置信结构，供检索、排序、主动标注和用户反馈共同使用。",
+          "metricsAndExperiment": "除 NDCG/MRR 外，应看校准误差、置信区间覆盖、uncertainty-aware reranking、人工复核节省和低置信查询的二次检索收益。",
+          "borrowable": "企业搜索/RAG 可先对低置信答案触发补检索、人工审核或保守回答，把不确定性变成产品控制信号。",
+          "boundary": "如果团队没有金标校准或用户反馈闭环，相关性 posterior 容易成为复杂但不可验证的解释层。"
         },
         "diagram": {
           "title": "arXiv 搜广推机制图",
@@ -3699,22 +3721,22 @@
           "nodes": [
             {
               "label": "业务问题",
-              "detail": "推荐系统需要在巨大候选池里兼顾兴趣匹配、新鲜度、多样性和商业目标，传统召回/排序割裂会造成离线提升难以上线转化。",
+              "detail": "神经信息获取系统越来越依赖 embedding 和生成式重排，但“相关性”本身有不确定性；单一分数会掩盖查询意图、文档证据和用户偏好的后验分布。",
               "type": "input"
             },
             {
               "label": "系统机制",
-              "detail": "把候选生成、向量/索引、用户序列、ranker 表征和反馈学习联合设计，让召回质量与后续排序目标保持一致。",
+              "detail": "论文方向可理解为把 relevance 从点估计推进到 posterior：让模型输出相关性分布或置信结构，供检索、排序、主动标注和用户反馈共同使用。",
               "type": "core"
             },
             {
               "label": "指标实验",
-              "detail": "关注 recall@K、覆盖率、多样性、CTR/CVR、停留/满意度、延迟和索引刷新时延；实验要看离线召回是否转化为在线核心指标。",
+              "detail": "除 NDCG/MRR 外，应看校准误差、置信区间覆盖、uncertainty-aware reranking、人工复核节省和低置信查询的二次检索收益。",
               "type": "measure"
             },
             {
               "label": "采用边界",
-              "detail": "物料规模不大、业务目标单一或团队没有检索/排序联合 owner 时，复杂联合建模会增加维护成本。",
+              "detail": "如果团队没有金标校准或用户反馈闭环，相关性 posterior 容易成为复杂但不可验证的解释层。",
               "type": "risk"
             }
           ],
@@ -3850,7 +3872,7 @@
       "source": "AIHOT Public API",
       "date": "2026-07-30",
       "generatedAt": "2026-07-30T00:01:10.742Z",
-      "summary": "日报收录 21 条结构化内容，重点分布在 产品发布/更新 8 条、技巧与观点 6 条、行业动态 3 条。今日优先关注「OpenAI 总裁布罗克曼承认新版 ChatGPT 桌面应用\"有点乱\"，目标年底实现\"零标签\"」，它会进入下方 AI 新闻流做进一步信号、影响和动作拆解。",
+      "summary": "日报收录 21 条结构化内容，重点分布在 产品发布/更新 8 条、技巧与观点 6 条、行业动态 3 条。今日优先关注「Token Saver：用本地混合 RAG 将 Claude PDF token 消耗削减 92%-99% 的开源 MCP 扩展」，它会进入下方 AI 新闻流做进一步信号、影响和动作拆解。",
       "stats": [
         {
           "label": "精选条目",
@@ -3994,6 +4016,20 @@
       ],
       "selected": [
         {
+          "title": "Token Saver：用本地混合 RAG 将 Claude PDF token 消耗削减 92%-99% 的开源 MCP 扩展",
+          "url": "https://www.marktechpost.com/2026/07/30/token-saver-an-open-source-mcp-extension-using-local-hybrid-rag",
+          "source": "MarkTechPost（RSS）",
+          "publishedAt": "2026-07-30T07:43:29.000Z",
+          "summary": "Marktechpost AI 团队发布 Token Saver，一款面向 Claude Desktop 的开源 MCP 扩展，通过本地混合 RAG 在设备端检索 PDF，无需上传文件。该工具将 token 消耗削减 92%-99%，并保证数据隐私，设置无需 Python 环境或终端配置。",
+          "category": "产品更新",
+          "signal": "企业 Agent 基建信号：托管沙箱、私网连接和权限隔离正在成为 Agent 进入生产环境的关键门槛。",
+          "tags": [
+            "A社/Claude",
+            "模型",
+            "工程/基础设施"
+          ]
+        },
+        {
           "title": "OpenAI 总裁布罗克曼承认新版 ChatGPT 桌面应用\"有点乱\"，目标年底实现\"零标签\"",
           "url": "https://www.ithome.com/0/983/444.htm",
           "source": "IT之家（RSS）",
@@ -4080,20 +4116,6 @@
           "signal": "模型产品化信号：GPT-5.6 把前沿推理、浏览/computer use、artifact 生成、缓存断点和多 Agent 能力打包成面向知识工作的生产套件，竞争焦点从单次 benchmark 转到可交付任务。",
           "tags": [
             "模型"
-          ]
-        },
-        {
-          "title": "Perplexity 开源智能体检测层 Numbat",
-          "url": "https://x.com/perplexity_ai/status/2082511900580196596",
-          "source": "X：Perplexity (@perplexity_ai)",
-          "publishedAt": "2026-07-29T17:01:42.000Z",
-          "summary": "今天我们开源了 Numbat，这是一个智能体检测与响应层，旨在跨多种智能体框架工作。\n\nNumbat 为安全团队提供对智能体活动的可见性，并可在执行前阻止选定操作。\n\n了解更多：https://research.perplexity.ai/articles/securing-agents-across-perplexity%E2%80%99s-client-endpoints-with-numbat",
-          "category": "产品更新",
-          "signal": "搜索体验信号：用户从关键词转向自然语言查询，会影响搜索广告、内容召回和答案呈现方式。",
-          "tags": [
-            "Agent",
-            "搜索",
-            "安全/可信"
           ]
         }
       ],
@@ -4459,14 +4481,14 @@
         "imageUrl": "https://www.google.com/s2/favicons?domain=openai.com&sz=128",
         "priority": 9,
         "rank": 1,
-        "signal": "Agent/工具调用方向，适合评估能否进入研发工作流或数据分析流程。",
+        "signal": "OpenAI 把 agentic AI 明确推向科学计算：模型要能连接代码、数据、数值实验和可复现 artifact，而不只是生成研究摘要。",
         "interpretation": {
-          "signal": "Agent/工具调用方向，适合评估能否进入研发工作流或数据分析流程。",
-          "impact": "Agent 正从单点工具走向跨设备、跨应用、跨通讯入口，产品设计要考虑权限、记忆和接管机制。",
-          "action": "建议记录可试用入口、权限模型和是否支持长会话，适合做 30 分钟产品体验验证。"
+          "signal": "OpenAI 把 agentic AI 明确推向科学计算：模型要能连接代码、数据、数值实验和可复现 artifact，而不只是生成研究摘要。",
+          "impact": "科学/工程团队的评估口径会从“会不会解释论文”转为“能否缩短假设验证周期，并留下可复查代码、数据版本和失败样本”。",
+          "action": "用受控 notebook、固定基准数据和专家复核回放做小试点；先验证实验周期、错误率、成本和可复现性。"
         },
-        "impact": "Agent 正从单点工具走向跨设备、跨应用、跨通讯入口，产品设计要考虑权限、记忆和接管机制。",
-        "action": "建议记录可试用入口、权限模型和是否支持长会话，适合做 30 分钟产品体验验证。",
+        "impact": "科学/工程团队的评估口径会从“会不会解释论文”转为“能否缩短假设验证周期，并留下可复查代码、数据版本和失败样本”。",
+        "action": "用受控 notebook、固定基准数据和专家复核回放做小试点；先验证实验周期、错误率、成本和可复现性。",
         "tags": [
           "Agent",
           "模型"
@@ -4483,14 +4505,14 @@
         "imageUrl": "https://www.google.com/s2/favicons?domain=huggingface.co&sz=128",
         "priority": 8,
         "rank": 2,
-        "signal": "行业动态信号，适合纳入周度技术雷达观察。",
+        "signal": "Hugging Face 安全事件把风险指向 dataset processing、远程代码执行边界、服务凭据隔离和模型制品完整性。",
         "interpretation": {
-          "signal": "行业动态信号，适合纳入周度技术雷达观察。",
-          "impact": "AI 生成内容和搜索结果会被系统性攻击，后续要把来源证明、反作弊和审计纳入基础架构。",
-          "action": "建议沉淀到 AI 安全清单，跟踪攻击方式、检测指标和平台级防御策略。"
+          "signal": "Hugging Face 安全事件把风险指向 dataset processing、远程代码执行边界、服务凭据隔离和模型制品完整性。",
+          "impact": "AI 平台的供应链安全不再只看模型权重，数据集处理沙箱、模板渲染、CI/CD 令牌和制品发布链都会成为攻击面。",
+          "action": "立刻审计自建模型平台的数据集处理权限、临时凭据、远程代码加载、制品签名和事件后轮换流程。"
         },
-        "impact": "AI 生成内容和搜索结果会被系统性攻击，后续要把来源证明、反作弊和审计纳入基础架构。",
-        "action": "建议沉淀到 AI 安全清单，跟踪攻击方式、检测指标和平台级防御策略。",
+        "impact": "AI 平台的供应链安全不再只看模型权重，数据集处理沙箱、模板渲染、CI/CD 令牌和制品发布链都会成为攻击面。",
+        "action": "立刻审计自建模型平台的数据集处理权限、临时凭据、远程代码加载、制品签名和事件后轮换流程。",
         "tags": [
           "模型",
           "安全/可信"
@@ -4507,14 +4529,14 @@
         "imageUrl": "https://www.google.com/s2/favicons?domain=openai.com&sz=128",
         "priority": 8,
         "rank": 3,
-        "signal": "Agent/工具调用方向，适合评估能否进入研发工作流或数据分析流程。",
+        "signal": "自动化红队从一次性安全评测升级为持续攻防流水线，重点覆盖 prompt injection、浏览器/开发者工具攻击和鲁棒性回归。",
         "interpretation": {
-          "signal": "Agent/工具调用方向，适合评估能否进入研发工作流或数据分析流程。",
-          "impact": "Agent 正从单点工具走向跨设备、跨应用、跨通讯入口，产品设计要考虑权限、记忆和接管机制。",
-          "action": "建议记录可试用入口、权限模型和是否支持长会话，适合做 30 分钟产品体验验证。"
+          "signal": "自动化红队从一次性安全评测升级为持续攻防流水线，重点覆盖 prompt injection、浏览器/开发者工具攻击和鲁棒性回归。",
+          "impact": "Agent 上线门禁会变成“攻击样本库 + 修复验证 + 版本回归”，安全团队需要把模型行为纳入持续测试。",
+          "action": "把内部 Agent 任务录制成攻击回放集，记录越权、数据泄露、工具误用、修复后复发和版本差异。"
         },
-        "impact": "Agent 正从单点工具走向跨设备、跨应用、跨通讯入口，产品设计要考虑权限、记忆和接管机制。",
-        "action": "建议记录可试用入口、权限模型和是否支持长会话，适合做 30 分钟产品体验验证。",
+        "impact": "Agent 上线门禁会变成“攻击样本库 + 修复验证 + 版本回归”，安全团队需要把模型行为纳入持续测试。",
+        "action": "把内部 Agent 任务录制成攻击回放集，记录越权、数据泄露、工具误用、修复后复发和版本差异。",
         "tags": [
           "Agent",
           "模型",
@@ -4532,14 +4554,14 @@
         "imageUrl": "https://www.google.com/s2/favicons?domain=huggingface.co&sz=128",
         "priority": 6,
         "rank": 4,
-        "signal": "音频生成信号：声音库、长音频和端侧模型并行推进，内容生产工具会继续向专业工作流靠近。",
+        "signal": "语音 AI 竞争从音色 demo 转向真实听感、场景鲁棒性和可比较评测。",
         "interpretation": {
-          "signal": "音频生成信号：声音库、长音频和端侧模型并行推进，内容生产工具会继续向专业工作流靠近。",
-          "impact": "多模态生成开始从玩具效果进入专业工作流，关键评估点会变成一致性、时长、成本和可编辑性。",
-          "action": "建议收集样例和失败案例，比较一致性、可控性、生成时长和商业版权风险。"
+          "signal": "语音 AI 竞争从音色 demo 转向真实听感、场景鲁棒性和可比较评测。",
+          "impact": "客服、陪伴、会议和无障碍输入会需要分场景评估自然度、疲劳感、噪声、打断和多轮一致性。",
+          "action": "建立主观 MOS/偏好评测和客观延迟、WER、打断成功率、成本指标的混合验收表。"
         },
-        "impact": "多模态生成开始从玩具效果进入专业工作流，关键评估点会变成一致性、时长、成本和可编辑性。",
-        "action": "建议收集样例和失败案例，比较一致性、可控性、生成时长和商业版权风险。",
+        "impact": "客服、陪伴、会议和无障碍输入会需要分场景评估自然度、疲劳感、噪声、打断和多轮一致性。",
+        "action": "建立主观 MOS/偏好评测和客观延迟、WER、打断成功率、成本指标的混合验收表。",
         "tags": [
           "模型",
           "多模态"
@@ -4556,14 +4578,14 @@
         "imageUrl": "https://www.google.com/s2/favicons?domain=huggingface.co&sz=128",
         "priority": 5,
         "rank": 5,
-        "signal": "行业动态信号，适合纳入周度技术雷达观察。",
+        "signal": "新模型/实验室通过 Hugging Face 模型页、权重分发和社区评测快速进入开发者视野。",
         "interpretation": {
-          "signal": "行业动态信号，适合纳入周度技术雷达观察。",
-          "impact": "这条动态适合放进周度观察池，重点看它是否会改变模型选型、产品入口或工程成本结构。",
-          "action": "建议保留原文链接，等后续出现产品实测、开发者反馈或生态跟进时再升级权重。"
+          "signal": "新模型/实验室通过 Hugging Face 模型页、权重分发和社区评测快速进入开发者视野。",
+          "impact": "开放生态发现速度更快，但 license、训练数据、推理成本和复现实验会决定是否能从新闻进入候选池。",
+          "action": "只把它放入观察清单，等待模型卡、benchmark、部署成本和独立复现结果后再升级权重。"
         },
-        "impact": "这条动态适合放进周度观察池，重点看它是否会改变模型选型、产品入口或工程成本结构。",
-        "action": "建议保留原文链接，等后续出现产品实测、开发者反馈或生态跟进时再升级权重。",
+        "impact": "开放生态发现速度更快，但 license、训练数据、推理成本和复现实验会决定是否能从新闻进入候选池。",
+        "action": "只把它放入观察清单，等待模型卡、benchmark、部署成本和独立复现结果后再升级权重。",
         "tags": [
           "模型"
         ]
@@ -4653,14 +4675,14 @@
         "imageUrl": "https://www.google.com/s2/favicons?domain=huggingface.co&sz=128",
         "priority": 4,
         "rank": 9,
-        "signal": "模型能力或评测更新，建议关注是否改变内部模型选型和评估基线。",
+        "signal": "机器人开源栈开始强调“想象、评估、改进”的闭环，而不是只发布单次演示。",
         "interpretation": {
-          "signal": "模型能力或评测更新，建议关注是否改变内部模型选型和评估基线。",
-          "impact": "开源机器人栈正在把仿真、评估和改进循环产品化，具身智能团队会更依赖可复现实验而不是单次演示视频。",
-          "action": "建议机器人/自动化团队下载复现实验，记录数据采集、仿真到真机差距、评测指标和硬件失败样本。"
+          "signal": "机器人开源栈开始强调“想象、评估、改进”的闭环，而不是只发布单次演示。",
+          "impact": "具身智能团队会更依赖可复现实验、数据采集规范和仿真到真机差距记录。",
+          "action": "先复现离线 benchmark，记录硬件依赖、仿真迁移、失败样本和人工安全接管策略。"
         },
-        "impact": "开源机器人栈正在把仿真、评估和改进循环产品化，具身智能团队会更依赖可复现实验而不是单次演示视频。",
-        "action": "建议机器人/自动化团队下载复现实验，记录数据采集、仿真到真机差距、评测指标和硬件失败样本。",
+        "impact": "具身智能团队会更依赖可复现实验、数据采集规范和仿真到真机差距记录。",
+        "action": "先复现离线 benchmark，记录硬件依赖、仿真迁移、失败样本和人工安全接管策略。",
         "tags": [
           "AI"
         ]
@@ -4725,14 +4747,14 @@
         "imageUrl": "https://www.google.com/s2/favicons?domain=huggingface.co&sz=128",
         "priority": 4,
         "rank": 12,
-        "signal": "模型能力或评测更新，建议关注是否改变内部模型选型和评估基线。",
+        "signal": "模型页正在把多任务 eval 元数据前置，模型选择入口从单榜单转向评测矩阵。",
         "interpretation": {
-          "signal": "模型能力或评测更新，建议关注是否改变内部模型选型和评估基线。",
-          "impact": "模型选择入口正在从单一排行榜转向模型页内的多任务评测矩阵；这会降低初筛成本，但也会让团队更容易忽略本地任务和数据分布差异。",
-          "action": "建议把 Hugging Face 模型页评测作为候选筛选入口，但最终仍用内部任务集、成本、延迟和失败样本做回放验收。"
+          "signal": "模型页正在把多任务 eval 元数据前置，模型选择入口从单榜单转向评测矩阵。",
+          "impact": "初筛成本下降，但团队更容易忽略本地任务分布、延迟、成本和失败样本。",
+          "action": "把公开 eval 作为候选筛选，最终仍用内部任务集、线上代理指标、成本和人工复核做准入。"
         },
-        "impact": "模型选择入口正在从单一排行榜转向模型页内的多任务评测矩阵；这会降低初筛成本，但也会让团队更容易忽略本地任务和数据分布差异。",
-        "action": "建议把 Hugging Face 模型页评测作为候选筛选入口，但最终仍用内部任务集、成本、延迟和失败样本做回放验收。",
+        "impact": "初筛成本下降，但团队更容易忽略本地任务分布、延迟、成本和失败样本。",
+        "action": "把公开 eval 作为候选筛选，最终仍用内部任务集、线上代理指标、成本和人工复核做准入。",
         "tags": [
           "Agent",
           "模型"
@@ -4749,14 +4771,14 @@
         "imageUrl": "https://www.google.com/s2/favicons?domain=developers.googleblog.com&sz=128",
         "priority": 4,
         "rank": 13,
-        "signal": "平台发布信号：开发者大会类更新适合拆成模型、工具、分发渠道三条线跟进。",
+        "signal": "多 Agent 框架开始把 workflow、人类介入、动态编排和状态可观测性作为基础设施能力。",
         "interpretation": {
-          "signal": "平台发布信号：开发者大会类更新适合拆成模型、工具、分发渠道三条线跟进。",
-          "impact": "多 Agent 框架开始把 workflow、人类介入和动态编排作为基础能力，企业自建 Agent 应从 prompt demo 转向可观测状态机。",
-          "action": "建议用一个低风险多 Agent 流程验证 ADK：状态持久化、人类审批、失败恢复、工具权限和 trace 可读性必须一起测。"
+          "signal": "多 Agent 框架开始把 workflow、人类介入、动态编排和状态可观测性作为基础设施能力。",
+          "impact": "企业自建 Agent 会从 prompt demo 进入可治理状态机，失败恢复和人工审批会变成产品需求。",
+          "action": "用一个低风险多 Agent 流程验证状态持久化、人工审批、工具权限、trace 可读性和失败恢复。"
         },
-        "impact": "多 Agent 框架开始把 workflow、人类介入和动态编排作为基础能力，企业自建 Agent 应从 prompt demo 转向可观测状态机。",
-        "action": "建议用一个低风险多 Agent 流程验证 ADK：状态持久化、人类审批、失败恢复、工具权限和 trace 可读性必须一起测。",
+        "impact": "企业自建 Agent 会从 prompt demo 进入可治理状态机，失败恢复和人工审批会变成产品需求。",
+        "action": "用一个低风险多 Agent 流程验证状态持久化、人工审批、工具权限、trace 可读性和失败恢复。",
         "tags": [
           "Agent",
           "模型"
@@ -4835,6 +4857,31 @@
       },
       {
         "source": "AIHOT 精选",
+        "sourceDetail": "MarkTechPost（RSS）",
+        "domain": "aihot.virxact.com",
+        "title": "Token Saver：用本地混合 RAG 将 Claude PDF token 消耗削减 92%-99% 的开源 MCP 扩展",
+        "url": "https://aihot.virxact.com/items/cms782fxi02w4ro2evmcwz6uj",
+        "publishedAt": "Thu, 30 Jul 2026 07:43:29 GMT",
+        "summary": "Marktechpost AI 团队发布 Token Saver，一款面向 Claude Desktop 的开源 MCP 扩展，通过本地混合 RAG 在设备端检索 PDF，无需上传文件。该工具将 token 消耗削减 92%-99%，并保证数据隐私，设置无需 Python 环境或终端配置。 🔗 阅读原文 via AI HOT · https://aihot.virxact.com/items/cms782fxi02w4ro2evmcwz6uj",
+        "imageUrl": "https://www.google.com/s2/favicons?domain=aihot.virxact.com&sz=128",
+        "priority": 3,
+        "rank": 17,
+        "signal": "企业 Agent 基建信号：托管沙箱、私网连接和权限隔离正在成为 Agent 进入生产环境的关键门槛。",
+        "interpretation": {
+          "signal": "企业 Agent 基建信号：托管沙箱、私网连接和权限隔离正在成为 Agent 进入生产环境的关键门槛。",
+          "impact": "Claude 生态的变化会直接影响 Agent 选型、企业采购、权限治理和安全评测，不能只按模型跑分决策。",
+          "action": "建议更新 Claude 评测清单：模型能力、Claude Code/Agent 工作流、权限隔离、审计日志和供应连续性分开验证。"
+        },
+        "impact": "Claude 生态的变化会直接影响 Agent 选型、企业采购、权限治理和安全评测，不能只按模型跑分决策。",
+        "action": "建议更新 Claude 评测清单：模型能力、Claude Code/Agent 工作流、权限隔离、审计日志和供应连续性分开验证。",
+        "tags": [
+          "A社/Claude",
+          "模型",
+          "工程/基础设施"
+        ]
+      },
+      {
+        "source": "AIHOT 精选",
         "sourceDetail": "IT之家（RSS）",
         "domain": "aihot.virxact.com",
         "title": "OpenAI 总裁布罗克曼承认新版 ChatGPT 桌面应用\"有点乱\"，目标年底实现\"零标签\"",
@@ -4843,7 +4890,7 @@
         "summary": "OpenAI 联合创始人兼总裁格雷格·布罗克曼承认，合并 Codex 后的新版 ChatGPT 桌面应用界面\"有点乱\"，导致部分用户难以找到聊天记录。他透露，到 2026 年年底，ChatGPT 桌面应用将不再有 Work 标签页，功能会融入 ChatGPT。整合后，Codex 用户数在几天内从 500 万增至 1000 万。 🔗 阅读原文 via AI HOT · https://aihot.virxact.com/items/cms6xky2402xgrouqgudkfgsg",
         "imageUrl": "https://www.google.com/s2/favicons?domain=aihot.virxact.com&sz=128",
         "priority": 3,
-        "rank": 17,
+        "rank": 18,
         "signal": "移动编码信号：Coding Agent 正从桌面 IDE 扩展到手机端连续会话，远程协作和碎片时间处理会变重要。",
         "interpretation": {
           "signal": "移动编码信号：Coding Agent 正从桌面 IDE 扩展到手机端连续会话，远程协作和碎片时间处理会变重要。",
@@ -4857,30 +4904,6 @@
         ]
       },
       {
-        "source": "AIHOT 精选",
-        "sourceDetail": "X：腾讯混元 (@TencentHunyuan",
-        "domain": "aihot.virxact.com",
-        "title": "腾讯混元Hyra破解50年数学难题",
-        "url": "https://aihot.virxact.com/items/cms6xa31u02nlrouq0wkhylfp",
-        "publishedAt": "Thu, 30 Jul 2026 02:33:16 GMT",
-        "summary": "腾讯混元借助研究智能体Hyra及Hy3模型，构造出整数集A使|A+A|与|A-A|的指数比精确达到2，解决了自1969年以来悬而未决的极值问题。此前50余年最佳构造仅略超1.1，新成果证明最优指数即为2。论文及形式化证明已公开。 🔗 阅读原文 via AI HOT · https://aihot.virxact.com/items/cms6xa31u02nlrouq0wkhylfp",
-        "imageUrl": "https://www.google.com/s2/favicons?domain=aihot.virxact.com&sz=128",
-        "priority": 3,
-        "rank": 18,
-        "signal": "行业动态信号，适合纳入周度技术雷达观察。",
-        "interpretation": {
-          "signal": "行业动态信号，适合纳入周度技术雷达观察。",
-          "impact": "Agent 正从单点工具走向跨设备、跨应用、跨通讯入口，产品设计要考虑权限、记忆和接管机制。",
-          "action": "建议记录可试用入口、权限模型和是否支持长会话，适合做 30 分钟产品体验验证。"
-        },
-        "impact": "Agent 正从单点工具走向跨设备、跨应用、跨通讯入口，产品设计要考虑权限、记忆和接管机制。",
-        "action": "建议记录可试用入口、权限模型和是否支持长会话，适合做 30 分钟产品体验验证。",
-        "tags": [
-          "Agent",
-          "模型"
-        ]
-      },
-      {
         "source": "A社 Claude",
         "sourceDetail": "Claude 官方 Blog / MCP",
         "domain": "claude.com",
@@ -4890,15 +4913,15 @@
         "summary": "Claude Blog 将 MCP 2026-07-28 能力带入 Claude 生态，信号是 Agent 工具协议正在从集成示例进入版本化、可治理的产品能力；影响是企业连接器、技能、权限和审计需要跟随协议版本管理；动作是把 MCP server 清单、权限范围、数据出境、回滚版本和工具调用日志纳入 Claude Code/Agent 试点验收。",
         "imageUrl": "https://www.google.com/s2/favicons?domain=anthropic.com&sz=128",
         "priority": 13,
-        "signal": "A 社 Agent 信号：Claude 正在把工具使用、电脑操作和企业流程连接起来，重点看权限、审计和失败接管。",
-        "impact": "Claude 生态的变化会直接影响 Agent 选型、企业采购、权限治理和安全评测，不能只按模型跑分决策。",
-        "action": "建议更新 Claude 评测清单：模型能力、Claude Code/Agent 工作流、权限隔离、审计日志和供应连续性分开验证。",
+        "signal": "Claude 将 MCP 2026-07-28 纳入产品生态，说明工具协议正在从集成示例升级为版本化能力面。",
+        "impact": "企业连接器、技能、权限和审计要跟随协议版本管理，Claude Code/Agent 试点不能只看能否连上工具。",
+        "action": "建立 MCP server 白名单，记录权限范围、数据出境、回滚版本、工具调用日志和失败接管。",
         "anthropicScore": 72,
         "rank": 19,
         "interpretation": {
-          "signal": "A 社 Agent 信号：Claude 正在把工具使用、电脑操作和企业流程连接起来，重点看权限、审计和失败接管。",
-          "impact": "Claude 生态的变化会直接影响 Agent 选型、企业采购、权限治理和安全评测，不能只按模型跑分决策。",
-          "action": "建议更新 Claude 评测清单：模型能力、Claude Code/Agent 工作流、权限隔离、审计日志和供应连续性分开验证。"
+          "signal": "Claude 将 MCP 2026-07-28 纳入产品生态，说明工具协议正在从集成示例升级为版本化能力面。",
+          "impact": "企业连接器、技能、权限和审计要跟随协议版本管理，Claude Code/Agent 试点不能只看能否连上工具。",
+          "action": "建立 MCP server 白名单，记录权限范围、数据出境、回滚版本、工具调用日志和失败接管。"
         },
         "tags": [
           "A社/Claude",
@@ -4917,15 +4940,15 @@
         "summary": "Anthropic 发布 Claude Mythos Preview 辅助密码分析研究：研究者发现可显著削弱后量子签名方案 HAWK 的攻击思路，并找到 round-reduced AES 的新攻击路径；官方强调这些进展不影响当前生产系统。信号是 frontier model 已能参与高门槛安全研究；动作是密码、基础设施和安全团队把 AI-assisted cryptanalysis 纳入候选算法评审、红队和披露流程。",
         "imageUrl": "https://www.google.com/s2/favicons?domain=anthropic.com&sz=128",
         "priority": 16,
-        "signal": "A 社模型信号：Claude 系列更新需要重点拆编码能力、长任务稳定性、上下文管理和企业成本边界。",
-        "impact": "Claude 生态的变化会直接影响 Agent 选型、企业采购、权限治理和安全评测，不能只按模型跑分决策。",
-        "action": "建议更新 Claude 评测清单：模型能力、Claude Code/Agent 工作流、权限隔离、审计日志和供应连续性分开验证。",
+        "signal": "Claude 已能辅助高门槛密码分析，AI-assisted cryptanalysis 正成为安全研究和算法评审的新信号。",
+        "impact": "模型可能加快漏洞发现，也会增加双用途能力治理压力；官方披露称相关发现不影响当前生产系统，但研究门槛已被改变。",
+        "action": "密码和基础设施团队应把 AI 辅助分析纳入候选算法评审、红队、负责任披露和专家复核流程。",
         "anthropicScore": 69,
         "rank": 20,
         "interpretation": {
-          "signal": "A 社模型信号：Claude 系列更新需要重点拆编码能力、长任务稳定性、上下文管理和企业成本边界。",
-          "impact": "Claude 生态的变化会直接影响 Agent 选型、企业采购、权限治理和安全评测，不能只按模型跑分决策。",
-          "action": "建议更新 Claude 评测清单：模型能力、Claude Code/Agent 工作流、权限隔离、审计日志和供应连续性分开验证。"
+          "signal": "Claude 已能辅助高门槛密码分析，AI-assisted cryptanalysis 正成为安全研究和算法评审的新信号。",
+          "impact": "模型可能加快漏洞发现，也会增加双用途能力治理压力；官方披露称相关发现不影响当前生产系统，但研究门槛已被改变。",
+          "action": "密码和基础设施团队应把 AI 辅助分析纳入候选算法评审、红队、负责任披露和专家复核流程。"
         },
         "tags": [
           "A社/Claude",
@@ -5243,6 +5266,11 @@
         "action": "先在只读或沙箱系统验证浏览器代理，记录每步截图、DOM/动作日志、权限边界和人工接管点。",
         "anthropicScore": 63
       }
+    ],
+    "editorialDigest": [
+      "官方 News/Research/Engineering 和 Claude Blog 已覆盖 MCP 2026-07-28、Claude Opus 5、Claude Code/Managed Agents、企业合作、开权重立场和安全研究。",
+      "本轮 A 社判断不是单看模型发布，而是把 Claude Code/Agent 能力、Computer Use 类风险、企业连接器、长任务恢复和安全研究放在同一评测清单。",
+      "若官方 RSS 不稳定，本报告优先使用 anthropic.com 与 claude.com 官方页面；AIHOT/镜像只作为补充线索并保留来源。"
     ]
   },
   "searchAdsRec": {
@@ -6386,6 +6414,29 @@
           ]
         }
       }
-    ]
+    ],
+    "editorialDigest": {
+      "businessProblem": "搜广推系统的竞争重心正在从单一模型指标转向完整漏斗：页面级体验、召回候选、精排成本、实时上下文、LLM judge、实验平台和基础设施延迟共同决定线上收益。",
+      "mechanisms": [
+        "页面/旅程序列化建模",
+        "模型化索引与 GPU retrieval",
+        "请求价值分层和自适应 ranking",
+        "LLM eval + A/B 实验漏斗",
+        "多路召回截断与精排入口治理"
+      ],
+      "metrics": [
+        "NDCG/MRR/recall@K",
+        "CTR/CVR/ROAS/GMV",
+        "P95/P99 延迟和单位请求成本",
+        "GPU/MFU/吞吐",
+        "实验命中率、guardrail、长期满意度"
+      ],
+      "nextActions": [
+        "选一条高价值召回或排序链路做 shadow/interleaving",
+        "补齐召回路贡献和精排入口归因",
+        "把 LLM judge 纳入发布前漏斗但不替代线上实验",
+        "用真实流量成本核算大模型或内核优化收益"
+      ]
+    }
   }
 }
