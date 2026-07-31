@@ -2628,6 +2628,13 @@ function curatedFrontierInterpretation(item) {
       borrowable: "可借鉴为“离线 judge -> 小样本人工校准 -> 线上实验”的漏斗，把 LLM eval 用于提高实验质量，而不是绕过实验平台。",
       boundary: "如果没有金标校准、线上实验能力或 failure taxonomy，LLM eval 会强化主观偏好，不能证明真实推荐/搜索/广告收益。",
     },
+    [normalizeTitle("GenRec: Towards LLM-Native Recommendation at Netflix")]: {
+      businessProblem: "成熟推荐系统依赖大量手工特征、候选阶段标签和分面 ranker，面对新内容、复杂上下文和长期满意度目标时，特征工程与标注数据都会成为迭代瓶颈。",
+      systemMechanism: "Netflix 将用户历史、内容元数据和请求上下文转成自然语言 prompt，先把开源 foundation LLM 适配到 Netflix 语料，再用 ranking-specific 数据、catalog-aware scoring head 和 reward-weighted objective 训练 GenRec；线上用 prefill-only 模式在 LLM serving stack 里输出 catalog ranking。",
+      metricsAndExperiment: "官方披露 GenRec 在大规模 A/B 中相对成熟生产 ranker 同时改善短期与长期在线指标，并只使用少量 Phase-2 标签和输入信号；落地时还要看 ranking latency、GPU 成本、catalog 覆盖、冷启动、重复曝光、长期 retention 和 guardrail。",
+      borrowable: "可借鉴“特征工程 -> 上下文工程”的渐进路线：先把用户/物品/场景 verbalization 做成离线排序候选，再用小流量影子服务验证 LLM ranker 是否补足稀疏标签和长上下文。",
+      boundary: "如果目录规模、上下文质量、LLM serving 成本或长期价值标签不足，LLM ranker 会比传统 ranker 更难解释和回滚；不应直接替换已有精排主链路。",
+    },
     [normalizeTitle("Using LLMs to amplify human labeling and improve Dash search relevance")]: {
       businessProblem: "企业搜索 relevance 依赖高质量标注，但长尾查询、私有文档和权限上下文让纯人工标注覆盖慢且成本高。",
       systemMechanism: "Dropbox 用少量人工金标校准 LLM 辅助标注，再把扩展标签用于 Dash 搜索排序模型和 relevance 评测。",
@@ -2853,6 +2860,16 @@ function seedIndustryFrontierItems() {
       sourceType: "industry",
       frontierScore: 50,
       summary: "Dropbox Dash 用人工标签校准 LLM judge，再通过 DSPy 优化企业搜索/Agent chat prompt；报告 incomplete answers 降 26%、missed key aspects 降 13%、token 用量降 5.4%。",
+    },
+    {
+      title: "GenRec: Towards LLM-Native Recommendation at Netflix",
+      url: "https://netflixtechblog.com/genrec-towards-llm-native-recommendation-at-netflix-f20be6f643e3",
+      publishedAt: "2026-07-30T16:00:00Z",
+      source: "Netflix TechBlog",
+      domain: "netflixtechblog.com",
+      sourceType: "industry",
+      frontierScore: 63,
+      summary: "Netflix GenRec 将推荐排序改造成 LLM-native ranker：把用户历史、内容元数据和请求上下文 verbalize 成 prompt，基于 Netflix 语料 post-train foundation LLM，再用 catalog-aware scoring head、长期会员价值 reward 和 prefill-only serving 生成全目录 ranking。",
     },
     {
       title: "GenPage: Towards End-to-End Generative Homepage Construction at Netflix",
