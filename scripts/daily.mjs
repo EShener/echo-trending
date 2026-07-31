@@ -2411,7 +2411,20 @@ async function buildFrontierSection(maxItems) {
 }
 
 function ensureFrontierPriorityCoverage(selected, industryItems, maxItems) {
-  const prioritySources = ["Meituan Tech", "Tencent Cloud Developer", "Alibaba Cloud Developer", "Salesforce Engineering"];
+  const prioritySources = [
+    "Google Research",
+    "Meta Engineering",
+    "Amazon Science",
+    "Netflix TechBlog",
+    "Pinterest Engineering",
+    "Airbnb Engineering",
+    "Spotify Engineering",
+    "Salesforce Engineering",
+    "Dropbox Tech",
+    "Meituan Tech",
+    "Tencent Cloud Developer",
+    "Alibaba Cloud Developer",
+  ];
   const covered = new Set(selected.map((item) => item.source).filter(Boolean));
   const next = [...selected];
   for (const source of prioritySources) {
@@ -4923,7 +4936,7 @@ function buildExecutiveSummary(items, frontier, aiNews) {
     .filter(Boolean);
   const repoSignalText = uniqueList(repoSignals).join("、") || "当前项目的架构机制、落地路径和生产风险";
   const frontierItems = frontier.items || [];
-  const frontierSources = uniqueList(frontierItems.map((item) => item.source).filter(Boolean)).slice(0, 12);
+  const frontierSources = prioritizeFrontierSummarySources(frontierItems.map((item) => item.source).filter(Boolean)).slice(0, 12);
   const frontierTags = uniqueList(frontierItems.flatMap((item) => item.tags || [])).slice(0, 5);
   const anthropicItems = (aiNews.anthropicCoverage || aiNews.items || []).filter((item) => isAnthropicItem(item));
   const aiHotCount = (aiNews.items || []).filter((item) => item.source?.includes("AIHOT")).length;
@@ -5100,6 +5113,28 @@ async function updateReportPayloadManifest(reports) {
   ].join("\n");
   const nextHtml = html.replace(/        const reportPayloads = \{[\s\S]*?        \};/, manifest);
   if (nextHtml !== html) await fs.writeFile(publicIndexHtmlPath, nextHtml);
+}
+
+function prioritizeFrontierSummarySources(sources) {
+  const priority = [
+    "Google Research",
+    "Meta Engineering",
+    "Amazon Science",
+    "Netflix TechBlog",
+    "Pinterest Engineering",
+    "Airbnb Engineering",
+    "Spotify Engineering",
+    "Salesforce Engineering",
+    "Dropbox Tech",
+    "Meituan Tech",
+    "Tencent Cloud Developer",
+    "Alibaba Cloud Developer",
+  ];
+  const uniqueSources = uniqueList(sources);
+  return [
+    ...priority.filter((source) => uniqueSources.includes(source)),
+    ...uniqueSources.filter((source) => !priority.includes(source)),
+  ];
 }
 
 function makeSampleReport(date) {
