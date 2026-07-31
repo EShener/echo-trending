@@ -3274,7 +3274,13 @@ function isAnthropicItem(item) {
 function isAnthropicOfficialItem(item = {}) {
   const source = `${item.source || ""} ${item.sourceDetail || ""}`.toLowerCase();
   const url = `${item.domain || ""} ${item.url || ""}`.toLowerCase();
-  return source.includes("anthropic") || source.includes("a社") || url.includes("anthropic.com") || url.includes("claude.com");
+  return (
+    url.includes("anthropic.com") ||
+    url.includes("claude.com") ||
+    source.includes("a社") ||
+    source.includes("claude 官方") ||
+    source.includes("anthropic 官方")
+  );
 }
 
 function buildAnthropicSection(aiNews = {}) {
