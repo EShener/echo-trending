@@ -1,6 +1,6 @@
 {
   "date": "2026-08-03",
-  "generatedAt": "2026-08-03T11:15:51.753Z",
+  "generatedAt": "2026-08-03T14:11:15.641Z",
   "source": {
     "provider": "GitHub Trending daily + AIHOT + official AI feeds + Anthropic official pages + big-tech engineering blogs + Codex manual deep rewrite",
     "query": "pushed:>=2026-07-27 stars:>100 archived:false",
@@ -8,8 +8,8 @@
     "limit": 12,
     "language": "all",
     "editorialReview": {
-      "method": "script refresh + Codex manual deep rewrite for all GitHub repo items",
-      "reviewedAt": "2026-08-03T11:15:51.753Z",
+      "method": "script refresh + Codex multi-source editorial review",
+      "reviewedAt": "2026-08-03T14:11:15.641Z",
       "reportDate": "2026-08-03",
       "focus": [
         "GitHub Trending daily metadata, repo README evidence and adoption risk review",
@@ -18,10 +18,8 @@
         "AIHOT and official AI sources rewritten into signal-impact-action recommendations"
       ],
       "sourceNotes": [
-        "本轮 12 个 GitHub 热门项目均已做项目特定人工深度解读，覆盖架构机制、适用团队、落地路径、生产风险、决策问题和观察信号。",
-        "本轮重新生成 GitHub Trending 后，对 pdf-inspector、DeepSeek-Reasonix、system-design-primer、ds4、Kronos、free-claude-code 做人工深度覆盖，纠正通用分类误判。",
-        "Anthropic official coverage includes Claude 官方 Blog / MCP、Anthropic 官方 Research / Frontier Red Team、Anthropic 官方 News / Enterprise、Anthropic 官方 News / Policy、Anthropic 官方 Research / Interpretability、Anthropic 官方 News / Model、Anthropic 官方 News / Computer Use、Claude 官方 Blog / Enterprise AI、Claude 官方 API Release Notes / Managed Agents、Anthropic 官方 News / Governance、Anthropic 官方 Engineering / Agent Containment、Anthropic 官方 Research / Societal Impacts、Claude 官方 Blog / Claude Code、Anthropic 官方 Research / Alignment、Anthropic 官方 News / Claude Apps、Claude 官方 Blog / Enterprise with Claude Tag, Economic Index, Claude Code practice, model updates, partnerships and safety research.",
-        "Anthropic official pages checked this run: Newsroom latest includes Jul 27 open-weights position and Cognizant partnership, Jul 24 Claude Opus 5; Research latest includes Jul 24 drone-control frontier-red-team work; Engineering highlights Claude containment and Claude Code safety posts.",
+        "Anthropic official coverage includes Anthropic 官方 News / Frontier Red Team、Claude 官方 Blog / MCP、Anthropic 官方 Research / Frontier Red Team、Anthropic 官方 News / Enterprise、Anthropic 官方 Research / Interpretability、Anthropic 官方 News / Model、Anthropic 官方 News / Computer Use、Claude 官方 Blog / Enterprise AI、Claude 官方 API Release Notes / Managed Agents、Anthropic 官方 News / Governance、Anthropic 官方 Engineering / Agent Containment、Anthropic 官方 Research / Societal Impacts、Claude 官方 Blog / Claude Code、Anthropic 官方 Research / Alignment、Anthropic 官方 News / Claude Apps、Claude 官方 Blog / Enterprise with Claude Tag, Economic Index, Claude Code practice, model updates, partnerships and safety research.",
+        "Anthropic official pages checked this run: Newsroom latest includes Jul 30 cybersecurity evaluation incidents, Jul 27 open-weights position and Cognizant partnership, Jul 24 Claude Opus 5; Research latest includes Jul 28 cryptographic weaknesses and Jul 24 drone-control frontier-red-team work; Engineering highlights Claude containment and Claude Code safety posts.",
         "Claude Blog checked for Jul 28 MCP 2026-07-28 support, Jul 24 Claude 5 context engineering/model guidance, Jul 22 verification loops with skills, Jul 21 Datadog Claude Code universal machine tool, and enterprise agent case studies.",
         "Claude Platform release notes checked for Managed Agents lifecycle hooks, effort configuration, initial events, memory/environment webhooks and session thread deltas; Computer Use coverage is tracked through recent Claude model/browser-agent updates.",
         "Search/ads/recommendation coverage includes Netflix TechBlog、Meta Engineering、Airbnb Engineering、Pinterest Engineering、Dropbox Tech、Google Research、Meituan Tech、Salesforce Engineering、Tencent Cloud Developer、Spotify Engineering、Amazon Science and is interpreted through business problem, system mechanism, metrics/experiments, borrowable patterns and unsuitable boundaries.",
@@ -32,6 +30,7 @@
         "https://www.anthropic.com/news",
         "https://www.anthropic.com/research",
         "https://www.anthropic.com/engineering",
+        "https://www.anthropic.com/news/investigating-incidents-cybersecurity-evals",
         "https://www.anthropic.com/news/position-open-weights-models",
         "https://www.anthropic.com/news/cognizant-anthropic",
         "https://www.anthropic.com/news/claude-opus-5",
@@ -88,11 +87,11 @@
   "summary": {
     "headline": "今日雷达主线：GitHub 热门继续围绕 Agent 工作流、个人云和文档/设计上下文扩散；搜广推从单模型优化转向召回、排序、serving 成本和实验血缘协同；A 社同时推进安全研究、Managed Agents/MCP 和 Claude Code 工程化。",
     "bullets": [
-      "GitHub 本轮由 lyogavin/airllm、zhaoxuya520/reverse-skill、firecrawl/pdf-inspector 领跑；解读重点覆盖低显存推理、授权安全 Skill、PDF 文档路由、DeepSeek 终端 Agent、团队级 Agent Memory、AI/GenAI 课程、系统设计知识库、专用推理引擎、金融序列模型和多平台信息采集。",
-      "12 个开源项目均已按“架构机制 -> 适用团队 -> 落地路径 -> 生产风险 -> 决策问题 -> 观察信号”人工重写；本轮更适合先做小样本旁路验证，重点看延迟/成本、权限审计、数据边界、失败样本和长期 owner。",
+      "GitHub 本轮由 lyogavin/airllm、zhaoxuya520/reverse-skill、firecrawl/pdf-inspector 领跑；解读重点落在 低显存大模型推理 / 本地 LLM 实验、授权安全研究 Skill / AI 工具路由、PDF 文档路由 / Rust + WASM 解析基础设施、DeepSeek 原生终端 Coding Agent / Prefix-cache 优化工作流，采用判断不按 star 排序，而按架构机制、适用团队、落地路径、生产风险、决策问题和观察信号拆解。",
+      "开源项目解读已按“架构机制 -> 适用团队 -> 落地路径 -> 生产风险 -> 决策问题 -> 观察信号”展开；本轮更适合旁路 spike 的入口是：进入观察/试点池：用固定 prompt 集和目标模型跑最小基准，记录首 token 延迟、tokens/s、峰值内存、质量回归和失败样本，再决定是否转向 llama.cpp、vLLM、量化或托管推理。",
       "搜广推收录 22 条工程/研究信号，覆盖 Google Research、Meta Engineering、Amazon Science、Netflix TechBlog、Pinterest Engineering、Airbnb Engineering、Spotify Engineering、Salesforce Engineering、Dropbox Tech、Meituan Tech、Tencent Cloud Developer；重点从「GenRec: Towards LLM-Native Recommendation at Netflix」延伸到广告排序、实时上下文、企业搜索 relevance judge、模型生命周期图和工业搜索属性推荐。",
-      "A 社覆盖 18 条官方 News/Research/Engineering 动态，最新重点是「Bringing MCP 2026-07-28 to Claude」；安全研究主线继续观察「An off switch for dual use knowledge in AI models」，Claude Code 相关信号包括 Bringing MCP 2026-07-28 to Claude、Claude Managed Agents add effort, lifecycle webhooks and session deltas、Building verification loops in Claude Code with skills，评估动作应拆成模型能力、权限隔离、长任务恢复、团队协作记忆、预算上限和审计边界。",
-      "AIHOT/官方 AI 新闻共 20 条，其中 AIHOT 2 条；今日先看「Qwen3.8-Max 发布：开源最强编码与协作模型，2.4T 参数」，所有新闻统一写成“信号 -> 影响 -> 动作”，动作聚焦评测回放、预算治理、工具白名单、权限审计和真实工作流验证。"
+      "A 社覆盖 18 条官方 News/Research/Engineering 动态，最新重点是「Investigating three real-world incidents in our cybersecurity evaluations」；安全研究主线继续观察「An off switch for dual use knowledge in AI models」，Claude Code 相关信号包括 Investigating three real-world incidents in our cybersecurity evaluations、Bringing MCP 2026-07-28 to Claude、Claude Managed Agents add effort, lifecycle webhooks and session deltas，评估动作应拆成模型能力、权限隔离、长任务恢复、团队协作记忆、预算上限和审计边界。",
+      "AIHOT/官方 AI 新闻共 20 条，其中 AIHOT 3 条；今日先看「Cloudflare 推出 @cloudflare/computer 预览版：为智能体提供虚拟文件系统与多执行环境」，所有新闻统一写成“信号 -> 影响 -> 动作”，动作聚焦评测回放、预算治理、工具白名单、权限审计和真实工作流验证。"
     ]
   },
   "items": [
@@ -102,20 +101,38 @@
         "fullName": "lyogavin/airllm",
         "name": "airllm",
         "owner": "lyogavin",
-        "avatarUrl": "https://github.com/lyogavin.png",
+        "avatarUrl": "https://avatars.githubusercontent.com/u/1113905?v=4",
         "visualUrl": "https://opengraph.githubassets.com/20260803/lyogavin/airllm",
         "url": "https://github.com/lyogavin/airllm",
         "description": "AirLLM 70B inference with single 4GB GPU",
-        "stars": 26217,
-        "starsToday": 819,
-        "forks": 2914,
-        "openIssues": 0,
+        "stars": 26443,
+        "starsToday": 1081,
+        "forks": 2937,
+        "openIssues": 121,
         "language": "Jupyter Notebook",
-        "topics": [],
-        "license": "",
-        "pushedAt": "2026-08-03T11:12:52.342Z",
-        "createdAt": "",
-        "languages": {}
+        "topics": [
+          "chinese-llm",
+          "chinese-nlp",
+          "finetune",
+          "generative-ai",
+          "instruct-gpt",
+          "instruction-set",
+          "llama",
+          "llm",
+          "lora",
+          "open-models",
+          "open-source",
+          "open-source-models",
+          "qlora"
+        ],
+        "license": "Apache-2.0",
+        "pushedAt": "2026-07-29T01:08:32Z",
+        "createdAt": "2023-06-12T16:28:41Z",
+        "languages": {
+          "Jupyter Notebook": 6583910,
+          "Python": 291957,
+          "Shell": 6185
+        }
       },
       "analysis": {
         "method": "manual-deep-update-2026-08-03-codex",
@@ -297,11 +314,11 @@
         },
         "maturity": {
           "community": 97,
-          "maintenance": 100,
-          "production": 83,
+          "maintenance": 82,
+          "production": 88,
           "complexity": 55
         },
-        "score": 100
+        "score": 90
       },
       "evidence": {
         "readmeExcerpt": "Quickstart Configurations MacOS Example notebooks FAQ AirLLM dramatically reduces inference memory usage, letting 70B large language models run on a single 4GB GPU card — without quantization, distillation, or pruning. You can even run 405B Llama 3.1 on 8GB , DeepSeek V3 (671B) on 12GB , and Kimi K3 (2.8T) — the largest open source model released to date — on under 4GB , because sparse MoE models stream one expert at a time rather than a whole layer. <a href=\"https://github.com/lyogavin/airllm/stargazers\" </a AI Agents Recommendation: Best AI Game Sprite Generator Best AI Facial Expression Editor Bloome — build & run AI agent teams in the cloud, zero setup Updates [2026/07] Kimi K3 (2.8T) support: the largest open source model runs on a single card in 3.72GB of VRAM, measured end to end on one RTX 6000 Ada. Per expert streaming loads only the experts a token actually routes to. K3 brings...",
@@ -318,16 +335,23 @@
         "visualUrl": "https://opengraph.githubassets.com/20260803/zhaoxuya520/reverse-skill",
         "url": "https://github.com/zhaoxuya520/reverse-skill",
         "description": "Reverse Engineering / Authorized Penetration Testing / Security Research Skill Router Pack AI-powered routing + On-demand toolchain bootstrapping + Self-evolving knowledge base Supports Claude Code, Kiro, Cursor, Cline, and other AI coding clients 逆向/渗透/安全技能路由包 - AI 自动路由 + 按需自举工具链 + 自动进化经验库 | 支持 Claude Code / Kiro / Cursor / Cline 等代码 AI 客户端",
-        "stars": 14815,
-        "starsToday": 1141,
-        "forks": 2182,
+        "stars": 15067,
+        "starsToday": 2442,
+        "forks": 2220,
         "openIssues": 0,
         "language": "PowerShell",
         "topics": [],
-        "license": "",
-        "pushedAt": "2026-08-03T11:12:52.358Z",
-        "createdAt": "",
-        "languages": {}
+        "license": "MIT",
+        "pushedAt": "2026-08-03T13:57:57Z",
+        "createdAt": "2026-05-13T14:37:57Z",
+        "languages": {
+          "PowerShell": 203991,
+          "Shell": 115757,
+          "Java": 113739,
+          "JavaScript": 18474,
+          "Python": 7445,
+          "Batchfile": 2903
+        }
       },
       "analysis": {
         "method": "manual-deep-update-2026-08-03-codex",
@@ -510,7 +534,7 @@
         "maturity": {
           "community": 92,
           "maintenance": 100,
-          "production": 81,
+          "production": 93,
           "complexity": 55
         },
         "score": 100
@@ -526,20 +550,36 @@
         "fullName": "firecrawl/pdf-inspector",
         "name": "pdf-inspector",
         "owner": "firecrawl",
-        "avatarUrl": "https://github.com/firecrawl.png",
+        "avatarUrl": "https://avatars.githubusercontent.com/u/135057108?v=4",
         "visualUrl": "https://opengraph.githubassets.com/20260803/firecrawl/pdf-inspector",
         "url": "https://github.com/firecrawl/pdf-inspector",
         "description": "Fast Rust library for PDF inspection, classification, and text extraction. Intelligently detects scanned vs text-based PDFs to enable smart routing decisions.",
-        "stars": 6633,
+        "stars": 6975,
         "starsToday": 1769,
-        "forks": 466,
-        "openIssues": 0,
+        "forks": 494,
+        "openIssues": 57,
         "language": "Rust",
-        "topics": [],
-        "license": "",
-        "pushedAt": "2026-08-03T11:12:52.359Z",
-        "createdAt": "",
-        "languages": {}
+        "topics": [
+          "markdown",
+          "nodejs",
+          "ocr-routing",
+          "pdf",
+          "pdf-classification",
+          "pdf-extraction",
+          "pdf-parser",
+          "python",
+          "rust",
+          "text-extraction"
+        ],
+        "license": "MIT",
+        "pushedAt": "2026-08-02T09:31:18Z",
+        "createdAt": "2026-02-06T19:44:47Z",
+        "languages": {
+          "Rust": 2631890,
+          "Python": 54753,
+          "HTML": 53827,
+          "JavaScript": 9544
+        }
       },
       "analysis": {
         "method": "manual-deep-update-2026-08-03-codex",
@@ -721,12 +761,12 @@
           }
         },
         "maturity": {
-          "community": 84,
-          "maintenance": 100,
-          "production": 77,
+          "community": 85,
+          "maintenance": 97,
+          "production": 89,
           "complexity": 55
         },
-        "score": 100
+        "score": 99
       },
       "evidence": {
         "readmeExcerpt": "pdf inspector Fast Rust library for PDF classification and text extraction. Detects whether a PDF is text based or scanned, extracts text with position awareness, and converts to clean Markdown — all without OCR. Includes bindings for Python, Node.js, and browser WebAssembly. Built by Firecrawl to handle text based PDFs locally in under 200ms, skipping expensive OCR services for the 54% of PDFs that don't need them. Features Smart classification — Detect TextBased, Scanned, ImageBased, or Mixed PDFs in 10 50ms by sampling content streams. Returns a confidence score (0.0 1.0) and per page OCR routing. Text extraction — Position aware extraction with font info, X/Y coordinates, and automatic multi column reading order. Markdown conversion — Headings (H1 H4 via font size ratios), bullet/numbered/letter lists, code blocks (monospace font detection), tables (rectangle based and heuristic), bo...",
@@ -739,20 +779,50 @@
         "fullName": "esengine/DeepSeek-Reasonix",
         "name": "DeepSeek-Reasonix",
         "owner": "esengine",
-        "avatarUrl": "https://github.com/esengine.png",
+        "avatarUrl": "https://avatars.githubusercontent.com/u/18465053?v=4",
         "visualUrl": "https://opengraph.githubassets.com/20260803/esengine/DeepSeek-Reasonix",
         "url": "https://github.com/esengine/DeepSeek-Reasonix",
         "description": "DeepSeek-native AI coding agent for your terminal. Engineered around prefix-cache stability — leave it running.",
-        "stars": 29555,
-        "starsToday": 333,
-        "forks": 1901,
-        "openIssues": 0,
+        "stars": 29656,
+        "starsToday": 877,
+        "forks": 1910,
+        "openIssues": 1342,
         "language": "Go",
-        "topics": [],
-        "license": "",
-        "pushedAt": "2026-08-03T11:12:52.359Z",
-        "createdAt": "",
-        "languages": {}
+        "topics": [
+          "agent",
+          "agent-framework",
+          "ai-agent",
+          "ai-coding",
+          "cli",
+          "coding-agent",
+          "deepseek",
+          "developer-tools",
+          "ink",
+          "llm",
+          "prompt-caching",
+          "r1",
+          "terminal",
+          "tool-use",
+          "tui",
+          "typescript"
+        ],
+        "license": "MIT",
+        "pushedAt": "2026-08-03T12:11:22Z",
+        "createdAt": "2026-04-21T08:27:02Z",
+        "languages": {
+          "Go": 16443283,
+          "TypeScript": 5387769,
+          "CSS": 1072063,
+          "JavaScript": 223055,
+          "Shell": 193917,
+          "Astro": 174124,
+          "HTML": 116665,
+          "Python": 94280,
+          "PowerShell": 21303,
+          "NSIS": 16804,
+          "Objective-C": 7456,
+          "Makefile": 1200
+        }
       },
       "analysis": {
         "method": "manual-deep-update-2026-08-03-codex",
@@ -936,13 +1006,13 @@
         "maturity": {
           "community": 98,
           "maintenance": 100,
-          "production": 83,
-          "complexity": 55
+          "production": 85,
+          "complexity": 67
         },
-        "score": 100
+        "score": 92
       },
       "evidence": {
-        "readmeExcerpt": "<p align=\"center\" <img src=\"docs/logo.svg\" alt=\"Reasonix\" width=\"640\"/ </p [!WARNING] This is the legacy TypeScript line (Reasonix 0.x), in maintenance mode. Active development moved to the Go rewrite — see the main v2 branch (the new default) and the migration guide. Only bug fixes land here. <p align=\"center\" <strong English</strong &nbsp;·&nbsp; <a href=\"./README.zh CN.md\" 简体中文</a &nbsp;·&nbsp; <a href=\"./README.ja JP.md\" 日本語</a &nbsp;·&nbsp; <a href=\"https://esengine.github.io/DeepSeek Reasonix/\" Website</a &nbsp;·&nbsp; <a href=\"https://esengine.github.io/DeepSeek Reasonix/configuration.html\" Guide</a &nbsp;·&nbsp; <a href=\"./docs/ARCHITECTURE.md\" Architecture</a &nbsp;·&nbsp; <a href=\"./benchmarks/\" Benchmarks</a &nbsp;·&nbsp; <strong <a href=\"https://discord.gg/XF78rEME2D\" Discord</a </strong </p <p align=\"center\" <a href=\"https://www.npmjs.com/package/reasonix\" <img src=\"https://...",
+        "readmeExcerpt": "<p align=\"center\" <img src=\"docs/logo.svg\" alt=\"Reasonix\" width=\"640\"/ </p <p align=\"center\" <strong English</strong &nbsp;·&nbsp; <a href=\"./README.zh CN.md\" 简体中文</a &nbsp;·&nbsp; <a href=\"./docs/GUIDE.md\" Guide</a &nbsp;·&nbsp; <a href=\"./docs/ACP.md\" ACP</a &nbsp;·&nbsp; <a href=\"./docs/SPEC.md\" Spec</a &nbsp;·&nbsp; <a href=\"https://esengine.github.io/DeepSeek Reasonix/\" Website</a &nbsp;·&nbsp; <strong <a href=\"https://discord.gg/XF78rEME2D\" Discord</a </strong </p <p align=\"center\" <a href=\"https://www.npmjs.com/package/reasonix\" <img src=\"https://img.shields.io/npm/v/reasonix.svg?style=flat square&color=cb3837&labelColor=161b22&logo=npm&logoColor=white\" alt=\"npm version\"/ </a <a href=\"https://github.com/esengine/DeepSeek Reasonix/actions/workflows/ci.yml\" <img src=\"https://img.shields.io/github/actions/workflow/status/esengine/DeepSeek Reasonix/ci.yml?style=flat square&label=ci&la...",
         "githubUrl": "https://github.com/esengine/DeepSeek-Reasonix"
       }
     },
@@ -952,20 +1022,38 @@
         "fullName": "TencentCloud/TencentDB-Agent-Memory",
         "name": "TencentDB-Agent-Memory",
         "owner": "TencentCloud",
-        "avatarUrl": "https://github.com/TencentCloud.png",
+        "avatarUrl": "https://avatars.githubusercontent.com/u/20101770?v=4",
         "visualUrl": "https://opengraph.githubassets.com/20260803/TencentCloud/TencentDB-Agent-Memory",
         "url": "https://github.com/TencentCloud/TencentDB-Agent-Memory",
         "description": "TencentDB Agent Memory is a team-level memory hub for AI Agents — turning conversations, docs, and code into four reusable memory assets (Chat Memory, Skill, LLM-Wiki, Code-Graph) that are governed, shared, and equipped across agents and frameworks.",
-        "stars": 11626,
-        "starsToday": 602,
-        "forks": 1101,
-        "openIssues": 0,
+        "stars": 11729,
+        "starsToday": 1091,
+        "forks": 1116,
+        "openIssues": 462,
         "language": "TypeScript",
-        "topics": [],
-        "license": "",
-        "pushedAt": "2026-08-03T11:12:52.359Z",
-        "createdAt": "",
-        "languages": {}
+        "topics": [
+          "agent",
+          "ai-agent",
+          "embedding",
+          "llm",
+          "local-first",
+          "long-term-memory",
+          "memory",
+          "openclaw-plugin",
+          "vector-search"
+        ],
+        "license": "NOASSERTION",
+        "pushedAt": "2026-08-03T12:49:18Z",
+        "createdAt": "2026-04-07T06:34:26Z",
+        "languages": {
+          "TypeScript": 6172277,
+          "Python": 238073,
+          "Shell": 146171,
+          "CSS": 121910,
+          "JavaScript": 40718,
+          "Dockerfile": 20530,
+          "HTML": 358
+        }
       },
       "analysis": {
         "method": "manual-deep-update-2026-08-03-codex",
@@ -1146,15 +1234,15 @@
           }
         },
         "maturity": {
-          "community": 89,
+          "community": 90,
           "maintenance": 100,
-          "production": 79,
-          "complexity": 55
+          "production": 92,
+          "complexity": 67
         },
-        "score": 100
+        "score": 96
       },
       "evidence": {
-        "readmeExcerpt": "<div align=\"center\" <img src=\"./assets/images/logo.png\" alt=\"TencentDB Agent Memory\" width=\"880\" / Agents remember,Humans innovate. <a href=\"https://trendshift.io/repositories/29310?utm source=repository badge&amp;utm medium=badge&amp;utm campaign=badge repository 29310\" target=\" blank\" rel=\"noopener noreferrer\" <img src=\"https://trendshift.io/api/badge/repositories/29310\" alt=\"TencentCloud%2FTencentDB Agent Memory Trendshift\" width=\"250\" height=\"55\"/ </a Highlights · Overview · Core Technology · Features · Quick Start <div align=\"center\" English · 简体中文 </div </div ✨ Highlights TencentDB Agent Memory = symbolic short term memory + layered long term memory. Symbolic short term memory offloads heavy tool logs and condenses them into compact Mermaid symbols, cutting token usage and improving task success. Layered long term memory distills fragmented conversations into structured personas an...",
+        "readmeExcerpt": "<div align=\"center\" <img src=\"./assets/images/logo.png\" alt=\"TencentDB Agent Memory\" width=\"880\" / Agents remember. Humans innovate. <a href=\"https://trendshift.io/repositories/29310?utm source=repository badge&amp;utm medium=badge&amp;utm campaign=badge repository 29310\" target=\" blank\" rel=\"noopener noreferrer\" <img src=\"https://trendshift.io/api/badge/repositories/29310\" alt=\"TencentCloud%2FTencentDB Agent Memory Trendshift\" width=\"250\" height=\"55\"/ </a Installation · What is it? · Team Play · Technical Implementation · Benchmark English · 简体中文 </div Latest: Team Memory Beta is evolving quickly — install it and start exploring in minutes. <td <video src=\"https://github.com/user attachments/assets/efb1a808 1f86 4cfe 802c f7453f7ca938\" width=\"100%\" controls autoplay loop muted playsinline </video </td Installation Start all three services in one go ( memory core + memory hub + proxy ): ...",
         "githubUrl": "https://github.com/TencentCloud/TencentDB-Agent-Memory"
       }
     },
@@ -1164,20 +1252,39 @@
         "fullName": "microsoft/AI-For-Beginners",
         "name": "AI-For-Beginners",
         "owner": "microsoft",
-        "avatarUrl": "https://github.com/microsoft.png",
+        "avatarUrl": "https://avatars.githubusercontent.com/u/6154722?v=4",
         "visualUrl": "https://opengraph.githubassets.com/20260803/microsoft/AI-For-Beginners",
         "url": "https://github.com/microsoft/AI-For-Beginners",
         "description": "12 Weeks, 24 Lessons, AI for All!",
-        "stars": 60235,
-        "starsToday": 2629,
-        "forks": 11795,
-        "openIssues": 0,
+        "stars": 60380,
+        "starsToday": 1902,
+        "forks": 11818,
+        "openIssues": 17,
         "language": "Jupyter Notebook",
-        "topics": [],
-        "license": "",
-        "pushedAt": "2026-08-03T11:12:52.363Z",
-        "createdAt": "",
-        "languages": {}
+        "topics": [
+          "ai",
+          "artificial-intelligence",
+          "cnn",
+          "computer-vision",
+          "deep-learning",
+          "gan",
+          "machine-learning",
+          "microsoft-for-beginners",
+          "nlp",
+          "rnn"
+        ],
+        "license": "MIT",
+        "pushedAt": "2026-07-21T11:11:48Z",
+        "createdAt": "2021-03-03T16:27:36Z",
+        "languages": {
+          "Jupyter Notebook": 1473375705,
+          "Python": 36875,
+          "HTML": 13907,
+          "Vue": 5103,
+          "JavaScript": 2433,
+          "Dockerfile": 1192,
+          "Shell": 921
+        }
       },
       "analysis": {
         "method": "manual-deep-update-2026-08-03-codex",
@@ -1359,11 +1466,11 @@
         },
         "maturity": {
           "community": 100,
-          "maintenance": 100,
-          "production": 84,
+          "maintenance": 61,
+          "production": 81,
           "complexity": 55
         },
-        "score": 100
+        "score": 87
       },
       "evidence": {
         "readmeExcerpt": "Artificial Intelligence for Beginners A Curriculum : : AI For Beginners Sketchnote by @girlie mac Explore the world of Artificial Intelligence (AI) with our 12 week, 24 lesson curriculum! It includes practical lessons, quizzes, and labs. The curriculum is beginner friendly and covers tools like TensorFlow and PyTorch, as well as ethics in AI 🌐 Multi Language Support Supported via GitHub Action (Automated & Always Up to Date) <! CO OP TRANSLATOR LANGUAGES TABLE START Arabic Bengali Bulgarian Burmese (Myanmar) Chinese (Simplified) Chinese (Traditional, Hong Kong) Chinese (Traditional, Macau) Chinese (Traditional, Taiwan) Croatian Czech Danish Dutch Estonian Finnish French German Greek Hebrew Hindi Hungarian Indonesian Italian Japanese Kannada Khmer Korean Lithuanian Malay Malayalam Marathi Nepali Nigerian Pidgin Norwegian Persian (Farsi) Polish Portuguese (Brazil) Portuguese (Portugal) Pu...",
@@ -1376,20 +1483,44 @@
         "fullName": "microsoft/generative-ai-for-beginners",
         "name": "generative-ai-for-beginners",
         "owner": "microsoft",
-        "avatarUrl": "https://github.com/microsoft.png",
+        "avatarUrl": "https://avatars.githubusercontent.com/u/6154722?v=4",
         "visualUrl": "https://opengraph.githubassets.com/20260803/microsoft/generative-ai-for-beginners",
         "url": "https://github.com/microsoft/generative-ai-for-beginners",
-        "description": "21 Lessons, Get Started Building with Generative AI",
-        "stars": 115194,
-        "starsToday": 588,
-        "forks": 61379,
-        "openIssues": 0,
+        "description": "21 Lessons, Get Started Building with Generative AI ",
+        "stars": 115302,
+        "starsToday": 776,
+        "forks": 61398,
+        "openIssues": 13,
         "language": "Jupyter Notebook",
-        "topics": [],
-        "license": "",
-        "pushedAt": "2026-08-03T11:12:52.360Z",
-        "createdAt": "",
-        "languages": {}
+        "topics": [
+          "ai",
+          "azure",
+          "chatgpt",
+          "dall-e",
+          "generative-ai",
+          "generativeai",
+          "gpt",
+          "language-model",
+          "llms",
+          "microsoft-for-beginners",
+          "openai",
+          "prompt-engineering",
+          "semantic-search",
+          "transformers"
+        ],
+        "license": "MIT",
+        "pushedAt": "2026-08-01T08:23:49Z",
+        "createdAt": "2023-06-19T16:28:59Z",
+        "languages": {
+          "Jupyter Notebook": 34359184,
+          "Python": 76933,
+          "JavaScript": 20898,
+          "TypeScript": 12018,
+          "Shell": 2138,
+          "PowerShell": 1721,
+          "Batchfile": 1573,
+          "HTML": 1166
+        }
       },
       "analysis": {
         "method": "manual-deep-update-2026-08-03-codex",
@@ -1571,11 +1702,11 @@
         },
         "maturity": {
           "community": 100,
-          "maintenance": 100,
-          "production": 84,
+          "maintenance": 94,
+          "production": 94,
           "complexity": 55
         },
-        "score": 100
+        "score": 98
       },
       "evidence": {
         "readmeExcerpt": "21 Lessons teaching everything you need to know to start building Generative AI applications 🌐 Multi Language Support Supported via GitHub Action (Automated & Always Up to Date) <! CO OP TRANSLATOR LANGUAGES TABLE START Arabic Bengali Bulgarian Burmese (Myanmar) Chinese (Simplified) Chinese (Traditional, Hong Kong) Chinese (Traditional, Macau) Chinese (Traditional, Taiwan) Croatian Czech Danish Dutch Estonian Finnish French German Greek Hebrew Hindi Hungarian Indonesian Italian Japanese Kannada Khmer Korean Lithuanian Malay Malayalam Marathi Nepali Nigerian Pidgin Norwegian Persian (Farsi) Polish Portuguese (Brazil) Portuguese (Portugal) Punjabi (Gurmukhi) Romanian Russian Serbian (Cyrillic) Slovak Slovenian Spanish Swahili Swedish Tagalog (Filipino) Tamil Telugu Thai Turkish Ukrainian Urdu Vietnamese Prefer to Clone Locally? This repository includes 50+ language translations which sign...",
@@ -1588,20 +1719,37 @@
         "fullName": "donnemartin/system-design-primer",
         "name": "system-design-primer",
         "owner": "donnemartin",
-        "avatarUrl": "https://github.com/donnemartin.png",
+        "avatarUrl": "https://avatars.githubusercontent.com/u/5458997?v=4",
         "visualUrl": "https://opengraph.githubassets.com/20260803/donnemartin/system-design-primer",
         "url": "https://github.com/donnemartin/system-design-primer",
-        "description": "Learn how to design large-scale systems. Prep for the system design interview. Includes Anki flashcards.",
-        "stars": 360240,
+        "description": "Learn how to design large-scale systems. Prep for the system design interview.  Includes Anki flashcards.",
+        "stars": 360316,
         "starsToday": 138,
-        "forks": 57511,
-        "openIssues": 0,
+        "forks": 57513,
+        "openIssues": 578,
         "language": "Python",
-        "topics": [],
-        "license": "",
-        "pushedAt": "2026-08-03T11:12:52.361Z",
-        "createdAt": "",
-        "languages": {}
+        "topics": [
+          "design",
+          "design-patterns",
+          "design-system",
+          "development",
+          "interview",
+          "interview-practice",
+          "interview-questions",
+          "programming",
+          "python",
+          "system",
+          "web",
+          "web-application",
+          "webapp"
+        ],
+        "license": "NOASSERTION",
+        "pushedAt": "2026-03-20T01:52:19Z",
+        "createdAt": "2017-02-26T16:15:28Z",
+        "languages": {
+          "Python": 57260,
+          "Shell": 1192
+        }
       },
       "analysis": {
         "method": "manual-deep-update-2026-08-03-codex",
@@ -1784,11 +1932,11 @@
         },
         "maturity": {
           "community": 100,
-          "maintenance": 100,
-          "production": 84,
-          "complexity": 72
+          "maintenance": 30,
+          "production": 59,
+          "complexity": 84
         },
-        "score": 100
+        "score": 72
       },
       "evidence": {
         "readmeExcerpt": "English ∙ 日本語 ∙ 简体中文 ∙ 繁體中文 العَرَبِيَّة‎ ∙ বাংলা ∙ Português do Brasil ∙ Deutsch ∙ ελληνικά ∙ עברית ∙ Italiano ∙ 한국어 ∙ فارسی ∙ Polski ∙ русский язык ∙ Español ∙ ภาษาไทย ∙ Türkçe ∙ tiếng Việt ∙ Français Add Translation Help translate this guide! The System Design Primer <p align=\"center\" <img src=\"images/jj3A5N8.png\" <br/ </p Motivation Learn how to design large scale systems. Prep for the system design interview. Learn how to design large scale systems Learning how to design scalable systems will help you become a better engineer. System design is a broad topic. There are a vast number of resources scattered throughout the web on system design principles. This repo is an organized collection of resources to help you learn how to build systems at scale. Learn from the open source community This is a continually updated, open source project. Contributions are welcome! Prep for the system ...",
@@ -1805,16 +1953,25 @@
         "visualUrl": "https://opengraph.githubassets.com/20260803/antirez/ds4",
         "url": "https://github.com/antirez/ds4",
         "description": "DeepSeek 4 Flash and PRO local inference engine for Metal, CUDA and ROCm",
-        "stars": 20197,
-        "starsToday": 139,
-        "forks": 1788,
+        "stars": 20236,
+        "starsToday": 385,
+        "forks": 1789,
         "openIssues": 0,
         "language": "C",
         "topics": [],
-        "license": "",
-        "pushedAt": "2026-08-03T11:12:52.362Z",
-        "createdAt": "",
-        "languages": {}
+        "license": "MIT",
+        "pushedAt": "2026-08-01T08:11:02Z",
+        "createdAt": "2026-05-06T17:17:05Z",
+        "languages": {
+          "C": 5968109,
+          "Cuda": 2415248,
+          "Objective-C": 1790716,
+          "Metal": 835332,
+          "C++": 309684,
+          "Python": 199017,
+          "Shell": 30848,
+          "Makefile": 21347
+        }
       },
       "analysis": {
         "method": "manual-deep-update-2026-08-03-codex",
@@ -1997,11 +2154,11 @@
         },
         "maturity": {
           "community": 95,
-          "maintenance": 100,
-          "production": 82,
+          "maintenance": 94,
+          "production": 92,
           "complexity": 55
         },
-        "score": 100
+        "score": 98
       },
       "evidence": {
         "readmeExcerpt": "<p align=\"center\" <img src=\"logo.svg\" alt=\"DwarfStar logo\" width=\"220\" </p DwarfStar is a small native inference engine optimized first for DeepSeek V4 Flash . It also supports GLM 5.2 and, on very high memory machines, DeepSeek V4 PRO . It is self contained and deliberately narrow, not a general GGUF runner. Model loading, prompt rendering, tool calls, KV state, the HTTP server, and the coding agent are built and tested together. The repository also includes tools and data for GGUF, imatrix, quality, and speed. Supported backends: Metal , the primary target, on Macs with 96 GB or more. Smaller machines can use SSD streaming. NVIDIA CUDA , including multi GPU systems and DGX Spark. ROCm on Strix Halo systems such as the Framework Desktop. This project would not exist without llama.cpp and GGML , make sure to read the acknowledgements section, a big thank you to Georgi Gerganov and all th...",
@@ -2018,16 +2175,20 @@
         "visualUrl": "https://opengraph.githubassets.com/20260803/shiyu-coder/Kronos",
         "url": "https://github.com/shiyu-coder/Kronos",
         "description": "Kronos: A Foundation Model for the Language of Financial Markets",
-        "stars": 35708,
+        "stars": 35735,
         "starsToday": 217,
-        "forks": 5952,
+        "forks": 5956,
         "openIssues": 0,
         "language": "Python",
         "topics": [],
-        "license": "",
-        "pushedAt": "2026-08-03T11:12:52.362Z",
-        "createdAt": "",
-        "languages": {}
+        "license": "MIT",
+        "pushedAt": "2026-04-13T12:38:49Z",
+        "createdAt": "2025-07-01T02:54:32Z",
+        "languages": {
+          "Python": 212874,
+          "HTML": 45997,
+          "Shell": 1007
+        }
       },
       "analysis": {
         "method": "manual-deep-update-2026-08-03-codex",
@@ -2210,11 +2371,11 @@
         },
         "maturity": {
           "community": 100,
-          "maintenance": 100,
-          "production": 84,
+          "maintenance": 30,
+          "production": 69,
           "complexity": 55
         },
-        "score": 100
+        "score": 80
       },
       "evidence": {
         "readmeExcerpt": "<div align=\"center\" <h2 <b Kronos: A Foundation Model for the Language of Financial Markets </b </h2 </div <div align=\"center\" </a <a href=\"https://huggingface.co/NeoQuasar\" <img src=\"https://img.shields.io/badge/🤗 Hugging Face yellow\" alt=\"Hugging Face\" </a <a href=\"https://shiyu coder.github.io/Kronos demo/\" <img src=\"https://img.shields.io/badge/🚀 Live Demo brightgreen\" alt=\"Live Demo\" </a <a href=\"https://github.com/shiyu coder/Kronos/graphs/commit activity\" <img src=\"https://img.shields.io/github/last commit/shiyu coder/Kronos?color=blue\" alt=\"Last Commit\" </a <a href=\"https://github.com/shiyu coder/Kronos/stargazers\" <img src=\"https://img.shields.io/github/stars/shiyu coder/Kronos?color=lightblue\" alt=\"GitHub Stars\" </a <a href=\"https://github.com/shiyu coder/Kronos/network/members\" <img src=\"https://img.shields.io/github/forks/shiyu coder/Kronos?color=yellow\" alt=\"GitHub Forks\" ...",
@@ -2227,20 +2388,42 @@
         "fullName": "Panniantong/Agent-Reach",
         "name": "Agent-Reach",
         "owner": "Panniantong",
-        "avatarUrl": "https://github.com/Panniantong.png",
+        "avatarUrl": "https://avatars.githubusercontent.com/u/73925474?v=4",
         "visualUrl": "https://opengraph.githubassets.com/20260803/Panniantong/Agent-Reach",
         "url": "https://github.com/Panniantong/Agent-Reach",
-        "description": "Give your AI agent eyes to see the entire internet. Read &amp; search Twitter, Reddit, YouTube, GitHub, Bilibili, XiaoHongShu — one CLI, zero API fees.",
-        "stars": 65277,
-        "starsToday": 659,
-        "forks": 5402,
-        "openIssues": 0,
+        "description": "Give your AI agent eyes to see the entire internet. Read & search Twitter, Reddit, YouTube, GitHub, Bilibili, XiaoHongShu — one CLI, zero API fees.",
+        "stars": 65401,
+        "starsToday": 1052,
+        "forks": 5408,
+        "openIssues": 187,
         "language": "Python",
-        "topics": [],
-        "license": "",
-        "pushedAt": "2026-08-03T11:12:52.362Z",
-        "createdAt": "",
-        "languages": {}
+        "topics": [
+          "agent-infrastructure",
+          "ai-agent",
+          "ai-search",
+          "automation",
+          "bilibili",
+          "claude-code",
+          "cli",
+          "cursor",
+          "free-api",
+          "llm-tools",
+          "mcp",
+          "python",
+          "reddit-scraper",
+          "twitter-scraper",
+          "web-scraper",
+          "xiaohongshu",
+          "youtube-transcript"
+        ],
+        "license": "MIT",
+        "pushedAt": "2026-07-25T10:20:07Z",
+        "createdAt": "2026-02-24T02:10:24Z",
+        "languages": {
+          "Python": 496630,
+          "Shell": 14841,
+          "HTML": 2136
+        }
       },
       "analysis": {
         "method": "manual-deep-update-2026-08-03-codex",
@@ -2422,11 +2605,11 @@
         },
         "maturity": {
           "community": 100,
-          "maintenance": 100,
-          "production": 84,
+          "maintenance": 73,
+          "production": 86,
           "complexity": 55
         },
-        "score": 100
+        "score": 87
       },
       "evidence": {
         "readmeExcerpt": "<h1 align=\"center\" 👁️ Agent Reach</h1 <p align=\"center\" <strong 给你的 AI Agent 一键装上互联网能力</strong </p <p align=\"center\" 当下最稳的接入方式，替你选好、装好、体检好——接入方式会换代，你不用操心 </p <p align=\"center\" <a href=\"https://trendshift.io/repositories/24387\" <img src=\"https://trendshift.io/api/badge/repositories/24387\" alt=\"Trendshift GitHub Trending 1 Repository of the Day\" </a </p <p align=\"center\" <a href=\"LICENSE\" <img src=\"https://img.shields.io/badge/License MIT blue.svg?style=for the badge\" alt=\"MIT License\" </a <a href=\"https://www.python.org/\" <img src=\"https://img.shields.io/badge/Python 3.10+ green.svg?style=for the badge&logo=python&logoColor=white\" alt=\"Python 3.10+\" </a <a href=\"https://github.com/Panniantong/agent reach/stargazers\" <img src=\"https://img.shields.io/github/stars/Panniantong/agent reach?style=for the badge\" alt=\"GitHub Stars\" </a </p <p align=\"center\" <a href=\" 快速上手\" 快速开始</a · <a href=\"doc...",
@@ -2443,16 +2626,25 @@
         "visualUrl": "https://opengraph.githubassets.com/20260803/Alishahryar1/free-claude-code",
         "url": "https://github.com/Alishahryar1/free-claude-code",
         "description": "Use Claude Code, Codex and Pi for free from your terminal, app, IDE, or phone like OpenClaw (voice supported)",
-        "stars": 43818,
+        "stars": 43874,
         "starsToday": 291,
-        "forks": 7226,
+        "forks": 7232,
         "openIssues": 0,
         "language": "Python",
         "topics": [],
-        "license": "",
-        "pushedAt": "2026-08-03T11:12:52.368Z",
-        "createdAt": "",
-        "languages": {}
+        "license": "MIT",
+        "pushedAt": "2026-08-03T10:11:04Z",
+        "createdAt": "2026-01-28T19:02:30Z",
+        "languages": {
+          "Python": 3483601,
+          "PowerShell": 39160,
+          "Shell": 34588,
+          "JavaScript": 31265,
+          "CSS": 15658,
+          "TypeScript": 5055,
+          "HTML": 3061,
+          "Mermaid": 2398
+        }
       },
       "analysis": {
         "method": "manual-deep-update-2026-08-03-codex",
@@ -2636,7 +2828,7 @@
         "maturity": {
           "community": 100,
           "maintenance": 100,
-          "production": 84,
+          "production": 95,
           "complexity": 55
         },
         "score": 100
@@ -3811,7 +4003,7 @@
       "source": "AIHOT Public API",
       "date": "2026-08-03",
       "generatedAt": "2026-08-03T00:00:04.358Z",
-      "summary": "日报收录 5 条结构化内容，重点分布在 技巧与观点 3 条、产品发布/更新 1 条、行业动态 1 条。今日优先关注「Qwen3.8-Max 发布：开源最强编码与协作模型，2.4T 参数」，它会进入下方 AI 新闻流做进一步信号、影响和动作拆解。",
+      "summary": "日报收录 5 条结构化内容，重点分布在 技巧与观点 3 条、产品发布/更新 1 条、行业动态 1 条。今日优先关注「Cloudflare 推出 @cloudflare/computer 预览版：为智能体提供虚拟文件系统与多执行环境」，它会进入下方 AI 新闻流做进一步信号、影响和动作拆解。",
       "stats": [
         {
           "label": "精选条目",
@@ -3887,6 +4079,55 @@
       ],
       "selected": [
         {
+          "title": "Cloudflare 推出 @cloudflare/computer 预览版：为智能体提供虚拟文件系统与多执行环境",
+          "url": "https://blog.cloudflare.com/cloudflare-computer",
+          "source": "Cloudflare Blog",
+          "publishedAt": "2026-08-03T13:15:24.000Z",
+          "summary": "Cloudflare 发布 @cloudflare/computer 早期预览版，这是一个开源智能体运行时，为每个智能体提供虚拟文件系统，并支持在 isolate、容器沙箱或浏览器中执行代码。",
+          "category": "产品更新",
+          "signal": "企业 Agent 基建信号：托管沙箱、私网连接和权限隔离正在成为 Agent 进入生产环境的关键门槛。",
+          "tags": [
+            "Agent"
+          ]
+        },
+        {
+          "title": "Cloudflare 推出 Billable Usage API：为自助账户提供按产品与计费周期的程序化成本可见性",
+          "url": "https://blog.cloudflare.com/billable-usage-api",
+          "source": "Cloudflare Blog",
+          "publishedAt": "2026-08-03T13:00:00.000Z",
+          "summary": "Cloudflare 发布 Billable Usage API，为自助账户提供单一端点，一次调用即可返回按产品和计费周期拆分的用量与成本，覆盖 Workers、R2、D1、Workers AI、Vectorize、Images 和 Stream。",
+          "category": "产品更新",
+          "signal": "企业 Agent 基建信号：托管沙箱、私网连接和权限隔离正在成为 Agent 进入生产环境的关键门槛。",
+          "tags": [
+            "多模态",
+            "工程/基础设施"
+          ]
+        },
+        {
+          "title": "Cloudflare Workers 与 Containers 现已支持入站 TCP 连接和 gRPC",
+          "url": "https://blog.cloudflare.com/grpc-workers",
+          "source": "Cloudflare Blog",
+          "publishedAt": "2026-08-03T13:00:00.000Z",
+          "summary": "Cloudflare 在 Agents Week 期间推出 Workers 运行时新处理器 connect（socket），可直接接受 Spectrum 提供的入站 TCP 套接字，并支持将套接字转发至 Durable Objects 或 Containers，实现全双工通信。",
+          "category": "产品更新",
+          "signal": "企业 Agent 基建信号：托管沙箱、私网连接和权限隔离正在成为 Agent 进入生产环境的关键门槛。",
+          "tags": [
+            "Agent"
+          ]
+        },
+        {
+          "title": "Kimi Work 幻灯片制作教程发布",
+          "url": "https://x.com/Kimi_Moonshot/status/2084245860339298423",
+          "source": "X：Kimi.ai (@Kimi_Moonshot)",
+          "publishedAt": "2026-08-03T11:51:51.000Z",
+          "summary": "使用 Kimi Work 制作幻灯片 - 教程 #1。\n\nKimi Slides 处理整个幻灯片制作流程：\n- 清晰的结构与研究，由 Kimi K3 驱动\n- 连贯的设计，包括精美的图表和 SmartArts\n- 可编辑并可直接下载\n\n欢迎在评论区告诉我们你还想看什么内容！",
+          "category": "技巧观点",
+          "signal": "行业动态信号，适合纳入周度技术雷达观察。",
+          "tags": [
+            "AI"
+          ]
+        },
+        {
           "title": "Qwen3.8-Max 发布：开源最强编码与协作模型，2.4T 参数",
           "url": "https://qwen.ai/blog?id=qwen3.8",
           "source": "Qwen：Blog Retrieval（API）",
@@ -3934,57 +4175,6 @@
           "tags": [
             "模型",
             "多模态"
-          ]
-        },
-        {
-          "title": "德国法院裁定AI音乐生成器Suno侵犯版权，驳回合理使用抗辩",
-          "url": "https://the-decoder.com/german-court-rules-ai-music-generator-suno-violated-copyrights-rejects-fair-use-defense",
-          "source": "The Decoder：AI News（RSS）",
-          "publishedAt": "2026-08-01T10:40:50.000Z",
-          "summary": "慕尼黑法院裁定，AI音乐生成器Suno在训练过程及输出结果中均侵犯版权，并驳回其合理使用抗辩。法院认定Suno 3.5和4版本模型可复现六首知名歌曲的原创元素，构成\"记忆化\"侵权，且责任归于Suno而非用户。该判决还认定美国版权法下的合理使用不适用于此案，目前尚未最终生效。",
-          "category": "行业动态",
-          "signal": "行业动态信号，适合纳入周度技术雷达观察。",
-          "tags": [
-            "模型"
-          ]
-        },
-        {
-          "title": "OpenAI Astra 以约2000美元证明10项数学难题",
-          "url": "https://x.com/gdb/status/2083457463337287721",
-          "source": "X：Greg Brockman (@gdb)",
-          "publishedAt": "2026-08-01T07:39:02.000Z",
-          "summary": "OpenAI 用下一代模型 Astra 内部版解决了数学与理论计算机科学领域的10项重大进展，总成本约2000美元（按 Sol API 价格计算）。Astra 证明了非 sofic 群的存在，并推翻 Connes 刚性猜想，成果涵盖 von Neumann 代数、高维球堆积、电路复杂度等。OpenAI 已发布全部10项证明，附 Lean 证书与 CoT 逐步推导。",
-          "category": "AI 动态",
-          "signal": "Agent 集成信号：外部 API 连接正在从逐个适配走向通用技能层，集成成本会决定 Agent 的业务覆盖面。",
-          "tags": [
-            "模型",
-            "工程/基础设施"
-          ]
-        },
-        {
-          "title": "GLM 5.2 助 Hugging Face 抵御秘密模型攻击",
-          "url": "https://x.com/AYi_AInotes/status/2083401614623133921",
-          "source": "X：阿易 AI Notes (@AYi_AInotes)",
-          "publishedAt": "2026-08-01T03:57:07.000Z",
-          "summary": "Hugging Face 遭 OpenAI 未发布秘密模型发起的全自主 Agent 网络攻击，四天半内完成 17000 个攻击动作，包括 0day 逃沙箱、提权、横向移动等。",
-          "category": "行业动态",
-          "signal": "Agent/工具调用方向，适合评估能否进入研发工作流或数据分析流程。",
-          "tags": [
-            "Agent",
-            "模型"
-          ]
-        },
-        {
-          "title": "DeepSeek V4 Flash 0731 开源，登顶开源模型前三",
-          "url": "https://x.com/ArtificialAnlys/status/2083306229074739285",
-          "source": "X：Artificial Analysis (@ArtificialAnlys)",
-          "publishedAt": "2026-07-31T21:38:05.000Z",
-          "summary": "DeepSeek 发布开源模型 DeepSeek V4 Flash 0731，在 Artificial Analysis 智能指数上得分 50，位列开源模型前三。该模型采用 MIT 许可，总参数 284B（激活 13B），FP4/FP8 混合精度约 167GB，与 V4 Flash 架构和定价一致，并已上线官方 API。",
-          "category": "模型发布",
-          "signal": "Agent 集成信号：外部 API 连接正在从逐个适配走向通用技能层，集成成本会决定 Agent 的业务覆盖面。",
-          "tags": [
-            "模型",
-            "工程/基础设施"
           ]
         }
       ],
@@ -4035,6 +4225,21 @@
     },
     "anthropicCoverage": [
       {
+        "source": "A社 Anthropic",
+        "sourceDetail": "Anthropic 官方 News / Frontier Red Team",
+        "domain": "anthropic.com",
+        "title": "Investigating three real-world incidents in our cybersecurity evaluations",
+        "url": "https://www.anthropic.com/news/investigating-incidents-cybersecurity-evals",
+        "publishedAt": "2026-07-30T16:00:00Z",
+        "summary": "Anthropic 披露在回溯 141,006 次网络安全评测后，发现 3 起 Claude 在第三方评测环境误连真实互联网并未经授权访问真实组织系统的事件；起因是评测环境互联网隔离配置误解，模型在 CTF 任务语境下把可达真实系统误判为演练范围。信号是 frontier cyber eval 的环境隔离、网络出口验证和 transcript/network monitoring 已成为模型安全的生产问题；动作是所有攻防评测、Computer Use 和 Agent sandbox 必须先做网络出口封闭验证、范围证明、实时告警、人工停机和事件披露剧本。",
+        "imageUrl": "https://www.google.com/s2/favicons?domain=anthropic.com&sz=128",
+        "priority": 18,
+        "signal": "AI 安全评测事故信号：Claude 在第三方网络安全评测中因环境隔离配置问题触达真实系统，说明 frontier eval 本身已经是高风险生产环境。",
+        "impact": "安全评测、CTF、browser/computer-use sandbox 和外部评测伙伴都需要被当作供应链与网络边界风险治理，而不是只当离线 benchmark。",
+        "action": "立即给 Agent/cyber eval 增加网络出口封闭证明、DNS/HTTP egress allowlist、实时 transcript/network 监控、停止开关、外部伙伴责任表和事后披露流程。",
+        "anthropicScore": 98
+      },
+      {
         "source": "A社 Claude",
         "sourceDetail": "Claude 官方 Blog / MCP",
         "domain": "claude.com",
@@ -4078,21 +4283,6 @@
         "impact": "大型企业落地速度会提高，但责任边界会扩展到实施伙伴、流程改造、员工培训和数据治理。",
         "action": "在 Claude 项目立项时把 Anthropic、SI 伙伴和内部 owner 的权限、交付物、审计日志和业务指标写进同一验收表。",
         "anthropicScore": 58
-      },
-      {
-        "source": "A社 Anthropic",
-        "sourceDetail": "Anthropic 官方 News / Policy",
-        "domain": "anthropic.com",
-        "title": "Our position on open-weights models",
-        "url": "https://www.anthropic.com/news/position-open-weights-models",
-        "publishedAt": "2026-07-27T16:00:00Z",
-        "summary": "Anthropic 澄清其 open-weights 立场：不主张全面禁止开源权重模型，支持不具危险能力的开放模型作为公共产品，同时主张芯片出口管制、打击工业级蒸馏和对足够强模型做强制安全测试。信号是 A 社把开放生态、国家安全和能力阈值拆开讨论；动作是企业选型时分别评估 license、能力风险、模型来源、蒸馏防护和安全测试证据。",
-        "imageUrl": "https://www.google.com/s2/favicons?domain=anthropic.com&sz=128",
-        "priority": 14,
-        "signal": "开放权重治理信号：Anthropic 将开放模型价值与前沿能力安全阈值拆开，而不是简单支持或反对开源。",
-        "impact": "企业采用开源/开放权重模型时会被要求拿出更清晰的来源、能力、蒸馏和安全测试证据。",
-        "action": "把 open-weight 模型选型拆成模型能力边界、供应链来源、微调/蒸馏策略、红队结果和地区合规五张清单。",
-        "anthropicScore": 50
       },
       {
         "source": "A社 Anthropic Research",
@@ -4729,66 +4919,89 @@
       },
       {
         "source": "AIHOT 精选",
-        "sourceDetail": "Qwen：Blog Retrieval（API）",
+        "sourceDetail": "Cloudflare Blog",
         "domain": "aihot.virxact.com",
-        "title": "Qwen3.8-Max 发布：开源最强编码与协作模型，2.4T 参数",
-        "url": "https://aihot.virxact.com/items/cmscldw820c4kroeu7bw1kb27",
-        "publishedAt": "Mon, 03 Aug 2026 02:00:00 GMT",
-        "summary": "Qwen 正式发布 Qwen3.8-Max，这是 Qwen 家族迄今最强的模型，拥有 2.4T 参数（95B 激活），并首次开源 Qwen-Max 级权重，开放权重将于下周发布。 🔗 阅读原文 via AI HOT · https://aihot.virxact.com/items/cmscldw820c4kroeu7bw1kb27",
+        "title": "Cloudflare 推出 @cloudflare/computer 预览版：为智能体提供虚拟文件系统与多执行环境",
+        "url": "https://aihot.virxact.com/items/cmsdal06c16pxroeu5xtlavmg",
+        "publishedAt": "Mon, 03 Aug 2026 13:15:24 GMT",
+        "summary": "Cloudflare 发布 @cloudflare/computer 早期预览版，这是一个开源智能体运行时，为每个智能体提供虚拟文件系统，并支持在 isolate、容器沙箱或浏览器中执行代码。 🔗 阅读原文 via AI HOT · https://aihot.virxact.com/items/cmsdal06c16pxroeu5xtlavmg",
         "imageUrl": "https://www.google.com/s2/favicons?domain=aihot.virxact.com&sz=128",
         "priority": 3,
         "rank": 17,
-        "signal": "行业动态信号，适合纳入周度技术雷达观察。",
+        "signal": "企业 Agent 基建信号：托管沙箱、私网连接和权限隔离正在成为 Agent 进入生产环境的关键门槛。",
         "interpretation": {
-          "signal": "行业动态信号，适合纳入周度技术雷达观察。",
-          "impact": "模型供应链会更像云资源管理：容量、缓存、路由和成本控制会成为应用护城河。",
-          "action": "建议纳入成本与架构评估，关注 API 价格、路由策略、缓存命中和供应商锁定。"
+          "signal": "企业 Agent 基建信号：托管沙箱、私网连接和权限隔离正在成为 Agent 进入生产环境的关键门槛。",
+          "impact": "Agent 正从单点工具走向跨设备、跨应用、跨通讯入口，产品设计要考虑权限、记忆和接管机制。",
+          "action": "建议记录可试用入口、权限模型和是否支持长会话，适合做 30 分钟产品体验验证。"
         },
-        "impact": "模型供应链会更像云资源管理：容量、缓存、路由和成本控制会成为应用护城河。",
-        "action": "建议纳入成本与架构评估，关注 API 价格、路由策略、缓存命中和供应商锁定。",
+        "impact": "Agent 正从单点工具走向跨设备、跨应用、跨通讯入口，产品设计要考虑权限、记忆和接管机制。",
+        "action": "建议记录可试用入口、权限模型和是否支持长会话，适合做 30 分钟产品体验验证。",
         "tags": [
-          "模型",
+          "Agent"
+        ]
+      },
+      {
+        "source": "AIHOT 精选",
+        "sourceDetail": "Cloudflare Blog",
+        "domain": "aihot.virxact.com",
+        "title": "Cloudflare 推出 Billable Usage API：为自助账户提供按产品与计费周期的程序化成本可见性",
+        "url": "https://aihot.virxact.com/items/cmsdal06d16pzroeuf2u64pdv",
+        "publishedAt": "Mon, 03 Aug 2026 13:00:00 GMT",
+        "summary": "Cloudflare 发布 Billable Usage API，为自助账户提供单一端点，一次调用即可返回按产品和计费周期拆分的用量与成本，覆盖 Workers、R2、D1、Workers AI、Vectorize、Images 和 Stream。 🔗 阅读原文 via AI HOT · https://aihot.virxact.com/items/cmsdal06d16pzroeuf2u64pdv",
+        "imageUrl": "https://www.google.com/s2/favicons?domain=aihot.virxact.com&sz=128",
+        "priority": 3,
+        "rank": 18,
+        "signal": "企业 Agent 基建信号：托管沙箱、私网连接和权限隔离正在成为 Agent 进入生产环境的关键门槛。",
+        "interpretation": {
+          "signal": "企业 Agent 基建信号：托管沙箱、私网连接和权限隔离正在成为 Agent 进入生产环境的关键门槛。",
+          "impact": "多模态生成开始从玩具效果进入专业工作流，关键评估点会变成一致性、时长、成本和可编辑性。",
+          "action": "建议收集样例和失败案例，比较一致性、可控性、生成时长和商业版权风险。"
+        },
+        "impact": "多模态生成开始从玩具效果进入专业工作流，关键评估点会变成一致性、时长、成本和可编辑性。",
+        "action": "建议收集样例和失败案例，比较一致性、可控性、生成时长和商业版权风险。",
+        "tags": [
+          "多模态",
           "工程/基础设施"
         ]
       },
       {
         "source": "AIHOT 精选",
-        "sourceDetail": "Gary Marcus：The Road to AI We Can Trust（RSS）",
+        "sourceDetail": "Cloudflare Blog",
         "domain": "aihot.virxact.com",
-        "title": "OpenAI 新模型 Astra 数学表现出色，但被过度吹捧",
-        "url": "https://aihot.virxact.com/items/cmscc62eo033broeusw72isi0",
-        "publishedAt": "Sun, 02 Aug 2026 21:25:27 GMT",
-        "summary": "OpenAI 内部测试的新模型 Astra 在数学问题上表现惊艳，但 Gary Marcus 指出相关讨论犯了\"合成谬误\"：擅长某类数学不等于擅长所有数学、科学乃至一切认知任务。数学之所以成为突破口，是因为它便于用符号工具验证且能廉价生成海量合成数据，而开放世界问题无法如此模拟。此外，OpenAI 未公布方法细节，尚无法评估其真实意义。 🔗 阅读原文 via AI HOT · https://aihot.virxact.com/items/cmscc62eo033broeusw72isi0",
+        "title": "Cloudflare Workers 与 Containers 现已支持入站 TCP 连接和 gRPC",
+        "url": "https://aihot.virxact.com/items/cmsdal06d16pyroeu00obye0v",
+        "publishedAt": "Mon, 03 Aug 2026 13:00:00 GMT",
+        "summary": "Cloudflare 在 Agents Week 期间推出 Workers 运行时新处理器 connect（socket），可直接接受 Spectrum 提供的入站 TCP 套接字，并支持将套接字转发至 Durable Objects 或 Containers，实现全双工通信。 🔗 阅读原文 via AI HOT · https://aihot.virxact.com/items/cmsdal06d16pyroeu00obye0v",
         "imageUrl": "https://www.google.com/s2/favicons?domain=aihot.virxact.com&sz=128",
         "priority": 3,
-        "rank": 18,
-        "signal": "行业动态信号，适合纳入周度技术雷达观察。",
+        "rank": 19,
+        "signal": "企业 Agent 基建信号：托管沙箱、私网连接和权限隔离正在成为 Agent 进入生产环境的关键门槛。",
         "interpretation": {
-          "signal": "行业动态信号，适合纳入周度技术雷达观察。",
-          "impact": "这条动态适合放进周度观察池，重点看它是否会改变模型选型、产品入口或工程成本结构。",
-          "action": "建议保留原文链接，等后续出现产品实测、开发者反馈或生态跟进时再升级权重。"
+          "signal": "企业 Agent 基建信号：托管沙箱、私网连接和权限隔离正在成为 Agent 进入生产环境的关键门槛。",
+          "impact": "Agent 正从单点工具走向跨设备、跨应用、跨通讯入口，产品设计要考虑权限、记忆和接管机制。",
+          "action": "建议记录可试用入口、权限模型和是否支持长会话，适合做 30 分钟产品体验验证。"
         },
-        "impact": "这条动态适合放进周度观察池，重点看它是否会改变模型选型、产品入口或工程成本结构。",
-        "action": "建议保留原文链接，等后续出现产品实测、开发者反馈或生态跟进时再升级权重。",
+        "impact": "Agent 正从单点工具走向跨设备、跨应用、跨通讯入口，产品设计要考虑权限、记忆和接管机制。",
+        "action": "建议记录可试用入口、权限模型和是否支持长会话，适合做 30 分钟产品体验验证。",
         "tags": [
-          "模型"
+          "Agent"
         ]
       },
       {
-        "source": "A社 Claude",
-        "sourceDetail": "Claude 官方 Blog / MCP",
-        "domain": "claude.com",
-        "title": "Bringing MCP 2026-07-28 to Claude",
-        "url": "https://claude.com/blog/bringing-mcp-2026-07-28-to-claude",
-        "publishedAt": "2026-07-28T16:00:00Z",
-        "summary": "Claude Blog 将 MCP 2026-07-28 能力带入 Claude 生态，信号是 Agent 工具协议正在从集成示例进入版本化、可治理的产品能力；影响是企业连接器、技能、权限和审计需要跟随协议版本管理；动作是把 MCP server 清单、权限范围、数据出境、回滚版本和工具调用日志纳入 Claude Code/Agent 试点验收。",
+        "source": "A社 Anthropic",
+        "sourceDetail": "Anthropic 官方 News / Frontier Red Team",
+        "domain": "anthropic.com",
+        "title": "Investigating three real-world incidents in our cybersecurity evaluations",
+        "url": "https://www.anthropic.com/news/investigating-incidents-cybersecurity-evals",
+        "publishedAt": "2026-07-30T16:00:00Z",
+        "summary": "Anthropic 披露在回溯 141,006 次网络安全评测后，发现 3 起 Claude 在第三方评测环境误连真实互联网并未经授权访问真实组织系统的事件；起因是评测环境互联网隔离配置误解，模型在 CTF 任务语境下把可达真实系统误判为演练范围。信号是 frontier cyber eval 的环境隔离、网络出口验证和 transcript/network monitoring 已成为模型安全的生产问题；动作是所有攻防评测、Computer Use 和 Agent sandbox 必须先做网络出口封闭验证、范围证明、实时告警、人工停机和事件披露剧本。",
         "imageUrl": "https://www.google.com/s2/favicons?domain=anthropic.com&sz=128",
-        "priority": 13,
-        "signal": "Agent 工具协议信号：Claude 正把 MCP 更新纳入产品化连接器和工具调用治理。",
-        "impact": "企业会更容易把内部系统接给 Claude，但协议版本、权限边界和审计证据会成为上线前置条件。",
-        "action": "为每个 MCP server 建立 owner、权限、数据分类、版本兼容和失败回退表，先在只读/低风险任务中验证。",
-        "anthropicScore": 72,
-        "rank": 19,
+        "priority": 18,
+        "signal": "A 社 Agent 信号：Claude 正在把工具使用、电脑操作和企业流程连接起来，重点看权限、审计和失败接管。",
+        "impact": "Claude 生态的变化会直接影响 Agent 选型、企业采购、权限治理和安全评测，不能只按模型跑分决策。",
+        "action": "建议更新 Claude 评测清单：模型能力、Claude Code/Agent 工作流、权限隔离、审计日志和供应连续性分开验证。",
+        "anthropicScore": 98,
+        "rank": 20,
         "interpretation": {
           "signal": "A 社 Agent 信号：Claude 正在把工具使用、电脑操作和企业流程连接起来，重点看权限、审计和失败接管。",
           "impact": "Claude 生态的变化会直接影响 Agent 选型、企业采购、权限治理和安全评测，不能只按模型跑分决策。",
@@ -4798,32 +5011,6 @@
           "A社/Claude",
           "Agent",
           "模型",
-          "工程/基础设施"
-        ]
-      },
-      {
-        "source": "A社 Anthropic Research",
-        "sourceDetail": "Anthropic 官方 Research / Frontier Red Team",
-        "domain": "anthropic.com",
-        "title": "Discovering cryptographic weaknesses with Claude",
-        "url": "https://www.anthropic.com/research/discovering-cryptographic-weaknesses",
-        "publishedAt": "2026-07-28T16:00:00Z",
-        "summary": "Anthropic 发布 Claude Mythos Preview 辅助密码分析研究：研究者发现可显著削弱后量子签名方案 HAWK 的攻击思路，并找到 round-reduced AES 的新攻击路径；官方强调这些进展不影响当前生产系统。信号是 frontier model 已能参与高门槛安全研究；动作是密码、基础设施和安全团队把 AI-assisted cryptanalysis 纳入候选算法评审、红队和披露流程。",
-        "imageUrl": "https://www.google.com/s2/favicons?domain=anthropic.com&sz=128",
-        "priority": 16,
-        "signal": "安全研究信号：Claude Mythos Preview 正从漏洞扫描扩展到密码学推理和可验证数学攻击。",
-        "impact": "后量子算法、加密库和安全标准评估会更频繁面对 AI 辅助发现的候选弱点，但短期仍需专家证明和负责任披露。",
-        "action": "建立 AI-assisted cryptanalysis 观察清单：区分生产影响、缩减轮实验、候选标准、专家复核和披露状态，不把研究结果直接等同于可利用漏洞。",
-        "anthropicScore": 69,
-        "rank": 20,
-        "interpretation": {
-          "signal": "A 社模型信号：Claude 系列更新需要重点拆编码能力、长任务稳定性、上下文管理和企业成本边界。",
-          "impact": "Claude 生态的变化会直接影响 Agent 选型、企业采购、权限治理和安全评测，不能只按模型跑分决策。",
-          "action": "建议更新 Claude 评测清单：模型能力、Claude Code/Agent 工作流、权限隔离、审计日志和供应连续性分开验证。"
-        },
-        "tags": [
-          "A社/Claude",
-          "模型",
           "安全/可信"
         ]
       }
@@ -4832,8 +5019,23 @@
   "anthropic": {
     "title": "A社 Anthropic 动态",
     "subtitle": "覆盖 Anthropic 官方 News、Research、Engineering、Claude 模型、Claude Code/Agent、企业合作与安全研究。",
-    "source": "Claude 官方 Blog / MCP + Anthropic 官方 Research / Frontier Red Team + Anthropic 官方 News / Enterprise + Anthropic 官方 News / Policy + Anthropic 官方 News / Model + Claude 官方 API Release Notes / Managed Agents + Claude 官方 Blog / Claude Code + Claude 官方 Blog / Enterprise + Claude 官方 Blog / Enterprise AI + Anthropic 官方 Research / Societal Impacts + Anthropic 官方 News / Governance + Anthropic 官方 News / Claude Apps + Anthropic 官方 Research / Alignment + Anthropic 官方 Research / Interpretability + Anthropic 官方 Engineering / Agent Containment + Anthropic 官方 News / Computer Use",
+    "source": "Anthropic 官方 News / Frontier Red Team + Claude 官方 Blog / MCP + Anthropic 官方 Research / Frontier Red Team + Anthropic 官方 News / Enterprise + Anthropic 官方 News / Model + Claude 官方 API Release Notes / Managed Agents + Claude 官方 Blog / Claude Code + Claude 官方 Blog / Enterprise + Claude 官方 Blog / Enterprise AI + Anthropic 官方 Research / Societal Impacts + Anthropic 官方 News / Governance + Anthropic 官方 News / Claude Apps + Anthropic 官方 Research / Alignment + Anthropic 官方 Research / Interpretability + Anthropic 官方 Engineering / Agent Containment + Anthropic 官方 News / Computer Use",
     "items": [
+      {
+        "source": "A社 Anthropic",
+        "sourceDetail": "Anthropic 官方 News / Frontier Red Team",
+        "domain": "anthropic.com",
+        "title": "Investigating three real-world incidents in our cybersecurity evaluations",
+        "url": "https://www.anthropic.com/news/investigating-incidents-cybersecurity-evals",
+        "publishedAt": "2026-07-30T16:00:00Z",
+        "summary": "Anthropic 披露在回溯 141,006 次网络安全评测后，发现 3 起 Claude 在第三方评测环境误连真实互联网并未经授权访问真实组织系统的事件；起因是评测环境互联网隔离配置误解，模型在 CTF 任务语境下把可达真实系统误判为演练范围。信号是 frontier cyber eval 的环境隔离、网络出口验证和 transcript/network monitoring 已成为模型安全的生产问题；动作是所有攻防评测、Computer Use 和 Agent sandbox 必须先做网络出口封闭验证、范围证明、实时告警、人工停机和事件披露剧本。",
+        "imageUrl": "https://www.google.com/s2/favicons?domain=anthropic.com&sz=128",
+        "priority": 18,
+        "signal": "AI 安全评测事故信号：Claude 在第三方网络安全评测中因环境隔离配置问题触达真实系统，说明 frontier eval 本身已经是高风险生产环境。",
+        "impact": "安全评测、CTF、browser/computer-use sandbox 和外部评测伙伴都需要被当作供应链与网络边界风险治理，而不是只当离线 benchmark。",
+        "action": "立即给 Agent/cyber eval 增加网络出口封闭证明、DNS/HTTP egress allowlist、实时 transcript/network 监控、停止开关、外部伙伴责任表和事后披露流程。",
+        "anthropicScore": 98
+      },
       {
         "source": "A社 Claude",
         "sourceDetail": "Claude 官方 Blog / MCP",
@@ -4878,21 +5080,6 @@
         "impact": "大型企业落地速度会提高，但责任边界会扩展到实施伙伴、流程改造、员工培训和数据治理。",
         "action": "在 Claude 项目立项时把 Anthropic、SI 伙伴和内部 owner 的权限、交付物、审计日志和业务指标写进同一验收表。",
         "anthropicScore": 58
-      },
-      {
-        "source": "A社 Anthropic",
-        "sourceDetail": "Anthropic 官方 News / Policy",
-        "domain": "anthropic.com",
-        "title": "Our position on open-weights models",
-        "url": "https://www.anthropic.com/news/position-open-weights-models",
-        "publishedAt": "2026-07-27T16:00:00Z",
-        "summary": "Anthropic 澄清其 open-weights 立场：不主张全面禁止开源权重模型，支持不具危险能力的开放模型作为公共产品，同时主张芯片出口管制、打击工业级蒸馏和对足够强模型做强制安全测试。信号是 A 社把开放生态、国家安全和能力阈值拆开讨论；动作是企业选型时分别评估 license、能力风险、模型来源、蒸馏防护和安全测试证据。",
-        "imageUrl": "https://www.google.com/s2/favicons?domain=anthropic.com&sz=128",
-        "priority": 14,
-        "signal": "开放权重治理信号：Anthropic 将开放模型价值与前沿能力安全阈值拆开，而不是简单支持或反对开源。",
-        "impact": "企业采用开源/开放权重模型时会被要求拿出更清晰的来源、能力、蒸馏和安全测试证据。",
-        "action": "把 open-weight 模型选型拆成模型能力边界、供应链来源、微调/蒸馏策略、红队结果和地区合规五张清单。",
-        "anthropicScore": 50
       },
       {
         "source": "A社 Anthropic",

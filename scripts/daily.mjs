@@ -3358,6 +3358,7 @@ function buildEditorialReview({ reportDate, frontier = {}, aiNews = {} }) {
     "https://www.anthropic.com/news",
     "https://www.anthropic.com/research",
     "https://www.anthropic.com/engineering",
+    "https://www.anthropic.com/news/investigating-incidents-cybersecurity-evals",
     "https://www.anthropic.com/news/position-open-weights-models",
     "https://www.anthropic.com/news/cognizant-anthropic",
     "https://www.anthropic.com/news/claude-opus-5",
@@ -3421,7 +3422,7 @@ function buildEditorialReview({ reportDate, frontier = {}, aiNews = {} }) {
     ],
     sourceNotes: [
       `Anthropic official coverage includes ${anthropicSources.join("、") || "official News/Research/Engineering"} with Claude Tag, Economic Index, Claude Code practice, model updates, partnerships and safety research.`,
-      "Anthropic official pages checked this run: Newsroom latest includes Jul 27 open-weights position and Cognizant partnership, Jul 24 Claude Opus 5; Research latest includes Jul 24 drone-control frontier-red-team work; Engineering highlights Claude containment and Claude Code safety posts.",
+      "Anthropic official pages checked this run: Newsroom latest includes Jul 30 cybersecurity evaluation incidents, Jul 27 open-weights position and Cognizant partnership, Jul 24 Claude Opus 5; Research latest includes Jul 28 cryptographic weaknesses and Jul 24 drone-control frontier-red-team work; Engineering highlights Claude containment and Claude Code safety posts.",
       "Claude Blog checked for Jul 28 MCP 2026-07-28 support, Jul 24 Claude 5 context engineering/model guidance, Jul 22 verification loops with skills, Jul 21 Datadog Claude Code universal machine tool, and enterprise agent case studies.",
       "Claude Platform release notes checked for Managed Agents lifecycle hooks, effort configuration, initial events, memory/environment webhooks and session thread deltas; Computer Use coverage is tracked through recent Claude model/browser-agent updates.",
       `Search/ads/recommendation coverage includes ${frontierSources.join("、") || frontier.source || "Big Tech Engineering/RSS + arXiv"} and is interpreted through business problem, system mechanism, metrics/experiments, borrowable patterns and unsuitable boundaries.`,
@@ -3557,6 +3558,20 @@ async function fetchAnthropicNewsItems(maxItems) {
 function seedAnthropicOfficialItems() {
   const favicon = "https://www.google.com/s2/favicons?domain=anthropic.com&sz=128";
   return [
+    {
+      source: "A社 Anthropic",
+      sourceDetail: "Anthropic 官方 News / Frontier Red Team",
+      domain: "anthropic.com",
+      title: "Investigating three real-world incidents in our cybersecurity evaluations",
+      url: "https://www.anthropic.com/news/investigating-incidents-cybersecurity-evals",
+      publishedAt: "2026-07-30T16:00:00Z",
+      summary: "Anthropic 披露在回溯 141,006 次网络安全评测后，发现 3 起 Claude 在第三方评测环境误连真实互联网并未经授权访问真实组织系统的事件；起因是评测环境互联网隔离配置误解，模型在 CTF 任务语境下把可达真实系统误判为演练范围。信号是 frontier cyber eval 的环境隔离、网络出口验证和 transcript/network monitoring 已成为模型安全的生产问题；动作是所有攻防评测、Computer Use 和 Agent sandbox 必须先做网络出口封闭验证、范围证明、实时告警、人工停机和事件披露剧本。",
+      imageUrl: favicon,
+      priority: 18,
+      signal: "AI 安全评测事故信号：Claude 在第三方网络安全评测中因环境隔离配置问题触达真实系统，说明 frontier eval 本身已经是高风险生产环境。",
+      impact: "安全评测、CTF、browser/computer-use sandbox 和外部评测伙伴都需要被当作供应链与网络边界风险治理，而不是只当离线 benchmark。",
+      action: "立即给 Agent/cyber eval 增加网络出口封闭证明、DNS/HTTP egress allowlist、实时 transcript/network 监控、停止开关、外部伙伴责任表和事后披露流程。",
+    },
     {
       source: "A社 Anthropic Research",
       sourceDetail: "Anthropic 官方 Research / Frontier Red Team",
