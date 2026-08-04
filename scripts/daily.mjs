@@ -198,6 +198,81 @@ function applyEditorialOverrides(report) {
       impact: "企业采用开源/开放权重模型时会被要求拿出更清晰的来源、能力、蒸馏和安全测试证据。",
       action: "把 open-weight 模型选型拆成模型能力边界、供应链来源、微调/蒸馏策略、红队结果和地区合规五张清单。",
     },
+    "Replit 环境智能：免提示词自动生成设计": {
+      signal: "产品形态信号：AI IDE 正从“用户写 prompt”转向“环境主动提出设计分支”，入口更像协同设计系统而不是一次性生成按钮。",
+      impact: "原型团队的瓶颈会从会不会提示词，转到建议卡片是否理解当前 UI 状态、能否保留设计约束、是否支持可回滚的多分支探索。",
+      action: "用同一产品页面跑 10 组设计分支，记录建议命中率、视觉一致性、可编辑性、回滚成本和生成后仍需人工修正的组件类型。",
+    },
+    "Soup v0.72.4：在4 GB显存笔记本GPU上微调8B模型": {
+      signal: "端侧微调信号：小显存设备开始承接 8B 级模型适配，重点不是替代训练集群，而是把私有样本验证和个性化小实验前移到本地。",
+      impact: "个人开发者和小团队能更快验证 LoRA/adapter 方向，但显存节省通常会换来吞吐、稳定性、量化误差和依赖版本复杂度。",
+      action: "先用 200-500 条授权样本做本地 smoke test，对比基础模型、云端微调和 Soup 输出的质量、耗时、峰值内存、失败样本与可复现脚本。",
+    },
+    "SpecForge v0.3.0 发布：统一解耦与共置投机解码栈，新增开放 SpecBundle 草稿模型": {
+      signal: "推理加速信号：投机解码正在从单实现技巧变成可交换的草稿模型、验证模型和 serving 策略组合。",
+      impact: "模型平台可以用更小草稿模型降低延迟和成本，但必须证明不同 workload 下接受率、质量回归、batching、缓存和 fallback 不会互相抵消。",
+      action: "在真实 prompt 分桶上记录 tokens/s、TTFT、draft acceptance、质量差异、显存占用和 P95/P99，按任务类型决定共置还是解耦部署。",
+    },
+    "GitHub 如何用堆叠式 Pull Request 拆解 AI 生成的巨型代码": {
+      signal: "AI 编码治理信号：大补丁不能只靠最终 review 消化，平台正在把 AI 生成代码拆成可审、可测、可回滚的 stacked PR 工作流。",
+      impact: "研发效能的核心从“生成更多代码”转向“控制变更粒度、依赖顺序和 reviewer 认知负担”，否则 AI 产出会变成合并风险。",
+      action: "把 Agent 任务模板改为小 PR 链：每个 PR 绑定测试、风险说明和回滚点，并记录 review 时长、返工率、冲突率和线上缺陷。",
+    },
+    "Google Cloud API Gateway 推出统一模型路由功能，支持 Gemini、Claude 与 OpenAI OSS-GPT": {
+      signal: "模型网关信号：多供应商路由正在下沉到云 API Gateway，模型选择会同时受能力、价格、地区、合规和故障切换约束。",
+      impact: "企业 AI 应用会减少硬编码 provider 的成本，但审计、提示词兼容、工具调用语义和敏感数据出境仍需要应用层显式治理。",
+      action: "把 Gemini、Claude、OpenAI OSS-GPT 放进同一回放集，分别验证质量、延迟、成本、失败码、工具调用兼容和地区/数据处理策略。",
+    },
+    "Google Cloud 推出 Database Operations Agents，实现自主数据库管理": {
+      signal: "数据库 Agent 信号：DBA 工作流正在从告警辅助走向自主诊断、建议变更和部分运维执行，关键边界是权限、回放和变更审批。",
+      impact: "数据平台可以降低重复排障和调参成本，但错误 SQL、误判容量、越权读取和自动变更失败会直接影响生产稳定性。",
+      action: "先接只读诊断和建议模式，要求每次输出包含证据查询、影响范围、回滚方案和人工批准点，再逐步开放低风险自动化动作。",
+    },
+    "Third-party cyber evaluations involving OpenAI models": {
+      signal: "第三方 cyber eval 信号：前沿模型安全评测已变成需要沙箱、外部评估方、事件披露和模型行为分级的工程体系。",
+      impact: "企业不能把 eval 当成离线 benchmark；带工具、网络或代码执行的评估环境本身就是攻击面，会影响供应商准入和内部红队流程。",
+      action: "把模型评测环境和生产环境分离，建立网络出口、凭据隔离、制品完整性、事件升级、外部评估记录和评测后修复回放清单。",
+    },
+    "Investigating three real-world incidents in our cybersecurity evaluations": {
+      signal: "A 社安全评测信号：Anthropic 披露多起 cyber eval 真实事件，说明无标准防护的研究/评测模型可能表现出高风险工具使用能力。",
+      impact: "采购 Claude 或竞品时，安全判断要区分研究模型、公开模型、部署 safeguards 和监控策略，不能只看模型家族名称。",
+      action: "在内部评测中强制记录模型版本、防护开关、工具权限、网络边界、监控命中和人工接管证据，形成可复跑的安全回归集。",
+    },
+    "A global workspace in language models": {
+      signal: "解释性研究信号：Anthropic 用 global workspace 视角观察语言模型内部信息广播，试图把抽象推理过程转成可检验机制。",
+      impact: "这类研究短期不会直接提升产品指标，但会影响模型可解释性、安全诊断和复杂任务失败归因的方法论。",
+      action: "把它放进模型安全研究观察池：只跟踪可复现实验、可解释探针、失败案例映射和是否能辅助红队/调试流程。",
+    },
+    "Introducing Claude Opus 5": {
+      signal: "Claude 模型更新信号：Opus 5 主打长任务 Agent、编码和专业工作，真正差异要看长上下文稳定性和工具链恢复能力。",
+      impact: "团队可能把更多规划、重构和分析任务迁到 Claude，但成本、速度、权限隔离和失败恢复会决定是否能进入生产工作流。",
+      action: "用长任务评测集对比 Sonnet/Opus/竞品：记录任务完成率、上下文遗漏、工具误用、成本、人工接管和多小时会话恢复。",
+    },
+    "Introducing Claude Opus 4.8": {
+      signal: "模型迭代信号：Opus 4.8 仍值得作为 Opus 5 前后的能力/成本参照，尤其观察 coding、推理和工具调用差异。",
+      impact: "如果现有生产链路已锁定 4.x，升级不应只看新模型跑分，而要验证延迟、价格、稳定性和安全策略变化。",
+      action: "保留 4.8 与 5 的并行灰度：同一批任务跑回放，按质量提升是否覆盖成本与迁移风险决定升级节奏。",
+    },
+    "Working at the frontier: How Rakuten builds agents overnight with Claude Fable 5": {
+      signal: "企业 Agent 落地信号：Rakuten 案例强调用 Claude 快速把业务流程转成 Agent，但核心价值在流程 owner、数据接口和验收闭环。",
+      impact: "大型企业会被“overnight agents”吸引，但没有权限治理、业务指标和人工接管时，快速生成只会把复杂度推迟到上线后。",
+      action: "复刻前先选一个低风险流程，列清系统接口、审批点、失败回退、审计日志和业务 KPI，再让 Agent 进入 shadow 模式。",
+    },
+    "Claude Managed Agents add effort, lifecycle webhooks and session deltas": {
+      signal: "Agent 平台化信号：Managed Agents 加入 effort、生命周期 webhook 和 session delta，说明长任务 Agent 正在补齐可观测、可恢复和可编排接口。",
+      impact: "企业可以把 Agent 当作异步工作单元接入后台流程，但同时需要预算上限、状态机、幂等重试和失败通知。",
+      action: "设计 Agent 作业表：记录 session、effort、输入权限、webhook 事件、增量输出、人工审批和取消/重试策略，再接真实业务。",
+    },
+    "Ben Bernanke appointed to Anthropic's Long-Term Benefit Trust": {
+      signal: "治理结构信号：Anthropic 引入宏观政策和公共治理背景的受托人，强化外部监督叙事。",
+      impact: "这不会直接改变 Claude 能力，但会影响企业采购时对长期治理、政策风险和安全承诺的解释材料。",
+      action: "在供应商评审里单列治理维度：受托结构、政策立场、模型披露、地区合规和事故响应，不与技术 benchmark 混在一起打分。",
+    },
+    "How we contain Claude across products": {
+      signal: "Agent containment 信号：Anthropic 把 Claude 的产品隔离、权限、监控和执行边界作为工程问题公开讨论。",
+      impact: "这对所有接入工具的 Agent 都是上线基线：安全不能只依赖 prompt，需要 runtime、权限和审计共同约束。",
+      action: "按产品面建立 containment 清单：文件/网络/工具权限、敏感数据边界、执行日志、异常拦截、用户确认点和沙箱逃逸测试。",
+    },
   };
 
   for (const item of report.aiNews?.items || []) {
@@ -3514,6 +3589,8 @@ function buildEditorialReview({ reportDate, frontier = {}, aiNews = {} }) {
     "https://www.anthropic.com/research/economic-index-june-2026-report",
     "https://www.anthropic.com/research/claude-code-expertise",
     "https://docs.anthropic.com/en/release-notes/api",
+    "https://aihot.virxact.com/feed.xml",
+    "https://openai.com/index/third-party-cyber-evaluations-involving-openai-models",
     "https://openai.com/news/research/",
     "https://huggingface.co/blog/security-incident-july-2026",
     "https://openai.com/index/gpt-5-6/",
