@@ -2623,6 +2623,13 @@ function normalizeFrontierInterpretation(item) {
 function curatedFrontierInterpretation(item) {
   const title = normalizeTitle(item.title || "");
   const map = {
+    [normalizeTitle("GEM Training: How Meta Doubled the Efficiency of Its LLM-Scale Ads Recommendation Foundation Model")]: {
+      businessProblem: "Meta Ads 要让 GEM 这类基础模型同时服务转化、广告主价值、用户体验和成本效率；瓶颈不只是模型效果，而是 trillions 级 sparse embedding、billions 级 dense 参数、序列/非序列特征 join、训练吞吐和上线迭代周期能否一起扩展。",
+      systemMechanism: "GEM 采用混合推荐基础模型：高基数用户/广告/上下文由大规模 sparse embeddings 承载，dense 主干建模行为序列、广告内容与非序列特征交互；训练侧通过 embedding sharding、分布式并行、数据流水线、硬件感知 kernel/调度和稳定性治理提升有效训练效率。",
+      metricsAndExperiment: "这篇文章的核心信号是训练效率翻倍；生产验收应同时看训练 wall-clock、MFU、样本吞吐、embedding hot-key 倾斜、特征新鲜度、离线 AUC/GAUC、线上 CTR/CVR/转化、广告主 ROI、用户负反馈和单位训练/推理成本。",
+      borrowable: "可借鉴“模型容量、稀疏特征、训练系统共同设计”的路线：先把 embedding table、序列窗口、负采样、特征 join、训练吞吐和成本归因做成可观测面板，再决定扩大模型或调整目标。",
+      boundary: "没有超大样本、稳定转化回传、GPU/存储平台、实验流量和成本归因能力的团队不应照搬 GEM；更现实的迁移是复用特征治理、分布式 embedding、训练 profile 和模型成本核算方法。",
+    },
     [normalizeTitle("Exploring Hierarchical Interest Representation For Meta Ads Deep Funnel Optimization")]: {
       businessProblem: "深漏斗广告优化的核心矛盾是转化信号稀疏、长尾广告实体冷启动、用户兴趣层级复杂；只靠点击/互动模型会偏向短期可观测行为，难以把真实潜在购买意图与广告主供给匹配起来。",
       systemMechanism: "Meta 把用户、广告主、产品、服务和互动构成大规模关系图，引入 LLM 处理的多模态广告/商品语义，再用 transformer 图学习、偏置感知 attention、自监督跨视图蒸馏和多层级投影，产出可供召回、排序和监督复用的统一兴趣向量与 Bag-of-Meaning interest tokens。",
@@ -2932,6 +2939,16 @@ async function fetchIndustryFrontierItems(maxItems) {
 
 function seedIndustryFrontierItems() {
   return [
+    {
+      title: "GEM Training: How Meta Doubled the Efficiency of Its LLM-Scale Ads Recommendation Foundation Model",
+      url: "https://engineering.fb.com/2026/08/03/ml-applications/training-gem-at-llm-scale-meta-ads-recommendation-foundation-model/",
+      publishedAt: "2026-08-03T16:00:00Z",
+      source: "Meta Engineering",
+      domain: "engineering.fb.com",
+      sourceType: "industry",
+      frontierScore: 66,
+      summary: "Meta 最新拆解 GEM 训练栈：广告推荐基础模型采用 trillions 级 sparse embedding 参数与 billions 级 dense 参数的混合架构，融合用户行为序列、广告内容和非序列特征，并通过 embedding sharding、分布式训练、硬件利用率优化和训练稳定性治理，把 LLM-scale 推荐从论文式扩参推进到广告系统可持续迭代。",
+    },
     {
       title: "Exploring Hierarchical Interest Representation For Meta Ads Deep Funnel Optimization",
       url: "https://engineering.fb.com/2026/07/15/ai-research/exploring-hierarchical-interest-representation-for-meta-ads-deep-funnel-optimization/",
