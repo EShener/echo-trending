@@ -1,6 +1,6 @@
 {
   "date": "2026-08-04",
-  "generatedAt": "2026-08-04T08:16:45.728Z",
+  "generatedAt": "2026-08-04T11:16:27.761Z",
   "source": {
     "provider": "GitHub Trending daily + AIHOT + official AI feeds + Anthropic official pages + big-tech engineering blogs + Codex manual deep rewrite",
     "query": "pushed:>=2026-07-28 stars:>100 archived:false",
@@ -9,7 +9,7 @@
     "language": "all",
     "editorialReview": {
       "method": "script refresh + Codex multi-source editorial review",
-      "reviewedAt": "2026-08-04T08:16:45.729Z",
+      "reviewedAt": "2026-08-04T11:16:27.762Z",
       "reportDate": "2026-08-04",
       "focus": [
         "GitHub Trending daily metadata, repo README evidence and adoption risk review",
@@ -87,134 +87,134 @@
   "summary": {
     "headline": "今日雷达主线：GitHub 热门继续围绕 Agent 工作流、个人云和文档/设计上下文扩散；搜广推从单模型优化转向召回、排序、serving 成本和实验血缘协同；A 社同时推进安全研究、Managed Agents/MCP 和 Claude Code 工程化。",
     "bullets": [
-      "GitHub 本轮由 lyogavin/airllm、zhaoxuya520/reverse-skill、firecrawl/pdf-inspector 领跑；解读重点落在 低显存大模型推理 / 本地 LLM 实验、授权安全研究 Skill / AI 工具路由、PDF 文档路由 / Rust + WASM 解析基础设施、DeepSeek 原生终端 Coding Agent / Prefix-cache 工作流，采用判断不按 star 排序，而按架构机制、适用团队、落地路径、生产风险、决策问题和观察信号拆解。",
-      "开源项目解读已按“架构机制 -> 适用团队 -> 落地路径 -> 生产风险 -> 决策问题 -> 观察信号”展开；本轮更适合旁路 spike 的入口是：进入观察/试点池：用固定 prompt 集和目标模型跑离线基准，记录 TTFT、tokens/s、峰值内存、磁盘 I/O、质量回归和失败样本，再决定是否继续投入。；先保留人工复核、指标记录和回滚路径。",
+      "GitHub 本轮由 TencentCloud/TencentDB-Agent-Memory、zhaoxuya520/reverse-skill、firecrawl/pdf-inspector 领跑；解读重点落在 团队级 Agent Memory / Chat-Skill-Wiki-CodeGraph 治理层、授权安全研究 Skill / AI 工具路由、PDF 文档路由 / Rust + WASM 解析基础设施、AI Agent / LLM 工程，采用判断不按 star 排序，而按架构机制、适用团队、落地路径、生产风险、决策问题和观察信号拆解。",
+      "开源项目解读已按“架构机制 -> 适用团队 -> 落地路径 -> 生产风险 -> 决策问题 -> 观察信号”展开；本轮更适合旁路 spike 的入口是：进入观察/试点池：先选择一个低敏项目，把历史任务、团队规范和代码索引导入只读记忆库，验证检索命中、权限边界和过期清理。；先保留人工复核、指标记录和回滚路径。",
       "搜广推收录 22 条工程/研究信号，覆盖 Google Research、Meta Engineering、Amazon Science、Netflix TechBlog、Pinterest Engineering、Airbnb Engineering、Spotify Engineering、Salesforce Engineering、Dropbox Tech、Meituan Tech；重点从「GEM Training: How Meta Doubled the Efficiency of Its LLM-Scale Ads Recommendation Foundation Model」延伸到广告排序、实时上下文、企业搜索 relevance judge、模型生命周期图和工业搜索属性推荐。",
       "A 社覆盖 18 条官方 News/Research/Engineering 动态，最新重点是「Investigating three real-world incidents in our cybersecurity evaluations」；安全研究主线继续观察「An off switch for dual use knowledge in AI models」，Claude Code 相关信号包括 Investigating three real-world incidents in our cybersecurity evaluations、Bringing MCP 2026-07-28 to Claude、Claude Managed Agents add effort, lifecycle webhooks and session deltas，评估动作应拆成模型能力、权限隔离、长任务恢复、团队协作记忆、预算上限和审计边界。",
-      "AIHOT/官方 AI 新闻共 20 条，其中 AIHOT 8 条；今日先看「Swiftlet：在 Mac 上运行 80B 版 Qwen（内存 4.3 GB），在 iPhone 上运行 35B 版」，所有新闻统一写成“信号 -> 影响 -> 动作”，动作聚焦评测回放、预算治理、工具白名单、权限审计和真实工作流验证。"
+      "AIHOT/官方 AI 新闻共 20 条，其中 AIHOT 8 条；今日先看「工信部发布首部L3/L4自动驾驶系统安全要求强制性国标，2027年7月实施」，所有新闻统一写成“信号 -> 影响 -> 动作”，动作聚焦评测回放、预算治理、工具白名单、权限审计和真实工作流验证。"
     ]
   },
   "items": [
     {
       "rank": 1,
       "repo": {
-        "fullName": "lyogavin/airllm",
-        "name": "airllm",
-        "owner": "lyogavin",
-        "avatarUrl": "https://avatars.githubusercontent.com/u/1113905?v=4",
-        "visualUrl": "https://opengraph.githubassets.com/20260804/lyogavin/airllm",
-        "url": "https://github.com/lyogavin/airllm",
-        "description": "AirLLM 70B inference with single 4GB GPU",
-        "stars": 27684,
-        "starsToday": 1085,
-        "forks": 3006,
-        "openIssues": 123,
-        "language": "Jupyter Notebook",
+        "fullName": "TencentCloud/TencentDB-Agent-Memory",
+        "name": "TencentDB-Agent-Memory",
+        "owner": "TencentCloud",
+        "avatarUrl": "https://avatars.githubusercontent.com/u/20101770?v=4",
+        "visualUrl": "https://opengraph.githubassets.com/20260804/TencentCloud/TencentDB-Agent-Memory",
+        "url": "https://github.com/TencentCloud/TencentDB-Agent-Memory",
+        "description": "TencentDB Agent Memory is a team-level memory hub for AI Agents — turning conversations, docs, and code into four reusable memory assets (Chat Memory, Skill, LLM-Wiki, Code-Graph) that are governed, shared, and equipped across agents and frameworks.",
+        "stars": 12687,
+        "starsToday": 1090,
+        "forks": 1205,
+        "openIssues": 487,
+        "language": "TypeScript",
         "topics": [
-          "chinese-llm",
-          "chinese-nlp",
-          "finetune",
-          "generative-ai",
-          "instruct-gpt",
-          "instruction-set",
-          "llama",
+          "agent",
+          "ai-agent",
+          "embedding",
           "llm",
-          "lora",
-          "open-models",
-          "open-source",
-          "open-source-models",
-          "qlora"
+          "local-first",
+          "long-term-memory",
+          "memory",
+          "openclaw-plugin",
+          "vector-search"
         ],
-        "license": "Apache-2.0",
-        "pushedAt": "2026-07-29T01:08:32Z",
-        "createdAt": "2023-06-12T16:28:41Z",
+        "license": "NOASSERTION",
+        "pushedAt": "2026-08-03T12:49:18Z",
+        "createdAt": "2026-04-07T06:34:26Z",
         "languages": {
-          "Jupyter Notebook": 6583910,
-          "Python": 291957,
-          "Shell": 6185
+          "TypeScript": 6172277,
+          "Python": 238073,
+          "Shell": 146171,
+          "CSS": 121910,
+          "JavaScript": 40718,
+          "Dockerfile": 20530,
+          "HTML": 358
         }
       },
       "analysis": {
         "method": "codex-research-refresh",
-        "category": "低显存大模型推理 / 本地 LLM 实验",
-        "oneLiner": "AirLLM 70B inference with single 4GB GPU；关键看 通过权重分块、显存/内存/磁盘分层加载、MoE expert streaming 和按需卸载，把一次完整推理拆成可在小显存设备上串行执行的步骤。 是否能被小范围验证。",
-        "whyItMatters": "lyogavin/airllm 值得看，是因为 AI 项目真正的分水岭已经从“能跑 demo”转向“能被治理、能接工具、能失败恢复”。当前 27.7K stars / 3K forks，近期仍在活跃迭代，足够进入 Agent 工程雷达。 这次更新更值得关注的是其可迁移机制：通过权重分块、显存/内存/磁盘分层加载、MoE expert streaming 和按需卸载，把一次完整推理拆成可在小显存设备上串行执行的步骤。 能否被拆成小样本验证，而不是把项目整体搬进生产。",
-        "engineeringRead": "Jupyter Notebook · Python 包/脚本。建议按“入口示例 -> 数据/配置 -> 失败处理 -> CI/release -> issue 反例”的顺序读；重点回答 它解决的是「团队想在消费级 GPU、边缘机器或成本敏感环境里试跑 70B+ 模型，但常规推理栈要求大显存、多卡或复杂量化。」的主矛盾，还是只会给现有流程增加新的维护面？",
+        "category": "团队级 Agent Memory / Chat-Skill-Wiki-CodeGraph 治理层",
+        "oneLiner": "TencentDB Agent Memory is a team-level memory hub for AI Agents — turning conversations, docs, and code into four reusable memory assets (Chat Memory, Skill, LLM-Wiki, Code-Graph) that are governed, shared, and equipped across agents and frameworks.；关键看 把 conversation、docs、code 转成 Chat Memory、Skill、LLM-Wiki、Code-Graph 四类资产，并通过治理、装备和共享机制接入多 Agent/框架。 是否能被小范围验证。",
+        "whyItMatters": "TencentCloud/TencentDB-Agent-Memory 值得看，是因为 AI 项目真正的分水岭已经从“能跑 demo”转向“能被治理、能接工具、能失败恢复”。当前 12.7K stars / 1.2K forks，维护非常活跃，足够进入 Agent 工程雷达。 这次更新更值得关注的是其可迁移机制：把 conversation、docs、code 转成 Chat Memory、Skill、LLM-Wiki、Code-Graph 四类资产，并通过治理、装备和共享机制接入多 Agent/框架。 能否被拆成小样本验证，而不是把项目整体搬进生产。",
+        "engineeringRead": "TypeScript · API/SDK 接入。建议按“入口示例 -> 数据/配置 -> 失败处理 -> CI/release -> issue 反例”的顺序读；重点回答 它解决的是「团队使用多个 Agent 后，对话记忆、技能、文档知识和代码图谱分散在个人上下文里，无法共享、治理或跨工具复用。」的主矛盾，还是只会给现有流程增加新的维护面？",
         "architectureSignals": [
-          "架构机制：通过权重分块、显存/内存/磁盘分层加载、MoE expert streaming 和按需卸载，把一次完整推理拆成可在小显存设备上串行执行的步骤。；阅读时把 Jupyter Notebook 代码入口、数据/配置形态、自动化脚本和边界条件连起来看，而不是只看 README 的安装示例。",
-          "适用团队：个人研究、边缘设备原型、私有数据 PoC、模型选型和成本敏感的 AI 平台团队。",
-          "落地路径：用固定 prompt 集和目标模型跑离线基准，记录 TTFT、tokens/s、峰值内存、磁盘 I/O、质量回归和失败样本，再决定是否继续投入。；先保留人工复核、指标记录和回滚路径。",
-          "生产风险：低显存方案常把硬件成本转移到延迟、吞吐、磁盘 I/O 和工程复杂度；上线前必须保留成熟推理栈备选。",
-          "决策问题：它解决的是「团队想在消费级 GPU、边缘机器或成本敏感环境里试跑 70B+ 模型，但常规推理栈要求大显存、多卡或复杂量化。」的主矛盾，还是只会给现有流程增加新的维护面？",
-          "观察信号：TTFT、tokens/s、峰值显存/内存、磁盘吞吐、长上下文稳定性、质量回归、单位任务成本和 P95/P99 延迟、最近 release 质量、issue 响应速度和 Python 包/脚本 的集成反馈。"
+          "架构机制：把 conversation、docs、code 转成 Chat Memory、Skill、LLM-Wiki、Code-Graph 四类资产，并通过治理、装备和共享机制接入多 Agent/框架。；阅读时把 TypeScript 代码入口、数据/配置形态、自动化脚本和边界条件连起来看，而不是只看 README 的安装示例。",
+          "适用团队：高频使用 coding/research Agent、已有知识 owner 和权限治理需求的平台工程、研发效能和数据库/云产品团队。",
+          "落地路径：先选择一个低敏项目，把历史任务、团队规范和代码索引导入只读记忆库，验证检索命中、权限边界和过期清理。；先保留人工复核、指标记录和回滚路径。",
+          "生产风险：团队记忆会集中源码、决策和个人上下文；陈旧记忆、权限误配和数据泄露必须前置治理。",
+          "决策问题：它解决的是「团队使用多个 Agent 后，对话记忆、技能、文档知识和代码图谱分散在个人上下文里，无法共享、治理或跨工具复用。」的主矛盾，还是只会给现有流程增加新的维护面？",
+          "观察信号：上下文命中率、重复解释次数、权限违规拦截、过期记忆清理、跨 Agent 复用次数、代码图谱错误引用率、最近 release 质量、issue 响应速度和 API/SDK 接入 的集成反馈。"
         ],
         "valueHypothesis": [
-          "如果团队确实存在「团队想在消费级 GPU、边缘机器或成本敏感环境里试跑 70B+ 模型，但常规推理栈要求大显存、多卡或复杂量化。」，lyogavin/airllm 的收益应体现为 TTFT、tokens/s、峰值显存/内存、磁盘吞吐、长上下文稳定性、质量回归、单位任务成本和 P95/P99 延迟 的改善。",
+          "如果团队确实存在「团队使用多个 Agent 后，对话记忆、技能、文档知识和代码图谱分散在个人上下文里，无法共享、治理或跨工具复用。」，TencentCloud/TencentDB-Agent-Memory 的收益应体现为 上下文命中率、重复解释次数、权限违规拦截、过期记忆清理、跨 Agent 复用次数、代码图谱错误引用率 的改善。",
           "适合先复制机制、接口或治理方式，不适合未验证成本就全量迁移。",
-          "若 高并发在线助手、低延迟语音交互、严格 SLA 推理网关或缺少本地运维能力的团队。，它更适合作为资料样本，而不是生产依赖。"
+          "若 小型一次性项目、权限边界不清、不能存储源码/对话摘要或没有维护 owner 的团队。，它更适合作为资料样本，而不是生产依赖。"
         ],
         "technicalTakeaways": [
-          "先抓 先看支持模型清单、分层加载策略、MoE expert streaming、依赖版本、benchmark 脚本和 issue 中的 OOM/速度反馈。，再决定 spike 范围。",
-          "图解字段应突出 通过权重分块、显存/内存/磁盘分层加载、MoE expert streaming 和按需卸载，把一次完整推理拆成可在小显存设备上串行执行的步骤。 如何把 团队想在消费级 GPU、边缘机器或成本敏感环境里试跑 70B+ 模型，但常规推理栈要求大显存、多卡或复杂量化。 转成 降低大模型本地可达门槛，让模型选型、隐私 PoC、离线研究和边缘演示先跑起来。。",
+          "先抓 先看四类 memory schema、权限模型、同步/删除语义、Code-Graph 构建、LLM-Wiki 引用和多框架适配。，再决定 spike 范围。",
+          "图解字段应突出 把 conversation、docs、code 转成 Chat Memory、Skill、LLM-Wiki、Code-Graph 四类资产，并通过治理、装备和共享机制接入多 Agent/框架。 如何把 团队使用多个 Agent 后，对话记忆、技能、文档知识和代码图谱分散在个人上下文里，无法共享、治理或跨工具复用。 转成 降低 Agent 每次重新理解团队背景的成本，把个人经验转成可审计、可复用的团队上下文资产。。",
           "验收时同时记录正样本、失败样本、成本、延迟和维护 owner。"
         ],
         "adoptionRisks": [
-          "低显存方案常把硬件成本转移到延迟、吞吐、磁盘 I/O 和工程复杂度；上线前必须保留成熟推理栈备选。",
-          "与现有 Jupyter Notebook / Python 包/脚本 工具链的耦合要先做最小集成验证。",
-          "社区负载相对可控，但仍要关注 breaking change、license 和长期维护信号。"
+          "团队记忆会集中源码、决策和个人上下文；陈旧记忆、权限误配和数据泄露必须前置治理。",
+          "与现有 TypeScript / API/SDK 接入 工具链的耦合要先做最小集成验证。",
+          "当前 open issues 偏高，必须抽查最近 issue 的响应质量和 release 节奏。"
         ],
         "suggestedUseCases": [
-          "用固定 prompt 集和目标模型跑离线基准，记录 TTFT、tokens/s、峰值内存、磁盘 I/O、质量回归和失败样本，再决定是否继续投入。；先保留人工复核、指标记录和回滚路径。",
-          "用一个可回放样本验证 TTFT、tokens/s、峰值显存/内存、磁盘吞吐、长上下文稳定性、质量回归、单位任务成本和 P95/P99 延迟，同时记录接入时间、失败样本和回滚步骤。",
+          "先选择一个低敏项目，把历史任务、团队规范和代码索引导入只读记忆库，验证检索命中、权限边界和过期清理。；先保留人工复核、指标记录和回滚路径。",
+          "用一个可回放样本验证 上下文命中率、重复解释次数、权限违规拦截、过期记忆清理、跨 Agent 复用次数、代码图谱错误引用率，同时记录接入时间、失败样本和回滚步骤。",
           "只在指标改善、维护 owner 明确、风险可隔离后，再从旁路验证扩大到核心流程。"
         ],
         "watchSignals": [
-          "TTFT、tokens/s、峰值显存/内存、磁盘吞吐、长上下文稳定性、质量回归、单位任务成本和 P95/P99 延迟、最近 release 质量、issue 响应速度和 Python 包/脚本 的集成反馈。",
-          "release note 是否持续解释 通过权重分块、显存/内存/磁盘分层加载、MoE expert streaming 和按需卸载，把一次完整推理拆成可在小显存设备上串行执行的步骤。 的演进，而不只是功能堆叠。",
+          "上下文命中率、重复解释次数、权限违规拦截、过期记忆清理、跨 Agent 复用次数、代码图谱错误引用率、最近 release 质量、issue 响应速度和 API/SDK 接入 的集成反馈。",
+          "release note 是否持续解释 把 conversation、docs、code 转成 Chat Memory、Skill、LLM-Wiki、Code-Graph 四类资产，并通过治理、装备和共享机制接入多 Agent/框架。 的演进，而不只是功能堆叠。",
           "issue/讨论区是否出现与你的目标场景相似的真实案例和失败反馈。"
         ],
         "deepDive": {
-          "strategicValue": "lyogavin/airllm 的价值不应按 star 数直接外推；更合理的读法是把它当作 低显存大模型推理 / 本地 LLM 实验 的工程样本，判断其机制是否能降低你现有链路的复杂度、人工成本或质量波动。",
+          "strategicValue": "TencentCloud/TencentDB-Agent-Memory 的价值不应按 star 数直接外推；更合理的读法是把它当作 团队级 Agent Memory / Chat-Skill-Wiki-CodeGraph 治理层 的工程样本，判断其机制是否能降低你现有链路的复杂度、人工成本或质量波动。",
           "implementationPath": [
-            "用固定 prompt 集和目标模型跑离线基准，记录 TTFT、tokens/s、峰值内存、磁盘 I/O、质量回归和失败样本，再决定是否继续投入。；先保留人工复核、指标记录和回滚路径。",
-            "用一个可回放样本验证 TTFT、tokens/s、峰值显存/内存、磁盘吞吐、长上下文稳定性、质量回归、单位任务成本和 P95/P99 延迟，同时记录接入时间、失败样本和回滚步骤。",
+            "先选择一个低敏项目，把历史任务、团队规范和代码索引导入只读记忆库，验证检索命中、权限边界和过期清理。；先保留人工复核、指标记录和回滚路径。",
+            "用一个可回放样本验证 上下文命中率、重复解释次数、权限违规拦截、过期记忆清理、跨 Agent 复用次数、代码图谱错误引用率，同时记录接入时间、失败样本和回滚步骤。",
             "只在指标改善、维护 owner 明确、风险可隔离后，再从旁路验证扩大到核心流程。"
           ],
           "productionConcerns": [
-            "低显存方案常把硬件成本转移到延迟、吞吐、磁盘 I/O 和工程复杂度；上线前必须保留成熟推理栈备选。",
-            "与现有 Jupyter Notebook / Python 包/脚本 工具链的耦合要先做最小集成验证。",
-            "社区负载相对可控，但仍要关注 breaking change、license 和长期维护信号。"
+            "团队记忆会集中源码、决策和个人上下文；陈旧记忆、权限误配和数据泄露必须前置治理。",
+            "与现有 TypeScript / API/SDK 接入 工具链的耦合要先做最小集成验证。",
+            "当前 open issues 偏高，必须抽查最近 issue 的响应质量和 release 节奏。"
           ],
           "decisionQuestions": [
-            "它解决的是「团队想在消费级 GPU、边缘机器或成本敏感环境里试跑 70B+ 模型，但常规推理栈要求大显存、多卡或复杂量化。」的主矛盾，还是只会给现有流程增加新的维护面？",
-            "如果两周 spike 只能证明“能跑”，不能证明 TTFT、tokens/s、峰值显存/内存、磁盘吞吐、长上下文稳定性、质量回归、单位任务成本和 P95/P99 延迟 改善，是否应降级为观察项？",
+            "它解决的是「团队使用多个 Agent 后，对话记忆、技能、文档知识和代码图谱分散在个人上下文里，无法共享、治理或跨工具复用。」的主矛盾，还是只会给现有流程增加新的维护面？",
+            "如果两周 spike 只能证明“能跑”，不能证明 上下文命中率、重复解释次数、权限违规拦截、过期记忆清理、跨 Agent 复用次数、代码图谱错误引用率 改善，是否应降级为观察项？",
             "谁负责上线后的升级、告警、回滚和安全审计？"
           ],
-          "recommendedAction": "进入观察/试点池：用固定 prompt 集和目标模型跑离线基准，记录 TTFT、tokens/s、峰值内存、磁盘 I/O、质量回归和失败样本，再决定是否继续投入。；先保留人工复核、指标记录和回滚路径。"
+          "recommendedAction": "进入观察/试点池：先选择一个低敏项目，把历史任务、团队规范和代码索引导入只读记忆库，验证检索命中、权限边界和过期清理。；先保留人工复核、指标记录和回滚路径。"
         },
         "diagram": {
-          "title": "airllm 工业级采用图解",
-          "caption": "低显存大模型推理 / 本地 LLM 实验 · Jupyter Notebook · 27.7K stars",
-          "summary": "用 通过权重分块、显存/内存/磁盘分层加载、MoE expert streaming 和按需卸载，把一次完整推理拆成可在小显存设备上串行执行的步骤。 解决 团队想在消费级 GPU、边缘机器或成本敏感环境里试跑 70B+ 模型，但常规推理栈要求大显存、多卡或复杂量化。，先经由 用固定 prompt 集和目标模型跑离线基准，记录 TTFT、tokens/s、峰值内存、磁盘 I/O、质量回归和失败样本，再决定是否继续投入。 验证 TTFT、tokens/s、峰值显存/内存、磁盘吞吐、长上下文稳定性、质量回归、单位任务成本和 P95/P99 延迟，再决定是否扩大。",
+          "title": "TencentDB-Agent-Memory 工业级采用图解",
+          "caption": "团队级 Agent Memory / Chat-Skill-Wiki-CodeGraph 治理层 · TypeScript · 12.7K stars",
+          "summary": "用 把 conversation、docs、code 转成 Chat Memory、Skill、LLM-Wiki、Code-Graph 四类资产，并通过治理、装备和共享机制接入多 Agent/框架。 解决 团队使用多个 Agent 后，对话记忆、技能、文档知识和代码图谱分散在个人上下文里，无法共享、治理或跨工具复用。，先经由 先选择一个低敏项目，把历史任务、团队规范和代码索引导入只读记忆库，验证检索命中、权限边界和过期清理。 验证 上下文命中率、重复解释次数、权限违规拦截、过期记忆清理、跨 Agent 复用次数、代码图谱错误引用率，再决定是否扩大。",
           "nodes": [
             {
               "label": "架构机制",
-              "detail": "通过权重分块、显存/内存/磁盘分层加载、MoE expert streaming 和按需卸载，把一次完整推理拆成可在小显存设备上串行执行的步骤。",
+              "detail": "把 conversation、docs、code 转成 Chat Memory、Skill、LLM-Wiki、Code-Graph 四类资产，并通过治理、装备和共享机制接入多 Agent/框架。",
               "type": "core"
             },
             {
               "label": "适用团队",
-              "detail": "个人研究、边缘设备原型、私有数据 PoC、模型选型和成本敏感的 AI 平台团队。",
+              "detail": "高频使用 coding/research Agent、已有知识 owner 和权限治理需求的平台工程、研发效能和数据库/云产品团队。",
               "type": "input"
             },
             {
               "label": "落地路径",
-              "detail": "用固定 prompt 集和目标模型跑离线基准，记录 TTFT、tokens/s、峰值内存、磁盘 I/O、质量回归和失败样本，再决定是否继续投入。；先保留人工复核、指标记录和回滚路径。",
+              "detail": "先选择一个低敏项目，把历史任务、团队规范和代码索引导入只读记忆库，验证检索命中、权限边界和过期清理。；先保留人工复核、指标记录和回滚路径。",
               "type": "integration"
             },
             {
               "label": "观察信号",
-              "detail": "TTFT、tokens/s、峰值显存/内存、磁盘吞吐、长上下文稳定性、质量回归、单位任务成本和 P95/P99 延迟、最近 release 质量、issue 响应速度和 Python 包/脚本 的集成反馈。",
+              "detail": "上下文命中率、重复解释次数、权限违规拦截、过期记忆清理、跨 Agent 复用次数、代码图谱错误引用率、最近 release 质量、issue 响应速度和 API/SDK 接入 的集成反馈。",
               "type": "measure"
             }
           ],
@@ -225,93 +225,93 @@
           ],
           "poster": {
             "eyebrow": "Project Blueprint",
-            "headline": "低显存大模型推理 / 本地 LLM 实验",
-            "subhead": "lyogavin/airllm · 快速破圈 · Jupyter Notebook",
-            "thesis": "把「团队想在消费级 GPU、边缘机器或成本敏感环境里试跑 70B+ 模型，但常规推理栈要求大显存、多卡或复杂量化。」通过「通过权重分块、显存/内存/磁盘分层加载、MoE expert streaming 和按需卸载，把一次完整推理拆成可在小显存设备上串行执行的步骤。」转化为「降低大模型本地可达门槛，让模型选型、隐私 PoC、离线研究和边缘演示先跑起来。」。",
+            "headline": "团队级 Agent Memory / Chat-Skill-Wiki-CodeGraph 治理层",
+            "subhead": "TencentCloud/TencentDB-Agent-Memory · 快速破圈 · TypeScript",
+            "thesis": "把「团队使用多个 Agent 后，对话记忆、技能、文档知识和代码图谱分散在个人上下文里，无法共享、治理或跨工具复用。」通过「把 conversation、docs、code 转成 Chat Memory、Skill、LLM-Wiki、Code-Graph 四类资产，并通过治理、装备和共享机制接入多 Agent/框架。」转化为「降低 Agent 每次重新理解团队背景的成本，把个人经验转成可审计、可复用的团队上下文资产。」。",
             "metrics": [
               {
                 "label": "Stars",
-                "value": "27.7K",
+                "value": "12.7K",
                 "note": "社区关注"
               },
               {
                 "label": "Forks",
-                "value": "3K",
+                "value": "1.2K",
                 "note": "二次采用"
               },
               {
                 "label": "Issues",
-                "value": "123",
+                "value": "487",
                 "note": "维护压力"
               },
               {
                 "label": "Stack",
-                "value": "Jupyter Notebook",
+                "value": "TypeScript",
                 "note": "主技术栈"
               }
             ],
             "lanes": [
               {
                 "label": "架构机制",
-                "detail": "通过权重分块、显存/内存/磁盘分层加载、MoE expert streaming 和按需卸载，把一次完整推理拆成可在小显存设备上串行执行的步骤。",
+                "detail": "把 conversation、docs、code 转成 Chat Memory、Skill、LLM-Wiki、Code-Graph 四类资产，并通过治理、装备和共享机制接入多 Agent/框架。",
                 "type": "core",
                 "step": "01",
-                "signal": "先看支持模型清单、分层加载策略、MoE expert streaming、依赖版本、benchmark 脚本和 issue 中的 OOM/速度反馈。"
+                "signal": "先看四类 memory schema、权限模型、同步/删除语义、Code-Graph 构建、LLM-Wiki 引用和多框架适配。"
               },
               {
                 "label": "适用团队",
-                "detail": "个人研究、边缘设备原型、私有数据 PoC、模型选型和成本敏感的 AI 平台团队。",
+                "detail": "高频使用 coding/research Agent、已有知识 owner 和权限治理需求的平台工程、研发效能和数据库/云产品团队。",
                 "type": "input",
                 "step": "02",
-                "signal": "个人研究、边缘设备原型、私有数据 PoC、模型选型和成本敏感的 AI 平台团队。"
+                "signal": "高频使用 coding/research Agent、已有知识 owner 和权限治理需求的平台工程、研发效能和数据库/云产品团队。"
               },
               {
                 "label": "落地路径",
-                "detail": "用固定 prompt 集和目标模型跑离线基准，记录 TTFT、tokens/s、峰值内存、磁盘 I/O、质量回归和失败样本，再决定是否继续投入。；先保留人工复核、指标记录和回滚路径。",
+                "detail": "先选择一个低敏项目，把历史任务、团队规范和代码索引导入只读记忆库，验证检索命中、权限边界和过期清理。；先保留人工复核、指标记录和回滚路径。",
                 "type": "integration",
                 "step": "03",
-                "signal": "用固定 prompt 集和目标模型跑离线基准，记录 TTFT、tokens/s、峰值内存、磁盘 I/O、质量回归和失败样本，再决定是否继续投入。"
+                "signal": "先选择一个低敏项目，把历史任务、团队规范和代码索引导入只读记忆库，验证检索命中、权限边界和过期清理。"
               },
               {
                 "label": "观察信号",
-                "detail": "TTFT、tokens/s、峰值显存/内存、磁盘吞吐、长上下文稳定性、质量回归、单位任务成本和 P95/P99 延迟、最近 release 质量、issue 响应速度和 Python 包/脚本 的集成反馈。",
+                "detail": "上下文命中率、重复解释次数、权限违规拦截、过期记忆清理、跨 Agent 复用次数、代码图谱错误引用率、最近 release 质量、issue 响应速度和 API/SDK 接入 的集成反馈。",
                 "type": "measure",
                 "step": "04",
-                "signal": "TTFT、tokens/s、峰值显存/内存、磁盘吞吐、长上下文稳定性、质量回归、单位任务成本和 P95/P99 延迟"
+                "signal": "上下文命中率、重复解释次数、权限违规拦截、过期记忆清理、跨 Agent 复用次数、代码图谱错误引用率"
               }
             ],
             "adoption": [
               {
                 "label": "试点入口",
-                "detail": "用固定 prompt 集和目标模型跑离线基准，记录 TTFT、tokens/s、峰值内存、磁盘 I/O、质量回归和失败样本，再决定是否继续投入。"
+                "detail": "先选择一个低敏项目，把历史任务、团队规范和代码索引导入只读记忆库，验证检索命中、权限边界和过期清理。"
               },
               {
                 "label": "验收指标",
-                "detail": "TTFT、tokens/s、峰值显存/内存、磁盘吞吐、长上下文稳定性、质量回归、单位任务成本和 P95/P99 延迟"
+                "detail": "上下文命中率、重复解释次数、权限违规拦截、过期记忆清理、跨 Agent 复用次数、代码图谱错误引用率"
               },
               {
                 "label": "生产风险",
-                "detail": "低显存方案常把硬件成本转移到延迟、吞吐、磁盘 I/O 和工程复杂度；上线前必须保留成熟推理栈备选。"
+                "detail": "团队记忆会集中源码、决策和个人上下文；陈旧记忆、权限误配和数据泄露必须前置治理。"
               },
               {
                 "label": "决策问题",
-                "detail": "它解决的是「团队想在消费级 GPU、边缘机器或成本敏感环境里试跑 70B+ 模型，但常规推理栈要求大显存、多卡或复杂量化。」的主矛盾，还是只会给现有流程增加新的维护面？"
+                "detail": "它解决的是「团队使用多个 Agent 后，对话记忆、技能、文档知识和代码图谱分散在个人上下文里，无法共享、治理或跨工具复用。」的主矛盾，还是只会给现有流程增加新的维护面？"
               }
             ],
-            "warning": "高并发在线助手、低延迟语音交互、严格 SLA 推理网关或缺少本地运维能力的团队。"
+            "warning": "小型一次性项目、权限边界不清、不能存储源码/对话摘要或没有维护 owner 的团队。"
           }
         },
         "maturity": {
-          "community": 98,
-          "maintenance": 82,
-          "production": 88,
-          "complexity": 55
+          "community": 90,
+          "maintenance": 97,
+          "production": 91,
+          "complexity": 67
         },
-        "score": 90
+        "score": 95
       },
       "evidence": {
-        "readmeExcerpt": "Quickstart Configurations MacOS Example notebooks FAQ AirLLM dramatically reduces inference memory usage, letting 70B large language models run on a single 4GB GPU card — without quantization, distillation, or pruning. You can even run 405B Llama 3.1 on 8GB , DeepSeek V3 (671B) on 12GB , and Kimi K3 (2.8T) — the largest open source model released to date — on under 4GB , because sparse MoE models stream one expert at a time rather than a whole layer. <a href=\"https://github.com/lyogavin/airllm/stargazers\" </a AI Agents Recommendation: Best AI Game Sprite Generator Best AI Facial Expression Editor Bloome — build & run AI agent teams in the cloud, zero setup Updates [2026/07] Kimi K3 (2.8T) support: the largest open source model runs on a single card in 3.72GB of VRAM, measured end to end on one RTX 6000 Ada. Per expert streaming loads only the experts a token actually routes to. K3 brings...",
-        "githubUrl": "https://github.com/lyogavin/airllm"
+        "readmeExcerpt": "<div align=\"center\" <img src=\"./assets/images/logo.png\" alt=\"TencentDB Agent Memory\" width=\"880\" / Agents remember. Humans innovate. <a href=\"https://trendshift.io/repositories/29310?utm source=repository badge&amp;utm medium=badge&amp;utm campaign=badge repository 29310\" target=\" blank\" rel=\"noopener noreferrer\" <img src=\"https://trendshift.io/api/badge/repositories/29310\" alt=\"TencentCloud%2FTencentDB Agent Memory Trendshift\" width=\"250\" height=\"55\"/ </a Installation · What is it? · Team Play · Technical Implementation · Benchmark English · 简体中文 </div Latest: Team Memory Beta is evolving quickly — install it and start exploring in minutes. <td <video src=\"https://github.com/user attachments/assets/efb1a808 1f86 4cfe 802c f7453f7ca938\" width=\"100%\" controls autoplay loop muted playsinline </video </td Installation Start all three services in one go ( memory core + memory hub + proxy ): ...",
+        "githubUrl": "https://github.com/TencentCloud/TencentDB-Agent-Memory"
       }
     },
     {
@@ -324,9 +324,9 @@
         "visualUrl": "https://opengraph.githubassets.com/20260804/zhaoxuya520/reverse-skill",
         "url": "https://github.com/zhaoxuya520/reverse-skill",
         "description": "Reverse Engineering / Authorized Penetration Testing / Security Research Skill Router Pack AI-powered routing + On-demand toolchain bootstrapping + Self-evolving knowledge base Supports Claude Code, Kiro, Cursor, Cline, and other AI coding clients 逆向/渗透/安全技能路由包 - AI 自动路由 + 按需自举工具链 + 自动进化经验库 | 支持 Claude Code / Kiro / Cursor / Cline 等代码 AI 客户端",
-        "stars": 16642,
+        "stars": 17001,
         "starsToday": 2446,
-        "forks": 2329,
+        "forks": 2361,
         "openIssues": 15,
         "language": "PowerShell",
         "topics": [],
@@ -346,7 +346,7 @@
         "method": "codex-research-refresh",
         "category": "授权安全研究 Skill / AI 工具路由",
         "oneLiner": "Reverse Engineering / Authorized Penetration Testing / Security Research Skill Router Pack AI-powered routing + On-demand toolchain bootstrapping + Self-evolving knowledge base Supports Claude Code, Kiro, Cursor, Cline, and other AI coding clients 逆向/渗透/安全技能路由包 - AI 自动路由 + 按需自举工具链 + 自动进化经验库 | 支持 Claude Code / Kiro / Cursor / Cline 等代码 AI 客户端；关键看 以 skill router 组织逆向、授权渗透、安全研究流程，按任务加载工具链、知识库和操作边界，支持 Claude Code、Kiro、Cursor、Cline 等客户端。 是否能被小范围验证。",
-        "whyItMatters": "zhaoxuya520/reverse-skill 值得看，是因为 AI 项目真正的分水岭已经从“能跑 demo”转向“能被治理、能接工具、能失败恢复”。当前 16.6K stars / 2.3K forks，维护非常活跃，足够进入 Agent 工程雷达。 这次更新更值得关注的是其可迁移机制：以 skill router 组织逆向、授权渗透、安全研究流程，按任务加载工具链、知识库和操作边界，支持 Claude Code、Kiro、Cursor、Cline 等客户端。 能否被拆成小样本验证，而不是把项目整体搬进生产。",
+        "whyItMatters": "zhaoxuya520/reverse-skill 值得看，是因为 AI 项目真正的分水岭已经从“能跑 demo”转向“能被治理、能接工具、能失败恢复”。当前 17K stars / 2.4K forks，维护非常活跃，足够进入 Agent 工程雷达。 这次更新更值得关注的是其可迁移机制：以 skill router 组织逆向、授权渗透、安全研究流程，按任务加载工具链、知识库和操作边界，支持 Claude Code、Kiro、Cursor、Cline 等客户端。 能否被拆成小样本验证，而不是把项目整体搬进生产。",
         "engineeringRead": "PowerShell · 容器化部署。建议按“入口示例 -> 数据/配置 -> 失败处理 -> CI/release -> issue 反例”的顺序读；重点回答 它解决的是「安全研究、逆向和渗透任务需要大量工具、检查清单和上下文切换，直接让 Agent 执行又容易越权或误用。」的主矛盾，还是只会给现有流程增加新的维护面？",
         "architectureSignals": [
           "架构机制：以 skill router 组织逆向、授权渗透、安全研究流程，按任务加载工具链、知识库和操作边界，支持 Claude Code、Kiro、Cursor、Cline 等客户端。；阅读时把 PowerShell 代码入口、数据/配置形态、自动化脚本和边界条件连起来看，而不是只看 README 的安装示例。",
@@ -402,7 +402,7 @@
         },
         "diagram": {
           "title": "reverse-skill 工业级采用图解",
-          "caption": "授权安全研究 Skill / AI 工具路由 · PowerShell · 16.6K stars",
+          "caption": "授权安全研究 Skill / AI 工具路由 · PowerShell · 17K stars",
           "summary": "用 以 skill router 组织逆向、授权渗透、安全研究流程，按任务加载工具链、知识库和操作边界，支持 Claude Code、Kiro、Cursor、Cline 等客户端。 解决 安全研究、逆向和渗透任务需要大量工具、检查清单和上下文切换，直接让 Agent 执行又容易越权或误用。，先经由 只在授权靶场、CTF、内部测试资产上试用，先限定只读分析和报告生成，记录每次工具调用与人工确认点。 验证 任务定位时间、误报率、工具调用成功率、越权拦截、人工复核通过率、证据引用完整性和审计日志覆盖，再决定是否扩大。",
           "nodes": [
             {
@@ -439,12 +439,12 @@
             "metrics": [
               {
                 "label": "Stars",
-                "value": "16.6K",
+                "value": "17K",
                 "note": "社区关注"
               },
               {
                 "label": "Forks",
-                "value": "2.3K",
+                "value": "2.4K",
                 "note": "二次采用"
               },
               {
@@ -532,9 +532,9 @@
         "visualUrl": "https://opengraph.githubassets.com/20260804/firecrawl/pdf-inspector",
         "url": "https://github.com/firecrawl/pdf-inspector",
         "description": "Fast Rust library for PDF inspection, classification, and text extraction. Intelligently detects scanned vs text-based PDFs to enable smart routing decisions.",
-        "stars": 8953,
+        "stars": 9183,
         "starsToday": 1699,
-        "forks": 586,
+        "forks": 610,
         "openIssues": 63,
         "language": "Rust",
         "topics": [
@@ -563,7 +563,7 @@
         "method": "codex-research-refresh",
         "category": "PDF 文档路由 / Rust + WASM 解析基础设施",
         "oneLiner": "Fast Rust library for PDF inspection, classification, and text extraction. Intelligently detects scanned vs text-based PDFs to enable smart routing decisions.；关键看 Rust 核心快速采样 PDF content stream，判断 text-based、scanned、image-based 或 mixed，并提供位置感知文本抽取、Python/Node/WASM 绑定和 OCR 路由置信度。 是否能被小范围验证。",
-        "whyItMatters": "firecrawl/pdf-inspector 处在 快速扩散项目 区间：9K stars / 586 forks，维护非常活跃。README 把重点放在「pdf inspector」，适合判断它是否能在 构建、调试、交付或依赖管理的效率瓶颈 上形成真实工程收益。 这次更新更值得关注的是其可迁移机制：Rust 核心快速采样 PDF content stream，判断 text-based、scanned、image-based 或 mixed，并提供位置感知文本抽取、Python/Node/WASM 绑定和 OCR 路由置信度。 能否被拆成小样本验证，而不是把项目整体搬进生产。",
+        "whyItMatters": "firecrawl/pdf-inspector 处在 快速扩散项目 区间：9.2K stars / 610 forks，维护非常活跃。README 把重点放在「pdf inspector」，适合判断它是否能在 构建、调试、交付或依赖管理的效率瓶颈 上形成真实工程收益。 这次更新更值得关注的是其可迁移机制：Rust 核心快速采样 PDF content stream，判断 text-based、scanned、image-based 或 mixed，并提供位置感知文本抽取、Python/Node/WASM 绑定和 OCR 路由置信度。 能否被拆成小样本验证，而不是把项目整体搬进生产。",
         "engineeringRead": "Rust · Node 包/前端工程。建议按“入口示例 -> 数据/配置 -> 失败处理 -> CI/release -> issue 反例”的顺序读；重点回答 它解决的是「文档处理和 RAG 管线经常把所有 PDF 都送进 OCR，导致成本、延迟和隐私面扩大，同时扫描件与文本 PDF 的处理路径混杂。」的主矛盾，还是只会给现有流程增加新的维护面？",
         "architectureSignals": [
           "架构机制：Rust 核心快速采样 PDF content stream，判断 text-based、scanned、image-based 或 mixed，并提供位置感知文本抽取、Python/Node/WASM 绑定和 OCR 路由置信度。；阅读时把 Rust 代码入口、数据/配置形态、自动化脚本和边界条件连起来看，而不是只看 README 的安装示例。",
@@ -619,7 +619,7 @@
         },
         "diagram": {
           "title": "pdf-inspector 工业级采用图解",
-          "caption": "PDF 文档路由 / Rust + WASM 解析基础设施 · Rust · 9K stars",
+          "caption": "PDF 文档路由 / Rust + WASM 解析基础设施 · Rust · 9.2K stars",
           "summary": "用 Rust 核心快速采样 PDF content stream，判断 text-based、scanned、image-based 或 mixed，并提供位置感知文本抽取、Python/Node/WASM 绑定和 OCR 路由置信度。 解决 文档处理和 RAG 管线经常把所有 PDF 都送进 OCR，导致成本、延迟和隐私面扩大，同时扫描件与文本 PDF 的处理路径混杂。，先经由 选一批真实但低敏 PDF 离线评测，先只做分类和文本抽取旁路，不覆盖现有 OCR/RAG 主链路。 验证 分类准确率、误跳 OCR 率、抽取耗时、坐标保真、WASM 包体/性能、异常 PDF 崩溃率和人工校验成本，再决定是否扩大。",
           "nodes": [
             {
@@ -656,12 +656,12 @@
             "metrics": [
               {
                 "label": "Stars",
-                "value": "9K",
+                "value": "9.2K",
                 "note": "社区关注"
               },
               {
                 "label": "Forks",
-                "value": "586",
+                "value": "610",
                 "note": "二次采用"
               },
               {
@@ -742,135 +742,121 @@
     {
       "rank": 4,
       "repo": {
-        "fullName": "esengine/DeepSeek-Reasonix",
-        "name": "DeepSeek-Reasonix",
-        "owner": "esengine",
-        "avatarUrl": "https://avatars.githubusercontent.com/u/18465053?v=4",
-        "visualUrl": "https://opengraph.githubassets.com/20260804/esengine/DeepSeek-Reasonix",
-        "url": "https://github.com/esengine/DeepSeek-Reasonix",
-        "description": "DeepSeek-native AI coding agent for your terminal. Engineered around prefix-cache stability — leave it running.",
-        "stars": 30314,
-        "starsToday": 883,
-        "forks": 1954,
-        "openIssues": 927,
-        "language": "Go",
+        "fullName": "uber/ADR",
+        "name": "ADR",
+        "owner": "uber",
+        "avatarUrl": "https://avatars.githubusercontent.com/u/538264?v=4",
+        "visualUrl": "https://opengraph.githubassets.com/20260804/uber/ADR",
+        "url": "https://github.com/uber/ADR",
+        "description": "ADR secures enterprise AI agents through observability, security benchmarking, and threat detection. Deployed at Uber.",
+        "stars": 497,
+        "starsToday": 140,
+        "forks": 59,
+        "openIssues": 7,
+        "language": "Python",
         "topics": [
-          "agent",
-          "agent-framework",
-          "ai-agent",
-          "ai-coding",
-          "cli",
-          "coding-agent",
-          "deepseek",
-          "developer-tools",
-          "ink",
-          "llm",
-          "prompt-caching",
-          "r1",
-          "terminal",
-          "tool-use",
-          "tui",
-          "typescript"
+          "agent-security",
+          "ai-agents",
+          "ai-security",
+          "benchmark",
+          "claude",
+          "claude-code",
+          "codex",
+          "cursor",
+          "llm-security",
+          "mcp",
+          "model-context-protocol",
+          "prompt-injection",
+          "threat-detection"
         ],
-        "license": "MIT",
-        "pushedAt": "2026-08-04T08:05:17Z",
-        "createdAt": "2026-04-21T08:27:02Z",
+        "license": "Apache-2.0",
+        "pushedAt": "2026-08-03T18:11:16Z",
+        "createdAt": "2026-04-19T18:01:42Z",
         "languages": {
-          "Go": 17024577,
-          "TypeScript": 5532343,
-          "CSS": 1088649,
-          "JavaScript": 228833,
-          "Shell": 200664,
-          "Astro": 179449,
-          "HTML": 117247,
-          "Python": 94280,
-          "PowerShell": 21303,
-          "NSIS": 16804,
-          "Objective-C": 7456,
-          "Makefile": 1200
+          "Python": 2388225
         }
       },
       "analysis": {
         "method": "codex-research-refresh",
-        "category": "DeepSeek 原生终端 Coding Agent / Prefix-cache 工作流",
-        "oneLiner": "DeepSeek-native AI coding agent for your terminal. Engineered around prefix-cache stability — leave it running.；关键看 围绕 DeepSeek 模型和 prefix-cache stability 设计长驻终端 Agent，整合 ACP、任务 spec、会话状态、工具调用和本地执行循环。 是否能被小范围验证。",
-        "whyItMatters": "esengine/DeepSeek-Reasonix 值得看，是因为 AI 项目真正的分水岭已经从“能跑 demo”转向“能被治理、能接工具、能失败恢复”。当前 30.3K stars / 2K forks，维护非常活跃，足够进入 Agent 工程雷达。 这次更新更值得关注的是其可迁移机制：围绕 DeepSeek 模型和 prefix-cache stability 设计长驻终端 Agent，整合 ACP、任务 spec、会话状态、工具调用和本地执行循环。 能否被拆成小样本验证，而不是把项目整体搬进生产。",
-        "engineeringRead": "Go · Node 包/前端工程。建议按“入口示例 -> 数据/配置 -> 失败处理 -> CI/release -> issue 反例”的顺序读；重点回答 它解决的是「低成本模型做 coding agent 时，经常因为上下文丢失、prefix cache 不稳定、终端接管差和 provider 语义差异导致任务断裂。」的主矛盾，还是只会给现有流程增加新的维护面？",
+        "category": "AI Agent / LLM 工程",
+        "oneLiner": "ADR secures enterprise AI agents through observability, security benchmarking, and threat detection. Deployed at Uber.；关键看工具边界、上下文持久化、权限和失败接管是否可治理。",
+        "whyItMatters": "uber/ADR 值得看，是因为 AI 项目真正的分水岭已经从“能跑 demo”转向“能被治理、能接工具、能失败恢复”。当前 497 stars / 59 forks，维护非常活跃，足够进入 Agent 工程雷达。 这次更新更值得关注的是其可迁移机制：模型接口、工具协议、上下文管理或推理工作流 能否被拆成小样本验证，而不是把项目整体搬进生产。",
+        "engineeringRead": "Python · Python 包/脚本。建议按“入口示例 -> 数据/配置 -> 失败处理 -> CI/release -> issue 反例”的顺序读；重点回答 它解决的是「AI 应用编排、工具接入或模型调用复杂度」的主矛盾，还是只会给现有流程增加新的维护面？",
         "architectureSignals": [
-          "架构机制：围绕 DeepSeek 模型和 prefix-cache stability 设计长驻终端 Agent，整合 ACP、任务 spec、会话状态、工具调用和本地执行循环。；阅读时把 Go 代码入口、数据/配置形态、自动化脚本和边界条件连起来看，而不是只看 README 的安装示例。",
-          "适用团队：有模型网关、多模型评测、人工 review 和低风险任务池的研发效能团队。",
-          "落地路径：先用于只读代码解释、测试生成或小文档修改，对比 Claude/Codex 在同一任务集上的成本、耗时、补上下文次数和补丁质量。；先保留人工复核、指标记录和回滚路径。",
-          "生产风险：低成本 coding agent 会放大上下文缺失和工具误用；必须用分支隔离、测试、diff review 和回滚控制风险。",
-          "决策问题：它解决的是「低成本模型做 coding agent 时，经常因为上下文丢失、prefix cache 不稳定、终端接管差和 provider 语义差异导致任务断裂。」的主矛盾，还是只会给现有流程增加新的维护面？",
-          "观察信号：任务完成率、prefix cache 命中、单任务成本、P95 响应、错误补丁率、人工接管率和上下文遗漏次数、最近 release 质量、issue 响应速度和 Node 包/前端工程 的集成反馈。"
+          "架构机制：模型接口、工具协议、上下文管理或推理工作流；阅读时把 Python 代码入口、数据/配置形态、自动化脚本和边界条件连起来看，而不是只看 README 的安装示例。",
+          "适用团队：已有明确人工流程、且失败可回滚",
+          "落地路径：内部效率工具或旁路助手；先保留人工复核、指标记录和回滚路径。",
+          "生产风险：Agent/API 网关类项目必须先处理凭据、越权、审计、重试和人工接管。",
+          "决策问题：它解决的是「AI 应用编排、工具接入或模型调用复杂度」的主矛盾，还是只会给现有流程增加新的维护面？",
+          "观察信号：任务完成率、人工接管率、单次任务成本、最近 release 质量、issue 响应速度和 Python 包/脚本 的集成反馈。"
         ],
         "valueHypothesis": [
-          "如果团队确实存在「低成本模型做 coding agent 时，经常因为上下文丢失、prefix cache 不稳定、终端接管差和 provider 语义差异导致任务断裂。」，esengine/DeepSeek-Reasonix 的收益应体现为 任务完成率、prefix cache 命中、单任务成本、P95 响应、错误补丁率、人工接管率和上下文遗漏次数 的改善。",
+          "如果团队确实存在「AI 应用编排、工具接入或模型调用复杂度」，uber/ADR 的收益应体现为 任务完成率、人工接管率、单次任务成本 的改善。",
           "适合先复制机制、接口或治理方式，不适合未验证成本就全量迁移。",
-          "若 权限敏感代码、无人值守生产修改、需要最高可靠性的核心补丁或无法评测低成本模型输出的团队。，它更适合作为资料样本，而不是生产依赖。"
+          "若 流程本身还没有标准化，或权限边界不清楚，它更适合作为资料样本，而不是生产依赖。"
         ],
         "technicalTakeaways": [
-          "先抓 先看 ACP/spec、会话持久化、prefix cache 约束、命令权限、diff 生成和失败恢复。，再决定 spike 范围。",
-          "图解字段应突出 围绕 DeepSeek 模型和 prefix-cache stability 设计长驻终端 Agent，整合 ACP、任务 spec、会话状态、工具调用和本地执行循环。 如何把 低成本模型做 coding agent 时，经常因为上下文丢失、prefix cache 不稳定、终端接管差和 provider 语义差异导致任务断裂。 转成 把低成本模型用于可控的本地开发任务，形成多模型路由和长会话成本优化样本。。",
+          "先抓 先看工具调用边界、上下文注入方式和日志可观测性，再决定 spike 范围。",
+          "图解字段应突出 模型接口、工具协议、上下文管理或推理工作流 如何把 AI 应用编排、工具接入或模型调用复杂度 转成 研发效率、自动化覆盖率和人工操作节省。",
           "验收时同时记录正样本、失败样本、成本、延迟和维护 owner。"
         ],
         "adoptionRisks": [
-          "低成本 coding agent 会放大上下文缺失和工具误用；必须用分支隔离、测试、diff review 和回滚控制风险。",
-          "与现有 Go / Node 包/前端工程 工具链的耦合要先做最小集成验证。",
-          "当前 open issues 偏高，必须抽查最近 issue 的响应质量和 release 节奏。"
+          "Agent/API 网关类项目必须先处理凭据、越权、审计、重试和人工接管。",
+          "与现有 Python / Python 包/脚本 工具链的耦合要先做最小集成验证。",
+          "社区负载相对可控，但仍要关注 breaking change、license 和长期维护信号。"
         ],
         "suggestedUseCases": [
-          "先用于只读代码解释、测试生成或小文档修改，对比 Claude/Codex 在同一任务集上的成本、耗时、补上下文次数和补丁质量。；先保留人工复核、指标记录和回滚路径。",
-          "用一个可回放样本验证 任务完成率、prefix cache 命中、单任务成本、P95 响应、错误补丁率、人工接管率和上下文遗漏次数，同时记录接入时间、失败样本和回滚步骤。",
+          "内部效率工具或旁路助手；先保留人工复核、指标记录和回滚路径。",
+          "用一个可回放样本验证 任务完成率、人工接管率、单次任务成本，同时记录接入时间、失败样本和回滚步骤。",
           "只在指标改善、维护 owner 明确、风险可隔离后，再从旁路验证扩大到核心流程。"
         ],
         "watchSignals": [
-          "任务完成率、prefix cache 命中、单任务成本、P95 响应、错误补丁率、人工接管率和上下文遗漏次数、最近 release 质量、issue 响应速度和 Node 包/前端工程 的集成反馈。",
-          "release note 是否持续解释 围绕 DeepSeek 模型和 prefix-cache stability 设计长驻终端 Agent，整合 ACP、任务 spec、会话状态、工具调用和本地执行循环。 的演进，而不只是功能堆叠。",
+          "任务完成率、人工接管率、单次任务成本、最近 release 质量、issue 响应速度和 Python 包/脚本 的集成反馈。",
+          "release note 是否持续解释 模型接口、工具协议、上下文管理或推理工作流 的演进，而不只是功能堆叠。",
           "issue/讨论区是否出现与你的目标场景相似的真实案例和失败反馈。"
         ],
         "deepDive": {
-          "strategicValue": "esengine/DeepSeek-Reasonix 的价值不应按 star 数直接外推；更合理的读法是把它当作 DeepSeek 原生终端 Coding Agent / Prefix-cache 工作流 的工程样本，判断其机制是否能降低你现有链路的复杂度、人工成本或质量波动。",
+          "strategicValue": "uber/ADR 的价值不应按 star 数直接外推；更合理的读法是把它当作 AI Agent / LLM 工程 的工程样本，判断其机制是否能降低你现有链路的复杂度、人工成本或质量波动。",
           "implementationPath": [
-            "先用于只读代码解释、测试生成或小文档修改，对比 Claude/Codex 在同一任务集上的成本、耗时、补上下文次数和补丁质量。；先保留人工复核、指标记录和回滚路径。",
-            "用一个可回放样本验证 任务完成率、prefix cache 命中、单任务成本、P95 响应、错误补丁率、人工接管率和上下文遗漏次数，同时记录接入时间、失败样本和回滚步骤。",
+            "内部效率工具或旁路助手；先保留人工复核、指标记录和回滚路径。",
+            "用一个可回放样本验证 任务完成率、人工接管率、单次任务成本，同时记录接入时间、失败样本和回滚步骤。",
             "只在指标改善、维护 owner 明确、风险可隔离后，再从旁路验证扩大到核心流程。"
           ],
           "productionConcerns": [
-            "低成本 coding agent 会放大上下文缺失和工具误用；必须用分支隔离、测试、diff review 和回滚控制风险。",
-            "与现有 Go / Node 包/前端工程 工具链的耦合要先做最小集成验证。",
-            "当前 open issues 偏高，必须抽查最近 issue 的响应质量和 release 节奏。"
+            "Agent/API 网关类项目必须先处理凭据、越权、审计、重试和人工接管。",
+            "与现有 Python / Python 包/脚本 工具链的耦合要先做最小集成验证。",
+            "社区负载相对可控，但仍要关注 breaking change、license 和长期维护信号。"
           ],
           "decisionQuestions": [
-            "它解决的是「低成本模型做 coding agent 时，经常因为上下文丢失、prefix cache 不稳定、终端接管差和 provider 语义差异导致任务断裂。」的主矛盾，还是只会给现有流程增加新的维护面？",
-            "如果两周 spike 只能证明“能跑”，不能证明 任务完成率、prefix cache 命中、单任务成本、P95 响应、错误补丁率、人工接管率和上下文遗漏次数 改善，是否应降级为观察项？",
+            "它解决的是「AI 应用编排、工具接入或模型调用复杂度」的主矛盾，还是只会给现有流程增加新的维护面？",
+            "如果两周 spike 只能证明“能跑”，不能证明 任务完成率、人工接管率、单次任务成本 改善，是否应降级为观察项？",
             "谁负责上线后的升级、告警、回滚和安全审计？"
           ],
-          "recommendedAction": "进入观察/试点池：先用于只读代码解释、测试生成或小文档修改，对比 Claude/Codex 在同一任务集上的成本、耗时、补上下文次数和补丁质量。；先保留人工复核、指标记录和回滚路径。"
+          "recommendedAction": "进入观察/试点池：内部效率工具或旁路助手；先保留人工复核、指标记录和回滚路径。"
         },
         "diagram": {
-          "title": "DeepSeek-Reasonix 工业级采用图解",
-          "caption": "DeepSeek 原生终端 Coding Agent / Prefix-cache 工作流 · Go · 30.3K stars",
-          "summary": "用 围绕 DeepSeek 模型和 prefix-cache stability 设计长驻终端 Agent，整合 ACP、任务 spec、会话状态、工具调用和本地执行循环。 解决 低成本模型做 coding agent 时，经常因为上下文丢失、prefix cache 不稳定、终端接管差和 provider 语义差异导致任务断裂。，先经由 先用于只读代码解释、测试生成或小文档修改，对比 Claude/Codex 在同一任务集上的成本、耗时、补上下文次数和补丁质量。 验证 任务完成率、prefix cache 命中、单任务成本、P95 响应、错误补丁率、人工接管率和上下文遗漏次数，再决定是否扩大。",
+          "title": "ADR 工业级采用图解",
+          "caption": "AI Agent / LLM 工程 · Python · 497 stars",
+          "summary": "用 模型接口、工具协议、上下文管理或推理工作流 解决 AI 应用编排、工具接入或模型调用复杂度，先经由 内部效率工具或旁路助手 验证 任务完成率、人工接管率、单次任务成本，再决定是否扩大。",
           "nodes": [
             {
               "label": "架构机制",
-              "detail": "围绕 DeepSeek 模型和 prefix-cache stability 设计长驻终端 Agent，整合 ACP、任务 spec、会话状态、工具调用和本地执行循环。",
+              "detail": "模型接口、工具协议、上下文管理或推理工作流",
               "type": "core"
             },
             {
               "label": "适用团队",
-              "detail": "有模型网关、多模型评测、人工 review 和低风险任务池的研发效能团队。",
+              "detail": "已有明确人工流程、且失败可回滚",
               "type": "input"
             },
             {
               "label": "落地路径",
-              "detail": "先用于只读代码解释、测试生成或小文档修改，对比 Claude/Codex 在同一任务集上的成本、耗时、补上下文次数和补丁质量。；先保留人工复核、指标记录和回滚路径。",
+              "detail": "内部效率工具或旁路助手；先保留人工复核、指标记录和回滚路径。",
               "type": "integration"
             },
             {
               "label": "观察信号",
-              "detail": "任务完成率、prefix cache 命中、单任务成本、P95 响应、错误补丁率、人工接管率和上下文遗漏次数、最近 release 质量、issue 响应速度和 Node 包/前端工程 的集成反馈。",
+              "detail": "任务完成率、人工接管率、单次任务成本、最近 release 质量、issue 响应速度和 Python 包/脚本 的集成反馈。",
               "type": "measure"
             }
           ],
@@ -881,215 +867,213 @@
           ],
           "poster": {
             "eyebrow": "Project Blueprint",
-            "headline": "DeepSeek 原生终端 Coding Agent / Prefix-cache 工作流",
-            "subhead": "esengine/DeepSeek-Reasonix · 成熟扩散 · Go",
-            "thesis": "把「低成本模型做 coding agent 时，经常因为上下文丢失、prefix cache 不稳定、终端接管差和 provider 语义差异导致任务断裂。」通过「围绕 DeepSeek 模型和 prefix-cache stability 设计长驻终端 Agent，整合 ACP、任务 spec、会话状态、工具调用和本地执行循环。」转化为「把低成本模型用于可控的本地开发任务，形成多模型路由和长会话成本优化样本。」。",
+            "headline": "AI Agent / LLM 工程",
+            "subhead": "uber/ADR · 观察期 · Python",
+            "thesis": "把「AI 应用编排、工具接入或模型调用复杂度」通过「模型接口、工具协议、上下文管理或推理工作流」转化为「研发效率、自动化覆盖率和人工操作节省」。",
             "metrics": [
               {
                 "label": "Stars",
-                "value": "30.3K",
+                "value": "497",
                 "note": "社区关注"
               },
               {
                 "label": "Forks",
-                "value": "2K",
+                "value": "59",
                 "note": "二次采用"
               },
               {
                 "label": "Issues",
-                "value": "927",
+                "value": "7",
                 "note": "维护压力"
               },
               {
                 "label": "Stack",
-                "value": "Go",
+                "value": "Python",
                 "note": "主技术栈"
               }
             ],
             "lanes": [
               {
                 "label": "架构机制",
-                "detail": "围绕 DeepSeek 模型和 prefix-cache stability 设计长驻终端 Agent，整合 ACP、任务 spec、会话状态、工具调用和本地执行循环。",
+                "detail": "模型接口、工具协议、上下文管理或推理工作流",
                 "type": "core",
                 "step": "01",
-                "signal": "先看 ACP/spec、会话持久化、prefix cache 约束、命令权限、diff 生成和失败恢复。"
+                "signal": "先看工具调用边界、上下文注入方式和日志可观测性"
               },
               {
                 "label": "适用团队",
-                "detail": "有模型网关、多模型评测、人工 review 和低风险任务池的研发效能团队。",
+                "detail": "已有明确人工流程、且失败可回滚",
                 "type": "input",
                 "step": "02",
-                "signal": "有模型网关、多模型评测、人工 review 和低风险任务池的研发效能团队。"
+                "signal": "已有明确人工流程、且失败可回滚"
               },
               {
                 "label": "落地路径",
-                "detail": "先用于只读代码解释、测试生成或小文档修改，对比 Claude/Codex 在同一任务集上的成本、耗时、补上下文次数和补丁质量。；先保留人工复核、指标记录和回滚路径。",
+                "detail": "内部效率工具或旁路助手；先保留人工复核、指标记录和回滚路径。",
                 "type": "integration",
                 "step": "03",
-                "signal": "先用于只读代码解释、测试生成或小文档修改，对比 Claude/Codex 在同一任务集上的成本、耗时、补上下文次数和补丁质量。"
+                "signal": "内部效率工具或旁路助手"
               },
               {
                 "label": "观察信号",
-                "detail": "任务完成率、prefix cache 命中、单任务成本、P95 响应、错误补丁率、人工接管率和上下文遗漏次数、最近 release 质量、issue 响应速度和 Node 包/前端工程 的集成反馈。",
+                "detail": "任务完成率、人工接管率、单次任务成本、最近 release 质量、issue 响应速度和 Python 包/脚本 的集成反馈。",
                 "type": "measure",
                 "step": "04",
-                "signal": "任务完成率、prefix cache 命中、单任务成本、P95 响应、错误补丁率、人工接管率和上下文遗漏次数"
+                "signal": "任务完成率、人工接管率、单次任务成本"
               }
             ],
             "adoption": [
               {
                 "label": "试点入口",
-                "detail": "先用于只读代码解释、测试生成或小文档修改，对比 Claude/Codex 在同一任务集上的成本、耗时、补上下文次数和补丁质量。"
+                "detail": "内部效率工具或旁路助手"
               },
               {
                 "label": "验收指标",
-                "detail": "任务完成率、prefix cache 命中、单任务成本、P95 响应、错误补丁率、人工接管率和上下文遗漏次数"
+                "detail": "任务完成率、人工接管率、单次任务成本"
               },
               {
                 "label": "生产风险",
-                "detail": "低成本 coding agent 会放大上下文缺失和工具误用；必须用分支隔离、测试、diff review 和回滚控制风险。"
+                "detail": "Agent/API 网关类项目必须先处理凭据、越权、审计、重试和人工接管。"
               },
               {
                 "label": "决策问题",
-                "detail": "它解决的是「低成本模型做 coding agent 时，经常因为上下文丢失、prefix cache 不稳定、终端接管差和 provider 语义差异导致任务断裂。」的主矛盾，还是只会给现有流程增加新的维护面？"
+                "detail": "它解决的是「AI 应用编排、工具接入或模型调用复杂度」的主矛盾，还是只会给现有流程增加新的维护面？"
               }
             ],
-            "warning": "权限敏感代码、无人值守生产修改、需要最高可靠性的核心补丁或无法评测低成本模型输出的团队。"
+            "warning": "流程本身还没有标准化，或权限边界不清楚"
           }
         },
         "maturity": {
-          "community": 99,
-          "maintenance": 100,
-          "production": 86,
-          "complexity": 67
+          "community": 59,
+          "maintenance": 97,
+          "production": 78,
+          "complexity": 55
         },
-        "score": 92
+        "score": 81
       },
       "evidence": {
-        "readmeExcerpt": "<p align=\"center\" <img src=\"docs/logo.svg\" alt=\"Reasonix\" width=\"640\"/ </p [!WARNING] This is the legacy TypeScript line (Reasonix 0.x), in maintenance mode. Active development moved to the Go rewrite — see the main v2 branch (the new default) and the migration guide. Only bug fixes land here. <p align=\"center\" <strong English</strong &nbsp;·&nbsp; <a href=\"./README.zh CN.md\" 简体中文</a &nbsp;·&nbsp; <a href=\"./README.ja JP.md\" 日本語</a &nbsp;·&nbsp; <a href=\"https://esengine.github.io/DeepSeek Reasonix/\" Website</a &nbsp;·&nbsp; <a href=\"https://esengine.github.io/DeepSeek Reasonix/configuration.html\" Guide</a &nbsp;·&nbsp; <a href=\"./docs/ARCHITECTURE.md\" Architecture</a &nbsp;·&nbsp; <a href=\"./benchmarks/\" Benchmarks</a &nbsp;·&nbsp; <strong <a href=\"https://discord.gg/XF78rEME2D\" Discord</a </strong </p <p align=\"center\" <a href=\"https://www.npmjs.com/package/reasonix\" <img src=\"https://...",
-        "githubUrl": "https://github.com/esengine/DeepSeek-Reasonix"
+        "readmeExcerpt": "ADR: Agentic AI Detection and Response ADR (Agentic AI Detection and Response) is an enterprise security system for AI agents. It helps organizations secure employee facing agents such as Cursor, Claude Code, and Codex, as well as customer facing agents such as AI support agents. ADR is deployed in production at Uber , and the accompanying paper was accepted to MLSys 2026 : Paper PDF · Slides PDF How ADR secures enterprise AI agents ADR secures enterprise AI agents through four complementary capabilities: observing agent activity, evaluating defenses, detecting threats, and preventing unsafe actions. 1. ADR Observability: Understand what AI agents are doing and why. In production, ADR captures agent intent, tool use, and execution traces across 7+ AI coding tools on macOS, Linux, and Windows, as well as internal automation and customer facing support agents. 2. ADR Benchmark: Test agent ...",
+        "githubUrl": "https://github.com/uber/ADR"
       }
     },
     {
       "rank": 5,
       "repo": {
-        "fullName": "TencentCloud/TencentDB-Agent-Memory",
-        "name": "TencentDB-Agent-Memory",
-        "owner": "TencentCloud",
-        "avatarUrl": "https://avatars.githubusercontent.com/u/20101770?v=4",
-        "visualUrl": "https://opengraph.githubassets.com/20260804/TencentCloud/TencentDB-Agent-Memory",
-        "url": "https://github.com/TencentCloud/TencentDB-Agent-Memory",
-        "description": "TencentDB Agent Memory is a team-level memory hub for AI Agents — turning conversations, docs, and code into four reusable memory assets (Chat Memory, Skill, LLM-Wiki, Code-Graph) that are governed, shared, and equipped across agents and frameworks.",
-        "stars": 12529,
-        "starsToday": 1090,
-        "forks": 1187,
-        "openIssues": 484,
-        "language": "TypeScript",
+        "fullName": "obra/superpowers",
+        "name": "superpowers",
+        "owner": "obra",
+        "avatarUrl": "https://avatars.githubusercontent.com/u/45416?v=4",
+        "visualUrl": "https://opengraph.githubassets.com/20260804/obra/superpowers",
+        "url": "https://github.com/obra/superpowers",
+        "description": "An agentic skills framework & software development methodology that works.",
+        "stars": 266035,
+        "starsToday": 617,
+        "forks": 23787,
+        "openIssues": 329,
+        "language": "Shell",
         "topics": [
-          "agent",
-          "ai-agent",
-          "embedding",
-          "llm",
-          "local-first",
-          "long-term-memory",
-          "memory",
-          "openclaw-plugin",
-          "vector-search"
+          "ai",
+          "brainstorming",
+          "coding",
+          "obra",
+          "sdlc",
+          "skills",
+          "subagent-driven-development",
+          "superpowers"
         ],
-        "license": "NOASSERTION",
-        "pushedAt": "2026-08-03T12:49:18Z",
-        "createdAt": "2026-04-07T06:34:26Z",
+        "license": "MIT",
+        "pushedAt": "2026-08-03T16:03:46Z",
+        "createdAt": "2025-10-09T19:45:18Z",
         "languages": {
-          "TypeScript": 6172277,
-          "Python": 238073,
-          "Shell": 146171,
-          "CSS": 121910,
-          "JavaScript": 40718,
-          "Dockerfile": 20530,
-          "HTML": 358
+          "Shell": 213248,
+          "JavaScript": 148949,
+          "TypeScript": 9337,
+          "HTML": 8094,
+          "Python": 6733,
+          "Batchfile": 1460
         }
       },
       "analysis": {
         "method": "codex-research-refresh",
-        "category": "团队级 Agent Memory / Chat-Skill-Wiki-CodeGraph 治理层",
-        "oneLiner": "TencentDB Agent Memory is a team-level memory hub for AI Agents — turning conversations, docs, and code into four reusable memory assets (Chat Memory, Skill, LLM-Wiki, Code-Graph) that are governed, shared, and equipped across agents and frameworks.；关键看 把 conversation、docs、code 转成 Chat Memory、Skill、LLM-Wiki、Code-Graph 四类资产，并通过治理、装备和共享机制接入多 Agent/框架。 是否能被小范围验证。",
-        "whyItMatters": "TencentCloud/TencentDB-Agent-Memory 值得看，是因为 AI 项目真正的分水岭已经从“能跑 demo”转向“能被治理、能接工具、能失败恢复”。当前 12.5K stars / 1.2K forks，维护非常活跃，足够进入 Agent 工程雷达。 这次更新更值得关注的是其可迁移机制：把 conversation、docs、code 转成 Chat Memory、Skill、LLM-Wiki、Code-Graph 四类资产，并通过治理、装备和共享机制接入多 Agent/框架。 能否被拆成小样本验证，而不是把项目整体搬进生产。",
-        "engineeringRead": "TypeScript · API/SDK 接入。建议按“入口示例 -> 数据/配置 -> 失败处理 -> CI/release -> issue 反例”的顺序读；重点回答 它解决的是「团队使用多个 Agent 后，对话记忆、技能、文档知识和代码图谱分散在个人上下文里，无法共享、治理或跨工具复用。」的主矛盾，还是只会给现有流程增加新的维护面？",
+        "category": "Agentic 软件工程方法 / 技能框架",
+        "oneLiner": "An agentic skills framework & software development methodology that works.；关键看 技能文件、强制流程、任务分解、验证清单和可迁移的工程方法约束 是否能被小范围验证。",
+        "whyItMatters": "obra/superpowers 值得看，是因为 AI 项目真正的分水岭已经从“能跑 demo”转向“能被治理、能接工具、能失败恢复”。当前 266K stars / 23.8K forks，维护非常活跃，足够进入 Agent 工程雷达。 这次更新更值得关注的是其可迁移机制：技能文件、强制流程、任务分解、验证清单和可迁移的工程方法约束 能否被拆成小样本验证，而不是把项目整体搬进生产。",
+        "engineeringRead": "Shell · 阅读型或源码集成。建议按“入口示例 -> 数据/配置 -> 失败处理 -> CI/release -> issue 反例”的顺序读；重点回答 它解决的是「团队把 AI 编码当聊天工具使用，缺少可复用流程、检查点和质量门禁」的主矛盾，还是只会给现有流程增加新的维护面？",
         "architectureSignals": [
-          "架构机制：把 conversation、docs、code 转成 Chat Memory、Skill、LLM-Wiki、Code-Graph 四类资产，并通过治理、装备和共享机制接入多 Agent/框架。；阅读时把 TypeScript 代码入口、数据/配置形态、自动化脚本和边界条件连起来看，而不是只看 README 的安装示例。",
-          "适用团队：高频使用 coding/research Agent、已有知识 owner 和权限治理需求的平台工程、研发效能和数据库/云产品团队。",
-          "落地路径：先选择一个低敏项目，把历史任务、团队规范和代码索引导入只读记忆库，验证检索命中、权限边界和过期清理。；先保留人工复核、指标记录和回滚路径。",
-          "生产风险：团队记忆会集中源码、决策和个人上下文；陈旧记忆、权限误配和数据泄露必须前置治理。",
-          "决策问题：它解决的是「团队使用多个 Agent 后，对话记忆、技能、文档知识和代码图谱分散在个人上下文里，无法共享、治理或跨工具复用。」的主矛盾，还是只会给现有流程增加新的维护面？",
-          "观察信号：上下文命中率、重复解释次数、权限违规拦截、过期记忆清理、跨 Agent 复用次数、代码图谱错误引用率、最近 release 质量、issue 响应速度和 API/SDK 接入 的集成反馈。"
+          "架构机制：技能文件、强制流程、任务分解、验证清单和可迁移的工程方法约束；阅读时把 Shell 代码入口、数据/配置形态、自动化脚本和边界条件连起来看，而不是只看 README 的安装示例。",
+          "适用团队：已经在用 Coding Agent 且想治理工程流程的研发效能团队",
+          "落地路径：挑一个低风险维护任务，把调研、实现、验证、复盘写成技能并在两名工程师间复用；先保留人工复核、指标记录和回滚路径。",
+          "生产风险：过度流程化会拖慢简单任务，技能陈旧也会把坏习惯固化。",
+          "决策问题：它解决的是「团队把 AI 编码当聊天工具使用，缺少可复用流程、检查点和质量门禁」的主矛盾，还是只会给现有流程增加新的维护面？",
+          "观察信号：返工率、漏测率、任务交接成本、技能复用次数、review 缺陷密度、最近 release 质量、issue 响应速度和 阅读型或源码集成 的集成反馈。"
         ],
         "valueHypothesis": [
-          "如果团队确实存在「团队使用多个 Agent 后，对话记忆、技能、文档知识和代码图谱分散在个人上下文里，无法共享、治理或跨工具复用。」，TencentCloud/TencentDB-Agent-Memory 的收益应体现为 上下文命中率、重复解释次数、权限违规拦截、过期记忆清理、跨 Agent 复用次数、代码图谱错误引用率 的改善。",
+          "如果团队确实存在「团队把 AI 编码当聊天工具使用，缺少可复用流程、检查点和质量门禁」，obra/superpowers 的收益应体现为 返工率、漏测率、任务交接成本、技能复用次数、review 缺陷密度 的改善。",
           "适合先复制机制、接口或治理方式，不适合未验证成本就全量迁移。",
-          "若 小型一次性项目、权限边界不清、不能存储源码/对话摘要或没有维护 owner 的团队。，它更适合作为资料样本，而不是生产依赖。"
+          "若 没有统一开发流程、任务高度探索或团队不愿维护流程资产，它更适合作为资料样本，而不是生产依赖。"
         ],
         "technicalTakeaways": [
-          "先抓 先看四类 memory schema、权限模型、同步/删除语义、Code-Graph 构建、LLM-Wiki 引用和多框架适配。，再决定 spike 范围。",
-          "图解字段应突出 把 conversation、docs、code 转成 Chat Memory、Skill、LLM-Wiki、Code-Graph 四类资产，并通过治理、装备和共享机制接入多 Agent/框架。 如何把 团队使用多个 Agent 后，对话记忆、技能、文档知识和代码图谱分散在个人上下文里，无法共享、治理或跨工具复用。 转成 降低 Agent 每次重新理解团队背景的成本，把个人经验转成可审计、可复用的团队上下文资产。。",
+          "先抓 先看技能触发规则、检查清单、失败处理、与现有 CI/review 流程的衔接，再决定 spike 范围。",
+          "图解字段应突出 技能文件、强制流程、任务分解、验证清单和可迁移的工程方法约束 如何把 团队把 AI 编码当聊天工具使用，缺少可复用流程、检查点和质量门禁 转成 把个人提示词经验沉淀为团队级工程流程，降低 Agent 产出不稳定性。",
           "验收时同时记录正样本、失败样本、成本、延迟和维护 owner。"
         ],
         "adoptionRisks": [
-          "团队记忆会集中源码、决策和个人上下文；陈旧记忆、权限误配和数据泄露必须前置治理。",
-          "与现有 TypeScript / API/SDK 接入 工具链的耦合要先做最小集成验证。",
+          "过度流程化会拖慢简单任务，技能陈旧也会把坏习惯固化。",
+          "与现有 Shell / 阅读型或源码集成 工具链的耦合要先做最小集成验证。",
           "当前 open issues 偏高，必须抽查最近 issue 的响应质量和 release 节奏。"
         ],
         "suggestedUseCases": [
-          "先选择一个低敏项目，把历史任务、团队规范和代码索引导入只读记忆库，验证检索命中、权限边界和过期清理。；先保留人工复核、指标记录和回滚路径。",
-          "用一个可回放样本验证 上下文命中率、重复解释次数、权限违规拦截、过期记忆清理、跨 Agent 复用次数、代码图谱错误引用率，同时记录接入时间、失败样本和回滚步骤。",
+          "挑一个低风险维护任务，把调研、实现、验证、复盘写成技能并在两名工程师间复用；先保留人工复核、指标记录和回滚路径。",
+          "用一个可回放样本验证 返工率、漏测率、任务交接成本、技能复用次数、review 缺陷密度，同时记录接入时间、失败样本和回滚步骤。",
           "只在指标改善、维护 owner 明确、风险可隔离后，再从旁路验证扩大到核心流程。"
         ],
         "watchSignals": [
-          "上下文命中率、重复解释次数、权限违规拦截、过期记忆清理、跨 Agent 复用次数、代码图谱错误引用率、最近 release 质量、issue 响应速度和 API/SDK 接入 的集成反馈。",
-          "release note 是否持续解释 把 conversation、docs、code 转成 Chat Memory、Skill、LLM-Wiki、Code-Graph 四类资产，并通过治理、装备和共享机制接入多 Agent/框架。 的演进，而不只是功能堆叠。",
+          "返工率、漏测率、任务交接成本、技能复用次数、review 缺陷密度、最近 release 质量、issue 响应速度和 阅读型或源码集成 的集成反馈。",
+          "release note 是否持续解释 技能文件、强制流程、任务分解、验证清单和可迁移的工程方法约束 的演进，而不只是功能堆叠。",
           "issue/讨论区是否出现与你的目标场景相似的真实案例和失败反馈。"
         ],
         "deepDive": {
-          "strategicValue": "TencentCloud/TencentDB-Agent-Memory 的价值不应按 star 数直接外推；更合理的读法是把它当作 团队级 Agent Memory / Chat-Skill-Wiki-CodeGraph 治理层 的工程样本，判断其机制是否能降低你现有链路的复杂度、人工成本或质量波动。",
+          "strategicValue": "obra/superpowers 的价值不应按 star 数直接外推；更合理的读法是把它当作 Agentic 软件工程方法 / 技能框架 的工程样本，判断其机制是否能降低你现有链路的复杂度、人工成本或质量波动。",
           "implementationPath": [
-            "先选择一个低敏项目，把历史任务、团队规范和代码索引导入只读记忆库，验证检索命中、权限边界和过期清理。；先保留人工复核、指标记录和回滚路径。",
-            "用一个可回放样本验证 上下文命中率、重复解释次数、权限违规拦截、过期记忆清理、跨 Agent 复用次数、代码图谱错误引用率，同时记录接入时间、失败样本和回滚步骤。",
+            "挑一个低风险维护任务，把调研、实现、验证、复盘写成技能并在两名工程师间复用；先保留人工复核、指标记录和回滚路径。",
+            "用一个可回放样本验证 返工率、漏测率、任务交接成本、技能复用次数、review 缺陷密度，同时记录接入时间、失败样本和回滚步骤。",
             "只在指标改善、维护 owner 明确、风险可隔离后，再从旁路验证扩大到核心流程。"
           ],
           "productionConcerns": [
-            "团队记忆会集中源码、决策和个人上下文；陈旧记忆、权限误配和数据泄露必须前置治理。",
-            "与现有 TypeScript / API/SDK 接入 工具链的耦合要先做最小集成验证。",
+            "过度流程化会拖慢简单任务，技能陈旧也会把坏习惯固化。",
+            "与现有 Shell / 阅读型或源码集成 工具链的耦合要先做最小集成验证。",
             "当前 open issues 偏高，必须抽查最近 issue 的响应质量和 release 节奏。"
           ],
           "decisionQuestions": [
-            "它解决的是「团队使用多个 Agent 后，对话记忆、技能、文档知识和代码图谱分散在个人上下文里，无法共享、治理或跨工具复用。」的主矛盾，还是只会给现有流程增加新的维护面？",
-            "如果两周 spike 只能证明“能跑”，不能证明 上下文命中率、重复解释次数、权限违规拦截、过期记忆清理、跨 Agent 复用次数、代码图谱错误引用率 改善，是否应降级为观察项？",
+            "它解决的是「团队把 AI 编码当聊天工具使用，缺少可复用流程、检查点和质量门禁」的主矛盾，还是只会给现有流程增加新的维护面？",
+            "如果两周 spike 只能证明“能跑”，不能证明 返工率、漏测率、任务交接成本、技能复用次数、review 缺陷密度 改善，是否应降级为观察项？",
             "谁负责上线后的升级、告警、回滚和安全审计？"
           ],
-          "recommendedAction": "进入观察/试点池：先选择一个低敏项目，把历史任务、团队规范和代码索引导入只读记忆库，验证检索命中、权限边界和过期清理。；先保留人工复核、指标记录和回滚路径。"
+          "recommendedAction": "进入观察/试点池：挑一个低风险维护任务，把调研、实现、验证、复盘写成技能并在两名工程师间复用；先保留人工复核、指标记录和回滚路径。"
         },
         "diagram": {
-          "title": "TencentDB-Agent-Memory 工业级采用图解",
-          "caption": "团队级 Agent Memory / Chat-Skill-Wiki-CodeGraph 治理层 · TypeScript · 12.5K stars",
-          "summary": "用 把 conversation、docs、code 转成 Chat Memory、Skill、LLM-Wiki、Code-Graph 四类资产，并通过治理、装备和共享机制接入多 Agent/框架。 解决 团队使用多个 Agent 后，对话记忆、技能、文档知识和代码图谱分散在个人上下文里，无法共享、治理或跨工具复用。，先经由 先选择一个低敏项目，把历史任务、团队规范和代码索引导入只读记忆库，验证检索命中、权限边界和过期清理。 验证 上下文命中率、重复解释次数、权限违规拦截、过期记忆清理、跨 Agent 复用次数、代码图谱错误引用率，再决定是否扩大。",
+          "title": "superpowers 工业级采用图解",
+          "caption": "Agentic 软件工程方法 / 技能框架 · Shell · 266K stars",
+          "summary": "用 技能文件、强制流程、任务分解、验证清单和可迁移的工程方法约束 解决 团队把 AI 编码当聊天工具使用，缺少可复用流程、检查点和质量门禁，先经由 挑一个低风险维护任务，把调研、实现、验证、复盘写成技能并在两名工程师间复用 验证 返工率、漏测率、任务交接成本、技能复用次数、review 缺陷密度，再决定是否扩大。",
           "nodes": [
             {
               "label": "架构机制",
-              "detail": "把 conversation、docs、code 转成 Chat Memory、Skill、LLM-Wiki、Code-Graph 四类资产，并通过治理、装备和共享机制接入多 Agent/框架。",
+              "detail": "技能文件、强制流程、任务分解、验证清单和可迁移的工程方法约束",
               "type": "core"
             },
             {
               "label": "适用团队",
-              "detail": "高频使用 coding/research Agent、已有知识 owner 和权限治理需求的平台工程、研发效能和数据库/云产品团队。",
+              "detail": "已经在用 Coding Agent 且想治理工程流程的研发效能团队",
               "type": "input"
             },
             {
               "label": "落地路径",
-              "detail": "先选择一个低敏项目，把历史任务、团队规范和代码索引导入只读记忆库，验证检索命中、权限边界和过期清理。；先保留人工复核、指标记录和回滚路径。",
+              "detail": "挑一个低风险维护任务，把调研、实现、验证、复盘写成技能并在两名工程师间复用；先保留人工复核、指标记录和回滚路径。",
               "type": "integration"
             },
             {
               "label": "观察信号",
-              "detail": "上下文命中率、重复解释次数、权限违规拦截、过期记忆清理、跨 Agent 复用次数、代码图谱错误引用率、最近 release 质量、issue 响应速度和 API/SDK 接入 的集成反馈。",
+              "detail": "返工率、漏测率、任务交接成本、技能复用次数、review 缺陷密度、最近 release 质量、issue 响应速度和 阅读型或源码集成 的集成反馈。",
               "type": "measure"
             }
           ],
@@ -1100,317 +1084,97 @@
           ],
           "poster": {
             "eyebrow": "Project Blueprint",
-            "headline": "团队级 Agent Memory / Chat-Skill-Wiki-CodeGraph 治理层",
-            "subhead": "TencentCloud/TencentDB-Agent-Memory · 快速破圈 · TypeScript",
-            "thesis": "把「团队使用多个 Agent 后，对话记忆、技能、文档知识和代码图谱分散在个人上下文里，无法共享、治理或跨工具复用。」通过「把 conversation、docs、code 转成 Chat Memory、Skill、LLM-Wiki、Code-Graph 四类资产，并通过治理、装备和共享机制接入多 Agent/框架。」转化为「降低 Agent 每次重新理解团队背景的成本，把个人经验转成可审计、可复用的团队上下文资产。」。",
+            "headline": "Agentic 软件工程方法 / 技能框架",
+            "subhead": "obra/superpowers · 生态标杆 · Shell",
+            "thesis": "把「团队把 AI 编码当聊天工具使用，缺少可复用流程、检查点和质量门禁」通过「技能文件、强制流程、任务分解、验证清单和可迁移的工程方法约束」转化为「把个人提示词经验沉淀为团队级工程流程，降低 Agent 产出不稳定性」。",
             "metrics": [
               {
                 "label": "Stars",
-                "value": "12.5K",
+                "value": "266K",
                 "note": "社区关注"
               },
               {
                 "label": "Forks",
-                "value": "1.2K",
+                "value": "23.8K",
                 "note": "二次采用"
               },
               {
                 "label": "Issues",
-                "value": "484",
+                "value": "329",
                 "note": "维护压力"
               },
               {
                 "label": "Stack",
-                "value": "TypeScript",
+                "value": "Shell",
                 "note": "主技术栈"
               }
             ],
             "lanes": [
               {
                 "label": "架构机制",
-                "detail": "把 conversation、docs、code 转成 Chat Memory、Skill、LLM-Wiki、Code-Graph 四类资产，并通过治理、装备和共享机制接入多 Agent/框架。",
+                "detail": "技能文件、强制流程、任务分解、验证清单和可迁移的工程方法约束",
                 "type": "core",
                 "step": "01",
-                "signal": "先看四类 memory schema、权限模型、同步/删除语义、Code-Graph 构建、LLM-Wiki 引用和多框架适配。"
+                "signal": "先看技能触发规则、检查清单、失败处理、与现有 CI/review 流程的衔接"
               },
               {
                 "label": "适用团队",
-                "detail": "高频使用 coding/research Agent、已有知识 owner 和权限治理需求的平台工程、研发效能和数据库/云产品团队。",
+                "detail": "已经在用 Coding Agent 且想治理工程流程的研发效能团队",
                 "type": "input",
                 "step": "02",
-                "signal": "高频使用 coding/research Agent、已有知识 owner 和权限治理需求的平台工程、研发效能和数据库/云产品团队。"
+                "signal": "已经在用 Coding Agent 且想治理工程流程的研发效能团队"
               },
               {
                 "label": "落地路径",
-                "detail": "先选择一个低敏项目，把历史任务、团队规范和代码索引导入只读记忆库，验证检索命中、权限边界和过期清理。；先保留人工复核、指标记录和回滚路径。",
+                "detail": "挑一个低风险维护任务，把调研、实现、验证、复盘写成技能并在两名工程师间复用；先保留人工复核、指标记录和回滚路径。",
                 "type": "integration",
                 "step": "03",
-                "signal": "先选择一个低敏项目，把历史任务、团队规范和代码索引导入只读记忆库，验证检索命中、权限边界和过期清理。"
+                "signal": "挑一个低风险维护任务，把调研、实现、验证、复盘写成技能并在两名工程师间复用"
               },
               {
                 "label": "观察信号",
-                "detail": "上下文命中率、重复解释次数、权限违规拦截、过期记忆清理、跨 Agent 复用次数、代码图谱错误引用率、最近 release 质量、issue 响应速度和 API/SDK 接入 的集成反馈。",
+                "detail": "返工率、漏测率、任务交接成本、技能复用次数、review 缺陷密度、最近 release 质量、issue 响应速度和 阅读型或源码集成 的集成反馈。",
                 "type": "measure",
                 "step": "04",
-                "signal": "上下文命中率、重复解释次数、权限违规拦截、过期记忆清理、跨 Agent 复用次数、代码图谱错误引用率"
+                "signal": "返工率、漏测率、任务交接成本、技能复用次数、review 缺陷密度"
               }
             ],
             "adoption": [
               {
                 "label": "试点入口",
-                "detail": "先选择一个低敏项目，把历史任务、团队规范和代码索引导入只读记忆库，验证检索命中、权限边界和过期清理。"
+                "detail": "挑一个低风险维护任务，把调研、实现、验证、复盘写成技能并在两名工程师间复用"
               },
               {
                 "label": "验收指标",
-                "detail": "上下文命中率、重复解释次数、权限违规拦截、过期记忆清理、跨 Agent 复用次数、代码图谱错误引用率"
+                "detail": "返工率、漏测率、任务交接成本、技能复用次数、review 缺陷密度"
               },
               {
                 "label": "生产风险",
-                "detail": "团队记忆会集中源码、决策和个人上下文；陈旧记忆、权限误配和数据泄露必须前置治理。"
+                "detail": "过度流程化会拖慢简单任务，技能陈旧也会把坏习惯固化。"
               },
               {
                 "label": "决策问题",
-                "detail": "它解决的是「团队使用多个 Agent 后，对话记忆、技能、文档知识和代码图谱分散在个人上下文里，无法共享、治理或跨工具复用。」的主矛盾，还是只会给现有流程增加新的维护面？"
+                "detail": "它解决的是「团队把 AI 编码当聊天工具使用，缺少可复用流程、检查点和质量门禁」的主矛盾，还是只会给现有流程增加新的维护面？"
               }
             ],
-            "warning": "小型一次性项目、权限边界不清、不能存储源码/对话摘要或没有维护 owner 的团队。"
+            "warning": "没有统一开发流程、任务高度探索或团队不愿维护流程资产"
           }
         },
         "maturity": {
-          "community": 90,
+          "community": 100,
           "maintenance": 97,
-          "production": 91,
+          "production": 95,
           "complexity": 67
         },
         "score": 95
       },
       "evidence": {
-        "readmeExcerpt": "<div align=\"center\" <img src=\"./assets/images/logo.png\" alt=\"TencentDB Agent Memory\" width=\"880\" / Agents remember. Humans innovate. <a href=\"https://trendshift.io/repositories/29310?utm source=repository badge&amp;utm medium=badge&amp;utm campaign=badge repository 29310\" target=\" blank\" rel=\"noopener noreferrer\" <img src=\"https://trendshift.io/api/badge/repositories/29310\" alt=\"TencentCloud%2FTencentDB Agent Memory Trendshift\" width=\"250\" height=\"55\"/ </a Installation · What is it? · Team Play · Technical Implementation · Benchmark English · 简体中文 </div Latest: Team Memory Beta is evolving quickly — install it and start exploring in minutes. <td <video src=\"https://github.com/user attachments/assets/efb1a808 1f86 4cfe 802c f7453f7ca938\" width=\"100%\" controls autoplay loop muted playsinline </video </td Installation Start all three services in one go ( memory core + memory hub + proxy ): ...",
-        "githubUrl": "https://github.com/TencentCloud/TencentDB-Agent-Memory"
+        "readmeExcerpt": "Superpowers Superpowers is a complete software development methodology for your coding agents, built on top of a set of composable skills and some initial instructions that make sure your agent uses them. Quickstart Give your agent Superpowers: Claude Code, Antigravity, Codex App, Codex CLI, Cursor, Factory Droid, Gemini CLI, GitHub Copilot CLI, Kimi Code, OpenCode, Pi. How it works It starts from the moment you fire up your coding agent. As soon as it sees that you're building something, it doesn't just jump into trying to write code. Instead, it steps back and asks you what you're really trying to do. Once it's teased a spec out of the conversation, it shows it to you in chunks short enough to actually read and digest. After you've signed off on the design, your agent puts together an implementation plan that's clear enough for an enthusiastic junior engineer with poor taste, no judgem...",
+        "githubUrl": "https://github.com/obra/superpowers"
       }
     },
     {
       "rank": 6,
-      "repo": {
-        "fullName": "microsoft/AI-For-Beginners",
-        "name": "AI-For-Beginners",
-        "owner": "microsoft",
-        "avatarUrl": "https://avatars.githubusercontent.com/u/6154722?v=4",
-        "visualUrl": "https://opengraph.githubassets.com/20260804/microsoft/AI-For-Beginners",
-        "url": "https://github.com/microsoft/AI-For-Beginners",
-        "description": "12 Weeks, 24 Lessons, AI for All!",
-        "stars": 61260,
-        "starsToday": 1902,
-        "forks": 11904,
-        "openIssues": 18,
-        "language": "Jupyter Notebook",
-        "topics": [
-          "ai",
-          "artificial-intelligence",
-          "cnn",
-          "computer-vision",
-          "deep-learning",
-          "gan",
-          "machine-learning",
-          "microsoft-for-beginners",
-          "nlp",
-          "rnn"
-        ],
-        "license": "MIT",
-        "pushedAt": "2026-07-21T11:11:48Z",
-        "createdAt": "2021-03-03T16:27:36Z",
-        "languages": {
-          "Jupyter Notebook": 1473375705,
-          "Python": 36875,
-          "HTML": 13907,
-          "Vue": 5103,
-          "JavaScript": 2433,
-          "Dockerfile": 1192,
-          "Shell": 921
-        }
-      },
-      "analysis": {
-        "method": "codex-research-refresh",
-        "category": "学习平台 / 内容社区",
-        "oneLiner": "12 Weeks, 24 Lessons, AI for All!；关键看内容 schema、评测、翻译和社区审校如何形成长期闭环。",
-        "whyItMatters": "microsoft/AI-For-Beginners 的热度来自“可持续维护的公共资料面”：61.3K stars / 11.9K forks，近期仍在活跃迭代。README 把重点放在「Artificial Intelligence for Beginners A Curriculum」，说明它的价值更多在分类、治理和更新节奏，而不是某个单点技术实现。 这次更新更值得关注的是其可迁移机制：内容结构、贡献流程、质量校验和社区运营 能否被拆成小样本验证，而不是把项目整体搬进生产。",
-        "engineeringRead": "Jupyter Notebook · API/SDK 接入。建议按“入口示例 -> 数据/配置 -> 失败处理 -> CI/release -> issue 反例”的顺序读；重点回答 它解决的是「团队培训、知识库沉淀或学习路径设计」的主矛盾，还是只会给现有流程增加新的维护面？",
-        "architectureSignals": [
-          "架构机制：内容结构、贡献流程、质量校验和社区运营；阅读时把 Jupyter Notebook 代码入口、数据/配置形态、自动化脚本和边界条件连起来看，而不是只看 README 的安装示例。",
-          "适用团队：需要设计学习体系、知识库或社区贡献机制",
-          "落地路径：内部培训材料、学习路径或知识库导航；先保留人工复核、指标记录和回滚路径。",
-          "生产风险：内容规模越大，版本同步、质量审校和本地化成本越高。",
-          "决策问题：它解决的是「团队培训、知识库沉淀或学习路径设计」的主矛盾，还是只会给现有流程增加新的维护面？",
-          "观察信号：内容更新频率、贡献者响应、目录可维护性、最近 release 质量、issue 响应速度和 API/SDK 接入 的集成反馈。"
-        ],
-        "valueHypothesis": [
-          "如果团队确实存在「团队培训、知识库沉淀或学习路径设计」，microsoft/AI-For-Beginners 的收益应体现为 内容更新频率、贡献者响应、目录可维护性 的改善。",
-          "适合先复制机制、接口或治理方式，不适合未验证成本就全量迁移。",
-          "若 只想找一段现成代码或快速复制项目结构，它更适合作为资料样本，而不是生产依赖。"
-        ],
-        "technicalTakeaways": [
-          "先抓 先看目录规范、贡献流程和自动化校验，而不是只看代码语言，再决定 spike 范围。",
-          "图解字段应突出 内容结构、贡献流程、质量校验和社区运营 如何把 团队培训、知识库沉淀或学习路径设计 转成 知识复用、人才培养速度和文档质量。",
-          "验收时同时记录正样本、失败样本、成本、延迟和维护 owner。"
-        ],
-        "adoptionRisks": [
-          "内容规模越大，版本同步、质量审校和本地化成本越高。",
-          "与现有 Jupyter Notebook / API/SDK 接入 工具链的耦合要先做最小集成验证。",
-          "社区负载相对可控，但仍要关注 breaking change、license 和长期维护信号。"
-        ],
-        "suggestedUseCases": [
-          "内部培训材料、学习路径或知识库导航；先保留人工复核、指标记录和回滚路径。",
-          "用一个可回放样本验证 内容更新频率、贡献者响应、目录可维护性，同时记录接入时间、失败样本和回滚步骤。",
-          "只在指标改善、维护 owner 明确、风险可隔离后，再从旁路验证扩大到核心流程。"
-        ],
-        "watchSignals": [
-          "内容更新频率、贡献者响应、目录可维护性、最近 release 质量、issue 响应速度和 API/SDK 接入 的集成反馈。",
-          "release note 是否持续解释 内容结构、贡献流程、质量校验和社区运营 的演进，而不只是功能堆叠。",
-          "issue/讨论区是否出现与你的目标场景相似的真实案例和失败反馈。"
-        ],
-        "deepDive": {
-          "strategicValue": "microsoft/AI-For-Beginners 的价值不应按 star 数直接外推；更合理的读法是把它当作 学习平台 / 内容社区 的工程样本，判断其机制是否能降低你现有链路的复杂度、人工成本或质量波动。",
-          "implementationPath": [
-            "内部培训材料、学习路径或知识库导航；先保留人工复核、指标记录和回滚路径。",
-            "用一个可回放样本验证 内容更新频率、贡献者响应、目录可维护性，同时记录接入时间、失败样本和回滚步骤。",
-            "只在指标改善、维护 owner 明确、风险可隔离后，再从旁路验证扩大到核心流程。"
-          ],
-          "productionConcerns": [
-            "内容规模越大，版本同步、质量审校和本地化成本越高。",
-            "与现有 Jupyter Notebook / API/SDK 接入 工具链的耦合要先做最小集成验证。",
-            "社区负载相对可控，但仍要关注 breaking change、license 和长期维护信号。"
-          ],
-          "decisionQuestions": [
-            "它解决的是「团队培训、知识库沉淀或学习路径设计」的主矛盾，还是只会给现有流程增加新的维护面？",
-            "如果两周 spike 只能证明“能跑”，不能证明 内容更新频率、贡献者响应、目录可维护性 改善，是否应降级为观察项？",
-            "谁负责上线后的升级、告警、回滚和安全审计？"
-          ],
-          "recommendedAction": "进入观察/试点池：内部培训材料、学习路径或知识库导航；先保留人工复核、指标记录和回滚路径。"
-        },
-        "diagram": {
-          "title": "AI-For-Beginners 工业级采用图解",
-          "caption": "学习平台 / 内容社区 · Jupyter Notebook · 61.3K stars",
-          "summary": "用 内容结构、贡献流程、质量校验和社区运营 解决 团队培训、知识库沉淀或学习路径设计，先经由 内部培训材料、学习路径或知识库导航 验证 内容更新频率、贡献者响应、目录可维护性，再决定是否扩大。",
-          "nodes": [
-            {
-              "label": "架构机制",
-              "detail": "内容结构、贡献流程、质量校验和社区运营",
-              "type": "core"
-            },
-            {
-              "label": "适用团队",
-              "detail": "需要设计学习体系、知识库或社区贡献机制",
-              "type": "input"
-            },
-            {
-              "label": "落地路径",
-              "detail": "内部培训材料、学习路径或知识库导航；先保留人工复核、指标记录和回滚路径。",
-              "type": "integration"
-            },
-            {
-              "label": "观察信号",
-              "detail": "内容更新频率、贡献者响应、目录可维护性、最近 release 质量、issue 响应速度和 API/SDK 接入 的集成反馈。",
-              "type": "measure"
-            }
-          ],
-          "links": [
-            "机制拆解",
-            "试点验证",
-            "指标放大"
-          ],
-          "poster": {
-            "eyebrow": "Project Blueprint",
-            "headline": "学习平台 / 内容社区",
-            "subhead": "microsoft/AI-For-Beginners · 成熟扩散 · Jupyter Notebook",
-            "thesis": "把「团队培训、知识库沉淀或学习路径设计」通过「内容结构、贡献流程、质量校验和社区运营」转化为「知识复用、人才培养速度和文档质量」。",
-            "metrics": [
-              {
-                "label": "Stars",
-                "value": "61.3K",
-                "note": "社区关注"
-              },
-              {
-                "label": "Forks",
-                "value": "11.9K",
-                "note": "二次采用"
-              },
-              {
-                "label": "Issues",
-                "value": "18",
-                "note": "维护压力"
-              },
-              {
-                "label": "Stack",
-                "value": "Jupyter Notebook",
-                "note": "主技术栈"
-              }
-            ],
-            "lanes": [
-              {
-                "label": "架构机制",
-                "detail": "内容结构、贡献流程、质量校验和社区运营",
-                "type": "core",
-                "step": "01",
-                "signal": "先看目录规范、贡献流程和自动化校验，而不是只看代码语言"
-              },
-              {
-                "label": "适用团队",
-                "detail": "需要设计学习体系、知识库或社区贡献机制",
-                "type": "input",
-                "step": "02",
-                "signal": "需要设计学习体系、知识库或社区贡献机制"
-              },
-              {
-                "label": "落地路径",
-                "detail": "内部培训材料、学习路径或知识库导航；先保留人工复核、指标记录和回滚路径。",
-                "type": "integration",
-                "step": "03",
-                "signal": "内部培训材料、学习路径或知识库导航"
-              },
-              {
-                "label": "观察信号",
-                "detail": "内容更新频率、贡献者响应、目录可维护性、最近 release 质量、issue 响应速度和 API/SDK 接入 的集成反馈。",
-                "type": "measure",
-                "step": "04",
-                "signal": "内容更新频率、贡献者响应、目录可维护性"
-              }
-            ],
-            "adoption": [
-              {
-                "label": "试点入口",
-                "detail": "内部培训材料、学习路径或知识库导航"
-              },
-              {
-                "label": "验收指标",
-                "detail": "内容更新频率、贡献者响应、目录可维护性"
-              },
-              {
-                "label": "生产风险",
-                "detail": "内容规模越大，版本同步、质量审校和本地化成本越高。"
-              },
-              {
-                "label": "决策问题",
-                "detail": "它解决的是「团队培训、知识库沉淀或学习路径设计」的主矛盾，还是只会给现有流程增加新的维护面？"
-              }
-            ],
-            "warning": "只想找一段现成代码或快速复制项目结构"
-          }
-        },
-        "maturity": {
-          "community": 100,
-          "maintenance": 58,
-          "production": 80,
-          "complexity": 55
-        },
-        "score": 86
-      },
-      "evidence": {
-        "readmeExcerpt": "Artificial Intelligence for Beginners A Curriculum : : AI For Beginners Sketchnote by @girlie mac Explore the world of Artificial Intelligence (AI) with our 12 week, 24 lesson curriculum! It includes practical lessons, quizzes, and labs. The curriculum is beginner friendly and covers tools like TensorFlow and PyTorch, as well as ethics in AI 🌐 Multi Language Support Supported via GitHub Action (Automated & Always Up to Date) <! CO OP TRANSLATOR LANGUAGES TABLE START Arabic Bengali Bulgarian Burmese (Myanmar) Chinese (Simplified) Chinese (Traditional, Hong Kong) Chinese (Traditional, Macau) Chinese (Traditional, Taiwan) Croatian Czech Danish Dutch Estonian Finnish French German Greek Hebrew Hindi Hungarian Indonesian Italian Japanese Kannada Khmer Korean Lithuanian Malay Malayalam Marathi Nepali Nigerian Pidgin Norwegian Persian (Farsi) Polish Portuguese (Brazil) Portuguese (Portugal) Pu...",
-        "githubUrl": "https://github.com/microsoft/AI-For-Beginners"
-      }
-    },
-    {
-      "rank": 7,
       "repo": {
         "fullName": "microsoft/generative-ai-for-beginners",
         "name": "generative-ai-for-beginners",
@@ -1418,10 +1182,10 @@
         "avatarUrl": "https://avatars.githubusercontent.com/u/6154722?v=4",
         "visualUrl": "https://opengraph.githubassets.com/20260804/microsoft/generative-ai-for-beginners",
         "url": "https://github.com/microsoft/generative-ai-for-beginners",
-        "description": "21 Lessons, Get Started Building with Generative AI",
-        "stars": 115887,
+        "description": "21 Lessons, Get Started Building with Generative AI ",
+        "stars": 115979,
         "starsToday": 775,
-        "forks": 61484,
+        "forks": 61507,
         "openIssues": 16,
         "language": "Jupyter Notebook",
         "topics": [
@@ -1457,8 +1221,8 @@
       "analysis": {
         "method": "codex-research-refresh",
         "category": "学习平台 / 内容社区",
-        "oneLiner": "21 Lessons, Get Started Building with Generative AI；关键看内容 schema、评测、翻译和社区审校如何形成长期闭环。",
-        "whyItMatters": "microsoft/generative-ai-for-beginners 的热度来自“可持续维护的公共资料面”：115.9K stars / 61.5K forks，维护非常活跃。README 把重点放在「🌐 Multi Language Support」，说明它的价值更多在分类、治理和更新节奏，而不是某个单点技术实现。 这次更新更值得关注的是其可迁移机制：内容结构、贡献流程、质量校验和社区运营 能否被拆成小样本验证，而不是把项目整体搬进生产。",
+        "oneLiner": "21 Lessons, Get Started Building with Generative AI ；关键看内容 schema、评测、翻译和社区审校如何形成长期闭环。",
+        "whyItMatters": "microsoft/generative-ai-for-beginners 的热度来自“可持续维护的公共资料面”：116K stars / 61.5K forks，维护非常活跃。README 把重点放在「🌐 Multi Language Support」，说明它的价值更多在分类、治理和更新节奏，而不是某个单点技术实现。 这次更新更值得关注的是其可迁移机制：内容结构、贡献流程、质量校验和社区运营 能否被拆成小样本验证，而不是把项目整体搬进生产。",
         "engineeringRead": "Jupyter Notebook · API/SDK 接入。建议按“入口示例 -> 数据/配置 -> 失败处理 -> CI/release -> issue 反例”的顺序读；重点回答 它解决的是「团队培训、知识库沉淀或学习路径设计」的主矛盾，还是只会给现有流程增加新的维护面？",
         "architectureSignals": [
           "架构机制：内容结构、贡献流程、质量校验和社区运营；阅读时把 Jupyter Notebook 代码入口、数据/配置形态、自动化脚本和边界条件连起来看，而不是只看 README 的安装示例。",
@@ -1514,7 +1278,7 @@
         },
         "diagram": {
           "title": "generative-ai-for-beginners 工业级采用图解",
-          "caption": "学习平台 / 内容社区 · Jupyter Notebook · 115.9K stars",
+          "caption": "学习平台 / 内容社区 · Jupyter Notebook · 116K stars",
           "summary": "用 内容结构、贡献流程、质量校验和社区运营 解决 团队培训、知识库沉淀或学习路径设计，先经由 内部培训材料、学习路径或知识库导航 验证 内容更新频率、贡献者响应、目录可维护性，再决定是否扩大。",
           "nodes": [
             {
@@ -1551,7 +1315,7 @@
             "metrics": [
               {
                 "label": "Stars",
-                "value": "115.9K",
+                "value": "116K",
                 "note": "社区关注"
               },
               {
@@ -1635,124 +1399,133 @@
       }
     },
     {
-      "rank": 8,
+      "rank": 7,
       "repo": {
-        "fullName": "donnemartin/system-design-primer",
-        "name": "system-design-primer",
-        "owner": "donnemartin",
-        "avatarUrl": "https://avatars.githubusercontent.com/u/5458997?v=4",
-        "visualUrl": "https://opengraph.githubassets.com/20260804/donnemartin/system-design-primer",
-        "url": "https://github.com/donnemartin/system-design-primer",
-        "description": "Learn how to design large-scale systems. Prep for the system design interview. Includes Anki flashcards.",
-        "stars": 360775,
-        "starsToday": 237,
-        "forks": 57542,
-        "openIssues": 579,
-        "language": "Python",
+        "fullName": "cypress-io/cypress",
+        "name": "cypress",
+        "owner": "cypress-io",
+        "avatarUrl": "https://avatars.githubusercontent.com/u/8908513?v=4",
+        "visualUrl": "https://opengraph.githubassets.com/20260804/cypress-io/cypress",
+        "url": "https://github.com/cypress-io/cypress",
+        "description": "Fast, easy and reliable testing for anything that runs in a browser.",
+        "stars": 50660,
+        "starsToday": 6,
+        "forks": 3621,
+        "openIssues": 1089,
+        "language": "TypeScript",
         "topics": [
-          "design",
-          "design-patterns",
-          "design-system",
-          "development",
-          "interview",
-          "interview-practice",
-          "interview-questions",
-          "programming",
-          "python",
-          "system",
-          "web",
-          "web-application",
-          "webapp"
+          "angular-testing-library",
+          "component-testing",
+          "cypress",
+          "cypress-cloud",
+          "cypress-schematic",
+          "end-to-end-testing",
+          "react-testing-library",
+          "svelte-testing-library",
+          "test-replay",
+          "testing-framework",
+          "testing-library",
+          "testing-tool",
+          "vue-testing-library"
         ],
-        "license": "NOASSERTION",
-        "pushedAt": "2026-03-20T01:52:19Z",
-        "createdAt": "2017-02-26T16:15:28Z",
+        "license": "MIT",
+        "pushedAt": "2026-08-04T09:03:02Z",
+        "createdAt": "2015-03-04T00:46:28Z",
         "languages": {
-          "Python": 57260,
-          "Shell": 1192
+          "TypeScript": 12554372,
+          "JavaScript": 6852063,
+          "Vue": 817077,
+          "HTML": 592236,
+          "SCSS": 86509,
+          "Shell": 26708,
+          "CSS": 26510,
+          "Svelte": 2786,
+          "CoffeeScript": 1829,
+          "Dockerfile": 995,
+          "EJS": 970
         }
       },
       "analysis": {
         "method": "codex-research-refresh",
-        "category": "系统设计知识库 / 工程面试与架构共识",
-        "oneLiner": "Learn how to design large-scale systems. Prep for the system design interview. Includes Anki flashcards.；关键看 以教程、图解、案例、Anki 和多语言翻译组织系统设计知识，把架构概念转成可复习、可引用的公共材料。 是否能被小范围验证。",
-        "whyItMatters": "donnemartin/system-design-primer 处在 超级公共资产 区间：360.8K stars / 57.5K forks，需要确认近期维护强度。README 把重点放在「The System Design Primer」，适合判断它是否能在 数据存取、检索、分析或状态管理复杂度 上形成真实工程收益。 这次更新更值得关注的是其可迁移机制：以教程、图解、案例、Anki 和多语言翻译组织系统设计知识，把架构概念转成可复习、可引用的公共材料。 能否被拆成小样本验证，而不是把项目整体搬进生产。",
-        "engineeringRead": "Python · API/SDK 接入。建议按“入口示例 -> 数据/配置 -> 失败处理 -> CI/release -> issue 反例”的顺序读；重点回答 它解决的是「工程师学习分布式系统时资料分散，团队也缺少统一语言讨论缓存、队列、存储、扩展和故障模式。」的主矛盾，还是只会给现有流程增加新的维护面？",
+        "category": "开发者工具 / 工程效率",
+        "oneLiner": "Fast, easy and reliable testing for anything that runs in a browser.；关键看它能否稳定缩短构建、测试、调试或自动化链路。",
+        "whyItMatters": "cypress-io/cypress 处在 成熟热门项目 区间：50.7K stars / 3.6K forks，维护非常活跃。README 把重点放在「What is Cypress?」，适合判断它是否能在 构建、调试、交付或依赖管理的效率瓶颈 上形成真实工程收益。 这次更新更值得关注的是其可迁移机制：命令行、插件系统、构建管线或 SDK 抽象 能否被拆成小样本验证，而不是把项目整体搬进生产。",
+        "engineeringRead": "TypeScript · Node 包/前端工程。建议按“入口示例 -> 数据/配置 -> 失败处理 -> CI/release -> issue 反例”的顺序读；重点回答 它解决的是「构建、调试、交付或依赖管理的效率瓶颈」的主矛盾，还是只会给现有流程增加新的维护面？",
         "architectureSignals": [
-          "架构机制：以教程、图解、案例、Anki 和多语言翻译组织系统设计知识，把架构概念转成可复习、可引用的公共材料。；阅读时把 Python 代码入口、数据/配置形态、自动化脚本和边界条件连起来看，而不是只看 README 的安装示例。",
-          "适用团队：工程培训、面试准备、架构评审共识建设和技术社区。",
-          "落地路径：选 2-3 个与团队业务相关的主题做内部读书会，并要求把概念映射到现有系统的真实瓶颈。；先保留人工复核、指标记录和回滚路径。",
-          "生产风险：教育材料容易滞后于云产品和业务约束；必须把原则转成本地评审清单和真实指标验证。",
-          "决策问题：它解决的是「工程师学习分布式系统时资料分散，团队也缺少统一语言讨论缓存、队列、存储、扩展和故障模式。」的主矛盾，还是只会给现有流程增加新的维护面？",
-          "观察信号：章节完成率、设计评审缺陷减少、概念测验正确率、翻译质量、真实案例映射数量、最近 release 质量、issue 响应速度和 API/SDK 接入 的集成反馈。"
+          "架构机制：命令行、插件系统、构建管线或 SDK 抽象；阅读时把 TypeScript 代码入口、数据/配置形态、自动化脚本和边界条件连起来看，而不是只看 README 的安装示例。",
+          "适用团队：团队已有重复手工流程或低效构建链路",
+          "落地路径：个人或小团队工作流；先保留人工复核、指标记录和回滚路径。",
+          "生产风险：工具链替换容易引入插件不兼容、调试信息丢失和 CI 差异，需要影子运行。",
+          "决策问题：它解决的是「构建、调试、交付或依赖管理的效率瓶颈」的主矛盾，还是只会给现有流程增加新的维护面？",
+          "观察信号：flaky issue 收敛、浏览器版本支持、CI 云服务边界和组件测试生态更新。"
         ],
         "valueHypothesis": [
-          "如果团队确实存在「工程师学习分布式系统时资料分散，团队也缺少统一语言讨论缓存、队列、存储、扩展和故障模式。」，donnemartin/system-design-primer 的收益应体现为 章节完成率、设计评审缺陷减少、概念测验正确率、翻译质量、真实案例映射数量 的改善。",
+          "如果团队确实存在「构建、调试、交付或依赖管理的效率瓶颈」，cypress-io/cypress 的收益应体现为 冷启动耗时、构建耗时、配置行数、回滚成本 的改善。",
           "适合先复制机制、接口或治理方式，不适合未验证成本就全量迁移。",
-          "若 直接复制为生产架构、替代容量评估/压测，或需要特定行业合规设计细节的场景。，它更适合作为资料样本，而不是生产依赖。"
+          "若 现有流程稳定且迁移会打断多人协作，它更适合作为资料样本，而不是生产依赖。"
         ],
         "technicalTakeaways": [
-          "先抓 先看目录、案例新鲜度、图解、翻译维护、引用来源和是否覆盖当前团队的架构决策。，再决定 spike 范围。",
-          "图解字段应突出 以教程、图解、案例、Anki 和多语言翻译组织系统设计知识，把架构概念转成可复习、可引用的公共材料。 如何把 工程师学习分布式系统时资料分散，团队也缺少统一语言讨论缓存、队列、存储、扩展和故障模式。 转成 降低系统设计沟通成本，帮助新人和跨团队评审建立共同基线。。",
+          "先抓 先跑最小命令，再看配置文件、缓存目录和失败信息是否可理解，再决定 spike 范围。",
+          "图解字段应突出 命令行、插件系统、构建管线或 SDK 抽象 如何把 构建、调试、交付或依赖管理的效率瓶颈 转成 交付周期、故障恢复速度和工程一致性。",
           "验收时同时记录正样本、失败样本、成本、延迟和维护 owner。"
         ],
         "adoptionRisks": [
-          "教育材料容易滞后于云产品和业务约束；必须把原则转成本地评审清单和真实指标验证。",
-          "与现有 Python / API/SDK 接入 工具链的耦合要先做最小集成验证。",
+          "工具链替换容易引入插件不兼容、调试信息丢失和 CI 差异，需要影子运行。",
+          "与现有 TypeScript / Node 包/前端工程 工具链的耦合要先做最小集成验证。",
           "当前 open issues 偏高，必须抽查最近 issue 的响应质量和 release 节奏。"
         ],
         "suggestedUseCases": [
-          "选 2-3 个与团队业务相关的主题做内部读书会，并要求把概念映射到现有系统的真实瓶颈。；先保留人工复核、指标记录和回滚路径。",
-          "用一个可回放样本验证 章节完成率、设计评审缺陷减少、概念测验正确率、翻译质量、真实案例映射数量，同时记录接入时间、失败样本和回滚步骤。",
+          "个人或小团队工作流；先保留人工复核、指标记录和回滚路径。",
+          "用一个可回放样本验证 冷启动耗时、构建耗时、配置行数、回滚成本，同时记录接入时间、失败样本和回滚步骤。",
           "只在指标改善、维护 owner 明确、风险可隔离后，再从旁路验证扩大到核心流程。"
         ],
         "watchSignals": [
-          "章节完成率、设计评审缺陷减少、概念测验正确率、翻译质量、真实案例映射数量、最近 release 质量、issue 响应速度和 API/SDK 接入 的集成反馈。",
-          "release note 是否持续解释 以教程、图解、案例、Anki 和多语言翻译组织系统设计知识，把架构概念转成可复习、可引用的公共材料。 的演进，而不只是功能堆叠。",
+          "flaky issue 收敛、浏览器版本支持、CI 云服务边界和组件测试生态更新。",
+          "release note 是否持续解释 命令行、插件系统、构建管线或 SDK 抽象 的演进，而不只是功能堆叠。",
           "issue/讨论区是否出现与你的目标场景相似的真实案例和失败反馈。"
         ],
         "deepDive": {
-          "strategicValue": "donnemartin/system-design-primer 的价值不应按 star 数直接外推；更合理的读法是把它当作 系统设计知识库 / 工程面试与架构共识 的工程样本，判断其机制是否能降低你现有链路的复杂度、人工成本或质量波动。",
+          "strategicValue": "cypress-io/cypress 的价值不应按 star 数直接外推；更合理的读法是把它当作 开发者工具 / 工程效率 的工程样本，判断其机制是否能降低你现有链路的复杂度、人工成本或质量波动。",
           "implementationPath": [
-            "选 2-3 个与团队业务相关的主题做内部读书会，并要求把概念映射到现有系统的真实瓶颈。；先保留人工复核、指标记录和回滚路径。",
-            "用一个可回放样本验证 章节完成率、设计评审缺陷减少、概念测验正确率、翻译质量、真实案例映射数量，同时记录接入时间、失败样本和回滚步骤。",
+            "个人或小团队工作流；先保留人工复核、指标记录和回滚路径。",
+            "用一个可回放样本验证 冷启动耗时、构建耗时、配置行数、回滚成本，同时记录接入时间、失败样本和回滚步骤。",
             "只在指标改善、维护 owner 明确、风险可隔离后，再从旁路验证扩大到核心流程。"
           ],
           "productionConcerns": [
-            "教育材料容易滞后于云产品和业务约束；必须把原则转成本地评审清单和真实指标验证。",
-            "与现有 Python / API/SDK 接入 工具链的耦合要先做最小集成验证。",
+            "工具链替换容易引入插件不兼容、调试信息丢失和 CI 差异，需要影子运行。",
+            "与现有 TypeScript / Node 包/前端工程 工具链的耦合要先做最小集成验证。",
             "当前 open issues 偏高，必须抽查最近 issue 的响应质量和 release 节奏。"
           ],
           "decisionQuestions": [
-            "它解决的是「工程师学习分布式系统时资料分散，团队也缺少统一语言讨论缓存、队列、存储、扩展和故障模式。」的主矛盾，还是只会给现有流程增加新的维护面？",
-            "如果两周 spike 只能证明“能跑”，不能证明 章节完成率、设计评审缺陷减少、概念测验正确率、翻译质量、真实案例映射数量 改善，是否应降级为观察项？",
+            "它解决的是「构建、调试、交付或依赖管理的效率瓶颈」的主矛盾，还是只会给现有流程增加新的维护面？",
+            "如果两周 spike 只能证明“能跑”，不能证明 冷启动耗时、构建耗时、配置行数、回滚成本 改善，是否应降级为观察项？",
             "谁负责上线后的升级、告警、回滚和安全审计？"
           ],
-          "recommendedAction": "进入观察/试点池：选 2-3 个与团队业务相关的主题做内部读书会，并要求把概念映射到现有系统的真实瓶颈。；先保留人工复核、指标记录和回滚路径。"
+          "recommendedAction": "进入观察/试点池：个人或小团队工作流；先保留人工复核、指标记录和回滚路径。"
         },
         "diagram": {
-          "title": "system-design-primer 工业级采用图解",
-          "caption": "系统设计知识库 / 工程面试与架构共识 · Python · 360.8K stars",
-          "summary": "用 以教程、图解、案例、Anki 和多语言翻译组织系统设计知识，把架构概念转成可复习、可引用的公共材料。 解决 工程师学习分布式系统时资料分散，团队也缺少统一语言讨论缓存、队列、存储、扩展和故障模式。，先经由 选 2-3 个与团队业务相关的主题做内部读书会，并要求把概念映射到现有系统的真实瓶颈。 验证 章节完成率、设计评审缺陷减少、概念测验正确率、翻译质量、真实案例映射数量，再决定是否扩大。",
+          "title": "cypress 工业级采用图解",
+          "caption": "开发者工具 / 工程效率 · TypeScript · 50.7K stars",
+          "summary": "用 命令行、插件系统、构建管线或 SDK 抽象 解决 构建、调试、交付或依赖管理的效率瓶颈，先经由 个人或小团队工作流 验证 冷启动耗时、构建耗时、配置行数、回滚成本，再决定是否扩大。",
           "nodes": [
             {
               "label": "架构机制",
-              "detail": "以教程、图解、案例、Anki 和多语言翻译组织系统设计知识，把架构概念转成可复习、可引用的公共材料。",
+              "detail": "命令行、插件系统、构建管线或 SDK 抽象",
               "type": "core"
             },
             {
               "label": "适用团队",
-              "detail": "工程培训、面试准备、架构评审共识建设和技术社区。",
+              "detail": "团队已有重复手工流程或低效构建链路",
               "type": "input"
             },
             {
               "label": "落地路径",
-              "detail": "选 2-3 个与团队业务相关的主题做内部读书会，并要求把概念映射到现有系统的真实瓶颈。；先保留人工复核、指标记录和回滚路径。",
+              "detail": "个人或小团队工作流；先保留人工复核、指标记录和回滚路径。",
               "type": "integration"
             },
             {
               "label": "观察信号",
-              "detail": "章节完成率、设计评审缺陷减少、概念测验正确率、翻译质量、真实案例映射数量、最近 release 质量、issue 响应速度和 API/SDK 接入 的集成反馈。",
+              "detail": "flaky issue 收敛、浏览器版本支持、CI 云服务边界和组件测试生态更新。",
               "type": "measure"
             }
           ],
@@ -1763,634 +1536,444 @@
           ],
           "poster": {
             "eyebrow": "Project Blueprint",
-            "headline": "系统设计知识库 / 工程面试与架构共识",
-            "subhead": "donnemartin/system-design-primer · 生态标杆 · Python",
-            "thesis": "把「工程师学习分布式系统时资料分散，团队也缺少统一语言讨论缓存、队列、存储、扩展和故障模式。」通过「以教程、图解、案例、Anki 和多语言翻译组织系统设计知识，把架构概念转成可复习、可引用的公共材料。」转化为「降低系统设计沟通成本，帮助新人和跨团队评审建立共同基线。」。",
+            "headline": "开发者工具 / 工程效率",
+            "subhead": "cypress-io/cypress · 成熟扩散 · TypeScript",
+            "thesis": "把「构建、调试、交付或依赖管理的效率瓶颈」通过「命令行、插件系统、构建管线或 SDK 抽象」转化为「交付周期、故障恢复速度和工程一致性」。",
             "metrics": [
               {
                 "label": "Stars",
-                "value": "360.8K",
+                "value": "50.7K",
                 "note": "社区关注"
               },
               {
                 "label": "Forks",
-                "value": "57.5K",
+                "value": "3.6K",
                 "note": "二次采用"
               },
               {
                 "label": "Issues",
-                "value": "579",
+                "value": "1.1K",
                 "note": "维护压力"
               },
               {
                 "label": "Stack",
-                "value": "Python",
+                "value": "TypeScript",
                 "note": "主技术栈"
               }
             ],
             "lanes": [
               {
                 "label": "架构机制",
-                "detail": "以教程、图解、案例、Anki 和多语言翻译组织系统设计知识，把架构概念转成可复习、可引用的公共材料。",
+                "detail": "命令行、插件系统、构建管线或 SDK 抽象",
                 "type": "core",
                 "step": "01",
-                "signal": "先看目录、案例新鲜度、图解、翻译维护、引用来源和是否覆盖当前团队的架构决策。"
+                "signal": "先跑最小命令，再看配置文件、缓存目录和失败信息是否可理解"
               },
               {
                 "label": "适用团队",
-                "detail": "工程培训、面试准备、架构评审共识建设和技术社区。",
+                "detail": "团队已有重复手工流程或低效构建链路",
                 "type": "input",
                 "step": "02",
-                "signal": "工程培训、面试准备、架构评审共识建设和技术社区。"
+                "signal": "团队已有重复手工流程或低效构建链路"
               },
               {
                 "label": "落地路径",
-                "detail": "选 2-3 个与团队业务相关的主题做内部读书会，并要求把概念映射到现有系统的真实瓶颈。；先保留人工复核、指标记录和回滚路径。",
+                "detail": "个人或小团队工作流；先保留人工复核、指标记录和回滚路径。",
                 "type": "integration",
                 "step": "03",
-                "signal": "选 2-3 个与团队业务相关的主题做内部读书会，并要求把概念映射到现有系统的真实瓶颈。"
+                "signal": "个人或小团队工作流"
               },
               {
                 "label": "观察信号",
-                "detail": "章节完成率、设计评审缺陷减少、概念测验正确率、翻译质量、真实案例映射数量、最近 release 质量、issue 响应速度和 API/SDK 接入 的集成反馈。",
+                "detail": "flaky issue 收敛、浏览器版本支持、CI 云服务边界和组件测试生态更新。",
                 "type": "measure",
                 "step": "04",
-                "signal": "章节完成率、设计评审缺陷减少、概念测验正确率、翻译质量、真实案例映射数量"
+                "signal": "冷启动耗时、构建耗时、配置行数、回滚成本"
               }
             ],
             "adoption": [
               {
                 "label": "试点入口",
-                "detail": "选 2-3 个与团队业务相关的主题做内部读书会，并要求把概念映射到现有系统的真实瓶颈。"
+                "detail": "个人或小团队工作流"
               },
               {
                 "label": "验收指标",
-                "detail": "章节完成率、设计评审缺陷减少、概念测验正确率、翻译质量、真实案例映射数量"
+                "detail": "冷启动耗时、构建耗时、配置行数、回滚成本"
               },
               {
                 "label": "生产风险",
-                "detail": "教育材料容易滞后于云产品和业务约束；必须把原则转成本地评审清单和真实指标验证。"
+                "detail": "工具链替换容易引入插件不兼容、调试信息丢失和 CI 差异，需要影子运行。"
               },
               {
                 "label": "决策问题",
-                "detail": "它解决的是「工程师学习分布式系统时资料分散，团队也缺少统一语言讨论缓存、队列、存储、扩展和故障模式。」的主矛盾，还是只会给现有流程增加新的维护面？"
+                "detail": "它解决的是「构建、调试、交付或依赖管理的效率瓶颈」的主矛盾，还是只会给现有流程增加新的维护面？"
               }
             ],
-            "warning": "直接复制为生产架构、替代容量评估/压测，或需要特定行业合规设计细节的场景。"
+            "warning": "现有流程稳定且迁移会打断多人协作"
           }
         },
         "maturity": {
           "community": 100,
-          "maintenance": 30,
-          "production": 59,
-          "complexity": 84
+          "maintenance": 100,
+          "production": 86,
+          "complexity": 67
         },
-        "score": 72
+        "score": 92
       },
       "evidence": {
-        "readmeExcerpt": "English ∙ 日本語 ∙ 简体中文 ∙ 繁體中文 العَرَبِيَّة‎ ∙ বাংলা ∙ Português do Brasil ∙ Deutsch ∙ ελληνικά ∙ עברית ∙ Italiano ∙ 한국어 ∙ فارسی ∙ Polski ∙ русский язык ∙ Español ∙ ภาษาไทย ∙ Türkçe ∙ tiếng Việt ∙ Français Add Translation Help translate this guide! The System Design Primer <p align=\"center\" <img src=\"images/jj3A5N8.png\" <br/ </p Motivation Learn how to design large scale systems. Prep for the system design interview. Learn how to design large scale systems Learning how to design scalable systems will help you become a better engineer. System design is a broad topic. There are a vast number of resources scattered throughout the web on system design principles. This repo is an organized collection of resources to help you learn how to build systems at scale. Learn from the open source community This is a continually updated, open source project. Contributions are welcome! Prep for the system ...",
-        "githubUrl": "https://github.com/donnemartin/system-design-primer"
+        "readmeExcerpt": "<p align=\"center\" <a href=\"https://www.cypress.io\" <picture <source media=\"(prefers color scheme: dark)\" srcset=\"./assets/cypress logo dark.png\" <source media=\"(prefers color scheme: light)\" srcset=\"./assets/cypress logo light.png\" <img alt=\"Cypress Logo\" src=\"./assets/cypress logo light.png\" </picture </a </p <p align=\"center\" <a href=\"https://on.cypress.io\" Documentation</a <a href=\"https://on.cypress.io/changelog\" Changelog</a <a href=\"https://on.cypress.io/roadmap\" Roadmap</a </p <h3 align=\"center\" The web has evolved. Finally, testing has too. </h3 <p align=\"center\" Fast, easy and reliable testing for anything that runs in a browser. </p <p align=\"center\" Join us, we're <a href=\"https://cypress.io/jobs\" hiring</a . </p <p align=\"center\" <a href=\"https://www.npmjs.com/package/cypress\" <img src=\"https://img.shields.io/npm/dm/cypress.svg\" alt=\"npm\"/ </a <a href=\"https://on.cypress.io/d...",
+        "githubUrl": "https://github.com/cypress-io/cypress"
+      }
+    },
+    {
+      "rank": 8,
+      "repo": {
+        "fullName": "lyogavin/airllm",
+        "name": "airllm",
+        "owner": "lyogavin",
+        "avatarUrl": "https://avatars.githubusercontent.com/u/1113905?v=4",
+        "visualUrl": "https://opengraph.githubassets.com/20260804/lyogavin/airllm",
+        "url": "https://github.com/lyogavin/airllm",
+        "description": "AirLLM 70B inference with single 4GB GPU",
+        "stars": 27919,
+        "starsToday": 1085,
+        "forks": 3026,
+        "openIssues": 124,
+        "language": "Jupyter Notebook",
+        "topics": [
+          "chinese-llm",
+          "chinese-nlp",
+          "finetune",
+          "generative-ai",
+          "instruct-gpt",
+          "instruction-set",
+          "llama",
+          "llm",
+          "lora",
+          "open-models",
+          "open-source",
+          "open-source-models",
+          "qlora"
+        ],
+        "license": "Apache-2.0",
+        "pushedAt": "2026-07-29T01:08:32Z",
+        "createdAt": "2023-06-12T16:28:41Z",
+        "languages": {
+          "Jupyter Notebook": 6583910,
+          "Python": 291957,
+          "Shell": 6185
+        }
+      },
+      "analysis": {
+        "method": "codex-research-refresh",
+        "category": "低显存大模型推理 / 本地 LLM 实验",
+        "oneLiner": "AirLLM 70B inference with single 4GB GPU；关键看 通过权重分块、显存/内存/磁盘分层加载、MoE expert streaming 和按需卸载，把一次完整推理拆成可在小显存设备上串行执行的步骤。 是否能被小范围验证。",
+        "whyItMatters": "lyogavin/airllm 值得看，是因为 AI 项目真正的分水岭已经从“能跑 demo”转向“能被治理、能接工具、能失败恢复”。当前 27.9K stars / 3K forks，近期仍在活跃迭代，足够进入 Agent 工程雷达。 这次更新更值得关注的是其可迁移机制：通过权重分块、显存/内存/磁盘分层加载、MoE expert streaming 和按需卸载，把一次完整推理拆成可在小显存设备上串行执行的步骤。 能否被拆成小样本验证，而不是把项目整体搬进生产。",
+        "engineeringRead": "Jupyter Notebook · Python 包/脚本。建议按“入口示例 -> 数据/配置 -> 失败处理 -> CI/release -> issue 反例”的顺序读；重点回答 它解决的是「团队想在消费级 GPU、边缘机器或成本敏感环境里试跑 70B+ 模型，但常规推理栈要求大显存、多卡或复杂量化。」的主矛盾，还是只会给现有流程增加新的维护面？",
+        "architectureSignals": [
+          "架构机制：通过权重分块、显存/内存/磁盘分层加载、MoE expert streaming 和按需卸载，把一次完整推理拆成可在小显存设备上串行执行的步骤。；阅读时把 Jupyter Notebook 代码入口、数据/配置形态、自动化脚本和边界条件连起来看，而不是只看 README 的安装示例。",
+          "适用团队：个人研究、边缘设备原型、私有数据 PoC、模型选型和成本敏感的 AI 平台团队。",
+          "落地路径：用固定 prompt 集和目标模型跑离线基准，记录 TTFT、tokens/s、峰值内存、磁盘 I/O、质量回归和失败样本，再决定是否继续投入。；先保留人工复核、指标记录和回滚路径。",
+          "生产风险：低显存方案常把硬件成本转移到延迟、吞吐、磁盘 I/O 和工程复杂度；上线前必须保留成熟推理栈备选。",
+          "决策问题：它解决的是「团队想在消费级 GPU、边缘机器或成本敏感环境里试跑 70B+ 模型，但常规推理栈要求大显存、多卡或复杂量化。」的主矛盾，还是只会给现有流程增加新的维护面？",
+          "观察信号：TTFT、tokens/s、峰值显存/内存、磁盘吞吐、长上下文稳定性、质量回归、单位任务成本和 P95/P99 延迟、最近 release 质量、issue 响应速度和 Python 包/脚本 的集成反馈。"
+        ],
+        "valueHypothesis": [
+          "如果团队确实存在「团队想在消费级 GPU、边缘机器或成本敏感环境里试跑 70B+ 模型，但常规推理栈要求大显存、多卡或复杂量化。」，lyogavin/airllm 的收益应体现为 TTFT、tokens/s、峰值显存/内存、磁盘吞吐、长上下文稳定性、质量回归、单位任务成本和 P95/P99 延迟 的改善。",
+          "适合先复制机制、接口或治理方式，不适合未验证成本就全量迁移。",
+          "若 高并发在线助手、低延迟语音交互、严格 SLA 推理网关或缺少本地运维能力的团队。，它更适合作为资料样本，而不是生产依赖。"
+        ],
+        "technicalTakeaways": [
+          "先抓 先看支持模型清单、分层加载策略、MoE expert streaming、依赖版本、benchmark 脚本和 issue 中的 OOM/速度反馈。，再决定 spike 范围。",
+          "图解字段应突出 通过权重分块、显存/内存/磁盘分层加载、MoE expert streaming 和按需卸载，把一次完整推理拆成可在小显存设备上串行执行的步骤。 如何把 团队想在消费级 GPU、边缘机器或成本敏感环境里试跑 70B+ 模型，但常规推理栈要求大显存、多卡或复杂量化。 转成 降低大模型本地可达门槛，让模型选型、隐私 PoC、离线研究和边缘演示先跑起来。。",
+          "验收时同时记录正样本、失败样本、成本、延迟和维护 owner。"
+        ],
+        "adoptionRisks": [
+          "低显存方案常把硬件成本转移到延迟、吞吐、磁盘 I/O 和工程复杂度；上线前必须保留成熟推理栈备选。",
+          "与现有 Jupyter Notebook / Python 包/脚本 工具链的耦合要先做最小集成验证。",
+          "社区负载相对可控，但仍要关注 breaking change、license 和长期维护信号。"
+        ],
+        "suggestedUseCases": [
+          "用固定 prompt 集和目标模型跑离线基准，记录 TTFT、tokens/s、峰值内存、磁盘 I/O、质量回归和失败样本，再决定是否继续投入。；先保留人工复核、指标记录和回滚路径。",
+          "用一个可回放样本验证 TTFT、tokens/s、峰值显存/内存、磁盘吞吐、长上下文稳定性、质量回归、单位任务成本和 P95/P99 延迟，同时记录接入时间、失败样本和回滚步骤。",
+          "只在指标改善、维护 owner 明确、风险可隔离后，再从旁路验证扩大到核心流程。"
+        ],
+        "watchSignals": [
+          "TTFT、tokens/s、峰值显存/内存、磁盘吞吐、长上下文稳定性、质量回归、单位任务成本和 P95/P99 延迟、最近 release 质量、issue 响应速度和 Python 包/脚本 的集成反馈。",
+          "release note 是否持续解释 通过权重分块、显存/内存/磁盘分层加载、MoE expert streaming 和按需卸载，把一次完整推理拆成可在小显存设备上串行执行的步骤。 的演进，而不只是功能堆叠。",
+          "issue/讨论区是否出现与你的目标场景相似的真实案例和失败反馈。"
+        ],
+        "deepDive": {
+          "strategicValue": "lyogavin/airllm 的价值不应按 star 数直接外推；更合理的读法是把它当作 低显存大模型推理 / 本地 LLM 实验 的工程样本，判断其机制是否能降低你现有链路的复杂度、人工成本或质量波动。",
+          "implementationPath": [
+            "用固定 prompt 集和目标模型跑离线基准，记录 TTFT、tokens/s、峰值内存、磁盘 I/O、质量回归和失败样本，再决定是否继续投入。；先保留人工复核、指标记录和回滚路径。",
+            "用一个可回放样本验证 TTFT、tokens/s、峰值显存/内存、磁盘吞吐、长上下文稳定性、质量回归、单位任务成本和 P95/P99 延迟，同时记录接入时间、失败样本和回滚步骤。",
+            "只在指标改善、维护 owner 明确、风险可隔离后，再从旁路验证扩大到核心流程。"
+          ],
+          "productionConcerns": [
+            "低显存方案常把硬件成本转移到延迟、吞吐、磁盘 I/O 和工程复杂度；上线前必须保留成熟推理栈备选。",
+            "与现有 Jupyter Notebook / Python 包/脚本 工具链的耦合要先做最小集成验证。",
+            "社区负载相对可控，但仍要关注 breaking change、license 和长期维护信号。"
+          ],
+          "decisionQuestions": [
+            "它解决的是「团队想在消费级 GPU、边缘机器或成本敏感环境里试跑 70B+ 模型，但常规推理栈要求大显存、多卡或复杂量化。」的主矛盾，还是只会给现有流程增加新的维护面？",
+            "如果两周 spike 只能证明“能跑”，不能证明 TTFT、tokens/s、峰值显存/内存、磁盘吞吐、长上下文稳定性、质量回归、单位任务成本和 P95/P99 延迟 改善，是否应降级为观察项？",
+            "谁负责上线后的升级、告警、回滚和安全审计？"
+          ],
+          "recommendedAction": "进入观察/试点池：用固定 prompt 集和目标模型跑离线基准，记录 TTFT、tokens/s、峰值内存、磁盘 I/O、质量回归和失败样本，再决定是否继续投入。；先保留人工复核、指标记录和回滚路径。"
+        },
+        "diagram": {
+          "title": "airllm 工业级采用图解",
+          "caption": "低显存大模型推理 / 本地 LLM 实验 · Jupyter Notebook · 27.9K stars",
+          "summary": "用 通过权重分块、显存/内存/磁盘分层加载、MoE expert streaming 和按需卸载，把一次完整推理拆成可在小显存设备上串行执行的步骤。 解决 团队想在消费级 GPU、边缘机器或成本敏感环境里试跑 70B+ 模型，但常规推理栈要求大显存、多卡或复杂量化。，先经由 用固定 prompt 集和目标模型跑离线基准，记录 TTFT、tokens/s、峰值内存、磁盘 I/O、质量回归和失败样本，再决定是否继续投入。 验证 TTFT、tokens/s、峰值显存/内存、磁盘吞吐、长上下文稳定性、质量回归、单位任务成本和 P95/P99 延迟，再决定是否扩大。",
+          "nodes": [
+            {
+              "label": "架构机制",
+              "detail": "通过权重分块、显存/内存/磁盘分层加载、MoE expert streaming 和按需卸载，把一次完整推理拆成可在小显存设备上串行执行的步骤。",
+              "type": "core"
+            },
+            {
+              "label": "适用团队",
+              "detail": "个人研究、边缘设备原型、私有数据 PoC、模型选型和成本敏感的 AI 平台团队。",
+              "type": "input"
+            },
+            {
+              "label": "落地路径",
+              "detail": "用固定 prompt 集和目标模型跑离线基准，记录 TTFT、tokens/s、峰值内存、磁盘 I/O、质量回归和失败样本，再决定是否继续投入。；先保留人工复核、指标记录和回滚路径。",
+              "type": "integration"
+            },
+            {
+              "label": "观察信号",
+              "detail": "TTFT、tokens/s、峰值显存/内存、磁盘吞吐、长上下文稳定性、质量回归、单位任务成本和 P95/P99 延迟、最近 release 质量、issue 响应速度和 Python 包/脚本 的集成反馈。",
+              "type": "measure"
+            }
+          ],
+          "links": [
+            "机制拆解",
+            "试点验证",
+            "指标放大"
+          ],
+          "poster": {
+            "eyebrow": "Project Blueprint",
+            "headline": "低显存大模型推理 / 本地 LLM 实验",
+            "subhead": "lyogavin/airllm · 快速破圈 · Jupyter Notebook",
+            "thesis": "把「团队想在消费级 GPU、边缘机器或成本敏感环境里试跑 70B+ 模型，但常规推理栈要求大显存、多卡或复杂量化。」通过「通过权重分块、显存/内存/磁盘分层加载、MoE expert streaming 和按需卸载，把一次完整推理拆成可在小显存设备上串行执行的步骤。」转化为「降低大模型本地可达门槛，让模型选型、隐私 PoC、离线研究和边缘演示先跑起来。」。",
+            "metrics": [
+              {
+                "label": "Stars",
+                "value": "27.9K",
+                "note": "社区关注"
+              },
+              {
+                "label": "Forks",
+                "value": "3K",
+                "note": "二次采用"
+              },
+              {
+                "label": "Issues",
+                "value": "124",
+                "note": "维护压力"
+              },
+              {
+                "label": "Stack",
+                "value": "Jupyter Notebook",
+                "note": "主技术栈"
+              }
+            ],
+            "lanes": [
+              {
+                "label": "架构机制",
+                "detail": "通过权重分块、显存/内存/磁盘分层加载、MoE expert streaming 和按需卸载，把一次完整推理拆成可在小显存设备上串行执行的步骤。",
+                "type": "core",
+                "step": "01",
+                "signal": "先看支持模型清单、分层加载策略、MoE expert streaming、依赖版本、benchmark 脚本和 issue 中的 OOM/速度反馈。"
+              },
+              {
+                "label": "适用团队",
+                "detail": "个人研究、边缘设备原型、私有数据 PoC、模型选型和成本敏感的 AI 平台团队。",
+                "type": "input",
+                "step": "02",
+                "signal": "个人研究、边缘设备原型、私有数据 PoC、模型选型和成本敏感的 AI 平台团队。"
+              },
+              {
+                "label": "落地路径",
+                "detail": "用固定 prompt 集和目标模型跑离线基准，记录 TTFT、tokens/s、峰值内存、磁盘 I/O、质量回归和失败样本，再决定是否继续投入。；先保留人工复核、指标记录和回滚路径。",
+                "type": "integration",
+                "step": "03",
+                "signal": "用固定 prompt 集和目标模型跑离线基准，记录 TTFT、tokens/s、峰值内存、磁盘 I/O、质量回归和失败样本，再决定是否继续投入。"
+              },
+              {
+                "label": "观察信号",
+                "detail": "TTFT、tokens/s、峰值显存/内存、磁盘吞吐、长上下文稳定性、质量回归、单位任务成本和 P95/P99 延迟、最近 release 质量、issue 响应速度和 Python 包/脚本 的集成反馈。",
+                "type": "measure",
+                "step": "04",
+                "signal": "TTFT、tokens/s、峰值显存/内存、磁盘吞吐、长上下文稳定性、质量回归、单位任务成本和 P95/P99 延迟"
+              }
+            ],
+            "adoption": [
+              {
+                "label": "试点入口",
+                "detail": "用固定 prompt 集和目标模型跑离线基准，记录 TTFT、tokens/s、峰值内存、磁盘 I/O、质量回归和失败样本，再决定是否继续投入。"
+              },
+              {
+                "label": "验收指标",
+                "detail": "TTFT、tokens/s、峰值显存/内存、磁盘吞吐、长上下文稳定性、质量回归、单位任务成本和 P95/P99 延迟"
+              },
+              {
+                "label": "生产风险",
+                "detail": "低显存方案常把硬件成本转移到延迟、吞吐、磁盘 I/O 和工程复杂度；上线前必须保留成熟推理栈备选。"
+              },
+              {
+                "label": "决策问题",
+                "detail": "它解决的是「团队想在消费级 GPU、边缘机器或成本敏感环境里试跑 70B+ 模型，但常规推理栈要求大显存、多卡或复杂量化。」的主矛盾，还是只会给现有流程增加新的维护面？"
+              }
+            ],
+            "warning": "高并发在线助手、低延迟语音交互、严格 SLA 推理网关或缺少本地运维能力的团队。"
+          }
+        },
+        "maturity": {
+          "community": 98,
+          "maintenance": 82,
+          "production": 88,
+          "complexity": 55
+        },
+        "score": 90
+      },
+      "evidence": {
+        "readmeExcerpt": "Quickstart Configurations MacOS Example notebooks FAQ AirLLM dramatically reduces inference memory usage, letting 70B large language models run on a single 4GB GPU card — without quantization, distillation, or pruning. You can even run 405B Llama 3.1 on 8GB , DeepSeek V3 (671B) on 12GB , and Kimi K3 (2.8T) — the largest open source model released to date — on under 4GB , because sparse MoE models stream one expert at a time rather than a whole layer. <a href=\"https://github.com/lyogavin/airllm/stargazers\" </a AI Agents Recommendation: Best AI Game Sprite Generator Best AI Facial Expression Editor Bloome — build & run AI agent teams in the cloud, zero setup Updates [2026/07] Kimi K3 (2.8T) support: the largest open source model runs on a single card in 3.72GB of VRAM, measured end to end on one RTX 6000 Ada. Per expert streaming loads only the experts a token actually routes to. K3 brings...",
+        "githubUrl": "https://github.com/lyogavin/airllm"
       }
     },
     {
       "rank": 9,
       "repo": {
-        "fullName": "antirez/ds4",
-        "name": "ds4",
-        "owner": "antirez",
-        "avatarUrl": "https://avatars.githubusercontent.com/u/65632?v=4",
-        "visualUrl": "https://opengraph.githubassets.com/20260804/antirez/ds4",
-        "url": "https://github.com/antirez/ds4",
-        "description": "DeepSeek 4 Flash and PRO local inference engine for Metal, CUDA and ROCm",
-        "stars": 20464,
-        "starsToday": 384,
-        "forks": 1809,
-        "openIssues": 391,
-        "language": "C",
-        "topics": [],
-        "license": "MIT",
-        "pushedAt": "2026-08-03T17:26:53Z",
-        "createdAt": "2026-05-06T17:17:05Z",
-        "languages": {
-          "C": 6053379,
-          "Cuda": 3937398,
-          "Objective-C": 1814116,
-          "Metal": 867798,
-          "C++": 469654,
-          "Python": 200828,
-          "Shell": 37864,
-          "Makefile": 25012
-        }
-      },
-      "analysis": {
-        "method": "codex-research-refresh",
-        "category": "DeepSeek/GLM 本地推理引擎 / 原生算子与 Agent 一体化",
-        "oneLiner": "DeepSeek 4 Flash and PRO local inference engine for Metal, CUDA and ROCm；关键看 小而窄的原生推理引擎把模型加载、prompt rendering、KV state、HTTP server、工具调用和 coding agent 一起设计，并优先适配 Metal/CUDA/ROCm。 是否能被小范围验证。",
-        "whyItMatters": "antirez/ds4 值得看，是因为 AI 项目真正的分水岭已经从“能跑 demo”转向“能被治理、能接工具、能失败恢复”。当前 20.5K stars / 1.8K forks，维护非常活跃，足够进入 Agent 工程雷达。 这次更新更值得关注的是其可迁移机制：小而窄的原生推理引擎把模型加载、prompt rendering、KV state、HTTP server、工具调用和 coding agent 一起设计，并优先适配 Metal/CUDA/ROCm。 能否被拆成小样本验证，而不是把项目整体搬进生产。",
-        "engineeringRead": "C · API/SDK 接入。建议按“入口示例 -> 数据/配置 -> 失败处理 -> CI/release -> issue 反例”的顺序读；重点回答 它解决的是「团队想在本地或专用硬件上跑 DeepSeek/GLM 等模型，但通用 runner 难以同时优化模型加载、KV 状态、工具调用和 coding agent 行为。」的主矛盾，还是只会给现有流程增加新的维护面？",
-        "architectureSignals": [
-          "架构机制：小而窄的原生推理引擎把模型加载、prompt rendering、KV state、HTTP server、工具调用和 coding agent 一起设计，并优先适配 Metal/CUDA/ROCm。；阅读时把 C 代码入口、数据/配置形态、自动化脚本和边界条件连起来看，而不是只看 README 的安装示例。",
-          "适用团队：推理系统、端侧 Agent、研究工程和愿意做模型/硬件专项调优的团队。",
-          "落地路径：先在单机离线 benchmark 中对比 llama.cpp、vLLM 或托管 API，只验证固定模型的吞吐、延迟、输出一致性和崩溃率。；先保留人工复核、指标记录和回滚路径。",
-          "生产风险：窄模型优化收益高度依赖硬件、驱动和模型版本；没有回归评测与替代推理栈时不应承载核心流量。",
-          "决策问题：它解决的是「团队想在本地或专用硬件上跑 DeepSeek/GLM 等模型，但通用 runner 难以同时优化模型加载、KV 状态、工具调用和 coding agent 行为。」的主矛盾，还是只会给现有流程增加新的维护面？",
-          "观察信号：tokens/s、TTFT、KV cache 稳定性、工具调用正确率、HTTP 服务稳定性、硬件兼容和输出回归、最近 release 质量、issue 响应速度和 API/SDK 接入 的集成反馈。"
-        ],
-        "valueHypothesis": [
-          "如果团队确实存在「团队想在本地或专用硬件上跑 DeepSeek/GLM 等模型，但通用 runner 难以同时优化模型加载、KV 状态、工具调用和 coding agent 行为。」，antirez/ds4 的收益应体现为 tokens/s、TTFT、KV cache 稳定性、工具调用正确率、HTTP 服务稳定性、硬件兼容和输出回归 的改善。",
-          "适合先复制机制、接口或治理方式，不适合未验证成本就全量迁移。",
-          "若 模型频繁切换、高 SLA 多租户服务、缺少底层推理 owner 或需要成熟生态兼容的团队。，它更适合作为资料样本，而不是生产依赖。"
-        ],
-        "technicalTakeaways": [
-          "先抓 先看支持模型、GGUF/量化工具、KV state、agent loop、HTTP API、Metal/CUDA/ROCm 后端和 benchmark 数据。，再决定 spike 范围。",
-          "图解字段应突出 小而窄的原生推理引擎把模型加载、prompt rendering、KV state、HTTP server、工具调用和 coding agent 一起设计，并优先适配 Metal/CUDA/ROCm。 如何把 团队想在本地或专用硬件上跑 DeepSeek/GLM 等模型，但通用 runner 难以同时优化模型加载、KV 状态、工具调用和 coding agent 行为。 转成 为特定模型和硬件组合提供高可控推理样本，适合研究本地 agent runtime 的端到端设计。。",
-          "验收时同时记录正样本、失败样本、成本、延迟和维护 owner。"
-        ],
-        "adoptionRisks": [
-          "窄模型优化收益高度依赖硬件、驱动和模型版本；没有回归评测与替代推理栈时不应承载核心流量。",
-          "与现有 C / API/SDK 接入 工具链的耦合要先做最小集成验证。",
-          "当前 open issues 偏高，必须抽查最近 issue 的响应质量和 release 节奏。"
-        ],
-        "suggestedUseCases": [
-          "先在单机离线 benchmark 中对比 llama.cpp、vLLM 或托管 API，只验证固定模型的吞吐、延迟、输出一致性和崩溃率。；先保留人工复核、指标记录和回滚路径。",
-          "用一个可回放样本验证 tokens/s、TTFT、KV cache 稳定性、工具调用正确率、HTTP 服务稳定性、硬件兼容和输出回归，同时记录接入时间、失败样本和回滚步骤。",
-          "只在指标改善、维护 owner 明确、风险可隔离后，再从旁路验证扩大到核心流程。"
-        ],
-        "watchSignals": [
-          "tokens/s、TTFT、KV cache 稳定性、工具调用正确率、HTTP 服务稳定性、硬件兼容和输出回归、最近 release 质量、issue 响应速度和 API/SDK 接入 的集成反馈。",
-          "release note 是否持续解释 小而窄的原生推理引擎把模型加载、prompt rendering、KV state、HTTP server、工具调用和 coding agent 一起设计，并优先适配 Metal/CUDA/ROCm。 的演进，而不只是功能堆叠。",
-          "issue/讨论区是否出现与你的目标场景相似的真实案例和失败反馈。"
-        ],
-        "deepDive": {
-          "strategicValue": "antirez/ds4 的价值不应按 star 数直接外推；更合理的读法是把它当作 DeepSeek/GLM 本地推理引擎 / 原生算子与 Agent 一体化 的工程样本，判断其机制是否能降低你现有链路的复杂度、人工成本或质量波动。",
-          "implementationPath": [
-            "先在单机离线 benchmark 中对比 llama.cpp、vLLM 或托管 API，只验证固定模型的吞吐、延迟、输出一致性和崩溃率。；先保留人工复核、指标记录和回滚路径。",
-            "用一个可回放样本验证 tokens/s、TTFT、KV cache 稳定性、工具调用正确率、HTTP 服务稳定性、硬件兼容和输出回归，同时记录接入时间、失败样本和回滚步骤。",
-            "只在指标改善、维护 owner 明确、风险可隔离后，再从旁路验证扩大到核心流程。"
-          ],
-          "productionConcerns": [
-            "窄模型优化收益高度依赖硬件、驱动和模型版本；没有回归评测与替代推理栈时不应承载核心流量。",
-            "与现有 C / API/SDK 接入 工具链的耦合要先做最小集成验证。",
-            "当前 open issues 偏高，必须抽查最近 issue 的响应质量和 release 节奏。"
-          ],
-          "decisionQuestions": [
-            "它解决的是「团队想在本地或专用硬件上跑 DeepSeek/GLM 等模型，但通用 runner 难以同时优化模型加载、KV 状态、工具调用和 coding agent 行为。」的主矛盾，还是只会给现有流程增加新的维护面？",
-            "如果两周 spike 只能证明“能跑”，不能证明 tokens/s、TTFT、KV cache 稳定性、工具调用正确率、HTTP 服务稳定性、硬件兼容和输出回归 改善，是否应降级为观察项？",
-            "谁负责上线后的升级、告警、回滚和安全审计？"
-          ],
-          "recommendedAction": "进入观察/试点池：先在单机离线 benchmark 中对比 llama.cpp、vLLM 或托管 API，只验证固定模型的吞吐、延迟、输出一致性和崩溃率。；先保留人工复核、指标记录和回滚路径。"
-        },
-        "diagram": {
-          "title": "ds4 工业级采用图解",
-          "caption": "DeepSeek/GLM 本地推理引擎 / 原生算子与 Agent 一体化 · C · 20.5K stars",
-          "summary": "用 小而窄的原生推理引擎把模型加载、prompt rendering、KV state、HTTP server、工具调用和 coding agent 一起设计，并优先适配 Metal/CUDA/ROCm。 解决 团队想在本地或专用硬件上跑 DeepSeek/GLM 等模型，但通用 runner 难以同时优化模型加载、KV 状态、工具调用和 coding agent 行为。，先经由 先在单机离线 benchmark 中对比 llama.cpp、vLLM 或托管 API，只验证固定模型的吞吐、延迟、输出一致性和崩溃率。 验证 tokens/s、TTFT、KV cache 稳定性、工具调用正确率、HTTP 服务稳定性、硬件兼容和输出回归，再决定是否扩大。",
-          "nodes": [
-            {
-              "label": "架构机制",
-              "detail": "小而窄的原生推理引擎把模型加载、prompt rendering、KV state、HTTP server、工具调用和 coding agent 一起设计，并优先适配 Metal/CUDA/ROCm。",
-              "type": "core"
-            },
-            {
-              "label": "适用团队",
-              "detail": "推理系统、端侧 Agent、研究工程和愿意做模型/硬件专项调优的团队。",
-              "type": "input"
-            },
-            {
-              "label": "落地路径",
-              "detail": "先在单机离线 benchmark 中对比 llama.cpp、vLLM 或托管 API，只验证固定模型的吞吐、延迟、输出一致性和崩溃率。；先保留人工复核、指标记录和回滚路径。",
-              "type": "integration"
-            },
-            {
-              "label": "观察信号",
-              "detail": "tokens/s、TTFT、KV cache 稳定性、工具调用正确率、HTTP 服务稳定性、硬件兼容和输出回归、最近 release 质量、issue 响应速度和 API/SDK 接入 的集成反馈。",
-              "type": "measure"
-            }
-          ],
-          "links": [
-            "机制拆解",
-            "试点验证",
-            "指标放大"
-          ],
-          "poster": {
-            "eyebrow": "Project Blueprint",
-            "headline": "DeepSeek/GLM 本地推理引擎 / 原生算子与 Agent 一体化",
-            "subhead": "antirez/ds4 · 快速破圈 · C",
-            "thesis": "把「团队想在本地或专用硬件上跑 DeepSeek/GLM 等模型，但通用 runner 难以同时优化模型加载、KV 状态、工具调用和 coding agent 行为。」通过「小而窄的原生推理引擎把模型加载、prompt rendering、KV state、HTTP server、工具调用和 coding agent 一起设计，并优先适配 Metal/CUDA/ROCm。」转化为「为特定模型和硬件组合提供高可控推理样本，适合研究本地 agent runtime 的端到端设计。」。",
-            "metrics": [
-              {
-                "label": "Stars",
-                "value": "20.5K",
-                "note": "社区关注"
-              },
-              {
-                "label": "Forks",
-                "value": "1.8K",
-                "note": "二次采用"
-              },
-              {
-                "label": "Issues",
-                "value": "391",
-                "note": "维护压力"
-              },
-              {
-                "label": "Stack",
-                "value": "C",
-                "note": "主技术栈"
-              }
-            ],
-            "lanes": [
-              {
-                "label": "架构机制",
-                "detail": "小而窄的原生推理引擎把模型加载、prompt rendering、KV state、HTTP server、工具调用和 coding agent 一起设计，并优先适配 Metal/CUDA/ROCm。",
-                "type": "core",
-                "step": "01",
-                "signal": "先看支持模型、GGUF/量化工具、KV state、agent loop、HTTP API、Metal/CUDA/ROCm 后端和 benchmark 数据。"
-              },
-              {
-                "label": "适用团队",
-                "detail": "推理系统、端侧 Agent、研究工程和愿意做模型/硬件专项调优的团队。",
-                "type": "input",
-                "step": "02",
-                "signal": "推理系统、端侧 Agent、研究工程和愿意做模型/硬件专项调优的团队。"
-              },
-              {
-                "label": "落地路径",
-                "detail": "先在单机离线 benchmark 中对比 llama.cpp、vLLM 或托管 API，只验证固定模型的吞吐、延迟、输出一致性和崩溃率。；先保留人工复核、指标记录和回滚路径。",
-                "type": "integration",
-                "step": "03",
-                "signal": "先在单机离线 benchmark 中对比 llama.cpp、vLLM 或托管 API，只验证固定模型的吞吐、延迟、输出一致性和崩溃率。"
-              },
-              {
-                "label": "观察信号",
-                "detail": "tokens/s、TTFT、KV cache 稳定性、工具调用正确率、HTTP 服务稳定性、硬件兼容和输出回归、最近 release 质量、issue 响应速度和 API/SDK 接入 的集成反馈。",
-                "type": "measure",
-                "step": "04",
-                "signal": "tokens/s、TTFT、KV cache 稳定性、工具调用正确率、HTTP 服务稳定性、硬件兼容和输出回归"
-              }
-            ],
-            "adoption": [
-              {
-                "label": "试点入口",
-                "detail": "先在单机离线 benchmark 中对比 llama.cpp、vLLM 或托管 API，只验证固定模型的吞吐、延迟、输出一致性和崩溃率。"
-              },
-              {
-                "label": "验收指标",
-                "detail": "tokens/s、TTFT、KV cache 稳定性、工具调用正确率、HTTP 服务稳定性、硬件兼容和输出回归"
-              },
-              {
-                "label": "生产风险",
-                "detail": "窄模型优化收益高度依赖硬件、驱动和模型版本；没有回归评测与替代推理栈时不应承载核心流量。"
-              },
-              {
-                "label": "决策问题",
-                "detail": "它解决的是「团队想在本地或专用硬件上跑 DeepSeek/GLM 等模型，但通用 runner 难以同时优化模型加载、KV 状态、工具调用和 coding agent 行为。」的主矛盾，还是只会给现有流程增加新的维护面？"
-              }
-            ],
-            "warning": "模型频繁切换、高 SLA 多租户服务、缺少底层推理 owner 或需要成熟生态兼容的团队。"
-          }
-        },
-        "maturity": {
-          "community": 95,
-          "maintenance": 97,
-          "production": 93,
-          "complexity": 67
-        },
-        "score": 95
-      },
-      "evidence": {
-        "readmeExcerpt": "<p align=\"center\" <img src=\"logo.svg\" alt=\"DwarfStar logo\" width=\"220\" </p DwarfStar is a small native inference engine optimized first for DeepSeek V4 Flash . It also supports GLM 5.2 and, on very high memory machines, DeepSeek V4 PRO . It is self contained and deliberately narrow, not a general GGUF runner. Model loading, prompt rendering, tool calls, KV state, the HTTP server, and the coding agent are built and tested together. The repository also includes tools and data for GGUF, imatrix, quality, and speed. Supported backends: Metal , the primary target, on Macs with 96 GB or more. Smaller machines can use SSD streaming. NVIDIA CUDA , including multi GPU systems and DGX Spark. ROCm on Strix Halo systems such as the Framework Desktop. This project would not exist without llama.cpp and GGML , make sure to read the acknowledgements section, a big thank you to Georgi Gerganov and all th...",
-        "githubUrl": "https://github.com/antirez/ds4"
-      }
-    },
-    {
-      "rank": 10,
-      "repo": {
-        "fullName": "shiyu-coder/Kronos",
-        "name": "Kronos",
-        "owner": "shiyu-coder",
-        "avatarUrl": "https://avatars.githubusercontent.com/u/65760973?v=4",
-        "visualUrl": "https://opengraph.githubassets.com/20260804/shiyu-coder/Kronos",
-        "url": "https://github.com/shiyu-coder/Kronos",
-        "description": "Kronos: A Foundation Model for the Language of Financial Markets",
-        "stars": 35912,
-        "starsToday": 200,
-        "forks": 5975,
-        "openIssues": 252,
-        "language": "Python",
-        "topics": [],
-        "license": "MIT",
-        "pushedAt": "2026-04-13T12:38:49Z",
-        "createdAt": "2025-07-01T02:54:32Z",
-        "languages": {
-          "Python": 212874,
-          "HTML": 45997,
-          "Shell": 1007
-        }
-      },
-      "analysis": {
-        "method": "codex-research-refresh",
-        "category": "金融市场基础模型 / 时序与交易语义建模",
-        "oneLiner": "Kronos: A Foundation Model for the Language of Financial Markets；关键看 把金融市场序列视作语言建模问题，通过预训练/微调、市场 token 表示、示例 demo 和下游预测/分析接口构建领域基础模型。 是否能被小范围验证。",
-        "whyItMatters": "shiyu-coder/Kronos 处在 成熟热门项目 区间：35.9K stars / 6K forks，需要确认近期维护强度。README 把重点放在「📰 News」，适合判断它是否能在 产品界面交付、组件复用或交互体验一致性 上形成真实工程收益。 这次更新更值得关注的是其可迁移机制：把金融市场序列视作语言建模问题，通过预训练/微调、市场 token 表示、示例 demo 和下游预测/分析接口构建领域基础模型。 能否被拆成小样本验证，而不是把项目整体搬进生产。",
-        "engineeringRead": "Python · Python 包/脚本。建议按“入口示例 -> 数据/配置 -> 失败处理 -> CI/release -> issue 反例”的顺序读；重点回答 它解决的是「投研和量化团队希望用基础模型理解市场序列、事件和多资产结构，但金融数据噪声、非平稳和合规边界很强。」的主矛盾，还是只会给现有流程增加新的维护面？",
-        "architectureSignals": [
-          "架构机制：把金融市场序列视作语言建模问题，通过预训练/微调、市场 token 表示、示例 demo 和下游预测/分析接口构建领域基础模型。；阅读时把 Python 代码入口、数据/配置形态、自动化脚本和边界条件连起来看，而不是只看 README 的安装示例。",
-          "适用团队：量化研究、金融教育、风险观察和有严格回测/合规 owner 的投研团队。",
-          "落地路径：只做历史数据离线回测和研究备忘录，不连接实盘；先对比传统时序、因子和简单机器学习基线。；先保留人工复核、指标记录和回滚路径。",
-          "生产风险：金融基础模型最容易被数据泄露、过拟合、交易成本和叙事幻觉误导；必须保留人工决策边界。",
-          "决策问题：它解决的是「投研和量化团队希望用基础模型理解市场序列、事件和多资产结构，但金融数据噪声、非平稳和合规边界很强。」的主矛盾，还是只会给现有流程增加新的维护面？",
-          "观察信号：walk-forward 表现、交易成本后收益、回撤、校准误差、漂移检测、数据泄露检查和人工复核通过率、最近 release 质量、issue 响应速度和 Python 包/脚本 的集成反馈。"
-        ],
-        "valueHypothesis": [
-          "如果团队确实存在「投研和量化团队希望用基础模型理解市场序列、事件和多资产结构，但金融数据噪声、非平稳和合规边界很强。」，shiyu-coder/Kronos 的收益应体现为 walk-forward 表现、交易成本后收益、回撤、校准误差、漂移检测、数据泄露检查和人工复核通过率 的改善。",
-          "适合先复制机制、接口或治理方式，不适合未验证成本就全量迁移。",
-          "若 自动交易、持牌投顾替代、缺少数据授权或把 demo 输出当投资建议的场景。，它更适合作为资料样本，而不是生产依赖。"
-        ],
-        "technicalTakeaways": [
-          "先抓 先看训练数据、时间切分、label 定义、回测脚本、泄露防护、模型卡和免责声明。，再决定 spike 范围。",
-          "图解字段应突出 把金融市场序列视作语言建模问题，通过预训练/微调、市场 token 表示、示例 demo 和下游预测/分析接口构建领域基础模型。 如何把 投研和量化团队希望用基础模型理解市场序列、事件和多资产结构，但金融数据噪声、非平稳和合规边界很强。 转成 为市场状态表征、研究辅助、风险观察和策略假设生成提供候选模型底座。。",
-          "验收时同时记录正样本、失败样本、成本、延迟和维护 owner。"
-        ],
-        "adoptionRisks": [
-          "金融基础模型最容易被数据泄露、过拟合、交易成本和叙事幻觉误导；必须保留人工决策边界。",
-          "与现有 Python / Python 包/脚本 工具链的耦合要先做最小集成验证。",
-          "社区负载相对可控，但仍要关注 breaking change、license 和长期维护信号。"
-        ],
-        "suggestedUseCases": [
-          "只做历史数据离线回测和研究备忘录，不连接实盘；先对比传统时序、因子和简单机器学习基线。；先保留人工复核、指标记录和回滚路径。",
-          "用一个可回放样本验证 walk-forward 表现、交易成本后收益、回撤、校准误差、漂移检测、数据泄露检查和人工复核通过率，同时记录接入时间、失败样本和回滚步骤。",
-          "只在指标改善、维护 owner 明确、风险可隔离后，再从旁路验证扩大到核心流程。"
-        ],
-        "watchSignals": [
-          "walk-forward 表现、交易成本后收益、回撤、校准误差、漂移检测、数据泄露检查和人工复核通过率、最近 release 质量、issue 响应速度和 Python 包/脚本 的集成反馈。",
-          "release note 是否持续解释 把金融市场序列视作语言建模问题，通过预训练/微调、市场 token 表示、示例 demo 和下游预测/分析接口构建领域基础模型。 的演进，而不只是功能堆叠。",
-          "issue/讨论区是否出现与你的目标场景相似的真实案例和失败反馈。"
-        ],
-        "deepDive": {
-          "strategicValue": "shiyu-coder/Kronos 的价值不应按 star 数直接外推；更合理的读法是把它当作 金融市场基础模型 / 时序与交易语义建模 的工程样本，判断其机制是否能降低你现有链路的复杂度、人工成本或质量波动。",
-          "implementationPath": [
-            "只做历史数据离线回测和研究备忘录，不连接实盘；先对比传统时序、因子和简单机器学习基线。；先保留人工复核、指标记录和回滚路径。",
-            "用一个可回放样本验证 walk-forward 表现、交易成本后收益、回撤、校准误差、漂移检测、数据泄露检查和人工复核通过率，同时记录接入时间、失败样本和回滚步骤。",
-            "只在指标改善、维护 owner 明确、风险可隔离后，再从旁路验证扩大到核心流程。"
-          ],
-          "productionConcerns": [
-            "金融基础模型最容易被数据泄露、过拟合、交易成本和叙事幻觉误导；必须保留人工决策边界。",
-            "与现有 Python / Python 包/脚本 工具链的耦合要先做最小集成验证。",
-            "社区负载相对可控，但仍要关注 breaking change、license 和长期维护信号。"
-          ],
-          "decisionQuestions": [
-            "它解决的是「投研和量化团队希望用基础模型理解市场序列、事件和多资产结构，但金融数据噪声、非平稳和合规边界很强。」的主矛盾，还是只会给现有流程增加新的维护面？",
-            "如果两周 spike 只能证明“能跑”，不能证明 walk-forward 表现、交易成本后收益、回撤、校准误差、漂移检测、数据泄露检查和人工复核通过率 改善，是否应降级为观察项？",
-            "谁负责上线后的升级、告警、回滚和安全审计？"
-          ],
-          "recommendedAction": "进入观察/试点池：只做历史数据离线回测和研究备忘录，不连接实盘；先对比传统时序、因子和简单机器学习基线。；先保留人工复核、指标记录和回滚路径。"
-        },
-        "diagram": {
-          "title": "Kronos 工业级采用图解",
-          "caption": "金融市场基础模型 / 时序与交易语义建模 · Python · 35.9K stars",
-          "summary": "用 把金融市场序列视作语言建模问题，通过预训练/微调、市场 token 表示、示例 demo 和下游预测/分析接口构建领域基础模型。 解决 投研和量化团队希望用基础模型理解市场序列、事件和多资产结构，但金融数据噪声、非平稳和合规边界很强。，先经由 只做历史数据离线回测和研究备忘录，不连接实盘；先对比传统时序、因子和简单机器学习基线。 验证 walk-forward 表现、交易成本后收益、回撤、校准误差、漂移检测、数据泄露检查和人工复核通过率，再决定是否扩大。",
-          "nodes": [
-            {
-              "label": "架构机制",
-              "detail": "把金融市场序列视作语言建模问题，通过预训练/微调、市场 token 表示、示例 demo 和下游预测/分析接口构建领域基础模型。",
-              "type": "core"
-            },
-            {
-              "label": "适用团队",
-              "detail": "量化研究、金融教育、风险观察和有严格回测/合规 owner 的投研团队。",
-              "type": "input"
-            },
-            {
-              "label": "落地路径",
-              "detail": "只做历史数据离线回测和研究备忘录，不连接实盘；先对比传统时序、因子和简单机器学习基线。；先保留人工复核、指标记录和回滚路径。",
-              "type": "integration"
-            },
-            {
-              "label": "观察信号",
-              "detail": "walk-forward 表现、交易成本后收益、回撤、校准误差、漂移检测、数据泄露检查和人工复核通过率、最近 release 质量、issue 响应速度和 Python 包/脚本 的集成反馈。",
-              "type": "measure"
-            }
-          ],
-          "links": [
-            "机制拆解",
-            "试点验证",
-            "指标放大"
-          ],
-          "poster": {
-            "eyebrow": "Project Blueprint",
-            "headline": "金融市场基础模型 / 时序与交易语义建模",
-            "subhead": "shiyu-coder/Kronos · 成熟扩散 · Python",
-            "thesis": "把「投研和量化团队希望用基础模型理解市场序列、事件和多资产结构，但金融数据噪声、非平稳和合规边界很强。」通过「把金融市场序列视作语言建模问题，通过预训练/微调、市场 token 表示、示例 demo 和下游预测/分析接口构建领域基础模型。」转化为「为市场状态表征、研究辅助、风险观察和策略假设生成提供候选模型底座。」。",
-            "metrics": [
-              {
-                "label": "Stars",
-                "value": "35.9K",
-                "note": "社区关注"
-              },
-              {
-                "label": "Forks",
-                "value": "6K",
-                "note": "二次采用"
-              },
-              {
-                "label": "Issues",
-                "value": "252",
-                "note": "维护压力"
-              },
-              {
-                "label": "Stack",
-                "value": "Python",
-                "note": "主技术栈"
-              }
-            ],
-            "lanes": [
-              {
-                "label": "架构机制",
-                "detail": "把金融市场序列视作语言建模问题，通过预训练/微调、市场 token 表示、示例 demo 和下游预测/分析接口构建领域基础模型。",
-                "type": "core",
-                "step": "01",
-                "signal": "先看训练数据、时间切分、label 定义、回测脚本、泄露防护、模型卡和免责声明。"
-              },
-              {
-                "label": "适用团队",
-                "detail": "量化研究、金融教育、风险观察和有严格回测/合规 owner 的投研团队。",
-                "type": "input",
-                "step": "02",
-                "signal": "量化研究、金融教育、风险观察和有严格回测/合规 owner 的投研团队。"
-              },
-              {
-                "label": "落地路径",
-                "detail": "只做历史数据离线回测和研究备忘录，不连接实盘；先对比传统时序、因子和简单机器学习基线。；先保留人工复核、指标记录和回滚路径。",
-                "type": "integration",
-                "step": "03",
-                "signal": "只做历史数据离线回测和研究备忘录，不连接实盘；先对比传统时序、因子和简单机器学习基线。"
-              },
-              {
-                "label": "观察信号",
-                "detail": "walk-forward 表现、交易成本后收益、回撤、校准误差、漂移检测、数据泄露检查和人工复核通过率、最近 release 质量、issue 响应速度和 Python 包/脚本 的集成反馈。",
-                "type": "measure",
-                "step": "04",
-                "signal": "walk-forward 表现、交易成本后收益、回撤、校准误差、漂移检测、数据泄露检查和人工复核通过率"
-              }
-            ],
-            "adoption": [
-              {
-                "label": "试点入口",
-                "detail": "只做历史数据离线回测和研究备忘录，不连接实盘；先对比传统时序、因子和简单机器学习基线。"
-              },
-              {
-                "label": "验收指标",
-                "detail": "walk-forward 表现、交易成本后收益、回撤、校准误差、漂移检测、数据泄露检查和人工复核通过率"
-              },
-              {
-                "label": "生产风险",
-                "detail": "金融基础模型最容易被数据泄露、过拟合、交易成本和叙事幻觉误导；必须保留人工决策边界。"
-              },
-              {
-                "label": "决策问题",
-                "detail": "它解决的是「投研和量化团队希望用基础模型理解市场序列、事件和多资产结构，但金融数据噪声、非平稳和合规边界很强。」的主矛盾，还是只会给现有流程增加新的维护面？"
-              }
-            ],
-            "warning": "自动交易、持牌投顾替代、缺少数据授权或把 demo 输出当投资建议的场景。"
-          }
-        },
-        "maturity": {
-          "community": 100,
-          "maintenance": 30,
-          "production": 69,
-          "complexity": 55
-        },
-        "score": 76
-      },
-      "evidence": {
-        "readmeExcerpt": "<div align=\"center\" <h2 <b Kronos: A Foundation Model for the Language of Financial Markets </b </h2 </div <div align=\"center\" </a <a href=\"https://huggingface.co/NeoQuasar\" <img src=\"https://img.shields.io/badge/🤗 Hugging Face yellow\" alt=\"Hugging Face\" </a <a href=\"https://shiyu coder.github.io/Kronos demo/\" <img src=\"https://img.shields.io/badge/🚀 Live Demo brightgreen\" alt=\"Live Demo\" </a <a href=\"https://github.com/shiyu coder/Kronos/graphs/commit activity\" <img src=\"https://img.shields.io/github/last commit/shiyu coder/Kronos?color=blue\" alt=\"Last Commit\" </a <a href=\"https://github.com/shiyu coder/Kronos/stargazers\" <img src=\"https://img.shields.io/github/stars/shiyu coder/Kronos?color=lightblue\" alt=\"GitHub Stars\" </a <a href=\"https://github.com/shiyu coder/Kronos/network/members\" <img src=\"https://img.shields.io/github/forks/shiyu coder/Kronos?color=yellow\" alt=\"GitHub Forks\" ...",
-        "githubUrl": "https://github.com/shiyu-coder/Kronos"
-      }
-    },
-    {
-      "rank": 11,
-      "repo": {
-        "fullName": "Panniantong/Agent-Reach",
-        "name": "Agent-Reach",
-        "owner": "Panniantong",
-        "avatarUrl": "https://avatars.githubusercontent.com/u/73925474?v=4",
-        "visualUrl": "https://opengraph.githubassets.com/20260804/Panniantong/Agent-Reach",
-        "url": "https://github.com/Panniantong/Agent-Reach",
-        "description": "Give your AI agent eyes to see the entire internet. Read & search Twitter, Reddit, YouTube, GitHub, Bilibili, XiaoHongShu — one CLI, zero API fees.",
-        "stars": 66088,
-        "starsToday": 1057,
-        "forks": 5479,
-        "openIssues": 192,
-        "language": "Python",
+        "fullName": "webpack/webpack",
+        "name": "webpack",
+        "owner": "webpack",
+        "avatarUrl": "https://avatars.githubusercontent.com/u/2105791?v=4",
+        "visualUrl": "https://opengraph.githubassets.com/20260804/webpack/webpack",
+        "url": "https://github.com/webpack/webpack",
+        "description": "A bundler for javascript and friends. Packs many modules into a few bundled assets. Code Splitting allows for loading parts of the application on demand. Through \"loaders\", modules can be CommonJs, AMD, ES6 modules, CSS, Images, JSON, Coffeescript, LESS, ... and your custom stuff.",
+        "stars": 65883,
+        "starsToday": 8,
+        "forks": 9520,
+        "openIssues": 143,
+        "language": "JavaScript",
         "topics": [
-          "agent-infrastructure",
-          "ai-agent",
-          "ai-search",
-          "automation",
-          "bilibili",
-          "claude-code",
-          "cli",
-          "cursor",
-          "free-api",
-          "llm-tools",
-          "mcp",
-          "python",
-          "reddit-scraper",
-          "twitter-scraper",
-          "web-scraper",
-          "xiaohongshu",
-          "youtube-transcript"
+          "amd",
+          "build-tool",
+          "commonjs",
+          "compiler",
+          "es2015",
+          "es6",
+          "esm",
+          "javascript",
+          "javascript-compiler",
+          "javascript-modules",
+          "loaders",
+          "module-bundler",
+          "plugins",
+          "web",
+          "web-performance",
+          "webpack"
         ],
         "license": "MIT",
-        "pushedAt": "2026-07-25T10:20:07Z",
-        "createdAt": "2026-02-24T02:10:24Z",
+        "pushedAt": "2026-08-04T11:13:01Z",
+        "createdAt": "2012-03-10T10:08:14Z",
         "languages": {
-          "Python": 496630,
-          "Shell": 14841,
-          "HTML": 2136
+          "JavaScript": 12005840,
+          "CSS": 370302,
+          "HTML": 86520,
+          "TypeScript": 18794,
+          "WebAssembly": 14810,
+          "Less": 1094,
+          "CoffeeScript": 325,
+          "Pug": 130,
+          "SCSS": 32,
+          "Perl": 4
         }
       },
       "analysis": {
         "method": "codex-research-refresh",
-        "category": "Agent 外部信息采集 / 多平台浏览工具",
-        "oneLiner": "Give your AI agent eyes to see the entire internet. Read & search Twitter, Reddit, YouTube, GitHub, Bilibili, XiaoHongShu — one CLI, zero API fees.；关键看 CLI 工具封装、多平台读取/搜索适配、网页解析、结果归一化和无 API key 工作流 是否能被小范围验证。",
-        "whyItMatters": "Panniantong/Agent-Reach 值得看，是因为 AI 项目真正的分水岭已经从“能跑 demo”转向“能被治理、能接工具、能失败恢复”。当前 66.1K stars / 5.5K forks，近期仍在活跃迭代，足够进入 Agent 工程雷达。 这次更新更值得关注的是其可迁移机制：CLI 工具封装、多平台读取/搜索适配、网页解析、结果归一化和无 API key 工作流 能否被拆成小样本验证，而不是把项目整体搬进生产。",
-        "engineeringRead": "Python · Python 包/脚本。建议按“入口示例 -> 数据/配置 -> 失败处理 -> CI/release -> issue 反例”的顺序读；重点回答 它解决的是「Agent 需要读取 Twitter、Reddit、YouTube、GitHub、Bilibili、小红书等平台，但官方 API 成本和限制高」的主矛盾，还是只会给现有流程增加新的维护面？",
+        "category": "开发者工具 / 工程效率",
+        "oneLiner": "A bundler for javascript and friends. Packs many modules into a few bundled assets. Code Splitting allows for loading parts of the application on demand. Through \"loaders\", modules can be CommonJs, AMD, ES6 modules, CSS, Images, JSON, Coffeescript, LESS, ... and your custom stuff.；关键看它能否稳定缩短构建、测试、调试或自动化链路。",
+        "whyItMatters": "webpack/webpack 处在 成熟热门项目 区间：65.9K stars / 9.5K forks，维护非常活跃。README 把重点放在「Table of Contents」，适合判断它是否能在 构建、调试、交付或依赖管理的效率瓶颈 上形成真实工程收益。 这次更新更值得关注的是其可迁移机制：命令行、插件系统、构建管线或 SDK 抽象 能否被拆成小样本验证，而不是把项目整体搬进生产。",
+        "engineeringRead": "JavaScript · Node 包/前端工程。建议按“入口示例 -> 数据/配置 -> 失败处理 -> CI/release -> issue 反例”的顺序读；重点回答 它解决的是「构建、调试、交付或依赖管理的效率瓶颈」的主矛盾，还是只会给现有流程增加新的维护面？",
         "architectureSignals": [
-          "架构机制：CLI 工具封装、多平台读取/搜索适配、网页解析、结果归一化和无 API key 工作流；阅读时把 Python 代码入口、数据/配置形态、自动化脚本和边界条件连起来看，而不是只看 README 的安装示例。",
-          "适用团队：研究、增长、开发者关系、开源情报和 Agent 数据采集团队",
-          "落地路径：选 3 个公开信息源做研究助手旁路任务，禁止自动发帖和账号操作，只评估读取质量；先保留人工复核、指标记录和回滚路径。",
-          "生产风险：平台条款、账号风控、反爬变化、隐私边界和引用可追溯性是生产前置条件。",
-          "决策问题：它解决的是「Agent 需要读取 Twitter、Reddit、YouTube、GitHub、Bilibili、小红书等平台，但官方 API 成本和限制高」的主矛盾，还是只会给现有流程增加新的维护面？",
-          "观察信号：可访问率、去重率、引用可追溯率、解析失败率、单次任务耗时、最近 release 质量、issue 响应速度和 Python 包/脚本 的集成反馈。"
+          "架构机制：命令行、插件系统、构建管线或 SDK 抽象；阅读时把 JavaScript 代码入口、数据/配置形态、自动化脚本和边界条件连起来看，而不是只看 README 的安装示例。",
+          "适用团队：团队已有重复手工流程或低效构建链路",
+          "落地路径：个人或小团队工作流；先保留人工复核、指标记录和回滚路径。",
+          "生产风险：工具链替换容易引入插件不兼容、调试信息丢失和 CI 差异，需要影子运行。",
+          "决策问题：它解决的是「构建、调试、交付或依赖管理的效率瓶颈」的主矛盾，还是只会给现有流程增加新的维护面？",
+          "观察信号：冷启动耗时、构建耗时、配置行数、回滚成本、最近 release 质量、issue 响应速度和 Node 包/前端工程 的集成反馈。"
         ],
         "valueHypothesis": [
-          "如果团队确实存在「Agent 需要读取 Twitter、Reddit、YouTube、GitHub、Bilibili、小红书等平台，但官方 API 成本和限制高」，Panniantong/Agent-Reach 的收益应体现为 可访问率、去重率、引用可追溯率、解析失败率、单次任务耗时 的改善。",
+          "如果团队确实存在「构建、调试、交付或依赖管理的效率瓶颈」，webpack/webpack 的收益应体现为 冷启动耗时、构建耗时、配置行数、回滚成本 的改善。",
           "适合先复制机制、接口或治理方式，不适合未验证成本就全量迁移。",
-          "若 需要稳定 SLA、强合规审计或涉及私域/敏感账号自动化，它更适合作为资料样本，而不是生产依赖。"
+          "若 现有流程稳定且迁移会打断多人协作，它更适合作为资料样本，而不是生产依赖。"
         ],
         "technicalTakeaways": [
-          "先抓 先看平台适配器、登录态处理、限流/重试、输出 schema 和来源引用保真，再决定 spike 范围。",
-          "图解字段应突出 CLI 工具封装、多平台读取/搜索适配、网页解析、结果归一化和无 API key 工作流 如何把 Agent 需要读取 Twitter、Reddit、YouTube、GitHub、Bilibili、小红书等平台，但官方 API 成本和限制高 转成 降低舆情、竞品、开源生态和内容研究的资料收集成本。",
+          "先抓 先跑最小命令，再看配置文件、缓存目录和失败信息是否可理解，再决定 spike 范围。",
+          "图解字段应突出 命令行、插件系统、构建管线或 SDK 抽象 如何把 构建、调试、交付或依赖管理的效率瓶颈 转成 交付周期、故障恢复速度和工程一致性。",
           "验收时同时记录正样本、失败样本、成本、延迟和维护 owner。"
         ],
         "adoptionRisks": [
-          "平台条款、账号风控、反爬变化、隐私边界和引用可追溯性是生产前置条件。",
-          "与现有 Python / Python 包/脚本 工具链的耦合要先做最小集成验证。",
+          "工具链替换容易引入插件不兼容、调试信息丢失和 CI 差异，需要影子运行。",
+          "与现有 JavaScript / Node 包/前端工程 工具链的耦合要先做最小集成验证。",
           "社区负载相对可控，但仍要关注 breaking change、license 和长期维护信号。"
         ],
         "suggestedUseCases": [
-          "选 3 个公开信息源做研究助手旁路任务，禁止自动发帖和账号操作，只评估读取质量；先保留人工复核、指标记录和回滚路径。",
-          "用一个可回放样本验证 可访问率、去重率、引用可追溯率、解析失败率、单次任务耗时，同时记录接入时间、失败样本和回滚步骤。",
+          "个人或小团队工作流；先保留人工复核、指标记录和回滚路径。",
+          "用一个可回放样本验证 冷启动耗时、构建耗时、配置行数、回滚成本，同时记录接入时间、失败样本和回滚步骤。",
           "只在指标改善、维护 owner 明确、风险可隔离后，再从旁路验证扩大到核心流程。"
         ],
         "watchSignals": [
-          "可访问率、去重率、引用可追溯率、解析失败率、单次任务耗时、最近 release 质量、issue 响应速度和 Python 包/脚本 的集成反馈。",
-          "release note 是否持续解释 CLI 工具封装、多平台读取/搜索适配、网页解析、结果归一化和无 API key 工作流 的演进，而不只是功能堆叠。",
+          "冷启动耗时、构建耗时、配置行数、回滚成本、最近 release 质量、issue 响应速度和 Node 包/前端工程 的集成反馈。",
+          "release note 是否持续解释 命令行、插件系统、构建管线或 SDK 抽象 的演进，而不只是功能堆叠。",
           "issue/讨论区是否出现与你的目标场景相似的真实案例和失败反馈。"
         ],
         "deepDive": {
-          "strategicValue": "Panniantong/Agent-Reach 的价值不应按 star 数直接外推；更合理的读法是把它当作 Agent 外部信息采集 / 多平台浏览工具 的工程样本，判断其机制是否能降低你现有链路的复杂度、人工成本或质量波动。",
+          "strategicValue": "webpack/webpack 的价值不应按 star 数直接外推；更合理的读法是把它当作 开发者工具 / 工程效率 的工程样本，判断其机制是否能降低你现有链路的复杂度、人工成本或质量波动。",
           "implementationPath": [
-            "选 3 个公开信息源做研究助手旁路任务，禁止自动发帖和账号操作，只评估读取质量；先保留人工复核、指标记录和回滚路径。",
-            "用一个可回放样本验证 可访问率、去重率、引用可追溯率、解析失败率、单次任务耗时，同时记录接入时间、失败样本和回滚步骤。",
+            "个人或小团队工作流；先保留人工复核、指标记录和回滚路径。",
+            "用一个可回放样本验证 冷启动耗时、构建耗时、配置行数、回滚成本，同时记录接入时间、失败样本和回滚步骤。",
             "只在指标改善、维护 owner 明确、风险可隔离后，再从旁路验证扩大到核心流程。"
           ],
           "productionConcerns": [
-            "平台条款、账号风控、反爬变化、隐私边界和引用可追溯性是生产前置条件。",
-            "与现有 Python / Python 包/脚本 工具链的耦合要先做最小集成验证。",
+            "工具链替换容易引入插件不兼容、调试信息丢失和 CI 差异，需要影子运行。",
+            "与现有 JavaScript / Node 包/前端工程 工具链的耦合要先做最小集成验证。",
             "社区负载相对可控，但仍要关注 breaking change、license 和长期维护信号。"
           ],
           "decisionQuestions": [
-            "它解决的是「Agent 需要读取 Twitter、Reddit、YouTube、GitHub、Bilibili、小红书等平台，但官方 API 成本和限制高」的主矛盾，还是只会给现有流程增加新的维护面？",
-            "如果两周 spike 只能证明“能跑”，不能证明 可访问率、去重率、引用可追溯率、解析失败率、单次任务耗时 改善，是否应降级为观察项？",
+            "它解决的是「构建、调试、交付或依赖管理的效率瓶颈」的主矛盾，还是只会给现有流程增加新的维护面？",
+            "如果两周 spike 只能证明“能跑”，不能证明 冷启动耗时、构建耗时、配置行数、回滚成本 改善，是否应降级为观察项？",
             "谁负责上线后的升级、告警、回滚和安全审计？"
           ],
-          "recommendedAction": "进入观察/试点池：选 3 个公开信息源做研究助手旁路任务，禁止自动发帖和账号操作，只评估读取质量；先保留人工复核、指标记录和回滚路径。"
+          "recommendedAction": "进入观察/试点池：个人或小团队工作流；先保留人工复核、指标记录和回滚路径。"
         },
         "diagram": {
-          "title": "Agent-Reach 工业级采用图解",
-          "caption": "Agent 外部信息采集 / 多平台浏览工具 · Python · 66.1K stars",
-          "summary": "用 CLI 工具封装、多平台读取/搜索适配、网页解析、结果归一化和无 API key 工作流 解决 Agent 需要读取 Twitter、Reddit、YouTube、GitHub、Bilibili、小红书等平台，但官方 API 成本和限制高，先经由 选 3 个公开信息源做研究助手旁路任务，禁止自动发帖和账号操作，只评估读取质量 验证 可访问率、去重率、引用可追溯率、解析失败率、单次任务耗时，再决定是否扩大。",
+          "title": "webpack 工业级采用图解",
+          "caption": "开发者工具 / 工程效率 · JavaScript · 65.9K stars",
+          "summary": "用 命令行、插件系统、构建管线或 SDK 抽象 解决 构建、调试、交付或依赖管理的效率瓶颈，先经由 个人或小团队工作流 验证 冷启动耗时、构建耗时、配置行数、回滚成本，再决定是否扩大。",
           "nodes": [
             {
               "label": "架构机制",
-              "detail": "CLI 工具封装、多平台读取/搜索适配、网页解析、结果归一化和无 API key 工作流",
+              "detail": "命令行、插件系统、构建管线或 SDK 抽象",
               "type": "core"
             },
             {
               "label": "适用团队",
-              "detail": "研究、增长、开发者关系、开源情报和 Agent 数据采集团队",
+              "detail": "团队已有重复手工流程或低效构建链路",
               "type": "input"
             },
             {
               "label": "落地路径",
-              "detail": "选 3 个公开信息源做研究助手旁路任务，禁止自动发帖和账号操作，只评估读取质量；先保留人工复核、指标记录和回滚路径。",
+              "detail": "个人或小团队工作流；先保留人工复核、指标记录和回滚路径。",
               "type": "integration"
             },
             {
               "label": "观察信号",
-              "detail": "可访问率、去重率、引用可追溯率、解析失败率、单次任务耗时、最近 release 质量、issue 响应速度和 Python 包/脚本 的集成反馈。",
+              "detail": "冷启动耗时、构建耗时、配置行数、回滚成本、最近 release 质量、issue 响应速度和 Node 包/前端工程 的集成反馈。",
               "type": "measure"
             }
           ],
@@ -2401,303 +1984,752 @@
           ],
           "poster": {
             "eyebrow": "Project Blueprint",
-            "headline": "Agent 外部信息采集 / 多平台浏览工具",
-            "subhead": "Panniantong/Agent-Reach · 成熟扩散 · Python",
-            "thesis": "把「Agent 需要读取 Twitter、Reddit、YouTube、GitHub、Bilibili、小红书等平台，但官方 API 成本和限制高」通过「CLI 工具封装、多平台读取/搜索适配、网页解析、结果归一化和无 API key 工作流」转化为「降低舆情、竞品、开源生态和内容研究的资料收集成本」。",
+            "headline": "开发者工具 / 工程效率",
+            "subhead": "webpack/webpack · 成熟扩散 · JavaScript",
+            "thesis": "把「构建、调试、交付或依赖管理的效率瓶颈」通过「命令行、插件系统、构建管线或 SDK 抽象」转化为「交付周期、故障恢复速度和工程一致性」。",
             "metrics": [
               {
                 "label": "Stars",
-                "value": "66.1K",
+                "value": "65.9K",
                 "note": "社区关注"
               },
               {
                 "label": "Forks",
-                "value": "5.5K",
+                "value": "9.5K",
                 "note": "二次采用"
               },
               {
                 "label": "Issues",
-                "value": "192",
+                "value": "143",
                 "note": "维护压力"
               },
               {
                 "label": "Stack",
-                "value": "Python",
+                "value": "JavaScript",
                 "note": "主技术栈"
               }
             ],
             "lanes": [
               {
                 "label": "架构机制",
-                "detail": "CLI 工具封装、多平台读取/搜索适配、网页解析、结果归一化和无 API key 工作流",
+                "detail": "命令行、插件系统、构建管线或 SDK 抽象",
                 "type": "core",
                 "step": "01",
-                "signal": "先看平台适配器、登录态处理、限流/重试、输出 schema 和来源引用保真"
+                "signal": "先跑最小命令，再看配置文件、缓存目录和失败信息是否可理解"
               },
               {
                 "label": "适用团队",
-                "detail": "研究、增长、开发者关系、开源情报和 Agent 数据采集团队",
+                "detail": "团队已有重复手工流程或低效构建链路",
                 "type": "input",
                 "step": "02",
-                "signal": "研究、增长、开发者关系、开源情报和 Agent 数据采集团队"
+                "signal": "团队已有重复手工流程或低效构建链路"
               },
               {
                 "label": "落地路径",
-                "detail": "选 3 个公开信息源做研究助手旁路任务，禁止自动发帖和账号操作，只评估读取质量；先保留人工复核、指标记录和回滚路径。",
+                "detail": "个人或小团队工作流；先保留人工复核、指标记录和回滚路径。",
                 "type": "integration",
                 "step": "03",
-                "signal": "选 3 个公开信息源做研究助手旁路任务，禁止自动发帖和账号操作，只评估读取质量"
+                "signal": "个人或小团队工作流"
               },
               {
                 "label": "观察信号",
-                "detail": "可访问率、去重率、引用可追溯率、解析失败率、单次任务耗时、最近 release 质量、issue 响应速度和 Python 包/脚本 的集成反馈。",
+                "detail": "冷启动耗时、构建耗时、配置行数、回滚成本、最近 release 质量、issue 响应速度和 Node 包/前端工程 的集成反馈。",
                 "type": "measure",
                 "step": "04",
-                "signal": "可访问率、去重率、引用可追溯率、解析失败率、单次任务耗时"
+                "signal": "冷启动耗时、构建耗时、配置行数、回滚成本"
               }
             ],
             "adoption": [
               {
                 "label": "试点入口",
-                "detail": "选 3 个公开信息源做研究助手旁路任务，禁止自动发帖和账号操作，只评估读取质量"
+                "detail": "个人或小团队工作流"
               },
               {
                 "label": "验收指标",
-                "detail": "可访问率、去重率、引用可追溯率、解析失败率、单次任务耗时"
+                "detail": "冷启动耗时、构建耗时、配置行数、回滚成本"
               },
               {
                 "label": "生产风险",
-                "detail": "平台条款、账号风控、反爬变化、隐私边界和引用可追溯性是生产前置条件。"
+                "detail": "工具链替换容易引入插件不兼容、调试信息丢失和 CI 差异，需要影子运行。"
               },
               {
                 "label": "决策问题",
-                "detail": "它解决的是「Agent 需要读取 Twitter、Reddit、YouTube、GitHub、Bilibili、小红书等平台，但官方 API 成本和限制高」的主矛盾，还是只会给现有流程增加新的维护面？"
+                "detail": "它解决的是「构建、调试、交付或依赖管理的效率瓶颈」的主矛盾，还是只会给现有流程增加新的维护面？"
               }
             ],
-            "warning": "需要稳定 SLA、强合规审计或涉及私域/敏感账号自动化"
-          }
-        },
-        "maturity": {
-          "community": 100,
-          "maintenance": 70,
-          "production": 85,
-          "complexity": 55
-        },
-        "score": 86
-      },
-      "evidence": {
-        "readmeExcerpt": "<h1 align=\"center\" 👁️ Agent Reach</h1 <p align=\"center\" <strong 给你的 AI Agent 一键装上互联网能力</strong </p <p align=\"center\" 当下最稳的接入方式，替你选好、装好、体检好——接入方式会换代，你不用操心 </p <p align=\"center\" <a href=\"https://trendshift.io/repositories/24387\" <img src=\"https://trendshift.io/api/badge/repositories/24387\" alt=\"Trendshift GitHub Trending 1 Repository of the Day\" </a </p <p align=\"center\" <a href=\"LICENSE\" <img src=\"https://img.shields.io/badge/License MIT blue.svg?style=for the badge\" alt=\"MIT License\" </a <a href=\"https://www.python.org/\" <img src=\"https://img.shields.io/badge/Python 3.10+ green.svg?style=for the badge&logo=python&logoColor=white\" alt=\"Python 3.10+\" </a <a href=\"https://github.com/Panniantong/agent reach/stargazers\" <img src=\"https://img.shields.io/github/stars/Panniantong/agent reach?style=for the badge\" alt=\"GitHub Stars\" </a </p <p align=\"center\" <a href=\" 快速上手\" 快速开始</a · <a href=\"doc...",
-        "githubUrl": "https://github.com/Panniantong/Agent-Reach"
-      }
-    },
-    {
-      "rank": 12,
-      "repo": {
-        "fullName": "Alishahryar1/free-claude-code",
-        "name": "free-claude-code",
-        "owner": "Alishahryar1",
-        "avatarUrl": "https://avatars.githubusercontent.com/u/20476625?v=4",
-        "visualUrl": "https://opengraph.githubassets.com/20260804/Alishahryar1/free-claude-code",
-        "url": "https://github.com/Alishahryar1/free-claude-code",
-        "description": "Use Claude Code, Codex and Pi for free from your terminal, app, IDE, or phone like OpenClaw (voice supported)",
-        "stars": 44193,
-        "starsToday": 278,
-        "forks": 7280,
-        "openIssues": 342,
-        "language": "Python",
-        "topics": [],
-        "license": "MIT",
-        "pushedAt": "2026-08-03T23:50:38Z",
-        "createdAt": "2026-01-28T19:02:30Z",
-        "languages": {
-          "Python": 3485808,
-          "PowerShell": 39160,
-          "Shell": 34588,
-          "JavaScript": 31265,
-          "CSS": 15658,
-          "TypeScript": 5055,
-          "HTML": 3061,
-          "Mermaid": 2398
-        }
-      },
-      "analysis": {
-        "method": "codex-research-refresh",
-        "category": "Coding Agent Provider 代理 / 多客户端模型入口",
-        "oneLiner": "Use Claude Code, Codex and Pi for free from your terminal, app, IDE, or phone like OpenClaw (voice supported)；关键看 本地 provider-backed proxy、Admin UI、客户端/IDE 集成、provider 校验和模型路由，把多个 coding assistant 接到统一入口。 是否能被小范围验证。",
-        "whyItMatters": "Alishahryar1/free-claude-code 值得看，是因为 AI 项目真正的分水岭已经从“能跑 demo”转向“能被治理、能接工具、能失败恢复”。当前 44.2K stars / 7.3K forks，维护非常活跃，足够进入 Agent 工程雷达。 这次更新更值得关注的是其可迁移机制：本地 provider-backed proxy、Admin UI、客户端/IDE 集成、provider 校验和模型路由，把多个 coding assistant 接到统一入口。 能否被拆成小样本验证，而不是把项目整体搬进生产。",
-        "engineeringRead": "Python · Python 包/脚本。建议按“入口示例 -> 数据/配置 -> 失败处理 -> CI/release -> issue 反例”的顺序读；重点回答 它解决的是「开发者希望让 Claude Code、Codex、Pi 或 IDE 扩展使用自选免费、付费或本地 provider，但客户端、协议和凭据管理分散。」的主矛盾，还是只会给现有流程增加新的维护面？",
-        "architectureSignals": [
-          "架构机制：本地 provider-backed proxy、Admin UI、客户端/IDE 集成、provider 校验和模型路由，把多个 coding assistant 接到统一入口。；阅读时把 Python 代码入口、数据/配置形态、自动化脚本和边界条件连起来看，而不是只看 README 的安装示例。",
-          "适用团队：个人高级开发者、多模型评测和能承担本地代理治理的小型研发团队。",
-          "落地路径：先在个人非敏感仓库中代理只读或低风险请求，禁用源码日志，记录 provider 成功率、延迟、成本和输出差异。；先保留人工复核、指标记录和回滚路径。",
-          "生产风险：代理层会集中源码上下文和 provider 凭据；免费额度与非官方集成还会带来可靠性、条款和审计风险。",
-          "决策问题：它解决的是「开发者希望让 Claude Code、Codex、Pi 或 IDE 扩展使用自选免费、付费或本地 provider，但客户端、协议和凭据管理分散。」的主矛盾，还是只会给现有流程增加新的维护面？",
-          "观察信号：请求成功率、P95 延迟、单位任务成本、provider fallback、日志脱敏覆盖、错误补丁率和凭据轮换成本、最近 release 质量、issue 响应速度和 Python 包/脚本 的集成反馈。"
-        ],
-        "valueHypothesis": [
-          "如果团队确实存在「开发者希望让 Claude Code、Codex、Pi 或 IDE 扩展使用自选免费、付费或本地 provider，但客户端、协议和凭据管理分散。」，Alishahryar1/free-claude-code 的收益应体现为 请求成功率、P95 延迟、单位任务成本、provider fallback、日志脱敏覆盖、错误补丁率和凭据轮换成本 的改善。",
-          "适合先复制机制、接口或治理方式，不适合未验证成本就全量迁移。",
-          "若 强合规源码、企业集中审计、无人值守生产写操作或无法接受第三方 provider 不稳定的任务。，它更适合作为资料样本，而不是生产依赖。"
-        ],
-        "technicalTakeaways": [
-          "先抓 先看代理协议、密钥存储、日志策略、provider 校验、IDE/CLI 兼容和失败降级。，再决定 spike 范围。",
-          "图解字段应突出 本地 provider-backed proxy、Admin UI、客户端/IDE 集成、provider 校验和模型路由，把多个 coding assistant 接到统一入口。 如何把 开发者希望让 Claude Code、Codex、Pi 或 IDE 扩展使用自选免费、付费或本地 provider，但客户端、协议和凭据管理分散。 转成 降低多客户端、多模型试验门槛，为个人和小团队建立低成本 coding agent 路由层。。",
-          "验收时同时记录正样本、失败样本、成本、延迟和维护 owner。"
-        ],
-        "adoptionRisks": [
-          "代理层会集中源码上下文和 provider 凭据；免费额度与非官方集成还会带来可靠性、条款和审计风险。",
-          "与现有 Python / Python 包/脚本 工具链的耦合要先做最小集成验证。",
-          "当前 open issues 偏高，必须抽查最近 issue 的响应质量和 release 节奏。"
-        ],
-        "suggestedUseCases": [
-          "先在个人非敏感仓库中代理只读或低风险请求，禁用源码日志，记录 provider 成功率、延迟、成本和输出差异。；先保留人工复核、指标记录和回滚路径。",
-          "用一个可回放样本验证 请求成功率、P95 延迟、单位任务成本、provider fallback、日志脱敏覆盖、错误补丁率和凭据轮换成本，同时记录接入时间、失败样本和回滚步骤。",
-          "只在指标改善、维护 owner 明确、风险可隔离后，再从旁路验证扩大到核心流程。"
-        ],
-        "watchSignals": [
-          "请求成功率、P95 延迟、单位任务成本、provider fallback、日志脱敏覆盖、错误补丁率和凭据轮换成本、最近 release 质量、issue 响应速度和 Python 包/脚本 的集成反馈。",
-          "release note 是否持续解释 本地 provider-backed proxy、Admin UI、客户端/IDE 集成、provider 校验和模型路由，把多个 coding assistant 接到统一入口。 的演进，而不只是功能堆叠。",
-          "issue/讨论区是否出现与你的目标场景相似的真实案例和失败反馈。"
-        ],
-        "deepDive": {
-          "strategicValue": "Alishahryar1/free-claude-code 的价值不应按 star 数直接外推；更合理的读法是把它当作 Coding Agent Provider 代理 / 多客户端模型入口 的工程样本，判断其机制是否能降低你现有链路的复杂度、人工成本或质量波动。",
-          "implementationPath": [
-            "先在个人非敏感仓库中代理只读或低风险请求，禁用源码日志，记录 provider 成功率、延迟、成本和输出差异。；先保留人工复核、指标记录和回滚路径。",
-            "用一个可回放样本验证 请求成功率、P95 延迟、单位任务成本、provider fallback、日志脱敏覆盖、错误补丁率和凭据轮换成本，同时记录接入时间、失败样本和回滚步骤。",
-            "只在指标改善、维护 owner 明确、风险可隔离后，再从旁路验证扩大到核心流程。"
-          ],
-          "productionConcerns": [
-            "代理层会集中源码上下文和 provider 凭据；免费额度与非官方集成还会带来可靠性、条款和审计风险。",
-            "与现有 Python / Python 包/脚本 工具链的耦合要先做最小集成验证。",
-            "当前 open issues 偏高，必须抽查最近 issue 的响应质量和 release 节奏。"
-          ],
-          "decisionQuestions": [
-            "它解决的是「开发者希望让 Claude Code、Codex、Pi 或 IDE 扩展使用自选免费、付费或本地 provider，但客户端、协议和凭据管理分散。」的主矛盾，还是只会给现有流程增加新的维护面？",
-            "如果两周 spike 只能证明“能跑”，不能证明 请求成功率、P95 延迟、单位任务成本、provider fallback、日志脱敏覆盖、错误补丁率和凭据轮换成本 改善，是否应降级为观察项？",
-            "谁负责上线后的升级、告警、回滚和安全审计？"
-          ],
-          "recommendedAction": "进入观察/试点池：先在个人非敏感仓库中代理只读或低风险请求，禁用源码日志，记录 provider 成功率、延迟、成本和输出差异。；先保留人工复核、指标记录和回滚路径。"
-        },
-        "diagram": {
-          "title": "free-claude-code 工业级采用图解",
-          "caption": "Coding Agent Provider 代理 / 多客户端模型入口 · Python · 44.2K stars",
-          "summary": "用 本地 provider-backed proxy、Admin UI、客户端/IDE 集成、provider 校验和模型路由，把多个 coding assistant 接到统一入口。 解决 开发者希望让 Claude Code、Codex、Pi 或 IDE 扩展使用自选免费、付费或本地 provider，但客户端、协议和凭据管理分散。，先经由 先在个人非敏感仓库中代理只读或低风险请求，禁用源码日志，记录 provider 成功率、延迟、成本和输出差异。 验证 请求成功率、P95 延迟、单位任务成本、provider fallback、日志脱敏覆盖、错误补丁率和凭据轮换成本，再决定是否扩大。",
-          "nodes": [
-            {
-              "label": "架构机制",
-              "detail": "本地 provider-backed proxy、Admin UI、客户端/IDE 集成、provider 校验和模型路由，把多个 coding assistant 接到统一入口。",
-              "type": "core"
-            },
-            {
-              "label": "适用团队",
-              "detail": "个人高级开发者、多模型评测和能承担本地代理治理的小型研发团队。",
-              "type": "input"
-            },
-            {
-              "label": "落地路径",
-              "detail": "先在个人非敏感仓库中代理只读或低风险请求，禁用源码日志，记录 provider 成功率、延迟、成本和输出差异。；先保留人工复核、指标记录和回滚路径。",
-              "type": "integration"
-            },
-            {
-              "label": "观察信号",
-              "detail": "请求成功率、P95 延迟、单位任务成本、provider fallback、日志脱敏覆盖、错误补丁率和凭据轮换成本、最近 release 质量、issue 响应速度和 Python 包/脚本 的集成反馈。",
-              "type": "measure"
-            }
-          ],
-          "links": [
-            "机制拆解",
-            "试点验证",
-            "指标放大"
-          ],
-          "poster": {
-            "eyebrow": "Project Blueprint",
-            "headline": "Coding Agent Provider 代理 / 多客户端模型入口",
-            "subhead": "Alishahryar1/free-claude-code · 成熟扩散 · Python",
-            "thesis": "把「开发者希望让 Claude Code、Codex、Pi 或 IDE 扩展使用自选免费、付费或本地 provider，但客户端、协议和凭据管理分散。」通过「本地 provider-backed proxy、Admin UI、客户端/IDE 集成、provider 校验和模型路由，把多个 coding assistant 接到统一入口。」转化为「降低多客户端、多模型试验门槛，为个人和小团队建立低成本 coding agent 路由层。」。",
-            "metrics": [
-              {
-                "label": "Stars",
-                "value": "44.2K",
-                "note": "社区关注"
-              },
-              {
-                "label": "Forks",
-                "value": "7.3K",
-                "note": "二次采用"
-              },
-              {
-                "label": "Issues",
-                "value": "342",
-                "note": "维护压力"
-              },
-              {
-                "label": "Stack",
-                "value": "Python",
-                "note": "主技术栈"
-              }
-            ],
-            "lanes": [
-              {
-                "label": "架构机制",
-                "detail": "本地 provider-backed proxy、Admin UI、客户端/IDE 集成、provider 校验和模型路由，把多个 coding assistant 接到统一入口。",
-                "type": "core",
-                "step": "01",
-                "signal": "先看代理协议、密钥存储、日志策略、provider 校验、IDE/CLI 兼容和失败降级。"
-              },
-              {
-                "label": "适用团队",
-                "detail": "个人高级开发者、多模型评测和能承担本地代理治理的小型研发团队。",
-                "type": "input",
-                "step": "02",
-                "signal": "个人高级开发者、多模型评测和能承担本地代理治理的小型研发团队。"
-              },
-              {
-                "label": "落地路径",
-                "detail": "先在个人非敏感仓库中代理只读或低风险请求，禁用源码日志，记录 provider 成功率、延迟、成本和输出差异。；先保留人工复核、指标记录和回滚路径。",
-                "type": "integration",
-                "step": "03",
-                "signal": "先在个人非敏感仓库中代理只读或低风险请求，禁用源码日志，记录 provider 成功率、延迟、成本和输出差异。"
-              },
-              {
-                "label": "观察信号",
-                "detail": "请求成功率、P95 延迟、单位任务成本、provider fallback、日志脱敏覆盖、错误补丁率和凭据轮换成本、最近 release 质量、issue 响应速度和 Python 包/脚本 的集成反馈。",
-                "type": "measure",
-                "step": "04",
-                "signal": "请求成功率、P95 延迟、单位任务成本、provider fallback、日志脱敏覆盖、错误补丁率和凭据轮换成本"
-              }
-            ],
-            "adoption": [
-              {
-                "label": "试点入口",
-                "detail": "先在个人非敏感仓库中代理只读或低风险请求，禁用源码日志，记录 provider 成功率、延迟、成本和输出差异。"
-              },
-              {
-                "label": "验收指标",
-                "detail": "请求成功率、P95 延迟、单位任务成本、provider fallback、日志脱敏覆盖、错误补丁率和凭据轮换成本"
-              },
-              {
-                "label": "生产风险",
-                "detail": "代理层会集中源码上下文和 provider 凭据；免费额度与非官方集成还会带来可靠性、条款和审计风险。"
-              },
-              {
-                "label": "决策问题",
-                "detail": "它解决的是「开发者希望让 Claude Code、Codex、Pi 或 IDE 扩展使用自选免费、付费或本地 provider，但客户端、协议和凭据管理分散。」的主矛盾，还是只会给现有流程增加新的维护面？"
-              }
-            ],
-            "warning": "强合规源码、企业集中审计、无人值守生产写操作或无法接受第三方 provider 不稳定的任务。"
+            "warning": "现有流程稳定且迁移会打断多人协作"
           }
         },
         "maturity": {
           "community": 100,
           "maintenance": 100,
           "production": 95,
-          "complexity": 67
+          "complexity": 55
         },
         "score": 96
       },
       "evidence": {
-        "readmeExcerpt": "<div align=\"center\" <h1 <picture <source media=\"(prefers color scheme: light)\" srcset=\"assets/free claude code wordmark light.svg\" <img src=\"assets/free claude code wordmark dark.svg\" alt=\"Free Claude Code\" width=\"610\" </picture </h1 Use Claude Code, Codex, Pi, or their IDE extensions through your own provider backed proxy. Run your coding agents with free, paid, or local models. Choose and validate providers from one local Admin UI. Quick Start · Providers · Clients · Integrations · Manage </div <div align=\"center\" <img src=\"assets/pic.png\" alt=\"Free Claude Code in action\" width=\"700\" <p <em Claude Code running through the Free Claude Code proxy.</em </p </div <div align=\"center\" <img src=\"assets/codex.png\" alt=\"Codex CLI in action through Free Claude Code\" width=\"700\" <p <em Codex CLI using the local FCC Responses provider.</em </p </div <a id=\"model picker\" </a <div align=\"center\" <im...",
-        "githubUrl": "https://github.com/Alishahryar1/free-claude-code"
+        "readmeExcerpt": "<div align=\"center\" <a href=\"https://github.com/webpack/webpack\" <img width=\"200\" height=\"200\" src=\"https://webpack.js.org/assets/icon square big.svg\" </a <br <br [![npm][npm]][npm url] [![node][node]][node url] [![builds1][builds1]][builds1 url] [![dependency review][dependency review]][dependency review url] [![coverage][cover]][cover url] [![PR's welcome][prs]][prs url] <h1 webpack</h1 <p Webpack is a module bundler. Its main purpose is to bundle JavaScript files for usage in a browser, yet it is also capable of transforming, bundling, or packaging just about any resource or asset. </p </div Table of Contents Install Introduction Concepts Contributing Support Current project members TSC (Technical Steering Committee) Core Collaborators Sponsoring Premium Partners Gold Sponsors Silver Sponsors Bronze Sponsors Backers Special Thanks Install Install with npm: Install with yarn: Introduct...",
+        "githubUrl": "https://github.com/webpack/webpack"
+      }
+    },
+    {
+      "rank": 10,
+      "repo": {
+        "fullName": "gabime/spdlog",
+        "name": "spdlog",
+        "owner": "gabime",
+        "avatarUrl": "https://avatars.githubusercontent.com/u/6052198?v=4",
+        "visualUrl": "https://opengraph.githubassets.com/20260804/gabime/spdlog",
+        "url": "https://github.com/gabime/spdlog",
+        "description": "Fast C++ logging library.",
+        "stars": 29342,
+        "starsToday": 9,
+        "forks": 5365,
+        "openIssues": 46,
+        "language": "C++",
+        "topics": [
+          "cpp",
+          "cpp11",
+          "header-only",
+          "logging",
+          "spdlog"
+        ],
+        "license": "NOASSERTION",
+        "pushedAt": "2026-07-24T13:24:39Z",
+        "createdAt": "2014-11-01T01:28:53Z",
+        "languages": {
+          "C++": 1142641,
+          "CMake": 31990,
+          "C": 9606,
+          "Shell": 856,
+          "Python": 497
+        }
+      },
+      "analysis": {
+        "method": "codex-research-refresh",
+        "category": "开发者工具 / 工程效率",
+        "oneLiner": "Fast C++ logging library.；关键看它能否稳定缩短构建、测试、调试或自动化链路。",
+        "whyItMatters": "gabime/spdlog 处在 快速扩散项目 区间：29.3K stars / 5.4K forks，近期仍在活跃迭代。README 把重点放在「spdlog」，适合判断它是否能在 构建、调试、交付或依赖管理的效率瓶颈 上形成真实工程收益。 这次更新更值得关注的是其可迁移机制：命令行、插件系统、构建管线或 SDK 抽象 能否被拆成小样本验证，而不是把项目整体搬进生产。",
+        "engineeringRead": "C++ · 本机 CLI 工具。建议按“入口示例 -> 数据/配置 -> 失败处理 -> CI/release -> issue 反例”的顺序读；重点回答 它解决的是「构建、调试、交付或依赖管理的效率瓶颈」的主矛盾，还是只会给现有流程增加新的维护面？",
+        "architectureSignals": [
+          "架构机制：命令行、插件系统、构建管线或 SDK 抽象；阅读时把 C++ 代码入口、数据/配置形态、自动化脚本和边界条件连起来看，而不是只看 README 的安装示例。",
+          "适用团队：团队已有重复手工流程或低效构建链路",
+          "落地路径：个人或小团队工作流；先保留人工复核、指标记录和回滚路径。",
+          "生产风险：工具链替换容易引入插件不兼容、调试信息丢失和 CI 差异，需要影子运行。",
+          "决策问题：它解决的是「构建、调试、交付或依赖管理的效率瓶颈」的主矛盾，还是只会给现有流程增加新的维护面？",
+          "观察信号：冷启动耗时、构建耗时、配置行数、回滚成本、最近 release 质量、issue 响应速度和 本机 CLI 工具 的集成反馈。"
+        ],
+        "valueHypothesis": [
+          "如果团队确实存在「构建、调试、交付或依赖管理的效率瓶颈」，gabime/spdlog 的收益应体现为 冷启动耗时、构建耗时、配置行数、回滚成本 的改善。",
+          "适合先复制机制、接口或治理方式，不适合未验证成本就全量迁移。",
+          "若 现有流程稳定且迁移会打断多人协作，它更适合作为资料样本，而不是生产依赖。"
+        ],
+        "technicalTakeaways": [
+          "先抓 先跑最小命令，再看配置文件、缓存目录和失败信息是否可理解，再决定 spike 范围。",
+          "图解字段应突出 命令行、插件系统、构建管线或 SDK 抽象 如何把 构建、调试、交付或依赖管理的效率瓶颈 转成 交付周期、故障恢复速度和工程一致性。",
+          "验收时同时记录正样本、失败样本、成本、延迟和维护 owner。"
+        ],
+        "adoptionRisks": [
+          "工具链替换容易引入插件不兼容、调试信息丢失和 CI 差异，需要影子运行。",
+          "与现有 C++ / 本机 CLI 工具 工具链的耦合要先做最小集成验证。",
+          "社区负载相对可控，但仍要关注 breaking change、license 和长期维护信号。"
+        ],
+        "suggestedUseCases": [
+          "个人或小团队工作流；先保留人工复核、指标记录和回滚路径。",
+          "用一个可回放样本验证 冷启动耗时、构建耗时、配置行数、回滚成本，同时记录接入时间、失败样本和回滚步骤。",
+          "只在指标改善、维护 owner 明确、风险可隔离后，再从旁路验证扩大到核心流程。"
+        ],
+        "watchSignals": [
+          "冷启动耗时、构建耗时、配置行数、回滚成本、最近 release 质量、issue 响应速度和 本机 CLI 工具 的集成反馈。",
+          "release note 是否持续解释 命令行、插件系统、构建管线或 SDK 抽象 的演进，而不只是功能堆叠。",
+          "issue/讨论区是否出现与你的目标场景相似的真实案例和失败反馈。"
+        ],
+        "deepDive": {
+          "strategicValue": "gabime/spdlog 的价值不应按 star 数直接外推；更合理的读法是把它当作 开发者工具 / 工程效率 的工程样本，判断其机制是否能降低你现有链路的复杂度、人工成本或质量波动。",
+          "implementationPath": [
+            "个人或小团队工作流；先保留人工复核、指标记录和回滚路径。",
+            "用一个可回放样本验证 冷启动耗时、构建耗时、配置行数、回滚成本，同时记录接入时间、失败样本和回滚步骤。",
+            "只在指标改善、维护 owner 明确、风险可隔离后，再从旁路验证扩大到核心流程。"
+          ],
+          "productionConcerns": [
+            "工具链替换容易引入插件不兼容、调试信息丢失和 CI 差异，需要影子运行。",
+            "与现有 C++ / 本机 CLI 工具 工具链的耦合要先做最小集成验证。",
+            "社区负载相对可控，但仍要关注 breaking change、license 和长期维护信号。"
+          ],
+          "decisionQuestions": [
+            "它解决的是「构建、调试、交付或依赖管理的效率瓶颈」的主矛盾，还是只会给现有流程增加新的维护面？",
+            "如果两周 spike 只能证明“能跑”，不能证明 冷启动耗时、构建耗时、配置行数、回滚成本 改善，是否应降级为观察项？",
+            "谁负责上线后的升级、告警、回滚和安全审计？"
+          ],
+          "recommendedAction": "进入观察/试点池：个人或小团队工作流；先保留人工复核、指标记录和回滚路径。"
+        },
+        "diagram": {
+          "title": "spdlog 工业级采用图解",
+          "caption": "开发者工具 / 工程效率 · C++ · 29.3K stars",
+          "summary": "用 命令行、插件系统、构建管线或 SDK 抽象 解决 构建、调试、交付或依赖管理的效率瓶颈，先经由 个人或小团队工作流 验证 冷启动耗时、构建耗时、配置行数、回滚成本，再决定是否扩大。",
+          "nodes": [
+            {
+              "label": "架构机制",
+              "detail": "命令行、插件系统、构建管线或 SDK 抽象",
+              "type": "core"
+            },
+            {
+              "label": "适用团队",
+              "detail": "团队已有重复手工流程或低效构建链路",
+              "type": "input"
+            },
+            {
+              "label": "落地路径",
+              "detail": "个人或小团队工作流；先保留人工复核、指标记录和回滚路径。",
+              "type": "integration"
+            },
+            {
+              "label": "观察信号",
+              "detail": "冷启动耗时、构建耗时、配置行数、回滚成本、最近 release 质量、issue 响应速度和 本机 CLI 工具 的集成反馈。",
+              "type": "measure"
+            }
+          ],
+          "links": [
+            "机制拆解",
+            "试点验证",
+            "指标放大"
+          ],
+          "poster": {
+            "eyebrow": "Project Blueprint",
+            "headline": "开发者工具 / 工程效率",
+            "subhead": "gabime/spdlog · 快速破圈 · C++",
+            "thesis": "把「构建、调试、交付或依赖管理的效率瓶颈」通过「命令行、插件系统、构建管线或 SDK 抽象」转化为「交付周期、故障恢复速度和工程一致性」。",
+            "metrics": [
+              {
+                "label": "Stars",
+                "value": "29.3K",
+                "note": "社区关注"
+              },
+              {
+                "label": "Forks",
+                "value": "5.4K",
+                "note": "二次采用"
+              },
+              {
+                "label": "Issues",
+                "value": "46",
+                "note": "维护压力"
+              },
+              {
+                "label": "Stack",
+                "value": "C++",
+                "note": "主技术栈"
+              }
+            ],
+            "lanes": [
+              {
+                "label": "架构机制",
+                "detail": "命令行、插件系统、构建管线或 SDK 抽象",
+                "type": "core",
+                "step": "01",
+                "signal": "先跑最小命令，再看配置文件、缓存目录和失败信息是否可理解"
+              },
+              {
+                "label": "适用团队",
+                "detail": "团队已有重复手工流程或低效构建链路",
+                "type": "input",
+                "step": "02",
+                "signal": "团队已有重复手工流程或低效构建链路"
+              },
+              {
+                "label": "落地路径",
+                "detail": "个人或小团队工作流；先保留人工复核、指标记录和回滚路径。",
+                "type": "integration",
+                "step": "03",
+                "signal": "个人或小团队工作流"
+              },
+              {
+                "label": "观察信号",
+                "detail": "冷启动耗时、构建耗时、配置行数、回滚成本、最近 release 质量、issue 响应速度和 本机 CLI 工具 的集成反馈。",
+                "type": "measure",
+                "step": "04",
+                "signal": "冷启动耗时、构建耗时、配置行数、回滚成本"
+              }
+            ],
+            "adoption": [
+              {
+                "label": "试点入口",
+                "detail": "个人或小团队工作流"
+              },
+              {
+                "label": "验收指标",
+                "detail": "冷启动耗时、构建耗时、配置行数、回滚成本"
+              },
+              {
+                "label": "生产风险",
+                "detail": "工具链替换容易引入插件不兼容、调试信息丢失和 CI 差异，需要影子运行。"
+              },
+              {
+                "label": "决策问题",
+                "detail": "它解决的是「构建、调试、交付或依赖管理的效率瓶颈」的主矛盾，还是只会给现有流程增加新的维护面？"
+              }
+            ],
+            "warning": "现有流程稳定且迁移会打断多人协作"
+          }
+        },
+        "maturity": {
+          "community": 98,
+          "maintenance": 67,
+          "production": 83,
+          "complexity": 55
+        },
+        "score": 89
+      },
+      "evidence": {
+        "readmeExcerpt": "spdlog &nbsp; &nbsp; &nbsp; Fast C++ logging library Install Header only version Copy the include folder to your build tree and use a C++11 compiler. Compiled version (recommended much faster compile times) see example CMakeLists.txt on how to use. Platforms Linux, FreeBSD, OpenBSD, Solaris, AIX Windows (msvc 2013+, cygwin) macOS (clang 3.5+) Android Package managers: Debian: sudo apt install libspdlog dev Homebrew: brew install spdlog MacPorts: sudo port install spdlog FreeBSD: pkg install spdlog Fedora: dnf install spdlog Gentoo: emerge dev libs/spdlog Arch Linux: pacman S spdlog openSUSE: sudo zypper in spdlog devel ALT Linux: apt get install libspdlog devel vcpkg: vcpkg install spdlog conan: conan install requires=spdlog/[ ] conda: conda install c conda forge spdlog build2: Features Very fast (see benchmarks below). Headers only or compiled Feature rich formatting, using the excellen...",
+        "githubUrl": "https://github.com/gabime/spdlog"
+      }
+    },
+    {
+      "rank": 11,
+      "repo": {
+        "fullName": "denoland/deno",
+        "name": "deno",
+        "owner": "denoland",
+        "avatarUrl": "https://avatars.githubusercontent.com/u/42048915?v=4",
+        "visualUrl": "https://opengraph.githubassets.com/20260804/denoland/deno",
+        "url": "https://github.com/denoland/deno",
+        "description": "A modern runtime for JavaScript and TypeScript.",
+        "stars": 107982,
+        "starsToday": 27,
+        "forks": 6297,
+        "openIssues": 1456,
+        "language": "Rust",
+        "topics": [
+          "deno",
+          "javascript",
+          "rust",
+          "typescript"
+        ],
+        "license": "MIT",
+        "pushedAt": "2026-08-04T10:52:03Z",
+        "createdAt": "2018-05-15T01:34:26Z",
+        "languages": {
+          "Rust": 20382744,
+          "TypeScript": 8418596,
+          "JavaScript": 3377569,
+          "C": 408112,
+          "HTML": 11518,
+          "CSS": 8595,
+          "Nix": 5608,
+          "Shell": 1863,
+          "WebAssembly": 1566,
+          "C++": 1416,
+          "Svelte": 664,
+          "Mustache": 280,
+          "Dockerfile": 257,
+          "Python": 214,
+          "Astro": 152,
+          "Vento": 52,
+          "Nunjucks": 45
+        }
+      },
+      "analysis": {
+        "method": "codex-research-refresh",
+        "category": "学习平台 / 内容社区",
+        "oneLiner": "A modern runtime for JavaScript and TypeScript.；关键看内容 schema、评测、翻译和社区审校如何形成长期闭环。",
+        "whyItMatters": "denoland/deno 的热度来自“可持续维护的公共资料面”：108K stars / 6.3K forks，维护非常活跃。README 把重点放在「Deno」，说明它的价值更多在分类、治理和更新节奏，而不是某个单点技术实现。 这次更新更值得关注的是其可迁移机制：内容结构、贡献流程、质量校验和社区运营 能否被拆成小样本验证，而不是把项目整体搬进生产。",
+        "engineeringRead": "Rust · 本机 CLI 工具。建议按“入口示例 -> 数据/配置 -> 失败处理 -> CI/release -> issue 反例”的顺序读；重点回答 它解决的是「团队培训、知识库沉淀或学习路径设计」的主矛盾，还是只会给现有流程增加新的维护面？",
+        "architectureSignals": [
+          "架构机制：内容结构、贡献流程、质量校验和社区运营；阅读时把 Rust 代码入口、数据/配置形态、自动化脚本和边界条件连起来看，而不是只看 README 的安装示例。",
+          "适用团队：需要设计学习体系、知识库或社区贡献机制",
+          "落地路径：内部培训材料、学习路径或知识库导航；先保留人工复核、指标记录和回滚路径。",
+          "生产风险：内容规模越大，版本同步、质量审校和本地化成本越高。",
+          "决策问题：它解决的是「团队培训、知识库沉淀或学习路径设计」的主矛盾，还是只会给现有流程增加新的维护面？",
+          "观察信号：内容更新频率、贡献者响应、目录可维护性、最近 release 质量、issue 响应速度和 本机 CLI 工具 的集成反馈。"
+        ],
+        "valueHypothesis": [
+          "如果团队确实存在「团队培训、知识库沉淀或学习路径设计」，denoland/deno 的收益应体现为 内容更新频率、贡献者响应、目录可维护性 的改善。",
+          "适合先复制机制、接口或治理方式，不适合未验证成本就全量迁移。",
+          "若 只想找一段现成代码或快速复制项目结构，它更适合作为资料样本，而不是生产依赖。"
+        ],
+        "technicalTakeaways": [
+          "先抓 先看目录规范、贡献流程和自动化校验，而不是只看代码语言，再决定 spike 范围。",
+          "图解字段应突出 内容结构、贡献流程、质量校验和社区运营 如何把 团队培训、知识库沉淀或学习路径设计 转成 知识复用、人才培养速度和文档质量。",
+          "验收时同时记录正样本、失败样本、成本、延迟和维护 owner。"
+        ],
+        "adoptionRisks": [
+          "内容规模越大，版本同步、质量审校和本地化成本越高。",
+          "与现有 Rust / 本机 CLI 工具 工具链的耦合要先做最小集成验证。",
+          "当前 open issues 偏高，必须抽查最近 issue 的响应质量和 release 节奏。"
+        ],
+        "suggestedUseCases": [
+          "内部培训材料、学习路径或知识库导航；先保留人工复核、指标记录和回滚路径。",
+          "用一个可回放样本验证 内容更新频率、贡献者响应、目录可维护性，同时记录接入时间、失败样本和回滚步骤。",
+          "只在指标改善、维护 owner 明确、风险可隔离后，再从旁路验证扩大到核心流程。"
+        ],
+        "watchSignals": [
+          "内容更新频率、贡献者响应、目录可维护性、最近 release 质量、issue 响应速度和 本机 CLI 工具 的集成反馈。",
+          "release note 是否持续解释 内容结构、贡献流程、质量校验和社区运营 的演进，而不只是功能堆叠。",
+          "issue/讨论区是否出现与你的目标场景相似的真实案例和失败反馈。"
+        ],
+        "deepDive": {
+          "strategicValue": "denoland/deno 的价值不应按 star 数直接外推；更合理的读法是把它当作 学习平台 / 内容社区 的工程样本，判断其机制是否能降低你现有链路的复杂度、人工成本或质量波动。",
+          "implementationPath": [
+            "内部培训材料、学习路径或知识库导航；先保留人工复核、指标记录和回滚路径。",
+            "用一个可回放样本验证 内容更新频率、贡献者响应、目录可维护性，同时记录接入时间、失败样本和回滚步骤。",
+            "只在指标改善、维护 owner 明确、风险可隔离后，再从旁路验证扩大到核心流程。"
+          ],
+          "productionConcerns": [
+            "内容规模越大，版本同步、质量审校和本地化成本越高。",
+            "与现有 Rust / 本机 CLI 工具 工具链的耦合要先做最小集成验证。",
+            "当前 open issues 偏高，必须抽查最近 issue 的响应质量和 release 节奏。"
+          ],
+          "decisionQuestions": [
+            "它解决的是「团队培训、知识库沉淀或学习路径设计」的主矛盾，还是只会给现有流程增加新的维护面？",
+            "如果两周 spike 只能证明“能跑”，不能证明 内容更新频率、贡献者响应、目录可维护性 改善，是否应降级为观察项？",
+            "谁负责上线后的升级、告警、回滚和安全审计？"
+          ],
+          "recommendedAction": "进入观察/试点池：内部培训材料、学习路径或知识库导航；先保留人工复核、指标记录和回滚路径。"
+        },
+        "diagram": {
+          "title": "deno 工业级采用图解",
+          "caption": "学习平台 / 内容社区 · Rust · 108K stars",
+          "summary": "用 内容结构、贡献流程、质量校验和社区运营 解决 团队培训、知识库沉淀或学习路径设计，先经由 内部培训材料、学习路径或知识库导航 验证 内容更新频率、贡献者响应、目录可维护性，再决定是否扩大。",
+          "nodes": [
+            {
+              "label": "架构机制",
+              "detail": "内容结构、贡献流程、质量校验和社区运营",
+              "type": "core"
+            },
+            {
+              "label": "适用团队",
+              "detail": "需要设计学习体系、知识库或社区贡献机制",
+              "type": "input"
+            },
+            {
+              "label": "落地路径",
+              "detail": "内部培训材料、学习路径或知识库导航；先保留人工复核、指标记录和回滚路径。",
+              "type": "integration"
+            },
+            {
+              "label": "观察信号",
+              "detail": "内容更新频率、贡献者响应、目录可维护性、最近 release 质量、issue 响应速度和 本机 CLI 工具 的集成反馈。",
+              "type": "measure"
+            }
+          ],
+          "links": [
+            "机制拆解",
+            "试点验证",
+            "指标放大"
+          ],
+          "poster": {
+            "eyebrow": "Project Blueprint",
+            "headline": "学习平台 / 内容社区",
+            "subhead": "denoland/deno · 生态标杆 · Rust",
+            "thesis": "把「团队培训、知识库沉淀或学习路径设计」通过「内容结构、贡献流程、质量校验和社区运营」转化为「知识复用、人才培养速度和文档质量」。",
+            "metrics": [
+              {
+                "label": "Stars",
+                "value": "108K",
+                "note": "社区关注"
+              },
+              {
+                "label": "Forks",
+                "value": "6.3K",
+                "note": "二次采用"
+              },
+              {
+                "label": "Issues",
+                "value": "1.5K",
+                "note": "维护压力"
+              },
+              {
+                "label": "Stack",
+                "value": "Rust",
+                "note": "主技术栈"
+              }
+            ],
+            "lanes": [
+              {
+                "label": "架构机制",
+                "detail": "内容结构、贡献流程、质量校验和社区运营",
+                "type": "core",
+                "step": "01",
+                "signal": "先看目录规范、贡献流程和自动化校验，而不是只看代码语言"
+              },
+              {
+                "label": "适用团队",
+                "detail": "需要设计学习体系、知识库或社区贡献机制",
+                "type": "input",
+                "step": "02",
+                "signal": "需要设计学习体系、知识库或社区贡献机制"
+              },
+              {
+                "label": "落地路径",
+                "detail": "内部培训材料、学习路径或知识库导航；先保留人工复核、指标记录和回滚路径。",
+                "type": "integration",
+                "step": "03",
+                "signal": "内部培训材料、学习路径或知识库导航"
+              },
+              {
+                "label": "观察信号",
+                "detail": "内容更新频率、贡献者响应、目录可维护性、最近 release 质量、issue 响应速度和 本机 CLI 工具 的集成反馈。",
+                "type": "measure",
+                "step": "04",
+                "signal": "内容更新频率、贡献者响应、目录可维护性"
+              }
+            ],
+            "adoption": [
+              {
+                "label": "试点入口",
+                "detail": "内部培训材料、学习路径或知识库导航"
+              },
+              {
+                "label": "验收指标",
+                "detail": "内容更新频率、贡献者响应、目录可维护性"
+              },
+              {
+                "label": "生产风险",
+                "detail": "内容规模越大，版本同步、质量审校和本地化成本越高。"
+              },
+              {
+                "label": "决策问题",
+                "detail": "它解决的是「团队培训、知识库沉淀或学习路径设计」的主矛盾，还是只会给现有流程增加新的维护面？"
+              }
+            ],
+            "warning": "只想找一段现成代码或快速复制项目结构"
+          }
+        },
+        "maturity": {
+          "community": 100,
+          "maintenance": 100,
+          "production": 86,
+          "complexity": 67
+        },
+        "score": 92
+      },
+      "evidence": {
+        "readmeExcerpt": "Deno [![Twitter badge][]][Twitter link] [![Bluesky badge][]][Bluesky link] [![Discord badge][]][Discord link] [![YouTube badge][]][YouTube link] <img align=\"right\" src=\"https://deno.land/logo.svg\" height=\"150px\" alt=\"the deno mascot dinosaur standing in the rain\" Deno (/ˈdiːnoʊ/, pronounced dee no ) is a JavaScript, TypeScript, and WebAssembly runtime with secure defaults and a great developer experience. It's built on V8, Rust, and Tokio. Learn more about the Deno runtime in the documentation. Installation Install the Deno runtime on your system using one of the commands below. Note that there are a number of ways to install Deno a comprehensive list of installation options can be found here. Shell (Mac, Linux): PowerShell (Windows): Homebrew (Mac): Chocolatey (Windows): WinGet (Windows): Scoop (Windows): Build and install from source Complete instructions for building Deno from source ...",
+        "githubUrl": "https://github.com/denoland/deno"
+      }
+    },
+    {
+      "rank": 12,
+      "repo": {
+        "fullName": "usekaneo/kaneo",
+        "name": "kaneo",
+        "owner": "usekaneo",
+        "avatarUrl": "https://avatars.githubusercontent.com/u/192649426?v=4",
+        "visualUrl": "https://opengraph.githubassets.com/20260804/usekaneo/kaneo",
+        "url": "https://github.com/usekaneo/kaneo",
+        "description": "🎯 All you need. Nothing you don't. Open source project management that works for you, not against you.",
+        "stars": 7089,
+        "starsToday": 665,
+        "forks": 570,
+        "openIssues": 97,
+        "language": "TypeScript",
+        "topics": [
+          "hacktoberfest",
+          "hono",
+          "issue-management",
+          "issue-tracker",
+          "jira-alternative",
+          "kanban",
+          "linear-alternative",
+          "project-management",
+          "react",
+          "self-hosted",
+          "typescript"
+        ],
+        "license": "MIT",
+        "pushedAt": "2026-08-04T01:32:31Z",
+        "createdAt": "2024-12-31T08:25:09Z",
+        "languages": {
+          "TypeScript": 3512543,
+          "MDX": 140573,
+          "CSS": 47362,
+          "JavaScript": 16697,
+          "Shell": 7021,
+          "Dockerfile": 6248,
+          "Go Template": 3126,
+          "HTML": 2546
+        }
+      },
+      "analysis": {
+        "method": "codex-research-refresh",
+        "category": "开发者工具 / 工程效率",
+        "oneLiner": "🎯 All you need. Nothing you don't. Open source project management that works for you, not against you.；关键看它能否稳定缩短构建、测试、调试或自动化链路。",
+        "whyItMatters": "usekaneo/kaneo 处在 早期观察项目 区间：7.1K stars / 570 forks，维护非常活跃。README 把重点放在「Why Kaneo?」，适合判断它是否能在 构建、调试、交付或依赖管理的效率瓶颈 上形成真实工程收益。 这次更新更值得关注的是其可迁移机制：命令行、插件系统、构建管线或 SDK 抽象 能否被拆成小样本验证，而不是把项目整体搬进生产。",
+        "engineeringRead": "TypeScript · 容器化部署。建议按“入口示例 -> 数据/配置 -> 失败处理 -> CI/release -> issue 反例”的顺序读；重点回答 它解决的是「构建、调试、交付或依赖管理的效率瓶颈」的主矛盾，还是只会给现有流程增加新的维护面？",
+        "architectureSignals": [
+          "架构机制：命令行、插件系统、构建管线或 SDK 抽象；阅读时把 TypeScript 代码入口、数据/配置形态、自动化脚本和边界条件连起来看，而不是只看 README 的安装示例。",
+          "适用团队：团队已有重复手工流程或低效构建链路",
+          "落地路径：个人或小团队工作流；先保留人工复核、指标记录和回滚路径。",
+          "生产风险：工具链替换容易引入插件不兼容、调试信息丢失和 CI 差异，需要影子运行。",
+          "决策问题：它解决的是「构建、调试、交付或依赖管理的效率瓶颈」的主矛盾，还是只会给现有流程增加新的维护面？",
+          "观察信号：冷启动耗时、构建耗时、配置行数、回滚成本、最近 release 质量、issue 响应速度和 容器化部署 的集成反馈。"
+        ],
+        "valueHypothesis": [
+          "如果团队确实存在「构建、调试、交付或依赖管理的效率瓶颈」，usekaneo/kaneo 的收益应体现为 冷启动耗时、构建耗时、配置行数、回滚成本 的改善。",
+          "适合先复制机制、接口或治理方式，不适合未验证成本就全量迁移。",
+          "若 现有流程稳定且迁移会打断多人协作，它更适合作为资料样本，而不是生产依赖。"
+        ],
+        "technicalTakeaways": [
+          "先抓 先跑最小命令，再看配置文件、缓存目录和失败信息是否可理解，再决定 spike 范围。",
+          "图解字段应突出 命令行、插件系统、构建管线或 SDK 抽象 如何把 构建、调试、交付或依赖管理的效率瓶颈 转成 交付周期、故障恢复速度和工程一致性。",
+          "验收时同时记录正样本、失败样本、成本、延迟和维护 owner。"
+        ],
+        "adoptionRisks": [
+          "工具链替换容易引入插件不兼容、调试信息丢失和 CI 差异，需要影子运行。",
+          "与现有 TypeScript / 容器化部署 工具链的耦合要先做最小集成验证。",
+          "社区负载相对可控，但仍要关注 breaking change、license 和长期维护信号。"
+        ],
+        "suggestedUseCases": [
+          "个人或小团队工作流；先保留人工复核、指标记录和回滚路径。",
+          "用一个可回放样本验证 冷启动耗时、构建耗时、配置行数、回滚成本，同时记录接入时间、失败样本和回滚步骤。",
+          "只在指标改善、维护 owner 明确、风险可隔离后，再从旁路验证扩大到核心流程。"
+        ],
+        "watchSignals": [
+          "冷启动耗时、构建耗时、配置行数、回滚成本、最近 release 质量、issue 响应速度和 容器化部署 的集成反馈。",
+          "release note 是否持续解释 命令行、插件系统、构建管线或 SDK 抽象 的演进，而不只是功能堆叠。",
+          "issue/讨论区是否出现与你的目标场景相似的真实案例和失败反馈。"
+        ],
+        "deepDive": {
+          "strategicValue": "usekaneo/kaneo 的价值不应按 star 数直接外推；更合理的读法是把它当作 开发者工具 / 工程效率 的工程样本，判断其机制是否能降低你现有链路的复杂度、人工成本或质量波动。",
+          "implementationPath": [
+            "个人或小团队工作流；先保留人工复核、指标记录和回滚路径。",
+            "用一个可回放样本验证 冷启动耗时、构建耗时、配置行数、回滚成本，同时记录接入时间、失败样本和回滚步骤。",
+            "只在指标改善、维护 owner 明确、风险可隔离后，再从旁路验证扩大到核心流程。"
+          ],
+          "productionConcerns": [
+            "工具链替换容易引入插件不兼容、调试信息丢失和 CI 差异，需要影子运行。",
+            "与现有 TypeScript / 容器化部署 工具链的耦合要先做最小集成验证。",
+            "社区负载相对可控，但仍要关注 breaking change、license 和长期维护信号。"
+          ],
+          "decisionQuestions": [
+            "它解决的是「构建、调试、交付或依赖管理的效率瓶颈」的主矛盾，还是只会给现有流程增加新的维护面？",
+            "如果两周 spike 只能证明“能跑”，不能证明 冷启动耗时、构建耗时、配置行数、回滚成本 改善，是否应降级为观察项？",
+            "谁负责上线后的升级、告警、回滚和安全审计？"
+          ],
+          "recommendedAction": "进入观察/试点池：个人或小团队工作流；先保留人工复核、指标记录和回滚路径。"
+        },
+        "diagram": {
+          "title": "kaneo 工业级采用图解",
+          "caption": "开发者工具 / 工程效率 · TypeScript · 7.1K stars",
+          "summary": "用 命令行、插件系统、构建管线或 SDK 抽象 解决 构建、调试、交付或依赖管理的效率瓶颈，先经由 个人或小团队工作流 验证 冷启动耗时、构建耗时、配置行数、回滚成本，再决定是否扩大。",
+          "nodes": [
+            {
+              "label": "架构机制",
+              "detail": "命令行、插件系统、构建管线或 SDK 抽象",
+              "type": "core"
+            },
+            {
+              "label": "适用团队",
+              "detail": "团队已有重复手工流程或低效构建链路",
+              "type": "input"
+            },
+            {
+              "label": "落地路径",
+              "detail": "个人或小团队工作流；先保留人工复核、指标记录和回滚路径。",
+              "type": "integration"
+            },
+            {
+              "label": "观察信号",
+              "detail": "冷启动耗时、构建耗时、配置行数、回滚成本、最近 release 质量、issue 响应速度和 容器化部署 的集成反馈。",
+              "type": "measure"
+            }
+          ],
+          "links": [
+            "机制拆解",
+            "试点验证",
+            "指标放大"
+          ],
+          "poster": {
+            "eyebrow": "Project Blueprint",
+            "headline": "开发者工具 / 工程效率",
+            "subhead": "usekaneo/kaneo · 观察期 · TypeScript",
+            "thesis": "把「构建、调试、交付或依赖管理的效率瓶颈」通过「命令行、插件系统、构建管线或 SDK 抽象」转化为「交付周期、故障恢复速度和工程一致性」。",
+            "metrics": [
+              {
+                "label": "Stars",
+                "value": "7.1K",
+                "note": "社区关注"
+              },
+              {
+                "label": "Forks",
+                "value": "570",
+                "note": "二次采用"
+              },
+              {
+                "label": "Issues",
+                "value": "97",
+                "note": "维护压力"
+              },
+              {
+                "label": "Stack",
+                "value": "TypeScript",
+                "note": "主技术栈"
+              }
+            ],
+            "lanes": [
+              {
+                "label": "架构机制",
+                "detail": "命令行、插件系统、构建管线或 SDK 抽象",
+                "type": "core",
+                "step": "01",
+                "signal": "先跑最小命令，再看配置文件、缓存目录和失败信息是否可理解"
+              },
+              {
+                "label": "适用团队",
+                "detail": "团队已有重复手工流程或低效构建链路",
+                "type": "input",
+                "step": "02",
+                "signal": "团队已有重复手工流程或低效构建链路"
+              },
+              {
+                "label": "落地路径",
+                "detail": "个人或小团队工作流；先保留人工复核、指标记录和回滚路径。",
+                "type": "integration",
+                "step": "03",
+                "signal": "个人或小团队工作流"
+              },
+              {
+                "label": "观察信号",
+                "detail": "冷启动耗时、构建耗时、配置行数、回滚成本、最近 release 质量、issue 响应速度和 容器化部署 的集成反馈。",
+                "type": "measure",
+                "step": "04",
+                "signal": "冷启动耗时、构建耗时、配置行数、回滚成本"
+              }
+            ],
+            "adoption": [
+              {
+                "label": "试点入口",
+                "detail": "个人或小团队工作流"
+              },
+              {
+                "label": "验收指标",
+                "detail": "冷启动耗时、构建耗时、配置行数、回滚成本"
+              },
+              {
+                "label": "生产风险",
+                "detail": "工具链替换容易引入插件不兼容、调试信息丢失和 CI 差异，需要影子运行。"
+              },
+              {
+                "label": "决策问题",
+                "detail": "它解决的是「构建、调试、交付或依赖管理的效率瓶颈」的主矛盾，还是只会给现有流程增加新的维护面？"
+              }
+            ],
+            "warning": "现有流程稳定且迁移会打断多人协作"
+          }
+        },
+        "maturity": {
+          "community": 85,
+          "maintenance": 100,
+          "production": 90,
+          "complexity": 55
+        },
+        "score": 100
+      },
+      "evidence": {
+        "readmeExcerpt": "<p align=\"center\" <a href=\"https://kaneo.app\" <img src=\"https://assets.kaneo.app/logo text.png\" alt=\"Kaneo's logo\" width=\"450\" / </a </p <div align=\"center\" </div <div align=\"center\" <h3 <a href=\"https://kaneo.app/docs/core\" Quick Start</a <span </span <a href=\"https://kaneo.app\" Website</a <span </span <a href=\"https://cloud.kaneo.app\" Cloud</a <span </span <a href=\"https://discord.gg/rU4tSyhXXU\" Discord</a </h3 </div <p align=\"center\" <img src=\"https://assets.kaneo.app/readme.png\" alt=\"Kaneo Dashboard\" / </p Why Kaneo? After years of using bloated, overcomplicated project management platforms that distracted from actual work, we built Kaneo to be different. The problem with most tools isn't that they lack features—it's that they have too many . Every notification, every unnecessary button, every complex workflow pulls your team away from what matters: building great products . We belie...",
+        "githubUrl": "https://github.com/usekaneo/kaneo"
       }
     }
   ],
@@ -3868,7 +3900,7 @@
       "source": "AIHOT Public API",
       "date": "2026-08-04",
       "generatedAt": "2026-08-04T00:00:24.229Z",
-      "summary": "日报收录 21 条结构化内容，重点分布在 产品发布/更新 8 条、技巧与观点 8 条、模型发布/更新 2 条。今日优先关注「Swiftlet：在 Mac 上运行 80B 版 Qwen（内存 4.3 GB），在 iPhone 上运行 35B 版」，它会进入下方 AI 新闻流做进一步信号、影响和动作拆解。",
+      "summary": "日报收录 21 条结构化内容，重点分布在 产品发布/更新 8 条、技巧与观点 8 条、模型发布/更新 2 条。今日优先关注「工信部发布首部L3/L4自动驾驶系统安全要求强制性国标，2027年7月实施」，它会进入下方 AI 新闻流做进一步信号、影响和动作拆解。",
       "stats": [
         {
           "label": "精选条目",
@@ -3998,6 +4030,57 @@
       ],
       "selected": [
         {
+          "title": "工信部发布首部L3/L4自动驾驶系统安全要求强制性国标，2027年7月实施",
+          "url": "https://www.ithome.com/0/985/665.htm",
+          "source": "IT之家（RSS）",
+          "publishedAt": "2026-08-04T11:06:29.000Z",
+          "summary": "工信部组织制定的《智能网联汽车 自动驾驶系统安全要求》（GB 44721-2026）强制性国家标准获批发布，拟于2027年7月1日起实施。这是我国首部针对L3级有条件自动驾驶和L4级高度自动驾驶系统的强制性国标，由2024年推荐性国标GB/T 44721-2024升级而来，为自动驾驶产品明确了统一的安全准入基线。",
+          "category": "行业动态",
+          "signal": "行业动态信号，适合纳入周度技术雷达观察。",
+          "tags": [
+            "安全/可信"
+          ]
+        },
+        {
+          "title": "Reflex 开源 XY：基于 Rust 的超快 Python 绘图库，可保持 1 亿点图表交互流畅",
+          "url": "https://www.marktechpost.com/2026/08/04/reflex-open-sources-xy-a-rust-backed-super-fast-python-charting-library-that-keeps-100-million-point-charts-interactive",
+          "source": "MarkTechPost（RSS）",
+          "publishedAt": "2026-08-04T08:57:47.000Z",
+          "summary": "Reflex AI 发布 Apache-2.0 许可的 Python 交互式 2D 绘图库 XY，通过 Rust 原生核心、二进制缓冲传输和 WebGL2 渲染，在 1 万至 1 亿点范围内保持约 0.08 秒的渲染时间。",
+          "category": "产品更新",
+          "signal": "行业动态信号，适合纳入周度技术雷达观察。",
+          "tags": [
+            "AI"
+          ]
+        },
+        {
+          "title": "用 NVIDIA SkillSpector、LangGraph、YARA 规则、SARIF 与 CI 策略门构建高级 AI 技能安全审计流水线",
+          "url": "https://www.marktechpost.com/2026/08/04/building-an-advanced-ai-skill-security-auditing-pipeline-with-nvidia-skillspector-langgraph-yara-rules-sarif-and-ci-policy-gates",
+          "source": "MarkTechPost（RSS）",
+          "publishedAt": "2026-08-04T08:12:36.000Z",
+          "summary": "本教程演示如何用 NVIDIA SkillSpector 评估 AI 技能的安全态势，构建包含干净、风险、恶意及 MCP 示例的合成技能市场，并通过 LangGraph 检查流水线扫描每个技能。",
+          "category": "技巧观点",
+          "signal": "企业 Agent 基建信号：托管沙箱、私网连接和权限隔离正在成为 Agent 进入生产环境的关键门槛。",
+          "tags": [
+            "安全/可信",
+            "工程/基础设施"
+          ]
+        },
+        {
+          "title": "腾讯混元发布 Hy ASR 3.0 preview：真正懂上下文的语音识别",
+          "url": "https://mp.weixin.qq.com/s?__biz=MzkwODU2OTQyNQ%3D%3D&mid=2247498223&idx=1&sn=ae271ec2c72723393d3e1d8074a33205",
+          "source": "公众号：腾讯混元",
+          "publishedAt": "2026-08-04T08:12:36.000Z",
+          "summary": "腾讯混元发布新一代语音识别模型 Hy ASR 3.0 preview，基于大语言模型 Hy3 与 MoE 架构，融合高精度识别与语义理解。其在开源评测集中中文普通话 WER 3.34%、英语 WER 2.62%、粤语 WER 3.12%，并支持上下文纠错、热词注入及高噪耳语等场景。该模型已上线腾讯云 API，元宝 App 首发并免费开放。",
+          "category": "模型发布",
+          "signal": "上下文工程信号：更少 token、更准上下文正在成为搜索和 Agent 体验的核心优化点。",
+          "tags": [
+            "模型",
+            "多模态",
+            "工程/基础设施"
+          ]
+        },
+        {
           "title": "Swiftlet：在 Mac 上运行 80B 版 Qwen（内存 4.3 GB），在 iPhone 上运行 35B 版",
           "url": "https://github.com/leonickson1/Swiftlet",
           "source": "Hacker News 热门（buzzing.cc 中文翻译）",
@@ -4043,57 +4126,6 @@
           "signal": "移动编码信号：Coding Agent 正从桌面 IDE 扩展到手机端连续会话，远程协作和碎片时间处理会变重要。",
           "tags": [
             "Agent"
-          ]
-        },
-        {
-          "title": "Palantir 强劲季度后，CEO Alex Karp 称 AI 行业\"马克思主义\"",
-          "url": "https://techcrunch.com/2026/08/03/after-killer-quarter-palantir-ceo-alex-karp-calls-ai-industry-marxist",
-          "source": "TechCrunch：AI（RSS）",
-          "publishedAt": "2026-08-03T23:19:50.000Z",
-          "summary": "Palantir CEO Alex Karp 在季度股东信中警告，前沿 AI 实验室对企业过于不可信，并称其意图\"占有所谓合作伙伴的生产资料\"，带有\"马克思主义色彩\"。该公司第二季度营收 19 亿美元，同比增长 93%，利润 11 亿美元。Karp 主张 Palantir 提供模型无关的 AI 与分析软件，让企业掌控自身数据与 AI\"废气\"（提示词、编排、上下文）。",
-          "category": "技巧观点",
-          "signal": "上下文工程信号：更少 token、更准上下文正在成为搜索和 Agent 体验的核心优化点。",
-          "tags": [
-            "模型"
-          ]
-        },
-        {
-          "title": "GPT-Live实时音频新架构发布",
-          "url": "https://x.com/gdb/status/2084405421041963356",
-          "source": "X：Greg Brockman (@gdb)",
-          "publishedAt": "2026-08-03T22:25:53.000Z",
-          "summary": "GPT-Live 是一种用于实时音频的新架构和栈：\n\nGPT-Live 可以在说话的同时聆听。\n\n为了让这种体验在 ChatGPT 规模下显得自然，我们从客户端到模型重建了语音栈。\n\n这一新架构让音频持续流动，因此更深入的推理和工具使用不会打断对话。",
-          "category": "产品更新",
-          "signal": "实时语音 Agent 信号：OpenAI 把低延迟对话层与后台深度任务层拆开，语音入口不再只是聊天，而是可委托搜索、推理和操作的前台控制面。",
-          "tags": [
-            "模型",
-            "多模态",
-            "工程/基础设施"
-          ]
-        },
-        {
-          "title": "Claude Code 连接器可复用至 Artifacts",
-          "url": "https://x.com/trq212/status/2084387303959740449",
-          "source": "X：Thariq (@trq212)",
-          "publishedAt": "2026-08-03T21:13:53.000Z",
-          "summary": "我想很多人没有意识到--如果你连接了一个 Claude 连接器（例如你的 Gmail、日历、Slack 等），Claude Code 也将能够使用它们，包括在 Artifacts 中。",
-          "category": "技巧观点",
-          "signal": "办公产品化信号：AI 正从聊天入口渗透到具体文档、邮件和协作场景。",
-          "tags": [
-            "A社/Claude",
-            "模型"
-          ]
-        },
-        {
-          "title": "EA 首席战略官谈生成式 AI 如何进入可游玩的实时游戏世界",
-          "url": "https://runwayml.com/news/company-news/electronic-arts-ai-summit-2026",
-          "source": "Runway：News（网页）",
-          "publishedAt": "2026-08-03T20:12:03.229Z",
-          "summary": "EA 首席战略官 Mihir Vaidya 认为，游戏是 AI 的试验场，但生成式 AI 进入游戏面临 60 帧/秒、数千玩家同步和低延迟等严苛约束，不能只追求\"看起来真实\"，而必须\"行为正确\"。他主张采用神经符号架构，在生成能力之外保留确定性与可控性，并称\"控制是下一个前沿\"。EA 将 AI 影响分为效率、扩展和转型三个层面，其中《模拟人生》已服务超 5 亿玩家，拥有近万亿种游玩排列组合。",
-          "category": "技巧观点",
-          "signal": "行业动态信号，适合纳入周度技术雷达观察。",
-          "tags": [
-            "AI"
           ]
         }
       ],
@@ -4453,6 +4485,101 @@
     "items": [
       {
         "source": "AIHOT 精选",
+        "sourceDetail": "IT之家（RSS）",
+        "domain": "aihot.virxact.com",
+        "title": "工信部发布首部L3/L4自动驾驶系统安全要求强制性国标，2027年7月实施",
+        "url": "https://www.ithome.com/0/985/665.htm",
+        "publishedAt": "2026-08-04T11:06:29.000Z",
+        "summary": "工信部组织制定的《智能网联汽车 自动驾驶系统安全要求》（GB 44721-2026）强制性国家标准获批发布，拟于2027年7月1日起实施。这是我国首部针对L3级有条件自动驾驶和L4级高度自动驾驶系统的强制性国标，由2024年推荐性国标GB/T 44721-2024升级而来，为自动驾驶产品明确了统一的安全准入基线。",
+        "imageUrl": "https://www.google.com/s2/favicons?domain=aihot.virxact.com&sz=128",
+        "priority": 3,
+        "rank": 1,
+        "signal": "行业动态信号，适合纳入周度技术雷达观察。",
+        "interpretation": {
+          "signal": "行业动态信号，适合纳入周度技术雷达观察。",
+          "impact": "AI 生成内容和搜索结果会被系统性攻击，后续要把来源证明、反作弊和审计纳入基础架构。",
+          "action": "建议沉淀到 AI 安全清单，跟踪攻击方式、检测指标和平台级防御策略。"
+        },
+        "impact": "AI 生成内容和搜索结果会被系统性攻击，后续要把来源证明、反作弊和审计纳入基础架构。",
+        "action": "建议沉淀到 AI 安全清单，跟踪攻击方式、检测指标和平台级防御策略。",
+        "tags": [
+          "安全/可信"
+        ]
+      },
+      {
+        "source": "AIHOT 精选",
+        "sourceDetail": "MarkTechPost（RSS）",
+        "domain": "aihot.virxact.com",
+        "title": "Reflex 开源 XY：基于 Rust 的超快 Python 绘图库，可保持 1 亿点图表交互流畅",
+        "url": "https://www.marktechpost.com/2026/08/04/reflex-open-sources-xy-a-rust-backed-super-fast-python-charting-library-that-keeps-100-million-point-charts-interactive",
+        "publishedAt": "2026-08-04T08:57:47.000Z",
+        "summary": "Reflex AI 发布 Apache-2.0 许可的 Python 交互式 2D 绘图库 XY，通过 Rust 原生核心、二进制缓冲传输和 WebGL2 渲染，在 1 万至 1 亿点范围内保持约 0.08 秒的渲染时间。",
+        "imageUrl": "https://www.google.com/s2/favicons?domain=aihot.virxact.com&sz=128",
+        "priority": 3,
+        "rank": 2,
+        "signal": "行业动态信号，适合纳入周度技术雷达观察。",
+        "interpretation": {
+          "signal": "行业动态信号，适合纳入周度技术雷达观察。",
+          "impact": "这条动态适合放进周度观察池，重点看它是否会改变模型选型、产品入口或工程成本结构。",
+          "action": "建议保留原文链接，等后续出现产品实测、开发者反馈或生态跟进时再升级权重。"
+        },
+        "impact": "这条动态适合放进周度观察池，重点看它是否会改变模型选型、产品入口或工程成本结构。",
+        "action": "建议保留原文链接，等后续出现产品实测、开发者反馈或生态跟进时再升级权重。",
+        "tags": [
+          "AI"
+        ]
+      },
+      {
+        "source": "AIHOT 精选",
+        "sourceDetail": "MarkTechPost（RSS）",
+        "domain": "aihot.virxact.com",
+        "title": "用 NVIDIA SkillSpector、LangGraph、YARA 规则、SARIF 与 CI 策略门构建高级 AI 技能安全审计流水线",
+        "url": "https://www.marktechpost.com/2026/08/04/building-an-advanced-ai-skill-security-auditing-pipeline-with-nvidia-skillspector-langgraph-yara-rules-sarif-and-ci-policy-gates",
+        "publishedAt": "2026-08-04T08:12:36.000Z",
+        "summary": "本教程演示如何用 NVIDIA SkillSpector 评估 AI 技能的安全态势，构建包含干净、风险、恶意及 MCP 示例的合成技能市场，并通过 LangGraph 检查流水线扫描每个技能。",
+        "imageUrl": "https://www.google.com/s2/favicons?domain=aihot.virxact.com&sz=128",
+        "priority": 3,
+        "rank": 3,
+        "signal": "企业 Agent 基建信号：托管沙箱、私网连接和权限隔离正在成为 Agent 进入生产环境的关键门槛。",
+        "interpretation": {
+          "signal": "企业 Agent 基建信号：托管沙箱、私网连接和权限隔离正在成为 Agent 进入生产环境的关键门槛。",
+          "impact": "AI 生成内容和搜索结果会被系统性攻击，后续要把来源证明、反作弊和审计纳入基础架构。",
+          "action": "建议沉淀到 AI 安全清单，跟踪攻击方式、检测指标和平台级防御策略。"
+        },
+        "impact": "AI 生成内容和搜索结果会被系统性攻击，后续要把来源证明、反作弊和审计纳入基础架构。",
+        "action": "建议沉淀到 AI 安全清单，跟踪攻击方式、检测指标和平台级防御策略。",
+        "tags": [
+          "安全/可信",
+          "工程/基础设施"
+        ]
+      },
+      {
+        "source": "AIHOT 精选",
+        "sourceDetail": "公众号：腾讯混元",
+        "domain": "aihot.virxact.com",
+        "title": "腾讯混元发布 Hy ASR 3.0 preview：真正懂上下文的语音识别",
+        "url": "https://mp.weixin.qq.com/s?__biz=MzkwODU2OTQyNQ%3D%3D&mid=2247498223&idx=1&sn=ae271ec2c72723393d3e1d8074a33205",
+        "publishedAt": "2026-08-04T08:12:36.000Z",
+        "summary": "腾讯混元发布新一代语音识别模型 Hy ASR 3.0 preview，基于大语言模型 Hy3 与 MoE 架构，融合高精度识别与语义理解。其在开源评测集中中文普通话 WER 3.34%、英语 WER 2.62%、粤语 WER 3.12%，并支持上下文纠错、热词注入及高噪耳语等场景。该模型已上线腾讯云 API，元宝 App 首发并免费开放。",
+        "imageUrl": "https://www.google.com/s2/favicons?domain=aihot.virxact.com&sz=128",
+        "priority": 3,
+        "rank": 4,
+        "signal": "上下文工程信号：更少 token、更准上下文正在成为搜索和 Agent 体验的核心优化点。",
+        "interpretation": {
+          "signal": "上下文工程信号：更少 token、更准上下文正在成为搜索和 Agent 体验的核心优化点。",
+          "impact": "多模态生成开始从玩具效果进入专业工作流，关键评估点会变成一致性、时长、成本和可编辑性。",
+          "action": "建议收集样例和失败案例，比较一致性、可控性、生成时长和商业版权风险。"
+        },
+        "impact": "多模态生成开始从玩具效果进入专业工作流，关键评估点会变成一致性、时长、成本和可编辑性。",
+        "action": "建议收集样例和失败案例，比较一致性、可控性、生成时长和商业版权风险。",
+        "tags": [
+          "模型",
+          "多模态",
+          "工程/基础设施"
+        ]
+      },
+      {
+        "source": "AIHOT 精选",
         "sourceDetail": "Hacker News 热门（buzzing.cc 中文翻译）",
         "domain": "aihot.virxact.com",
         "title": "Swiftlet：在 Mac 上运行 80B 版 Qwen（内存 4.3 GB），在 iPhone 上运行 35B 版",
@@ -4461,7 +4588,7 @@
         "summary": "Swiftlet 是一个 Swift + Metal 运行时，可在普通 Apple 设备上运行 Qwen3-Next 和 Qwen3.5/3.6 MoE 混合模型，仅将小型稠密核心驻留内存，按需从存储流式加载路由专家权重。",
         "imageUrl": "https://www.google.com/s2/favicons?domain=aihot.virxact.com&sz=128",
         "priority": 3,
-        "rank": 1,
+        "rank": 5,
         "signal": "行业动态信号，适合纳入周度技术雷达观察。",
         "interpretation": {
           "signal": "行业动态信号，适合纳入周度技术雷达观察。",
@@ -4484,7 +4611,7 @@
         "summary": "有些人显然误解了，但 GPT-5.6 Luna 降价 80% 不是临时噱头，而是永久的。效率提升不会消失。幸运的是。",
         "imageUrl": "https://www.google.com/s2/favicons?domain=aihot.virxact.com&sz=128",
         "priority": 3,
-        "rank": 2,
+        "rank": 6,
         "signal": "模型产品化信号：GPT-5.6 把前沿推理、浏览/computer use、artifact 生成、缓存断点和多 Agent 能力打包成面向知识工作的生产套件，竞争焦点从单次 benchmark 转到可交付任务。",
         "interpretation": {
           "signal": "模型产品化信号：GPT-5.6 把前沿推理、浏览/computer use、artifact 生成、缓存断点和多 Agent 能力打包成面向知识工作的生产套件，竞争焦点从单次 benchmark 转到可交付任务。",
@@ -4507,7 +4634,7 @@
         "summary": "面壁智能联合 OpenBMB 开源全球首个支持 Stencil 自动研究、自动部署的 AI 优化系统 ForgeStencil，由 Kernel Agent 与 App Agent 闭环协作，实现从算子优化到应用集成的全自动流程。",
         "imageUrl": "https://www.google.com/s2/favicons?domain=aihot.virxact.com&sz=128",
         "priority": 3,
-        "rank": 3,
+        "rank": 7,
         "signal": "Agent 可靠性信号：小模型能否稳定完成复杂任务，越来越依赖重试、防护、上下文管理和步骤约束。",
         "interpretation": {
           "signal": "Agent 可靠性信号：小模型能否稳定完成复杂任务，越来越依赖重试、防护、上下文管理和步骤约束。",
@@ -4530,7 +4657,7 @@
         "summary": "作者以零基础身份，全程通过与Codex对话，从需求讨论、电路搭建、代码烧录到3D打印组装，5天内做出一个能提醒久坐的猫爪硬件。文中还介绍了用Agent调试宏键盘、以及OpenAI与Work Louder联名发布的Codex Micro键盘（13个机械按键，售价230美元）等案例，强调\"干中学\"的AI开发方式。",
         "imageUrl": "https://www.google.com/s2/favicons?domain=aihot.virxact.com&sz=128",
         "priority": 3,
-        "rank": 4,
+        "rank": 8,
         "signal": "移动编码信号：Coding Agent 正从桌面 IDE 扩展到手机端连续会话，远程协作和碎片时间处理会变重要。",
         "interpretation": {
           "signal": "移动编码信号：Coding Agent 正从桌面 IDE 扩展到手机端连续会话，远程协作和碎片时间处理会变重要。",
@@ -4541,101 +4668,6 @@
         "action": "建议记录可试用入口、权限模型和是否支持长会话，适合做 30 分钟产品体验验证。",
         "tags": [
           "Agent"
-        ]
-      },
-      {
-        "source": "AIHOT 精选",
-        "sourceDetail": "TechCrunch：AI（RSS）",
-        "domain": "aihot.virxact.com",
-        "title": "Palantir 强劲季度后，CEO Alex Karp 称 AI 行业\"马克思主义\"",
-        "url": "https://techcrunch.com/2026/08/03/after-killer-quarter-palantir-ceo-alex-karp-calls-ai-industry-marxist",
-        "publishedAt": "2026-08-03T23:19:50.000Z",
-        "summary": "Palantir CEO Alex Karp 在季度股东信中警告，前沿 AI 实验室对企业过于不可信，并称其意图\"占有所谓合作伙伴的生产资料\"，带有\"马克思主义色彩\"。该公司第二季度营收 19 亿美元，同比增长 93%，利润 11 亿美元。Karp 主张 Palantir 提供模型无关的 AI 与分析软件，让企业掌控自身数据与 AI\"废气\"（提示词、编排、上下文）。",
-        "imageUrl": "https://www.google.com/s2/favicons?domain=aihot.virxact.com&sz=128",
-        "priority": 3,
-        "rank": 5,
-        "signal": "上下文工程信号：更少 token、更准上下文正在成为搜索和 Agent 体验的核心优化点。",
-        "interpretation": {
-          "signal": "上下文工程信号：更少 token、更准上下文正在成为搜索和 Agent 体验的核心优化点。",
-          "impact": "这条动态适合放进周度观察池，重点看它是否会改变模型选型、产品入口或工程成本结构。",
-          "action": "建议保留原文链接，等后续出现产品实测、开发者反馈或生态跟进时再升级权重。"
-        },
-        "impact": "这条动态适合放进周度观察池，重点看它是否会改变模型选型、产品入口或工程成本结构。",
-        "action": "建议保留原文链接，等后续出现产品实测、开发者反馈或生态跟进时再升级权重。",
-        "tags": [
-          "模型"
-        ]
-      },
-      {
-        "source": "AIHOT 精选",
-        "sourceDetail": "X：Greg Brockman (@gdb)",
-        "domain": "aihot.virxact.com",
-        "title": "GPT-Live实时音频新架构发布",
-        "url": "https://x.com/gdb/status/2084405421041963356",
-        "publishedAt": "2026-08-03T22:25:53.000Z",
-        "summary": "GPT-Live 是一种用于实时音频的新架构和栈：\n\nGPT-Live 可以在说话的同时聆听。\n\n为了让这种体验在 ChatGPT 规模下显得自然，我们从客户端到模型重建了语音栈。\n\n这一新架构让音频持续流动，因此更深入的推理和工具使用不会打断对话。",
-        "imageUrl": "https://www.google.com/s2/favicons?domain=aihot.virxact.com&sz=128",
-        "priority": 3,
-        "rank": 6,
-        "signal": "实时语音 Agent 信号：OpenAI 把低延迟对话层与后台深度任务层拆开，语音入口不再只是聊天，而是可委托搜索、推理和操作的前台控制面。",
-        "interpretation": {
-          "signal": "实时语音 Agent 信号：OpenAI 把低延迟对话层与后台深度任务层拆开，语音入口不再只是聊天，而是可委托搜索、推理和操作的前台控制面。",
-          "impact": "实时语音会把 Agent 带进客服、销售、运营和个人助理场景，但也会放大误听、越权委托、隐私提示不足和后台任务不可见的问题。",
-          "action": "建议先做低风险语音 Agent 试点，强制展示后台任务状态、可撤销操作、敏感信息提示、人工接管按钮和完整 transcript 审计。"
-        },
-        "impact": "实时语音会把 Agent 带进客服、销售、运营和个人助理场景，但也会放大误听、越权委托、隐私提示不足和后台任务不可见的问题。",
-        "action": "建议先做低风险语音 Agent 试点，强制展示后台任务状态、可撤销操作、敏感信息提示、人工接管按钮和完整 transcript 审计。",
-        "tags": [
-          "模型",
-          "多模态",
-          "工程/基础设施"
-        ]
-      },
-      {
-        "source": "AIHOT 精选",
-        "sourceDetail": "X：Thariq (@trq212)",
-        "domain": "aihot.virxact.com",
-        "title": "Claude Code 连接器可复用至 Artifacts",
-        "url": "https://x.com/trq212/status/2084387303959740449",
-        "publishedAt": "2026-08-03T21:13:53.000Z",
-        "summary": "我想很多人没有意识到--如果你连接了一个 Claude 连接器（例如你的 Gmail、日历、Slack 等），Claude Code 也将能够使用它们，包括在 Artifacts 中。",
-        "imageUrl": "https://www.google.com/s2/favicons?domain=aihot.virxact.com&sz=128",
-        "priority": 3,
-        "rank": 7,
-        "signal": "办公产品化信号：AI 正从聊天入口渗透到具体文档、邮件和协作场景。",
-        "interpretation": {
-          "signal": "办公产品化信号：AI 正从聊天入口渗透到具体文档、邮件和协作场景。",
-          "impact": "Claude 生态的变化会直接影响 Agent 选型、企业采购、权限治理和安全评测，不能只按模型跑分决策。",
-          "action": "建议更新 Claude 评测清单：模型能力、Claude Code/Agent 工作流、权限隔离、审计日志和供应连续性分开验证。"
-        },
-        "impact": "Claude 生态的变化会直接影响 Agent 选型、企业采购、权限治理和安全评测，不能只按模型跑分决策。",
-        "action": "建议更新 Claude 评测清单：模型能力、Claude Code/Agent 工作流、权限隔离、审计日志和供应连续性分开验证。",
-        "tags": [
-          "A社/Claude",
-          "模型"
-        ]
-      },
-      {
-        "source": "AIHOT 精选",
-        "sourceDetail": "Runway：News（网页）",
-        "domain": "aihot.virxact.com",
-        "title": "EA 首席战略官谈生成式 AI 如何进入可游玩的实时游戏世界",
-        "url": "https://runwayml.com/news/company-news/electronic-arts-ai-summit-2026",
-        "publishedAt": "2026-08-03T20:12:03.229Z",
-        "summary": "EA 首席战略官 Mihir Vaidya 认为，游戏是 AI 的试验场，但生成式 AI 进入游戏面临 60 帧/秒、数千玩家同步和低延迟等严苛约束，不能只追求\"看起来真实\"，而必须\"行为正确\"。他主张采用神经符号架构，在生成能力之外保留确定性与可控性，并称\"控制是下一个前沿\"。EA 将 AI 影响分为效率、扩展和转型三个层面，其中《模拟人生》已服务超 5 亿玩家，拥有近万亿种游玩排列组合。",
-        "imageUrl": "https://www.google.com/s2/favicons?domain=aihot.virxact.com&sz=128",
-        "priority": 3,
-        "rank": 8,
-        "signal": "行业动态信号，适合纳入周度技术雷达观察。",
-        "interpretation": {
-          "signal": "行业动态信号，适合纳入周度技术雷达观察。",
-          "impact": "这条动态适合放进周度观察池，重点看它是否会改变模型选型、产品入口或工程成本结构。",
-          "action": "建议保留原文链接，等后续出现产品实测、开发者反馈或生态跟进时再升级权重。"
-        },
-        "impact": "这条动态适合放进周度观察池，重点看它是否会改变模型选型、产品入口或工程成本结构。",
-        "action": "建议保留原文链接，等后续出现产品实测、开发者反馈或生态跟进时再升级权重。",
-        "tags": [
-          "AI"
         ]
       },
       {
