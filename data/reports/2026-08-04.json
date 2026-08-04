@@ -1,6 +1,6 @@
 {
   "date": "2026-08-04",
-  "generatedAt": "2026-08-04T11:16:27.761Z",
+  "generatedAt": "2026-08-04T14:18:45.544Z",
   "source": {
     "provider": "GitHub Trending daily + AIHOT + official AI feeds + Anthropic official pages + big-tech engineering blogs + Codex manual deep rewrite",
     "query": "pushed:>=2026-07-28 stars:>100 archived:false",
@@ -9,7 +9,7 @@
     "language": "all",
     "editorialReview": {
       "method": "script refresh + Codex multi-source editorial review",
-      "reviewedAt": "2026-08-04T11:16:27.762Z",
+      "reviewedAt": "2026-08-04T14:18:45.544Z",
       "reportDate": "2026-08-04",
       "focus": [
         "GitHub Trending daily metadata, repo README evidence and adoption risk review",
@@ -91,7 +91,7 @@
       "开源项目解读已按“架构机制 -> 适用团队 -> 落地路径 -> 生产风险 -> 决策问题 -> 观察信号”展开；本轮更适合旁路 spike 的入口是：进入观察/试点池：先选择一个低敏项目，把历史任务、团队规范和代码索引导入只读记忆库，验证检索命中、权限边界和过期清理。；先保留人工复核、指标记录和回滚路径。",
       "搜广推收录 22 条工程/研究信号，覆盖 Google Research、Meta Engineering、Amazon Science、Netflix TechBlog、Pinterest Engineering、Airbnb Engineering、Spotify Engineering、Salesforce Engineering、Dropbox Tech、Meituan Tech；重点从「GEM Training: How Meta Doubled the Efficiency of Its LLM-Scale Ads Recommendation Foundation Model」延伸到广告排序、实时上下文、企业搜索 relevance judge、模型生命周期图和工业搜索属性推荐。",
       "A 社覆盖 18 条官方 News/Research/Engineering 动态，最新重点是「Investigating three real-world incidents in our cybersecurity evaluations」；安全研究主线继续观察「An off switch for dual use knowledge in AI models」，Claude Code 相关信号包括 Investigating three real-world incidents in our cybersecurity evaluations、Bringing MCP 2026-07-28 to Claude、Claude Managed Agents add effort, lifecycle webhooks and session deltas，评估动作应拆成模型能力、权限隔离、长任务恢复、团队协作记忆、预算上限和审计边界。",
-      "AIHOT/官方 AI 新闻共 20 条，其中 AIHOT 8 条；今日先看「工信部发布首部L3/L4自动驾驶系统安全要求强制性国标，2027年7月实施」，所有新闻统一写成“信号 -> 影响 -> 动作”，动作聚焦评测回放、预算治理、工具白名单、权限审计和真实工作流验证。"
+      "AIHOT/官方 AI 新闻共 20 条，其中 AIHOT 8 条；今日先看「Cloudflare 如何用软件工厂将 Astro 的 GitHub issue 数降至零」，所有新闻统一写成“信号 -> 影响 -> 动作”，动作聚焦评测回放、预算治理、工具白名单、权限审计和真实工作流验证。"
     ]
   },
   "items": [
@@ -105,10 +105,10 @@
         "visualUrl": "https://opengraph.githubassets.com/20260804/TencentCloud/TencentDB-Agent-Memory",
         "url": "https://github.com/TencentCloud/TencentDB-Agent-Memory",
         "description": "TencentDB Agent Memory is a team-level memory hub for AI Agents — turning conversations, docs, and code into four reusable memory assets (Chat Memory, Skill, LLM-Wiki, Code-Graph) that are governed, shared, and equipped across agents and frameworks.",
-        "stars": 12687,
-        "starsToday": 1090,
-        "forks": 1205,
-        "openIssues": 487,
+        "stars": 12960,
+        "starsToday": 1138,
+        "forks": 1228,
+        "openIssues": 503,
         "language": "TypeScript",
         "topics": [
           "agent",
@@ -138,7 +138,7 @@
         "method": "codex-research-refresh",
         "category": "团队级 Agent Memory / Chat-Skill-Wiki-CodeGraph 治理层",
         "oneLiner": "TencentDB Agent Memory is a team-level memory hub for AI Agents — turning conversations, docs, and code into four reusable memory assets (Chat Memory, Skill, LLM-Wiki, Code-Graph) that are governed, shared, and equipped across agents and frameworks.；关键看 把 conversation、docs、code 转成 Chat Memory、Skill、LLM-Wiki、Code-Graph 四类资产，并通过治理、装备和共享机制接入多 Agent/框架。 是否能被小范围验证。",
-        "whyItMatters": "TencentCloud/TencentDB-Agent-Memory 值得看，是因为 AI 项目真正的分水岭已经从“能跑 demo”转向“能被治理、能接工具、能失败恢复”。当前 12.7K stars / 1.2K forks，维护非常活跃，足够进入 Agent 工程雷达。 这次更新更值得关注的是其可迁移机制：把 conversation、docs、code 转成 Chat Memory、Skill、LLM-Wiki、Code-Graph 四类资产，并通过治理、装备和共享机制接入多 Agent/框架。 能否被拆成小样本验证，而不是把项目整体搬进生产。",
+        "whyItMatters": "TencentCloud/TencentDB-Agent-Memory 值得看，是因为 AI 项目真正的分水岭已经从“能跑 demo”转向“能被治理、能接工具、能失败恢复”。当前 13K stars / 1.2K forks，维护非常活跃，足够进入 Agent 工程雷达。 这次更新更值得关注的是其可迁移机制：把 conversation、docs、code 转成 Chat Memory、Skill、LLM-Wiki、Code-Graph 四类资产，并通过治理、装备和共享机制接入多 Agent/框架。 能否被拆成小样本验证，而不是把项目整体搬进生产。",
         "engineeringRead": "TypeScript · API/SDK 接入。建议按“入口示例 -> 数据/配置 -> 失败处理 -> CI/release -> issue 反例”的顺序读；重点回答 它解决的是「团队使用多个 Agent 后，对话记忆、技能、文档知识和代码图谱分散在个人上下文里，无法共享、治理或跨工具复用。」的主矛盾，还是只会给现有流程增加新的维护面？",
         "architectureSignals": [
           "架构机制：把 conversation、docs、code 转成 Chat Memory、Skill、LLM-Wiki、Code-Graph 四类资产，并通过治理、装备和共享机制接入多 Agent/框架。；阅读时把 TypeScript 代码入口、数据/配置形态、自动化脚本和边界条件连起来看，而不是只看 README 的安装示例。",
@@ -194,7 +194,7 @@
         },
         "diagram": {
           "title": "TencentDB-Agent-Memory 工业级采用图解",
-          "caption": "团队级 Agent Memory / Chat-Skill-Wiki-CodeGraph 治理层 · TypeScript · 12.7K stars",
+          "caption": "团队级 Agent Memory / Chat-Skill-Wiki-CodeGraph 治理层 · TypeScript · 13K stars",
           "summary": "用 把 conversation、docs、code 转成 Chat Memory、Skill、LLM-Wiki、Code-Graph 四类资产，并通过治理、装备和共享机制接入多 Agent/框架。 解决 团队使用多个 Agent 后，对话记忆、技能、文档知识和代码图谱分散在个人上下文里，无法共享、治理或跨工具复用。，先经由 先选择一个低敏项目，把历史任务、团队规范和代码索引导入只读记忆库，验证检索命中、权限边界和过期清理。 验证 上下文命中率、重复解释次数、权限违规拦截、过期记忆清理、跨 Agent 复用次数、代码图谱错误引用率，再决定是否扩大。",
           "nodes": [
             {
@@ -231,7 +231,7 @@
             "metrics": [
               {
                 "label": "Stars",
-                "value": "12.7K",
+                "value": "13K",
                 "note": "社区关注"
               },
               {
@@ -241,7 +241,7 @@
               },
               {
                 "label": "Issues",
-                "value": "487",
+                "value": "503",
                 "note": "维护压力"
               },
               {
@@ -304,10 +304,10 @@
         "maturity": {
           "community": 90,
           "maintenance": 97,
-          "production": 91,
+          "production": 81,
           "complexity": 67
         },
-        "score": 95
+        "score": 91
       },
       "evidence": {
         "readmeExcerpt": "<div align=\"center\" <img src=\"./assets/images/logo.png\" alt=\"TencentDB Agent Memory\" width=\"880\" / Agents remember. Humans innovate. <a href=\"https://trendshift.io/repositories/29310?utm source=repository badge&amp;utm medium=badge&amp;utm campaign=badge repository 29310\" target=\" blank\" rel=\"noopener noreferrer\" <img src=\"https://trendshift.io/api/badge/repositories/29310\" alt=\"TencentCloud%2FTencentDB Agent Memory Trendshift\" width=\"250\" height=\"55\"/ </a Installation · What is it? · Team Play · Technical Implementation · Benchmark English · 简体中文 </div Latest: Team Memory Beta is evolving quickly — install it and start exploring in minutes. <td <video src=\"https://github.com/user attachments/assets/efb1a808 1f86 4cfe 802c f7453f7ca938\" width=\"100%\" controls autoplay loop muted playsinline </video </td Installation Start all three services in one go ( memory core + memory hub + proxy ): ...",
@@ -324,9 +324,9 @@
         "visualUrl": "https://opengraph.githubassets.com/20260804/zhaoxuya520/reverse-skill",
         "url": "https://github.com/zhaoxuya520/reverse-skill",
         "description": "Reverse Engineering / Authorized Penetration Testing / Security Research Skill Router Pack AI-powered routing + On-demand toolchain bootstrapping + Self-evolving knowledge base Supports Claude Code, Kiro, Cursor, Cline, and other AI coding clients 逆向/渗透/安全技能路由包 - AI 自动路由 + 按需自举工具链 + 自动进化经验库 | 支持 Claude Code / Kiro / Cursor / Cline 等代码 AI 客户端",
-        "stars": 17001,
-        "starsToday": 2446,
-        "forks": 2361,
+        "stars": 17315,
+        "starsToday": 2310,
+        "forks": 2403,
         "openIssues": 15,
         "language": "PowerShell",
         "topics": [],
@@ -346,7 +346,7 @@
         "method": "codex-research-refresh",
         "category": "授权安全研究 Skill / AI 工具路由",
         "oneLiner": "Reverse Engineering / Authorized Penetration Testing / Security Research Skill Router Pack AI-powered routing + On-demand toolchain bootstrapping + Self-evolving knowledge base Supports Claude Code, Kiro, Cursor, Cline, and other AI coding clients 逆向/渗透/安全技能路由包 - AI 自动路由 + 按需自举工具链 + 自动进化经验库 | 支持 Claude Code / Kiro / Cursor / Cline 等代码 AI 客户端；关键看 以 skill router 组织逆向、授权渗透、安全研究流程，按任务加载工具链、知识库和操作边界，支持 Claude Code、Kiro、Cursor、Cline 等客户端。 是否能被小范围验证。",
-        "whyItMatters": "zhaoxuya520/reverse-skill 值得看，是因为 AI 项目真正的分水岭已经从“能跑 demo”转向“能被治理、能接工具、能失败恢复”。当前 17K stars / 2.4K forks，维护非常活跃，足够进入 Agent 工程雷达。 这次更新更值得关注的是其可迁移机制：以 skill router 组织逆向、授权渗透、安全研究流程，按任务加载工具链、知识库和操作边界，支持 Claude Code、Kiro、Cursor、Cline 等客户端。 能否被拆成小样本验证，而不是把项目整体搬进生产。",
+        "whyItMatters": "zhaoxuya520/reverse-skill 值得看，是因为 AI 项目真正的分水岭已经从“能跑 demo”转向“能被治理、能接工具、能失败恢复”。当前 17.3K stars / 2.4K forks，维护非常活跃，足够进入 Agent 工程雷达。 这次更新更值得关注的是其可迁移机制：以 skill router 组织逆向、授权渗透、安全研究流程，按任务加载工具链、知识库和操作边界，支持 Claude Code、Kiro、Cursor、Cline 等客户端。 能否被拆成小样本验证，而不是把项目整体搬进生产。",
         "engineeringRead": "PowerShell · 容器化部署。建议按“入口示例 -> 数据/配置 -> 失败处理 -> CI/release -> issue 反例”的顺序读；重点回答 它解决的是「安全研究、逆向和渗透任务需要大量工具、检查清单和上下文切换，直接让 Agent 执行又容易越权或误用。」的主矛盾，还是只会给现有流程增加新的维护面？",
         "architectureSignals": [
           "架构机制：以 skill router 组织逆向、授权渗透、安全研究流程，按任务加载工具链、知识库和操作边界，支持 Claude Code、Kiro、Cursor、Cline 等客户端。；阅读时把 PowerShell 代码入口、数据/配置形态、自动化脚本和边界条件连起来看，而不是只看 README 的安装示例。",
@@ -402,7 +402,7 @@
         },
         "diagram": {
           "title": "reverse-skill 工业级采用图解",
-          "caption": "授权安全研究 Skill / AI 工具路由 · PowerShell · 17K stars",
+          "caption": "授权安全研究 Skill / AI 工具路由 · PowerShell · 17.3K stars",
           "summary": "用 以 skill router 组织逆向、授权渗透、安全研究流程，按任务加载工具链、知识库和操作边界，支持 Claude Code、Kiro、Cursor、Cline 等客户端。 解决 安全研究、逆向和渗透任务需要大量工具、检查清单和上下文切换，直接让 Agent 执行又容易越权或误用。，先经由 只在授权靶场、CTF、内部测试资产上试用，先限定只读分析和报告生成，记录每次工具调用与人工确认点。 验证 任务定位时间、误报率、工具调用成功率、越权拦截、人工复核通过率、证据引用完整性和审计日志覆盖，再决定是否扩大。",
           "nodes": [
             {
@@ -439,7 +439,7 @@
             "metrics": [
               {
                 "label": "Stars",
-                "value": "17K",
+                "value": "17.3K",
                 "note": "社区关注"
               },
               {
@@ -532,10 +532,10 @@
         "visualUrl": "https://opengraph.githubassets.com/20260804/firecrawl/pdf-inspector",
         "url": "https://github.com/firecrawl/pdf-inspector",
         "description": "Fast Rust library for PDF inspection, classification, and text extraction. Intelligently detects scanned vs text-based PDFs to enable smart routing decisions.",
-        "stars": 9183,
-        "starsToday": 1699,
-        "forks": 610,
-        "openIssues": 63,
+        "stars": 9439,
+        "starsToday": 2524,
+        "forks": 622,
+        "openIssues": 68,
         "language": "Rust",
         "topics": [
           "markdown",
@@ -563,7 +563,7 @@
         "method": "codex-research-refresh",
         "category": "PDF 文档路由 / Rust + WASM 解析基础设施",
         "oneLiner": "Fast Rust library for PDF inspection, classification, and text extraction. Intelligently detects scanned vs text-based PDFs to enable smart routing decisions.；关键看 Rust 核心快速采样 PDF content stream，判断 text-based、scanned、image-based 或 mixed，并提供位置感知文本抽取、Python/Node/WASM 绑定和 OCR 路由置信度。 是否能被小范围验证。",
-        "whyItMatters": "firecrawl/pdf-inspector 处在 快速扩散项目 区间：9.2K stars / 610 forks，维护非常活跃。README 把重点放在「pdf inspector」，适合判断它是否能在 构建、调试、交付或依赖管理的效率瓶颈 上形成真实工程收益。 这次更新更值得关注的是其可迁移机制：Rust 核心快速采样 PDF content stream，判断 text-based、scanned、image-based 或 mixed，并提供位置感知文本抽取、Python/Node/WASM 绑定和 OCR 路由置信度。 能否被拆成小样本验证，而不是把项目整体搬进生产。",
+        "whyItMatters": "firecrawl/pdf-inspector 处在 快速扩散项目 区间：9.4K stars / 622 forks，维护非常活跃。README 把重点放在「pdf inspector」，适合判断它是否能在 构建、调试、交付或依赖管理的效率瓶颈 上形成真实工程收益。 这次更新更值得关注的是其可迁移机制：Rust 核心快速采样 PDF content stream，判断 text-based、scanned、image-based 或 mixed，并提供位置感知文本抽取、Python/Node/WASM 绑定和 OCR 路由置信度。 能否被拆成小样本验证，而不是把项目整体搬进生产。",
         "engineeringRead": "Rust · Node 包/前端工程。建议按“入口示例 -> 数据/配置 -> 失败处理 -> CI/release -> issue 反例”的顺序读；重点回答 它解决的是「文档处理和 RAG 管线经常把所有 PDF 都送进 OCR，导致成本、延迟和隐私面扩大，同时扫描件与文本 PDF 的处理路径混杂。」的主矛盾，还是只会给现有流程增加新的维护面？",
         "architectureSignals": [
           "架构机制：Rust 核心快速采样 PDF content stream，判断 text-based、scanned、image-based 或 mixed，并提供位置感知文本抽取、Python/Node/WASM 绑定和 OCR 路由置信度。；阅读时把 Rust 代码入口、数据/配置形态、自动化脚本和边界条件连起来看，而不是只看 README 的安装示例。",
@@ -619,7 +619,7 @@
         },
         "diagram": {
           "title": "pdf-inspector 工业级采用图解",
-          "caption": "PDF 文档路由 / Rust + WASM 解析基础设施 · Rust · 9.2K stars",
+          "caption": "PDF 文档路由 / Rust + WASM 解析基础设施 · Rust · 9.4K stars",
           "summary": "用 Rust 核心快速采样 PDF content stream，判断 text-based、scanned、image-based 或 mixed，并提供位置感知文本抽取、Python/Node/WASM 绑定和 OCR 路由置信度。 解决 文档处理和 RAG 管线经常把所有 PDF 都送进 OCR，导致成本、延迟和隐私面扩大，同时扫描件与文本 PDF 的处理路径混杂。，先经由 选一批真实但低敏 PDF 离线评测，先只做分类和文本抽取旁路，不覆盖现有 OCR/RAG 主链路。 验证 分类准确率、误跳 OCR 率、抽取耗时、坐标保真、WASM 包体/性能、异常 PDF 崩溃率和人工校验成本，再决定是否扩大。",
           "nodes": [
             {
@@ -656,17 +656,17 @@
             "metrics": [
               {
                 "label": "Stars",
-                "value": "9.2K",
+                "value": "9.4K",
                 "note": "社区关注"
               },
               {
                 "label": "Forks",
-                "value": "610",
+                "value": "622",
                 "note": "二次采用"
               },
               {
                 "label": "Issues",
-                "value": "63",
+                "value": "68",
                 "note": "维护压力"
               },
               {
@@ -749,9 +749,9 @@
         "visualUrl": "https://opengraph.githubassets.com/20260804/uber/ADR",
         "url": "https://github.com/uber/ADR",
         "description": "ADR secures enterprise AI agents through observability, security benchmarking, and threat detection. Deployed at Uber.",
-        "stars": 497,
+        "stars": 556,
         "starsToday": 140,
-        "forks": 59,
+        "forks": 63,
         "openIssues": 7,
         "language": "Python",
         "topics": [
@@ -780,7 +780,7 @@
         "method": "codex-research-refresh",
         "category": "AI Agent / LLM 工程",
         "oneLiner": "ADR secures enterprise AI agents through observability, security benchmarking, and threat detection. Deployed at Uber.；关键看工具边界、上下文持久化、权限和失败接管是否可治理。",
-        "whyItMatters": "uber/ADR 值得看，是因为 AI 项目真正的分水岭已经从“能跑 demo”转向“能被治理、能接工具、能失败恢复”。当前 497 stars / 59 forks，维护非常活跃，足够进入 Agent 工程雷达。 这次更新更值得关注的是其可迁移机制：模型接口、工具协议、上下文管理或推理工作流 能否被拆成小样本验证，而不是把项目整体搬进生产。",
+        "whyItMatters": "uber/ADR 值得看，是因为 AI 项目真正的分水岭已经从“能跑 demo”转向“能被治理、能接工具、能失败恢复”。当前 556 stars / 63 forks，维护非常活跃，足够进入 Agent 工程雷达。 这次更新更值得关注的是其可迁移机制：模型接口、工具协议、上下文管理或推理工作流 能否被拆成小样本验证，而不是把项目整体搬进生产。",
         "engineeringRead": "Python · Python 包/脚本。建议按“入口示例 -> 数据/配置 -> 失败处理 -> CI/release -> issue 反例”的顺序读；重点回答 它解决的是「AI 应用编排、工具接入或模型调用复杂度」的主矛盾，还是只会给现有流程增加新的维护面？",
         "architectureSignals": [
           "架构机制：模型接口、工具协议、上下文管理或推理工作流；阅读时把 Python 代码入口、数据/配置形态、自动化脚本和边界条件连起来看，而不是只看 README 的安装示例。",
@@ -836,7 +836,7 @@
         },
         "diagram": {
           "title": "ADR 工业级采用图解",
-          "caption": "AI Agent / LLM 工程 · Python · 497 stars",
+          "caption": "AI Agent / LLM 工程 · Python · 556 stars",
           "summary": "用 模型接口、工具协议、上下文管理或推理工作流 解决 AI 应用编排、工具接入或模型调用复杂度，先经由 内部效率工具或旁路助手 验证 任务完成率、人工接管率、单次任务成本，再决定是否扩大。",
           "nodes": [
             {
@@ -873,12 +873,12 @@
             "metrics": [
               {
                 "label": "Stars",
-                "value": "497",
+                "value": "556",
                 "note": "社区关注"
               },
               {
                 "label": "Forks",
-                "value": "59",
+                "value": "63",
                 "note": "二次采用"
               },
               {
@@ -944,7 +944,7 @@
           }
         },
         "maturity": {
-          "community": 59,
+          "community": 60,
           "maintenance": 97,
           "production": 78,
           "complexity": 55
@@ -966,9 +966,9 @@
         "visualUrl": "https://opengraph.githubassets.com/20260804/obra/superpowers",
         "url": "https://github.com/obra/superpowers",
         "description": "An agentic skills framework & software development methodology that works.",
-        "stars": 266035,
+        "stars": 266161,
         "starsToday": 617,
-        "forks": 23787,
+        "forks": 23796,
         "openIssues": 329,
         "language": "Shell",
         "topics": [
@@ -997,7 +997,7 @@
         "method": "codex-research-refresh",
         "category": "Agentic 软件工程方法 / 技能框架",
         "oneLiner": "An agentic skills framework & software development methodology that works.；关键看 技能文件、强制流程、任务分解、验证清单和可迁移的工程方法约束 是否能被小范围验证。",
-        "whyItMatters": "obra/superpowers 值得看，是因为 AI 项目真正的分水岭已经从“能跑 demo”转向“能被治理、能接工具、能失败恢复”。当前 266K stars / 23.8K forks，维护非常活跃，足够进入 Agent 工程雷达。 这次更新更值得关注的是其可迁移机制：技能文件、强制流程、任务分解、验证清单和可迁移的工程方法约束 能否被拆成小样本验证，而不是把项目整体搬进生产。",
+        "whyItMatters": "obra/superpowers 值得看，是因为 AI 项目真正的分水岭已经从“能跑 demo”转向“能被治理、能接工具、能失败恢复”。当前 266.2K stars / 23.8K forks，维护非常活跃，足够进入 Agent 工程雷达。 这次更新更值得关注的是其可迁移机制：技能文件、强制流程、任务分解、验证清单和可迁移的工程方法约束 能否被拆成小样本验证，而不是把项目整体搬进生产。",
         "engineeringRead": "Shell · 阅读型或源码集成。建议按“入口示例 -> 数据/配置 -> 失败处理 -> CI/release -> issue 反例”的顺序读；重点回答 它解决的是「团队把 AI 编码当聊天工具使用，缺少可复用流程、检查点和质量门禁」的主矛盾，还是只会给现有流程增加新的维护面？",
         "architectureSignals": [
           "架构机制：技能文件、强制流程、任务分解、验证清单和可迁移的工程方法约束；阅读时把 Shell 代码入口、数据/配置形态、自动化脚本和边界条件连起来看，而不是只看 README 的安装示例。",
@@ -1053,7 +1053,7 @@
         },
         "diagram": {
           "title": "superpowers 工业级采用图解",
-          "caption": "Agentic 软件工程方法 / 技能框架 · Shell · 266K stars",
+          "caption": "Agentic 软件工程方法 / 技能框架 · Shell · 266.2K stars",
           "summary": "用 技能文件、强制流程、任务分解、验证清单和可迁移的工程方法约束 解决 团队把 AI 编码当聊天工具使用，缺少可复用流程、检查点和质量门禁，先经由 挑一个低风险维护任务，把调研、实现、验证、复盘写成技能并在两名工程师间复用 验证 返工率、漏测率、任务交接成本、技能复用次数、review 缺陷密度，再决定是否扩大。",
           "nodes": [
             {
@@ -1090,7 +1090,7 @@
             "metrics": [
               {
                 "label": "Stars",
-                "value": "266K",
+                "value": "266.2K",
                 "note": "社区关注"
               },
               {
@@ -1183,9 +1183,9 @@
         "visualUrl": "https://opengraph.githubassets.com/20260804/microsoft/generative-ai-for-beginners",
         "url": "https://github.com/microsoft/generative-ai-for-beginners",
         "description": "21 Lessons, Get Started Building with Generative AI ",
-        "stars": 115979,
-        "starsToday": 775,
-        "forks": 61507,
+        "stars": 116063,
+        "starsToday": 784,
+        "forks": 61525,
         "openIssues": 16,
         "language": "Jupyter Notebook",
         "topics": [
@@ -1222,7 +1222,7 @@
         "method": "codex-research-refresh",
         "category": "学习平台 / 内容社区",
         "oneLiner": "21 Lessons, Get Started Building with Generative AI ；关键看内容 schema、评测、翻译和社区审校如何形成长期闭环。",
-        "whyItMatters": "microsoft/generative-ai-for-beginners 的热度来自“可持续维护的公共资料面”：116K stars / 61.5K forks，维护非常活跃。README 把重点放在「🌐 Multi Language Support」，说明它的价值更多在分类、治理和更新节奏，而不是某个单点技术实现。 这次更新更值得关注的是其可迁移机制：内容结构、贡献流程、质量校验和社区运营 能否被拆成小样本验证，而不是把项目整体搬进生产。",
+        "whyItMatters": "microsoft/generative-ai-for-beginners 的热度来自“可持续维护的公共资料面”：116.1K stars / 61.5K forks，维护非常活跃。README 把重点放在「🌐 Multi Language Support」，说明它的价值更多在分类、治理和更新节奏，而不是某个单点技术实现。 这次更新更值得关注的是其可迁移机制：内容结构、贡献流程、质量校验和社区运营 能否被拆成小样本验证，而不是把项目整体搬进生产。",
         "engineeringRead": "Jupyter Notebook · API/SDK 接入。建议按“入口示例 -> 数据/配置 -> 失败处理 -> CI/release -> issue 反例”的顺序读；重点回答 它解决的是「团队培训、知识库沉淀或学习路径设计」的主矛盾，还是只会给现有流程增加新的维护面？",
         "architectureSignals": [
           "架构机制：内容结构、贡献流程、质量校验和社区运营；阅读时把 Jupyter Notebook 代码入口、数据/配置形态、自动化脚本和边界条件连起来看，而不是只看 README 的安装示例。",
@@ -1278,7 +1278,7 @@
         },
         "diagram": {
           "title": "generative-ai-for-beginners 工业级采用图解",
-          "caption": "学习平台 / 内容社区 · Jupyter Notebook · 116K stars",
+          "caption": "学习平台 / 内容社区 · Jupyter Notebook · 116.1K stars",
           "summary": "用 内容结构、贡献流程、质量校验和社区运营 解决 团队培训、知识库沉淀或学习路径设计，先经由 内部培训材料、学习路径或知识库导航 验证 内容更新频率、贡献者响应、目录可维护性，再决定是否扩大。",
           "nodes": [
             {
@@ -1315,7 +1315,7 @@
             "metrics": [
               {
                 "label": "Stars",
-                "value": "116K",
+                "value": "116.1K",
                 "note": "社区关注"
               },
               {
@@ -1408,7 +1408,7 @@
         "visualUrl": "https://opengraph.githubassets.com/20260804/cypress-io/cypress",
         "url": "https://github.com/cypress-io/cypress",
         "description": "Fast, easy and reliable testing for anything that runs in a browser.",
-        "stars": 50660,
+        "stars": 50692,
         "starsToday": 6,
         "forks": 3621,
         "openIssues": 1089,
@@ -1429,7 +1429,7 @@
           "vue-testing-library"
         ],
         "license": "MIT",
-        "pushedAt": "2026-08-04T09:03:02Z",
+        "pushedAt": "2026-08-04T13:08:01Z",
         "createdAt": "2015-03-04T00:46:28Z",
         "languages": {
           "TypeScript": 12554372,
@@ -1635,10 +1635,10 @@
         "visualUrl": "https://opengraph.githubassets.com/20260804/lyogavin/airllm",
         "url": "https://github.com/lyogavin/airllm",
         "description": "AirLLM 70B inference with single 4GB GPU",
-        "stars": 27919,
-        "starsToday": 1085,
-        "forks": 3026,
-        "openIssues": 124,
+        "stars": 28036,
+        "starsToday": 1716,
+        "forks": 3036,
+        "openIssues": 125,
         "language": "Jupyter Notebook",
         "topics": [
           "chinese-llm",
@@ -1668,7 +1668,7 @@
         "method": "codex-research-refresh",
         "category": "低显存大模型推理 / 本地 LLM 实验",
         "oneLiner": "AirLLM 70B inference with single 4GB GPU；关键看 通过权重分块、显存/内存/磁盘分层加载、MoE expert streaming 和按需卸载，把一次完整推理拆成可在小显存设备上串行执行的步骤。 是否能被小范围验证。",
-        "whyItMatters": "lyogavin/airllm 值得看，是因为 AI 项目真正的分水岭已经从“能跑 demo”转向“能被治理、能接工具、能失败恢复”。当前 27.9K stars / 3K forks，近期仍在活跃迭代，足够进入 Agent 工程雷达。 这次更新更值得关注的是其可迁移机制：通过权重分块、显存/内存/磁盘分层加载、MoE expert streaming 和按需卸载，把一次完整推理拆成可在小显存设备上串行执行的步骤。 能否被拆成小样本验证，而不是把项目整体搬进生产。",
+        "whyItMatters": "lyogavin/airllm 值得看，是因为 AI 项目真正的分水岭已经从“能跑 demo”转向“能被治理、能接工具、能失败恢复”。当前 28K stars / 3K forks，近期仍在活跃迭代，足够进入 Agent 工程雷达。 这次更新更值得关注的是其可迁移机制：通过权重分块、显存/内存/磁盘分层加载、MoE expert streaming 和按需卸载，把一次完整推理拆成可在小显存设备上串行执行的步骤。 能否被拆成小样本验证，而不是把项目整体搬进生产。",
         "engineeringRead": "Jupyter Notebook · Python 包/脚本。建议按“入口示例 -> 数据/配置 -> 失败处理 -> CI/release -> issue 反例”的顺序读；重点回答 它解决的是「团队想在消费级 GPU、边缘机器或成本敏感环境里试跑 70B+ 模型，但常规推理栈要求大显存、多卡或复杂量化。」的主矛盾，还是只会给现有流程增加新的维护面？",
         "architectureSignals": [
           "架构机制：通过权重分块、显存/内存/磁盘分层加载、MoE expert streaming 和按需卸载，把一次完整推理拆成可在小显存设备上串行执行的步骤。；阅读时把 Jupyter Notebook 代码入口、数据/配置形态、自动化脚本和边界条件连起来看，而不是只看 README 的安装示例。",
@@ -1724,7 +1724,7 @@
         },
         "diagram": {
           "title": "airllm 工业级采用图解",
-          "caption": "低显存大模型推理 / 本地 LLM 实验 · Jupyter Notebook · 27.9K stars",
+          "caption": "低显存大模型推理 / 本地 LLM 实验 · Jupyter Notebook · 28K stars",
           "summary": "用 通过权重分块、显存/内存/磁盘分层加载、MoE expert streaming 和按需卸载，把一次完整推理拆成可在小显存设备上串行执行的步骤。 解决 团队想在消费级 GPU、边缘机器或成本敏感环境里试跑 70B+ 模型，但常规推理栈要求大显存、多卡或复杂量化。，先经由 用固定 prompt 集和目标模型跑离线基准，记录 TTFT、tokens/s、峰值内存、磁盘 I/O、质量回归和失败样本，再决定是否继续投入。 验证 TTFT、tokens/s、峰值显存/内存、磁盘吞吐、长上下文稳定性、质量回归、单位任务成本和 P95/P99 延迟，再决定是否扩大。",
           "nodes": [
             {
@@ -1761,7 +1761,7 @@
             "metrics": [
               {
                 "label": "Stars",
-                "value": "27.9K",
+                "value": "28K",
                 "note": "社区关注"
               },
               {
@@ -1771,7 +1771,7 @@
               },
               {
                 "label": "Issues",
-                "value": "124",
+                "value": "125",
                 "note": "维护压力"
               },
               {
@@ -1833,11 +1833,11 @@
         },
         "maturity": {
           "community": 98,
-          "maintenance": 82,
-          "production": 88,
+          "maintenance": 79,
+          "production": 87,
           "complexity": 55
         },
-        "score": 90
+        "score": 89
       },
       "evidence": {
         "readmeExcerpt": "Quickstart Configurations MacOS Example notebooks FAQ AirLLM dramatically reduces inference memory usage, letting 70B large language models run on a single 4GB GPU card — without quantization, distillation, or pruning. You can even run 405B Llama 3.1 on 8GB , DeepSeek V3 (671B) on 12GB , and Kimi K3 (2.8T) — the largest open source model released to date — on under 4GB , because sparse MoE models stream one expert at a time rather than a whole layer. <a href=\"https://github.com/lyogavin/airllm/stargazers\" </a AI Agents Recommendation: Best AI Game Sprite Generator Best AI Facial Expression Editor Bloome — build & run AI agent teams in the cloud, zero setup Updates [2026/07] Kimi K3 (2.8T) support: the largest open source model runs on a single card in 3.72GB of VRAM, measured end to end on one RTX 6000 Ada. Per expert streaming loads only the experts a token actually routes to. K3 brings...",
@@ -1854,10 +1854,10 @@
         "visualUrl": "https://opengraph.githubassets.com/20260804/webpack/webpack",
         "url": "https://github.com/webpack/webpack",
         "description": "A bundler for javascript and friends. Packs many modules into a few bundled assets. Code Splitting allows for loading parts of the application on demand. Through \"loaders\", modules can be CommonJs, AMD, ES6 modules, CSS, Images, JSON, Coffeescript, LESS, ... and your custom stuff.",
-        "stars": 65883,
+        "stars": 65893,
         "starsToday": 8,
-        "forks": 9520,
-        "openIssues": 143,
+        "forks": 9521,
+        "openIssues": 140,
         "language": "JavaScript",
         "topics": [
           "amd",
@@ -1878,11 +1878,11 @@
           "webpack"
         ],
         "license": "MIT",
-        "pushedAt": "2026-08-04T11:13:01Z",
+        "pushedAt": "2026-08-04T14:17:12Z",
         "createdAt": "2012-03-10T10:08:14Z",
         "languages": {
-          "JavaScript": 12005840,
-          "CSS": 370302,
+          "JavaScript": 12050501,
+          "CSS": 371358,
           "HTML": 86520,
           "TypeScript": 18794,
           "WebAssembly": 14810,
@@ -2000,7 +2000,7 @@
               },
               {
                 "label": "Issues",
-                "value": "143",
+                "value": "140",
                 "note": "维护压力"
               },
               {
@@ -2083,9 +2083,9 @@
         "visualUrl": "https://opengraph.githubassets.com/20260804/gabime/spdlog",
         "url": "https://github.com/gabime/spdlog",
         "description": "Fast C++ logging library.",
-        "stars": 29342,
+        "stars": 29350,
         "starsToday": 9,
-        "forks": 5365,
+        "forks": 5366,
         "openIssues": 46,
         "language": "C++",
         "topics": [
@@ -2110,7 +2110,7 @@
         "method": "codex-research-refresh",
         "category": "开发者工具 / 工程效率",
         "oneLiner": "Fast C++ logging library.；关键看它能否稳定缩短构建、测试、调试或自动化链路。",
-        "whyItMatters": "gabime/spdlog 处在 快速扩散项目 区间：29.3K stars / 5.4K forks，近期仍在活跃迭代。README 把重点放在「spdlog」，适合判断它是否能在 构建、调试、交付或依赖管理的效率瓶颈 上形成真实工程收益。 这次更新更值得关注的是其可迁移机制：命令行、插件系统、构建管线或 SDK 抽象 能否被拆成小样本验证，而不是把项目整体搬进生产。",
+        "whyItMatters": "gabime/spdlog 处在 快速扩散项目 区间：29.4K stars / 5.4K forks，近期仍在活跃迭代。README 把重点放在「spdlog」，适合判断它是否能在 构建、调试、交付或依赖管理的效率瓶颈 上形成真实工程收益。 这次更新更值得关注的是其可迁移机制：命令行、插件系统、构建管线或 SDK 抽象 能否被拆成小样本验证，而不是把项目整体搬进生产。",
         "engineeringRead": "C++ · 本机 CLI 工具。建议按“入口示例 -> 数据/配置 -> 失败处理 -> CI/release -> issue 反例”的顺序读；重点回答 它解决的是「构建、调试、交付或依赖管理的效率瓶颈」的主矛盾，还是只会给现有流程增加新的维护面？",
         "architectureSignals": [
           "架构机制：命令行、插件系统、构建管线或 SDK 抽象；阅读时把 C++ 代码入口、数据/配置形态、自动化脚本和边界条件连起来看，而不是只看 README 的安装示例。",
@@ -2166,7 +2166,7 @@
         },
         "diagram": {
           "title": "spdlog 工业级采用图解",
-          "caption": "开发者工具 / 工程效率 · C++ · 29.3K stars",
+          "caption": "开发者工具 / 工程效率 · C++ · 29.4K stars",
           "summary": "用 命令行、插件系统、构建管线或 SDK 抽象 解决 构建、调试、交付或依赖管理的效率瓶颈，先经由 个人或小团队工作流 验证 冷启动耗时、构建耗时、配置行数、回滚成本，再决定是否扩大。",
           "nodes": [
             {
@@ -2203,7 +2203,7 @@
             "metrics": [
               {
                 "label": "Stars",
-                "value": "29.3K",
+                "value": "29.4K",
                 "note": "社区关注"
               },
               {
@@ -2296,10 +2296,10 @@
         "visualUrl": "https://opengraph.githubassets.com/20260804/denoland/deno",
         "url": "https://github.com/denoland/deno",
         "description": "A modern runtime for JavaScript and TypeScript.",
-        "stars": 107982,
+        "stars": 107999,
         "starsToday": 27,
-        "forks": 6297,
-        "openIssues": 1456,
+        "forks": 6298,
+        "openIssues": 1429,
         "language": "Rust",
         "topics": [
           "deno",
@@ -2308,10 +2308,10 @@
           "typescript"
         ],
         "license": "MIT",
-        "pushedAt": "2026-08-04T10:52:03Z",
+        "pushedAt": "2026-08-04T14:12:29Z",
         "createdAt": "2018-05-15T01:34:26Z",
         "languages": {
-          "Rust": 20382744,
+          "Rust": 20385007,
           "TypeScript": 8418596,
           "JavaScript": 3377569,
           "C": 408112,
@@ -2437,7 +2437,7 @@
               },
               {
                 "label": "Issues",
-                "value": "1.5K",
+                "value": "1.4K",
                 "note": "维护压力"
               },
               {
@@ -2520,9 +2520,9 @@
         "visualUrl": "https://opengraph.githubassets.com/20260804/usekaneo/kaneo",
         "url": "https://github.com/usekaneo/kaneo",
         "description": "🎯 All you need. Nothing you don't. Open source project management that works for you, not against you.",
-        "stars": 7089,
-        "starsToday": 665,
-        "forks": 570,
+        "stars": 7142,
+        "starsToday": 565,
+        "forks": 574,
         "openIssues": 97,
         "language": "TypeScript",
         "topics": [
@@ -2556,7 +2556,7 @@
         "method": "codex-research-refresh",
         "category": "开发者工具 / 工程效率",
         "oneLiner": "🎯 All you need. Nothing you don't. Open source project management that works for you, not against you.；关键看它能否稳定缩短构建、测试、调试或自动化链路。",
-        "whyItMatters": "usekaneo/kaneo 处在 早期观察项目 区间：7.1K stars / 570 forks，维护非常活跃。README 把重点放在「Why Kaneo?」，适合判断它是否能在 构建、调试、交付或依赖管理的效率瓶颈 上形成真实工程收益。 这次更新更值得关注的是其可迁移机制：命令行、插件系统、构建管线或 SDK 抽象 能否被拆成小样本验证，而不是把项目整体搬进生产。",
+        "whyItMatters": "usekaneo/kaneo 处在 早期观察项目 区间：7.1K stars / 574 forks，维护非常活跃。README 把重点放在「Why Kaneo?」，适合判断它是否能在 构建、调试、交付或依赖管理的效率瓶颈 上形成真实工程收益。 这次更新更值得关注的是其可迁移机制：命令行、插件系统、构建管线或 SDK 抽象 能否被拆成小样本验证，而不是把项目整体搬进生产。",
         "engineeringRead": "TypeScript · 容器化部署。建议按“入口示例 -> 数据/配置 -> 失败处理 -> CI/release -> issue 反例”的顺序读；重点回答 它解决的是「构建、调试、交付或依赖管理的效率瓶颈」的主矛盾，还是只会给现有流程增加新的维护面？",
         "architectureSignals": [
           "架构机制：命令行、插件系统、构建管线或 SDK 抽象；阅读时把 TypeScript 代码入口、数据/配置形态、自动化脚本和边界条件连起来看，而不是只看 README 的安装示例。",
@@ -2654,7 +2654,7 @@
               },
               {
                 "label": "Forks",
-                "value": "570",
+                "value": "574",
                 "note": "二次采用"
               },
               {
@@ -2721,11 +2721,11 @@
         },
         "maturity": {
           "community": 85,
-          "maintenance": 100,
-          "production": 90,
+          "maintenance": 97,
+          "production": 89,
           "complexity": 55
         },
-        "score": 100
+        "score": 99
       },
       "evidence": {
         "readmeExcerpt": "<p align=\"center\" <a href=\"https://kaneo.app\" <img src=\"https://assets.kaneo.app/logo text.png\" alt=\"Kaneo's logo\" width=\"450\" / </a </p <div align=\"center\" </div <div align=\"center\" <h3 <a href=\"https://kaneo.app/docs/core\" Quick Start</a <span </span <a href=\"https://kaneo.app\" Website</a <span </span <a href=\"https://cloud.kaneo.app\" Cloud</a <span </span <a href=\"https://discord.gg/rU4tSyhXXU\" Discord</a </h3 </div <p align=\"center\" <img src=\"https://assets.kaneo.app/readme.png\" alt=\"Kaneo Dashboard\" / </p Why Kaneo? After years of using bloated, overcomplicated project management platforms that distracted from actual work, we built Kaneo to be different. The problem with most tools isn't that they lack features—it's that they have too many . Every notification, every unnecessary button, every complex workflow pulls your team away from what matters: building great products . We belie...",
@@ -3900,7 +3900,7 @@
       "source": "AIHOT Public API",
       "date": "2026-08-04",
       "generatedAt": "2026-08-04T00:00:24.229Z",
-      "summary": "日报收录 21 条结构化内容，重点分布在 产品发布/更新 8 条、技巧与观点 8 条、模型发布/更新 2 条。今日优先关注「工信部发布首部L3/L4自动驾驶系统安全要求强制性国标，2027年7月实施」，它会进入下方 AI 新闻流做进一步信号、影响和动作拆解。",
+      "summary": "日报收录 21 条结构化内容，重点分布在 产品发布/更新 8 条、技巧与观点 8 条、模型发布/更新 2 条。今日优先关注「Cloudflare 如何用软件工厂将 Astro 的 GitHub issue 数降至零」，它会进入下方 AI 新闻流做进一步信号、影响和动作拆解。",
       "stats": [
         {
           "label": "精选条目",
@@ -4030,6 +4030,81 @@
       ],
       "selected": [
         {
+          "title": "Cloudflare 如何用软件工厂将 Astro 的 GitHub issue 数降至零",
+          "url": "https://blog.cloudflare.com/astro-issue-triage",
+          "source": "Cloudflare Blog",
+          "publishedAt": "2026-08-04T13:00:00.000Z",
+          "summary": "Cloudflare 在 Astro 仓库上运行自动化 triage 流水线，通过隔离的 AI 子代理复现、诊断并修复 bug，将开放 issue 从 200 多个降至约 30 个，预计下月归零。该流水线由 issue 标签驱动，修复后自动发布预览版本供用户验证。其底层引擎已发展为 Flue，一个开源的平台无关框架，用于构建持久化智能体与工作流。",
+          "category": "技巧观点",
+          "signal": "企业 Agent 基建信号：托管沙箱、私网连接和权限隔离正在成为 Agent 进入生产环境的关键门槛。",
+          "tags": [
+            "Agent"
+          ]
+        },
+        {
+          "title": "Cloudflare 让智能体通过本地追踪调试 Workers",
+          "url": "https://blog.cloudflare.com/local-tracing",
+          "source": "Cloudflare Blog",
+          "publishedAt": "2026-08-04T13:00:00.000Z",
+          "summary": "Cloudflare 即日起在 wrangler dev 和 vite dev 中自动为本地 Worker 调用捕获 OpenTelemetry 追踪，无需安装 SDK 或配置智能体。智能体可通过 Local Explorer API 查询追踪数据，定位失败操作、修复本地环境并验证结果。开发者也可在浏览器界面 Local Explorer 中可视化查看 spans、时序、错误及关联控制台日志。",
+          "category": "产品更新",
+          "signal": "企业 Agent 基建信号：托管沙箱、私网连接和权限隔离正在成为 Agent 进入生产环境的关键门槛。",
+          "tags": [
+            "Agent",
+            "工程/基础设施"
+          ]
+        },
+        {
+          "title": "Cloudflare 推出 Agents 平台，率先上线智能体追踪功能",
+          "url": "https://blog.cloudflare.com/agents-on-cloudflare",
+          "source": "Cloudflare Blog",
+          "publishedAt": "2026-08-04T13:00:00.000Z",
+          "summary": "Cloudflare 推出 Cloudflare Agents，将部署在平台上的智能体会话统一到一个视图中，并率先上线 agent tracing 功能。该功能支持 OpenTelemetry 兼容的 Think、Flue 和 AI SDK 等智能体框架，可测量每次模型调用、工具执行和 token 消耗。",
+          "category": "产品更新",
+          "signal": "企业 Agent 基建信号：托管沙箱、私网连接和权限隔离正在成为 Agent 进入生产环境的关键门槛。",
+          "tags": [
+            "Agent",
+            "模型"
+          ]
+        },
+        {
+          "title": "Cloudflare 推出 CI SDK：在 Cloudflare 上为百万级仓库运行 CI/CD 流水线",
+          "url": "https://blog.cloudflare.com/ci-workflows",
+          "source": "Cloudflare Blog",
+          "publishedAt": "2026-08-04T13:00:00.000Z",
+          "summary": "Cloudflare 推出基于 Workflows 和 Sandbox SDK 的 CI SDK，让平台方直接在 Cloudflare 上运行 CI/CD 流水线，支持构建、lint、类型检查、单元测试、依赖缓存及条件部署。",
+          "category": "产品更新",
+          "signal": "企业 Agent 基建信号：托管沙箱、私网连接和权限隔离正在成为 Agent 进入生产环境的关键门槛。",
+          "tags": [
+            "工程/基础设施"
+          ]
+        },
+        {
+          "title": "Cloudflare 推出 Agent Development Lifecycle，让智能体接管更多软件开发生命周期",
+          "url": "https://blog.cloudflare.com/agent-development-lifecycle",
+          "source": "Cloudflare Blog",
+          "publishedAt": "2026-08-04T13:00:00.000Z",
+          "summary": "Cloudflare 宣布推出 Agent Development Lifecycle（ADLC），以取代传统 SDLC，让 AI 智能体从仅生成代码扩展到承担更多开发流程。",
+          "category": "产品更新",
+          "signal": "企业 Agent 基建信号：托管沙箱、私网连接和权限隔离正在成为 Agent 进入生产环境的关键门槛。",
+          "tags": [
+            "Agent"
+          ]
+        },
+        {
+          "title": "在单颗 AMD MI300X 上运行 DeepSeek V4 Flash",
+          "url": "https://github.com/ryanzhou/deepseek-v4-flash-mi300x",
+          "source": "Hacker News 热门（buzzing.cc 中文翻译）",
+          "publishedAt": "2026-08-04T12:56:45.712Z",
+          "summary": "一个开源仓库提供了在单颗 AMD MI300X 上生产运行 DeepSeek-V4-Flash-0731 的完整配置与补丁，无需额外量化或权重卸载。该 304B 参数模型在 192 GB HBM 上实现单流 168.6 tok/s 解码、8 并发流 542 tok/s 聚合吞吐，并验证了 256K 上下文。",
+          "category": "技巧观点",
+          "signal": "推理基础设施信号：量化、缓存和并行化继续把长上下文、多模态和视频生成推向可部署。",
+          "tags": [
+            "模型",
+            "工程/基础设施"
+          ]
+        },
+        {
           "title": "工信部发布首部L3/L4自动驾驶系统安全要求强制性国标，2027年7月实施",
           "url": "https://www.ithome.com/0/985/665.htm",
           "source": "IT之家（RSS）",
@@ -4051,81 +4126,6 @@
           "signal": "行业动态信号，适合纳入周度技术雷达观察。",
           "tags": [
             "AI"
-          ]
-        },
-        {
-          "title": "用 NVIDIA SkillSpector、LangGraph、YARA 规则、SARIF 与 CI 策略门构建高级 AI 技能安全审计流水线",
-          "url": "https://www.marktechpost.com/2026/08/04/building-an-advanced-ai-skill-security-auditing-pipeline-with-nvidia-skillspector-langgraph-yara-rules-sarif-and-ci-policy-gates",
-          "source": "MarkTechPost（RSS）",
-          "publishedAt": "2026-08-04T08:12:36.000Z",
-          "summary": "本教程演示如何用 NVIDIA SkillSpector 评估 AI 技能的安全态势，构建包含干净、风险、恶意及 MCP 示例的合成技能市场，并通过 LangGraph 检查流水线扫描每个技能。",
-          "category": "技巧观点",
-          "signal": "企业 Agent 基建信号：托管沙箱、私网连接和权限隔离正在成为 Agent 进入生产环境的关键门槛。",
-          "tags": [
-            "安全/可信",
-            "工程/基础设施"
-          ]
-        },
-        {
-          "title": "腾讯混元发布 Hy ASR 3.0 preview：真正懂上下文的语音识别",
-          "url": "https://mp.weixin.qq.com/s?__biz=MzkwODU2OTQyNQ%3D%3D&mid=2247498223&idx=1&sn=ae271ec2c72723393d3e1d8074a33205",
-          "source": "公众号：腾讯混元",
-          "publishedAt": "2026-08-04T08:12:36.000Z",
-          "summary": "腾讯混元发布新一代语音识别模型 Hy ASR 3.0 preview，基于大语言模型 Hy3 与 MoE 架构，融合高精度识别与语义理解。其在开源评测集中中文普通话 WER 3.34%、英语 WER 2.62%、粤语 WER 3.12%，并支持上下文纠错、热词注入及高噪耳语等场景。该模型已上线腾讯云 API，元宝 App 首发并免费开放。",
-          "category": "模型发布",
-          "signal": "上下文工程信号：更少 token、更准上下文正在成为搜索和 Agent 体验的核心优化点。",
-          "tags": [
-            "模型",
-            "多模态",
-            "工程/基础设施"
-          ]
-        },
-        {
-          "title": "Swiftlet：在 Mac 上运行 80B 版 Qwen（内存 4.3 GB），在 iPhone 上运行 35B 版",
-          "url": "https://github.com/leonickson1/Swiftlet",
-          "source": "Hacker News 热门（buzzing.cc 中文翻译）",
-          "publishedAt": "2026-08-04T06:32:44.149Z",
-          "summary": "Swiftlet 是一个 Swift + Metal 运行时，可在普通 Apple 设备上运行 Qwen3-Next 和 Qwen3.5/3.6 MoE 混合模型，仅将小型稠密核心驻留内存，按需从存储流式加载路由专家权重。",
-          "category": "产品更新",
-          "signal": "行业动态信号，适合纳入周度技术雷达观察。",
-          "tags": [
-            "模型"
-          ]
-        },
-        {
-          "title": "GPT-5.6 Luna降价80%永久生效",
-          "url": "https://x.com/thsottiaux/status/2084506501834829833",
-          "source": "X：Tibo (@thsottiaux)",
-          "publishedAt": "2026-08-04T05:07:32.000Z",
-          "summary": "有些人显然误解了，但 GPT-5.6 Luna 降价 80% 不是临时噱头，而是永久的。效率提升不会消失。幸运的是。",
-          "category": "行业动态",
-          "signal": "模型产品化信号：GPT-5.6 把前沿推理、浏览/computer use、artifact 生成、缓存断点和多 Agent 能力打包成面向知识工作的生产套件，竞争焦点从单次 benchmark 转到可交付任务。",
-          "tags": [
-            "AI"
-          ]
-        },
-        {
-          "title": "面壁智能开源 ForgeStencil：一周自动优化 100+ 工业与科学软件，全程零人工介入",
-          "url": "https://mp.weixin.qq.com/s?__biz=Mzg3Mzg2MTg2NQ%3D%3D&mid=2247498861&idx=1&sn=d2d16692dd7eb27f9d466803f25c2b78",
-          "source": "公众号：面壁智能（MiniCPM）",
-          "publishedAt": "2026-08-04T04:20:28.000Z",
-          "summary": "面壁智能联合 OpenBMB 开源全球首个支持 Stencil 自动研究、自动部署的 AI 优化系统 ForgeStencil，由 Kernel Agent 与 App Agent 闭环协作，实现从算子优化到应用集成的全自动流程。",
-          "category": "产品更新",
-          "signal": "Agent 可靠性信号：小模型能否稳定完成复杂任务，越来越依赖重试、防护、上下文管理和步骤约束。",
-          "tags": [
-            "Agent"
-          ]
-        },
-        {
-          "title": "从零开始，教你用Codex搓出属于你自己的第一个硬件",
-          "url": "https://mp.weixin.qq.com/s?__biz=MzIyMzA5NjEyMA%3D%3D&mid=2647684924&idx=1&sn=f9ecf13ac374f13dfa75f98f685a231d",
-          "source": "公众号：数字生命卡兹克",
-          "publishedAt": "2026-08-04T00:06:00.000Z",
-          "summary": "作者以零基础身份，全程通过与Codex对话，从需求讨论、电路搭建、代码烧录到3D打印组装，5天内做出一个能提醒久坐的猫爪硬件。文中还介绍了用Agent调试宏键盘、以及OpenAI与Work Louder联名发布的Codex Micro键盘（13个机械按键，售价230美元）等案例，强调\"干中学\"的AI开发方式。",
-          "category": "技巧观点",
-          "signal": "移动编码信号：Coding Agent 正从桌面 IDE 扩展到手机端连续会话，远程协作和碎片时间处理会变重要。",
-          "tags": [
-            "Agent"
           ]
         }
       ],
@@ -4485,6 +4485,147 @@
     "items": [
       {
         "source": "AIHOT 精选",
+        "sourceDetail": "Cloudflare Blog",
+        "domain": "aihot.virxact.com",
+        "title": "Cloudflare 如何用软件工厂将 Astro 的 GitHub issue 数降至零",
+        "url": "https://blog.cloudflare.com/astro-issue-triage",
+        "publishedAt": "2026-08-04T13:00:00.000Z",
+        "summary": "Cloudflare 在 Astro 仓库上运行自动化 triage 流水线，通过隔离的 AI 子代理复现、诊断并修复 bug，将开放 issue 从 200 多个降至约 30 个，预计下月归零。该流水线由 issue 标签驱动，修复后自动发布预览版本供用户验证。其底层引擎已发展为 Flue，一个开源的平台无关框架，用于构建持久化智能体与工作流。",
+        "imageUrl": "https://www.google.com/s2/favicons?domain=aihot.virxact.com&sz=128",
+        "priority": 3,
+        "rank": 1,
+        "signal": "企业 Agent 基建信号：托管沙箱、私网连接和权限隔离正在成为 Agent 进入生产环境的关键门槛。",
+        "interpretation": {
+          "signal": "企业 Agent 基建信号：托管沙箱、私网连接和权限隔离正在成为 Agent 进入生产环境的关键门槛。",
+          "impact": "Agent 正从单点工具走向跨设备、跨应用、跨通讯入口，产品设计要考虑权限、记忆和接管机制。",
+          "action": "建议记录可试用入口、权限模型和是否支持长会话，适合做 30 分钟产品体验验证。"
+        },
+        "impact": "Agent 正从单点工具走向跨设备、跨应用、跨通讯入口，产品设计要考虑权限、记忆和接管机制。",
+        "action": "建议记录可试用入口、权限模型和是否支持长会话，适合做 30 分钟产品体验验证。",
+        "tags": [
+          "Agent"
+        ]
+      },
+      {
+        "source": "AIHOT 精选",
+        "sourceDetail": "Cloudflare Blog",
+        "domain": "aihot.virxact.com",
+        "title": "Cloudflare 让智能体通过本地追踪调试 Workers",
+        "url": "https://blog.cloudflare.com/local-tracing",
+        "publishedAt": "2026-08-04T13:00:00.000Z",
+        "summary": "Cloudflare 即日起在 wrangler dev 和 vite dev 中自动为本地 Worker 调用捕获 OpenTelemetry 追踪，无需安装 SDK 或配置智能体。智能体可通过 Local Explorer API 查询追踪数据，定位失败操作、修复本地环境并验证结果。开发者也可在浏览器界面 Local Explorer 中可视化查看 spans、时序、错误及关联控制台日志。",
+        "imageUrl": "https://www.google.com/s2/favicons?domain=aihot.virxact.com&sz=128",
+        "priority": 3,
+        "rank": 2,
+        "signal": "企业 Agent 基建信号：托管沙箱、私网连接和权限隔离正在成为 Agent 进入生产环境的关键门槛。",
+        "interpretation": {
+          "signal": "企业 Agent 基建信号：托管沙箱、私网连接和权限隔离正在成为 Agent 进入生产环境的关键门槛。",
+          "impact": "Agent 正从单点工具走向跨设备、跨应用、跨通讯入口，产品设计要考虑权限、记忆和接管机制。",
+          "action": "建议记录可试用入口、权限模型和是否支持长会话，适合做 30 分钟产品体验验证。"
+        },
+        "impact": "Agent 正从单点工具走向跨设备、跨应用、跨通讯入口，产品设计要考虑权限、记忆和接管机制。",
+        "action": "建议记录可试用入口、权限模型和是否支持长会话，适合做 30 分钟产品体验验证。",
+        "tags": [
+          "Agent",
+          "工程/基础设施"
+        ]
+      },
+      {
+        "source": "AIHOT 精选",
+        "sourceDetail": "Cloudflare Blog",
+        "domain": "aihot.virxact.com",
+        "title": "Cloudflare 推出 Agents 平台，率先上线智能体追踪功能",
+        "url": "https://blog.cloudflare.com/agents-on-cloudflare",
+        "publishedAt": "2026-08-04T13:00:00.000Z",
+        "summary": "Cloudflare 推出 Cloudflare Agents，将部署在平台上的智能体会话统一到一个视图中，并率先上线 agent tracing 功能。该功能支持 OpenTelemetry 兼容的 Think、Flue 和 AI SDK 等智能体框架，可测量每次模型调用、工具执行和 token 消耗。",
+        "imageUrl": "https://www.google.com/s2/favicons?domain=aihot.virxact.com&sz=128",
+        "priority": 3,
+        "rank": 3,
+        "signal": "企业 Agent 基建信号：托管沙箱、私网连接和权限隔离正在成为 Agent 进入生产环境的关键门槛。",
+        "interpretation": {
+          "signal": "企业 Agent 基建信号：托管沙箱、私网连接和权限隔离正在成为 Agent 进入生产环境的关键门槛。",
+          "impact": "Agent 正从单点工具走向跨设备、跨应用、跨通讯入口，产品设计要考虑权限、记忆和接管机制。",
+          "action": "建议记录可试用入口、权限模型和是否支持长会话，适合做 30 分钟产品体验验证。"
+        },
+        "impact": "Agent 正从单点工具走向跨设备、跨应用、跨通讯入口，产品设计要考虑权限、记忆和接管机制。",
+        "action": "建议记录可试用入口、权限模型和是否支持长会话，适合做 30 分钟产品体验验证。",
+        "tags": [
+          "Agent",
+          "模型"
+        ]
+      },
+      {
+        "source": "AIHOT 精选",
+        "sourceDetail": "Cloudflare Blog",
+        "domain": "aihot.virxact.com",
+        "title": "Cloudflare 推出 CI SDK：在 Cloudflare 上为百万级仓库运行 CI/CD 流水线",
+        "url": "https://blog.cloudflare.com/ci-workflows",
+        "publishedAt": "2026-08-04T13:00:00.000Z",
+        "summary": "Cloudflare 推出基于 Workflows 和 Sandbox SDK 的 CI SDK，让平台方直接在 Cloudflare 上运行 CI/CD 流水线，支持构建、lint、类型检查、单元测试、依赖缓存及条件部署。",
+        "imageUrl": "https://www.google.com/s2/favicons?domain=aihot.virxact.com&sz=128",
+        "priority": 3,
+        "rank": 4,
+        "signal": "企业 Agent 基建信号：托管沙箱、私网连接和权限隔离正在成为 Agent 进入生产环境的关键门槛。",
+        "interpretation": {
+          "signal": "企业 Agent 基建信号：托管沙箱、私网连接和权限隔离正在成为 Agent 进入生产环境的关键门槛。",
+          "impact": "模型供应链会更像云资源管理：容量、缓存、路由和成本控制会成为应用护城河。",
+          "action": "建议纳入成本与架构评估，关注 API 价格、路由策略、缓存命中和供应商锁定。"
+        },
+        "impact": "模型供应链会更像云资源管理：容量、缓存、路由和成本控制会成为应用护城河。",
+        "action": "建议纳入成本与架构评估，关注 API 价格、路由策略、缓存命中和供应商锁定。",
+        "tags": [
+          "工程/基础设施"
+        ]
+      },
+      {
+        "source": "AIHOT 精选",
+        "sourceDetail": "Cloudflare Blog",
+        "domain": "aihot.virxact.com",
+        "title": "Cloudflare 推出 Agent Development Lifecycle，让智能体接管更多软件开发生命周期",
+        "url": "https://blog.cloudflare.com/agent-development-lifecycle",
+        "publishedAt": "2026-08-04T13:00:00.000Z",
+        "summary": "Cloudflare 宣布推出 Agent Development Lifecycle（ADLC），以取代传统 SDLC，让 AI 智能体从仅生成代码扩展到承担更多开发流程。",
+        "imageUrl": "https://www.google.com/s2/favicons?domain=aihot.virxact.com&sz=128",
+        "priority": 3,
+        "rank": 5,
+        "signal": "企业 Agent 基建信号：托管沙箱、私网连接和权限隔离正在成为 Agent 进入生产环境的关键门槛。",
+        "interpretation": {
+          "signal": "企业 Agent 基建信号：托管沙箱、私网连接和权限隔离正在成为 Agent 进入生产环境的关键门槛。",
+          "impact": "Agent 正从单点工具走向跨设备、跨应用、跨通讯入口，产品设计要考虑权限、记忆和接管机制。",
+          "action": "建议记录可试用入口、权限模型和是否支持长会话，适合做 30 分钟产品体验验证。"
+        },
+        "impact": "Agent 正从单点工具走向跨设备、跨应用、跨通讯入口，产品设计要考虑权限、记忆和接管机制。",
+        "action": "建议记录可试用入口、权限模型和是否支持长会话，适合做 30 分钟产品体验验证。",
+        "tags": [
+          "Agent"
+        ]
+      },
+      {
+        "source": "AIHOT 精选",
+        "sourceDetail": "Hacker News 热门（buzzing.cc 中文翻译）",
+        "domain": "aihot.virxact.com",
+        "title": "在单颗 AMD MI300X 上运行 DeepSeek V4 Flash",
+        "url": "https://github.com/ryanzhou/deepseek-v4-flash-mi300x",
+        "publishedAt": "2026-08-04T12:56:45.712Z",
+        "summary": "一个开源仓库提供了在单颗 AMD MI300X 上生产运行 DeepSeek-V4-Flash-0731 的完整配置与补丁，无需额外量化或权重卸载。该 304B 参数模型在 192 GB HBM 上实现单流 168.6 tok/s 解码、8 并发流 542 tok/s 聚合吞吐，并验证了 256K 上下文。",
+        "imageUrl": "https://www.google.com/s2/favicons?domain=aihot.virxact.com&sz=128",
+        "priority": 3,
+        "rank": 6,
+        "signal": "推理基础设施信号：量化、缓存和并行化继续把长上下文、多模态和视频生成推向可部署。",
+        "interpretation": {
+          "signal": "推理基础设施信号：量化、缓存和并行化继续把长上下文、多模态和视频生成推向可部署。",
+          "impact": "模型供应链会更像云资源管理：容量、缓存、路由和成本控制会成为应用护城河。",
+          "action": "建议纳入成本与架构评估，关注 API 价格、路由策略、缓存命中和供应商锁定。"
+        },
+        "impact": "模型供应链会更像云资源管理：容量、缓存、路由和成本控制会成为应用护城河。",
+        "action": "建议纳入成本与架构评估，关注 API 价格、路由策略、缓存命中和供应商锁定。",
+        "tags": [
+          "模型",
+          "工程/基础设施"
+        ]
+      },
+      {
+        "source": "AIHOT 精选",
         "sourceDetail": "IT之家（RSS）",
         "domain": "aihot.virxact.com",
         "title": "工信部发布首部L3/L4自动驾驶系统安全要求强制性国标，2027年7月实施",
@@ -4493,7 +4634,7 @@
         "summary": "工信部组织制定的《智能网联汽车 自动驾驶系统安全要求》（GB 44721-2026）强制性国家标准获批发布，拟于2027年7月1日起实施。这是我国首部针对L3级有条件自动驾驶和L4级高度自动驾驶系统的强制性国标，由2024年推荐性国标GB/T 44721-2024升级而来，为自动驾驶产品明确了统一的安全准入基线。",
         "imageUrl": "https://www.google.com/s2/favicons?domain=aihot.virxact.com&sz=128",
         "priority": 3,
-        "rank": 1,
+        "rank": 7,
         "signal": "行业动态信号，适合纳入周度技术雷达观察。",
         "interpretation": {
           "signal": "行业动态信号，适合纳入周度技术雷达观察。",
@@ -4516,151 +4657,33 @@
         "summary": "Reflex AI 发布 Apache-2.0 许可的 Python 交互式 2D 绘图库 XY，通过 Rust 原生核心、二进制缓冲传输和 WebGL2 渲染，在 1 万至 1 亿点范围内保持约 0.08 秒的渲染时间。",
         "imageUrl": "https://www.google.com/s2/favicons?domain=aihot.virxact.com&sz=128",
         "priority": 3,
-        "rank": 2,
-        "signal": "行业动态信号，适合纳入周度技术雷达观察。",
-        "interpretation": {
-          "signal": "行业动态信号，适合纳入周度技术雷达观察。",
-          "impact": "这条动态适合放进周度观察池，重点看它是否会改变模型选型、产品入口或工程成本结构。",
-          "action": "建议保留原文链接，等后续出现产品实测、开发者反馈或生态跟进时再升级权重。"
-        },
-        "impact": "这条动态适合放进周度观察池，重点看它是否会改变模型选型、产品入口或工程成本结构。",
-        "action": "建议保留原文链接，等后续出现产品实测、开发者反馈或生态跟进时再升级权重。",
-        "tags": [
-          "AI"
-        ]
-      },
-      {
-        "source": "AIHOT 精选",
-        "sourceDetail": "MarkTechPost（RSS）",
-        "domain": "aihot.virxact.com",
-        "title": "用 NVIDIA SkillSpector、LangGraph、YARA 规则、SARIF 与 CI 策略门构建高级 AI 技能安全审计流水线",
-        "url": "https://www.marktechpost.com/2026/08/04/building-an-advanced-ai-skill-security-auditing-pipeline-with-nvidia-skillspector-langgraph-yara-rules-sarif-and-ci-policy-gates",
-        "publishedAt": "2026-08-04T08:12:36.000Z",
-        "summary": "本教程演示如何用 NVIDIA SkillSpector 评估 AI 技能的安全态势，构建包含干净、风险、恶意及 MCP 示例的合成技能市场，并通过 LangGraph 检查流水线扫描每个技能。",
-        "imageUrl": "https://www.google.com/s2/favicons?domain=aihot.virxact.com&sz=128",
-        "priority": 3,
-        "rank": 3,
-        "signal": "企业 Agent 基建信号：托管沙箱、私网连接和权限隔离正在成为 Agent 进入生产环境的关键门槛。",
-        "interpretation": {
-          "signal": "企业 Agent 基建信号：托管沙箱、私网连接和权限隔离正在成为 Agent 进入生产环境的关键门槛。",
-          "impact": "AI 生成内容和搜索结果会被系统性攻击，后续要把来源证明、反作弊和审计纳入基础架构。",
-          "action": "建议沉淀到 AI 安全清单，跟踪攻击方式、检测指标和平台级防御策略。"
-        },
-        "impact": "AI 生成内容和搜索结果会被系统性攻击，后续要把来源证明、反作弊和审计纳入基础架构。",
-        "action": "建议沉淀到 AI 安全清单，跟踪攻击方式、检测指标和平台级防御策略。",
-        "tags": [
-          "安全/可信",
-          "工程/基础设施"
-        ]
-      },
-      {
-        "source": "AIHOT 精选",
-        "sourceDetail": "公众号：腾讯混元",
-        "domain": "aihot.virxact.com",
-        "title": "腾讯混元发布 Hy ASR 3.0 preview：真正懂上下文的语音识别",
-        "url": "https://mp.weixin.qq.com/s?__biz=MzkwODU2OTQyNQ%3D%3D&mid=2247498223&idx=1&sn=ae271ec2c72723393d3e1d8074a33205",
-        "publishedAt": "2026-08-04T08:12:36.000Z",
-        "summary": "腾讯混元发布新一代语音识别模型 Hy ASR 3.0 preview，基于大语言模型 Hy3 与 MoE 架构，融合高精度识别与语义理解。其在开源评测集中中文普通话 WER 3.34%、英语 WER 2.62%、粤语 WER 3.12%，并支持上下文纠错、热词注入及高噪耳语等场景。该模型已上线腾讯云 API，元宝 App 首发并免费开放。",
-        "imageUrl": "https://www.google.com/s2/favicons?domain=aihot.virxact.com&sz=128",
-        "priority": 3,
-        "rank": 4,
-        "signal": "上下文工程信号：更少 token、更准上下文正在成为搜索和 Agent 体验的核心优化点。",
-        "interpretation": {
-          "signal": "上下文工程信号：更少 token、更准上下文正在成为搜索和 Agent 体验的核心优化点。",
-          "impact": "多模态生成开始从玩具效果进入专业工作流，关键评估点会变成一致性、时长、成本和可编辑性。",
-          "action": "建议收集样例和失败案例，比较一致性、可控性、生成时长和商业版权风险。"
-        },
-        "impact": "多模态生成开始从玩具效果进入专业工作流，关键评估点会变成一致性、时长、成本和可编辑性。",
-        "action": "建议收集样例和失败案例，比较一致性、可控性、生成时长和商业版权风险。",
-        "tags": [
-          "模型",
-          "多模态",
-          "工程/基础设施"
-        ]
-      },
-      {
-        "source": "AIHOT 精选",
-        "sourceDetail": "Hacker News 热门（buzzing.cc 中文翻译）",
-        "domain": "aihot.virxact.com",
-        "title": "Swiftlet：在 Mac 上运行 80B 版 Qwen（内存 4.3 GB），在 iPhone 上运行 35B 版",
-        "url": "https://github.com/leonickson1/Swiftlet",
-        "publishedAt": "2026-08-04T06:32:44.149Z",
-        "summary": "Swiftlet 是一个 Swift + Metal 运行时，可在普通 Apple 设备上运行 Qwen3-Next 和 Qwen3.5/3.6 MoE 混合模型，仅将小型稠密核心驻留内存，按需从存储流式加载路由专家权重。",
-        "imageUrl": "https://www.google.com/s2/favicons?domain=aihot.virxact.com&sz=128",
-        "priority": 3,
-        "rank": 5,
-        "signal": "行业动态信号，适合纳入周度技术雷达观察。",
-        "interpretation": {
-          "signal": "行业动态信号，适合纳入周度技术雷达观察。",
-          "impact": "这条动态适合放进周度观察池，重点看它是否会改变模型选型、产品入口或工程成本结构。",
-          "action": "建议保留原文链接，等后续出现产品实测、开发者反馈或生态跟进时再升级权重。"
-        },
-        "impact": "这条动态适合放进周度观察池，重点看它是否会改变模型选型、产品入口或工程成本结构。",
-        "action": "建议保留原文链接，等后续出现产品实测、开发者反馈或生态跟进时再升级权重。",
-        "tags": [
-          "模型"
-        ]
-      },
-      {
-        "source": "AIHOT 精选",
-        "sourceDetail": "X：Tibo (@thsottiaux)",
-        "domain": "aihot.virxact.com",
-        "title": "GPT-5.6 Luna降价80%永久生效",
-        "url": "https://x.com/thsottiaux/status/2084506501834829833",
-        "publishedAt": "2026-08-04T05:07:32.000Z",
-        "summary": "有些人显然误解了，但 GPT-5.6 Luna 降价 80% 不是临时噱头，而是永久的。效率提升不会消失。幸运的是。",
-        "imageUrl": "https://www.google.com/s2/favicons?domain=aihot.virxact.com&sz=128",
-        "priority": 3,
-        "rank": 6,
-        "signal": "模型产品化信号：GPT-5.6 把前沿推理、浏览/computer use、artifact 生成、缓存断点和多 Agent 能力打包成面向知识工作的生产套件，竞争焦点从单次 benchmark 转到可交付任务。",
-        "interpretation": {
-          "signal": "模型产品化信号：GPT-5.6 把前沿推理、浏览/computer use、artifact 生成、缓存断点和多 Agent 能力打包成面向知识工作的生产套件，竞争焦点从单次 benchmark 转到可交付任务。",
-          "impact": "对企业团队的直接影响是评测口径要变：不能只看推理分数，要把浏览、文件修改、代码修复、长任务恢复、缓存成本、ZDR/合规限制和人工接管放进同一回放集。",
-          "action": "建议建立 10-20 个真实知识工作回放任务：报告、表格、代码修复、网页调查和跨工具执行分别记录完成率、人工修改、成本、延迟、权限触发和失败样本。"
-        },
-        "impact": "对企业团队的直接影响是评测口径要变：不能只看推理分数，要把浏览、文件修改、代码修复、长任务恢复、缓存成本、ZDR/合规限制和人工接管放进同一回放集。",
-        "action": "建议建立 10-20 个真实知识工作回放任务：报告、表格、代码修复、网页调查和跨工具执行分别记录完成率、人工修改、成本、延迟、权限触发和失败样本。",
-        "tags": [
-          "AI"
-        ]
-      },
-      {
-        "source": "AIHOT 精选",
-        "sourceDetail": "公众号：面壁智能（MiniCPM）",
-        "domain": "aihot.virxact.com",
-        "title": "面壁智能开源 ForgeStencil：一周自动优化 100+ 工业与科学软件，全程零人工介入",
-        "url": "https://mp.weixin.qq.com/s?__biz=Mzg3Mzg2MTg2NQ%3D%3D&mid=2247498861&idx=1&sn=d2d16692dd7eb27f9d466803f25c2b78",
-        "publishedAt": "2026-08-04T04:20:28.000Z",
-        "summary": "面壁智能联合 OpenBMB 开源全球首个支持 Stencil 自动研究、自动部署的 AI 优化系统 ForgeStencil，由 Kernel Agent 与 App Agent 闭环协作，实现从算子优化到应用集成的全自动流程。",
-        "imageUrl": "https://www.google.com/s2/favicons?domain=aihot.virxact.com&sz=128",
-        "priority": 3,
-        "rank": 7,
-        "signal": "Agent 可靠性信号：小模型能否稳定完成复杂任务，越来越依赖重试、防护、上下文管理和步骤约束。",
-        "interpretation": {
-          "signal": "Agent 可靠性信号：小模型能否稳定完成复杂任务，越来越依赖重试、防护、上下文管理和步骤约束。",
-          "impact": "Agent 正从单点工具走向跨设备、跨应用、跨通讯入口，产品设计要考虑权限、记忆和接管机制。",
-          "action": "建议记录可试用入口、权限模型和是否支持长会话，适合做 30 分钟产品体验验证。"
-        },
-        "impact": "Agent 正从单点工具走向跨设备、跨应用、跨通讯入口，产品设计要考虑权限、记忆和接管机制。",
-        "action": "建议记录可试用入口、权限模型和是否支持长会话，适合做 30 分钟产品体验验证。",
-        "tags": [
-          "Agent"
-        ]
-      },
-      {
-        "source": "AIHOT 精选",
-        "sourceDetail": "公众号：数字生命卡兹克",
-        "domain": "aihot.virxact.com",
-        "title": "从零开始，教你用Codex搓出属于你自己的第一个硬件",
-        "url": "https://mp.weixin.qq.com/s?__biz=MzIyMzA5NjEyMA%3D%3D&mid=2647684924&idx=1&sn=f9ecf13ac374f13dfa75f98f685a231d",
-        "publishedAt": "2026-08-04T00:06:00.000Z",
-        "summary": "作者以零基础身份，全程通过与Codex对话，从需求讨论、电路搭建、代码烧录到3D打印组装，5天内做出一个能提醒久坐的猫爪硬件。文中还介绍了用Agent调试宏键盘、以及OpenAI与Work Louder联名发布的Codex Micro键盘（13个机械按键，售价230美元）等案例，强调\"干中学\"的AI开发方式。",
-        "imageUrl": "https://www.google.com/s2/favicons?domain=aihot.virxact.com&sz=128",
-        "priority": 3,
         "rank": 8,
-        "signal": "移动编码信号：Coding Agent 正从桌面 IDE 扩展到手机端连续会话，远程协作和碎片时间处理会变重要。",
+        "signal": "行业动态信号，适合纳入周度技术雷达观察。",
         "interpretation": {
-          "signal": "移动编码信号：Coding Agent 正从桌面 IDE 扩展到手机端连续会话，远程协作和碎片时间处理会变重要。",
+          "signal": "行业动态信号，适合纳入周度技术雷达观察。",
+          "impact": "这条动态适合放进周度观察池，重点看它是否会改变模型选型、产品入口或工程成本结构。",
+          "action": "建议保留原文链接，等后续出现产品实测、开发者反馈或生态跟进时再升级权重。"
+        },
+        "impact": "这条动态适合放进周度观察池，重点看它是否会改变模型选型、产品入口或工程成本结构。",
+        "action": "建议保留原文链接，等后续出现产品实测、开发者反馈或生态跟进时再升级权重。",
+        "tags": [
+          "AI"
+        ]
+      },
+      {
+        "source": "Hugging Face",
+        "sourceDetail": "Hugging Face",
+        "domain": "huggingface.co",
+        "title": "Deploy local agents everywhere with LFM2.5-2.6B",
+        "url": "https://huggingface.co/blog/LiquidAI/lfm2-5-2-6b",
+        "publishedAt": "Tue, 04 Aug 2026 13:58:29 GMT",
+        "summary": "Hugging Face 发布新动态：Deploy local agents everywhere with LFM2.5-2.6B",
+        "imageUrl": "https://www.google.com/s2/favicons?domain=huggingface.co&sz=128",
+        "priority": 0,
+        "rank": 9,
+        "signal": "Agent/工具调用方向，适合评估能否进入研发工作流或数据分析流程。",
+        "interpretation": {
+          "signal": "Agent/工具调用方向，适合评估能否进入研发工作流或数据分析流程。",
           "impact": "Agent 正从单点工具走向跨设备、跨应用、跨通讯入口，产品设计要考虑权限、记忆和接管机制。",
           "action": "建议记录可试用入口、权限模型和是否支持长会话，适合做 30 分钟产品体验验证。"
         },
@@ -4684,7 +4707,7 @@
         "impact": "Claude 生态的变化会直接影响 Agent 选型、企业采购、权限治理和安全评测，不能只按模型跑分决策。",
         "action": "建议更新 Claude 评测清单：模型能力、Claude Code/Agent 工作流、权限隔离、审计日志和供应连续性分开验证。",
         "anthropicScore": 98,
-        "rank": 9,
+        "rank": 10,
         "interpretation": {
           "signal": "A 社 Agent 信号：Claude 正在把工具使用、电脑操作和企业流程连接起来，重点看权限、审计和失败接管。",
           "impact": "Claude 生态的变化会直接影响 Agent 选型、企业采购、权限治理和安全评测，不能只按模型跑分决策。",
@@ -4711,7 +4734,7 @@
         "impact": "企业会更容易把内部系统接给 Claude，但协议版本、权限边界和审计证据会成为上线前置条件。",
         "action": "为每个 MCP server 建立 owner、权限、数据分类、版本兼容和失败回退表，先在只读/低风险任务中验证。",
         "anthropicScore": 72,
-        "rank": 10,
+        "rank": 11,
         "interpretation": {
           "signal": "A 社 Agent 信号：Claude 正在把工具使用、电脑操作和企业流程连接起来，重点看权限、审计和失败接管。",
           "impact": "Claude 生态的变化会直接影响 Agent 选型、企业采购、权限治理和安全评测，不能只按模型跑分决策。",
@@ -4738,7 +4761,7 @@
         "impact": "后量子算法、加密库和安全标准评估会更频繁面对 AI 辅助发现的候选弱点，但短期仍需专家证明和负责任披露。",
         "action": "建立 AI-assisted cryptanalysis 观察清单：区分生产影响、缩减轮实验、候选标准、专家复核和披露状态，不把研究结果直接等同于可利用漏洞。",
         "anthropicScore": 69,
-        "rank": 11,
+        "rank": 12,
         "interpretation": {
           "signal": "A 社模型信号：Claude 系列更新需要重点拆编码能力、长任务稳定性、上下文管理和企业成本边界。",
           "impact": "Claude 生态的变化会直接影响 Agent 选型、企业采购、权限治理和安全评测，不能只按模型跑分决策。",
@@ -4764,7 +4787,7 @@
         "impact": "大型企业落地速度会提高，但责任边界会扩展到实施伙伴、流程改造、员工培训和数据治理。",
         "action": "在 Claude 项目立项时把 Anthropic、SI 伙伴和内部 owner 的权限、交付物、审计日志和业务指标写进同一验收表。",
         "anthropicScore": 55,
-        "rank": 12,
+        "rank": 13,
         "interpretation": {
           "signal": "A 社企业生态信号：合作、算力和区域办公室会影响 Claude 的可用额度、企业采购路径和本地生态扩散。",
           "impact": "Claude 生态的变化会直接影响 Agent 选型、企业采购、权限治理和安全评测，不能只按模型跑分决策。",
@@ -4789,7 +4812,7 @@
         "impact": "Claude 生态的变化会直接影响 Agent 选型、企业采购、权限治理和安全评测，不能只按模型跑分决策。",
         "action": "建议更新 Claude 评测清单：模型能力、Claude Code/Agent 工作流、权限隔离、审计日志和供应连续性分开验证。",
         "anthropicScore": 55,
-        "rank": 13,
+        "rank": 14,
         "interpretation": {
           "signal": "A 社模型信号：Claude 系列更新需要重点拆编码能力、长任务稳定性、上下文管理和企业成本边界。",
           "impact": "Claude 生态的变化会直接影响 Agent 选型、企业采购、权限治理和安全评测，不能只按模型跑分决策。",
@@ -4816,7 +4839,7 @@
         "impact": "Claude 生态的变化会直接影响 Agent 选型、企业采购、权限治理和安全评测，不能只按模型跑分决策。",
         "action": "建议更新 Claude 评测清单：模型能力、Claude Code/Agent 工作流、权限隔离、审计日志和供应连续性分开验证。",
         "anthropicScore": 69,
-        "rank": 14,
+        "rank": 15,
         "interpretation": {
           "signal": "A 社 Agent 信号：Claude 正在把工具使用、电脑操作和企业流程连接起来，重点看权限、审计和失败接管。",
           "impact": "Claude 生态的变化会直接影响 Agent 选型、企业采购、权限治理和安全评测，不能只按模型跑分决策。",
@@ -4842,7 +4865,7 @@
         "impact": "Claude 生态的变化会直接影响 Agent 选型、企业采购、权限治理和安全评测，不能只按模型跑分决策。",
         "action": "建议更新 Claude 评测清单：模型能力、Claude Code/Agent 工作流、权限隔离、审计日志和供应连续性分开验证。",
         "anthropicScore": 63,
-        "rank": 15,
+        "rank": 16,
         "interpretation": {
           "signal": "A 社 Agent 信号：Claude 正在把工具使用、电脑操作和企业流程连接起来，重点看权限、审计和失败接管。",
           "impact": "Claude 生态的变化会直接影响 Agent 选型、企业采购、权限治理和安全评测，不能只按模型跑分决策。",
@@ -4869,7 +4892,7 @@
         "impact": "Claude 生态的变化会直接影响 Agent 选型、企业采购、权限治理和安全评测，不能只按模型跑分决策。",
         "action": "建议更新 Claude 评测清单：模型能力、Claude Code/Agent 工作流、权限隔离、审计日志和供应连续性分开验证。",
         "anthropicScore": 60,
-        "rank": 16,
+        "rank": 17,
         "interpretation": {
           "signal": "A 社 Agent 信号：Claude 正在把工具使用、电脑操作和企业流程连接起来，重点看权限、审计和失败接管。",
           "impact": "Claude 生态的变化会直接影响 Agent 选型、企业采购、权限治理和安全评测，不能只按模型跑分决策。",
@@ -4895,7 +4918,7 @@
         "impact": "Claude 生态的变化会直接影响 Agent 选型、企业采购、权限治理和安全评测，不能只按模型跑分决策。",
         "action": "建议更新 Claude 评测清单：模型能力、Claude Code/Agent 工作流、权限隔离、审计日志和供应连续性分开验证。",
         "anthropicScore": 62,
-        "rank": 17,
+        "rank": 18,
         "interpretation": {
           "signal": "A 社 Agent 信号：Claude 正在把工具使用、电脑操作和企业流程连接起来，重点看权限、审计和失败接管。",
           "impact": "Claude 生态的变化会直接影响 Agent 选型、企业采购、权限治理和安全评测，不能只按模型跑分决策。",
@@ -4922,7 +4945,7 @@
         "impact": "Claude 生态的变化会直接影响 Agent 选型、企业采购、权限治理和安全评测，不能只按模型跑分决策。",
         "action": "建议更新 Claude 评测清单：模型能力、Claude Code/Agent 工作流、权限隔离、审计日志和供应连续性分开验证。",
         "anthropicScore": 56,
-        "rank": 18,
+        "rank": 19,
         "interpretation": {
           "signal": "A 社生态信号：Anthropic 的产品、研究和企业合作会影响 Claude 生态、模型选型和 Agent 工作流落地节奏。",
           "impact": "Claude 生态的变化会直接影响 Agent 选型、企业采购、权限治理和安全评测，不能只按模型跑分决策。",
@@ -4948,7 +4971,7 @@
         "impact": "Claude 生态的变化会直接影响 Agent 选型、企业采购、权限治理和安全评测，不能只按模型跑分决策。",
         "action": "建议更新 Claude 评测清单：模型能力、Claude Code/Agent 工作流、权限隔离、审计日志和供应连续性分开验证。",
         "anthropicScore": 55,
-        "rank": 19,
+        "rank": 20,
         "interpretation": {
           "signal": "A 社 Agent 信号：Claude 正在把工具使用、电脑操作和企业流程连接起来，重点看权限、审计和失败接管。",
           "impact": "Claude 生态的变化会直接影响 Agent 选型、企业采购、权限治理和安全评测，不能只按模型跑分决策。",
@@ -4957,32 +4980,6 @@
         "tags": [
           "A社/Claude",
           "Agent",
-          "模型",
-          "安全/可信"
-        ]
-      },
-      {
-        "source": "A社 Anthropic Research",
-        "sourceDetail": "Anthropic 官方 Research / Societal Impacts",
-        "domain": "anthropic.com",
-        "title": "Claude’s values across models and languages",
-        "url": "https://www.anthropic.com/research/claude-values-models-languages",
-        "publishedAt": "2026-07-13T16:00:00Z",
-        "summary": "Anthropic 用价值轴压缩方法分析 Claude 在不同模型和语言中的表达差异，观察到 Deference/Caution、Warmth/Rigor、Depth/Brevity、Candor/Execution 等维度会随模型和语言变化。信号是模型评测正在从正确率、安全拒答扩展到跨语言、跨文化的行为画像和上线监控。",
-        "imageUrl": "https://www.google.com/s2/favicons?domain=anthropic.com&sz=128",
-        "priority": 8,
-        "signal": "A 社模型信号：Claude 系列更新需要重点拆编码能力、长任务稳定性、上下文管理和企业成本边界。",
-        "impact": "Claude 生态的变化会直接影响 Agent 选型、企业采购、权限治理和安全评测，不能只按模型跑分决策。",
-        "action": "建议更新 Claude 评测清单：模型能力、Claude Code/Agent 工作流、权限隔离、审计日志和供应连续性分开验证。",
-        "anthropicScore": 55,
-        "rank": 20,
-        "interpretation": {
-          "signal": "A 社模型信号：Claude 系列更新需要重点拆编码能力、长任务稳定性、上下文管理和企业成本边界。",
-          "impact": "Claude 生态的变化会直接影响 Agent 选型、企业采购、权限治理和安全评测，不能只按模型跑分决策。",
-          "action": "建议更新 Claude 评测清单：模型能力、Claude Code/Agent 工作流、权限隔离、审计日志和供应连续性分开验证。"
-        },
-        "tags": [
-          "A社/Claude",
           "模型",
           "安全/可信"
         ]
