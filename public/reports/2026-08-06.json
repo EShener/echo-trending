@@ -1,6 +1,6 @@
 {
   "date": "2026-08-06",
-  "generatedAt": "2026-08-05T17:27:36.650Z",
+  "generatedAt": "2026-08-05T20:22:50.388Z",
   "source": {
     "provider": "GitHub Trending daily + AIHOT + official AI feeds + Anthropic official pages + big-tech engineering blogs + Codex manual deep rewrite",
     "query": "pushed:>=2026-07-30 stars:>100 archived:false",
@@ -9,7 +9,7 @@
     "language": "all",
     "editorialReview": {
       "method": "script refresh + Codex multi-source editorial review",
-      "reviewedAt": "2026-08-05T17:27:36.650Z",
+      "reviewedAt": "2026-08-05T20:22:50.389Z",
       "reportDate": "2026-08-06",
       "focus": [
         "GitHub Trending daily metadata, repo README evidence and adoption risk review",
@@ -94,7 +94,7 @@
       "开源项目解读已按“架构机制 -> 适用团队 -> 落地路径 -> 生产风险 -> 决策问题 -> 观察信号”展开；本轮更适合旁路 spike 的入口是：进入观察/试点池：先把它用于公开数据、无凭据的 coding/browser 原型，让 Agent 在持久文件系统里读写、运行测试和生成 artifact；不要接生产账号、付款、内部系统或不可逆操作。；先保留人工复核、指标记录和回滚路径。",
       "搜广推收录 22 条工程/研究信号，覆盖 Google Research、Meta Engineering、Amazon Science、Netflix TechBlog、Pinterest Engineering、Airbnb Engineering、Spotify Engineering、Salesforce Engineering、Dropbox Tech、Meituan Tech；重点从「GEM Training: How Meta Doubled the Efficiency of Its LLM-Scale Ads Recommendation Foundation Model」延伸到广告排序、实时上下文、企业搜索 relevance judge、模型生命周期图和工业搜索属性推荐。",
       "A 社覆盖 18 条官方 News/Research/Engineering 动态，最新重点是「A guide to cost visibility and control in Claude」；安全研究主线继续观察「An off switch for dual use knowledge in AI models」，Claude Code 相关信号包括 Investigating three real-world incidents in our cybersecurity evaluations、Bringing MCP 2026-07-28 to Claude、Claude Managed Agents add effort, lifecycle webhooks and session deltas，评估动作应拆成模型能力、权限隔离、长任务恢复、团队协作记忆、预算上限和审计边界。",
-      "AIHOT/官方 AI 新闻共 20 条，其中 AIHOT 8 条；今日先看「Google DeepMind CEO 德米斯·哈萨比斯即将卸任」，所有新闻统一写成“信号 -> 影响 -> 动作”，动作聚焦评测回放、预算治理、工具白名单、权限审计和真实工作流验证。"
+      "AIHOT/官方 AI 新闻共 20 条，其中 AIHOT 8 条；今日先看「用 Claude Fable 5 一次性生成完整《Raccoon Heist》游戏」，所有新闻统一写成“信号 -> 影响 -> 动作”，动作聚焦评测回放、预算治理、工具白名单、权限审计和真实工作流验证。"
     ]
   },
   "items": [
@@ -108,9 +108,9 @@
         "visualUrl": "https://opengraph.githubassets.com/20260806/cloudflare/computer",
         "url": "https://github.com/cloudflare/computer",
         "description": "Give your agent a computer 👾",
-        "stars": 2295,
+        "stars": 2580,
         "starsToday": 796,
-        "forks": 101,
+        "forks": 117,
         "openIssues": 7,
         "language": "TypeScript",
         "topics": [],
@@ -128,7 +128,7 @@
         "method": "codex-research-refresh",
         "category": "Agent Computer Runtime / Durable Object 工作空间",
         "oneLiner": "Give your agent a computer 👾；关键看 Cloudflare Computer 把 Agent 的工作空间建成 Durable Object 内的虚拟文件系统，以 SQLite 保存权威状态，并通过 workspace.runtime 在 isolates、按需容器和浏览器执行面之间切换。 是否能被小范围验证。",
-        "whyItMatters": "cloudflare/computer 值得看，是因为 AI 项目真正的分水岭已经从“能跑 demo”转向“能被治理、能接工具、能失败恢复”。当前 2.3K stars / 101 forks，维护非常活跃，足够进入 Agent 工程雷达。 这次更新更值得关注的是其可迁移机制：Cloudflare Computer 把 Agent 的工作空间建成 Durable Object 内的虚拟文件系统，以 SQLite 保存权威状态，并通过 workspace.runtime 在 isolates、按需容器和浏览器执行面之间切换。 能否被拆成小样本验证，而不是把项目整体搬进生产。",
+        "whyItMatters": "cloudflare/computer 值得看，是因为 AI 项目真正的分水岭已经从“能跑 demo”转向“能被治理、能接工具、能失败恢复”。当前 2.6K stars / 117 forks，维护非常活跃，足够进入 Agent 工程雷达。 这次更新更值得关注的是其可迁移机制：Cloudflare Computer 把 Agent 的工作空间建成 Durable Object 内的虚拟文件系统，以 SQLite 保存权威状态，并通过 workspace.runtime 在 isolates、按需容器和浏览器执行面之间切换。 能否被拆成小样本验证，而不是把项目整体搬进生产。",
         "engineeringRead": "TypeScript · 容器化部署。建议按“入口示例 -> 数据/配置 -> 失败处理 -> CI/release -> issue 反例”的顺序读；重点回答 它解决的是「Agent 要完成真实任务时需要文件系统、shell、浏览器、包管理和持久状态，但给每个 Agent 一整个容器会带来冷启动、成本、隔离和规模化压力。」的主矛盾，还是只会给现有流程增加新的维护面？",
         "architectureSignals": [
           "架构机制：Cloudflare Computer 把 Agent 的工作空间建成 Durable Object 内的虚拟文件系统，以 SQLite 保存权威状态，并通过 workspace.runtime 在 isolates、按需容器和浏览器执行面之间切换。；阅读时把 TypeScript 代码入口、数据/配置形态、自动化脚本和边界条件连起来看，而不是只看 README 的安装示例。",
@@ -184,7 +184,7 @@
         },
         "diagram": {
           "title": "computer 工业级采用图解",
-          "caption": "Agent Computer Runtime / Durable Object 工作空间 · TypeScript · 2.3K stars",
+          "caption": "Agent Computer Runtime / Durable Object 工作空间 · TypeScript · 2.6K stars",
           "summary": "用 Cloudflare Computer 把 Agent 的工作空间建成 Durable Object 内的虚拟文件系统，以 SQLite 保存权威状态，并通过 workspace.runtime 在 isolates、按需容器和浏览器执行面之间切换。 解决 Agent 要完成真实任务时需要文件系统、shell、浏览器、包管理和持久状态，但给每个 Agent 一整个容器会带来冷启动、成本、隔离和规模化压力。，先经由 先把它用于公开数据、无凭据的 coding/browser 原型，让 Agent 在持久文件系统里读写、运行测试和生成 artifact；不要接生产账号、付款、内部系统或不可逆操作。 验证 任务恢复成功率、runtime 切换耗时、container 调用比例、文件系统一致性、trace 完整率、越权拦截、单位任务成本和人工接管率，再决定是否扩大。",
           "nodes": [
             {
@@ -221,12 +221,12 @@
             "metrics": [
               {
                 "label": "Stars",
-                "value": "2.3K",
+                "value": "2.6K",
                 "note": "社区关注"
               },
               {
                 "label": "Forks",
-                "value": "101",
+                "value": "117",
                 "note": "二次采用"
               },
               {
@@ -292,12 +292,12 @@
           }
         },
         "maturity": {
-          "community": 74,
+          "community": 75,
           "maintenance": 100,
-          "production": 85,
+          "production": 86,
           "complexity": 55
         },
-        "score": 91
+        "score": 92
       },
       "evidence": {
         "readmeExcerpt": "Cloudflare Computer Cloudflare Computer is a virtual filesystem that lives inside a Durable Object. The Durable Object holds the authoritative state in SQLite and exposes one pluggable execution surface through workspace.runtime . Three backends ship today: Container projects the SQLite state into a sandbox container as a real FUSE mount. A sandbox side daemon ( computerd ) mounts the state as a filesystem and syncs changes back over a capnweb RPC channel. Full Linux userland, real binaries, real network. Isolate shell runs just bash in a Dynamic Worker. It reaches the authoritative Workspace over Workers RPC, so there is no second store or sync round trip. Isolate JavaScript runs an ECMAScript module in a fresh Dynamic Worker with structured input/results, durable relative imports, configured libraries, Workspace backed node:fs/promises , and trusted ws:git and ws:artifacts modules. A W...",
@@ -314,10 +314,10 @@
         "visualUrl": "https://opengraph.githubassets.com/20260806/huangruiteng/loopx",
         "url": "https://github.com/huangruiteng/loopx",
         "description": "Lightweight loop engineering state kernel for long-running AI agent teams. Agent-loop agnostic across Codex, Claude Code, and other coding agents, with durable goals, quota-aware auto-wake, executable todos, evidence logs, and verifiable handoffs.",
-        "stars": 1949,
+        "stars": 2011,
         "starsToday": 327,
-        "forks": 150,
-        "openIssues": 26,
+        "forks": 156,
+        "openIssues": 24,
         "language": "Python",
         "topics": [
           "agent-control-plane",
@@ -330,10 +330,10 @@
           "workflow-automation"
         ],
         "license": "MIT",
-        "pushedAt": "2026-08-05T16:41:22Z",
+        "pushedAt": "2026-08-05T20:06:44Z",
         "createdAt": "2026-05-31T14:58:56Z",
         "languages": {
-          "Python": 15496430,
+          "Python": 15530663,
           "TypeScript": 608898,
           "Shell": 95977,
           "JavaScript": 69185,
@@ -345,7 +345,7 @@
         "method": "codex-research-refresh",
         "category": "长任务 Agent 控制平面 / Loop Engineering",
         "oneLiner": "Lightweight loop engineering state kernel for long-running AI agent teams. Agent-loop agnostic across Codex, Claude Code, and other coding agents, with durable goals, quota-aware auto-wake, executable todos, evidence logs, and verifiable handoffs.；关键看 LoopX 把 objective、gate、todo、scope、evidence、quota、claim/lease 和 handoff 做成本地优先状态内核；Agent 每次只执行一个 bounded slice，完成后写回证据与下一步，再由 quota 和人工 gate 决定是否继续唤醒。 是否能被小范围验证。",
-        "whyItMatters": "huangruiteng/loopx 值得看，是因为 AI 项目真正的分水岭已经从“能跑 demo”转向“能被治理、能接工具、能失败恢复”。当前 1.9K stars / 150 forks，维护非常活跃，足够进入 Agent 工程雷达。 这次更新更值得关注的是其可迁移机制：LoopX 把 objective、gate、todo、scope、evidence、quota、claim/lease 和 handoff 做成本地优先状态内核；Agent 每次只执行一个 bounded slice，完成后写回证据与下一步，再由 quota 和人工 gate 决定是否继续唤醒。 能否被拆成小样本验证，而不是把项目整体搬进生产。",
+        "whyItMatters": "huangruiteng/loopx 值得看，是因为 AI 项目真正的分水岭已经从“能跑 demo”转向“能被治理、能接工具、能失败恢复”。当前 2K stars / 156 forks，维护非常活跃，足够进入 Agent 工程雷达。 这次更新更值得关注的是其可迁移机制：LoopX 把 objective、gate、todo、scope、evidence、quota、claim/lease 和 handoff 做成本地优先状态内核；Agent 每次只执行一个 bounded slice，完成后写回证据与下一步，再由 quota 和人工 gate 决定是否继续唤醒。 能否被拆成小样本验证，而不是把项目整体搬进生产。",
         "engineeringRead": "Python · 阅读型或源码集成。建议按“入口示例 -> 数据/配置 -> 失败处理 -> CI/release -> issue 反例”的顺序读；重点回答 它解决的是「多小时或多天 Agent 任务容易丢 objective、忘 gate、重复消耗配额、缺少证据链，也很难在人、Codex、Claude Code、Cursor 或自定义 runtime 之间交接。」的主矛盾，还是只会给现有流程增加新的维护面？",
         "architectureSignals": [
           "架构机制：LoopX 把 objective、gate、todo、scope、evidence、quota、claim/lease 和 handoff 做成本地优先状态内核；Agent 每次只执行一个 bounded slice，完成后写回证据与下一步，再由 quota 和人工 gate 决定是否继续唤醒。；阅读时把 Python 代码入口、数据/配置形态、自动化脚本和边界条件连起来看，而不是只看 README 的安装示例。",
@@ -401,7 +401,7 @@
         },
         "diagram": {
           "title": "loopx 工业级采用图解",
-          "caption": "长任务 Agent 控制平面 / Loop Engineering · Python · 1.9K stars",
+          "caption": "长任务 Agent 控制平面 / Loop Engineering · Python · 2K stars",
           "summary": "用 LoopX 把 objective、gate、todo、scope、evidence、quota、claim/lease 和 handoff 做成本地优先状态内核；Agent 每次只执行一个 bounded slice，完成后写回证据与下一步，再由 quota 和人工 gate 决定是否继续唤醒。 解决 多小时或多天 Agent 任务容易丢 objective、忘 gate、重复消耗配额、缺少证据链，也很难在人、Codex、Claude Code、Cursor 或自定义 runtime 之间交接。，先经由 先用于 issue 修复、研究跟踪或实验复跑这类低风险长任务，把生产写操作、发布和危险权限留给人工确认。 验证 长任务恢复率、证据可追溯率、重复执行次数、人工 gate 命中率、配额浪费、handoff 成功率和最终 PR/报告返工率，再决定是否扩大。",
           "nodes": [
             {
@@ -438,17 +438,17 @@
             "metrics": [
               {
                 "label": "Stars",
-                "value": "1.9K",
+                "value": "2K",
                 "note": "社区关注"
               },
               {
                 "label": "Forks",
-                "value": "150",
+                "value": "156",
                 "note": "二次采用"
               },
               {
                 "label": "Issues",
-                "value": "26",
+                "value": "24",
                 "note": "维护压力"
               },
               {
@@ -509,9 +509,9 @@
           }
         },
         "maturity": {
-          "community": 72,
+          "community": 73,
           "maintenance": 100,
-          "production": 84,
+          "production": 85,
           "complexity": 55
         },
         "score": 92
@@ -531,10 +531,10 @@
         "visualUrl": "https://opengraph.githubassets.com/20260806/TencentCloud/TencentDB-Agent-Memory",
         "url": "https://github.com/TencentCloud/TencentDB-Agent-Memory",
         "description": "TencentDB Agent Memory is a team-level memory hub for AI Agents — turning conversations, docs, and code into four reusable memory assets (Chat Memory, Skill, LLM-Wiki, Code-Graph) that are governed, shared, and equipped across agents and frameworks.",
-        "stars": 14873,
+        "stars": 14947,
         "starsToday": 1891,
-        "forks": 1349,
-        "openIssues": 513,
+        "forks": 1363,
+        "openIssues": 514,
         "language": "TypeScript",
         "topics": [
           "agent",
@@ -564,15 +564,15 @@
         "method": "codex-research-refresh",
         "category": "团队级 Agent Memory / Chat-Skill-Wiki-CodeGraph 治理层",
         "oneLiner": "TencentDB Agent Memory is a team-level memory hub for AI Agents — turning conversations, docs, and code into four reusable memory assets (Chat Memory, Skill, LLM-Wiki, Code-Graph) that are governed, shared, and equipped across agents and frameworks.；关键看 把 conversation、docs、code 转成 Chat Memory、Skill、LLM-Wiki、Code-Graph 四类资产，并通过治理、装备和共享机制接入多 Agent/框架。 是否能被小范围验证。",
-        "whyItMatters": "TencentCloud/TencentDB-Agent-Memory 值得看，是因为 AI 项目真正的分水岭已经从“能跑 demo”转向“能被治理、能接工具、能失败恢复”。当前 14.9K stars / 1.3K forks，维护非常活跃，足够进入 Agent 工程雷达。 这次更新更值得关注的是其可迁移机制：把 conversation、docs、code 转成 Chat Memory、Skill、LLM-Wiki、Code-Graph 四类资产，并通过治理、装备和共享机制接入多 Agent/框架。 能否被拆成小样本验证，而不是把项目整体搬进生产。",
-        "engineeringRead": "TypeScript · 容器化部署。建议按“入口示例 -> 数据/配置 -> 失败处理 -> CI/release -> issue 反例”的顺序读；重点回答 它解决的是「团队使用多个 Agent 后，对话记忆、技能、文档知识和代码图谱分散在个人上下文里，无法共享、治理或跨工具复用。」的主矛盾，还是只会给现有流程增加新的维护面？",
+        "whyItMatters": "TencentCloud/TencentDB-Agent-Memory 值得看，是因为 AI 项目真正的分水岭已经从“能跑 demo”转向“能被治理、能接工具、能失败恢复”。当前 14.9K stars / 1.4K forks，维护非常活跃，足够进入 Agent 工程雷达。 这次更新更值得关注的是其可迁移机制：把 conversation、docs、code 转成 Chat Memory、Skill、LLM-Wiki、Code-Graph 四类资产，并通过治理、装备和共享机制接入多 Agent/框架。 能否被拆成小样本验证，而不是把项目整体搬进生产。",
+        "engineeringRead": "TypeScript · API/SDK 接入。建议按“入口示例 -> 数据/配置 -> 失败处理 -> CI/release -> issue 反例”的顺序读；重点回答 它解决的是「团队使用多个 Agent 后，对话记忆、技能、文档知识和代码图谱分散在个人上下文里，无法共享、治理或跨工具复用。」的主矛盾，还是只会给现有流程增加新的维护面？",
         "architectureSignals": [
           "架构机制：把 conversation、docs、code 转成 Chat Memory、Skill、LLM-Wiki、Code-Graph 四类资产，并通过治理、装备和共享机制接入多 Agent/框架。；阅读时把 TypeScript 代码入口、数据/配置形态、自动化脚本和边界条件连起来看，而不是只看 README 的安装示例。",
           "适用团队：高频使用 coding/research Agent、已有知识 owner 和权限治理需求的平台工程、研发效能和数据库/云产品团队。",
           "落地路径：先选择一个低敏项目，把历史任务、团队规范和代码索引导入只读记忆库，验证检索命中、权限边界和过期清理。；先保留人工复核、指标记录和回滚路径。",
           "生产风险：团队记忆会集中源码、决策和个人上下文；陈旧记忆、权限误配和数据泄露必须前置治理。",
           "决策问题：它解决的是「团队使用多个 Agent 后，对话记忆、技能、文档知识和代码图谱分散在个人上下文里，无法共享、治理或跨工具复用。」的主矛盾，还是只会给现有流程增加新的维护面？",
-          "观察信号：上下文命中率、重复解释次数、权限违规拦截、过期记忆清理、跨 Agent 复用次数、代码图谱错误引用率、最近 release 质量、issue 响应速度和 容器化部署 的集成反馈。"
+          "观察信号：上下文命中率、重复解释次数、权限违规拦截、过期记忆清理、跨 Agent 复用次数、代码图谱错误引用率、最近 release 质量、issue 响应速度和 API/SDK 接入 的集成反馈。"
         ],
         "valueHypothesis": [
           "如果团队确实存在「团队使用多个 Agent 后，对话记忆、技能、文档知识和代码图谱分散在个人上下文里，无法共享、治理或跨工具复用。」，TencentCloud/TencentDB-Agent-Memory 的收益应体现为 上下文命中率、重复解释次数、权限违规拦截、过期记忆清理、跨 Agent 复用次数、代码图谱错误引用率 的改善。",
@@ -586,7 +586,7 @@
         ],
         "adoptionRisks": [
           "团队记忆会集中源码、决策和个人上下文；陈旧记忆、权限误配和数据泄露必须前置治理。",
-          "与现有 TypeScript / 容器化部署 工具链的耦合要先做最小集成验证。",
+          "与现有 TypeScript / API/SDK 接入 工具链的耦合要先做最小集成验证。",
           "当前 open issues 偏高，必须抽查最近 issue 的响应质量和 release 节奏。"
         ],
         "suggestedUseCases": [
@@ -595,7 +595,7 @@
           "只在指标改善、维护 owner 明确、风险可隔离后，再从旁路验证扩大到核心流程。"
         ],
         "watchSignals": [
-          "上下文命中率、重复解释次数、权限违规拦截、过期记忆清理、跨 Agent 复用次数、代码图谱错误引用率、最近 release 质量、issue 响应速度和 容器化部署 的集成反馈。",
+          "上下文命中率、重复解释次数、权限违规拦截、过期记忆清理、跨 Agent 复用次数、代码图谱错误引用率、最近 release 质量、issue 响应速度和 API/SDK 接入 的集成反馈。",
           "release note 是否持续解释 把 conversation、docs、code 转成 Chat Memory、Skill、LLM-Wiki、Code-Graph 四类资产，并通过治理、装备和共享机制接入多 Agent/框架。 的演进，而不只是功能堆叠。",
           "issue/讨论区是否出现与你的目标场景相似的真实案例和失败反馈。"
         ],
@@ -608,7 +608,7 @@
           ],
           "productionConcerns": [
             "团队记忆会集中源码、决策和个人上下文；陈旧记忆、权限误配和数据泄露必须前置治理。",
-            "与现有 TypeScript / 容器化部署 工具链的耦合要先做最小集成验证。",
+            "与现有 TypeScript / API/SDK 接入 工具链的耦合要先做最小集成验证。",
             "当前 open issues 偏高，必须抽查最近 issue 的响应质量和 release 节奏。"
           ],
           "decisionQuestions": [
@@ -640,7 +640,7 @@
             },
             {
               "label": "观察信号",
-              "detail": "上下文命中率、重复解释次数、权限违规拦截、过期记忆清理、跨 Agent 复用次数、代码图谱错误引用率、最近 release 质量、issue 响应速度和 容器化部署 的集成反馈。",
+              "detail": "上下文命中率、重复解释次数、权限违规拦截、过期记忆清理、跨 Agent 复用次数、代码图谱错误引用率、最近 release 质量、issue 响应速度和 API/SDK 接入 的集成反馈。",
               "type": "measure"
             }
           ],
@@ -662,12 +662,12 @@
               },
               {
                 "label": "Forks",
-                "value": "1.3K",
+                "value": "1.4K",
                 "note": "二次采用"
               },
               {
                 "label": "Issues",
-                "value": "513",
+                "value": "514",
                 "note": "维护压力"
               },
               {
@@ -700,7 +700,7 @@
               },
               {
                 "label": "观察信号",
-                "detail": "上下文命中率、重复解释次数、权限违规拦截、过期记忆清理、跨 Agent 复用次数、代码图谱错误引用率、最近 release 质量、issue 响应速度和 容器化部署 的集成反馈。",
+                "detail": "上下文命中率、重复解释次数、权限违规拦截、过期记忆清理、跨 Agent 复用次数、代码图谱错误引用率、最近 release 质量、issue 响应速度和 API/SDK 接入 的集成反馈。",
                 "type": "measure",
                 "step": "04",
                 "signal": "上下文命中率、重复解释次数、权限违规拦截、过期记忆清理、跨 Agent 复用次数、代码图谱错误引用率"
@@ -729,14 +729,14 @@
         },
         "maturity": {
           "community": 92,
-          "maintenance": 100,
-          "production": 83,
+          "maintenance": 97,
+          "production": 82,
           "complexity": 67
         },
-        "score": 92
+        "score": 91
       },
       "evidence": {
-        "readmeExcerpt": "<div align=\"center\" <img src=\"./assets/images/logo.png\" alt=\"TencentDB Agent Memory\" width=\"880\" / Agents remember,Humans innovate. <a href=\"https://trendshift.io/repositories/29310?utm source=repository badge&amp;utm medium=badge&amp;utm campaign=badge repository 29310\" target=\" blank\" rel=\"noopener noreferrer\" <img src=\"https://trendshift.io/api/badge/repositories/29310\" alt=\"TencentCloud%2FTencentDB Agent Memory Trendshift\" width=\"250\" height=\"55\"/ </a Highlights · Overview · Core Technology · Features · Quick Start <div align=\"center\" English · 简体中文 </div </div ✨ Highlights TencentDB Agent Memory = symbolic short term memory + layered long term memory. Symbolic short term memory offloads heavy tool logs and condenses them into compact Mermaid symbols, cutting token usage and improving task success. Layered long term memory distills fragmented conversations into structured personas an...",
+        "readmeExcerpt": "<div align=\"center\" <img src=\"./assets/images/logo.png\" alt=\"TencentDB Agent Memory\" width=\"880\" / Agents remember. Humans innovate. <a href=\"https://trendshift.io/repositories/29310?utm source=repository badge&amp;utm medium=badge&amp;utm campaign=badge repository 29310\" target=\" blank\" rel=\"noopener noreferrer\" <img src=\"https://trendshift.io/api/badge/repositories/29310\" alt=\"TencentCloud%2FTencentDB Agent Memory Trendshift\" width=\"250\" height=\"55\"/ </a Installation · What is it? · Team Play · Technical Implementation · Benchmark English · 简体中文 </div Latest: Team Memory Beta is evolving quickly — install it and start exploring in minutes. <td <video src=\"https://github.com/user attachments/assets/efb1a808 1f86 4cfe 802c f7453f7ca938\" width=\"100%\" controls autoplay loop muted playsinline </video </td Installation Start all three services in one go ( memory core + memory hub + proxy ): ...",
         "githubUrl": "https://github.com/TencentCloud/TencentDB-Agent-Memory"
       }
     },
@@ -749,10 +749,10 @@
         "avatarUrl": "https://avatars.githubusercontent.com/u/5458997?v=4",
         "visualUrl": "https://opengraph.githubassets.com/20260806/donnemartin/system-design-primer",
         "url": "https://github.com/donnemartin/system-design-primer",
-        "description": "Learn how to design large-scale systems. Prep for the system design interview. Includes Anki flashcards.",
-        "stars": 361365,
+        "description": "Learn how to design large-scale systems. Prep for the system design interview.  Includes Anki flashcards.",
+        "stars": 361426,
         "starsToday": 304,
-        "forks": 57607,
+        "forks": 57626,
         "openIssues": 587,
         "language": "Python",
         "topics": [
@@ -781,7 +781,7 @@
       "analysis": {
         "method": "codex-research-refresh",
         "category": "系统设计知识库 / 工程面试与架构共识",
-        "oneLiner": "Learn how to design large-scale systems. Prep for the system design interview. Includes Anki flashcards.；关键看 以教程、图解、案例、Anki 和多语言翻译组织系统设计知识，把架构概念转成可复习、可引用的公共材料。 是否能被小范围验证。",
+        "oneLiner": "Learn how to design large-scale systems. Prep for the system design interview.  Includes Anki flashcards.；关键看 以教程、图解、案例、Anki 和多语言翻译组织系统设计知识，把架构概念转成可复习、可引用的公共材料。 是否能被小范围验证。",
         "whyItMatters": "donnemartin/system-design-primer 处在 超级公共资产 区间：361.4K stars / 57.6K forks，需要确认近期维护强度。README 把重点放在「The System Design Primer」，适合判断它是否能在 数据存取、检索、分析或状态管理复杂度 上形成真实工程收益。 这次更新更值得关注的是其可迁移机制：以教程、图解、案例、Anki 和多语言翻译组织系统设计知识，把架构概念转成可复习、可引用的公共材料。 能否被拆成小样本验证，而不是把项目整体搬进生产。",
         "engineeringRead": "Python · API/SDK 接入。建议按“入口示例 -> 数据/配置 -> 失败处理 -> CI/release -> issue 反例”的顺序读；重点回答 它解决的是「工程师学习分布式系统时资料分散，团队也缺少统一语言讨论缓存、队列、存储、扩展和故障模式。」的主矛盾，还是只会给现有流程增加新的维护面？",
         "architectureSignals": [
@@ -968,10 +968,10 @@
         "visualUrl": "https://opengraph.githubassets.com/20260806/firecrawl/pdf-inspector",
         "url": "https://github.com/firecrawl/pdf-inspector",
         "description": "Fast Rust library for PDF inspection, classification, and text extraction. Intelligently detects scanned vs text-based PDFs to enable smart routing decisions.",
-        "stars": 11166,
+        "stars": 11292,
         "starsToday": 1583,
-        "forks": 740,
-        "openIssues": 77,
+        "forks": 751,
+        "openIssues": 78,
         "language": "Rust",
         "topics": [
           "markdown",
@@ -999,7 +999,7 @@
         "method": "codex-research-refresh",
         "category": "PDF 文档路由 / Rust + WASM 解析基础设施",
         "oneLiner": "Fast Rust library for PDF inspection, classification, and text extraction. Intelligently detects scanned vs text-based PDFs to enable smart routing decisions.；关键看 Rust 核心快速采样 PDF content stream，判断 text-based、scanned、image-based 或 mixed，并提供位置感知文本抽取、Python/Node/WASM 绑定和 OCR 路由置信度。 是否能被小范围验证。",
-        "whyItMatters": "firecrawl/pdf-inspector 处在 快速扩散项目 区间：11.2K stars / 740 forks，维护非常活跃。README 把重点放在「pdf inspector」，适合判断它是否能在 构建、调试、交付或依赖管理的效率瓶颈 上形成真实工程收益。 这次更新更值得关注的是其可迁移机制：Rust 核心快速采样 PDF content stream，判断 text-based、scanned、image-based 或 mixed，并提供位置感知文本抽取、Python/Node/WASM 绑定和 OCR 路由置信度。 能否被拆成小样本验证，而不是把项目整体搬进生产。",
+        "whyItMatters": "firecrawl/pdf-inspector 处在 快速扩散项目 区间：11.3K stars / 751 forks，维护非常活跃。README 把重点放在「pdf inspector」，适合判断它是否能在 构建、调试、交付或依赖管理的效率瓶颈 上形成真实工程收益。 这次更新更值得关注的是其可迁移机制：Rust 核心快速采样 PDF content stream，判断 text-based、scanned、image-based 或 mixed，并提供位置感知文本抽取、Python/Node/WASM 绑定和 OCR 路由置信度。 能否被拆成小样本验证，而不是把项目整体搬进生产。",
         "engineeringRead": "Rust · Node 包/前端工程。建议按“入口示例 -> 数据/配置 -> 失败处理 -> CI/release -> issue 反例”的顺序读；重点回答 它解决的是「文档处理和 RAG 管线经常把所有 PDF 都送进 OCR，导致成本、延迟和隐私面扩大，同时扫描件与文本 PDF 的处理路径混杂。」的主矛盾，还是只会给现有流程增加新的维护面？",
         "architectureSignals": [
           "架构机制：Rust 核心快速采样 PDF content stream，判断 text-based、scanned、image-based 或 mixed，并提供位置感知文本抽取、Python/Node/WASM 绑定和 OCR 路由置信度。；阅读时把 Rust 代码入口、数据/配置形态、自动化脚本和边界条件连起来看，而不是只看 README 的安装示例。",
@@ -1055,7 +1055,7 @@
         },
         "diagram": {
           "title": "pdf-inspector 工业级采用图解",
-          "caption": "PDF 文档路由 / Rust + WASM 解析基础设施 · Rust · 11.2K stars",
+          "caption": "PDF 文档路由 / Rust + WASM 解析基础设施 · Rust · 11.3K stars",
           "summary": "用 Rust 核心快速采样 PDF content stream，判断 text-based、scanned、image-based 或 mixed，并提供位置感知文本抽取、Python/Node/WASM 绑定和 OCR 路由置信度。 解决 文档处理和 RAG 管线经常把所有 PDF 都送进 OCR，导致成本、延迟和隐私面扩大，同时扫描件与文本 PDF 的处理路径混杂。，先经由 选一批真实但低敏 PDF 离线评测，先只做分类和文本抽取旁路，不覆盖现有 OCR/RAG 主链路。 验证 分类准确率、误跳 OCR 率、抽取耗时、坐标保真、WASM 包体/性能、异常 PDF 崩溃率和人工校验成本，再决定是否扩大。",
           "nodes": [
             {
@@ -1092,17 +1092,17 @@
             "metrics": [
               {
                 "label": "Stars",
-                "value": "11.2K",
+                "value": "11.3K",
                 "note": "社区关注"
               },
               {
                 "label": "Forks",
-                "value": "740",
+                "value": "751",
                 "note": "二次采用"
               },
               {
                 "label": "Issues",
-                "value": "77",
+                "value": "78",
                 "note": "维护压力"
               },
               {
@@ -1185,10 +1185,10 @@
         "visualUrl": "https://opengraph.githubassets.com/20260806/esengine/DeepSeek-Reasonix",
         "url": "https://github.com/esengine/DeepSeek-Reasonix",
         "description": "DeepSeek-native AI coding agent for your terminal. Engineered around prefix-cache stability — leave it running.",
-        "stars": 31443,
+        "stars": 31508,
         "starsToday": 747,
-        "forks": 2022,
-        "openIssues": 797,
+        "forks": 2026,
+        "openIssues": 801,
         "language": "Go",
         "topics": [
           "agent",
@@ -1209,7 +1209,7 @@
           "typescript"
         ],
         "license": "MIT",
-        "pushedAt": "2026-08-05T16:10:13Z",
+        "pushedAt": "2026-08-05T19:02:37Z",
         "createdAt": "2026-04-21T08:27:02Z",
         "languages": {
           "Go": 18287108,
@@ -1230,15 +1230,15 @@
         "method": "codex-research-refresh",
         "category": "DeepSeek 原生终端 Coding Agent / Prefix-cache 工作流",
         "oneLiner": "DeepSeek-native AI coding agent for your terminal. Engineered around prefix-cache stability — leave it running.；关键看 围绕 DeepSeek 模型和 prefix-cache stability 设计长驻终端 Agent，整合 ACP、任务 spec、会话状态、工具调用和本地执行循环。 是否能被小范围验证。",
-        "whyItMatters": "esengine/DeepSeek-Reasonix 值得看，是因为 AI 项目真正的分水岭已经从“能跑 demo”转向“能被治理、能接工具、能失败恢复”。当前 31.4K stars / 2K forks，维护非常活跃，足够进入 Agent 工程雷达。 这次更新更值得关注的是其可迁移机制：围绕 DeepSeek 模型和 prefix-cache stability 设计长驻终端 Agent，整合 ACP、任务 spec、会话状态、工具调用和本地执行循环。 能否被拆成小样本验证，而不是把项目整体搬进生产。",
-        "engineeringRead": "Go · Node 包/前端工程。建议按“入口示例 -> 数据/配置 -> 失败处理 -> CI/release -> issue 反例”的顺序读；重点回答 它解决的是「低成本模型做 coding agent 时，经常因为上下文丢失、prefix cache 不稳定、终端接管差和 provider 语义差异导致任务断裂。」的主矛盾，还是只会给现有流程增加新的维护面？",
+        "whyItMatters": "esengine/DeepSeek-Reasonix 值得看，是因为 AI 项目真正的分水岭已经从“能跑 demo”转向“能被治理、能接工具、能失败恢复”。当前 31.5K stars / 2K forks，维护非常活跃，足够进入 Agent 工程雷达。 这次更新更值得关注的是其可迁移机制：围绕 DeepSeek 模型和 prefix-cache stability 设计长驻终端 Agent，整合 ACP、任务 spec、会话状态、工具调用和本地执行循环。 能否被拆成小样本验证，而不是把项目整体搬进生产。",
+        "engineeringRead": "Go · 本机 CLI 工具。建议按“入口示例 -> 数据/配置 -> 失败处理 -> CI/release -> issue 反例”的顺序读；重点回答 它解决的是「低成本模型做 coding agent 时，经常因为上下文丢失、prefix cache 不稳定、终端接管差和 provider 语义差异导致任务断裂。」的主矛盾，还是只会给现有流程增加新的维护面？",
         "architectureSignals": [
           "架构机制：围绕 DeepSeek 模型和 prefix-cache stability 设计长驻终端 Agent，整合 ACP、任务 spec、会话状态、工具调用和本地执行循环。；阅读时把 Go 代码入口、数据/配置形态、自动化脚本和边界条件连起来看，而不是只看 README 的安装示例。",
           "适用团队：有模型网关、多模型评测、人工 review 和低风险任务池的研发效能团队。",
           "落地路径：先用于只读代码解释、测试生成或小文档修改，对比 Claude/Codex 在同一任务集上的成本、耗时、补上下文次数和补丁质量。；先保留人工复核、指标记录和回滚路径。",
           "生产风险：低成本 coding agent 会放大上下文缺失和工具误用；必须用分支隔离、测试、diff review 和回滚控制风险。",
           "决策问题：它解决的是「低成本模型做 coding agent 时，经常因为上下文丢失、prefix cache 不稳定、终端接管差和 provider 语义差异导致任务断裂。」的主矛盾，还是只会给现有流程增加新的维护面？",
-          "观察信号：任务完成率、prefix cache 命中、单任务成本、P95 响应、错误补丁率、人工接管率和上下文遗漏次数、最近 release 质量、issue 响应速度和 Node 包/前端工程 的集成反馈。"
+          "观察信号：任务完成率、prefix cache 命中、单任务成本、P95 响应、错误补丁率、人工接管率和上下文遗漏次数、最近 release 质量、issue 响应速度和 本机 CLI 工具 的集成反馈。"
         ],
         "valueHypothesis": [
           "如果团队确实存在「低成本模型做 coding agent 时，经常因为上下文丢失、prefix cache 不稳定、终端接管差和 provider 语义差异导致任务断裂。」，esengine/DeepSeek-Reasonix 的收益应体现为 任务完成率、prefix cache 命中、单任务成本、P95 响应、错误补丁率、人工接管率和上下文遗漏次数 的改善。",
@@ -1252,7 +1252,7 @@
         ],
         "adoptionRisks": [
           "低成本 coding agent 会放大上下文缺失和工具误用；必须用分支隔离、测试、diff review 和回滚控制风险。",
-          "与现有 Go / Node 包/前端工程 工具链的耦合要先做最小集成验证。",
+          "与现有 Go / 本机 CLI 工具 工具链的耦合要先做最小集成验证。",
           "当前 open issues 偏高，必须抽查最近 issue 的响应质量和 release 节奏。"
         ],
         "suggestedUseCases": [
@@ -1261,7 +1261,7 @@
           "只在指标改善、维护 owner 明确、风险可隔离后，再从旁路验证扩大到核心流程。"
         ],
         "watchSignals": [
-          "任务完成率、prefix cache 命中、单任务成本、P95 响应、错误补丁率、人工接管率和上下文遗漏次数、最近 release 质量、issue 响应速度和 Node 包/前端工程 的集成反馈。",
+          "任务完成率、prefix cache 命中、单任务成本、P95 响应、错误补丁率、人工接管率和上下文遗漏次数、最近 release 质量、issue 响应速度和 本机 CLI 工具 的集成反馈。",
           "release note 是否持续解释 围绕 DeepSeek 模型和 prefix-cache stability 设计长驻终端 Agent，整合 ACP、任务 spec、会话状态、工具调用和本地执行循环。 的演进，而不只是功能堆叠。",
           "issue/讨论区是否出现与你的目标场景相似的真实案例和失败反馈。"
         ],
@@ -1274,7 +1274,7 @@
           ],
           "productionConcerns": [
             "低成本 coding agent 会放大上下文缺失和工具误用；必须用分支隔离、测试、diff review 和回滚控制风险。",
-            "与现有 Go / Node 包/前端工程 工具链的耦合要先做最小集成验证。",
+            "与现有 Go / 本机 CLI 工具 工具链的耦合要先做最小集成验证。",
             "当前 open issues 偏高，必须抽查最近 issue 的响应质量和 release 节奏。"
           ],
           "decisionQuestions": [
@@ -1286,7 +1286,7 @@
         },
         "diagram": {
           "title": "DeepSeek-Reasonix 工业级采用图解",
-          "caption": "DeepSeek 原生终端 Coding Agent / Prefix-cache 工作流 · Go · 31.4K stars",
+          "caption": "DeepSeek 原生终端 Coding Agent / Prefix-cache 工作流 · Go · 31.5K stars",
           "summary": "用 围绕 DeepSeek 模型和 prefix-cache stability 设计长驻终端 Agent，整合 ACP、任务 spec、会话状态、工具调用和本地执行循环。 解决 低成本模型做 coding agent 时，经常因为上下文丢失、prefix cache 不稳定、终端接管差和 provider 语义差异导致任务断裂。，先经由 先用于只读代码解释、测试生成或小文档修改，对比 Claude/Codex 在同一任务集上的成本、耗时、补上下文次数和补丁质量。 验证 任务完成率、prefix cache 命中、单任务成本、P95 响应、错误补丁率、人工接管率和上下文遗漏次数，再决定是否扩大。",
           "nodes": [
             {
@@ -1306,7 +1306,7 @@
             },
             {
               "label": "观察信号",
-              "detail": "任务完成率、prefix cache 命中、单任务成本、P95 响应、错误补丁率、人工接管率和上下文遗漏次数、最近 release 质量、issue 响应速度和 Node 包/前端工程 的集成反馈。",
+              "detail": "任务完成率、prefix cache 命中、单任务成本、P95 响应、错误补丁率、人工接管率和上下文遗漏次数、最近 release 质量、issue 响应速度和 本机 CLI 工具 的集成反馈。",
               "type": "measure"
             }
           ],
@@ -1323,7 +1323,7 @@
             "metrics": [
               {
                 "label": "Stars",
-                "value": "31.4K",
+                "value": "31.5K",
                 "note": "社区关注"
               },
               {
@@ -1333,7 +1333,7 @@
               },
               {
                 "label": "Issues",
-                "value": "797",
+                "value": "801",
                 "note": "维护压力"
               },
               {
@@ -1366,7 +1366,7 @@
               },
               {
                 "label": "观察信号",
-                "detail": "任务完成率、prefix cache 命中、单任务成本、P95 响应、错误补丁率、人工接管率和上下文遗漏次数、最近 release 质量、issue 响应速度和 Node 包/前端工程 的集成反馈。",
+                "detail": "任务完成率、prefix cache 命中、单任务成本、P95 响应、错误补丁率、人工接管率和上下文遗漏次数、最近 release 质量、issue 响应速度和 本机 CLI 工具 的集成反馈。",
                 "type": "measure",
                 "step": "04",
                 "signal": "任务完成率、prefix cache 命中、单任务成本、P95 响应、错误补丁率、人工接管率和上下文遗漏次数"
@@ -1402,7 +1402,7 @@
         "score": 92
       },
       "evidence": {
-        "readmeExcerpt": "<p align=\"center\" <img src=\"docs/logo.svg\" alt=\"Reasonix\" width=\"640\"/ </p [!WARNING] This is the legacy TypeScript line (Reasonix 0.x), in maintenance mode. Active development moved to the Go rewrite — see the main v2 branch (the new default) and the migration guide. Only bug fixes land here. <p align=\"center\" <strong English</strong &nbsp;·&nbsp; <a href=\"./README.zh CN.md\" 简体中文</a &nbsp;·&nbsp; <a href=\"./README.ja JP.md\" 日本語</a &nbsp;·&nbsp; <a href=\"https://esengine.github.io/DeepSeek Reasonix/\" Website</a &nbsp;·&nbsp; <a href=\"https://esengine.github.io/DeepSeek Reasonix/configuration.html\" Guide</a &nbsp;·&nbsp; <a href=\"./docs/ARCHITECTURE.md\" Architecture</a &nbsp;·&nbsp; <a href=\"./benchmarks/\" Benchmarks</a &nbsp;·&nbsp; <strong <a href=\"https://discord.gg/XF78rEME2D\" Discord</a </strong </p <p align=\"center\" <a href=\"https://www.npmjs.com/package/reasonix\" <img src=\"https://...",
+        "readmeExcerpt": "<p align=\"center\" <img src=\"docs/logo.svg\" alt=\"Reasonix\" width=\"640\"/ </p <p align=\"center\" <strong English</strong &nbsp;·&nbsp; <a href=\"./README.zh CN.md\" 简体中文</a &nbsp;·&nbsp; <a href=\"./docs/GUIDE.md\" Guide</a &nbsp;·&nbsp; <a href=\"./docs/ACP.md\" ACP</a &nbsp;·&nbsp; <a href=\"./docs/EXTENSIONS.md\" Extensions</a &nbsp;·&nbsp; <a href=\"./docs/SPEC.md\" Spec</a &nbsp;·&nbsp; <a href=\"https://esengine.github.io/DeepSeek Reasonix/\" Website</a &nbsp;·&nbsp; <strong <a href=\"https://discord.gg/XF78rEME2D\" Discord</a </strong </p <p align=\"center\" <a href=\"https://www.npmjs.com/package/reasonix\" <img src=\"https://img.shields.io/npm/v/reasonix.svg?style=flat square&color=cb3837&labelColor=161b22&logo=npm&logoColor=white\" alt=\"npm version\"/ </a <a href=\"https://github.com/esengine/DeepSeek Reasonix/actions/workflows/ci.yml\" <img src=\"https://img.shields.io/github/actions/workflow/status/esen...",
         "githubUrl": "https://github.com/esengine/DeepSeek-Reasonix"
       }
     },
@@ -1416,9 +1416,9 @@
         "visualUrl": "https://opengraph.githubassets.com/20260806/addyosmani/agent-skills",
         "url": "https://github.com/addyosmani/agent-skills",
         "description": "Production-grade engineering skills for AI coding agents.",
-        "stars": 81890,
+        "stars": 81927,
         "starsToday": 203,
-        "forks": 8815,
+        "forks": 8818,
         "openIssues": 148,
         "language": "JavaScript",
         "topics": [
@@ -1430,7 +1430,7 @@
           "skills"
         ],
         "license": "MIT",
-        "pushedAt": "2026-08-04T04:08:25Z",
+        "pushedAt": "2026-08-05T19:09:28Z",
         "createdAt": "2026-02-15T20:20:26Z",
         "languages": {
           "JavaScript": 64231,
@@ -1609,11 +1609,11 @@
         },
         "maturity": {
           "community": 100,
-          "maintenance": 94,
-          "production": 94,
+          "maintenance": 100,
+          "production": 95,
           "complexity": 55
         },
-        "score": 94
+        "score": 96
       },
       "evidence": {
         "readmeExcerpt": "Agent Skills Production grade engineering skills for AI coding agents. Skills encode the workflows, quality gates, and best practices that senior engineers use when building software. These ones are packaged so AI agents follow them consistently across every phase of development. <a href=\"https://trendshift.io/repositories/25200\" target=\" blank\" <img src=\"https://trendshift.io/api/badge/repositories/25200\" alt=\"addyosmani%2Fagent skills Trendshift\" style=\"width: 250px; height: 55px;\" width=\"250\" height=\"55\"/ </a Commands 8 slash commands that map to the development lifecycle. Each one activates the right skills automatically. What you're doing Command Key principle Define what to build /spec Spec before code Plan how to build it /plan Small, atomic tasks Build incrementally /build One slice at a time Prove it works /test Tests are proof Review before merge /review Improve code health Aud...",
@@ -1630,9 +1630,9 @@
         "visualUrl": "https://opengraph.githubassets.com/20260806/obra/superpowers",
         "url": "https://github.com/obra/superpowers",
         "description": "An agentic skills framework & software development methodology that works.",
-        "stars": 267151,
+        "stars": 267222,
         "starsToday": 931,
-        "forks": 23872,
+        "forks": 23877,
         "openIssues": 324,
         "language": "Shell",
         "topics": [
@@ -1847,10 +1847,10 @@
         "visualUrl": "https://opengraph.githubassets.com/20260806/roboflow/supervision",
         "url": "https://github.com/roboflow/supervision",
         "description": "We write your reusable computer vision tools. 💜",
-        "stars": 48836,
+        "stars": 48869,
         "starsToday": 132,
-        "forks": 4614,
-        "openIssues": 71,
+        "forks": 4615,
+        "openIssues": 70,
         "language": "Python",
         "topics": [
           "classification",
@@ -1874,17 +1874,17 @@
           "yolo"
         ],
         "license": "MIT",
-        "pushedAt": "2026-08-05T17:24:44Z",
+        "pushedAt": "2026-08-05T17:59:46Z",
         "createdAt": "2022-11-28T14:08:44Z",
         "languages": {
-          "Python": 3119622
+          "Python": 3129375
         }
       },
       "analysis": {
         "method": "codex-research-refresh",
         "category": "计算机视觉工具库 / 标注到部署的后处理层",
         "oneLiner": "We write your reusable computer vision tools. 💜；关键看 Python CV 工具库封装 detection/segmentation 结果对象、annotator、tracker、dataset I/O、zone 计数和模型推理后处理 是否能被小范围验证。",
-        "whyItMatters": "roboflow/supervision 的热度来自“可持续维护的公共资料面”：48.8K stars / 4.6K forks，维护非常活跃。README 把重点放在「👋 hello」，说明它的价值更多在分类、治理和更新节奏，而不是某个单点技术实现。 这次更新更值得关注的是其可迁移机制：Python CV 工具库封装 detection/segmentation 结果对象、annotator、tracker、dataset I/O、zone 计数和模型推理后处理 能否被拆成小样本验证，而不是把项目整体搬进生产。",
+        "whyItMatters": "roboflow/supervision 的热度来自“可持续维护的公共资料面”：48.9K stars / 4.6K forks，维护非常活跃。README 把重点放在「👋 Hello」，说明它的价值更多在分类、治理和更新节奏，而不是某个单点技术实现。 这次更新更值得关注的是其可迁移机制：Python CV 工具库封装 detection/segmentation 结果对象、annotator、tracker、dataset I/O、zone 计数和模型推理后处理 能否被拆成小样本验证，而不是把项目整体搬进生产。",
         "engineeringRead": "Python · Python 包/脚本。建议按“入口示例 -> 数据/配置 -> 失败处理 -> CI/release -> issue 反例”的顺序读；重点回答 它解决的是「视觉团队在检测、分割、跟踪和计数场景中，经常重复编写标注可视化、结果过滤、数据集转换和视频流后处理代码」的主矛盾，还是只会给现有流程增加新的维护面？",
         "architectureSignals": [
           "架构机制：Python CV 工具库封装 detection/segmentation 结果对象、annotator、tracker、dataset I/O、zone 计数和模型推理后处理；阅读时把 Python 代码入口、数据/配置形态、自动化脚本和边界条件连起来看，而不是只看 README 的安装示例。",
@@ -1940,7 +1940,7 @@
         },
         "diagram": {
           "title": "supervision 工业级采用图解",
-          "caption": "计算机视觉工具库 / 标注到部署的后处理层 · Python · 48.8K stars",
+          "caption": "计算机视觉工具库 / 标注到部署的后处理层 · Python · 48.9K stars",
           "summary": "用 Python CV 工具库封装 detection/segmentation 结果对象、annotator、tracker、dataset I/O、zone 计数和模型推理后处理 解决 视觉团队在检测、分割、跟踪和计数场景中，经常重复编写标注可视化、结果过滤、数据集转换和视频流后处理代码，先经由 选一个离线视频或图片评测集，把现有 YOLO/RT-DETR/SAM 输出接入 supervision，只替换可视化和后处理层 验证 集成耗时、标注/可视化一致性、FPS、后处理错误率、数据集转换成功率、人工复核效率，再决定是否扩大。",
           "nodes": [
             {
@@ -1977,7 +1977,7 @@
             "metrics": [
               {
                 "label": "Stars",
-                "value": "48.8K",
+                "value": "48.9K",
                 "note": "社区关注"
               },
               {
@@ -1987,7 +1987,7 @@
               },
               {
                 "label": "Issues",
-                "value": "71",
+                "value": "70",
                 "note": "维护压力"
               },
               {
@@ -2056,7 +2056,7 @@
         "score": 100
       },
       "evidence": {
-        "readmeExcerpt": "<div align=\"center\" <p <a align=\"center\" href=\"\" target=\"https://supervision.roboflow.com\" <img width=\"100%\" src=\"https://media.roboflow.com/open source/supervision/rf supervision banner.png?updatedAt=1678995927529\" </a </p <br notebooks inference autodistill maestro <br <div align=\"center\" <a href=\"https://trendshift.io/repositories/124\" target=\" blank\" <img src=\"https://trendshift.io/api/badge/repositories/124\" alt=\"roboflow%2Fsupervision Trendshift\" style=\"width: 250px; height: 55px;\" width=\"250\" height=\"55\"/ </a </div </div 👋 hello We write your reusable computer vision tools. Whether you need to load your dataset from your hard drive, draw detections on an image or video, or count how many detections are in a zone. You can count on us! 🤝 💻 install Pip install the supervision package in a Python =3.9 environment. Read more about conda, mamba, and installing from source in our guid...",
+        "readmeExcerpt": "<div align=\"center\" <p <a align=\"center\" href=\"https://supervision.roboflow.com\" target=\" blank\" <img width=\"100%\" src=\"https://media.roboflow.com/open source/supervision/rf supervision banner.png?updatedAt=1678995927529\" </a </p <br notebooks inference autodistill maestro <br <div align=\"center\" <a href=\"https://trendshift.io/repositories/124\" target=\" blank\" <img src=\"https://trendshift.io/api/badge/repositories/124\" alt=\"roboflow%2Fsupervision Trendshift\" style=\"width: 250px; height: 55px;\" width=\"250\" height=\"55\"/ </a </div </div <details <summary <strong 📑 Table of Contents</strong </summary 👋 Hello 💻 Install 🔥 Quickstart Models Annotators Datasets 🎬 Tutorials 💜 Built with Supervision 📚 Documentation 🏆 Contribution </details 👋 Hello We are your essential toolkit for computer vision. From data loading to real time zone counting, we provide the building blocks so you can focu...",
         "githubUrl": "https://github.com/roboflow/supervision"
       }
     },
@@ -2070,10 +2070,10 @@
         "visualUrl": "https://opengraph.githubassets.com/20260806/vercel/next.js",
         "url": "https://github.com/vercel/next.js",
         "description": "The React Framework",
-        "stars": 141474,
-        "starsToday": 58,
-        "forks": 31676,
-        "openIssues": 4317,
+        "stars": 141507,
+        "starsToday": 144,
+        "forks": 31679,
+        "openIssues": 4326,
         "language": "JavaScript",
         "topics": [
           "blog",
@@ -2092,7 +2092,7 @@
           "vercel"
         ],
         "license": "MIT",
-        "pushedAt": "2026-08-05T17:15:11Z",
+        "pushedAt": "2026-08-05T20:22:38Z",
         "createdAt": "2016-10-05T23:32:51Z",
         "languages": {
           "JavaScript": 39010165,
@@ -2115,7 +2115,7 @@
         "method": "codex-research-refresh",
         "category": "React 全栈框架 / App Router 与 Server Components 平台",
         "oneLiner": "The React Framework；关键看 Next.js 将 App Router、React Server Components、Server Actions、数据缓存、路由分层、Turbopack 编译、图片/字体优化和部署适配放在同一框架内，形成从代码到生产运行时的约束面。 是否能被小范围验证。",
-        "whyItMatters": "vercel/next.js 处在 超级公共资产 区间：141.5K stars / 31.7K forks，维护非常活跃。The React Framework，适合判断它是否能在 构建、调试、交付或依赖管理的效率瓶颈 上形成真实工程收益。 这次更新更值得关注的是其可迁移机制：Next.js 将 App Router、React Server Components、Server Actions、数据缓存、路由分层、Turbopack 编译、图片/字体优化和部署适配放在同一框架内，形成从代码到生产运行时的约束面。 能否被拆成小样本验证，而不是把项目整体搬进生产。",
+        "whyItMatters": "vercel/next.js 处在 超级公共资产 区间：141.5K stars / 31.7K forks，维护非常活跃。README 把重点放在「Getting Started」，适合判断它是否能在 构建、调试、交付或依赖管理的效率瓶颈 上形成真实工程收益。 这次更新更值得关注的是其可迁移机制：Next.js 将 App Router、React Server Components、Server Actions、数据缓存、路由分层、Turbopack 编译、图片/字体优化和部署适配放在同一框架内，形成从代码到生产运行时的约束面。 能否被拆成小样本验证，而不是把项目整体搬进生产。",
         "engineeringRead": "JavaScript · 阅读型或源码集成。建议按“入口示例 -> 数据/配置 -> 失败处理 -> CI/release -> issue 反例”的顺序读；重点回答 它解决的是「前端团队既要交付交互体验，又要处理 SSR/SSG、边缘运行、数据缓存、路由、编译、图片优化和部署差异；自行拼装会让架构边界分散。」的主矛盾，还是只会给现有流程增加新的维护面？",
         "architectureSignals": [
           "架构机制：Next.js 将 App Router、React Server Components、Server Actions、数据缓存、路由分层、Turbopack 编译、图片/字体优化和部署适配放在同一框架内，形成从代码到生产运行时的约束面。；阅读时把 JavaScript 代码入口、数据/配置形态、自动化脚本和边界条件连起来看，而不是只看 README 的安装示例。",
@@ -2287,7 +2287,7 @@
         "score": 92
       },
       "evidence": {
-        "readmeExcerpt": "packages/next/README.md",
+        "readmeExcerpt": "<div align=\"center\" <a href=\"https://nextjs.org\" <picture <source media=\"(prefers color scheme: dark)\" srcset=\"https://assets.vercel.com/image/upload/v1662130559/nextjs/Icon dark background.png\" <img alt=\"Next.js logo\" src=\"https://assets.vercel.com/image/upload/v1662130559/nextjs/Icon light background.png\" height=\"128\" </picture </a <h1 Next.js</h1 <a href=\"https://vercel.com\" <img alt=\"Vercel logo\" src=\"https://img.shields.io/badge/MADE%20BY%20Vercel 000000.svg?style=for the badge&logo=Vercel&labelColor=000\" </a <a href=\"https://www.npmjs.com/package/next\" <img alt=\"NPM version\" src=\"https://img.shields.io/npm/v/next.svg?style=for the badge&labelColor=000000\" </a <a href=\"https://github.com/vercel/next.js/blob/canary/license.md\" <img alt=\"License\" src=\"https://img.shields.io/npm/l/next.svg?style=for the badge&labelColor=000000\" </a <a href=\"https://github.com/vercel/next.js/discussions...",
         "githubUrl": "https://github.com/vercel/next.js"
       }
     },
@@ -2301,9 +2301,9 @@
         "visualUrl": "https://opengraph.githubassets.com/20260806/tailwindlabs/tailwindcss",
         "url": "https://github.com/tailwindlabs/tailwindcss",
         "description": "A utility-first CSS framework for rapid UI development.",
-        "stars": 96755,
+        "stars": 96801,
         "starsToday": 408,
-        "forks": 5544,
+        "forks": 5547,
         "openIssues": 54,
         "language": "TypeScript",
         "topics": [
@@ -2517,10 +2517,10 @@
         "visualUrl": "https://opengraph.githubassets.com/20260806/uber/ADR",
         "url": "https://github.com/uber/ADR",
         "description": "ADR secures enterprise AI agents through observability, security benchmarking, and threat detection. Deployed at Uber.",
-        "stars": 952,
+        "stars": 989,
         "starsToday": 354,
         "forks": 84,
-        "openIssues": 11,
+        "openIssues": 12,
         "language": "Python",
         "topics": [
           "agent-security",
@@ -2548,7 +2548,7 @@
         "method": "codex-research-refresh",
         "category": "Agentic AI Detection and Response / 企业 Agent 安全观测",
         "oneLiner": "ADR secures enterprise AI agents through observability, security benchmarking, and threat detection. Deployed at Uber.；关键看 Uber ADR 开源 Sensor、ADR-Bench 和 Detector：Sensor 采集 Claude Code、Cursor、Codex 等 agent telemetry；Benchmark 覆盖 300+ 任务、133 个 MCP servers 和 17 类 agent attack techniques；Detector 用高召回 triage 加深度 agentic reasoning 检测可疑会话。 是否能被小范围验证。",
-        "whyItMatters": "uber/ADR 值得看，是因为 AI 项目真正的分水岭已经从“能跑 demo”转向“能被治理、能接工具、能失败恢复”。当前 952 stars / 84 forks，维护非常活跃，足够进入 Agent 工程雷达。 这次更新更值得关注的是其可迁移机制：Uber ADR 开源 Sensor、ADR-Bench 和 Detector：Sensor 采集 Claude Code、Cursor、Codex 等 agent telemetry；Benchmark 覆盖 300+ 任务、133 个 MCP servers 和 17 类 agent attack techniques；Detector 用高召回 triage 加深度 agentic reasoning 检测可疑会话。 能否被拆成小样本验证，而不是把项目整体搬进生产。",
+        "whyItMatters": "uber/ADR 值得看，是因为 AI 项目真正的分水岭已经从“能跑 demo”转向“能被治理、能接工具、能失败恢复”。当前 989 stars / 84 forks，维护非常活跃，足够进入 Agent 工程雷达。 这次更新更值得关注的是其可迁移机制：Uber ADR 开源 Sensor、ADR-Bench 和 Detector：Sensor 采集 Claude Code、Cursor、Codex 等 agent telemetry；Benchmark 覆盖 300+ 任务、133 个 MCP servers 和 17 类 agent attack techniques；Detector 用高召回 triage 加深度 agentic reasoning 检测可疑会话。 能否被拆成小样本验证，而不是把项目整体搬进生产。",
         "engineeringRead": "Python · Python 包/脚本。建议按“入口示例 -> 数据/配置 -> 失败处理 -> CI/release -> issue 反例”的顺序读；重点回答 它解决的是「企业员工和客服 Agent 会调用代码、MCP、浏览器和内部工具，传统 SIEM/EDR 很难理解 agent intent、工具链语义和 prompt injection 攻击路径。」的主矛盾，还是只会给现有流程增加新的维护面？",
         "architectureSignals": [
           "架构机制：Uber ADR 开源 Sensor、ADR-Bench 和 Detector：Sensor 采集 Claude Code、Cursor、Codex 等 agent telemetry；Benchmark 覆盖 300+ 任务、133 个 MCP servers 和 17 类 agent attack techniques；Detector 用高召回 triage 加深度 agentic reasoning 检测可疑会话。；阅读时把 Python 代码入口、数据/配置形态、自动化脚本和边界条件连起来看，而不是只看 README 的安装示例。",
@@ -2604,7 +2604,7 @@
         },
         "diagram": {
           "title": "ADR 工业级采用图解",
-          "caption": "Agentic AI Detection and Response / 企业 Agent 安全观测 · Python · 952 stars",
+          "caption": "Agentic AI Detection and Response / 企业 Agent 安全观测 · Python · 989 stars",
           "summary": "用 Uber ADR 开源 Sensor、ADR-Bench 和 Detector：Sensor 采集 Claude Code、Cursor、Codex 等 agent telemetry；Benchmark 覆盖 300+ 任务、133 个 MCP servers 和 17 类 agent attack techniques；Detector 用高召回 triage 加深度 agentic reasoning 检测可疑会话。 解决 企业员工和客服 Agent 会调用代码、MCP、浏览器和内部工具，传统 SIEM/EDR 很难理解 agent intent、工具链语义和 prompt injection 攻击路径。，先经由 先在沙箱和内部开发者机器只读采集 telemetry，复现 ADR-Bench 基线，不启用自动阻断或生产凭据访问。 验证 telemetry 覆盖率、攻击召回率、误报率、检测延迟、MCP 场景覆盖、敏感工具触达、人工复核时间和阻断前置率，再决定是否扩大。",
           "nodes": [
             {
@@ -2641,7 +2641,7 @@
             "metrics": [
               {
                 "label": "Stars",
-                "value": "952",
+                "value": "989",
                 "note": "社区关注"
               },
               {
@@ -2651,7 +2651,7 @@
               },
               {
                 "label": "Issues",
-                "value": "11",
+                "value": "12",
                 "note": "维护压力"
               },
               {
@@ -3892,7 +3892,7 @@
       "source": "AIHOT Public API",
       "date": "2026-08-05",
       "generatedAt": "2026-08-05T00:00:33.893Z",
-      "summary": "日报收录 29 条结构化内容，重点分布在 产品发布/更新 8 条、技巧与观点 8 条、行业动态 7 条。今日优先关注「Google DeepMind CEO 德米斯·哈萨比斯即将卸任」，它会进入下方 AI 新闻流做进一步信号、影响和动作拆解。",
+      "summary": "日报收录 29 条结构化内容，重点分布在 产品发布/更新 8 条、技巧与观点 8 条、行业动态 7 条。今日优先关注「用 Claude Fable 5 一次性生成完整《Raccoon Heist》游戏」，它会进入下方 AI 新闻流做进一步信号、影响和动作拆解。",
       "stats": [
         {
           "label": "精选条目",
@@ -4023,6 +4023,31 @@
       ],
       "selected": [
         {
+          "title": "用 Claude Fable 5 一次性生成完整《Raccoon Heist》游戏",
+          "url": "https://simonwillison.net/2026/Aug/5/raccoon-heist",
+          "source": "Simon Willison 博客",
+          "publishedAt": "2026-08-05T19:42:38.000Z",
+          "summary": "Simon Willison 将 2022 年 GPT-3 和 DALL-E 生成的游戏概念与截图输入 Claude Fable 5（运行于 Claude Code for web），成功构建出可玩的 3D 浏览器游戏。",
+          "category": "技巧观点",
+          "signal": "行业动态信号，适合纳入周度技术雷达观察。",
+          "tags": [
+            "A社/Claude",
+            "模型"
+          ]
+        },
+        {
+          "title": "Jeff Dean 宣布离开谷歌，创办 DiscoLoop AI",
+          "url": "https://x.com/JeffDean/status/2085083442669318443",
+          "source": "X：Jeff Dean (@JeffDean)",
+          "publishedAt": "2026-08-05T19:20:06.000Z",
+          "summary": "Jeff Dean 在谷歌任职 27 年后宣布离职，将于明日正式离开。他称谷歌已从 25 人发展到 19 万余人，拥有十三款用户超十亿的产品。他将与 Sanjay Ghemawat、Oriol Vinyals 和 Quoc Le 共同创办 DiscoLoop AI。",
+          "category": "行业动态",
+          "signal": "行业动态信号，适合纳入周度技术雷达观察。",
+          "tags": [
+            "AI"
+          ]
+        },
+        {
           "title": "Google DeepMind CEO 德米斯·哈萨比斯即将卸任",
           "url": "https://www.axios.com/2026/08/05/google-deepmind-demis-hassabis-ai",
           "source": "Hacker News 热门（buzzing.cc 中文翻译）",
@@ -4094,31 +4119,6 @@
           "tags": [
             "Agent",
             "模型"
-          ]
-        },
-        {
-          "title": "Cloudflare 如何用 Cloudflare OS 重构内部工作方式",
-          "url": "https://blog.cloudflare.com/how-we-use-ai-with-cloudflare-os",
-          "source": "Cloudflare Blog",
-          "publishedAt": "2026-08-05T13:00:01.000Z",
-          "summary": "Cloudflare 推出 Cloudflare OS，整合 Workers 与 Access 等组件，让员工安全使用 AI 并部署智能体。平台源于销售团队用 AI 构建 SuperApp 引发的内部需求，遵循\"人负责输出\"\"权限不因 AI 扩大\"等五项原则，面向工程师与非工程师分别提供支持。",
-          "category": "产品更新",
-          "signal": "企业 Agent 基建信号：托管沙箱、私网连接和权限隔离正在成为 Agent 进入生产环境的关键门槛。",
-          "tags": [
-            "Agent",
-            "安全/可信"
-          ]
-        },
-        {
-          "title": "Cloudflare 用身份感知分析捕捉失控 AI 行为",
-          "url": "https://blog.cloudflare.com/identity-aware-ai-gateway",
-          "source": "Cloudflare Blog",
-          "publishedAt": "2026-08-05T13:00:00.000Z",
-          "summary": "Cloudflare 推出身份感知 AI Gateway 与 User Insights，为每个请求绑定经 Access 验证的用户身份，并基于账户自身历史行为建立基线，识别偏离正常模式的异常会话。该功能现处于开放测试阶段，User Insights 已向所有 AI Gateway 客户免费开放。其异常检测以近 30 天会话成本 p95 为基准，超过 2 倍即标记为可疑行为。",
-          "category": "产品更新",
-          "signal": "企业 Agent 基建信号：托管沙箱、私网连接和权限隔离正在成为 Agent 进入生产环境的关键门槛。",
-          "tags": [
-            "AI"
           ]
         }
       ],
@@ -4478,6 +4478,117 @@
     "items": [
       {
         "source": "AIHOT 精选",
+        "sourceDetail": "Simon Willison 博客",
+        "domain": "aihot.virxact.com",
+        "title": "用 Claude Fable 5 一次性生成完整《Raccoon Heist》游戏",
+        "url": "https://simonwillison.net/2026/Aug/5/raccoon-heist",
+        "publishedAt": "2026-08-05T19:42:38.000Z",
+        "summary": "Simon Willison 将 2022 年 GPT-3 和 DALL-E 生成的游戏概念与截图输入 Claude Fable 5（运行于 Claude Code for web），成功构建出可玩的 3D 浏览器游戏。",
+        "imageUrl": "https://www.google.com/s2/favicons?domain=aihot.virxact.com&sz=128",
+        "priority": 3,
+        "rank": 1,
+        "signal": "行业动态信号，适合纳入周度技术雷达观察。",
+        "interpretation": {
+          "signal": "行业动态信号，适合纳入周度技术雷达观察。",
+          "impact": "Claude 生态的变化会直接影响 Agent 选型、企业采购、权限治理和安全评测，不能只按模型跑分决策。",
+          "action": "建议更新 Claude 评测清单：模型能力、Claude Code/Agent 工作流、权限隔离、审计日志和供应连续性分开验证。"
+        },
+        "impact": "Claude 生态的变化会直接影响 Agent 选型、企业采购、权限治理和安全评测，不能只按模型跑分决策。",
+        "action": "建议更新 Claude 评测清单：模型能力、Claude Code/Agent 工作流、权限隔离、审计日志和供应连续性分开验证。",
+        "tags": [
+          "A社/Claude",
+          "模型"
+        ],
+        "diagram": {
+          "title": "AIHOT 精选 信号图解",
+          "caption": "A社/Claude / 模型",
+          "summary": "从「用 Claude Fable 5 一次性生成完整《Raccoon Heist》游戏」抽取信号、影响、动作和观察指标，便于前端生成新闻事件到团队行动的示意图。",
+          "nodes": [
+            {
+              "label": "信号",
+              "detail": "行业动态信号，适合纳入周度技术雷达观察。",
+              "type": "input"
+            },
+            {
+              "label": "影响",
+              "detail": "Claude 生态的变化会直接影响 Agent 选型、企业采购、权限治理和安全评测，不能只按模型跑分决策。",
+              "type": "core"
+            },
+            {
+              "label": "动作",
+              "detail": "建议更新 Claude 评测清单：模型能力、Claude Code/Agent 工作流、权限隔离、审计日志和供应连续性分开验证。",
+              "type": "integration"
+            },
+            {
+              "label": "观察指标",
+              "detail": "记录模型版本、工具权限、任务完成率、人工接管、成本、审计日志和供应连续性。",
+              "type": "measure"
+            }
+          ],
+          "links": [
+            "识别变化",
+            "评估影响",
+            "落地验证"
+          ]
+        }
+      },
+      {
+        "source": "AIHOT 精选",
+        "sourceDetail": "X：Jeff Dean (@JeffDean)",
+        "domain": "aihot.virxact.com",
+        "title": "Jeff Dean 宣布离开谷歌，创办 DiscoLoop AI",
+        "url": "https://x.com/JeffDean/status/2085083442669318443",
+        "publishedAt": "2026-08-05T19:20:06.000Z",
+        "summary": "Jeff Dean 在谷歌任职 27 年后宣布离职，将于明日正式离开。他称谷歌已从 25 人发展到 19 万余人，拥有十三款用户超十亿的产品。他将与 Sanjay Ghemawat、Oriol Vinyals 和 Quoc Le 共同创办 DiscoLoop AI。",
+        "imageUrl": "https://www.google.com/s2/favicons?domain=aihot.virxact.com&sz=128",
+        "priority": 3,
+        "rank": 2,
+        "signal": "行业动态信号，适合纳入周度技术雷达观察。",
+        "interpretation": {
+          "signal": "行业动态信号，适合纳入周度技术雷达观察。",
+          "impact": "这条动态适合放进周度观察池，重点看它是否会改变模型选型、产品入口或工程成本结构。",
+          "action": "建议保留原文链接，等后续出现产品实测、开发者反馈或生态跟进时再升级权重。"
+        },
+        "impact": "这条动态适合放进周度观察池，重点看它是否会改变模型选型、产品入口或工程成本结构。",
+        "action": "建议保留原文链接，等后续出现产品实测、开发者反馈或生态跟进时再升级权重。",
+        "tags": [
+          "AI"
+        ],
+        "diagram": {
+          "title": "AIHOT 精选 信号图解",
+          "caption": "AI",
+          "summary": "从「Jeff Dean 宣布离开谷歌，创办 DiscoLoop AI」抽取信号、影响、动作和观察指标，便于前端生成新闻事件到团队行动的示意图。",
+          "nodes": [
+            {
+              "label": "信号",
+              "detail": "行业动态信号，适合纳入周度技术雷达观察。",
+              "type": "input"
+            },
+            {
+              "label": "影响",
+              "detail": "这条动态适合放进周度观察池，重点看它是否会改变模型选型、产品入口或工程成本结构。",
+              "type": "core"
+            },
+            {
+              "label": "动作",
+              "detail": "建议保留原文链接，等后续出现产品实测、开发者反馈或生态跟进时再升级权重。",
+              "type": "integration"
+            },
+            {
+              "label": "观察指标",
+              "detail": "记录真实任务完成率、人工修正、成本、延迟、失败样本和是否出现生态跟进。",
+              "type": "measure"
+            }
+          ],
+          "links": [
+            "识别变化",
+            "评估影响",
+            "落地验证"
+          ]
+        }
+      },
+      {
+        "source": "AIHOT 精选",
         "sourceDetail": "Hacker News 热门（buzzing.cc 中文翻译）",
         "domain": "aihot.virxact.com",
         "title": "Google DeepMind CEO 德米斯·哈萨比斯即将卸任",
@@ -4486,7 +4597,7 @@
         "summary": "Google DeepMind CEO 德米斯·哈萨比斯即将卸任。该消息由 Axios 报道，并在 Hacker News 上获得超过 125 点热度。目前尚未公布继任者或具体离职时间等细节。",
         "imageUrl": "https://www.google.com/s2/favicons?domain=aihot.virxact.com&sz=128",
         "priority": 3,
-        "rank": 1,
+        "rank": 3,
         "signal": "AI 组织治理信号：AIHOT 报道 DeepMind 领导层调整，值得关注研究议程、产品化节奏和 Alphabet 内部 AI 资源配置是否变化。",
         "interpretation": {
           "signal": "行业动态信号，适合纳入周度技术雷达观察。",
@@ -4541,7 +4652,7 @@
         "summary": "OpenAI 于 2026 年 5 月 20 日宣布，其内部 AI 模型对埃尔德什 1946 年提出的\"单位距离\"问题给出了反例，成为首个由 AI 模型完成的历史性重要证明；8 月 1 日又宣布未发布模型 Astra 取得 10 项数学进展，其中解决了埃尔德什提出的另外 3 个问题。",
         "imageUrl": "https://www.google.com/s2/favicons?domain=aihot.virxact.com&sz=128",
         "priority": 3,
-        "rank": 2,
+        "rank": 4,
         "signal": "数学科研 Agent 信号：AIHOT 关注 AI 参与 Erdős 类问题，说明模型正在进入可验证的组合数学、证明搜索和人机协作研究场景。",
         "interpretation": {
           "signal": "行业动态信号，适合纳入周度技术雷达观察。",
@@ -4596,7 +4707,7 @@
         "summary": "Demis Hassabis 宣布卸任 Google DeepMind CEO，转任主席兼 Alphabet 首席科学家，专注长期战略与科学突破，包括推进 Isomorphic 的疾病治愈研究。Koray Kavukcuoglu 将接任 GDM 高级副总裁，与 Josh Woodward 及执行团队共同领导下一阶段发展。",
         "imageUrl": "https://www.google.com/s2/favicons?domain=aihot.virxact.com&sz=128",
         "priority": 3,
-        "rank": 3,
+        "rank": 5,
         "signal": "Google AI 组织信号：同一领导层变化被 AIHOT 多标题覆盖，核心不是头衔本身，而是 DeepMind 与 Alphabet 科研/产品路线的分工可能调整。",
         "interpretation": {
           "signal": "行业动态信号，适合纳入周度技术雷达观察。",
@@ -4651,7 +4762,7 @@
         "summary": "SpaceX 在财报电话会上宣布，未来所有 AI 算力（地面及轨道）将独家采用 Nvidia Vera Rubin 架构，2026 年底总算力超 2GW，2027 年底接近 10GW。同步公布 Starmind 计划，2027 年起发射搭载 Rubin GPU 与 Vera CPU 的轨道 AI 卫星星座，明年开始发射，算力经星链激光链路回传。消息公布后 AMD 股价跌 8%。",
         "imageUrl": "https://www.google.com/s2/favicons?domain=aihot.virxact.com&sz=128",
         "priority": 3,
-        "rank": 4,
+        "rank": 6,
         "signal": "AI 基础设施叙事信号：AIHOT 报道太空算力与 Nvidia Vera Rubin 绑定，重点应放在边缘/轨道场景的功耗、散热、链路和可靠性约束。",
         "interpretation": {
           "signal": "行业动态信号，适合纳入周度技术雷达观察。",
@@ -4706,7 +4817,7 @@
         "summary": "普林斯顿大学团队通过\"影子评估\"测试前沿AI智能体的开放式研究能力：让智能体在六天时间内、使用数千美元API额度和算力，回答两篇未发表论文的核心研究问题，结果两篇论文均被原作者明确拒绝。分析显示，智能体缺乏研究判断力、资源意识、创造性反馈应对能力和有效回溯能力，且未遵循具体指令。研究团队认为，开放式研究对前沿AI智能体仍具挑战性，但结果尚属初步，需扩大样本量并持续评估。",
         "imageUrl": "https://www.google.com/s2/favicons?domain=aihot.virxact.com&sz=128",
         "priority": 3,
-        "rank": 5,
+        "rank": 7,
         "signal": "Agent 能力边界信号：开放式 AI 研究仍暴露出问题选择、实验设计、长期假设维护、负结果判断和专家品味的缺口。",
         "interpretation": {
           "signal": "Agent 集成信号：外部 API 连接正在从逐个适配走向通用技能层，集成成本会决定 Agent 的业务覆盖面。",
@@ -4762,7 +4873,7 @@
         "summary": "Cloudflare 发布《The Agent Access Model》论文，提出面向 AI 智能体的访问控制模型 AAM，核心规则是\"不信任运行\"，对任务执行图中的每个动作基于智能体身份、授权任务及已触达资源进行实时授权。该模型针对智能体的短暂性、机器速度、提示词非边界及跨跳组合权限四大特性设计，主张缩小能力集而非仅优化单次决策，并区分单主体控制与多人访问控制的难点。",
         "imageUrl": "https://www.google.com/s2/favicons?domain=aihot.virxact.com&sz=128",
         "priority": 3,
-        "rank": 6,
+        "rank": 8,
         "signal": "企业 Agent 基建信号：托管沙箱、私网连接和权限隔离正在成为 Agent 进入生产环境的关键门槛。",
         "interpretation": {
           "signal": "企业 Agent 基建信号：托管沙箱、私网连接和权限隔离正在成为 Agent 进入生产环境的关键门槛。",
@@ -4798,117 +4909,6 @@
             {
               "label": "观察指标",
               "detail": "记录长任务完成率、步骤失败、工具误用、人工审批、恢复能力、延迟和单位任务成本。",
-              "type": "measure"
-            }
-          ],
-          "links": [
-            "识别变化",
-            "评估影响",
-            "落地验证"
-          ]
-        }
-      },
-      {
-        "source": "AIHOT 精选",
-        "sourceDetail": "Cloudflare Blog",
-        "domain": "aihot.virxact.com",
-        "title": "Cloudflare 如何用 Cloudflare OS 重构内部工作方式",
-        "url": "https://blog.cloudflare.com/how-we-use-ai-with-cloudflare-os",
-        "publishedAt": "2026-08-05T13:00:01.000Z",
-        "summary": "Cloudflare 推出 Cloudflare OS，整合 Workers 与 Access 等组件，让员工安全使用 AI 并部署智能体。平台源于销售团队用 AI 构建 SuperApp 引发的内部需求，遵循\"人负责输出\"\"权限不因 AI 扩大\"等五项原则，面向工程师与非工程师分别提供支持。",
-        "imageUrl": "https://www.google.com/s2/favicons?domain=aihot.virxact.com&sz=128",
-        "priority": 3,
-        "rank": 7,
-        "signal": "企业工作台信号：Cloudflare OS 把内部应用、数据、权限和 Agent 工作流放进统一操作面，说明 Agent 落地正在从单工具扩展到组织级工作入口。",
-        "interpretation": {
-          "signal": "企业 Agent 基建信号：托管沙箱、私网连接和权限隔离正在成为 Agent 进入生产环境的关键门槛。",
-          "impact": "Agent 正从单点工具走向跨设备、跨应用、跨通讯入口，产品设计要考虑权限、记忆和接管机制。",
-          "action": "建议记录可试用入口、权限模型和是否支持长会话，适合做 30 分钟产品体验验证。"
-        },
-        "impact": "企业会更重视身份、应用目录、审计和跨系统上下文；没有统一权限和数据边界时，Agent 很难稳定接入真实工作。",
-        "action": "先挑一个内部流程做影子验证：记录身份透传、工具权限、数据访问、人工接管、任务完成率和是否减少跨系统切换。",
-        "tags": [
-          "Agent",
-          "安全/可信"
-        ],
-        "diagram": {
-          "title": "AIHOT 精选 信号图解",
-          "caption": "Agent / 安全/可信",
-          "summary": "从「Cloudflare 如何用 Cloudflare OS 重构内部工作方式」抽取信号、影响、动作和观察指标，便于前端生成新闻事件到团队行动的示意图。",
-          "nodes": [
-            {
-              "label": "信号",
-              "detail": "企业 Agent 基建信号：托管沙箱、私网连接和权限隔离正在成为 Agent 进入生产环境的关键门槛。",
-              "type": "input"
-            },
-            {
-              "label": "影响",
-              "detail": "Agent 正从单点工具走向跨设备、跨应用、跨通讯入口，产品设计要考虑权限、记忆和接管机制。",
-              "type": "core"
-            },
-            {
-              "label": "动作",
-              "detail": "建议记录可试用入口、权限模型和是否支持长会话，适合做 30 分钟产品体验验证。",
-              "type": "integration"
-            },
-            {
-              "label": "观察指标",
-              "detail": "记录攻击样本、拦截率、误报/漏报、权限触达、事件响应时间和修复回放通过率。",
-              "type": "measure"
-            }
-          ],
-          "links": [
-            "识别变化",
-            "评估影响",
-            "落地验证"
-          ]
-        }
-      },
-      {
-        "source": "AIHOT 精选",
-        "sourceDetail": "Cloudflare Blog",
-        "domain": "aihot.virxact.com",
-        "title": "Cloudflare 用身份感知分析捕捉失控 AI 行为",
-        "url": "https://blog.cloudflare.com/identity-aware-ai-gateway",
-        "publishedAt": "2026-08-05T13:00:00.000Z",
-        "summary": "Cloudflare 推出身份感知 AI Gateway 与 User Insights，为每个请求绑定经 Access 验证的用户身份，并基于账户自身历史行为建立基线，识别偏离正常模式的异常会话。该功能现处于开放测试阶段，User Insights 已向所有 AI Gateway 客户免费开放。其异常检测以近 30 天会话成本 p95 为基准，超过 2 倍即标记为可疑行为。",
-        "imageUrl": "https://www.google.com/s2/favicons?domain=aihot.virxact.com&sz=128",
-        "priority": 3,
-        "rank": 8,
-        "signal": "Agent 风险观测信号：身份感知分析开始被用于发现失控 AI 行为，说明安全重点从单次 prompt 防护扩展到会话、身份和工具行为链路。",
-        "interpretation": {
-          "signal": "企业 Agent 基建信号：托管沙箱、私网连接和权限隔离正在成为 Agent 进入生产环境的关键门槛。",
-          "impact": "这条动态适合放进周度观察池，重点看它是否会改变模型选型、产品入口或工程成本结构。",
-          "action": "建议保留原文链接，等后续出现产品实测、开发者反馈或生态跟进时再升级权重。"
-        },
-        "impact": "企业 Agent 需要把用户身份、工具调用、数据触达和异常行为放进同一审计模型，否则很难区分正常自动化和越权行动。",
-        "action": "为 Agent 接入统一 telemetry：身份、任务、工具、资源、敏感字段、异常路径和人工接管都要可查询，并用红队样本校准误报。",
-        "tags": [
-          "AI"
-        ],
-        "diagram": {
-          "title": "AIHOT 精选 信号图解",
-          "caption": "AI",
-          "summary": "从「Cloudflare 用身份感知分析捕捉失控 AI 行为」抽取信号、影响、动作和观察指标，便于前端生成新闻事件到团队行动的示意图。",
-          "nodes": [
-            {
-              "label": "信号",
-              "detail": "企业 Agent 基建信号：托管沙箱、私网连接和权限隔离正在成为 Agent 进入生产环境的关键门槛。",
-              "type": "input"
-            },
-            {
-              "label": "影响",
-              "detail": "这条动态适合放进周度观察池，重点看它是否会改变模型选型、产品入口或工程成本结构。",
-              "type": "core"
-            },
-            {
-              "label": "动作",
-              "detail": "建议保留原文链接，等后续出现产品实测、开发者反馈或生态跟进时再升级权重。",
-              "type": "integration"
-            },
-            {
-              "label": "观察指标",
-              "detail": "记录真实任务完成率、人工修正、成本、延迟、失败样本和是否出现生态跟进。",
               "type": "measure"
             }
           ],
