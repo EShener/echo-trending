@@ -2810,6 +2810,13 @@ function normalizeFrontierInterpretation(item) {
 function curatedFrontierInterpretation(item) {
   const title = normalizeTitle(item.title || "");
   const map = {
+    [normalizeTitle("From User Sequences to Scaling Laws: A Multi-Stage Architecture for Meta’s Ads Ranking")]: {
+      businessProblem: "Meta Ads 的排序漏斗要把用户长期行为序列、广告主目标、广告内容和实时请求上下文放进同一套多阶段链路；传统特征工程和单阶段 ranker 很难在序列长度、模型容量、延迟和广告 ROI 之间继续获得可预测收益。",
+      systemMechanism: "LLaTTE 将广告排序拆成多阶段序列建模：前段保留用户行为序列的细粒度 token，后段用 query/ad token 与行为 token 交互，并通过与 LLM 类似的 attention、FFN、MoE/共享计算等扩展方向建立 scaling law，把“增加模型/数据/计算”转成可度量的排序收益。",
+      metricsAndExperiment: "官方重点信号是多阶段序列模型仍未出现 scaling 饱和；生产验收应同时看 deep funnel conversion、CTR/CVR、广告主 ROI、用户负反馈、序列长度收益曲线、每阶段延迟、训练/推理成本、A/B 置信区间和跨流量段稳定性。",
+      borrowable: "可借鉴的是先把序列建模收益曲线做成平台指标：按用户活跃度、广告类型、转化延迟和请求场景分桶，比较传统特征压缩、序列 encoder、多阶段 attention 的边际收益，再决定在哪个排序阶段上重模型。",
+      boundary: "没有大规模行为序列、广告转化回传、强在线实验和成本归因能力时，不适合照搬 LLaTTE；中小团队应先补齐序列特征质量、召回覆盖、校准和线上回放。",
+    },
     [normalizeTitle("GEM Training: How Meta Doubled the Efficiency of Its LLM-Scale Ads Recommendation Foundation Model")]: {
       businessProblem: "Meta Ads 要让 GEM 这类基础模型同时服务转化、广告主价值、用户体验和成本效率；瓶颈不只是模型效果，而是 trillions 级 sparse embedding、billions 级 dense 参数、序列/非序列特征 join、训练吞吐和上线迭代周期能否一起扩展。",
       systemMechanism: "GEM 采用混合推荐基础模型：高基数用户/广告/上下文由大规模 sparse embeddings 承载，dense 主干建模行为序列、广告内容与非序列特征交互；训练侧通过 embedding sharding、分布式并行、数据流水线、硬件感知 kernel/调度和稳定性治理提升有效训练效率。",
@@ -3126,6 +3133,16 @@ async function fetchIndustryFrontierItems(maxItems) {
 
 function seedIndustryFrontierItems() {
   return [
+    {
+      title: "From User Sequences to Scaling Laws: A Multi-Stage Architecture for Meta’s Ads Ranking",
+      url: "https://engineering.fb.com/2026/08/05/ml-applications/from-user-sequences-to-scaling-laws-a-multi-stage-architecture-for-metas-ads-ranking/",
+      publishedAt: "2026-08-05T16:00:00Z",
+      source: "Meta Engineering",
+      domain: "engineering.fb.com",
+      sourceType: "industry",
+      frontierScore: 68,
+      summary: "Meta 最新公开 LLaTTE 广告排序架构：把用户行为序列和广告/query token 放进多阶段序列模型，观察到广告排序中的 scaling law 仍未饱和，后续可继续借鉴 MoE、跨用户计算共享和更高级 attention，把 LLM 规模化方法迁移到 deep funnel ads ranking。",
+    },
     {
       title: "GEM Training: How Meta Doubled the Efficiency of Its LLM-Scale Ads Recommendation Foundation Model",
       url: "https://engineering.fb.com/2026/08/03/ml-applications/training-gem-at-llm-scale-meta-ads-recommendation-foundation-model/",
@@ -3679,6 +3696,7 @@ function buildEditorialReview({ reportDate, frontier = {}, aiNews = {} }) {
     "https://www.anthropic.com/research/discovering-cryptographic-weaknesses",
     "https://www.anthropic.com/research/project-pilot",
     "https://claude.com/blog",
+    "https://claude.com/blog/claude-enterprise-inference-hooks",
     "https://claude.com/blog/a-guide-to-cost-visibility-and-control-in-claude",
     "https://claude.com/blog/bringing-mcp-2026-07-28-to-claude",
     "https://claude.com/blog/context-engineering-claude-5",
@@ -3709,6 +3727,7 @@ function buildEditorialReview({ reportDate, frontier = {}, aiNews = {} }) {
     "https://openai.com/index/gpt-5-6/",
     "https://openai.com/index/introducing-gpt-live/",
     "https://netflixtechblog.com/recommending-for-long-term-member-satisfaction-at-netflix-ac15cada49ef",
+    "https://engineering.fb.com/2026/08/05/ml-applications/from-user-sequences-to-scaling-laws-a-multi-stage-architecture-for-metas-ads-ranking/",
     "https://engineering.fb.com/2026/07/15/ai-research/exploring-hierarchical-interest-representation-for-meta-ads-deep-funnel-optimization/",
     "https://engineering.fb.com/2026/07/13/ml-applications/modernizing-the-meta-ads-service-with-an-open-source-kernel-scheduler/",
     "https://medium.com/pinterest-engineering/achieving-near-linear-training-scalability-for-pinterests-foundation-models-14d4f59fe6f6",
@@ -3740,7 +3759,7 @@ function buildEditorialReview({ reportDate, frontier = {}, aiNews = {} }) {
     sourceNotes: [
       `Anthropic official coverage includes ${anthropicSources.join("、") || "official News/Research/Engineering"} with Claude Tag, Economic Index, Claude Code practice, model updates, partnerships and safety research.`,
       "Anthropic official pages checked this run: Newsroom latest includes Jul 30 cybersecurity evaluation incidents, Jul 27 open-weights position and Cognizant partnership, Jul 24 Claude Opus 5; Research latest includes Jul 28 cryptographic weaknesses and Jul 24 drone-control frontier-red-team work; Engineering highlights Claude containment and Claude Code safety posts.",
-      "Claude Blog checked for Aug 4 cost visibility/control in Claude, Jul 28 MCP 2026-07-28 support, Jul 24 Claude 5 context engineering/model guidance, Jul 22 verification loops with skills, Jul 21 Datadog Claude Code universal machine tool, and enterprise agent cases.",
+      "Claude Blog checked for Aug 5 inference hooks / inline DLP for Claude Enterprise, Aug 4 cost visibility/control in Claude, Jul 28 MCP 2026-07-28 support, Jul 24 Claude 5 context engineering/model guidance, Jul 22 verification loops with skills, Jul 21 Datadog Claude Code universal machine tool, and enterprise agent cases.",
       "Claude Platform release notes checked for Managed Agents lifecycle hooks, effort configuration, initial events, memory/environment webhooks and session thread deltas; Computer Use coverage is tracked through recent Claude model/browser-agent updates.",
       `Search/ads/recommendation coverage includes ${frontierSources.join("、") || frontier.source || "Big Tech Engineering/RSS + arXiv"} and is interpreted through business problem, system mechanism, metrics/experiments, borrowable patterns and unsuitable boundaries.`,
       "Project reads distinguish architecture mechanism, team fit, landing path, production risk, decision question and watch signal; generic metadata summaries are treated as fallback only.",
@@ -3875,6 +3894,20 @@ async function fetchAnthropicNewsItems(maxItems) {
 function seedAnthropicOfficialItems() {
   const favicon = "https://www.google.com/s2/favicons?domain=anthropic.com&sz=128";
   return [
+    {
+      source: "A社 Claude",
+      sourceDetail: "Claude 官方 Blog / Enterprise Inline DLP",
+      domain: "claude.com",
+      title: "Inference hooks: inline data loss prevention for Claude Enterprise",
+      url: "https://claude.com/blog/claude-enterprise-inference-hooks",
+      publishedAt: "2026-08-05T16:00:00Z",
+      summary: "Claude Enterprise 推出 Inference hooks Beta：组织可通过签名 WebSocket 将每个 prompt、上下文和工具调用响应送到自有 DLP/AI 安全服务器，由服务器返回 allow/deny，Claude 再决定是否继续推理；覆盖 chat、Claude Code、Claude Cowork、MCP connectors、skills 和 plugins，并支持 shadow mode、角色排除、百分比灰度、超时和失败策略。",
+      imageUrl: favicon,
+      priority: 19,
+      signal: "企业 Agent 安全信号：A 社把 DLP 从审计日志前移到推理前的内联 allow/deny 层，且覆盖 Claude Code、Cowork、MCP、skills 和 plugins。",
+      impact: "Claude 企业部署的安全边界不再只靠员工培训、client-side hooks 或事后合规审计；安全团队需要拥有可用、低延迟、可灰度的策略服务，否则会影响所有 Claude Enterprise 工作面。",
+      action: "先以 shadow mode 接入现有 DLP/AI security server，记录命中率、误拒、超时、工具响应拦截、敏感字段类别和业务中断，再逐步对高风险团队启用 deny 策略。",
+    },
     {
       source: "A社 Claude",
       sourceDetail: "Claude 官方 Blog / Enterprise Cost Governance",
