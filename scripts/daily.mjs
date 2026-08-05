@@ -233,6 +233,41 @@ function applyEditorialOverrides(report) {
       impact: "数据平台可以降低重复排障和调参成本，但错误 SQL、误判容量、越权读取和自动变更失败会直接影响生产稳定性。",
       action: "先接只读诊断和建议模式，要求每次输出包含证据查询、影响范围、回滚方案和人工批准点，再逐步开放低风险自动化动作。",
     },
+    "Google DeepMind CEO 德米斯·哈萨比斯即将卸任": {
+      signal: "AI 组织治理信号：AIHOT 报道 DeepMind 领导层调整，值得关注研究议程、产品化节奏和 Alphabet 内部 AI 资源配置是否变化。",
+      impact: "这类人事信号不会立刻改变模型能力，但会影响 Gemini/DeepMind 研究发布、Google Cloud AI 商品化和开发者生态叙事。",
+      action: "先降权观察，不据此调整模型选型；后续只在 Google 官方公告、产品 roadmap 或研究发布节奏出现变化时升级为决策信号。",
+    },
+    "Demis Hassabis 转任 Google DeepMind 主席与 Alphabet 首席科学家": {
+      signal: "Google AI 组织信号：同一领导层变化被 AIHOT 多标题覆盖，核心不是头衔本身，而是 DeepMind 与 Alphabet 科研/产品路线的分工可能调整。",
+      impact: "如果转任被官方确认，Gemini、科研模型、云 AI 和基础研究的优先级可能重新叙事；短期仍不应把它等同于模型能力变化。",
+      action: "合并进同一观察项：跟踪 Google/DeepMind 官方说明、下一批模型发布、研究团队署名变化和 Cloud AI 产品节奏。",
+    },
+    "为什么传奇的埃尔德什问题正被人工智能攻克": {
+      signal: "数学科研 Agent 信号：AIHOT 关注 AI 参与 Erdős 类问题，说明模型正在进入可验证的组合数学、证明搜索和人机协作研究场景。",
+      impact: "对企业研发的直接价值不是“模型会做数学”，而是复杂推理任务需要可验证中间证据、专家复核和可复现实验轨迹。",
+      action: "把它作为科研工作流样本观察：记录问题定义、证明检查器/专家验证、失败推理、计算资源和论文/代码是否公开。",
+    },
+    "SpaceX 宣布 AI 算力上太空，独家采用 Nvidia Vera Rubin": {
+      signal: "AI 基础设施叙事信号：AIHOT 报道太空算力与 Nvidia Vera Rubin 绑定，重点应放在边缘/轨道场景的功耗、散热、链路和可靠性约束。",
+      impact: "短期更像前沿基础设施观察项，不会改变普通团队 GPU 采购；长期可能影响遥感、通信、国防和低时延边缘 AI 的部署想象。",
+      action: "等待官方技术细节再提高权重：只跟踪硬件规格、发射/运维成本、模型 workload、数据下行链路和真实客户场景。",
+    },
+    "AI智能体尚无法开展开放式AI研究": {
+      signal: "Agent 能力边界信号：开放式 AI 研究仍暴露出问题选择、实验设计、长期假设维护、负结果判断和专家品味的缺口。",
+      impact: "这会提醒研发团队不要把 Agent 评测只做成封闭任务成功率；越接近探索性研究，越需要人类 owner、阶段性 gate 和证据审查。",
+      action: "为研究型 Agent 建立里程碑回放：假设、实验计划、数据/代码证据、失败解释、专家复核和继续/停止决策必须分开记录。",
+    },
+    "Cloudflare 如何用 Cloudflare OS 重构内部工作方式": {
+      signal: "企业工作台信号：Cloudflare OS 把内部应用、数据、权限和 Agent 工作流放进统一操作面，说明 Agent 落地正在从单工具扩展到组织级工作入口。",
+      impact: "企业会更重视身份、应用目录、审计和跨系统上下文；没有统一权限和数据边界时，Agent 很难稳定接入真实工作。",
+      action: "先挑一个内部流程做影子验证：记录身份透传、工具权限、数据访问、人工接管、任务完成率和是否减少跨系统切换。",
+    },
+    "Cloudflare 用身份感知分析捕捉失控 AI 行为": {
+      signal: "Agent 风险观测信号：身份感知分析开始被用于发现失控 AI 行为，说明安全重点从单次 prompt 防护扩展到会话、身份和工具行为链路。",
+      impact: "企业 Agent 需要把用户身份、工具调用、数据触达和异常行为放进同一审计模型，否则很难区分正常自动化和越权行动。",
+      action: "为 Agent 接入统一 telemetry：身份、任务、工具、资源、敏感字段、异常路径和人工接管都要可查询，并用红队样本校准误报。",
+    },
     "Third-party cyber evaluations involving OpenAI models": {
       signal: "第三方 cyber eval 信号：前沿模型安全评测已变成需要沙箱、外部评估方、事件披露和模型行为分级的工程体系。",
       impact: "企业不能把 eval 当成离线 benchmark；带工具、网络或代码执行的评估环境本身就是攻击面，会影响供应商准入和内部红队流程。",
@@ -638,6 +673,18 @@ function specializeLens(repo, lens) {
       badFit: "需要稳定 SLA、强合规隔离、多租户生产写操作、复杂 GPU/长生命周期容器任务，或不在 Cloudflare Workers/DO 生态内的团队。",
       primaryRisk: "官方明确标注 preview 且不适合生产；真实风险集中在状态泄露、runtime 权限、容器逃逸面、成本失控、trace 中敏感 payload 和 API 变更。",
     },
+    "huangruiteng/loopx": {
+      domain: "长任务 Agent 控制平面 / Loop Engineering",
+      userPain: "多小时或多天 Agent 任务容易丢 objective、忘 gate、重复消耗配额、缺少证据链，也很难在人、Codex、Claude Code、Cursor 或自定义 runtime 之间交接。",
+      coreMechanism: "LoopX 把 objective、gate、todo、scope、evidence、quota、claim/lease 和 handoff 做成本地优先状态内核；Agent 每次只执行一个 bounded slice，完成后写回证据与下一步，再由 quota 和人工 gate 决定是否继续唤醒。",
+      safeEntry: "先用于 issue 修复、研究跟踪或实验复跑这类低风险长任务，把生产写操作、发布和危险权限留给人工确认。",
+      businessValue: "把长任务 Agent 从聊天记忆升级为可复盘的任务控制面，降低中断、交接、重复上下文和无限循环消耗。",
+      successMetric: "长任务恢复率、证据可追溯率、重复执行次数、人工 gate 命中率、配额浪费、handoff 成功率和最终 PR/报告返工率",
+      inspectFirst: "先看 .loopx 状态模型、goal/gate/todo/evidence schema、claim/lease 语义、quota 自动唤醒、public/private 边界和真实 200+ 小时 trajectory 证据。",
+      bestFit: "高频使用 Coding/Research Agent、需要跨天追踪 issue/实验/监控、且愿意把人工决策点写进流程的研发效能或研究团队。",
+      badFit: "一次性短任务、无 review 纪律、希望 Agent 无人值守做生产写操作，或不能接受本地状态文件进入项目治理的团队。",
+      primaryRisk: "控制平面不会替代工程判断；状态陈旧、gate 设计不清、自动唤醒过频或证据写回质量差，会让 Agent 看似持续工作但没有有效进展。",
+    },
     "lyogavin/airllm": {
       domain: "低显存大模型推理 / 本地 LLM 实验",
       userPain: "团队想在消费级 GPU、边缘机器或成本敏感环境里试跑 70B+ 模型，但常规推理栈要求大显存、多卡或复杂量化。",
@@ -685,6 +732,18 @@ function specializeLens(repo, lens) {
       bestFit: "有模型网关、多模型评测、人工 review 和低风险任务池的研发效能团队。",
       badFit: "权限敏感代码、无人值守生产修改、需要最高可靠性的核心补丁或无法评测低成本模型输出的团队。",
       primaryRisk: "低成本 coding agent 会放大上下文缺失和工具误用；必须用分支隔离、测试、diff review 和回滚控制风险。",
+    },
+    "addyosmani/agent-skills": {
+      domain: "生产级 Agent Skills / 工程工作流打包",
+      userPain: "团队把 AI coding agent 当通用聊天窗口使用时，spec、plan、build、test、review、webperf 和 ship 的质量门禁靠人临时提醒，跨工具复用成本高。",
+      coreMechanism: "仓库把 24 个工程 skills、8 个生命周期 slash commands 和多客户端安装说明打包；通过 skills CLI 或原生插件把 senior engineer 的检查清单、命令节奏和质量门禁注入 Claude Code、Codex、Cursor、Copilot 等工具。",
+      safeEntry: "先只安装 code-review、test-driven-development 或 webperf 等单个低风险 skill，在一个小仓库用同一任务对比有/无 skill 的返工和测试覆盖。",
+      businessValue: "把个人提示词经验沉淀为可版本化、可安装、可审查的工程流程资产，减少每次任务重新解释标准的成本。",
+      successMetric: "spec 完整度、任务切片大小、测试先行比例、review 缺陷密度、构建失败率、安装成功率和跨工具复用次数",
+      inspectFirst: "先看 skills/ 目录、slash command 生命周期、references 依赖、npx skills 安装路径、各客户端适配边界和 issue 中的 portability gap。",
+      bestFit: "已经在多种 coding agent 中高频开发、需要统一工程纪律、并有 owner 维护技能版本的产品工程或研发效能团队。",
+      badFit: "流程很轻的一次性原型、没有测试/审查文化的团队，或希望 skill 替代人工产品判断和架构决策的场景。",
+      primaryRisk: "skills 会固化流程偏好；如果检查清单陈旧、安装路径不一致或过度命令化，可能增加摩擦并让 Agent 机械执行错误规则。",
     },
     "TencentCloud/TencentDB-Agent-Memory": {
       domain: "团队级 Agent Memory / Chat-Skill-Wiki-CodeGraph 治理层",
@@ -913,6 +972,30 @@ function specializeLens(repo, lens) {
       badFit: "仓库很小、语言解析不受支持、代码权限敏感但无法本地隔离，或期望图谱替代测试和人工 review",
       primaryRisk: "过期索引和错误依赖边会误导 Agent；生产使用必须绑定 commit sha、增量刷新、可解释检索结果和人工复核。",
     },
+    "vercel/next.js": {
+      domain: "React 全栈框架 / App Router 与 Server Components 平台",
+      userPain: "前端团队既要交付交互体验，又要处理 SSR/SSG、边缘运行、数据缓存、路由、编译、图片优化和部署差异；自行拼装会让架构边界分散。",
+      coreMechanism: "Next.js 将 App Router、React Server Components、Server Actions、数据缓存、路由分层、Turbopack 编译、图片/字体优化和部署适配放在同一框架内，形成从代码到生产运行时的约束面。",
+      safeEntry: "先在一个新功能或内部工具中使用 App Router 与服务端数据读取，不直接迁移大站；用 canary 变更前后对比构建、缓存和路由行为。",
+      businessValue: "把 React 应用从页面框架推进到可部署的全栈产品面，减少团队在渲染模式、缓存和构建系统上的重复决策。",
+      successMetric: "首屏性能、构建时间、route cache 命中、server action 错误率、hydration mismatch、bundle 体积、回滚时间和线上错误率",
+      inspectFirst: "先看 canary release note、App Router/RSC 边界、cache/revalidate 语义、Turbopack 兼容性、middleware/edge runtime 限制和与现有平台的部署差异。",
+      bestFit: "React 主栈、需要 SSR/静态/动态混合渲染、并能投入框架升级测试的 Web 产品和平台团队。",
+      badFit: "纯静态小站、框架锁定成本极敏感、复杂自研构建系统已稳定，或团队尚未理解 RSC/cache 语义的项目。",
+      primaryRisk: "Next.js 的生产风险主要来自框架升级、缓存误解、server/client 边界、构建兼容和托管平台耦合；大版本/ canary 需要灰度和性能回放。",
+    },
+    "tailwindlabs/tailwindcss": {
+      domain: "Utility-first CSS 编译器 / 设计系统交付层",
+      userPain: "产品团队需要快速实现一致 UI，但传统 CSS、组件库和设计 token 经常在命名、覆盖、响应式和暗色模式上产生漂移。",
+      coreMechanism: "Tailwind 通过 utility class、内容扫描/JIT 编译、设计 token、variant 系统和插件生态，把样式约束前移到 HTML/组件层；v4 以后更强调 CSS-first 配置和现代浏览器能力。",
+      safeEntry: "先在新模块或内部后台中接入，锁定 design token、spacing、颜色和组件约束，不在一次 PR 中重写全站样式。",
+      businessValue: "降低 UI 实现和维护成本，让设计规范以可组合 utility 的形式进入日常开发，而不是散落在手写 CSS 和截图标注里。",
+      successMetric: "样式重复率、CSS 体积、设计 token 覆盖、视觉回归缺陷、移动端适配缺陷、组件交付时间和主题切换成本",
+      inspectFirst: "先看 v4 配置方式、content scanning、PostCSS/Vite/Next 集成、主题 token、preflight 影响、插件兼容和视觉回归测试。",
+      bestFit: "需要高频交付 Web UI、有设计系统约束、并能接受 utility-first 代码风格的前端团队。",
+      badFit: "强依赖语义化 CSS 架构、已有成熟组件库且无需频繁定制，或设计 token/评审机制缺失的团队。",
+      primaryRisk: "未治理的 utility class 会造成组件可读性下降和视觉不一致；迁移时必须配合 token、组件抽象、lint 和截图回归。",
+    },
     "kvcache-ai/ktransformers": {
       domain: "异构 LLM 推理优化 / 本地大模型运行时",
       userPain: "团队想在有限 GPU/CPU 资源上体验或部署大模型，但标准推理框架难以同时利用异构硬件、KV cache、量化和算子替换",
@@ -1032,6 +1115,18 @@ function specializeLens(repo, lens) {
       bestFit: "Agent 平台、桌面自动化、GUI benchmark、训练数据生成和需要跨 OS 控制的研究工程团队",
       badFit: "高风险交易、登录敏感系统、验证码/反自动化场景，或没有人工确认的生产写操作",
       primaryRisk: "GUI Agent 的错误动作成本高且难完全预测；必须用隔离环境、动作白名单、可回放日志和人工确认控制风险。",
+    },
+    "uber/ADR": {
+      domain: "Agentic AI Detection and Response / 企业 Agent 安全观测",
+      userPain: "企业员工和客服 Agent 会调用代码、MCP、浏览器和内部工具，传统 SIEM/EDR 很难理解 agent intent、工具链语义和 prompt injection 攻击路径。",
+      coreMechanism: "Uber ADR 开源 Sensor、ADR-Bench 和 Detector：Sensor 采集 Claude Code、Cursor、Codex 等 agent telemetry；Benchmark 覆盖 300+ 任务、133 个 MCP servers 和 17 类 agent attack techniques；Detector 用高召回 triage 加深度 agentic reasoning 检测可疑会话。",
+      safeEntry: "先在沙箱和内部开发者机器只读采集 telemetry，复现 ADR-Bench 基线，不启用自动阻断或生产凭据访问。",
+      businessValue: "把 Agent 安全从事后日志审查推进到可观测、可评测、可检测的 ADR 控制面，为企业级 Claude/Codex/Cursor 采用提供安全证据。",
+      successMetric: "telemetry 覆盖率、攻击召回率、误报率、检测延迟、MCP 场景覆盖、敏感工具触达、人工复核时间和阻断前置率",
+      inspectFirst: "先看 Sensor schema、Detection/ benchmark fixtures、dual-agent detector、AgentDojo vendoring、reproducibility 脚本、fake credential 边界和 prevention 未开源说明。",
+      bestFit: "已经部署企业 coding agent、MCP 工具或客服 Agent，并有安全平台 owner 能接入审计和红队流程的组织。",
+      badFit: "没有 agent telemetry、只做个人本地试验、缺少安全复核，或希望开源版本直接提供自动阻断能力的场景。",
+      primaryRisk: "ADR 采集高敏 agent trace，必须先解决隐私、源码/凭据脱敏、数据保留和访问控制；检测结果也需要红队校准，不能直接等同于安全合规。",
     },
     "1c7/chinese-independent-developer": {
       domain: "独立开发者产品目录 / 创业机会雷达",
@@ -5242,7 +5337,7 @@ function buildExecutiveSummary(items, frontier, aiNews) {
   const firstAnthropic = latestAnthropic || primaryAnthropic || claudeTag || anthropicItems[0];
   const aiHotLead = (aiNews.items || []).find((item) => item.source?.includes("AIHOT"));
   return {
-    headline: `今日雷达主线：GitHub 热门继续围绕 Agent 工作流、个人云和文档/设计上下文扩散；搜广推从单模型优化转向召回、排序、serving 成本和实验血缘协同；A 社同时推进安全研究、Managed Agents/MCP 和 Claude Code 工程化。`,
+    headline: `今日雷达主线：GitHub 热门集中在 Agent 控制面、团队记忆、工程 skills、前端框架与 Agent 安全观测；搜广推从单模型优化转向召回、排序、serving 成本和实验血缘协同；A 社继续围绕安全研究、Managed Agents/MCP 和 Claude Code 工程化推进。`,
     bullets: [
       topRepos.length ? `GitHub 本轮由 ${topRepos.join("、")} 领跑；解读重点落在 ${repoSignalText}，采用判断不按 star 排序，而按架构机制、适用团队、落地路径、生产风险、决策问题和观察信号拆解。` : "今日暂无 GitHub 项目数据。",
       firstRepoAction ? `开源项目解读已按“架构机制 -> 适用团队 -> 落地路径 -> 生产风险 -> 决策问题 -> 观察信号”展开；本轮更适合旁路 spike 的入口是：${trimText(firstRepoAction, 120)}` : "开源项目先按架构机制、适用团队、落地路径和生产风险做小样本验证。",
