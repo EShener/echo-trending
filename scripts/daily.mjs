@@ -5040,6 +5040,7 @@ function enrichAiNews(item) {
   const signal = interpretAiNews(item);
   const impact = buildAiNewsImpact(item, tags);
   const action = buildAiNewsAction(item, tags);
+  const diagram = buildAiNewsDiagram(item, { signal, impact, action, tags });
   return {
     signal,
     interpretation: {
@@ -5050,7 +5051,35 @@ function enrichAiNews(item) {
     impact,
     action,
     tags,
+    diagram,
   };
+}
+
+function buildAiNewsDiagram(item, { signal, impact, action, tags }) {
+  const watchMetric = buildAiNewsWatchMetric(item, tags);
+  return {
+    title: `${item.source || "AI News"} 信号图解`,
+    caption: (tags || []).slice(0, 4).join(" / ") || item.sourceDetail || "AI",
+    summary: `从「${item.title}」抽取信号、影响、动作和观察指标，便于前端生成新闻事件到团队行动的示意图。`,
+    nodes: [
+      { label: "信号", detail: signal, type: "input" },
+      { label: "影响", detail: impact, type: "core" },
+      { label: "动作", detail: action, type: "integration" },
+      { label: "观察指标", detail: watchMetric, type: "measure" },
+    ],
+    links: ["识别变化", "评估影响", "落地验证"],
+  };
+}
+
+function buildAiNewsWatchMetric(item, tags = []) {
+  const text = `${item.title} ${item.summary}`.toLowerCase();
+  if (tags.includes("安全/可信")) return "记录攻击样本、拦截率、误报/漏报、权限触达、事件响应时间和修复回放通过率。";
+  if (tags.includes("A社/Claude")) return "记录模型版本、工具权限、任务完成率、人工接管、成本、审计日志和供应连续性。";
+  if (tags.includes("Agent")) return "记录长任务完成率、步骤失败、工具误用、人工审批、恢复能力、延迟和单位任务成本。";
+  if (tags.includes("搜索")) return "记录召回覆盖、NDCG/MRR、二次查询率、答案引用、权限误召、P95 延迟和标注成本。";
+  if (tags.includes("多模态")) return "记录一致性、生成时长、编辑轮次、失败样本、版权边界、主观质量和端到端成本。";
+  if (tags.includes("工程/基础设施") || text.includes("api") || text.includes("推理")) return "记录吞吐、P95/P99、缓存命中、失败码、降级次数、成本归因和版本回归。";
+  return "记录真实任务完成率、人工修正、成本、延迟、失败样本和是否出现生态跟进。";
 }
 
 function inferAiNewsTags(item) {
