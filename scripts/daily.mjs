@@ -138,6 +138,11 @@ async function buildReport({ reportDate, limit, days, language }) {
 
 function applyEditorialOverrides(report) {
   const aiNewsOverrides = {
+    "A guide to cost visibility and control in Claude": {
+      signal: "Claude 企业治理信号：成本可见性、预算上限和模型选择正在成为 Claude Enterprise/API 大规模落地的前置能力。",
+      impact: "企业采用 Claude Code、Claude Cowork、Managed Agents 或 API 应用时，不能只看模型质量；预算 owner、模型权限、缓存策略和异常用量会直接决定可持续性。",
+      action: "为每个 Claude 工作流建立成本仪表盘：记录团队/用户/应用、模型、缓存命中、batch 占比、effort、失败重试、业务产出和预算告警，再决定扩大范围。",
+    },
     "Scientific computing in the age of agentic AI": {
       signal: "Agentic scientific computing 信号：模型正在进入 notebook、代码执行、数据校验和可复现 artifact 的闭环，而不是只回答研究问题。",
       impact: "科研和工程分析团队的评测口径要从“答案像不像”转向“实验是否可复跑、数据是否守恒、结论是否被专家复核”。",
@@ -621,6 +626,18 @@ function codexResearchRefresh({ repo, readme, languages, fallback }) {
 
 function specializeLens(repo, lens) {
   const overrides = {
+    "cloudflare/computer": {
+      domain: "Agent Computer Runtime / Durable Object 工作空间",
+      userPain: "Agent 要完成真实任务时需要文件系统、shell、浏览器、包管理和持久状态，但给每个 Agent 一整个容器会带来冷启动、成本、隔离和规模化压力。",
+      coreMechanism: "Cloudflare Computer 把 Agent 的工作空间建成 Durable Object 内的虚拟文件系统，以 SQLite 保存权威状态，并通过 workspace.runtime 在 isolates、按需容器和浏览器执行面之间切换。",
+      safeEntry: "先把它用于公开数据、无凭据的 coding/browser 原型，让 Agent 在持久文件系统里读写、运行测试和生成 artifact；不要接生产账号、付款、内部系统或不可逆操作。",
+      businessValue: "把“每个 Agent 一台电脑”的体验拆成可弹性调度的边缘运行时，有机会降低长任务 Agent 的状态恢复、工具编排和单位执行成本。",
+      successMetric: "任务恢复成功率、runtime 切换耗时、container 调用比例、文件系统一致性、trace 完整率、越权拦截、单位任务成本和人工接管率",
+      inspectFirst: "先看 Durable Object/SQLite 状态模型、workspace.runtime 后端、isolate 与 container 的边界、浏览器工具、preview 警告、trace、权限和清理机制。",
+      bestFit: "正在做 Agent 平台、浏览器/代码执行沙箱、Cloudflare Workers 生态原型，且能接受 preview API 变化的研发效能或平台团队。",
+      badFit: "需要稳定 SLA、强合规隔离、多租户生产写操作、复杂 GPU/长生命周期容器任务，或不在 Cloudflare Workers/DO 生态内的团队。",
+      primaryRisk: "官方明确标注 preview 且不适合生产；真实风险集中在状态泄露、runtime 权限、容器逃逸面、成本失控、trace 中敏感 payload 和 API 变更。",
+    },
     "lyogavin/airllm": {
       domain: "低显存大模型推理 / 本地 LLM 实验",
       userPain: "团队想在消费级 GPU、边缘机器或成本敏感环境里试跑 70B+ 模型，但常规推理栈要求大显存、多卡或复杂量化。",
@@ -3567,6 +3584,7 @@ function buildEditorialReview({ reportDate, frontier = {}, aiNews = {} }) {
     "https://www.anthropic.com/research/discovering-cryptographic-weaknesses",
     "https://www.anthropic.com/research/project-pilot",
     "https://claude.com/blog",
+    "https://claude.com/blog/a-guide-to-cost-visibility-and-control-in-claude",
     "https://claude.com/blog/bringing-mcp-2026-07-28-to-claude",
     "https://claude.com/blog/context-engineering-claude-5",
     "https://claude.com/blog/claude-models-explained",
@@ -3627,7 +3645,7 @@ function buildEditorialReview({ reportDate, frontier = {}, aiNews = {} }) {
     sourceNotes: [
       `Anthropic official coverage includes ${anthropicSources.join("、") || "official News/Research/Engineering"} with Claude Tag, Economic Index, Claude Code practice, model updates, partnerships and safety research.`,
       "Anthropic official pages checked this run: Newsroom latest includes Jul 30 cybersecurity evaluation incidents, Jul 27 open-weights position and Cognizant partnership, Jul 24 Claude Opus 5; Research latest includes Jul 28 cryptographic weaknesses and Jul 24 drone-control frontier-red-team work; Engineering highlights Claude containment and Claude Code safety posts.",
-      "Claude Blog checked for Jul 28 MCP 2026-07-28 support, Jul 24 Claude 5 context engineering/model guidance, Jul 22 verification loops with skills, Jul 21 Datadog Claude Code universal machine tool, and enterprise agent case studies.",
+      "Claude Blog checked for Aug 4 cost visibility/control in Claude, Jul 28 MCP 2026-07-28 support, Jul 24 Claude 5 context engineering/model guidance, Jul 22 verification loops with skills, Jul 21 Datadog Claude Code universal machine tool, and enterprise agent cases.",
       "Claude Platform release notes checked for Managed Agents lifecycle hooks, effort configuration, initial events, memory/environment webhooks and session thread deltas; Computer Use coverage is tracked through recent Claude model/browser-agent updates.",
       `Search/ads/recommendation coverage includes ${frontierSources.join("、") || frontier.source || "Big Tech Engineering/RSS + arXiv"} and is interpreted through business problem, system mechanism, metrics/experiments, borrowable patterns and unsuitable boundaries.`,
       "Project reads distinguish architecture mechanism, team fit, landing path, production risk, decision question and watch signal; generic metadata summaries are treated as fallback only.",
@@ -3762,6 +3780,20 @@ async function fetchAnthropicNewsItems(maxItems) {
 function seedAnthropicOfficialItems() {
   const favicon = "https://www.google.com/s2/favicons?domain=anthropic.com&sz=128";
   return [
+    {
+      source: "A社 Claude",
+      sourceDetail: "Claude 官方 Blog / Enterprise Cost Governance",
+      domain: "claude.com",
+      title: "A guide to cost visibility and control in Claude",
+      url: "https://claude.com/blog/a-guide-to-cost-visibility-and-control-in-claude",
+      publishedAt: "2026-08-04T16:00:00Z",
+      summary: "Claude 官方博客更新企业成本可视化与控制指南，强调 Claude Enterprise 管理员和 API 工程团队需要分别管理员工产品用量与应用侧 API 成本。信号是 A 社把大规模 Claude 部署从能力宣传推进到预算、模型分配、权限和工程侧缓存/批处理/effort 的治理问题；动作是在 Claude 试点里把 owner、预算上限、模型路由、prompt caching、batch processing、effort、异常用量告警和业务价值归因写进上线门槛。",
+      imageUrl: favicon,
+      priority: 17,
+      signal: "Claude 企业治理信号：成本可见性、预算上限和模型选择正在成为 Claude Enterprise/API 大规模落地的前置能力。",
+      impact: "企业采用 Claude Code、Claude Cowork、Managed Agents 或 API 应用时，不能只看模型质量；预算 owner、模型权限、缓存策略和异常用量会直接决定可持续性。",
+      action: "为每个 Claude 工作流建立成本仪表盘：记录团队/用户/应用、模型、缓存命中、batch 占比、effort、失败重试、业务产出和预算告警，再决定扩大范围。",
+    },
     {
       source: "A社 Anthropic",
       sourceDetail: "Anthropic 官方 News / Frontier Red Team",
