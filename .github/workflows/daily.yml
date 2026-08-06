@@ -7,27 +7,28 @@ on:
   workflow_dispatch:
 
 permissions:
-  contents: write
+  contents: read
+  pages: write
+  id-token: write
+
+concurrency:
+  group: pages
+  cancel-in-progress: false
 
 jobs:
   publish-static-site:
     runs-on: ubuntu-latest
     timeout-minutes: 30
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
     steps:
       - uses: actions/checkout@v4
-      - name: Publish static site to gh-pages
-        run: |
-          touch public/.nojekyll
-          rm -rf /tmp/echo-trending-pages
-          mkdir -p /tmp/echo-trending-pages
-          cp -R public/. /tmp/echo-trending-pages/
-          cd /tmp/echo-trending-pages
-          git init -b gh-pages
-          git config user.name "github-actions[bot]"
-          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
-          git add .
-          git commit -m "Deploy echo-trending site"
-          git remote add origin "https://x-access-token:${GITHUB_TOKEN}@github.com/${GITHUB_REPOSITORY}.git"
-          git push --force origin gh-pages
-        env:
-          GITHUB_TOKEN: ${{ github.token }}
+      - uses: actions/configure-pages@v5
+      - name: Prepare static site
+        run: touch public/.nojekyll
+      - uses: actions/upload-pages-artifact@v3
+        with:
+          path: public
+      - id: deployment
+        uses: actions/deploy-pages@v4
