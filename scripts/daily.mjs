@@ -2686,6 +2686,14 @@ async function buildFrontierSection(maxItems) {
     return {
       ...item,
       interpretation,
+      businessProblem: interpretation.businessProblem,
+      systemMechanism: interpretation.systemMechanism,
+      metricsAndExperiment: interpretation.metricsAndExperiment,
+      metricsOrExperiment: interpretation.metricsAndExperiment,
+      borrowable: interpretation.borrowable,
+      borrowablePattern: interpretation.borrowable,
+      boundary: interpretation.boundary,
+      unsuitableBoundary: interpretation.boundary,
       diagram: buildFrontierDiagram(item, interpretation),
       rank: index + 1,
     };
@@ -2729,7 +2737,7 @@ function ensureFrontierPriorityCoverage(selected, industryItems, maxItems) {
     if (next.length < maxItems) {
       next.push(candidate);
     } else {
-      const replaceIndex = findFrontierCoverageReplacementIndex(next, prioritySources);
+      const replaceIndex = findFrontierCoverageReplacementIndex(next, prioritySources, source);
       if (replaceIndex === -1) continue;
       covered.delete(next[replaceIndex].source);
       next[replaceIndex] = candidate;
@@ -2739,10 +2747,18 @@ function ensureFrontierPriorityCoverage(selected, industryItems, maxItems) {
   return next.slice(0, maxItems);
 }
 
-function findFrontierCoverageReplacementIndex(items, prioritySources) {
+function findFrontierCoverageReplacementIndex(items, prioritySources, targetSource = "") {
   const priority = new Set(prioritySources);
+  const sourceCounts = items.reduce((counts, item) => {
+    if (item.source) counts.set(item.source, (counts.get(item.source) || 0) + 1);
+    return counts;
+  }, new Map());
   for (let index = items.length - 1; index >= 0; index -= 1) {
     if (items[index].sourceType === "paper") return index;
+  }
+  for (let index = items.length - 1; index >= 0; index -= 1) {
+    const source = items[index].source;
+    if (source && source !== targetSource && (sourceCounts.get(source) || 0) > 1) return index;
   }
   for (let index = items.length - 1; index >= 0; index -= 1) {
     if (!priority.has(items[index].source)) return index;
