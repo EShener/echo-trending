@@ -5171,6 +5171,14 @@ function interpretAiNews(item) {
   if (text.includes("google cloud announced in ai this month")) return "平台整合信号：Google Cloud 把 Gemini、Agent API、代码/安全自动化和 Workspace 能力放进同一企业 AI 更新面，客户评估会从单模型能力转向托管平台边界。";
   if (text.includes("how agents are transforming work") || text.includes("codex 已占") || text.includes("99.8%") || (text.includes("codex") && (text.includes("economic research") || text.includes("output tokens")))) return "官方 Agent 采用信号：Codex 正从工程师工具扩展到跨部门长任务委托，重点看任务时长、并行 Agent、非技术岗位采用和组织级治理。";
   if (text.includes("computer use") && text.includes("gemini")) return "官方 Computer Use 信号：浏览器、移动和桌面操作正在被纳入模型原生工具链，关键看动作空间、安全策略和 prompt injection 防护。";
+  if (
+    text.includes("third-party cyber evaluations") ||
+    text.includes("cyber evaluations involving") ||
+    text.includes("智能体集群") ||
+    text.includes("内部留言板") ||
+    (text.includes("agent") && text.includes("credential") && text.includes("attack")) ||
+    (text.includes("智能体") && text.includes("凭据") && text.includes("攻击"))
+  ) return "Agent 安全事故信号：联网评测、长任务 Agent 和共享工作区已经可能形成非预期协作通道，凭据、任务分配和工具权限会从单次调用风险升级为群体行为风险。";
   if (text.includes("daybreak") || text.includes("codex security") || text.includes("gpt-5.5-cyber") || text.includes("ai cyber threats") || text.includes("网络威胁")) return "AI 安全工程信号：安全 Agent 和攻击 Agent 同时进入实战窗口，关键看漏洞验证、权限隔离、自动补丁和人工审查闭环。";
   if (isAnthropicOfficialItem(item) || text.includes("anthropic")) {
     if (text.includes("claude code") && (text.includes("sandbox") || text.includes("filesystem") || text.includes("network isolation"))) return "A 社 Claude Code 基建信号：sandboxing 把文件系统、网络和权限提示变成 Agent 自主性的前置条件，适合直接转成企业编码 Agent 安全基线。";
@@ -5291,6 +5299,14 @@ function buildAiNewsImpact(item, tags) {
   if (text.includes("lerobot v0.6.0")) return "开源机器人栈正在把仿真、评估和改进循环产品化，具身智能团队会更依赖可复现实验而不是单次演示视频。";
   if (text.includes("prx part 4")) return "Hugging Face 持续公开数据策略，说明开源模型竞争正在回到数据构造、过滤、评测和可追溯治理。";
   if (text.includes("sglang") && (text.includes("dspark") || text.includes("speculative"))) return "推测解码从固定 draft 长度走向按请求置信度自适应，推理平台的竞争点会变成吞吐、尾延迟和无效验证成本的联合优化。";
+  if (
+    text.includes("third-party cyber evaluations") ||
+    text.includes("cyber evaluations involving") ||
+    text.includes("智能体集群") ||
+    text.includes("内部留言板") ||
+    (text.includes("agent") && text.includes("credential") && text.includes("attack")) ||
+    (text.includes("智能体") && text.includes("凭据") && text.includes("攻击"))
+  ) return "这会把 Agent 安全评估从“单个模型是否越权”推进到“多个 Agent 是否通过文件、留言板、缓存或工具输出形成旁路协作”；企业必须把工作区隔离、凭据最小化、网络出口和跨会话记忆纳入同一威胁模型。";
   if (text.includes("daybreak") || text.includes("codex security") || text.includes("gpt-5.5-cyber")) return "安全 Agent 正从“辅助写脚本”进入漏洞发现、验证和修复建议链路，企业需要把它纳入 DevSecOps、审计和变更管理，而不是当成普通聊天能力。";
   if (text.includes("a2ui") || text.includes("mcp apps")) return "Google 把 A2UI 与 MCP Apps 放在同一组集成架构里，信号是 AI 应用入口正在从单点插件走向标准化应用协议。";
   if (text.includes("workload identity federation")) return "Claude Platform 接入开始强调无长期密钥的身份联合，影响企业把 Claude 接入云上工作负载和 CI/CD 的安全基线。";
@@ -5320,6 +5336,14 @@ function buildAiNewsAction(item, tags) {
   if (text.includes("lerobot v0.6.0")) return "建议机器人/自动化团队下载复现实验，记录数据采集、仿真到真机差距、评测指标和硬件失败样本。";
   if (text.includes("prx part 4")) return "建议跟踪其数据配方和过滤策略，把可追溯数据治理纳入开源模型采用清单。";
   if (text.includes("sglang") && (text.includes("dspark") || text.includes("speculative"))) return "建议在现有推理网关用离线流量回放测试 DSpark 类策略，比较吞吐、P99、显存、接受率和输出一致性。";
+  if (
+    text.includes("third-party cyber evaluations") ||
+    text.includes("cyber evaluations involving") ||
+    text.includes("智能体集群") ||
+    text.includes("内部留言板") ||
+    (text.includes("agent") && text.includes("credential") && text.includes("attack")) ||
+    (text.includes("智能体") && text.includes("凭据") && text.includes("攻击"))
+  ) return "建议为所有联网 Agent 评测和长任务沙箱增加 egress allowlist、临时凭据、共享目录审计、跨会话消息扫描、异常协作告警、人工停机和事件回放；不要把评测环境默认视为低风险。";
   if (text.includes("daybreak") || text.includes("codex security") || text.includes("gpt-5.5-cyber")) return "建议建立安全 Agent 试点清单：只读扫描、人工确认补丁、沙箱执行、审计日志和误报/漏报复盘必须同时验证。";
   if (text.includes("a2ui") || text.includes("mcp apps")) return "建议把 A2UI/MCP Apps 放入 Agent 集成雷达，比较权限模型、上下文传递、应用发现和前端承载边界。";
   if (text.includes("workload identity federation")) return "建议更新 Claude Platform 接入规范，优先验证短期凭据、最小权限、审计日志和密钥轮换流程。";
