@@ -3712,6 +3712,7 @@ function buildEditorialReview({ reportDate, frontier = {}, aiNews = {} }) {
     "https://www.anthropic.com/research/discovering-cryptographic-weaknesses",
     "https://www.anthropic.com/research/project-pilot",
     "https://claude.com/blog",
+    "https://claude.com/blog/millennium-and-anthropic-are-building-a-digital-risk-analyst-with-claude",
     "https://claude.com/blog/claude-enterprise-inference-hooks",
     "https://claude.com/blog/a-guide-to-cost-visibility-and-control-in-claude",
     "https://claude.com/blog/bringing-mcp-2026-07-28-to-claude",
@@ -3775,7 +3776,7 @@ function buildEditorialReview({ reportDate, frontier = {}, aiNews = {} }) {
     sourceNotes: [
       `Anthropic official coverage includes ${anthropicSources.join("、") || "official News/Research/Engineering"} with Claude Tag, Economic Index, Claude Code practice, model updates, partnerships and safety research.`,
       "Anthropic official pages checked this run: Newsroom latest includes Jul 30 cybersecurity evaluation incidents, Jul 27 open-weights position and Cognizant partnership, Jul 24 Claude Opus 5; Research latest includes Jul 28 cryptographic weaknesses and Jul 24 drone-control frontier-red-team work; Engineering highlights Claude containment and Claude Code safety posts.",
-      "Claude Blog checked for Aug 5 inference hooks / inline DLP for Claude Enterprise, Aug 4 cost visibility/control in Claude, Jul 28 MCP 2026-07-28 support, Jul 24 Claude 5 context engineering/model guidance, Jul 22 verification loops with skills, Jul 21 Datadog Claude Code universal machine tool, and enterprise agent cases.",
+      "Claude Blog checked for Aug 6 Millennium risk analyst partnership, Aug 5 inference hooks / inline DLP for Claude Enterprise, Aug 4 cost visibility/control in Claude, Jul 28 MCP 2026-07-28 support, Jul 24 Claude 5 context engineering/model guidance, Jul 22 verification loops with skills, Jul 21 Datadog Claude Code universal machine tool, and enterprise agent cases.",
       "Claude Platform release notes checked for Managed Agents lifecycle hooks, effort configuration, initial events, memory/environment webhooks and session thread deltas; Computer Use coverage is tracked through recent Claude model/browser-agent updates.",
       `Search/ads/recommendation coverage includes ${frontierSources.join("、") || frontier.source || "Big Tech Engineering/RSS + arXiv"} and is interpreted through business problem, system mechanism, metrics/experiments, borrowable patterns and unsuitable boundaries.`,
       "Project reads distinguish architecture mechanism, team fit, landing path, production risk, decision question and watch signal; generic metadata summaries are treated as fallback only.",
@@ -3910,6 +3911,20 @@ async function fetchAnthropicNewsItems(maxItems) {
 function seedAnthropicOfficialItems() {
   const favicon = "https://www.google.com/s2/favicons?domain=anthropic.com&sz=128";
   return [
+    {
+      source: "A社 Claude",
+      sourceDetail: "Claude 官方 Blog / Enterprise Partnership",
+      domain: "claude.com",
+      title: "Millennium and Anthropic are building a digital risk analyst with Claude",
+      url: "https://claude.com/blog/millennium-and-anthropic-are-building-a-digital-risk-analyst-with-claude",
+      publishedAt: "2026-08-06T16:00:00Z",
+      summary: "Anthropic 与 Millennium 合作构建面向投资风险工作流的 Claude 数字风险分析师，把 Claude 接入研究、组合风险、文档综合和专家复核流程。信号是 Claude 企业落地正在进入高监管、高价值、强审计的金融分析场景；动作是把权限、来源引用、模型版本、人工签核、数据驻留、成本和错误案例纳入同一验收表，避免把 Agent 输出直接当投资或风控结论。",
+      imageUrl: favicon,
+      priority: 20,
+      signal: "企业合作信号：Claude 正被包装成金融风险分析工作流中的数字分析师，而不是通用聊天助手。",
+      impact: "高价值知识工作会更快采用 Claude，但金融/风控场景对来源、审计、权限、人工签核和数据驻留的要求会高于普通企业助手。",
+      action: "以 shadow analyst 方式试点：让 Claude 先生成风险假设、证据链接和反例清单，由人类 analyst 签核，并记录命中率、幻觉、延迟、成本和合规审查问题。",
+    },
     {
       source: "A社 Claude",
       sourceDetail: "Claude 官方 Blog / Enterprise Inline DLP",
