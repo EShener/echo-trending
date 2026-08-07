@@ -138,6 +138,16 @@ async function buildReport({ reportDate, limit, days, language }) {
 
 function applyEditorialOverrides(report) {
   const aiNewsOverrides = {
+    "Anthropic 更新 Claude Fable 5 生物安全防护，误报率大幅降低": {
+      signal: "生物安全产品化信号：Fable 5 的安全边界从粗粒度阻断转向“分类器 + fallback + trusted access”的组合治理。",
+      impact: "日常健康、教育和基础生物学问题会更少被误拒，但双重用途病毒学、毒理学、分子设计和药物研发仍然需要高风险能力门控；团队不能把误报率下降解读成生物场景全面放开。",
+      action: "把生物类试点按 benign education、clinical support、dual-use research、drug development 分桶回放，分别记录 fallback 率、误拒/误放、专家复核、访问资格和审计证据。",
+    },
+    "Improving Fable 5's biology safeguards": {
+      signal: "生物安全产品化信号：Fable 5 的安全边界从粗粒度阻断转向“分类器 + fallback + trusted access”的组合治理。",
+      impact: "日常健康、教育和基础生物学问题会更少被误拒，但双重用途病毒学、毒理学、分子设计和药物研发仍然需要高风险能力门控；团队不能把误报率下降解读成生物场景全面放开。",
+      action: "把生物类试点按 benign education、clinical support、dual-use research、drug development 分桶回放，分别记录 fallback 率、误拒/误放、专家复核、访问资格和审计证据。",
+    },
     "A guide to cost visibility and control in Claude": {
       signal: "Claude 企业治理信号：成本可见性、预算上限和模型选择正在成为 Claude Enterprise/API 大规模落地的前置能力。",
       impact: "企业采用 Claude Code、Claude Cowork、Managed Agents 或 API 应用时，不能只看模型质量；预算 owner、模型权限、缓存策略和异常用量会直接决定可持续性。",
@@ -315,12 +325,23 @@ function applyEditorialOverrides(report) {
     },
   };
 
-  for (const item of report.aiNews?.items || []) {
+  for (const item of [...(report.aiNews?.items || []), ...(report.anthropic?.items || [])]) {
     const override = aiNewsOverrides[item.title];
     if (!override) continue;
     Object.assign(item, override);
+    if (item.interpretation && typeof item.interpretation === "object") {
+      Object.assign(item.interpretation, override);
+    }
     if (item.recommendation && typeof item.recommendation === "object") {
       Object.assign(item.recommendation, override);
+    }
+    if (item.diagram?.nodes?.length) {
+      for (const node of item.diagram.nodes) {
+        if (node.label === "信号") node.detail = override.signal;
+        if (node.label === "影响") node.detail = override.impact;
+        if (node.label === "动作") node.detail = override.action;
+      }
+      item.diagram.summary = `从「${item.title}」抽取生物安全分类器、fallback、trusted access、误拒/误放和专家复核路径，便于前端生成模型安全治理示意图。`;
     }
   }
   return report;
