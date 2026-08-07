@@ -5374,9 +5374,10 @@ function interpretAiNews(item) {
 
 function enrichAiNews(item) {
   const tags = inferAiNewsTags(item);
-  const signal = interpretAiNews(item);
-  const impact = buildAiNewsImpact(item, tags);
-  const action = buildAiNewsAction(item, tags);
+  const curated = curatedAiNewsOverride(item);
+  const signal = curated?.signal || interpretAiNews(item);
+  const impact = curated?.impact || buildAiNewsImpact(item, tags);
+  const action = curated?.action || buildAiNewsAction(item, tags);
   const diagram = buildAiNewsDiagram(item, { signal, impact, action, tags });
   return {
     signal,
@@ -5390,6 +5391,43 @@ function enrichAiNews(item) {
     tags,
     diagram,
   };
+}
+
+function curatedAiNewsOverride(item) {
+  const title = normalizeTitle(item.title || "");
+  const map = {
+    [normalizeTitle("Krea 推出 Seedance 2.5 视频模型")]: {
+      signal: "视频生成产品信号：Krea 把 Seedance 2.5 包装进创作工具入口，竞争点从模型发布转向多镜头一致性、编辑闭环和工作流留存。",
+      impact: "创作者不会只比较单条样片，而会看脚本到分镜、参考图、镜头续写、局部重生成和导出质量是否稳定；对内容团队来说，版权、品牌一致性和单位成片成本会比峰值画质更重要。",
+      action: "用 5 个真实短视频 brief 做回放：记录首版可用率、人物/商品一致性、重生成次数、时长限制、导出规格、版权条款和人工剪辑补救时间。",
+    },
+    [normalizeTitle("独立开发者用 VoxCPM 克隆网红声音，让 AI 终于\"会聊天\"了")]: {
+      signal: "端侧语音克隆信号：VoxCPM 类项目把声音复刻、对话语气和实时交互下放给独立开发者，门槛下降会同时放大创作效率和肖像/声音授权风险。",
+      impact: "AI 陪伴、短视频配音和客服原型会更容易试错，但如果没有授权、溯源和水印，声音克隆很快会触发平台风控、侵权投诉和品牌安全问题。",
+      action: "只在授权声音样本上做离线测试，记录相似度、延迟、长句稳定性、情绪控制、失败音频、水印/声明方式和平台审核反馈。",
+    },
+    [normalizeTitle("OpenAI 披露 ChatGPT 全球 10 亿用户画像：35 岁及以上用户用量上升")]: {
+      signal: "AI 普及结构信号：ChatGPT 用户年龄结构上移说明 AI 已从早期尝鲜人群进入更广泛知识工作与日常决策场景。",
+      impact: "产品评估不能再只按开发者/学生视角设计；企业培训、家庭场景、医疗健康、财务和办公任务会提出更强的易用性、解释性和安全提示要求。",
+      action: "把用户研究按年龄、职业、任务类型和风险等级重新分桶，分别观察留存、误用、提示词失败、隐私顾虑和人工帮助需求。",
+    },
+    [normalizeTitle("谷歌推出 WeatherNext 气旋模型，AI 高精度预报飓风平均提前 24 小时")]: {
+      signal: "垂直科学模型信号：WeatherNext 气旋模型把 AI 预测从通用天气基座推进到高影响灾害场景，核心价值是提前量、路径误差和预警可靠性。",
+      impact: "保险、物流、能源、应急和内容平台会更关注可解释预警、地理粒度和误报成本；这不是普通大模型替换，而是专业数据、物理约束和业务响应链路的结合。",
+      action: "跟踪官方基准和真实风暴复盘，记录提前量、路径/强度误差、地区覆盖、与传统数值天气模型差异、误报成本和下游调度动作。",
+    },
+    [normalizeTitle("Seedance 2.5 API上线，视频生成开启「电影级长叙事」")]: {
+      signal: "视频 API 工程信号：Seedance 2.5 从产品体验扩展到 API，说明视频生成正在进入可编排、可批量评测和可嵌入创作平台的阶段。",
+      impact: "增长和内容平台可以把长叙事视频纳入自动化生产，但 API 稳定性、队列延迟、成本、审核失败和素材版权会决定能否规模化。",
+      action: "先接入一个非发布链路的素材工厂，按脚本长度、镜头数、风格一致性、失败重试、P95 生成时间、单条成本和人工终审通过率做表。",
+    },
+    [normalizeTitle("千问功能上新：推出思考研究、定时任务、办公助理、语音通话等多项新功能，并支持 Qwen3.8-MAX")]: {
+      signal: "国产 Agent 产品化信号：千问把深度研究、定时任务、办公助理、语音入口和新模型合并发布，目标是从聊天助手扩展到日常任务调度层。",
+      impact: "对企业和个人用户的影响取决于工具权限、长任务可靠性、国产生态连接和移动/办公入口覆盖；模型参数更新本身不是唯一重点。",
+      action: "选择研究报告、定时提醒、表格办公和语音查询各一个任务做体验回放，记录完成率、引用质量、权限提示、跨端同步、失败接管和数据边界。",
+    },
+  };
+  return map[title] || null;
 }
 
 function buildAiNewsDiagram(item, { signal, impact, action, tags }) {

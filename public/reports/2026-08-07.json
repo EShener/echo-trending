@@ -1,6 +1,6 @@
 {
   "date": "2026-08-07",
-  "generatedAt": "2026-08-07T05:34:52.871Z",
+  "generatedAt": "2026-08-07T08:36:05.458Z",
   "source": {
     "provider": "GitHub Trending daily + AIHOT + official AI feeds + Anthropic official pages + big-tech engineering blogs + Codex manual deep rewrite",
     "query": "pushed:>=2026-07-31 stars:>100 archived:false",
@@ -9,7 +9,7 @@
     "language": "all",
     "editorialReview": {
       "method": "script refresh + Codex multi-source editorial review",
-      "reviewedAt": "2026-08-07T05:34:52.871Z",
+      "reviewedAt": "2026-08-07T08:36:05.458Z",
       "reportDate": "2026-08-07",
       "focus": [
         "GitHub Trending daily metadata, repo README evidence and adoption risk review",
@@ -101,7 +101,7 @@
       "开源项目解读已按“架构机制 -> 适用团队 -> 落地路径 -> 生产风险 -> 决策问题 -> 观察信号”展开；本轮更适合旁路 spike 的入口是：进入观察/试点池：先选择一个低敏项目，把历史任务、团队规范和代码索引导入只读记忆库，验证检索命中、权限边界和过期清理。；先保留人工复核、指标记录和回滚路径。",
       "搜广推收录 22 条工程/研究信号，覆盖 Google Research、Meta Engineering、Amazon Science、Netflix TechBlog、Pinterest Engineering、Airbnb Engineering、Spotify Engineering、Salesforce Engineering、Dropbox Tech、Meituan Tech、Tencent Cloud Developer、Alibaba Cloud Developer；重点从「From User Sequences to Scaling Laws: A Multi-Stage Architecture for Meta’s Ads Ranking」延伸到广告排序、实时上下文、企业搜索 relevance judge、模型生命周期图和工业搜索属性推荐。",
       "A 社覆盖 18 条官方 News/Research/Engineering 动态，最新重点是「Improving Fable 5's biology safeguards」；安全研究主线继续观察「Improving Fable 5's biology safeguards」，Claude Code 相关信号包括 Inference hooks: inline data loss prevention for Claude Enterprise、Investigating three real-world incidents in our cybersecurity evaluations、Bringing MCP 2026-07-28 to Claude，评估动作应拆成模型能力、权限隔离、长任务恢复、团队协作记忆、预算上限和审计边界。",
-      "AIHOT/官方 AI 新闻共 20 条，其中 AIHOT 8 条；今日先看「Anthropic 更新 Claude Fable 5 生物安全防护，误报率大幅降低」，所有新闻统一写成“信号 -> 影响 -> 动作”，动作聚焦评测回放、预算治理、工具白名单、权限审计和真实工作流验证。"
+      "AIHOT/官方 AI 新闻共 20 条，其中 AIHOT 8 条；今日先看「Krea 推出 Seedance 2.5 视频模型」，所有新闻统一写成“信号 -> 影响 -> 动作”，动作聚焦评测回放、预算治理、工具白名单、权限审计和真实工作流验证。"
     ]
   },
   "items": [
@@ -115,10 +115,10 @@
         "visualUrl": "https://opengraph.githubassets.com/20260807/TencentCloud/TencentDB-Agent-Memory",
         "url": "https://github.com/TencentCloud/TencentDB-Agent-Memory",
         "description": "TencentDB Agent Memory is a team-level memory hub for AI Agents — turning conversations, docs, and code into four reusable memory assets (Chat Memory, Skill, LLM-Wiki, Code-Graph) that are governed, shared, and equipped across agents and frameworks.",
-        "stars": 16679,
+        "stars": 16970,
         "starsToday": 1057,
-        "forks": 1502,
-        "openIssues": 534,
+        "forks": 1523,
+        "openIssues": 541,
         "language": "TypeScript",
         "topics": [
           "agent",
@@ -148,7 +148,7 @@
         "method": "codex-research-refresh",
         "category": "团队级 Agent Memory / Chat-Skill-Wiki-CodeGraph 治理层",
         "oneLiner": "TencentDB Agent Memory is a team-level memory hub for AI Agents — turning conversations, docs, and code into four reusable memory assets (Chat Memory, Skill, LLM-Wiki, Code-Graph) that are governed, shared, and equipped across agents and frameworks.；关键看 把 conversation、docs、code 转成 Chat Memory、Skill、LLM-Wiki、Code-Graph 四类资产，并通过治理、装备和共享机制接入多 Agent/框架。 是否能被小范围验证。",
-        "whyItMatters": "TencentCloud/TencentDB-Agent-Memory 值得看，是因为 AI 项目真正的分水岭已经从“能跑 demo”转向“能被治理、能接工具、能失败恢复”。当前 16.7K stars / 1.5K forks，维护非常活跃，足够进入 Agent 工程雷达。 这次更新更值得关注的是其可迁移机制：把 conversation、docs、code 转成 Chat Memory、Skill、LLM-Wiki、Code-Graph 四类资产，并通过治理、装备和共享机制接入多 Agent/框架。 能否被拆成小样本验证，而不是把项目整体搬进生产。",
+        "whyItMatters": "TencentCloud/TencentDB-Agent-Memory 值得看，是因为 AI 项目真正的分水岭已经从“能跑 demo”转向“能被治理、能接工具、能失败恢复”。当前 17K stars / 1.5K forks，维护非常活跃，足够进入 Agent 工程雷达。 这次更新更值得关注的是其可迁移机制：把 conversation、docs、code 转成 Chat Memory、Skill、LLM-Wiki、Code-Graph 四类资产，并通过治理、装备和共享机制接入多 Agent/框架。 能否被拆成小样本验证，而不是把项目整体搬进生产。",
         "engineeringRead": "TypeScript · API/SDK 接入。建议按“入口示例 -> 数据/配置 -> 失败处理 -> CI/release -> issue 反例”的顺序读；重点回答 它解决的是「团队使用多个 Agent 后，对话记忆、技能、文档知识和代码图谱分散在个人上下文里，无法共享、治理或跨工具复用。」的主矛盾，还是只会给现有流程增加新的维护面？",
         "architectureSignals": [
           "架构机制：把 conversation、docs、code 转成 Chat Memory、Skill、LLM-Wiki、Code-Graph 四类资产，并通过治理、装备和共享机制接入多 Agent/框架。；阅读时把 TypeScript 代码入口、数据/配置形态、自动化脚本和边界条件连起来看，而不是只看 README 的安装示例。",
@@ -204,7 +204,7 @@
         },
         "diagram": {
           "title": "TencentDB-Agent-Memory 工业级采用图解",
-          "caption": "团队级 Agent Memory / Chat-Skill-Wiki-CodeGraph 治理层 · TypeScript · 16.7K stars",
+          "caption": "团队级 Agent Memory / Chat-Skill-Wiki-CodeGraph 治理层 · TypeScript · 17K stars",
           "summary": "用 把 conversation、docs、code 转成 Chat Memory、Skill、LLM-Wiki、Code-Graph 四类资产，并通过治理、装备和共享机制接入多 Agent/框架。 解决 团队使用多个 Agent 后，对话记忆、技能、文档知识和代码图谱分散在个人上下文里，无法共享、治理或跨工具复用。，先经由 先选择一个低敏项目，把历史任务、团队规范和代码索引导入只读记忆库，验证检索命中、权限边界和过期清理。 验证 上下文命中率、重复解释次数、权限违规拦截、过期记忆清理、跨 Agent 复用次数、代码图谱错误引用率，再决定是否扩大。",
           "nodes": [
             {
@@ -241,7 +241,7 @@
             "metrics": [
               {
                 "label": "Stars",
-                "value": "16.7K",
+                "value": "17K",
                 "note": "社区关注"
               },
               {
@@ -251,7 +251,7 @@
               },
               {
                 "label": "Issues",
-                "value": "534",
+                "value": "541",
                 "note": "维护压力"
               },
               {
@@ -334,10 +334,10 @@
         "visualUrl": "https://opengraph.githubassets.com/20260807/addyosmani/agent-skills",
         "url": "https://github.com/addyosmani/agent-skills",
         "description": "Production-grade engineering skills for AI coding agents.",
-        "stars": 83129,
+        "stars": 83276,
         "starsToday": 593,
-        "forks": 8906,
-        "openIssues": 101,
+        "forks": 8917,
+        "openIssues": 102,
         "language": "JavaScript",
         "topics": [
           "agent-skills",
@@ -362,7 +362,7 @@
         "method": "codex-research-refresh",
         "category": "生产级 Agent Skills / 工程工作流打包",
         "oneLiner": "Production-grade engineering skills for AI coding agents.；关键看 仓库把 24 个工程 skills、8 个生命周期 slash commands 和多客户端安装说明打包；通过 skills CLI 或原生插件把 senior engineer 的检查清单、命令节奏和质量门禁注入 Claude Code、Codex、Cursor、Copilot 等工具。 是否能被小范围验证。",
-        "whyItMatters": "addyosmani/agent-skills 处在 成熟热门项目 区间：83.1K stars / 8.9K forks，维护非常活跃。README 把重点放在「Agent Skills」，适合判断它是否能在 构建、调试、交付或依赖管理的效率瓶颈 上形成真实工程收益。 这次更新更值得关注的是其可迁移机制：仓库把 24 个工程 skills、8 个生命周期 slash commands 和多客户端安装说明打包；通过 skills CLI 或原生插件把 senior engineer 的检查清单、命令节奏和质量门禁注入 Claude Code、Codex、Cursor、Copilot 等工具。 能否被拆成小样本验证，而不是把项目整体搬进生产。",
+        "whyItMatters": "addyosmani/agent-skills 处在 成熟热门项目 区间：83.3K stars / 8.9K forks，维护非常活跃。README 把重点放在「Agent Skills」，适合判断它是否能在 构建、调试、交付或依赖管理的效率瓶颈 上形成真实工程收益。 这次更新更值得关注的是其可迁移机制：仓库把 24 个工程 skills、8 个生命周期 slash commands 和多客户端安装说明打包；通过 skills CLI 或原生插件把 senior engineer 的检查清单、命令节奏和质量门禁注入 Claude Code、Codex、Cursor、Copilot 等工具。 能否被拆成小样本验证，而不是把项目整体搬进生产。",
         "engineeringRead": "JavaScript · API/SDK 接入。建议按“入口示例 -> 数据/配置 -> 失败处理 -> CI/release -> issue 反例”的顺序读；重点回答 它解决的是「团队把 AI coding agent 当通用聊天窗口使用时，spec、plan、build、test、review、webperf 和 ship 的质量门禁靠人临时提醒，跨工具复用成本高。」的主矛盾，还是只会给现有流程增加新的维护面？",
         "architectureSignals": [
           "架构机制：仓库把 24 个工程 skills、8 个生命周期 slash commands 和多客户端安装说明打包；通过 skills CLI 或原生插件把 senior engineer 的检查清单、命令节奏和质量门禁注入 Claude Code、Codex、Cursor、Copilot 等工具。；阅读时把 JavaScript 代码入口、数据/配置形态、自动化脚本和边界条件连起来看，而不是只看 README 的安装示例。",
@@ -418,7 +418,7 @@
         },
         "diagram": {
           "title": "agent-skills 工业级采用图解",
-          "caption": "生产级 Agent Skills / 工程工作流打包 · JavaScript · 83.1K stars",
+          "caption": "生产级 Agent Skills / 工程工作流打包 · JavaScript · 83.3K stars",
           "summary": "用 仓库把 24 个工程 skills、8 个生命周期 slash commands 和多客户端安装说明打包；通过 skills CLI 或原生插件把 senior engineer 的检查清单、命令节奏和质量门禁注入 Claude Code、Codex、Cursor、Copilot 等工具。 解决 团队把 AI coding agent 当通用聊天窗口使用时，spec、plan、build、test、review、webperf 和 ship 的质量门禁靠人临时提醒，跨工具复用成本高。，先经由 先只安装 code-review、test-driven-development 或 webperf 等单个低风险 skill，在一个小仓库用同一任务对比有/无 skill 的返工和测试覆盖。 验证 spec 完整度、任务切片大小、测试先行比例、review 缺陷密度、构建失败率、安装成功率和跨工具复用次数，再决定是否扩大。",
           "nodes": [
             {
@@ -455,7 +455,7 @@
             "metrics": [
               {
                 "label": "Stars",
-                "value": "83.1K",
+                "value": "83.3K",
                 "note": "社区关注"
               },
               {
@@ -465,7 +465,7 @@
               },
               {
                 "label": "Issues",
-                "value": "101",
+                "value": "102",
                 "note": "维护压力"
               },
               {
@@ -548,9 +548,9 @@
         "visualUrl": "https://opengraph.githubassets.com/20260807/cloudflare/computer",
         "url": "https://github.com/cloudflare/computer",
         "description": "Give your agent a computer 👾",
-        "stars": 4976,
+        "stars": 5100,
         "starsToday": 2802,
-        "forks": 250,
+        "forks": 259,
         "openIssues": 22,
         "language": "TypeScript",
         "topics": [],
@@ -568,7 +568,7 @@
         "method": "codex-research-refresh",
         "category": "Agent Computer Runtime / Durable Object 工作空间",
         "oneLiner": "Give your agent a computer 👾；关键看 Cloudflare Computer 把 Agent 的工作空间建成 Durable Object 内的虚拟文件系统，以 SQLite 保存权威状态，并通过 workspace.runtime 在 isolates、按需容器和浏览器执行面之间切换。 是否能被小范围验证。",
-        "whyItMatters": "cloudflare/computer 值得看，是因为 AI 项目真正的分水岭已经从“能跑 demo”转向“能被治理、能接工具、能失败恢复”。当前 5K stars / 250 forks，维护非常活跃，足够进入 Agent 工程雷达。 这次更新更值得关注的是其可迁移机制：Cloudflare Computer 把 Agent 的工作空间建成 Durable Object 内的虚拟文件系统，以 SQLite 保存权威状态，并通过 workspace.runtime 在 isolates、按需容器和浏览器执行面之间切换。 能否被拆成小样本验证，而不是把项目整体搬进生产。",
+        "whyItMatters": "cloudflare/computer 值得看，是因为 AI 项目真正的分水岭已经从“能跑 demo”转向“能被治理、能接工具、能失败恢复”。当前 5.1K stars / 259 forks，维护非常活跃，足够进入 Agent 工程雷达。 这次更新更值得关注的是其可迁移机制：Cloudflare Computer 把 Agent 的工作空间建成 Durable Object 内的虚拟文件系统，以 SQLite 保存权威状态，并通过 workspace.runtime 在 isolates、按需容器和浏览器执行面之间切换。 能否被拆成小样本验证，而不是把项目整体搬进生产。",
         "engineeringRead": "TypeScript · 容器化部署。建议按“入口示例 -> 数据/配置 -> 失败处理 -> CI/release -> issue 反例”的顺序读；重点回答 它解决的是「Agent 要完成真实任务时需要文件系统、shell、浏览器、包管理和持久状态，但给每个 Agent 一整个容器会带来冷启动、成本、隔离和规模化压力。」的主矛盾，还是只会给现有流程增加新的维护面？",
         "architectureSignals": [
           "架构机制：Cloudflare Computer 把 Agent 的工作空间建成 Durable Object 内的虚拟文件系统，以 SQLite 保存权威状态，并通过 workspace.runtime 在 isolates、按需容器和浏览器执行面之间切换。；阅读时把 TypeScript 代码入口、数据/配置形态、自动化脚本和边界条件连起来看，而不是只看 README 的安装示例。",
@@ -624,7 +624,7 @@
         },
         "diagram": {
           "title": "computer 工业级采用图解",
-          "caption": "Agent Computer Runtime / Durable Object 工作空间 · TypeScript · 5K stars",
+          "caption": "Agent Computer Runtime / Durable Object 工作空间 · TypeScript · 5.1K stars",
           "summary": "用 Cloudflare Computer 把 Agent 的工作空间建成 Durable Object 内的虚拟文件系统，以 SQLite 保存权威状态，并通过 workspace.runtime 在 isolates、按需容器和浏览器执行面之间切换。 解决 Agent 要完成真实任务时需要文件系统、shell、浏览器、包管理和持久状态，但给每个 Agent 一整个容器会带来冷启动、成本、隔离和规模化压力。，先经由 先把它用于公开数据、无凭据的 coding/browser 原型，让 Agent 在持久文件系统里读写、运行测试和生成 artifact；不要接生产账号、付款、内部系统或不可逆操作。 验证 任务恢复成功率、runtime 切换耗时、container 调用比例、文件系统一致性、trace 完整率、越权拦截、单位任务成本和人工接管率，再决定是否扩大。",
           "nodes": [
             {
@@ -661,12 +661,12 @@
             "metrics": [
               {
                 "label": "Stars",
-                "value": "5K",
+                "value": "5.1K",
                 "note": "社区关注"
               },
               {
                 "label": "Forks",
-                "value": "250",
+                "value": "259",
                 "note": "二次采用"
               },
               {
@@ -732,7 +732,7 @@
           }
         },
         "maturity": {
-          "community": 81,
+          "community": 82,
           "maintenance": 97,
           "production": 87,
           "complexity": 55
@@ -754,9 +754,9 @@
         "visualUrl": "https://opengraph.githubassets.com/20260807/mattpocock/skills",
         "url": "https://github.com/mattpocock/skills",
         "description": "Skills for Real Engineers. Straight from my .agents directory.",
-        "stars": 207488,
+        "stars": 207816,
         "starsToday": 1873,
-        "forks": 17916,
+        "forks": 17942,
         "openIssues": 287,
         "language": "Shell",
         "topics": [],
@@ -937,11 +937,11 @@
         },
         "maturity": {
           "community": 100,
-          "maintenance": 100,
+          "maintenance": 97,
           "production": 95,
           "complexity": 55
         },
-        "score": 96
+        "score": 95
       },
       "evidence": {
         "readmeExcerpt": "<p <a href=\"https://www.aihero.dev/s/skills newsletter\" <picture <source media=\"(prefers color scheme: dark)\" srcset=\"https://res.cloudinary.com/total typescript/image/upload/v1777382277/skills repo dark 2x.png\" <source media=\"(prefers color scheme: light)\" srcset=\"https://res.cloudinary.com/total typescript/image/upload/v1777382277/skill repo light 2x.png\" <img alt=\"Skills\" src=\"https://res.cloudinary.com/total typescript/image/upload/v1777382277/skill repo light 2x.png\" width=\"369\" </picture </a </p Skills For Real Engineers My agent skills that I use every day to do real engineering not vibe coding. Developing real applications is hard. Approaches like GSD, BMAD, and Spec Kit try to help by owning the process. But while doing so, they take away your control and make bugs in the process hard to resolve. These skills are designed to be small, easy to adapt, and composable. They work wit...",
@@ -958,10 +958,10 @@
         "visualUrl": "https://opengraph.githubassets.com/20260807/goauthentik/authentik",
         "url": "https://github.com/goauthentik/authentik",
         "description": "The authentication glue you need.",
-        "stars": 23219,
+        "stars": 23286,
         "starsToday": 138,
-        "forks": 1780,
-        "openIssues": 1151,
+        "forks": 1783,
+        "openIssues": 1143,
         "language": "Python",
         "topics": [
           "authentication",
@@ -983,7 +983,7 @@
           "sso"
         ],
         "license": "NOASSERTION",
-        "pushedAt": "2026-08-07T05:18:53Z",
+        "pushedAt": "2026-08-07T08:03:37Z",
         "createdAt": "2019-12-30T09:19:48Z",
         "languages": {
           "Python": 7145391,
@@ -1190,10 +1190,10 @@
         "visualUrl": "https://opengraph.githubassets.com/20260807/huangruiteng/loopx",
         "url": "https://github.com/huangruiteng/loopx",
         "description": "Lightweight loop engineering state kernel for long-running AI agent teams. Agent-loop agnostic across Codex, Claude Code, and other coding agents, with durable goals, quota-aware auto-wake, executable todos, evidence logs, and verifiable handoffs.",
-        "stars": 3028,
+        "stars": 3139,
         "starsToday": 847,
-        "forks": 224,
-        "openIssues": 30,
+        "forks": 234,
+        "openIssues": 34,
         "language": "Python",
         "topics": [
           "agent-control-plane",
@@ -1221,7 +1221,7 @@
         "method": "codex-research-refresh",
         "category": "长任务 Agent 控制平面 / Loop Engineering",
         "oneLiner": "Lightweight loop engineering state kernel for long-running AI agent teams. Agent-loop agnostic across Codex, Claude Code, and other coding agents, with durable goals, quota-aware auto-wake, executable todos, evidence logs, and verifiable handoffs.；关键看 LoopX 把 objective、gate、todo、scope、evidence、quota、claim/lease 和 handoff 做成本地优先状态内核；Agent 每次只执行一个 bounded slice，完成后写回证据与下一步，再由 quota 和人工 gate 决定是否继续唤醒。 是否能被小范围验证。",
-        "whyItMatters": "huangruiteng/loopx 值得看，是因为 AI 项目真正的分水岭已经从“能跑 demo”转向“能被治理、能接工具、能失败恢复”。当前 3K stars / 224 forks，维护非常活跃，足够进入 Agent 工程雷达。 这次更新更值得关注的是其可迁移机制：LoopX 把 objective、gate、todo、scope、evidence、quota、claim/lease 和 handoff 做成本地优先状态内核；Agent 每次只执行一个 bounded slice，完成后写回证据与下一步，再由 quota 和人工 gate 决定是否继续唤醒。 能否被拆成小样本验证，而不是把项目整体搬进生产。",
+        "whyItMatters": "huangruiteng/loopx 值得看，是因为 AI 项目真正的分水岭已经从“能跑 demo”转向“能被治理、能接工具、能失败恢复”。当前 3.1K stars / 234 forks，维护非常活跃，足够进入 Agent 工程雷达。 这次更新更值得关注的是其可迁移机制：LoopX 把 objective、gate、todo、scope、evidence、quota、claim/lease 和 handoff 做成本地优先状态内核；Agent 每次只执行一个 bounded slice，完成后写回证据与下一步，再由 quota 和人工 gate 决定是否继续唤醒。 能否被拆成小样本验证，而不是把项目整体搬进生产。",
         "engineeringRead": "Python · API/SDK 接入。建议按“入口示例 -> 数据/配置 -> 失败处理 -> CI/release -> issue 反例”的顺序读；重点回答 它解决的是「多小时或多天 Agent 任务容易丢 objective、忘 gate、重复消耗配额、缺少证据链，也很难在人、Codex、Claude Code、Cursor 或自定义 runtime 之间交接。」的主矛盾，还是只会给现有流程增加新的维护面？",
         "architectureSignals": [
           "架构机制：LoopX 把 objective、gate、todo、scope、evidence、quota、claim/lease 和 handoff 做成本地优先状态内核；Agent 每次只执行一个 bounded slice，完成后写回证据与下一步，再由 quota 和人工 gate 决定是否继续唤醒。；阅读时把 Python 代码入口、数据/配置形态、自动化脚本和边界条件连起来看，而不是只看 README 的安装示例。",
@@ -1277,7 +1277,7 @@
         },
         "diagram": {
           "title": "loopx 工业级采用图解",
-          "caption": "长任务 Agent 控制平面 / Loop Engineering · Python · 3K stars",
+          "caption": "长任务 Agent 控制平面 / Loop Engineering · Python · 3.1K stars",
           "summary": "用 LoopX 把 objective、gate、todo、scope、evidence、quota、claim/lease 和 handoff 做成本地优先状态内核；Agent 每次只执行一个 bounded slice，完成后写回证据与下一步，再由 quota 和人工 gate 决定是否继续唤醒。 解决 多小时或多天 Agent 任务容易丢 objective、忘 gate、重复消耗配额、缺少证据链，也很难在人、Codex、Claude Code、Cursor 或自定义 runtime 之间交接。，先经由 先用于 issue 修复、研究跟踪或实验复跑这类低风险长任务，把生产写操作、发布和危险权限留给人工确认。 验证 长任务恢复率、证据可追溯率、重复执行次数、人工 gate 命中率、配额浪费、handoff 成功率和最终 PR/报告返工率，再决定是否扩大。",
           "nodes": [
             {
@@ -1314,17 +1314,17 @@
             "metrics": [
               {
                 "label": "Stars",
-                "value": "3K",
+                "value": "3.1K",
                 "note": "社区关注"
               },
               {
                 "label": "Forks",
-                "value": "224",
+                "value": "234",
                 "note": "二次采用"
               },
               {
                 "label": "Issues",
-                "value": "30",
+                "value": "34",
                 "note": "维护压力"
               },
               {
@@ -1407,9 +1407,9 @@
         "visualUrl": "https://opengraph.githubassets.com/20260807/google/guava",
         "url": "https://github.com/google/guava",
         "description": "Google core libraries for Java",
-        "stars": 51666,
+        "stars": 51687,
         "starsToday": 13,
-        "forks": 11166,
+        "forks": 11167,
         "openIssues": 746,
         "language": "Java",
         "topics": [
@@ -1616,9 +1616,9 @@
         "visualUrl": "https://opengraph.githubassets.com/20260807/TapXWorld/ChinaTextbook",
         "url": "https://github.com/TapXWorld/ChinaTextbook",
         "description": "所有小初高、大学PDF教材。",
-        "stars": 77288,
+        "stars": 77485,
         "starsToday": 134,
-        "forks": 17454,
+        "forks": 17492,
         "openIssues": 118,
         "language": "Roff",
         "topics": [],
@@ -1819,9 +1819,9 @@
         "visualUrl": "https://opengraph.githubassets.com/20260807/Significant-Gravitas/AutoGPT",
         "url": "https://github.com/Significant-Gravitas/AutoGPT",
         "description": "AutoGPT is the vision of accessible AI for everyone, to use and to build on. Our mission is to provide the tools, so that you can focus on what matters.",
-        "stars": 186094,
+        "stars": 186144,
         "starsToday": 37,
-        "forks": 46055,
+        "forks": 46057,
         "openIssues": 507,
         "language": "Python",
         "topics": [
@@ -1838,7 +1838,7 @@
           "python"
         ],
         "license": "NOASSERTION",
-        "pushedAt": "2026-08-07T05:22:07Z",
+        "pushedAt": "2026-08-07T08:34:52Z",
         "createdAt": "2023-03-16T09:21:07Z",
         "languages": {
           "Python": 19753304,
@@ -2044,9 +2044,9 @@
         "visualUrl": "https://opengraph.githubassets.com/20260807/tirth8205/code-review-graph",
         "url": "https://github.com/tirth8205/code-review-graph",
         "description": "Local-first code intelligence graph for MCP and CLI. Builds a persistent map of your codebase so AI coding tools read only what matters, with benchmarked context reductions on reviews and large-repo workflows.",
-        "stars": 29135,
+        "stars": 29212,
         "starsToday": 237,
-        "forks": 2687,
+        "forks": 2689,
         "openIssues": 73,
         "language": "Python",
         "topics": [
@@ -2077,7 +2077,7 @@
         "method": "codex-research-refresh",
         "category": "本地代码知识图谱 / Agent 上下文压缩层",
         "oneLiner": "Local-first code intelligence graph for MCP and CLI. Builds a persistent map of your codebase so AI coding tools read only what matters, with benchmarked context reductions on reviews and large-repo workflows.；关键看 本地扫描代码库，抽取符号、依赖、调用关系和文件语义，向 MCP/CLI 暴露可查询图谱，让 coding agent 按任务取相关上下文 是否能被小范围验证。",
-        "whyItMatters": "tirth8205/code-review-graph 值得看，是因为 AI 项目真正的分水岭已经从“能跑 demo”转向“能被治理、能接工具、能失败恢复”。当前 29.1K stars / 2.7K forks，近期仍在活跃迭代，足够进入 Agent 工程雷达。 这次更新更值得关注的是其可迁移机制：本地扫描代码库，抽取符号、依赖、调用关系和文件语义，向 MCP/CLI 暴露可查询图谱，让 coding agent 按任务取相关上下文 能否被拆成小样本验证，而不是把项目整体搬进生产。",
+        "whyItMatters": "tirth8205/code-review-graph 值得看，是因为 AI 项目真正的分水岭已经从“能跑 demo”转向“能被治理、能接工具、能失败恢复”。当前 29.2K stars / 2.7K forks，近期仍在活跃迭代，足够进入 Agent 工程雷达。 这次更新更值得关注的是其可迁移机制：本地扫描代码库，抽取符号、依赖、调用关系和文件语义，向 MCP/CLI 暴露可查询图谱，让 coding agent 按任务取相关上下文 能否被拆成小样本验证，而不是把项目整体搬进生产。",
         "engineeringRead": "Python · Python 包/脚本。建议按“入口示例 -> 数据/配置 -> 失败处理 -> CI/release -> issue 反例”的顺序读；重点回答 它解决的是「AI 代码审查和修改经常把大量无关文件塞进上下文，既浪费 token，也容易漏掉真实依赖、调用链和历史约束」的主矛盾，还是只会给现有流程增加新的维护面？",
         "architectureSignals": [
           "架构机制：本地扫描代码库，抽取符号、依赖、调用关系和文件语义，向 MCP/CLI 暴露可查询图谱，让 coding agent 按任务取相关上下文；阅读时把 Python 代码入口、数据/配置形态、自动化脚本和边界条件连起来看，而不是只看 README 的安装示例。",
@@ -2133,7 +2133,7 @@
         },
         "diagram": {
           "title": "code-review-graph 工业级采用图解",
-          "caption": "本地代码知识图谱 / Agent 上下文压缩层 · Python · 29.1K stars",
+          "caption": "本地代码知识图谱 / Agent 上下文压缩层 · Python · 29.2K stars",
           "summary": "用 本地扫描代码库，抽取符号、依赖、调用关系和文件语义，向 MCP/CLI 暴露可查询图谱，让 coding agent 按任务取相关上下文 解决 AI 代码审查和修改经常把大量无关文件塞进上下文，既浪费 token，也容易漏掉真实依赖、调用链和历史约束，先经由 先在只读代码审查和文档问答中接入，比较人工选文件、全文检索和图谱检索的上下文命中率 验证 相关文件召回率、无关上下文比例、token 消耗、审查缺陷命中率、索引更新时间和误导性依赖数，再决定是否扩大。",
           "nodes": [
             {
@@ -2170,7 +2170,7 @@
             "metrics": [
               {
                 "label": "Stars",
-                "value": "29.1K",
+                "value": "29.2K",
                 "note": "社区关注"
               },
               {
@@ -2263,10 +2263,10 @@
         "visualUrl": "https://opengraph.githubassets.com/20260807/esengine/DeepSeek-Reasonix",
         "url": "https://github.com/esengine/DeepSeek-Reasonix",
         "description": "DeepSeek-native AI coding agent for your terminal. Engineered around prefix-cache stability — leave it running.",
-        "stars": 32603,
+        "stars": 32698,
         "starsToday": 888,
-        "forks": 2104,
-        "openIssues": 919,
+        "forks": 2109,
+        "openIssues": 918,
         "language": "Go",
         "topics": [
           "agent",
@@ -2287,10 +2287,10 @@
           "typescript"
         ],
         "license": "MIT",
-        "pushedAt": "2026-08-07T05:12:32Z",
+        "pushedAt": "2026-08-07T08:16:59Z",
         "createdAt": "2026-04-21T08:27:02Z",
         "languages": {
-          "Go": 18811641,
+          "Go": 18789928,
           "TypeScript": 5631173,
           "CSS": 1108617,
           "JavaScript": 235042,
@@ -2301,14 +2301,14 @@
           "PowerShell": 21303,
           "NSIS": 20129,
           "Objective-C": 10653,
-          "Makefile": 1624
+          "Makefile": 1949
         }
       },
       "analysis": {
         "method": "codex-research-refresh",
         "category": "DeepSeek 原生终端 Coding Agent / Prefix-cache 工作流",
         "oneLiner": "DeepSeek-native AI coding agent for your terminal. Engineered around prefix-cache stability — leave it running.；关键看 围绕 DeepSeek 模型和 prefix-cache stability 设计长驻终端 Agent，整合 ACP、任务 spec、会话状态、工具调用和本地执行循环。 是否能被小范围验证。",
-        "whyItMatters": "esengine/DeepSeek-Reasonix 值得看，是因为 AI 项目真正的分水岭已经从“能跑 demo”转向“能被治理、能接工具、能失败恢复”。当前 32.6K stars / 2.1K forks，维护非常活跃，足够进入 Agent 工程雷达。 这次更新更值得关注的是其可迁移机制：围绕 DeepSeek 模型和 prefix-cache stability 设计长驻终端 Agent，整合 ACP、任务 spec、会话状态、工具调用和本地执行循环。 能否被拆成小样本验证，而不是把项目整体搬进生产。",
+        "whyItMatters": "esengine/DeepSeek-Reasonix 值得看，是因为 AI 项目真正的分水岭已经从“能跑 demo”转向“能被治理、能接工具、能失败恢复”。当前 32.7K stars / 2.1K forks，维护非常活跃，足够进入 Agent 工程雷达。 这次更新更值得关注的是其可迁移机制：围绕 DeepSeek 模型和 prefix-cache stability 设计长驻终端 Agent，整合 ACP、任务 spec、会话状态、工具调用和本地执行循环。 能否被拆成小样本验证，而不是把项目整体搬进生产。",
         "engineeringRead": "Go · 本机 CLI 工具。建议按“入口示例 -> 数据/配置 -> 失败处理 -> CI/release -> issue 反例”的顺序读；重点回答 它解决的是「低成本模型做 coding agent 时，经常因为上下文丢失、prefix cache 不稳定、终端接管差和 provider 语义差异导致任务断裂。」的主矛盾，还是只会给现有流程增加新的维护面？",
         "architectureSignals": [
           "架构机制：围绕 DeepSeek 模型和 prefix-cache stability 设计长驻终端 Agent，整合 ACP、任务 spec、会话状态、工具调用和本地执行循环。；阅读时把 Go 代码入口、数据/配置形态、自动化脚本和边界条件连起来看，而不是只看 README 的安装示例。",
@@ -2364,7 +2364,7 @@
         },
         "diagram": {
           "title": "DeepSeek-Reasonix 工业级采用图解",
-          "caption": "DeepSeek 原生终端 Coding Agent / Prefix-cache 工作流 · Go · 32.6K stars",
+          "caption": "DeepSeek 原生终端 Coding Agent / Prefix-cache 工作流 · Go · 32.7K stars",
           "summary": "用 围绕 DeepSeek 模型和 prefix-cache stability 设计长驻终端 Agent，整合 ACP、任务 spec、会话状态、工具调用和本地执行循环。 解决 低成本模型做 coding agent 时，经常因为上下文丢失、prefix cache 不稳定、终端接管差和 provider 语义差异导致任务断裂。，先经由 先用于只读代码解释、测试生成或小文档修改，对比 Claude/Codex 在同一任务集上的成本、耗时、补上下文次数和补丁质量。 验证 任务完成率、prefix cache 命中、单任务成本、P95 响应、错误补丁率、人工接管率和上下文遗漏次数，再决定是否扩大。",
           "nodes": [
             {
@@ -2401,7 +2401,7 @@
             "metrics": [
               {
                 "label": "Stars",
-                "value": "32.6K",
+                "value": "32.7K",
                 "note": "社区关注"
               },
               {
@@ -2411,7 +2411,7 @@
               },
               {
                 "label": "Issues",
-                "value": "919",
+                "value": "918",
                 "note": "维护压力"
               },
               {
@@ -2494,9 +2494,9 @@
         "visualUrl": "https://opengraph.githubassets.com/20260807/obra/superpowers",
         "url": "https://github.com/obra/superpowers",
         "description": "An agentic skills framework & software development methodology that works.",
-        "stars": 268240,
+        "stars": 268365,
         "starsToday": 858,
-        "forks": 23967,
+        "forks": 23976,
         "openIssues": 321,
         "language": "Shell",
         "topics": [
@@ -4048,7 +4048,7 @@
       "source": "AIHOT Public API",
       "date": "2026-08-07",
       "generatedAt": "2026-08-07T00:00:31.825Z",
-      "summary": "日报收录 25 条结构化内容，重点分布在 技巧与观点 8 条、产品发布/更新 7 条、行业动态 6 条。今日优先关注「Anthropic 更新 Claude Fable 5 生物安全防护，误报率大幅降低」，它会进入下方 AI 新闻流做进一步信号、影响和动作拆解。",
+      "summary": "日报收录 25 条结构化内容，重点分布在 技巧与观点 8 条、产品发布/更新 7 条、行业动态 6 条。今日优先关注「Krea 推出 Seedance 2.5 视频模型」，它会进入下方 AI 新闻流做进一步信号、影响和动作拆解。",
       "stats": [
         {
           "label": "精选条目",
@@ -4192,6 +4192,69 @@
       ],
       "selected": [
         {
+          "title": "Krea 推出 Seedance 2.5 视频模型",
+          "url": "https://x.com/krea_ai/status/2085629541385736662",
+          "source": "X：Krea AI (@krea_ai)",
+          "publishedAt": "2026-08-07T07:30:06.000Z",
+          "summary": "推出 Seedance 2.5。\n\n30 秒连续视频、完整多镜头序列，以及最多 50 个参考。\n\n立即试用 👇",
+          "category": "产品更新",
+          "signal": "多模态产品信号：模型正在从单一生成走向图文视频一体化和可编辑工作流，重点看一致性、成本和版权边界。",
+          "tags": [
+            "模型",
+            "多模态"
+          ]
+        },
+        {
+          "title": "独立开发者用 VoxCPM 克隆网红声音，让 AI 终于\"会聊天\"了",
+          "url": "https://mp.weixin.qq.com/s?__biz=Mzg3Mzg2MTg2NQ%3D%3D&mid=2247498927&idx=1&sn=c5fbfaac5ede8b1008d17337a1bdc70b",
+          "source": "公众号：面壁智能（MiniCPM）",
+          "publishedAt": "2026-08-07T06:41:21.000Z",
+          "summary": "独立开发者叶小叔用面壁智能开源的 VoxCPM 克隆千万粉丝网红声音，搭建 STT → LLM → VoxCPM（TTS）三段式实时对话管道，TTS 首包延迟不到 1 秒，端到端体感 2 到 3 秒。",
+          "category": "技巧观点",
+          "signal": "音频生成信号：声音库、长音频和端侧模型并行推进，内容生产工具会继续向专业工作流靠近。",
+          "tags": [
+            "多模态"
+          ]
+        },
+        {
+          "title": "OpenAI 披露 ChatGPT 全球 10 亿用户画像：35 岁及以上用户用量上升",
+          "url": "https://www.ithome.com/0/986/957.htm",
+          "source": "IT之家（RSS）",
+          "publishedAt": "2026-08-07T06:28:51.000Z",
+          "summary": "OpenAI 报告称全球超 10 亿用户使用 ChatGPT，使用方式从\"问答工具\"转向\"任务工具\"，工作场景中完成任务或创建内容的可能性是非工作场景的 2 倍以上。自 2026 年 4 月发布 ChatGPT Images 2.0 以来，多媒体相关消息占比升至 7.8%。35 岁及以上用户发送消息份额较 12 个月前增加 5 个百分点，法国和捷克增幅超 10 个百分点。",
+          "category": "行业动态",
+          "signal": "行业动态信号，适合纳入周度技术雷达观察。",
+          "tags": [
+            "多模态"
+          ]
+        },
+        {
+          "title": "谷歌推出 WeatherNext 气旋模型，AI 高精度预报飓风平均提前 24 小时",
+          "url": "https://www.ithome.com/0/986/951.htm",
+          "source": "IT之家（RSS）",
+          "publishedAt": "2026-08-07T06:11:01.000Z",
+          "summary": "谷歌 DeepMind 联合多家机构推出 WeatherNext Cyclones 气旋预测模型，在路径、强度和风场结构预测精度上达到业界领先。该模型将有效预报时长从 2 天延长至 3 天，平均提前 24 小时，预测量级约相当于 10 年气象进展。",
+          "category": "模型发布",
+          "signal": "行业动态信号，适合纳入周度技术雷达观察。",
+          "tags": [
+            "模型"
+          ]
+        },
+        {
+          "title": "Seedance 2.5 API上线，视频生成开启「电影级长叙事」",
+          "url": "https://mp.weixin.qq.com/s?__biz=MzI0NzU1NzI5NQ%3D%3D&mid=2247543416&idx=1&sn=badeafc780a939033a1e4cb0bba4221c",
+          "source": "公众号：火山引擎",
+          "publishedAt": "2026-08-07T06:01:45.000Z",
+          "summary": "火山引擎正式上线 Seedance 2.5 API，将单次视频生成时长从15秒提升至30秒，并支持最高50个全模态素材参考。模型在指令遵循、长叙事、真人感及声画质感上大幅提升，能稳定保持多角色外形与场景关系，兼容十余种语言。",
+          "category": "产品更新",
+          "signal": "多模态产品信号：模型正在从单一生成走向图文视频一体化和可编辑工作流，重点看一致性、成本和版权边界。",
+          "tags": [
+            "模型",
+            "多模态",
+            "工程/基础设施"
+          ]
+        },
+        {
           "title": "Anthropic 更新 Claude Fable 5 生物安全防护，误报率大幅降低",
           "url": "https://www.anthropic.com/news/improving-fable-5-s-biology-safeguards",
           "source": "Anthropic：Newsroom（网页）",
@@ -4228,67 +4291,6 @@
           "summary": "OpenAI 更新 ChatGPT：Plus 和 Pro 用户的 GPT-5.6 Sol 在事实准确性和回答聚焦度上有所提升，新增滑块可控制模型思考投入。免费用户默认模型升级为 GPT-5.6 Luna，并开放无限文本聊天，新增 Think 按钮以处理更复杂问题。",
           "category": "产品更新",
           "signal": "模型产品化信号：GPT-5.6 把前沿推理、浏览/computer use、artifact 生成、缓存断点和多 Agent 能力打包成面向知识工作的生产套件，竞争焦点从单次 benchmark 转到可交付任务。",
-          "tags": [
-            "模型"
-          ]
-        },
-        {
-          "title": "GitHub Copilot 应用中的斜杠命令使用指南",
-          "url": "https://github.blog/ai-and-ml/github-copilot/a-guide-to-slash-commands-in-the-github-copilot-app",
-          "source": "GitHub Blog",
-          "publishedAt": "2026-08-06T19:49:34.000Z",
-          "summary": "GitHub Copilot 应用中的斜杠命令可帮助管理会话、导航项目和自定义 Copilot 工作流。与 CLI 版不同，应用版命令更侧重工作流，如 /plan 用于编码前规划、/spar 用于挑战方案假设、/autopilot 用于自动执行实现。/clear 和 /model 在 CLI 和应用中均可用。",
-          "category": "技巧观点",
-          "signal": "模型能力或评测更新，建议关注是否改变内部模型选型和评估基线。",
-          "tags": [
-            "模型"
-          ]
-        },
-        {
-          "title": "科学家首次用AI制造新病毒",
-          "url": "https://x.com/AISafetyMemes/status/2085447739320758622",
-          "source": "X：AI Safety Memes (@AISafetyMemes)",
-          "publishedAt": "2026-08-06T19:27:41.000Z",
-          "summary": "superebola/acc 🚀🚀🚀\n\n【引用 @nytimes】：突发新闻：科学家首次利用人工智能制造出新病毒，在为医学进步带来希望的同时，也引发了该技术有朝一日可能被用于制造危险病原体的担忧。https://nyti.ms/4bxx7Wy",
-          "category": "行业动态",
-          "signal": "行业动态信号，适合纳入周度技术雷达观察。",
-          "tags": [
-            "AI"
-          ]
-        },
-        {
-          "title": "Agent Plugins 1.0.0 发布：谷歌、亚马逊、微软等支持的统一智能体插件规范",
-          "url": "https://developers.googleblog.com/agent-plugins-package-your-skills-tools-and-more",
-          "source": "Google Developers Blog（RSS）",
-          "publishedAt": "2026-08-06T16:53:12.298Z",
-          "summary": "Agent Plugins 1.0.0 是一项由谷歌、亚马逊、微软等支持的中立目录规范，将 Agent Skills 和 MCP 服务器打包为单一可移植单元。通过标准化 plugin.json 清单和固定目录布局，开发者无需为不同 AI 编码智能体和 IDE 维护单独封装。谷歌已作为核心维护者加入，并在 Agents CLI 和 Data Agent Kit 中提供支持。",
-          "category": "产品更新",
-          "signal": "企业 Agent 基建信号：托管沙箱、私网连接和权限隔离正在成为 Agent 进入生产环境的关键门槛。",
-          "tags": [
-            "Agent",
-            "工程/基础设施"
-          ]
-        },
-        {
-          "title": "OpenAI 称苹果自身安全实践削弱其商业机密诉讼",
-          "url": "https://techcrunch.com/2026/08/06/openai-says-apples-own-security-practices-undermine-its-trade-secrets-case",
-          "source": "TechCrunch：AI（RSS）",
-          "publishedAt": "2026-08-06T15:10:32.000Z",
-          "summary": "OpenAI 在驳回苹果商业机密诉讼的动议中辩称，苹果允许员工用个人 iCloud 处理工作且离职后未正确撤销访问权限，相关信息不构成受法律保护的商业机密。OpenAI 还指苹果未指明具体被窃取的机密，并称其借诉讼阻碍竞争对手在 AI 硬件领域创新。",
-          "category": "行业动态",
-          "signal": "行业动态信号，适合纳入周度技术雷达观察。",
-          "tags": [
-            "安全/可信"
-          ]
-        },
-        {
-          "title": "微软首次披露OpenAI贡献七成AI收入",
-          "url": "https://x.com/rohanpaul_ai/status/2085368375816163423",
-          "source": "X：Rohan Paul (@rohanpaul_ai)",
-          "publishedAt": "2026-08-06T14:12:19.000Z",
-          "summary": "微软刚刚首次披露，OpenAI 贡献了微软约 70% 的 AI 收入，依据最新文件。\n\n这一数据基于预期增长及此前与 OpenAI 相关收入的披露。\n\n241 亿美元中的大部分是 OpenAI 在微软数据中心训练和运行 ChatGPT 的云账单，再加上模型开发成本和 OpenAI 自身销售的分成，全部由微软合并计入收入。微软同时还向 OpenAI 投入了 119 亿美元。",
-          "category": "行业动态",
-          "signal": "行业动态信号，适合纳入周度技术雷达观察。",
           "tags": [
             "模型"
           ]
@@ -4614,6 +4616,284 @@
     "items": [
       {
         "source": "AIHOT 精选",
+        "sourceDetail": "X：Krea AI (@krea_ai)",
+        "domain": "aihot.virxact.com",
+        "title": "Krea 推出 Seedance 2.5 视频模型",
+        "url": "https://x.com/krea_ai/status/2085629541385736662",
+        "publishedAt": "2026-08-07T07:30:06.000Z",
+        "summary": "推出 Seedance 2.5。\n\n30 秒连续视频、完整多镜头序列，以及最多 50 个参考。\n\n立即试用 👇",
+        "imageUrl": "https://www.google.com/s2/favicons?domain=aihot.virxact.com&sz=128",
+        "priority": 3,
+        "rank": 1,
+        "signal": "视频生成产品信号：Krea 把 Seedance 2.5 包装进创作工具入口，竞争点从模型发布转向多镜头一致性、编辑闭环和工作流留存。",
+        "interpretation": {
+          "signal": "视频生成产品信号：Krea 把 Seedance 2.5 包装进创作工具入口，竞争点从模型发布转向多镜头一致性、编辑闭环和工作流留存。",
+          "impact": "创作者不会只比较单条样片，而会看脚本到分镜、参考图、镜头续写、局部重生成和导出质量是否稳定；对内容团队来说，版权、品牌一致性和单位成片成本会比峰值画质更重要。",
+          "action": "用 5 个真实短视频 brief 做回放：记录首版可用率、人物/商品一致性、重生成次数、时长限制、导出规格、版权条款和人工剪辑补救时间。"
+        },
+        "impact": "创作者不会只比较单条样片，而会看脚本到分镜、参考图、镜头续写、局部重生成和导出质量是否稳定；对内容团队来说，版权、品牌一致性和单位成片成本会比峰值画质更重要。",
+        "action": "用 5 个真实短视频 brief 做回放：记录首版可用率、人物/商品一致性、重生成次数、时长限制、导出规格、版权条款和人工剪辑补救时间。",
+        "tags": [
+          "模型",
+          "多模态"
+        ],
+        "diagram": {
+          "title": "AIHOT 精选 信号图解",
+          "caption": "模型 / 多模态",
+          "summary": "从「Krea 推出 Seedance 2.5 视频模型」抽取信号、影响、动作和观察指标，便于前端生成新闻事件到团队行动的示意图。",
+          "nodes": [
+            {
+              "label": "信号",
+              "detail": "视频生成产品信号：Krea 把 Seedance 2.5 包装进创作工具入口，竞争点从模型发布转向多镜头一致性、编辑闭环和工作流留存。",
+              "type": "input"
+            },
+            {
+              "label": "影响",
+              "detail": "创作者不会只比较单条样片，而会看脚本到分镜、参考图、镜头续写、局部重生成和导出质量是否稳定；对内容团队来说，版权、品牌一致性和单位成片成本会比峰值画质更重要。",
+              "type": "core"
+            },
+            {
+              "label": "动作",
+              "detail": "用 5 个真实短视频 brief 做回放：记录首版可用率、人物/商品一致性、重生成次数、时长限制、导出规格、版权条款和人工剪辑补救时间。",
+              "type": "integration"
+            },
+            {
+              "label": "观察指标",
+              "detail": "记录一致性、生成时长、编辑轮次、失败样本、版权边界、主观质量和端到端成本。",
+              "type": "measure"
+            }
+          ],
+          "links": [
+            "识别变化",
+            "评估影响",
+            "落地验证"
+          ]
+        }
+      },
+      {
+        "source": "AIHOT 精选",
+        "sourceDetail": "公众号：面壁智能（MiniCPM）",
+        "domain": "aihot.virxact.com",
+        "title": "独立开发者用 VoxCPM 克隆网红声音，让 AI 终于\"会聊天\"了",
+        "url": "https://mp.weixin.qq.com/s?__biz=Mzg3Mzg2MTg2NQ%3D%3D&mid=2247498927&idx=1&sn=c5fbfaac5ede8b1008d17337a1bdc70b",
+        "publishedAt": "2026-08-07T06:41:21.000Z",
+        "summary": "独立开发者叶小叔用面壁智能开源的 VoxCPM 克隆千万粉丝网红声音，搭建 STT → LLM → VoxCPM（TTS）三段式实时对话管道，TTS 首包延迟不到 1 秒，端到端体感 2 到 3 秒。",
+        "imageUrl": "https://www.google.com/s2/favicons?domain=aihot.virxact.com&sz=128",
+        "priority": 3,
+        "rank": 2,
+        "signal": "端侧语音克隆信号：VoxCPM 类项目把声音复刻、对话语气和实时交互下放给独立开发者，门槛下降会同时放大创作效率和肖像/声音授权风险。",
+        "interpretation": {
+          "signal": "端侧语音克隆信号：VoxCPM 类项目把声音复刻、对话语气和实时交互下放给独立开发者，门槛下降会同时放大创作效率和肖像/声音授权风险。",
+          "impact": "AI 陪伴、短视频配音和客服原型会更容易试错，但如果没有授权、溯源和水印，声音克隆很快会触发平台风控、侵权投诉和品牌安全问题。",
+          "action": "只在授权声音样本上做离线测试，记录相似度、延迟、长句稳定性、情绪控制、失败音频、水印/声明方式和平台审核反馈。"
+        },
+        "impact": "AI 陪伴、短视频配音和客服原型会更容易试错，但如果没有授权、溯源和水印，声音克隆很快会触发平台风控、侵权投诉和品牌安全问题。",
+        "action": "只在授权声音样本上做离线测试，记录相似度、延迟、长句稳定性、情绪控制、失败音频、水印/声明方式和平台审核反馈。",
+        "tags": [
+          "多模态"
+        ],
+        "diagram": {
+          "title": "AIHOT 精选 信号图解",
+          "caption": "多模态",
+          "summary": "从「独立开发者用 VoxCPM 克隆网红声音，让 AI 终于\"会聊天\"了」抽取信号、影响、动作和观察指标，便于前端生成新闻事件到团队行动的示意图。",
+          "nodes": [
+            {
+              "label": "信号",
+              "detail": "端侧语音克隆信号：VoxCPM 类项目把声音复刻、对话语气和实时交互下放给独立开发者，门槛下降会同时放大创作效率和肖像/声音授权风险。",
+              "type": "input"
+            },
+            {
+              "label": "影响",
+              "detail": "AI 陪伴、短视频配音和客服原型会更容易试错，但如果没有授权、溯源和水印，声音克隆很快会触发平台风控、侵权投诉和品牌安全问题。",
+              "type": "core"
+            },
+            {
+              "label": "动作",
+              "detail": "只在授权声音样本上做离线测试，记录相似度、延迟、长句稳定性、情绪控制、失败音频、水印/声明方式和平台审核反馈。",
+              "type": "integration"
+            },
+            {
+              "label": "观察指标",
+              "detail": "记录一致性、生成时长、编辑轮次、失败样本、版权边界、主观质量和端到端成本。",
+              "type": "measure"
+            }
+          ],
+          "links": [
+            "识别变化",
+            "评估影响",
+            "落地验证"
+          ]
+        }
+      },
+      {
+        "source": "AIHOT 精选",
+        "sourceDetail": "IT之家（RSS）",
+        "domain": "aihot.virxact.com",
+        "title": "OpenAI 披露 ChatGPT 全球 10 亿用户画像：35 岁及以上用户用量上升",
+        "url": "https://www.ithome.com/0/986/957.htm",
+        "publishedAt": "2026-08-07T06:28:51.000Z",
+        "summary": "OpenAI 报告称全球超 10 亿用户使用 ChatGPT，使用方式从\"问答工具\"转向\"任务工具\"，工作场景中完成任务或创建内容的可能性是非工作场景的 2 倍以上。自 2026 年 4 月发布 ChatGPT Images 2.0 以来，多媒体相关消息占比升至 7.8%。35 岁及以上用户发送消息份额较 12 个月前增加 5 个百分点，法国和捷克增幅超 10 个百分点。",
+        "imageUrl": "https://www.google.com/s2/favicons?domain=aihot.virxact.com&sz=128",
+        "priority": 3,
+        "rank": 3,
+        "signal": "AI 普及结构信号：ChatGPT 用户年龄结构上移说明 AI 已从早期尝鲜人群进入更广泛知识工作与日常决策场景。",
+        "interpretation": {
+          "signal": "AI 普及结构信号：ChatGPT 用户年龄结构上移说明 AI 已从早期尝鲜人群进入更广泛知识工作与日常决策场景。",
+          "impact": "产品评估不能再只按开发者/学生视角设计；企业培训、家庭场景、医疗健康、财务和办公任务会提出更强的易用性、解释性和安全提示要求。",
+          "action": "把用户研究按年龄、职业、任务类型和风险等级重新分桶，分别观察留存、误用、提示词失败、隐私顾虑和人工帮助需求。"
+        },
+        "impact": "产品评估不能再只按开发者/学生视角设计；企业培训、家庭场景、医疗健康、财务和办公任务会提出更强的易用性、解释性和安全提示要求。",
+        "action": "把用户研究按年龄、职业、任务类型和风险等级重新分桶，分别观察留存、误用、提示词失败、隐私顾虑和人工帮助需求。",
+        "tags": [
+          "多模态"
+        ],
+        "diagram": {
+          "title": "AIHOT 精选 信号图解",
+          "caption": "多模态",
+          "summary": "从「OpenAI 披露 ChatGPT 全球 10 亿用户画像：35 岁及以上用户用量上升」抽取信号、影响、动作和观察指标，便于前端生成新闻事件到团队行动的示意图。",
+          "nodes": [
+            {
+              "label": "信号",
+              "detail": "AI 普及结构信号：ChatGPT 用户年龄结构上移说明 AI 已从早期尝鲜人群进入更广泛知识工作与日常决策场景。",
+              "type": "input"
+            },
+            {
+              "label": "影响",
+              "detail": "产品评估不能再只按开发者/学生视角设计；企业培训、家庭场景、医疗健康、财务和办公任务会提出更强的易用性、解释性和安全提示要求。",
+              "type": "core"
+            },
+            {
+              "label": "动作",
+              "detail": "把用户研究按年龄、职业、任务类型和风险等级重新分桶，分别观察留存、误用、提示词失败、隐私顾虑和人工帮助需求。",
+              "type": "integration"
+            },
+            {
+              "label": "观察指标",
+              "detail": "记录一致性、生成时长、编辑轮次、失败样本、版权边界、主观质量和端到端成本。",
+              "type": "measure"
+            }
+          ],
+          "links": [
+            "识别变化",
+            "评估影响",
+            "落地验证"
+          ]
+        }
+      },
+      {
+        "source": "AIHOT 精选",
+        "sourceDetail": "IT之家（RSS）",
+        "domain": "aihot.virxact.com",
+        "title": "谷歌推出 WeatherNext 气旋模型，AI 高精度预报飓风平均提前 24 小时",
+        "url": "https://www.ithome.com/0/986/951.htm",
+        "publishedAt": "2026-08-07T06:11:01.000Z",
+        "summary": "谷歌 DeepMind 联合多家机构推出 WeatherNext Cyclones 气旋预测模型，在路径、强度和风场结构预测精度上达到业界领先。该模型将有效预报时长从 2 天延长至 3 天，平均提前 24 小时，预测量级约相当于 10 年气象进展。",
+        "imageUrl": "https://www.google.com/s2/favicons?domain=aihot.virxact.com&sz=128",
+        "priority": 3,
+        "rank": 4,
+        "signal": "垂直科学模型信号：WeatherNext 气旋模型把 AI 预测从通用天气基座推进到高影响灾害场景，核心价值是提前量、路径误差和预警可靠性。",
+        "interpretation": {
+          "signal": "垂直科学模型信号：WeatherNext 气旋模型把 AI 预测从通用天气基座推进到高影响灾害场景，核心价值是提前量、路径误差和预警可靠性。",
+          "impact": "保险、物流、能源、应急和内容平台会更关注可解释预警、地理粒度和误报成本；这不是普通大模型替换，而是专业数据、物理约束和业务响应链路的结合。",
+          "action": "跟踪官方基准和真实风暴复盘，记录提前量、路径/强度误差、地区覆盖、与传统数值天气模型差异、误报成本和下游调度动作。"
+        },
+        "impact": "保险、物流、能源、应急和内容平台会更关注可解释预警、地理粒度和误报成本；这不是普通大模型替换，而是专业数据、物理约束和业务响应链路的结合。",
+        "action": "跟踪官方基准和真实风暴复盘，记录提前量、路径/强度误差、地区覆盖、与传统数值天气模型差异、误报成本和下游调度动作。",
+        "tags": [
+          "模型"
+        ],
+        "diagram": {
+          "title": "AIHOT 精选 信号图解",
+          "caption": "模型",
+          "summary": "从「谷歌推出 WeatherNext 气旋模型，AI 高精度预报飓风平均提前 24 小时」抽取信号、影响、动作和观察指标，便于前端生成新闻事件到团队行动的示意图。",
+          "nodes": [
+            {
+              "label": "信号",
+              "detail": "垂直科学模型信号：WeatherNext 气旋模型把 AI 预测从通用天气基座推进到高影响灾害场景，核心价值是提前量、路径误差和预警可靠性。",
+              "type": "input"
+            },
+            {
+              "label": "影响",
+              "detail": "保险、物流、能源、应急和内容平台会更关注可解释预警、地理粒度和误报成本；这不是普通大模型替换，而是专业数据、物理约束和业务响应链路的结合。",
+              "type": "core"
+            },
+            {
+              "label": "动作",
+              "detail": "跟踪官方基准和真实风暴复盘，记录提前量、路径/强度误差、地区覆盖、与传统数值天气模型差异、误报成本和下游调度动作。",
+              "type": "integration"
+            },
+            {
+              "label": "观察指标",
+              "detail": "记录真实任务完成率、人工修正、成本、延迟、失败样本和是否出现生态跟进。",
+              "type": "measure"
+            }
+          ],
+          "links": [
+            "识别变化",
+            "评估影响",
+            "落地验证"
+          ]
+        }
+      },
+      {
+        "source": "AIHOT 精选",
+        "sourceDetail": "公众号：火山引擎",
+        "domain": "aihot.virxact.com",
+        "title": "Seedance 2.5 API上线，视频生成开启「电影级长叙事」",
+        "url": "https://mp.weixin.qq.com/s?__biz=MzI0NzU1NzI5NQ%3D%3D&mid=2247543416&idx=1&sn=badeafc780a939033a1e4cb0bba4221c",
+        "publishedAt": "2026-08-07T06:01:45.000Z",
+        "summary": "火山引擎正式上线 Seedance 2.5 API，将单次视频生成时长从15秒提升至30秒，并支持最高50个全模态素材参考。模型在指令遵循、长叙事、真人感及声画质感上大幅提升，能稳定保持多角色外形与场景关系，兼容十余种语言。",
+        "imageUrl": "https://www.google.com/s2/favicons?domain=aihot.virxact.com&sz=128",
+        "priority": 3,
+        "rank": 5,
+        "signal": "视频 API 工程信号：Seedance 2.5 从产品体验扩展到 API，说明视频生成正在进入可编排、可批量评测和可嵌入创作平台的阶段。",
+        "interpretation": {
+          "signal": "视频 API 工程信号：Seedance 2.5 从产品体验扩展到 API，说明视频生成正在进入可编排、可批量评测和可嵌入创作平台的阶段。",
+          "impact": "增长和内容平台可以把长叙事视频纳入自动化生产，但 API 稳定性、队列延迟、成本、审核失败和素材版权会决定能否规模化。",
+          "action": "先接入一个非发布链路的素材工厂，按脚本长度、镜头数、风格一致性、失败重试、P95 生成时间、单条成本和人工终审通过率做表。"
+        },
+        "impact": "增长和内容平台可以把长叙事视频纳入自动化生产，但 API 稳定性、队列延迟、成本、审核失败和素材版权会决定能否规模化。",
+        "action": "先接入一个非发布链路的素材工厂，按脚本长度、镜头数、风格一致性、失败重试、P95 生成时间、单条成本和人工终审通过率做表。",
+        "tags": [
+          "模型",
+          "多模态",
+          "工程/基础设施"
+        ],
+        "diagram": {
+          "title": "AIHOT 精选 信号图解",
+          "caption": "模型 / 多模态 / 工程/基础设施",
+          "summary": "从「Seedance 2.5 API上线，视频生成开启「电影级长叙事」」抽取信号、影响、动作和观察指标，便于前端生成新闻事件到团队行动的示意图。",
+          "nodes": [
+            {
+              "label": "信号",
+              "detail": "视频 API 工程信号：Seedance 2.5 从产品体验扩展到 API，说明视频生成正在进入可编排、可批量评测和可嵌入创作平台的阶段。",
+              "type": "input"
+            },
+            {
+              "label": "影响",
+              "detail": "增长和内容平台可以把长叙事视频纳入自动化生产，但 API 稳定性、队列延迟、成本、审核失败和素材版权会决定能否规模化。",
+              "type": "core"
+            },
+            {
+              "label": "动作",
+              "detail": "先接入一个非发布链路的素材工厂，按脚本长度、镜头数、风格一致性、失败重试、P95 生成时间、单条成本和人工终审通过率做表。",
+              "type": "integration"
+            },
+            {
+              "label": "观察指标",
+              "detail": "记录一致性、生成时长、编辑轮次、失败样本、版权边界、主观质量和端到端成本。",
+              "type": "measure"
+            }
+          ],
+          "links": [
+            "识别变化",
+            "评估影响",
+            "落地验证"
+          ]
+        }
+      },
+      {
+        "source": "AIHOT 精选",
         "sourceDetail": "Anthropic：Newsroom（网页）",
         "domain": "aihot.virxact.com",
         "title": "Anthropic 更新 Claude Fable 5 生物安全防护，误报率大幅降低",
@@ -4622,7 +4902,7 @@
         "summary": "Anthropic 更新了 Claude Fable 5 的生物安全防护机制，将生物相关查询的\"回退\"次数减少约 85%，用户在日常健康与教育问题上将更少遇到系统切换至较弱模型的情况。此次更新扩大了模型可协助的生物任务范围，但涉及双重用途的病毒学、毒理学和分子设计请求仍会回退至 Opus 5。Anthropic 表示正通过可信访问途径，致力于缩小专业生物研究与药物开发领域的差距。",
         "imageUrl": "https://www.google.com/s2/favicons?domain=aihot.virxact.com&sz=128",
         "priority": 3,
-        "rank": 1,
+        "rank": 6,
         "signal": "生物安全产品化信号：Fable 5 的安全边界从粗粒度阻断转向“分类器 + fallback + trusted access”的组合治理。",
         "interpretation": {
           "signal": "生物安全产品化信号：Fable 5 的安全边界从粗粒度阻断转向“分类器 + fallback + trusted access”的组合治理。",
@@ -4679,15 +4959,15 @@
         "summary": "千问今日上线多项新功能，并支持最新旗舰模型 Qwen3.8-MAX。其中\"思考研究\"在原\"深度思考\"基础上升级，强化复杂推理与工具调用；\"定时任务\"可预设执行时间自动完成行业简报梳理等周期工作；\"办公助理\"能连接备忘录、日历等应用并操作电脑浏览器，直接输出可用的 Office 文档。语音通话支持 7x24 小时多场景，智能体广场首批覆盖物流、房产等十多个领域。",
         "imageUrl": "https://www.google.com/s2/favicons?domain=aihot.virxact.com&sz=128",
         "priority": 3,
-        "rank": 2,
-        "signal": "Agent 可靠性信号：小模型能否稳定完成复杂任务，越来越依赖重试、防护、上下文管理和步骤约束。",
+        "rank": 7,
+        "signal": "国产 Agent 产品化信号：千问把深度研究、定时任务、办公助理、语音入口和新模型合并发布，目标是从聊天助手扩展到日常任务调度层。",
         "interpretation": {
-          "signal": "Agent 可靠性信号：小模型能否稳定完成复杂任务，越来越依赖重试、防护、上下文管理和步骤约束。",
-          "impact": "Agent 正从单点工具走向跨设备、跨应用、跨通讯入口，产品设计要考虑权限、记忆和接管机制。",
-          "action": "建议记录可试用入口、权限模型和是否支持长会话，适合做 30 分钟产品体验验证。"
+          "signal": "国产 Agent 产品化信号：千问把深度研究、定时任务、办公助理、语音入口和新模型合并发布，目标是从聊天助手扩展到日常任务调度层。",
+          "impact": "对企业和个人用户的影响取决于工具权限、长任务可靠性、国产生态连接和移动/办公入口覆盖；模型参数更新本身不是唯一重点。",
+          "action": "选择研究报告、定时提醒、表格办公和语音查询各一个任务做体验回放，记录完成率、引用质量、权限提示、跨端同步、失败接管和数据边界。"
         },
-        "impact": "Agent 正从单点工具走向跨设备、跨应用、跨通讯入口，产品设计要考虑权限、记忆和接管机制。",
-        "action": "建议记录可试用入口、权限模型和是否支持长会话，适合做 30 分钟产品体验验证。",
+        "impact": "对企业和个人用户的影响取决于工具权限、长任务可靠性、国产生态连接和移动/办公入口覆盖；模型参数更新本身不是唯一重点。",
+        "action": "选择研究报告、定时提醒、表格办公和语音查询各一个任务做体验回放，记录完成率、引用质量、权限提示、跨端同步、失败接管和数据边界。",
         "tags": [
           "Agent",
           "模型",
@@ -4701,17 +4981,17 @@
           "nodes": [
             {
               "label": "信号",
-              "detail": "Agent 可靠性信号：小模型能否稳定完成复杂任务，越来越依赖重试、防护、上下文管理和步骤约束。",
+              "detail": "国产 Agent 产品化信号：千问把深度研究、定时任务、办公助理、语音入口和新模型合并发布，目标是从聊天助手扩展到日常任务调度层。",
               "type": "input"
             },
             {
               "label": "影响",
-              "detail": "Agent 正从单点工具走向跨设备、跨应用、跨通讯入口，产品设计要考虑权限、记忆和接管机制。",
+              "detail": "对企业和个人用户的影响取决于工具权限、长任务可靠性、国产生态连接和移动/办公入口覆盖；模型参数更新本身不是唯一重点。",
               "type": "core"
             },
             {
               "label": "动作",
-              "detail": "建议记录可试用入口、权限模型和是否支持长会话，适合做 30 分钟产品体验验证。",
+              "detail": "选择研究报告、定时提醒、表格办公和语音查询各一个任务做体验回放，记录完成率、引用质量、权限提示、跨端同步、失败接管和数据边界。",
               "type": "integration"
             },
             {
@@ -4737,7 +5017,7 @@
         "summary": "OpenAI 更新 ChatGPT：Plus 和 Pro 用户的 GPT-5.6 Sol 在事实准确性和回答聚焦度上有所提升，新增滑块可控制模型思考投入。免费用户默认模型升级为 GPT-5.6 Luna，并开放无限文本聊天，新增 Think 按钮以处理更复杂问题。",
         "imageUrl": "https://www.google.com/s2/favicons?domain=aihot.virxact.com&sz=128",
         "priority": 3,
-        "rank": 3,
+        "rank": 8,
         "signal": "模型产品化信号：GPT-5.6 把前沿推理、浏览/computer use、artifact 生成、缓存断点和多 Agent 能力打包成面向知识工作的生产套件，竞争焦点从单次 benchmark 转到可交付任务。",
         "interpretation": {
           "signal": "模型产品化信号：GPT-5.6 把前沿推理、浏览/computer use、artifact 生成、缓存断点和多 Agent 能力打包成面向知识工作的生产套件，竞争焦点从单次 benchmark 转到可交付任务。",
@@ -4767,282 +5047,6 @@
             {
               "label": "动作",
               "detail": "建议建立 10-20 个真实知识工作回放任务：报告、表格、代码修复、网页调查和跨工具执行分别记录完成率、人工修改、成本、延迟、权限触发和失败样本。",
-              "type": "integration"
-            },
-            {
-              "label": "观察指标",
-              "detail": "记录真实任务完成率、人工修正、成本、延迟、失败样本和是否出现生态跟进。",
-              "type": "measure"
-            }
-          ],
-          "links": [
-            "识别变化",
-            "评估影响",
-            "落地验证"
-          ]
-        }
-      },
-      {
-        "source": "AIHOT 精选",
-        "sourceDetail": "GitHub Blog",
-        "domain": "aihot.virxact.com",
-        "title": "GitHub Copilot 应用中的斜杠命令使用指南",
-        "url": "https://github.blog/ai-and-ml/github-copilot/a-guide-to-slash-commands-in-the-github-copilot-app",
-        "publishedAt": "2026-08-06T19:49:34.000Z",
-        "summary": "GitHub Copilot 应用中的斜杠命令可帮助管理会话、导航项目和自定义 Copilot 工作流。与 CLI 版不同，应用版命令更侧重工作流，如 /plan 用于编码前规划、/spar 用于挑战方案假设、/autopilot 用于自动执行实现。/clear 和 /model 在 CLI 和应用中均可用。",
-        "imageUrl": "https://www.google.com/s2/favicons?domain=aihot.virxact.com&sz=128",
-        "priority": 3,
-        "rank": 4,
-        "signal": "模型能力或评测更新，建议关注是否改变内部模型选型和评估基线。",
-        "interpretation": {
-          "signal": "模型能力或评测更新，建议关注是否改变内部模型选型和评估基线。",
-          "impact": "这条动态适合放进周度观察池，重点看它是否会改变模型选型、产品入口或工程成本结构。",
-          "action": "建议保留原文链接，等后续出现产品实测、开发者反馈或生态跟进时再升级权重。"
-        },
-        "impact": "这条动态适合放进周度观察池，重点看它是否会改变模型选型、产品入口或工程成本结构。",
-        "action": "建议保留原文链接，等后续出现产品实测、开发者反馈或生态跟进时再升级权重。",
-        "tags": [
-          "模型"
-        ],
-        "diagram": {
-          "title": "AIHOT 精选 信号图解",
-          "caption": "模型",
-          "summary": "从「GitHub Copilot 应用中的斜杠命令使用指南」抽取信号、影响、动作和观察指标，便于前端生成新闻事件到团队行动的示意图。",
-          "nodes": [
-            {
-              "label": "信号",
-              "detail": "模型能力或评测更新，建议关注是否改变内部模型选型和评估基线。",
-              "type": "input"
-            },
-            {
-              "label": "影响",
-              "detail": "这条动态适合放进周度观察池，重点看它是否会改变模型选型、产品入口或工程成本结构。",
-              "type": "core"
-            },
-            {
-              "label": "动作",
-              "detail": "建议保留原文链接，等后续出现产品实测、开发者反馈或生态跟进时再升级权重。",
-              "type": "integration"
-            },
-            {
-              "label": "观察指标",
-              "detail": "记录真实任务完成率、人工修正、成本、延迟、失败样本和是否出现生态跟进。",
-              "type": "measure"
-            }
-          ],
-          "links": [
-            "识别变化",
-            "评估影响",
-            "落地验证"
-          ]
-        }
-      },
-      {
-        "source": "AIHOT 精选",
-        "sourceDetail": "X：AI Safety Memes (@AISafetyMemes)",
-        "domain": "aihot.virxact.com",
-        "title": "科学家首次用AI制造新病毒",
-        "url": "https://x.com/AISafetyMemes/status/2085447739320758622",
-        "publishedAt": "2026-08-06T19:27:41.000Z",
-        "summary": "superebola/acc 🚀🚀🚀\n\n【引用 @nytimes】：突发新闻：科学家首次利用人工智能制造出新病毒，在为医学进步带来希望的同时，也引发了该技术有朝一日可能被用于制造危险病原体的担忧。https://nyti.ms/4bxx7Wy",
-        "imageUrl": "https://www.google.com/s2/favicons?domain=aihot.virxact.com&sz=128",
-        "priority": 3,
-        "rank": 5,
-        "signal": "行业动态信号，适合纳入周度技术雷达观察。",
-        "interpretation": {
-          "signal": "行业动态信号，适合纳入周度技术雷达观察。",
-          "impact": "这条动态适合放进周度观察池，重点看它是否会改变模型选型、产品入口或工程成本结构。",
-          "action": "建议保留原文链接，等后续出现产品实测、开发者反馈或生态跟进时再升级权重。"
-        },
-        "impact": "这条动态适合放进周度观察池，重点看它是否会改变模型选型、产品入口或工程成本结构。",
-        "action": "建议保留原文链接，等后续出现产品实测、开发者反馈或生态跟进时再升级权重。",
-        "tags": [
-          "AI"
-        ],
-        "diagram": {
-          "title": "AIHOT 精选 信号图解",
-          "caption": "AI",
-          "summary": "从「科学家首次用AI制造新病毒」抽取信号、影响、动作和观察指标，便于前端生成新闻事件到团队行动的示意图。",
-          "nodes": [
-            {
-              "label": "信号",
-              "detail": "行业动态信号，适合纳入周度技术雷达观察。",
-              "type": "input"
-            },
-            {
-              "label": "影响",
-              "detail": "这条动态适合放进周度观察池，重点看它是否会改变模型选型、产品入口或工程成本结构。",
-              "type": "core"
-            },
-            {
-              "label": "动作",
-              "detail": "建议保留原文链接，等后续出现产品实测、开发者反馈或生态跟进时再升级权重。",
-              "type": "integration"
-            },
-            {
-              "label": "观察指标",
-              "detail": "记录真实任务完成率、人工修正、成本、延迟、失败样本和是否出现生态跟进。",
-              "type": "measure"
-            }
-          ],
-          "links": [
-            "识别变化",
-            "评估影响",
-            "落地验证"
-          ]
-        }
-      },
-      {
-        "source": "AIHOT 精选",
-        "sourceDetail": "Google Developers Blog（RSS）",
-        "domain": "aihot.virxact.com",
-        "title": "Agent Plugins 1.0.0 发布：谷歌、亚马逊、微软等支持的统一智能体插件规范",
-        "url": "https://developers.googleblog.com/agent-plugins-package-your-skills-tools-and-more",
-        "publishedAt": "2026-08-06T16:53:12.298Z",
-        "summary": "Agent Plugins 1.0.0 是一项由谷歌、亚马逊、微软等支持的中立目录规范，将 Agent Skills 和 MCP 服务器打包为单一可移植单元。通过标准化 plugin.json 清单和固定目录布局，开发者无需为不同 AI 编码智能体和 IDE 维护单独封装。谷歌已作为核心维护者加入，并在 Agents CLI 和 Data Agent Kit 中提供支持。",
-        "imageUrl": "https://www.google.com/s2/favicons?domain=aihot.virxact.com&sz=128",
-        "priority": 3,
-        "rank": 6,
-        "signal": "企业 Agent 基建信号：托管沙箱、私网连接和权限隔离正在成为 Agent 进入生产环境的关键门槛。",
-        "interpretation": {
-          "signal": "企业 Agent 基建信号：托管沙箱、私网连接和权限隔离正在成为 Agent 进入生产环境的关键门槛。",
-          "impact": "Agent 正从单点工具走向跨设备、跨应用、跨通讯入口，产品设计要考虑权限、记忆和接管机制。",
-          "action": "建议记录可试用入口、权限模型和是否支持长会话，适合做 30 分钟产品体验验证。"
-        },
-        "impact": "Agent 正从单点工具走向跨设备、跨应用、跨通讯入口，产品设计要考虑权限、记忆和接管机制。",
-        "action": "建议记录可试用入口、权限模型和是否支持长会话，适合做 30 分钟产品体验验证。",
-        "tags": [
-          "Agent",
-          "工程/基础设施"
-        ],
-        "diagram": {
-          "title": "AIHOT 精选 信号图解",
-          "caption": "Agent / 工程/基础设施",
-          "summary": "从「Agent Plugins 1.0.0 发布：谷歌、亚马逊、微软等支持的统一智能体插件规范」抽取信号、影响、动作和观察指标，便于前端生成新闻事件到团队行动的示意图。",
-          "nodes": [
-            {
-              "label": "信号",
-              "detail": "企业 Agent 基建信号：托管沙箱、私网连接和权限隔离正在成为 Agent 进入生产环境的关键门槛。",
-              "type": "input"
-            },
-            {
-              "label": "影响",
-              "detail": "Agent 正从单点工具走向跨设备、跨应用、跨通讯入口，产品设计要考虑权限、记忆和接管机制。",
-              "type": "core"
-            },
-            {
-              "label": "动作",
-              "detail": "建议记录可试用入口、权限模型和是否支持长会话，适合做 30 分钟产品体验验证。",
-              "type": "integration"
-            },
-            {
-              "label": "观察指标",
-              "detail": "记录长任务完成率、步骤失败、工具误用、人工审批、恢复能力、延迟和单位任务成本。",
-              "type": "measure"
-            }
-          ],
-          "links": [
-            "识别变化",
-            "评估影响",
-            "落地验证"
-          ]
-        }
-      },
-      {
-        "source": "AIHOT 精选",
-        "sourceDetail": "TechCrunch：AI（RSS）",
-        "domain": "aihot.virxact.com",
-        "title": "OpenAI 称苹果自身安全实践削弱其商业机密诉讼",
-        "url": "https://techcrunch.com/2026/08/06/openai-says-apples-own-security-practices-undermine-its-trade-secrets-case",
-        "publishedAt": "2026-08-06T15:10:32.000Z",
-        "summary": "OpenAI 在驳回苹果商业机密诉讼的动议中辩称，苹果允许员工用个人 iCloud 处理工作且离职后未正确撤销访问权限，相关信息不构成受法律保护的商业机密。OpenAI 还指苹果未指明具体被窃取的机密，并称其借诉讼阻碍竞争对手在 AI 硬件领域创新。",
-        "imageUrl": "https://www.google.com/s2/favicons?domain=aihot.virxact.com&sz=128",
-        "priority": 3,
-        "rank": 7,
-        "signal": "行业动态信号，适合纳入周度技术雷达观察。",
-        "interpretation": {
-          "signal": "行业动态信号，适合纳入周度技术雷达观察。",
-          "impact": "AI 生成内容和搜索结果会被系统性攻击，后续要把来源证明、反作弊和审计纳入基础架构。",
-          "action": "建议沉淀到 AI 安全清单，跟踪攻击方式、检测指标和平台级防御策略。"
-        },
-        "impact": "AI 生成内容和搜索结果会被系统性攻击，后续要把来源证明、反作弊和审计纳入基础架构。",
-        "action": "建议沉淀到 AI 安全清单，跟踪攻击方式、检测指标和平台级防御策略。",
-        "tags": [
-          "安全/可信"
-        ],
-        "diagram": {
-          "title": "AIHOT 精选 信号图解",
-          "caption": "安全/可信",
-          "summary": "从「OpenAI 称苹果自身安全实践削弱其商业机密诉讼」抽取信号、影响、动作和观察指标，便于前端生成新闻事件到团队行动的示意图。",
-          "nodes": [
-            {
-              "label": "信号",
-              "detail": "行业动态信号，适合纳入周度技术雷达观察。",
-              "type": "input"
-            },
-            {
-              "label": "影响",
-              "detail": "AI 生成内容和搜索结果会被系统性攻击，后续要把来源证明、反作弊和审计纳入基础架构。",
-              "type": "core"
-            },
-            {
-              "label": "动作",
-              "detail": "建议沉淀到 AI 安全清单，跟踪攻击方式、检测指标和平台级防御策略。",
-              "type": "integration"
-            },
-            {
-              "label": "观察指标",
-              "detail": "记录攻击样本、拦截率、误报/漏报、权限触达、事件响应时间和修复回放通过率。",
-              "type": "measure"
-            }
-          ],
-          "links": [
-            "识别变化",
-            "评估影响",
-            "落地验证"
-          ]
-        }
-      },
-      {
-        "source": "AIHOT 精选",
-        "sourceDetail": "X：Rohan Paul (@rohanpaul_ai)",
-        "domain": "aihot.virxact.com",
-        "title": "微软首次披露OpenAI贡献七成AI收入",
-        "url": "https://x.com/rohanpaul_ai/status/2085368375816163423",
-        "publishedAt": "2026-08-06T14:12:19.000Z",
-        "summary": "微软刚刚首次披露，OpenAI 贡献了微软约 70% 的 AI 收入，依据最新文件。\n\n这一数据基于预期增长及此前与 OpenAI 相关收入的披露。\n\n241 亿美元中的大部分是 OpenAI 在微软数据中心训练和运行 ChatGPT 的云账单，再加上模型开发成本和 OpenAI 自身销售的分成，全部由微软合并计入收入。微软同时还向 OpenAI 投入了 119 亿美元。",
-        "imageUrl": "https://www.google.com/s2/favicons?domain=aihot.virxact.com&sz=128",
-        "priority": 3,
-        "rank": 8,
-        "signal": "行业动态信号，适合纳入周度技术雷达观察。",
-        "interpretation": {
-          "signal": "行业动态信号，适合纳入周度技术雷达观察。",
-          "impact": "这条动态适合放进周度观察池，重点看它是否会改变模型选型、产品入口或工程成本结构。",
-          "action": "建议保留原文链接，等后续出现产品实测、开发者反馈或生态跟进时再升级权重。"
-        },
-        "impact": "这条动态适合放进周度观察池，重点看它是否会改变模型选型、产品入口或工程成本结构。",
-        "action": "建议保留原文链接，等后续出现产品实测、开发者反馈或生态跟进时再升级权重。",
-        "tags": [
-          "模型"
-        ],
-        "diagram": {
-          "title": "AIHOT 精选 信号图解",
-          "caption": "模型",
-          "summary": "从「微软首次披露OpenAI贡献七成AI收入」抽取信号、影响、动作和观察指标，便于前端生成新闻事件到团队行动的示意图。",
-          "nodes": [
-            {
-              "label": "信号",
-              "detail": "行业动态信号，适合纳入周度技术雷达观察。",
-              "type": "input"
-            },
-            {
-              "label": "影响",
-              "detail": "这条动态适合放进周度观察池，重点看它是否会改变模型选型、产品入口或工程成本结构。",
-              "type": "core"
-            },
-            {
-              "label": "动作",
-              "detail": "建议保留原文链接，等后续出现产品实测、开发者反馈或生态跟进时再升级权重。",
               "type": "integration"
             },
             {
