@@ -138,6 +138,46 @@ async function buildReport({ reportDate, limit, days, language }) {
 
 function applyEditorialOverrides(report) {
   const aiNewsOverrides = {
+    "消息称 Anthropic 最快今年 9 月上市，向投资者淡化 AI 模型竞争等挑战": {
+      signal: "资本市场信号：AIHOT 把 Anthropic 上市传闻放到头条，说明 Claude 生态的竞争焦点正从单次模型发布扩展到资本、渠道和企业收入韧性。",
+      impact: "这不会直接改变 Claude 能力，但会影响企业采购时对供应连续性、价格策略、生态投入和合规披露的判断；不能把传闻当成确定融资或上市事实。",
+      action: "把它降级为供应商风险观察项：只跟踪 Anthropic 官方公告、SEC/交易所文件、企业合同披露、模型路线和价格变化，不据此调整生产模型。",
+    },
+    "微信小微AI帮写与AI点评内测：朋友圈最后一点人味正在消失": {
+      signal: "社交产品入口信号：AI 写作和 AI 点评正在进入高频社交表达场景，模型能力被包装成默认编辑层而不是独立工具。",
+      impact: "内容平台会面对更高比例的 AI 生成互动，影响推荐质量、真实社交信任、反垃圾策略和用户对“人味”的感知；粗暴增发可能抬高短期活跃但损伤长期关系质量。",
+      action: "社交/社区团队应建立 AI 生成互动标签和实验 guardrail：同时看发帖率、互动率、屏蔽/举报、好友留存、内容同质化和用户主观信任。",
+    },
+    "Databricks 如何在兼顾治理的前提下让 Genie Agents 同时基于结构化数据与文档运行": {
+      signal: "企业数据 Agent 信号：结构化表、文档、权限和治理正在被合并进同一问答/分析 Agent，而不是继续拆成 BI 与 RAG 两套入口。",
+      impact: "数据团队的瓶颈会从“能不能回答”转为“答案是否引用正确表、是否遵守权限、是否能解释 SQL/检索路径、是否能被审计复跑”。",
+      action: "用三个高频经营问题做 shadow run：记录 SQL、文档引用、权限过滤、数值一致性、人工修正、延迟和每次回答的可复现证据。",
+    },
+    "英伟达联合六大机构融资5000亿美元建AI工厂": {
+      signal: "AI 基础设施资本信号：AI 工厂叙事继续把模型竞争绑定到电力、机房、芯片融资和长期算力采购能力。",
+      impact: "大模型供应商的能力/价格会更受上游算力资本开支和电力约束影响；应用团队短期不应因此囤资源，但要预期 GPU、推理价格和区域可用性会继续波动。",
+      action: "平台团队把模型供应商评估扩展到算力供给：跟踪价格、region、SLA、batch/缓存折扣、容量限制和替代 provider，不只看 benchmark。",
+    },
+    "Claude 未发布研究版将黎曼 zeta 函数零点下界从 41.6% 提升至 67.2%": {
+      signal: "数学科研 Agent 信号：未发布 Claude 研究版在黎曼 zeta 零点比例下界上产生可被专家检验的理论进展，说明模型正在进入长链条证明搜索和研究假设生成。",
+      impact: "对企业研发的直接影响不是“Claude 会证明定理”，而是高难研究任务需要问题分解、可验证中间引理、专家复核和失败路径记录；普通产品不能把研究版能力外推到公开模型。",
+      action: "把科研 Agent 评测拆成假设、证明草稿、计算辅助、专家审稿和可复现 artifact 五层，明确模型版本和是否公开可用。",
+    },
+    "Claude Code 自动模式默认开启原理": {
+      signal: "Coding Agent 自主性信号：默认 auto 模式把 Claude Code 从逐步确认推向更长的自主编辑/执行循环，核心不再是能否写代码，而是能否控制权限和验证半径。",
+      impact: "团队会更快获得长任务吞吐，但误改文件、越权命令、测试遗漏和 review 压力会同步上升；成熟用户可以更自主，新用户更需要保护栏。",
+      action: "为 auto mode 设定仓库级策略：限制敏感路径和破坏性命令，要求测试/截图/静态检查证据，并记录人工接管率、回滚次数和失败命令类型。",
+    },
+    "tl；dv 逾18.1万段AI会议录音被公开暴露，可实时闯入他人通话": {
+      signal: "AI 会议工具安全信号：录音、转写、会议链接和实时接入权限已经成为 AI 助手类 SaaS 的高风险数据面。",
+      impact: "企业不能只评估总结质量；会议 Agent 一旦权限或存储配置失误，会暴露客户、财务、战略和人员信息，并可能被实时旁听。",
+      action: "立即审计会议 AI 工具：检查默认分享、录音留存、外部链接、实时加入权限、DLP、删除 SLA、供应商日志和敏感会议禁用策略。",
+    },
+    "智能体真的会用电脑吗？a16z 用数据给出答案": {
+      signal: "Computer Use 评测信号：行业开始用任务数据衡量智能体操作电脑的真实成功率，而不是只展示浏览器/桌面 demo。",
+      impact: "GUI Agent 进入生产前必须证明动作准确、失败可接管、凭据不泄露、注入可防护；没有数据回放的演示很难支持采购或替代 RPA。",
+      action: "建立内部 Computer Use benchmark：覆盖登录、搜索、表单、下载、复制、异常弹窗和人工确认，记录成功率、误点击、注入命中、耗时和审计日志完整性。",
+    },
     "Anthropic 更新 Claude Fable 5 生物安全防护，误报率大幅降低": {
       signal: "生物安全产品化信号：Fable 5 的安全边界从粗粒度阻断转向“分类器 + fallback + trusted access”的组合治理。",
       impact: "日常健康、教育和基础生物学问题会更少被误拒，但双重用途病毒学、毒理学、分子设计和药物研发仍然需要高风险能力门控；团队不能把误报率下降解读成生物场景全面放开。",
@@ -3857,8 +3897,8 @@ function buildEditorialReview({ reportDate, frontier = {}, aiNews = {} }) {
     ],
     sourceNotes: [
       `Anthropic official coverage includes ${anthropicSources.join("、") || "official News/Research/Engineering"} with Claude Tag, Economic Index, Claude Code practice, model updates, partnerships and safety research.`,
-      "Anthropic official pages checked this run: Newsroom latest includes Aug 7 Fable 5 biology safeguards, Aug 4 global affairs appointment, Jul 30 cybersecurity evaluation incidents, Jul 27 open-weights position and Cognizant partnership, Jul 24 Claude Opus 5; Research latest includes Jul 28 cryptographic weaknesses and Jul 24 drone-control frontier-red-team work; Engineering highlights Claude containment and Claude Code safety posts.",
-      "Claude Blog checked for Aug 6 Millennium risk analyst partnership, Aug 5 inference hooks / inline DLP for Claude Enterprise, Aug 4 cost visibility/control in Claude, May 19 Agent View / Managed Agents sandbox and MCP tunnels, Jul 28 MCP 2026-07-28 support, Jul 24 Claude 5 context engineering/model guidance, Jul 22 verification loops with skills, Jul 21 Datadog Claude Code universal machine tool, and enterprise agent cases.",
+      "Anthropic/Claude pages checked this run: Aug 10 Claude math research via AIHOT, Aug 7 Fable 5 biology safeguards, Aug 6 Millennium risk analyst partnership, Aug 5 inference hooks / inline DLP, Aug 4 cost visibility and global affairs, Jul 30 cybersecurity evaluation incidents, Jul 28 MCP and cryptographic weaknesses, Jul 24 Claude Opus 5, plus Claude Code/Computer Use/Managed Agents coverage.",
+      "AIHOT Aug 11 checked for Muse Glimmer/SGLang, OpenRouter Auto Router, Nvidia AI factory financing, Claude mathematics research, Claude Code auto mode, meeting-recording exposure, social AI writing/commenting, Databricks Genie Agents and computer-use agent benchmarking; selected items are rewritten into concrete signal-impact-action recommendations.",
       "Claude Platform release notes checked for Managed Agents lifecycle hooks, effort configuration, initial events, memory/environment webhooks and session thread deltas; Computer Use and multi-agent operator coverage is tracked through Claude Code Agent View and recent Claude model/browser-agent updates.",
       `Search/ads/recommendation coverage includes ${frontierSources.join("、") || frontier.source || "Big Tech Engineering/RSS + arXiv"} and is interpreted through business problem, system mechanism, metrics/experiments, borrowable patterns and unsuitable boundaries.`,
       "Project reads distinguish architecture mechanism, team fit, landing path, production risk, decision question and watch signal; generic metadata summaries are treated as fallback only.",
