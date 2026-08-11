@@ -138,6 +138,51 @@ async function buildReport({ reportDate, limit, days, language }) {
 
 function applyEditorialOverrides(report) {
   const aiNewsOverrides = {
+    "ChatGPT 与 Gemini 双双突破 10 亿用户": {
+      signal: "大众化采用信号：ChatGPT 与 Gemini 同时进入十亿级用户叙事，说明前沿 AI 的竞争已经从模型发布扩展到默认入口、账号体系、移动端和企业工作流渗透。",
+      impact: "应用团队不能只比较单模型 benchmark；用户迁移成本、历史数据、跨设备连续性、插件/连接器生态和企业管理能力会影响真实留存与付费。",
+      action: "把模型选型评估拆成能力、入口、数据可携带、团队权限、成本和 fallback 六项；对关键工作流保留跨供应商回放，避免被单一超级入口锁定。",
+    },
+    "Runway Seedance 2.5 上线，支持50角色参考": {
+      signal: "视频生成生产化信号：角色参考规模提升到 50 个，说明视频模型竞争正在从单镜头质感转向多角色一致性、资产复用和系列化内容生产。",
+      impact: "营销、短剧和游戏素材团队会更容易批量生成角色稳定的镜头，但版权、肖像授权、角色漂移、镜头连续性和人工审片成本会成为主要约束。",
+      action: "用固定角色库做 20 镜头回放：记录角色一致性、动作/表情漂移、生成耗时、重试率、授权状态和后期修正成本，再决定是否纳入生产素材管线。",
+    },
+    "将 GitHub Copilot 置于中间人（MitM）代理之后后，我学到了什么": {
+      signal: "编码助手可观测性信号：开发者开始通过代理审视 Copilot 的网络行为、上下文传输和模型交互，说明 AI IDE 的透明度正在变成企业治理议题。",
+      impact: "企业接入编码助手时，关注点不应只在补全质量；还要确认请求内容、代码片段、遥测、缓存、地区路由、代理兼容和审计日志是否满足安全要求。",
+      action: "为编码助手建立受控代理/日志回放环境：抽样检查敏感代码触达、header/metadata、失败重试、模型路由和企业策略命中，再制定仓库级使用边界。",
+    },
+    "ChatGPT 桌面端支持导入其他智能体工作数据": {
+      signal: "Agent 工作迁移信号：桌面端开始支持导入其他智能体工作数据，说明不同 Agent/IDE 之间的上下文、任务记录和 artifact 迁移会成为用户留存战场。",
+      impact: "知识工作不再只发生在单个聊天窗口；跨工具迁移若做得好会降低切换成本，做不好会带来权限继承、隐私泄露、上下文污染和不可追溯决策。",
+      action: "评估时要求导入过程可审计、可撤销、可分项目隔离；记录导入字段、敏感信息过滤、任务恢复成功率和错误上下文导致的返工。",
+    },
+    "研究人员发现可读取ChatGPT等模型加密推理过程的API漏洞": {
+      signal: "模型 API 侧信道信号：研究人员关注加密推理过程可被读取的风险，说明模型服务安全已扩展到传输、流式响应、推理元数据和供应商实现细节。",
+      impact: "即便业务数据被加密，推理轨迹、token 时序、日志或代理层缺陷仍可能泄露敏感上下文；高合规团队不能只依赖 HTTPS 和供应商承诺。",
+      action: "把 LLM API 纳入安全测试：检查流式响应、代理、中间件日志、错误栈、缓存、密钥轮换和供应商事件披露；敏感任务优先使用最小上下文与脱敏输入。",
+    },
+    "Gemini月活破10亿，成谷歌增长最快产品": {
+      signal: "Google AI 分发信号：Gemini 月活破 10 亿体现的是搜索、Android、Workspace 和云生态的渠道协同，而不只是模型单点能力。",
+      impact: "企业和消费者会在默认入口里接触 Gemini，开发者要预期 Google 生态的 AI 功能会更快进入邮件、文档、浏览器、移动端和云控制台。",
+      action: "对 Google 生态重用户建立 Gemini 影响清单：跟踪 Workspace 工作流替代率、数据边界、企业管理开关、API 兼容和与现有 Claude/OpenAI 流程的分工。",
+    },
+    "Gemini月活10亿，Gemma下载破10亿": {
+      signal: "Google AI 双层生态信号：Gemini 的十亿级月活体现产品分发，Gemma 的十亿下载体现开放模型开发者渗透，Google 正在同时争夺终端入口和工程师工具链。",
+      impact: "这会增强 Google 在搜索、Android、Workspace、Cloud 和开源模型生态里的联动能力；竞品团队需要区分用户规模、开发者采用和企业可控性三种信号。",
+      action: "把 Gemini/Gemma 分开评估：Gemini 看默认入口、企业权限和工作流替代率；Gemma 看 license、本地部署、微调成本、社区 issue 和与现有 serving 栈兼容性。",
+    },
+    "AMIE 研究医疗 AI 系统首次展示实时临床视频问诊能力": {
+      signal: "医疗多模态 Agent 信号：Google AMIE 从文本问诊扩展到实时临床视频咨询研究，说明医疗 AI 正在处理视觉线索、语音交互、临床推理和不确定性沟通的组合任务。",
+      impact: "它对医疗产品的直接含义不是马上替代医生，而是远程分诊、病史采集和临床教育会要求更严格的视频质量、责任边界、隐私、偏差和专家复核。",
+      action: "医疗团队只在研究/模拟或辅助场景评估：分开记录临床准确性、危险建议、遗漏症状、患者理解、医生复核时间、隐私处理和地区监管要求。",
+    },
+    "Apple Silicon 与 macOS 虚拟机：借助 Llama.cpp 实现 11-16 倍的 LLM 推理加速": {
+      signal: "本地推理工程信号：Apple Silicon 与 macOS VM 上的 llama.cpp 加速说明端侧/本机推理仍有大量系统优化空间，收益来自硬件后端、内存布局和虚拟化路径协同。",
+      impact: "个人开发、隐私敏感原型和离线工具会受益，但 11-16 倍加速不能直接外推到所有模型、上下文长度和量化配置；生产仍要看稳定性和可复现环境。",
+      action: "建立本机推理基准表：固定模型、量化、上下文、batch、虚拟机配置和温度状态，记录 tokens/s、首 token、内存、功耗和失败样本，再决定是否替代云端调用。",
+    },
     "Ryan Greenblatt：人类级AI或于2032年前通过递归自我改进催生失控超级智能": {
       signal: "AI 风险时间表信号：Greenblatt 把人类级 AI、递归自我改进和失控超级智能放到 2032 年前的概率叙事里，说明前沿 AI 讨论正在从能力预测转向治理窗口期。",
       impact: "这类观点不能直接当作模型路线图，但会影响研究机构、监管、企业安全团队对 red teaming、capability eval、模型发布节奏和灾难风险预算的优先级判断。",
@@ -406,10 +451,15 @@ function applyEditorialOverrides(report) {
         if (node.label === "影响") node.detail = override.impact;
         if (node.label === "动作") node.detail = override.action;
       }
-      item.diagram.summary = `从「${item.title}」抽取生物安全分类器、fallback、trusted access、误拒/误放和专家复核路径，便于前端生成模型安全治理示意图。`;
+      item.diagram.summary = buildAiNewsOverrideDiagramSummary(item, override);
     }
   }
   return report;
+}
+
+function buildAiNewsOverrideDiagramSummary(item, override) {
+  const tags = Array.isArray(item.tags) && item.tags.length ? item.tags.slice(0, 3).join("、") : "AI 技术雷达";
+  return `从「${item.title}」抽取信号、影响和动作三段证据，围绕 ${tags} 展示观察对象、业务影响、验证指标和下一步决策边界。核心信号：${trimText(override.signal, 90)}`;
 }
 
 async function readExistingReport(reportDate) {
