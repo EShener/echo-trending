@@ -3900,7 +3900,7 @@ function buildEditorialReview({ reportDate, frontier = {}, aiNews = {} }) {
     sourceNotes: [
       `Anthropic official coverage includes ${anthropicSources.join("、") || "official News/Research/Engineering"} with Claude Tag, Economic Index, Claude Code practice, model updates, partnerships and safety research.`,
       "Anthropic/Claude pages checked this run: Aug 10 Claude math research official page, Aug 7 Claude Code auto mode default official blog, Aug 7 Fable 5 biology safeguards, Aug 6 Millennium risk analyst partnership, Aug 5 inference hooks / inline DLP, Aug 4 cost visibility and global affairs, Jul 30 cybersecurity evaluation incidents, Jul 28 MCP and cryptographic weaknesses, Jul 24 Claude Opus 5, plus Claude Code/Computer Use/Managed Agents coverage.",
-      "AIHOT Aug 11 checked for Muse Glimmer/SGLang, OpenRouter Auto Router, Nvidia AI factory financing, Claude mathematics research, Claude Code auto mode, meeting-recording exposure, social AI writing/commenting, Databricks Genie Agents and computer-use agent benchmarking; selected items are rewritten into concrete signal-impact-action recommendations.",
+      "AIHOT Aug 11 checked for Unified Radix Cache, SGLang/NVIDIA Nemotron 3.5 Lightning, OpenAI Astra mathematics research, Ling-3.0-tiny, ZCode Goal/Subagents/Remote Control, ComfyUI MiniMax-H3 pipelines and agent-language evaluation; selected items are rewritten into concrete signal-impact-action recommendations.",
       "Claude Platform release notes checked for Managed Agents lifecycle hooks, effort configuration, initial events, memory/environment webhooks and session thread deltas; Computer Use and multi-agent operator coverage is tracked through Claude Code Agent View and recent Claude model/browser-agent updates.",
       `Search/ads/recommendation coverage includes ${frontierSources.join("、") || frontier.source || "Big Tech Engineering/RSS + arXiv"} and is interpreted through business problem, system mechanism, metrics/experiments, borrowable patterns and unsuitable boundaries.`,
       "Project reads distinguish architecture mechanism, team fit, landing path, production risk, decision question and watch signal; generic metadata summaries are treated as fallback only.",
@@ -5469,6 +5469,51 @@ function enrichAiNews(item) {
 function curatedAiNewsOverride(item) {
   const title = normalizeTitle(item.title || "");
   const map = {
+    [normalizeTitle("统一 Radix 缓存：为混合模型前缀缓存构建单一树结构")]: {
+      signal: "推理缓存架构信号：Unified Radix Cache 把 FULL、SWA、Mamba 等不同缓存语义收敛到单一 token-keyed radix 拓扑，说明混合模型 serving 的瓶颈正在从单模型 KV cache 扩展到多组件生命周期管理。",
+      impact: "长上下文、MoE/SSM 混合模型和多租户推理会更依赖缓存复用、滑窗淘汰和检查点一致性；如果缓存抽象不统一，吞吐、尾延迟和显存碎片会直接抵消模型能力收益。",
+      action: "在推理网关回放真实流量，分模型结构记录 cache hit、prefill 复用率、显存峰值、P95/P99、跨请求复用、错误恢复和降级路径，再决定是否引入统一缓存层。",
+    },
+    [normalizeTitle("SGLang 宣布 Day-0 支持 NVIDIA Nemotron 3.5 Lightning")]: {
+      signal: "推理生态协同信号：SGLang 对 Nemotron 3.5 Lightning 做 Day-0 支持，说明开源模型竞争不只看权重发布，还看 serving 框架能否快速承接 1M 上下文、MoE 激活和投机解码。",
+      impact: "本地/私有化 Agent 的可用性会受模型权重、量化格式、OpenAI 兼容 API、DFlash/DSpark/MTP 等推理特性共同影响；框架支持越快，模型从公告到试点的周期越短。",
+      action: "用 5 类 Agent 任务做 SGLang 回放：长文档检索、代码修改、工具调用、多轮规划和批量问答，记录 tokens/s、TTFT、P99、显存、投机接受率、输出一致性和失败码。",
+    },
+    [normalizeTitle("NVIDIA 推出 Nemotron 3.5 Lightning，加速本地智能体任务")]: {
+      signal: "端侧 Agent 模型信号：Nemotron 3.5 Lightning 把 30B MoE、3B 激活、开放权重和本地设备部署放在同一叙事里，目标是让常驻智能体从云端推理走向 PC、工作站和边缘设备。",
+      impact: "隐私敏感、离线可用和低延迟场景会多一个候选，但开放权重不等于低成本生产；量化质量、工具调用稳定性、长上下文成本和设备散热会决定真实可用性。",
+      action: "先在 RTX/工作站上跑本地 Agent smoke test：比较 BF16、NVFP4、INT4 的质量、速度、显存、功耗、工具调用失败、长会话退化和与云模型的成本差。",
+    },
+    [normalizeTitle("OpenAI 用 Astra 模型攻克 10 道数学难题，数学家既兴奋又担忧")]: {
+      signal: "数学科研 Agent 信号：未发布 Astra 模型据称解决多道长期数学难题并提供论文/Lean 验证，核心信号是前沿模型开始进入可机器验证的研究发现流程。",
+      impact: "企业不能把这类研究外推成普通模型已具备科研自治能力；真正可迁移的是问题分解、形式化验证、专家审稿、负结果记录和可复现实验资产。",
+      action: "将其放入科研工作流观察池：只跟踪官方论文、Lean/代码 artifact、独立数学家复核、失败案例和模型可用性，不据传闻调整生产模型选型。",
+    },
+    [normalizeTitle("Ling-3.0-tiny 正式开源：1.3B 激活参数如何进入真实任务")]: {
+      signal: "小激活 MoE 开源信号：Ling-3.0-tiny 以 7.9B 总参数、1.3B 激活参数和多精度权重进入开源池，说明低成本推理路线正在从小 dense 模型转向小激活混合专家。",
+      impact: "私有化、移动端和低预算 Agent 可获得更强候选，但 MoE 的路由稳定性、量化误差、中文/代码任务覆盖和服务框架兼容仍需要本地验证。",
+      action: "用内部 20 条中文任务、代码任务和工具调用任务做候选评测，对比 dense 小模型与云模型，记录质量、延迟、显存、失败样本、license、微调成本和 fallback 策略。",
+    },
+    [normalizeTitle("ZCode全面升级：Goal、Subagents、Remote Control与闲时任务四大功能上线")]: {
+      signal: "Coding Agent 产品化信号：ZCode 把 Goal、Subagents、Remote Control 和闲时任务合并上线，说明编码 Agent 正从单会话补全转向目标管理、多人/多代理协作和异步执行。",
+      impact: "研发团队会更容易把长任务委托出去，但也会带来越权执行、上下文漂移、子代理责任不清、远程控制审计和闲时任务资源占用问题。",
+      action: "选择一个非核心仓库做灰度：记录任务拆解质量、子代理交接、远程审批、PR 通过率、测试证据、人工接管、回滚次数和闲时任务资源消耗。",
+    },
+    [normalizeTitle("用 ComfyUI API 实现 MiniMax-H3 多模态视频与音频生成流水线")]: {
+      signal: "多模态流水线工程信号：ComfyUI API 被用作无头推理后端，说明视频/音频生成正在从 GUI 调参走向可脚本化、可复跑、可监控的素材生产流水线。",
+      impact: "内容团队可以把文生视频、首尾帧控制、参考图和音视频解码接进批量生产，但节点版本、显存策略、队列失败、版权审核和人工终审会成为生产瓶颈。",
+      action: "用 3 个真实短视频 brief 做离线流水线试运行，记录节点成功率、显存峰值、生成时长、风格一致性、失败重试、人工剪辑时间、审核结果和单条成本。",
+    },
+    [normalizeTitle("编写智能体时，哪种编程语言最合适？")]: {
+      signal: "Agent 编程语言评测信号：围绕动态/静态语言 token 成本和任务成功率的争论开始被实测挑战，说明 Agent 工程不能把小样本结论直接推广到复杂代码任务。",
+      impact: "语言选型仍应由生态、类型系统、测试、依赖、运行时和团队维护能力决定；模型在 medium/ultra 努力度下的表现差异会影响评测设计和任务分桶。",
+      action: "建立跨语言 Agent 评测集：同一功能分别用 Python、TypeScript、Go/Rust 实现，记录完成率、测试通过、token、修改轮次、缺陷类型和人工 review 成本。",
+    },
+    [normalizeTitle("Thinking of ACE? We Can Do It with Fewer Tokens")]: {
+      signal: "上下文压缩信号：ACE 类方法开始把 Agent/长上下文优化从“塞更多 token”转向“保留任务关键状态并减少无效上下文”。",
+      impact: "RAG、Coding Agent 和多轮助手的成本/延迟会更多取决于上下文选择质量；压缩若没有任务级回放，容易删掉证据、约束或错误恢复线索。",
+      action: "用真实长任务 trace 做 A/B：比较原始上下文、摘要压缩和 ACE 类压缩在完成率、引用丢失、token 成本、延迟、人工修正和失败可解释性上的差异。",
+    },
     [normalizeTitle("Krea 推出 Seedance 2.5 视频模型")]: {
       signal: "视频生成产品信号：Krea 把 Seedance 2.5 包装进创作工具入口，竞争点从模型发布转向多镜头一致性、编辑闭环和工作流留存。",
       impact: "创作者不会只比较单条样片，而会看脚本到分镜、参考图、镜头续写、局部重生成和导出质量是否稳定；对内容团队来说，版权、品牌一致性和单位成片成本会比峰值画质更重要。",
