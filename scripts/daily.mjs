@@ -138,6 +138,31 @@ async function buildReport({ reportDate, limit, days, language }) {
 
 function applyEditorialOverrides(report) {
   const aiNewsOverrides = {
+    "Ryan Greenblatt：人类级AI或于2032年前通过递归自我改进催生失控超级智能": {
+      signal: "AI 风险时间表信号：Greenblatt 把人类级 AI、递归自我改进和失控超级智能放到 2032 年前的概率叙事里，说明前沿 AI 讨论正在从能力预测转向治理窗口期。",
+      impact: "这类观点不能直接当作模型路线图，但会影响研究机构、监管、企业安全团队对 red teaming、capability eval、模型发布节奏和灾难风险预算的优先级判断。",
+      action: "把它作为风险治理观察项而非采购依据：跟踪原文假设、反方评论、可量化前置指标、模型自治评测和政策响应，避免用单人预测替代内部安全基线。",
+    },
+    "Gemini 助力 Database Migration Service 加速 PostgreSQL 迁移": {
+      signal: "云数据库 Agent 信号：Gemini 被嵌入 Database Migration Service，说明企业 AI 正从代码助手进入迁移评估、SQL/Schema 转换、兼容性解释和操作建议。",
+      impact: "数据库迁移的瓶颈会从人工读文档转向能否验证自动建议、回滚迁移步骤、保护生产数据和解释失败原因；错误建议可能直接造成数据不一致或停机。",
+      action: "先在影子迁移环境验证：记录 schema 转换命中率、SQL 修复率、人工修改、迁移耗时、回滚成功率、数据校验差异和敏感数据触达，再决定是否接入生产迁移链路。",
+    },
+    "消息称英伟达开发万亿参数开源 AI 模型 Nemotron 4，目标挑战全球顶级": {
+      signal: "开放权重大模型供应信号：英伟达万亿参数 Nemotron 4 传闻把芯片、推理框架和开放模型生态绑定在一起，竞争焦点不只是模型权重，而是 CUDA/推理栈/企业部署一体化。",
+      impact: "如果落地，会给私有化和本地 Agent 带来新候选，但传闻阶段不能据此调整架构；真实采用还取决于 license、量化、上下文、工具调用、serving 成本和供应连续性。",
+      action: "保持观察池：只在官方模型卡、权重、技术报告和 serving 框架支持出现后做本地 benchmark；评测表同时覆盖质量、吞吐、显存、许可证、微调和 fallback。",
+    },
+    "AMIE, our research medical AI system, demonstrates real-time clinical video consultation capabilities in a first-of-its-kind study.": {
+      signal: "医疗多模态 Agent 信号：Google AMIE 从文本问诊扩展到实时临床视频咨询研究，说明医疗 AI 正在处理视觉线索、语音交互、临床推理和不确定性沟通的组合任务。",
+      impact: "它对医疗产品的直接含义不是马上替代医生，而是远程分诊、病史采集和临床教育会要求更严格的视频质量、责任边界、隐私、偏差和专家复核。",
+      action: "医疗团队只在研究/模拟或辅助场景评估：分开记录临床准确性、危险建议、遗漏症状、患者理解、医生复核时间、隐私处理和地区监管要求。",
+    },
+    "Learning more about Claude's mathematical capabilities": {
+      signal: "数学科研 Agent 信号：Anthropic 官方披露未发布研究版 Claude 在黎曼 zeta 零点下界问题上产出可由专家和形式化证明检查的增量结果。",
+      impact: "这证明前沿模型可参与高难研究链条，但不等于公开 Claude 模型已经具备自治科研能力；企业应关注可验证工作流，而不是把研究版能力外推到日常模型。",
+      action: "科研/算法团队可借鉴评测结构：记录问题分解、候选引理、计算 artifact、专家复核、形式化证明、失败路径和模型版本可用性。",
+    },
     "消息称 Anthropic 最快今年 9 月上市，向投资者淡化 AI 模型竞争等挑战": {
       signal: "资本市场信号：AIHOT 把 Anthropic 上市传闻放到头条，说明 Claude 生态的竞争焦点正从单次模型发布扩展到资本、渠道和企业收入韧性。",
       impact: "这不会直接改变 Claude 能力，但会影响企业采购时对供应连续性、价格策略、生态投入和合规披露的判断；不能把传闻当成确定融资或上市事实。",
@@ -3818,6 +3843,10 @@ function buildEditorialReview({ reportDate, frontier = {}, aiNews = {} }) {
     .filter(isAnthropicItem)
     .map((item) => item.sourceDetail || item.source)
     .filter(Boolean));
+  const aiHotTitles = uniqueList((aiNews.aihot?.selected || [])
+    .map((item) => item.title)
+    .filter(Boolean))
+    .slice(0, 8);
   const verifiedLinks = [
     "https://github.com/trending?since=daily",
     "https://www.anthropic.com/news",
@@ -3900,7 +3929,7 @@ function buildEditorialReview({ reportDate, frontier = {}, aiNews = {} }) {
     sourceNotes: [
       `Anthropic official coverage includes ${anthropicSources.join("、") || "official News/Research/Engineering"} with Claude Tag, Economic Index, Claude Code practice, model updates, partnerships and safety research.`,
       "Anthropic/Claude pages checked this run: Aug 10 Claude math research official page, Aug 7 Claude Code auto mode default official blog, Aug 7 Fable 5 biology safeguards, Aug 6 Millennium risk analyst partnership, Aug 5 inference hooks / inline DLP, Aug 4 cost visibility and global affairs, Jul 30 cybersecurity evaluation incidents, Jul 28 MCP and cryptographic weaknesses, Jul 24 Claude Opus 5, plus Claude Code/Computer Use/Managed Agents coverage.",
-      "AIHOT Aug 11 checked for Unified Radix Cache, SGLang/NVIDIA Nemotron 3.5 Lightning, OpenAI Astra mathematics research, Ling-3.0-tiny, ZCode Goal/Subagents/Remote Control, ComfyUI MiniMax-H3 pipelines and agent-language evaluation; selected items are rewritten into concrete signal-impact-action recommendations.",
+      `AIHOT ${reportDate} checked${aiHotTitles.length ? ` for ${aiHotTitles.join("、")}` : ""}; selected items are rewritten into concrete signal-impact-action recommendations.`,
       "Claude Platform release notes checked for Managed Agents lifecycle hooks, effort configuration, initial events, memory/environment webhooks and session thread deltas; Computer Use and multi-agent operator coverage is tracked through Claude Code Agent View and recent Claude model/browser-agent updates.",
       `Search/ads/recommendation coverage includes ${frontierSources.join("、") || frontier.source || "Big Tech Engineering/RSS + arXiv"} and is interpreted through business problem, system mechanism, metrics/experiments, borrowable patterns and unsuitable boundaries.`,
       "Project reads distinguish architecture mechanism, team fit, landing path, production risk, decision question and watch signal; generic metadata summaries are treated as fallback only.",
