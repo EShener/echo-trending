@@ -3823,6 +3823,8 @@ function buildEditorialReview({ reportDate, frontier = {}, aiNews = {} }) {
     "https://www.anthropic.com/news",
     "https://www.anthropic.com/research",
     "https://www.anthropic.com/engineering",
+    "https://claude.com/blog/auto-mode-default-in-claude-code",
+    "https://www.anthropic.com/research/riemann-zeta",
     "https://www.anthropic.com/news/improving-fable-5-s-biology-safeguards",
     "https://www.anthropic.com/news/tino-cuellar",
     "https://www.anthropic.com/news/investigating-incidents-cybersecurity-evals",
@@ -3897,7 +3899,7 @@ function buildEditorialReview({ reportDate, frontier = {}, aiNews = {} }) {
     ],
     sourceNotes: [
       `Anthropic official coverage includes ${anthropicSources.join("、") || "official News/Research/Engineering"} with Claude Tag, Economic Index, Claude Code practice, model updates, partnerships and safety research.`,
-      "Anthropic/Claude pages checked this run: Aug 10 Claude math research via AIHOT, Aug 7 Fable 5 biology safeguards, Aug 6 Millennium risk analyst partnership, Aug 5 inference hooks / inline DLP, Aug 4 cost visibility and global affairs, Jul 30 cybersecurity evaluation incidents, Jul 28 MCP and cryptographic weaknesses, Jul 24 Claude Opus 5, plus Claude Code/Computer Use/Managed Agents coverage.",
+      "Anthropic/Claude pages checked this run: Aug 10 Claude math research official page, Aug 7 Claude Code auto mode default official blog, Aug 7 Fable 5 biology safeguards, Aug 6 Millennium risk analyst partnership, Aug 5 inference hooks / inline DLP, Aug 4 cost visibility and global affairs, Jul 30 cybersecurity evaluation incidents, Jul 28 MCP and cryptographic weaknesses, Jul 24 Claude Opus 5, plus Claude Code/Computer Use/Managed Agents coverage.",
       "AIHOT Aug 11 checked for Muse Glimmer/SGLang, OpenRouter Auto Router, Nvidia AI factory financing, Claude mathematics research, Claude Code auto mode, meeting-recording exposure, social AI writing/commenting, Databricks Genie Agents and computer-use agent benchmarking; selected items are rewritten into concrete signal-impact-action recommendations.",
       "Claude Platform release notes checked for Managed Agents lifecycle hooks, effort configuration, initial events, memory/environment webhooks and session thread deltas; Computer Use and multi-agent operator coverage is tracked through Claude Code Agent View and recent Claude model/browser-agent updates.",
       `Search/ads/recommendation coverage includes ${frontierSources.join("、") || frontier.source || "Big Tech Engineering/RSS + arXiv"} and is interpreted through business problem, system mechanism, metrics/experiments, borrowable patterns and unsuitable boundaries.`,
@@ -4033,6 +4035,34 @@ async function fetchAnthropicNewsItems(maxItems) {
 function seedAnthropicOfficialItems() {
   const favicon = "https://www.google.com/s2/favicons?domain=anthropic.com&sz=128";
   return [
+    {
+      source: "A社 Claude",
+      sourceDetail: "Claude 官方 Blog / Claude Code Auto Mode",
+      domain: "claude.com",
+      title: "Auto mode is now the default in Claude Code for Pro, Max, and Team plans",
+      url: "https://claude.com/blog/auto-mode-default-in-claude-code",
+      publishedAt: "2026-08-07T16:00:00Z",
+      summary: "Claude 官方博客宣布从 2026-08-14 起，Pro、Max 和 Team 新会话默认使用 Claude Code auto mode；Enterprise、API、AWS、Bedrock、Google Cloud Agent Platform 和 Microsoft Foundry 暂时仍为 opt-in。官方称 auto mode 用分类器拦截不可逆、破坏性或越界操作，内部/第三方红队、1053 名付费测试者研究和生产会话分析显示其安全性达到或超过手动审批，并提到 Teams/Enterprise auto mode 用户 PR 产出约提升 25%。",
+      imageUrl: favicon,
+      priority: 24,
+      signal: "Claude Code 自主执行信号：A 社把 auto mode 从可选加速能力推到默认权限模式，核心变化是由分类器替代大量人工逐次审批。",
+      impact: "开发团队会得到更长的无人值守执行窗口，但误改、越权、提示注入、成本和审查压力会集中到仓库策略、敏感路径、沙箱和回滚机制上。",
+      action: "上线前为 Claude Code 设定仓库级 managed settings、敏感路径白名单/黑名单、测试证据要求和人工接管阈值；按 PR 产出、block 命中、误放、误拒、回滚和 review 缺陷做周度复盘。",
+    },
+    {
+      source: "A社 Anthropic Research",
+      sourceDetail: "Anthropic 官方 Research / Mathematical Reasoning",
+      domain: "anthropic.com",
+      title: "Learning more about Claude's mathematical capabilities",
+      url: "https://www.anthropic.com/research/riemann-zeta",
+      publishedAt: "2026-08-10T16:00:00Z",
+      summary: "Anthropic 官方研究页披露，一个未发布研究版 Claude 在黎曼 zeta 函数零点问题上把满足黎曼猜想的零点比例下界从 41.6% 提升至 67.2%。这不是公开模型能力承诺，也不是直接证明黎曼猜想；它更像是长链条数学研究中 AI 生成候选证明、组合既有技术并接受专家验证的证据。",
+      imageUrl: favicon,
+      priority: 23,
+      signal: "数学科研 Agent 信号：Claude 开始在可专家复核的理论研究子问题上产生增量结果。",
+      impact: "企业研发不能把研究版能力外推到公开模型，但可以借鉴其工作流：问题分解、候选引理、计算辅助、专家审稿和可复现 artifact。",
+      action: "为科研/算法 Agent 建立五层评测：假设质量、推导链条、代码/计算证据、专家复核和失败路径记录，并明确模型版本是否公开可用。",
+    },
     {
       source: "A社 Anthropic",
       sourceDetail: "Anthropic 官方 News / Biology Safeguards",
