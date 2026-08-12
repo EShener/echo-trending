@@ -502,6 +502,12 @@ function buildAiNewsOverrideDiagramSummary(item, override) {
   return `从「${item.title}」抽取信号、影响和动作三段证据，围绕 ${tags} 展示观察对象、业务影响、验证指标和下一步决策边界。核心信号：${trimText(override.signal, 90)}`;
 }
 
+function enrichDiagramDetail(detail, fallback) {
+  const value = String(detail || "").trim();
+  if (value.length >= 48) return value;
+  return `${value}；${fallback}`;
+}
+
 async function readExistingReport(reportDate) {
   for (const filePath of [
     path.join(dataReportsDir, `${reportDate}.json`),
@@ -745,6 +751,22 @@ function codexResearchRefresh({ repo, readme, languages, fallback }) {
   const riskLine = `生产风险：${productionRisk}`;
   const decisionLine = `决策问题：${decisionQuestion}`;
   const watchLine = `观察信号：${watchSignal}`;
+  const diagramArchitectureDetail = enrichDiagramDetail(
+    architectureMechanism,
+    `围绕 ${lens.domain} 的 ${lens.inspectFirst} 展开，避免只按 README 标题或 star 数判断。`,
+  );
+  const diagramTeamDetail = enrichDiagramDetail(
+    applicableTeams,
+    `需要可回放样本、明确 owner，并用 ${lens.successMetric} 验证是否值得扩大。`,
+  );
+  const diagramAdoptionDetail = enrichDiagramDetail(
+    adoptionPath,
+    `从 ${lens.inspectFirst} 入手，先做旁路或低风险 spike。`,
+  );
+  const diagramWatchDetail = enrichDiagramDetail(
+    watchLine,
+    `同步观察 ${lens.successMetric}、维护节奏和失败样本。`,
+  );
 
   const architectureSignals = [
     architectureMechanism,
@@ -807,10 +829,10 @@ function codexResearchRefresh({ repo, readme, languages, fallback }) {
       caption: `${lens.domain} · ${primaryLang} · ${compact(repo.stargazers_count)} stars`,
       summary: `用 ${lens.coreMechanism} 解决 ${lens.userPain}，先经由 ${lens.safeEntry} 验证 ${lens.successMetric}，再决定是否扩大。`,
       nodes: [
-        { label: "架构机制", detail: lens.coreMechanism, type: "core" },
-        { label: "适用团队", detail: teamFit, type: "input" },
-        { label: "落地路径", detail: landingPath, type: "integration" },
-        { label: "观察信号", detail: watchSignal, type: "measure" },
+        { label: "架构机制", detail: diagramArchitectureDetail, type: "core" },
+        { label: "适用团队", detail: diagramTeamDetail, type: "input" },
+        { label: "落地路径", detail: diagramAdoptionDetail, type: "integration" },
+        { label: "观察信号", detail: diagramWatchDetail, type: "measure" },
       ],
       links: ["机制拆解", "试点验证", "指标放大"],
       poster: {
