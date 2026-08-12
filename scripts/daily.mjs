@@ -138,6 +138,21 @@ async function buildReport({ reportDate, limit, days, language }) {
 
 function applyEditorialOverrides(report) {
   const aiNewsOverrides = {
+    "Claude in Chrome 侧边栏升级为 Claude Cowork 会话": {
+      signal: "Claude 浏览器侧边栏产品化信号：Claude in Chrome 从临时扩展面板升级为可保存历史的 Cowork 会话，并把 skills、connectors 与跨桌面/网页/移动端续接放进浏览器工作流。",
+      impact: "浏览器会成为企业 Agent 的高频执行面，权限继承、网页注入、账号上下文、连接器数据触达和跨端任务恢复会一起进入安全与产品评测范围。",
+      action: "用 10 个真实浏览器任务做 shadow run：记录会话恢复、连接器调用、敏感字段触达、人工接管、网页注入样本、审计日志和跨端继续成功率，再决定是否开放给团队。",
+    },
+    "AutoGPT 如何用 AGENTS.md 和技能门控管理 AI 生成的拉取请求": {
+      signal: "AI-first 维护者工作流信号：AutoGPT 把贡献规则从散落文档前移到代码旁的 AGENTS.md 和 skill 文件，并用 PR 模板、测试计划、覆盖率、CI 与 CLA 签名门控筛选 Agent 产出。",
+      impact: "开源和企业仓库会面对越来越多 AI 生成 PR；真正的瓶颈不是能否生成代码，而是 Agent 是否读到局部规则、是否能给出可审测试证据，以及维护者能否控制路线图偏移。",
+      action: "为核心仓库补一版 Agent 贡献协议：按目录放置 AGENTS.md，强制测试计划、影响面、回滚说明和 CI 证据，并统计 AI PR 的可合并率、返工类型、review 时间和路线图偏离率。",
+    },
+    "空货架还是丢钥匙？Google 研究：Recall 是参数化事实性的瓶颈": {
+      signal: "参数化事实性诊断信号：Google Research 用知识画像把事实错误拆成编码失败、回忆失败和识别失败，结论指向前沿模型很多错误不是没存知识，而是问题触发时找不到正确事实。",
+      impact: "企业知识问答和搜索增强不能只扩大模型或继续灌上下文；如果 recall 是瓶颈，评测要同时覆盖同一事实的多问法、检索提示、拒答校准和模型自知边界。",
+      action: "把 WikiProfile 式评测迁移到内部知识库：每条关键事实构造 5-10 种问法，分别记录直接回答、RAG 回答、引用命中、识别错误和人工复核成本，用结果决定是否加强检索或微调。",
+    },
     "我写了一本 AI 教科书--AI 还要多久才能写得更好？": {
       signal: "长文写作能力边界信号：RLHF 教科书作者的复盘说明，前沿模型在代码、数学等可验证任务上进展很快，但在整章级非虚构写作里仍容易结构漂移、论证断裂和事实细节出错。",
       impact: "知识产品、研究综述和企业文档不能把“模型会润色”外推成“模型能独立写成体系材料”；真正影响是编辑角色会前移到大纲、证据组织、章节一致性和错误审计。",
