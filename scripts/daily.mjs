@@ -138,6 +138,36 @@ async function buildReport({ reportDate, limit, days, language }) {
 
 function applyEditorialOverrides(report) {
   const aiNewsOverrides = {
+    "零基础用户半天上手AI的12步实操流程": {
+      signal: "AI 普及工作流信号：这条 AIHOT 不是模型发布，而是把“设备准备、付费入口、语音输入、需求澄清、文件投喂、交付复核、沉淀 Skill”串成半天上手路径，说明普通用户的门槛正在从学提示词转向按流程委托任务。",
+      impact: "对企业和个人团队的影响是培训口径要变：重点不再是介绍模型参数，而是教会用户描述背景/痛点/需求、让 AI 反问澄清、保留来源文件、检查结果并把可重复任务资产化。",
+      action: "把它作为入门培训样本：设计 3 个真实小任务，记录首次完成时间、AI 反问质量、文件引用错误、人工修改量、可复用 Skill 数量和敏感信息误投喂次数。",
+    },
+    "Auto mode is now the default in Claude Code for Pro, Max, and Team plans": {
+      signal: "Claude Code 自主执行信号：A 社把 auto mode 从可选加速能力推到 Pro、Max、Team 新会话默认模式，关键变化是分类器替代大量逐次人工审批。",
+      impact: "开发团队会得到更长的无人值守执行窗口，但误改、越权、提示注入、成本和 review 压力会集中到仓库策略、敏感路径、沙箱和回滚机制上。",
+      action: "为 Claude Code 设仓库级策略：限制破坏性命令和敏感路径，要求测试/截图/静态检查证据，并按 PR 产出、block 命中、误放、误拒、回滚和 review 缺陷做周复盘。",
+    },
+    "Millennium and Anthropic are building a digital risk analyst with Claude": {
+      signal: "金融企业 Agent 信号：Claude 正被包装成投资风险工作流里的数字分析师，而不是通用聊天助手，落点在研究材料综合、组合风险解释和专家复核。",
+      impact: "高价值知识工作会更快采用 Claude，但金融/风控场景对来源引用、模型版本、权限、数据驻留、人工签核和审计链的要求远高于普通企业助手。",
+      action: "以 shadow analyst 方式试点：让 Claude 只生成风险假设、证据链接和反例清单，由人类 analyst 签核，并记录命中率、幻觉、延迟、成本和合规审查问题。",
+    },
+    "Inference hooks: inline data loss prevention for Claude Enterprise": {
+      signal: "企业 Agent 安全信号：A 社把 DLP 从事后审计前移到推理前的内联 allow/deny 层，并覆盖 Claude Code、Cowork、MCP、skills 和 plugins。",
+      impact: "Claude Enterprise 的安全边界不再只靠员工培训或日志审计；安全团队需要拥有低延迟、可灰度、可回退的策略服务，否则会影响所有 Claude 工作面。",
+      action: "先以 shadow mode 接入现有 DLP/AI security server，记录命中率、误拒、超时、工具响应拦截、敏感字段类别和业务中断，再对高风险团队启用 deny 策略。",
+    },
+    "Claude Managed Agents add effort, lifecycle webhooks and session deltas": {
+      signal: "Managed Agents 平台信号：A 社正在补齐长任务 Agent 的 effort 配置、环境/记忆生命周期 webhook、初始事件和线程增量输出。",
+      impact: "企业可以把 Agent 当作异步工作单元接入后台流程，但状态机、幂等重试、预算、权限和失败通知会成为平台责任，而不是应用团队临时处理。",
+      action: "设计 Agent 作业表：记录 session、effort、输入权限、webhook 事件、memory/environment 生命周期、增量输出、人工审批和取消/重试策略，再接真实业务。",
+    },
+    "New in Claude Managed Agents: self-hosted sandboxes and MCP tunnels": {
+      signal: "Managed Agents 执行边界信号：A 社把 Agent loop 与企业自管 sandbox/MCP tunnel 拆层，试图让工具执行、私有服务访问和网络策略留在企业边界内。",
+      impact: "这会降低企业把 Claude Agent 接入内部代码库、数据库和服务的阻力，但安全责任会分布在 Anthropic、sandbox provider、MCP gateway 和内部 owner 之间。",
+      action: "先用只读 MCP server 和自管 sandbox 做 shadow run：验证网络出口、凭据注入、文件留存、工具日志、资源上限、取消/恢复和审计证据，再开放写操作。",
+    },
     "ChatGPT 与 Gemini 双双突破 10 亿用户": {
       signal: "大众化采用信号：ChatGPT 与 Gemini 同时进入十亿级用户叙事，说明前沿 AI 的竞争已经从模型发布扩展到默认入口、账号体系、移动端和企业工作流渗透。",
       impact: "应用团队不能只比较单模型 benchmark；用户迁移成本、历史数据、跨设备连续性、插件/连接器生态和企业管理能力会影响真实留存与付费。",
@@ -313,6 +343,11 @@ function applyEditorialOverrides(report) {
       impact: "后量子算法、加密库和安全标准评估会更频繁面对 AI 辅助发现的候选弱点，但短期仍需专家证明和负责任披露。",
       action: "建立 AI-assisted cryptanalysis 观察清单：区分生产影响、缩减轮实验、候选标准、专家复核和披露状态，不把研究结果直接等同于可利用漏洞。",
     },
+    "Project Pilot: Can AI control a drone?": {
+      signal: "物理 Agent 红队信号：Anthropic 与 Andon Labs 用 Drone-Bench 评估模型自主执行无人机 locate-and-follow 任务，把 frontier eval 从软件/网页扩展到具备监视和物理后果的控制链路。",
+      impact: "机器人、安防、巡检和工业自动化团队会更快看到通用模型进入物理控制系统的压力，但误识别、越界跟随、通信中断和责任归属风险会明显高于纯软件 Agent。",
+      action: "所有 physical AI 试点先限定仿真和隔离场地，配置动作白名单、地理围栏、人工急停、日志回放和责任边界；禁止直接接生产设备或真实目标。",
+    },
     "Cognizant and Anthropic expand their partnership to bring Claude to enterprise clients": {
       signal: "企业渠道信号：Claude 正通过全球 SI 伙伴进入行业流程，而不是只靠 API 或聊天产品自助扩散。",
       impact: "大型企业落地速度会提高，但责任边界会扩展到实施伙伴、流程改造、员工培训和数据治理。",
@@ -408,6 +443,11 @@ function applyEditorialOverrides(report) {
       impact: "团队可能把更多规划、重构和分析任务迁到 Claude，但成本、速度、权限隔离和失败恢复会决定是否能进入生产工作流。",
       action: "用长任务评测集对比 Sonnet/Opus/竞品：记录任务完成率、上下文遗漏、工具误用、成本、人工接管和多小时会话恢复。",
     },
+    "Introducing Claude Sonnet 5": {
+      signal: "Claude 模型更新信号：Sonnet 5 被定位为更 agentic 的主力模型，同时官方将 2026-08-10 的 $2/MTok input、$10/MTok output 引导价改为长期价格，说明模型竞争正在落到能力/成本曲线和工具执行稳定性。",
+      impact: "团队不能只按 Sonnet/Opus 名称升级；Sonnet 5 是否进入生产取决于 coding、browser/computer use、cyber safeguards、长任务权限、延迟和预算是否同时满足。",
+      action: "做 Sonnet 5 灰度回放：同一批 Claude Code、浏览器任务、数据分析和安全边界样本对比 Sonnet/Opus/现有模型，记录完成率、人工接管、工具误用、成本、P95 延迟和审计证据。",
+    },
     "Introducing Claude Opus 4.8": {
       signal: "模型迭代信号：Opus 4.8 仍值得作为 Opus 5 前后的能力/成本参照，尤其观察 coding、推理和工具调用差异。",
       impact: "如果现有生产链路已锁定 4.x，升级不应只看新模型跑分，而要验证延迟、价格、稳定性和安全策略变化。",
@@ -419,9 +459,9 @@ function applyEditorialOverrides(report) {
       action: "复刻前先选一个低风险流程，列清系统接口、审批点、失败回退、审计日志和业务 KPI，再让 Agent 进入 shadow 模式。",
     },
     "Claude Managed Agents add effort, lifecycle webhooks and session deltas": {
-      signal: "Agent 平台化信号：Managed Agents 加入 effort、生命周期 webhook 和 session delta，说明长任务 Agent 正在补齐可观测、可恢复和可编排接口。",
-      impact: "企业可以把 Agent 当作异步工作单元接入后台流程，但同时需要预算上限、状态机、幂等重试和失败通知。",
-      action: "设计 Agent 作业表：记录 session、effort、输入权限、webhook 事件、增量输出、人工审批和取消/重试策略，再接真实业务。",
+      signal: "Managed Agents 平台信号：A 社正在补齐长任务 Agent 的 effort 配置、环境/记忆生命周期 webhook、初始事件和线程增量输出。",
+      impact: "企业可以把 Agent 当作异步工作单元接入后台流程，但状态机、幂等重试、预算、权限和失败通知会成为平台责任，而不是应用团队临时处理。",
+      action: "设计 Agent 作业表：记录 session、effort、输入权限、webhook 事件、memory/environment 生命周期、增量输出、人工审批和取消/重试策略，再接真实业务。",
     },
     "Ben Bernanke appointed to Anthropic's Long-Term Benefit Trust": {
       signal: "治理结构信号：Anthropic 引入宏观政策和公共治理背景的受托人，强化外部监督叙事。",
@@ -3861,7 +3901,12 @@ function buildAnthropicSection(aiNews = {}) {
       const aDate = Date.parse(a.publishedAt || "");
       if (!Number.isNaN(bDate) || !Number.isNaN(aDate)) return (Number.isNaN(bDate) ? 0 : bDate) - (Number.isNaN(aDate) ? 0 : aDate);
       return (b.anthropicScore || 0) - (a.anthropicScore || 0);
-    });
+    })
+    .map((item, index) => ({
+      ...item,
+      rank: index + 1,
+      ...enrichAiNews(item),
+    }));
   const officialSections = uniqueList(
     items
       .map((item) => item.sourceDetail || item.source || "")
