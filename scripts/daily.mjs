@@ -544,12 +544,28 @@ function applyEditorialOverrides(report) {
       item.diagram.summary = buildAiNewsOverrideDiagramSummary(item, override);
     }
   }
-  return report;
+  return sanitizeReportText(report);
 }
 
 function buildAiNewsOverrideDiagramSummary(item, override) {
   const tags = Array.isArray(item.tags) && item.tags.length ? item.tags.slice(0, 3).join("、") : "AI 技术雷达";
   return `从「${item.title}」抽取信号、影响和动作三段证据，围绕 ${tags} 展示观察对象、业务影响、验证指标和下一步决策边界。核心信号：${trimText(override.signal, 90)}`;
+}
+
+function sanitizeReportText(value) {
+  if (Array.isArray(value)) return value.map(sanitizeReportText);
+  if (value && typeof value === "object") {
+    return Object.fromEntries(Object.entries(value).map(([key, item]) => [key, sanitizeReportText(item)]));
+  }
+  if (typeof value !== "string") return value;
+  return value
+    .replace(/用\s+用/gu, "用")
+    .replace(/。；/gu, "；")
+    .replace(/，」/gu, "」")
+    .replace(/」」/gu, "」")
+    .replace(/。\s+(解决|验证|是否|能否|如何)/gu, "，$1")
+    .replace(/。，/gu, "，")
+    .replace(/\s+([，。；：])/gu, "$1");
 }
 
 function enrichDiagramDetail(detail, fallback) {
@@ -773,7 +789,7 @@ function preserveEditorialAnalysis(previousAnalysis, generatedAnalysis) {
   if (!previousAnalysis || !previousMethod.includes("manual-deep-update")) return generatedAnalysis;
   if (!generatedMethod || generatedMethod === "llm") return generatedAnalysis;
   return {
-    ...previousAnalysis,
+    ...generatedAnalysis,
     method: previousAnalysis.method,
     maturity: {
       ...(previousAnalysis.maturity || {}),
@@ -783,19 +799,33 @@ function preserveEditorialAnalysis(previousAnalysis, generatedAnalysis) {
   };
 }
 
+function cleanEmbeddedSentence(value = "") {
+  return String(value).trim().replace(/[。；;,.，\s]+$/u, "");
+}
+
+function mechanismPhrase(value = "") {
+  const cleaned = cleanEmbeddedSentence(value);
+  if (/^(用|以|通过|把|将)/u.test(cleaned)) return cleaned;
+  return `用${cleaned}`;
+}
+
 function codexResearchRefresh({ repo, readme, languages, fallback }) {
   const lens = specializeLens(repo, inferProjectLens({ repo, readme, languages }));
   const profile = extractRepoProfile({ repo, readme, languages });
   const primaryLang = lens.primaryLang || Object.keys(languages)[0] || repo.language || "unknown";
   const project = repo.full_name;
   const teamFit = lens.bestFit || describeTeamFit(lens, repo);
-  const landingPath = lens.safeEntry
-    ? `${lens.safeEntry}；先保留人工复核、指标记录和回滚路径。`
-    : describeLandingPath(lens, repo, profile);
+  const coreMechanism = cleanEmbeddedSentence(lens.coreMechanism);
+  const userPain = cleanEmbeddedSentence(lens.userPain);
+  const businessValue = cleanEmbeddedSentence(lens.businessValue);
+  const successMetric = cleanEmbeddedSentence(lens.successMetric);
+  const inspectFirst = cleanEmbeddedSentence(lens.inspectFirst);
+  const safeEntry = cleanEmbeddedSentence(lens.safeEntry || describeLandingPath(lens, repo, profile));
+  const landingPath = `${safeEntry}；先保留人工复核、指标记录和回滚路径。`;
   const productionRisk = describeProductionRisk(lens, repo);
   const watchSignal = describeWatchSignal(lens, repo, profile);
   const decisionQuestion = describeDecisionQuestion(lens, repo);
-  const architectureMechanism = `架构机制：${lens.coreMechanism}；阅读时把 ${primaryLang} 代码入口、数据/配置形态、自动化脚本和边界条件连起来看，而不是只看 README 的安装示例。`;
+  const architectureMechanism = `架构机制：${coreMechanism}；阅读时把 ${primaryLang} 代码入口、数据/配置形态、自动化脚本和边界条件连起来看，而不是只看 README 的安装示例。`;
   const applicableTeams = `适用团队：${teamFit}`;
   const adoptionPath = `落地路径：${landingPath}`;
   const riskLine = `生产风险：${productionRisk}`;
@@ -803,19 +833,19 @@ function codexResearchRefresh({ repo, readme, languages, fallback }) {
   const watchLine = `观察信号：${watchSignal}`;
   const diagramArchitectureDetail = enrichDiagramDetail(
     architectureMechanism,
-    `围绕 ${lens.domain} 的 ${lens.inspectFirst} 展开，避免只按 README 标题或 star 数判断。`,
+    `围绕 ${lens.domain} 的 ${inspectFirst} 展开，避免只按 README 标题或 star 数判断。`,
   );
   const diagramTeamDetail = enrichDiagramDetail(
     applicableTeams,
-    `需要可回放样本、明确 owner，并用 ${lens.successMetric} 验证是否值得扩大。`,
+    `需要可回放样本、明确 owner，并用 ${successMetric} 验证是否值得扩大。`,
   );
   const diagramAdoptionDetail = enrichDiagramDetail(
     adoptionPath,
-    `从 ${lens.inspectFirst} 入手，先做旁路或低风险 spike。`,
+    `从 ${inspectFirst} 入手，先做旁路或低风险 spike。`,
   );
   const diagramWatchDetail = enrichDiagramDetail(
     watchLine,
-    `同步观察 ${lens.successMetric}、维护节奏和失败样本。`,
+    `同步观察 ${successMetric}、维护节奏和失败样本。`,
   );
 
   const architectureSignals = [
@@ -852,24 +882,24 @@ function codexResearchRefresh({ repo, readme, languages, fallback }) {
     category: lens.domain,
     method: lens.editorialMethod || "codex-research-refresh",
     oneLiner: sharpenOneLiner(repo, lens, fallback.oneLiner),
-    whyItMatters: `${fallback.whyItMatters} 这次更新更值得关注的是其可迁移机制：${lens.coreMechanism} 能否被拆成小样本验证，而不是把项目整体搬进生产。`,
+    whyItMatters: `${fallback.whyItMatters} 这次更新更值得关注的是其可迁移机制：${coreMechanism} 能否被拆成小样本验证，而不是把项目整体搬进生产。`,
     engineeringRead: `${primaryLang} · ${profile.installSurface}。建议按“入口示例 -> 数据/配置 -> 失败处理 -> CI/release -> issue 反例”的顺序读；重点回答 ${decisionQuestion}`,
     architectureSignals,
     valueHypothesis: [
-      `如果团队确实存在「${lens.userPain}」，${project} 的收益应体现为 ${lens.successMetric} 的改善。`,
+      `如果团队确实存在「${userPain}」，${project} 的收益应体现为 ${successMetric} 的改善。`,
       `适合先复制机制、接口或治理方式，不适合未验证成本就全量迁移。`,
       `若 ${lens.badFit}，它更适合作为资料样本，而不是生产依赖。`,
     ],
     technicalTakeaways: [
-      `先抓 ${lens.inspectFirst}，再决定 spike 范围。`,
-      `图解字段应突出 ${lens.coreMechanism} 如何把 ${lens.userPain} 转成 ${lens.businessValue}。`,
+      `先抓 ${inspectFirst}，再决定 spike 范围。`,
+      `图解字段应突出 ${coreMechanism} 如何把 ${userPain} 转成 ${businessValue}。`,
       `验收时同时记录正样本、失败样本、成本、延迟和维护 owner。`,
     ],
     adoptionRisks: deepDive.productionConcerns,
     suggestedUseCases: deepDive.implementationPath,
     watchSignals: [
       watchSignal,
-      `release note 是否持续解释 ${lens.coreMechanism} 的演进，而不只是功能堆叠。`,
+      `release note 是否持续解释 ${coreMechanism} 的演进，而不只是功能堆叠。`,
       `issue/讨论区是否出现与你的目标场景相似的真实案例和失败反馈。`,
     ],
     deepDive,
@@ -877,7 +907,7 @@ function codexResearchRefresh({ repo, readme, languages, fallback }) {
       ...fallback.diagram,
       title: `${repo.name} 工业级采用图解`,
       caption: `${lens.domain} · ${primaryLang} · ${compact(repo.stargazers_count)} stars`,
-      summary: `用 ${lens.coreMechanism} 解决 ${lens.userPain}，先经由 ${lens.safeEntry} 验证 ${lens.successMetric}，再决定是否扩大。`,
+      summary: `${mechanismPhrase(coreMechanism)}，解决「${userPain}」；先经由「${safeEntry}」验证 ${successMetric}，再决定是否扩大。`,
       nodes: [
         { label: "架构机制", detail: diagramArchitectureDetail, type: "core" },
         { label: "适用团队", detail: diagramTeamDetail, type: "input" },
@@ -888,16 +918,16 @@ function codexResearchRefresh({ repo, readme, languages, fallback }) {
       poster: {
         ...fallback.diagram.poster,
         headline: lens.domain,
-        thesis: `把「${lens.userPain}」通过「${lens.coreMechanism}」转化为「${lens.businessValue}」。`,
+        thesis: `把「${userPain}」通过「${coreMechanism}」转化为「${businessValue}」。`,
         lanes: [
-          { label: "架构机制", detail: lens.coreMechanism, type: "core", step: "01", signal: lens.inspectFirst },
+          { label: "架构机制", detail: coreMechanism, type: "core", step: "01", signal: inspectFirst },
           { label: "适用团队", detail: teamFit, type: "input", step: "02", signal: lens.bestFit },
-          { label: "落地路径", detail: landingPath, type: "integration", step: "03", signal: lens.safeEntry },
-          { label: "观察信号", detail: watchSignal, type: "measure", step: "04", signal: lens.successMetric },
+          { label: "落地路径", detail: landingPath, type: "integration", step: "03", signal: safeEntry },
+          { label: "观察信号", detail: watchSignal, type: "measure", step: "04", signal: successMetric },
         ],
         adoption: [
-          { label: "试点入口", detail: lens.safeEntry },
-          { label: "验收指标", detail: lens.successMetric },
+          { label: "试点入口", detail: safeEntry },
+          { label: "验收指标", detail: successMetric },
           { label: "生产风险", detail: productionRisk },
           { label: "决策问题", detail: decisionQuestion },
         ],
