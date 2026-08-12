@@ -163,6 +163,11 @@ function applyEditorialOverrides(report) {
       impact: "对企业和个人团队的影响是培训口径要变：重点不再是介绍模型参数，而是教会用户描述背景/痛点/需求、让 AI 反问澄清、保留来源文件、检查结果并把可重复任务资产化。",
       action: "把它作为入门培训样本：设计 3 个真实小任务，记录首次完成时间、AI 反问质量、文件引用错误、人工修改量、可复用 Skill 数量和敏感信息误投喂次数。",
     },
+    "Introducing OlmoEarth embeddings: Custom embedding exports from OlmoEarth Studio for downstream analysis": {
+      signal: "地球观测 embedding 产品化信号：OlmoEarth Studio 开始支持自定义 embedding 导出，说明遥感/气候基础模型正从交互式可视化走向可下载、可接入下游分析管线的表征层。",
+      impact: "地理、农业、能源、保险和公共部门团队可以把卫星影像表征接入聚类、相似区域检索、变化检测或风险分层，但 embedding 质量会受区域、传感器、时间窗口、云遮挡和标签稀缺影响。",
+      action: "先选 2-3 个明确业务问题离线验证：固定区域、时间、分辨率和标签集，对比传统遥感特征与 OlmoEarth embedding 的检索/聚类效果、人工复核量、漂移样本和导出成本。",
+    },
     "Mojo 1.0 正式发布：为生态系统增长提供稳定基础": {
       signal: "AI 系统语言成熟度信号：Mojo 1.0 的意义不是又一个语法发布，而是 AI/高性能计算生态开始追求 Python 体验、系统级性能、稳定语义和包生态之间的长期平衡。",
       impact: "模型推理、数据处理、内核开发和性能敏感 Python 团队会多一个迁移候选，但 1.0 只解决稳定性入口，真实采用仍取决于库兼容、调试工具、部署链路、团队学习成本和与现有 C++/Rust/Python 的边界。",
