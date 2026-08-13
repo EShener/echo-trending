@@ -138,6 +138,21 @@ async function buildReport({ reportDate, limit, days, language }) {
 
 function applyEditorialOverrides(report) {
   const aiNewsOverrides = {
+    "Claude 接管应用日常维护：388 个 PR 的实践": {
+      signal: "Coding Agent 维护能力信号：Boris Cherny 披露 Claude 参与应用日常维护并形成 388 个 PR，重点不是单次代码生成，而是长周期 issue 分解、补丁生成、review 循环和回归验证能否进入真实仓库节奏。",
+      impact: "研发团队会更想把重复维护、依赖升级、测试修复和小功能交给 Agent，但风险会集中在批量 PR 质量、上下文漂移、测试覆盖错觉、review 堆积、权限边界和路线图被低价值改动挤占。",
+      action: "把它作为可验证案例而非直接结论：在一个低风险仓库试点 20 个维护任务，记录 PR 可合并率、review 轮次、测试失败、线上缺陷、人工修正时间、越权命令和任务选择策略。",
+    },
+    "Record, train, and deploy from one place with Strands Agents, LeRobot, and Hugging Face Storage Buckets": {
+      signal: "机器人数据闭环信号：Hugging Face 将 Strands Agents、LeRobot 和 Storage Buckets 串成采集、训练、存储、部署一体链路，说明具身智能平台竞争正在从单个模型/机械臂 demo 转向可复现实验流水线。",
+      impact: "机器人、边缘 AI 和工业原型团队能更快沉淀真实操作数据，但生产约束会集中在数据版本、遥操作质量、隐私/安全、sim-to-real 偏差、硬件故障和模型发布回滚。",
+      action: "先做封闭场景 smoke test：固定一个 pick/place 或巡检任务，记录采样次数、失败标签、训练耗时、策略成功率、硬件异常、数据集权限和部署回滚路径，再决定是否扩大采集。",
+    },
+    "Reviewing the evidence on worker retraining programs": {
+      signal: "AI 劳动力转型信号：Anthropic 官方研究把 worker retraining 证据作为经济影响议题，而不是模型能力发布，说明 A 社正在为企业采用 Claude 后的岗位再培训、技能迁移和政策沟通建立研究叙事。",
+      impact: "企业采购 Claude/Agent 时不能只评估效率收益，还要预估岗位任务重组、培训投入、内部流动、员工接受度和外部合规叙事；否则 AI 落地会在组织层面遇到阻力。",
+      action: "把 retraining 纳入 Claude 试点验收：按岗位拆分可自动化任务、需人类判断任务和新增监督任务，记录培训时长、转岗成功率、产出质量、员工反馈和流程 owner 责任。",
+    },
     "MiniMax Music 3.0 发布：新一代开源权重、生产级全能音乐模型": {
       signal: "音乐生成模型开源权重信号：MiniMax Music 3.0 把生产级歌曲生成、开放权重和官方博客发布放到同一叙事里，竞争点从单段旋律 demo 转向可复用、可部署、可评测的音乐创作基座。",
       impact: "内容、广告和短视频团队会更容易把音乐生成纳入素材管线，但真正约束会集中在版权授权、风格相似性、中文歌词对齐、长音频结构、批量成本和人工审听效率。",
