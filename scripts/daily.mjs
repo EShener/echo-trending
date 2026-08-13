@@ -3443,7 +3443,7 @@ function curatedFrontierInterpretation(item) {
       systemMechanism: "PAI-Rec 用优先级截断和蛇形混排控制各召回路进入精排的数量，把业务配额、召回质量和精排成本变成可配置策略。",
       metricsAndExperiment: "看各召回路贡献、精排入口规模、P95 延迟、CTR/CVR、覆盖率、多样性、运营位达成率和新内容冷启动表现。",
       borrowable: "中小推荐团队可先把召回结果统一打标签，再用可解释的截断/混排策略替代隐式 if-else，便于实验和回滚。",
-      boundary: "如果召回路质量没有可观测归因，截断策略会变成拍脑袋配额，长期压制探索和新路验证。",
+      boundary: "如果召回路质量没有可观测归因，或者缺少按召回源、业务桶和用户分层的线上实验，截断策略会变成拍脑袋配额，长期压制探索、新路验证和长尾内容冷启动。",
     },
     [normalizeTitle("MTGR：美团外卖生成式推荐Scaling Law落地实践")]: {
       businessProblem: "外卖推荐既有高频短周期兴趣，又有商家、时段、配送、价格和转化目标约束；传统 DLRM 特征体系能稳定上线，但难以充分吸收长行为序列和跨场景上下文。",
