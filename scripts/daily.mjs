@@ -138,6 +138,31 @@ async function buildReport({ reportDate, limit, days, language }) {
 
 function applyEditorialOverrides(report) {
   const aiNewsOverrides = {
+    "DeepSeek Harness v0.1 开发者预览版发布": {
+      signal: "Agent 框架插件化信号：DeepSeek Harness v0.1 把模型、工具、技能、会话、沙箱、文件系统、循环、编排和 UI 都抽象成可替换插件，说明国内 Agent 框架竞争正在从单模型调用转向可组合运行时。",
+      impact: "对研发团队的影响不是马上替换现有 Agent 平台，而是多 provider、多工具和多前端的适配成本会被下沉到插件边界；如果插件协议、沙箱和会话状态不稳，扩展性会变成调试成本。",
+      action: "用一个小型研发任务做 2 小时 smoke test：接入一个模型、两个工具、文件沙箱和会话恢复，记录插件开发量、权限边界、错误回放、UI 可观测性和 MIT 许可下的二次开发风险。",
+    },
+    "DeepSeek-V4-Pro 正式版上线，Agent 能力大幅增强": {
+      signal: "国产模型 Agent 能力信号：DeepSeek-V4-Pro 同步开放 App、网页端和 API，并把 HLE、Terminal Bench 等工具/终端任务指标放到发布信息里，竞争点从聊天质量转向可执行任务能力。",
+      impact: "团队会更容易把 DeepSeek 纳入 Agent 候选池，但 benchmark 提升不等于生产可靠；长任务稳定性、工具误用、上下文恢复、成本、限流和审计能力仍要用真实工作流验证。",
+      action: "把 DeepSeek-V4-Pro 放入同一 Agent 回放集：覆盖代码修改、终端排障、数据查询和文档生成，记录完成率、人工接管、工具错误、token 成本、P95 延迟和失败样本。",
+    },
+    "小红书开源连续自回归语音合成模型 dots.tts：打造可持续扩展的 TTS 基座": {
+      signal: "中文 TTS 基座开源信号：小红书 dots.tts 以 20 亿参数连续自回归端到端路线开源，并用内容准确度和说话人相似度强调可扩展语音生成，而不是只展示单条 demo 音色。",
+      impact: "内容生产、虚拟人和客服语音团队会得到新的中文开源候选，但生产约束会集中在长音频稳定性、音色授权、韵律可控、低质文本鲁棒性、推理成本和滥用治理。",
+      action: "用 30 条真实中文脚本做离线评测：覆盖短句、长段落、多说话人、数字/英文混读和噪声文本，记录 CER、说话人相似度、自然度、生成耗时、显存和授权边界。",
+    },
+    "WorkBuddy上线远程控制，国内也有了最丝滑的Agent工作方式": {
+      signal: "跨端 Agent 执行面信号：WorkBuddy 把 PC、App 和小程序的任务、对话、工作空间与产物同步起来，并加入手机远程控制电脑、多资料库、多人 Markdown 和 HTML 发布链路。",
+      impact: "Agent 产品正在从桌面助手转向跨设备工作台；真正风险在账号权限继承、远程控制误操作、资料库数据边界、多人协作冲突、产物公开链接和企业审计缺口。",
+      action: "先用沙箱电脑和低敏资料库试用：记录远程接管成功率、敏感文件触达、多人编辑冲突、发布链接权限、任务恢复和完整操作日志，再判断是否进入团队试点。",
+    },
+    "新兴多智能体系统的模式与问题": {
+      signal: "多智能体系统安全信号：Anthropic 把多个 Agent 在共享代码库、市场和社会系统中的交互作为研究对象，并用协调漏洞发现与独立并行方法对比，提示系统级行为不能从单个 Agent 良性表现直接外推。",
+      impact: "企业若把多个 Agent 同时接入代码、交易、运营或客服流程，收益会来自分工和覆盖率，风险也会来自竞争、重复动作、资源争用、隐性共谋和局部策略叠加后的系统性失败。",
+      action: "多 Agent 试点必须先做隔离回放：限定共享资源、消息协议、终止条件和仲裁者，记录重复操作、冲突率、漏洞/任务增益、token 消耗、失控路径和人工接管证据。",
+    },
     "Claude in Chrome 侧边栏升级为 Claude Cowork 会话": {
       signal: "Claude 浏览器侧边栏产品化信号：Claude in Chrome 从临时扩展面板升级为可保存历史的 Cowork 会话，并把 skills、connectors 与跨桌面/网页/移动端续接放进浏览器工作流。",
       impact: "浏览器会成为企业 Agent 的高频执行面，权限继承、网页注入、账号上下文、连接器数据触达和跨端任务恢复会一起进入安全与产品评测范围。",
@@ -530,7 +555,13 @@ function applyEditorialOverrides(report) {
     },
   };
 
-  for (const item of [...(report.aiNews?.items || []), ...(report.anthropic?.items || [])]) {
+  const aiHotSectionItems = (report.aiNews?.aihot?.sections || []).flatMap((section) => section.items || []);
+  for (const item of [
+    ...(report.aiNews?.items || []),
+    ...(report.aiNews?.aihot?.selected || []),
+    ...aiHotSectionItems,
+    ...(report.anthropic?.items || []),
+  ]) {
     const override = aiNewsOverrides[item.title];
     if (!override) continue;
     Object.assign(item, override);
