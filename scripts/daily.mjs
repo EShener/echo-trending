@@ -288,6 +288,11 @@ function applyEditorialOverrides(report) {
       impact: "这证明前沿模型可参与高难研究链条，但不等于公开 Claude 模型已经具备自治科研能力；企业应关注可验证工作流，而不是把研究版能力外推到日常模型。",
       action: "科研/算法团队可借鉴评测结构：记录问题分解、候选引理、计算 artifact、专家复核、形式化证明、失败路径和模型版本可用性。",
     },
+    "阿里开放 Qwen3.8-2.4T-A95B 模型权重：2.4T MoE、激活 95B、原生 256K 上下文": {
+      signal: "国产开放权重 MoE 信号：Qwen3.8-2.4T-A95B 把超大总参数、95B 激活规模和原生 256K 上下文放到开放权重叙事中，竞争点从单模型能力扩展到长上下文、私有化部署和推理栈承载能力。",
+      impact: "团队会更容易把 Qwen 放进本地/专有数据场景候选池，但 2.4T 总参数不等于低成本可用；真实影响取决于量化质量、MoE 路由稳定性、长上下文记忆退化、中文/代码任务表现和 serving 框架支持。",
+      action: "先做受控回放而不是直接升级：选 20 条中文知识问答、长文档检索、代码修改和工具调用任务，对比现有 Qwen/Claude/OpenAI 候选，记录质量、P95 延迟、显存、吞吐、上下文丢失、失败样本和 license/部署成本。",
+    },
     "消息称 Anthropic 最快今年 9 月上市，向投资者淡化 AI 模型竞争等挑战": {
       signal: "资本市场信号：AIHOT 把 Anthropic 上市传闻放到头条，说明 Claude 生态的竞争焦点正从单次模型发布扩展到资本、渠道和企业收入韧性。",
       impact: "这不会直接改变 Claude 能力，但会影响企业采购时对供应连续性、价格策略、生态投入和合规披露的判断；不能把传闻当成确定融资或上市事实。",
@@ -4049,17 +4054,21 @@ async function buildAiNewsSection(maxItems) {
   const aiHotDigest = await buildAiHotDigest();
   const aiHotItems = (aiHotDigest.selected || [])
     .slice(0, Math.min(8, maxItems))
-    .map((item) => ({
-      source: "AIHOT 精选",
-      sourceDetail: item.source || "AIHOT 精选",
-      domain: "aihot.virxact.com",
-      title: item.title,
-      url: item.url,
-      publishedAt: item.publishedAt,
-      summary: item.summary || item.signal || "",
-      imageUrl: "https://www.google.com/s2/favicons?domain=aihot.virxact.com&sz=128",
-      priority: 3,
-    }));
+    .map((item) => {
+      const sourceMeta = normalizeAiHotItemSource(item);
+      return {
+        source: sourceMeta.source,
+        sourceDetail: sourceMeta.sourceDetail,
+        upstreamSource: "AIHOT 精选",
+        domain: sourceMeta.domain,
+        title: item.title,
+        url: item.url,
+        publishedAt: item.publishedAt,
+        summary: item.summary || item.signal || "",
+        imageUrl: sourceMeta.imageUrl,
+        priority: sourceMeta.priority,
+      };
+    });
 
   const rawItems = feedResults
     .flatMap((result) => (result.status === "fulfilled" ? result.value : []))
@@ -4111,6 +4120,43 @@ function isAnthropicOfficialItem(item = {}) {
     source.includes("claude 官方") ||
     source.includes("anthropic 官方")
   );
+}
+
+function normalizeAiHotItemSource(item = {}) {
+  const hostname = hostnameFromUrl(item.url);
+  if (hostname.endsWith("anthropic.com")) {
+    return {
+      source: "A社 Anthropic",
+      sourceDetail: item.source || "Anthropic 官方页面 / AIHOT 发现",
+      domain: hostname,
+      imageUrl: "https://www.google.com/s2/favicons?domain=anthropic.com&sz=128",
+      priority: 5,
+    };
+  }
+  if (hostname.endsWith("claude.com")) {
+    return {
+      source: "A社 Claude",
+      sourceDetail: item.source || "Claude 官方页面 / AIHOT 发现",
+      domain: hostname,
+      imageUrl: "https://www.google.com/s2/favicons?domain=claude.com&sz=128",
+      priority: 5,
+    };
+  }
+  return {
+    source: "AIHOT 精选",
+    sourceDetail: item.source || "AIHOT 精选",
+    domain: hostname || "aihot.virxact.com",
+    imageUrl: "https://www.google.com/s2/favicons?domain=aihot.virxact.com&sz=128",
+    priority: 3,
+  };
+}
+
+function hostnameFromUrl(url = "") {
+  try {
+    return new URL(url).hostname.replace(/^www\./, "");
+  } catch {
+    return "";
+  }
 }
 
 function buildAnthropicSection(aiNews = {}) {
@@ -6040,7 +6086,7 @@ function buildExecutiveSummary(items, frontier, aiNews) {
   const frontierSources = prioritizeFrontierSummarySources(frontierItems.map((item) => item.source).filter(Boolean)).slice(0, 12);
   const frontierTags = uniqueList(frontierItems.flatMap((item) => item.tags || [])).slice(0, 5);
   const anthropicItems = (aiNews.anthropicCoverage || aiNews.items || []).filter((item) => isAnthropicItem(item));
-  const aiHotCount = (aiNews.items || []).filter((item) => item.source?.includes("AIHOT")).length;
+  const aiHotCount = (aiNews.items || []).filter((item) => item.source?.includes("AIHOT") || item.upstreamSource?.includes("AIHOT")).length;
   const firstRepoAction = items[0]?.analysis?.deepDive?.recommendedAction || items[0]?.analysis?.watchSignals?.[0] || "";
   const firstFrontier = frontierItems[0];
   const primaryAnthropic =
