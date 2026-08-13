@@ -1025,6 +1025,97 @@ function specializeLens(repo, lens) {
       badFit: "文档规模小、查询简单、schema 无人维护，或只追求快速 demo 的普通 RAG 应用。",
       primaryRisk: "图原生上下文层会引入 schema 设计和持续治理成本；若实体抽取和权限映射质量不足，会比普通向量检索更难排错。",
     },
+    "anthropics/skills": {
+      editorialMethod: "manual-deep-update-2026-08-14",
+      domain: "Agent Skills 标准库 / Claude 工作流扩展层",
+      userPain: "Claude Code 和 Managed Agents 要进入真实工作流时，单靠提示词很难稳定继承文件格式、工具调用、安全边界和任务产物规范。",
+      coreMechanism: "anthropics/skills 用仓库化 skill 包沉淀任务说明、脚本、模板和工具约束，让 Agent 在会话启动时加载可复用能力，而不是每次重新解释工作流。",
+      safeEntry: "先挑 2 个低风险内部任务，把格式检查、文档生成或代码审查步骤封装成 skill，并用同一输入回放有无 skill 的差异。",
+      businessValue: "把个人经验和团队流程变成可版本化、可审查、可分发的 Agent 能力层，降低多成员使用 Claude 时的输出漂移。",
+      successMetric: "任务一次通过率、提示重复量、格式错误、工具误用、人工修改时间、skill 版本回滚和安全扫描命中",
+      inspectFirst: "先看 skill manifest、目录约定、脚本执行权限、模板复用、依赖声明、恶意内容扫描和与 Claude Code/Managed Agents 的加载边界。",
+      bestFit: "已经重度使用 Claude Code、任务模式稳定、愿意维护内部 skill registry 和安全审查流程的研发、文档、数据分析团队。",
+      badFit: "任务尚未标准化、权限边界不清、或希望 Agent 绕过人工审批直接执行生产写操作的团队。",
+      primaryRisk: "skill 会把执行习惯固化并扩大工具权限；必须做版本管理、来源审查、最小权限、日志留存和撤销机制。",
+    },
+    "cactus-compute/needle": {
+      editorialMethod: "manual-deep-update-2026-08-14",
+      domain: "端侧小模型 / Tiny Foundation Model 运行时",
+      userPain: "手机、可穿戴、智能家居和机器人场景需要常驻智能能力，但云端模型在隐私、离线、延迟、功耗和成本上都不适合作为唯一入口。",
+      coreMechanism: "needle 把 14MB foundation model 面向端侧设备打包，强调小体积、本地推理和设备侧智能接口，让基础模型能力靠近传感器、语音和控制环路。",
+      safeEntry: "先在一台手机或边缘设备上跑离线意图识别、短文本理解和简单控制任务，不接高风险执行器或隐私数据上传。",
+      businessValue: "为低功耗设备提供本地智能候选，减少云依赖并提升弱网、隐私敏感和低延迟交互的可用性。",
+      successMetric: "端侧延迟、内存峰值、耗电、离线准确率、模型加载时间、失败率、热降频和云端 fallback 命中",
+      inspectFirst: "先看模型权重来源、量化格式、设备支持矩阵、推理 API、示例任务、benchmark 口径、许可和与传感器/控制接口的边界。",
+      bestFit: "做端侧 AI 原型、智能硬件、离线助手和机器人边缘感知，且能建立设备级评测的团队。",
+      badFit: "需要复杂推理、长上下文、多工具 Agent 或无法接受端侧质量低于云模型的场景。",
+      primaryRisk: "端侧模型容易被 demo 质量误导；真实风险在设备差异、散热、内存、量化退化、模型更新和错误动作接管。",
+    },
+    "unslothai/unsloth": {
+      editorialMethod: "manual-deep-update-2026-08-14",
+      domain: "本地模型训练与微调工作台 / LLM-Diffusion Lab",
+      userPain: "团队想快速试训 Qwen、Kimi、MiniMax、Gemma、DeepSeek、FLUX 等模型，但环境、显存、量化、数据格式和训练脚本经常消耗掉主要时间。",
+      coreMechanism: "Unsloth 通过本地 UI、优化训练内核、量化/LoRA 流程和多模型预设，把模型下载、训练、推理和实验记录收敛成更低摩擦的本地工作台。",
+      safeEntry: "先选一个公开数据集和一个小模型做 LoRA/量化 smoke test，不放入客户数据，记录完整命令、显存和可复现 artifact。",
+      businessValue: "降低模型微调和本地实验门槛，让算法、数据和应用团队能更快比较候选模型，而不是先被环境搭建卡住。",
+      successMetric: "首训成功率、tokens/s、显存峰值、训练成本、数据处理错误、评测提升、导出兼容和复现实验耗时",
+      inspectFirst: "先看支持模型矩阵、训练脚本、量化格式、数据集 schema、checkpoint 导出、Docker/依赖版本、license 和高 open issues 的维护响应。",
+      bestFit: "有离线评测集、GPU 预算和模型 owner 的算法平台、私有化 LLM、内容生成和多模态实验团队。",
+      badFit: "没有评测集、没有数据合规审查、或只想用 UI 盲训生产模型的团队。",
+      primaryRisk: "训练工具能降低试错成本，也会放大数据泄露、过拟合、不可复现、显存 OOM 和模型许可证误用风险。",
+    },
+    "megadose/holehe": {
+      editorialMethod: "manual-deep-update-2026-08-14",
+      domain: "OSINT 邮箱枚举 / 账号暴露面探测工具",
+      userPain: "安全团队做账号暴露面排查时，需要知道邮箱是否出现在大量第三方站点，但人工逐站验证耗时且容易触碰合规边界。",
+      coreMechanism: "holehe 利用忘记密码等公开账号存在性反馈，对多个站点做邮箱使用情况检查，并把站点响应归一成可审计的 OSINT 线索。",
+      safeEntry: "只对授权企业域名和测试邮箱做低频离线排查，先抽样核对误报，不对个人邮箱、客户数据或第三方目标做批量扫描。",
+      businessValue: "帮助安全、风控和账号治理团队发现员工邮箱外部注册面，辅助收敛影子 SaaS、钓鱼风险和泄露后影响评估。",
+      successMetric: "授权邮箱覆盖率、站点命中准确率、误报/漏报、请求失败率、触发风控次数、人工核验时间和整改闭环率",
+      inspectFirst: "先看站点模块、请求频率、错误分类、代理/登录态要求、输出 schema、免责声明、维护活跃度和目标站点服务条款。",
+      bestFit: "有授权范围、合规审批和人工复核流程的企业安全、红队演练和账号治理团队。",
+      badFit: "无授权个人信息扫描、实时生产依赖、绕过风控或用于骚扰/撞库的场景。",
+      primaryRisk: "账号存在性探测涉及隐私、平台条款和滥用边界；必须限定授权范围、频率、留存和审计。",
+    },
+    "smicallef/spiderfoot": {
+      editorialMethod: "manual-deep-update-2026-08-14",
+      domain: "OSINT 自动化 / 攻击面情报编排平台",
+      userPain: "威胁情报和攻击面管理要跨域名、IP、泄露数据、社媒、DNS、证书和漏洞来源拼接线索，手工查询难以复跑和沉淀证据链。",
+      coreMechanism: "SpiderFoot 用模块化 OSINT 插件、扫描任务、数据实体图和 Web/CLI 入口，把多源公开情报收集、关联和报告生成组织成自动化流水线。",
+      safeEntry: "先对自有域名和公开资产跑只读扫描，关闭高风险模块，核对 20 条发现的来源、误报和整改责任人。",
+      businessValue: "让安全团队更快形成外部暴露面清单和威胁线索图，减少重复查询并提升情报复盘能力。",
+      successMetric: "资产发现覆盖、误报率、来源可追溯、扫描耗时、API 配额消耗、整改闭环、重复发现去重和高危线索命中",
+      inspectFirst: "先看模块权限、API key 管理、扫描范围控制、数据存储、报告格式、Docker 部署、插件维护和最近漏洞/issue 响应。",
+      bestFit: "有明确授权资产范围、API 配额和安全 owner 的蓝队、红队、威胁情报和外部攻击面管理团队。",
+      badFit: "无授权外部目标扫描、希望直接替代漏洞验证、或无法处理误报和敏感情报留存的组织。",
+      primaryRisk: "OSINT 自动化可能产生误报、触发第三方风控并收集敏感线索；必须做范围锁定、API key 隔离和人工确认。",
+    },
+    "holaboss-ai/holaOS": {
+      editorialMethod: "manual-deep-update-2026-08-14",
+      domain: "多 Agent 工作空间 / Shared Memory 工具操作面",
+      userPain: "团队想让 Claude Code、Codex 和其他 Agent 同时访问浏览器、文件、应用与 MCP 工具，但上下文、权限、记忆和产物散落在不同入口。",
+      coreMechanism: "holaOS 把 100+ 集成、MCP、浏览器、文件、应用和 shared memory 放进 all-in-one Agent workspace，让不同 Agent 在同一操作面里启动、协作和继承上下文。",
+      safeEntry: "先接一个低敏项目和只读工具集合，跑研究、文档整理或 issue triage，不接生产凭据和不可逆写操作。",
+      businessValue: "把多 Agent 使用从个人桌面行为升级为可观察、可复用的团队工作空间，减少上下文丢失和工具切换。",
+      successMetric: "跨工具任务完成率、记忆引用准确率、权限误触、人工接管、工具失败恢复、产物复用和审计日志完整率",
+      inspectFirst: "先看集成权限、MCP server 边界、shared memory 写入/删除、浏览器沙箱、文件隔离、BYOK、团队权限和日志导出。",
+      bestFit: "已有多 Agent 试点、低敏工具链和平台 owner，愿意把 Agent 操作纳入审计的研发效能、运营和知识管理团队。",
+      badFit: "权限体系复杂、无法隔离敏感数据、或希望让 Agent 无人值守操作生产系统的组织。",
+      primaryRisk: "all-in-one 工作空间会集中凭据、文件、浏览器和记忆；若隔离、撤销和审计不足，爆炸半径明显大于单一 Agent。",
+    },
+    "kepano/obsidian-skills": {
+      editorialMethod: "manual-deep-update-2026-08-14",
+      domain: "Obsidian Agent Skills / 本地知识库操作规范",
+      userPain: "Agent 操作 Obsidian vault 时容易破坏 Markdown、Bases、JSON Canvas、链接和本地文件约定，尤其在长期知识库中会产生难以追踪的格式漂移。",
+      coreMechanism: "obsidian-skills 把 Obsidian CLI、开放格式、文件组织、查询和编辑规则封装成可加载 skills，教 Agent 按 vault 语义读写而不是把笔记当普通文本文件。",
+      safeEntry: "先在复制 vault 或低风险目录中跑读写回放，限定只处理 Markdown/Bases/Canvas 样例，不改主库索引和永久记忆。",
+      businessValue: "让个人知识库和团队文档库获得更稳定的 Agent 操作层，降低链接损坏、格式漂移和上下文误读。",
+      successMetric: "链接完整率、frontmatter 保真、Bases/Canvas 解析成功、误改文件数、回滚成功率、人工修正时间和查询命中质量",
+      inspectFirst: "先看 skill 指令、Obsidian CLI 调用、open formats 支持、文件 glob 约束、备份/回滚策略和与现有 vault 约定的冲突。",
+      bestFit: "重度使用 Obsidian、文件格式稳定、愿意先在沙箱 vault 做回放验证的知识管理、研究和个人工作流团队。",
+      badFit: "无备份、目录约定混乱、或希望 Agent 直接批量重构主知识库的场景。",
+      primaryRisk: "知识库操作的风险不在单次写入，而在长期链接、索引和语义结构被悄悄破坏；必须先做沙箱和差异审查。",
+    },
     "paperclipai/paperclip": {
       editorialMethod: "manual-deep-update-2026-08-12",
       domain: "企业 Agent 管理台 / Work Agent Operating Surface",
@@ -2522,7 +2613,7 @@ function specializeLens(repo, lens) {
 
 function sharpenOneLiner(repo, lens, fallbackLine) {
   const base = repo.description || fallbackLine || repo.full_name;
-  if (lens.domain.includes("AI Agent")) return `${base}；关键看工具边界、上下文持久化、权限和失败接管是否可治理。`;
+  if (lens.domain.includes("AI Agent")) return `${base}；关键看它把哪类人工流程转成可审计任务、工具权限和失败恢复机制。`;
   if (lens.domain.includes("数据")) return `${base}；关键看索引/查询机制、数据一致性和嵌入式运行成本。`;
   if (lens.domain.includes("开发者工具")) return `${base}；关键看它能否稳定缩短构建、测试、调试或自动化链路。`;
   if (lens.domain.includes("学习")) return `${base}；关键看内容 schema、评测、翻译和社区审校如何形成长期闭环。`;
@@ -5886,8 +5977,8 @@ function interpretAiNews(item) {
   if (text.includes("earth observation")) return "垂直模型信号：地理/遥感模型更新说明基础模型正在向行业数据模态扩散。";
   if (text.includes("model") || text.includes("benchmark")) return "模型能力或评测更新，建议关注是否改变内部模型选型和评估基线。";
   if (text.includes("agent") || text.includes("tool")) return "Agent/工具调用方向，适合评估能否进入研发工作流或数据分析流程。";
-  if (text.includes("open source") || text.includes("release")) return "生态发布信号，建议关注 license、可部署性和社区迁移成本。";
-  return "行业动态信号，适合纳入周度技术雷达观察。";
+  if (text.includes("open source") || text.includes("release")) return "生态发布信号：先拆 license、部署入口、维护节奏和社区迁移成本，再判断是否进入候选池。";
+  return "待验证技术信号：先确认官方来源、可试用入口、影响对象和可量化指标，再决定是否进入周度雷达。";
 }
 
 function enrichAiNews(item) {
@@ -5988,6 +6079,21 @@ function curatedAiNewsOverride(item) {
       signal: "国产 Agent 产品化信号：千问把深度研究、定时任务、办公助理、语音入口和新模型合并发布，目标是从聊天助手扩展到日常任务调度层。",
       impact: "对企业和个人用户的影响取决于工具权限、长任务可靠性、国产生态连接和移动/办公入口覆盖；模型参数更新本身不是唯一重点。",
       action: "选择研究报告、定时提醒、表格办公和语音查询各一个任务做体验回放，记录完成率、引用质量、权限提示、跨端同步、失败接管和数据边界。",
+    },
+    [normalizeTitle("Google DeepMind 推出 Gemini 3.7 Flash：面向编程与智能体的最强工作模型")]: {
+      signal: "Google 模型工作马信号：Gemini 3.7 Flash 官方定位为面向 coding 和 agents 的高性价比主力模型，说明厂商正在把“快模型”从低成本聊天升级为可执行任务底座。",
+      impact: "研发与 Agent 平台会多一个默认候选，但真正影响取决于工具调用稳定性、长任务恢复、代码修改质量、上下文窗口成本、Google Cloud/Workspace 入口和与现有 Claude/OpenAI 回放集的差异。",
+      action: "把 Gemini 3.7 Flash 加入同一 Agent 评测：代码修复、仓库问答、浏览器任务、表格分析和长文档 RAG 各跑 20 条，记录通过率、人工接管、P95、成本、上下文遗漏和拒答/安全边界。",
+    },
+    [normalizeTitle("Google Sheets 推出 Sheets canvas：用 Gemini 将表格数据变为交互式迷你应用")]: {
+      signal: "办公表格应用化信号：Sheets canvas 把 Gemini 放进表格数据到交互式 mini app 的转换链路，说明 spreadsheet 正从静态数据容器变成轻量业务工具生成入口。",
+      impact: "业务、运营和数据分析团队会更容易把一次性表格变成可点击看板或小应用，但风险会集中在公式/数据口径错误、权限继承、版本漂移、交互逻辑不可审和临时应用泛滥。",
+      action: "选择 3 个真实表格用 shadow run 验证：周报看板、AB 指标跟踪、需求排期分别记录生成时间、口径错误、权限暴露、人工改动量、用户复用率和是否能导出/回滚。",
+    },
+    [normalizeTitle("Cursor 推出 builds：云智能体启动速度提升至 3 倍")]: {
+      signal: "Coding Agent 环境预热信号：Cursor builds 把仓库 clone、依赖安装和环境准备从每次 cloud agent 启动前移到后台持续构建，竞争点从模型回答速度延伸到工程环境冷启动。",
+      impact: "大型仓库的 Agent 体验会受益于更低启动延迟，但平台团队需要重新评估依赖缓存污染、构建脚本权限、secret 注入、环境新鲜度、成本和失败时的可解释性。",
+      action: "在一个依赖重、启动慢的非核心仓库试用 builds：记录 agent 首步耗时、构建成功率、缓存命中、依赖漂移、secret 触达、失败恢复、额外成本和 PR 通过率。",
     },
   };
   return map[title] || null;
@@ -6108,7 +6214,7 @@ function buildAiNewsAction(item, tags) {
   if (tags.includes("安全/可信")) return "建议沉淀到 AI 安全清单，跟踪攻击方式、检测指标和平台级防御策略。";
   if (tags.includes("多模态")) return "建议收集样例和失败案例，比较一致性、可控性、生成时长和商业版权风险。";
   if (tags.includes("工程/基础设施")) return "建议纳入成本与架构评估，关注 API 价格、路由策略、缓存命中和供应商锁定。";
-  return "建议保留原文链接，等后续出现产品实测、开发者反馈或生态跟进时再升级权重。";
+  return "建议做最小证据登记：记录官方链接、目标用户、可试用状态、一个验证任务和下一次复查条件。";
 }
 
 function buildAiHotSourceBrief() {
@@ -6487,7 +6593,7 @@ function fallbackAiNewsItems() {
       publishedAt: new Date().toISOString(),
       summary: "建议持续跟踪模型能力边界、工具调用、评测基线和企业落地安全策略。",
       imageUrl: "https://www.google.com/s2/favicons?domain=openai.com&sz=128",
-      interpretation: "行业动态信号，适合纳入周度技术雷达观察。",
+      interpretation: "待验证技术信号：先确认官方来源、可试用入口、影响对象和可量化指标，再决定是否进入周度雷达。",
     },
   ];
 }
