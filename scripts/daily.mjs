@@ -948,7 +948,7 @@ function codexResearchRefresh({ repo, readme, languages, fallback }) {
     category: lens.domain,
     method: lens.editorialMethod || "codex-research-refresh",
     oneLiner: sharpenOneLiner(repo, lens, fallback.oneLiner),
-    whyItMatters: `${fallback.whyItMatters} 这次更新更值得关注的是其可迁移机制：${coreMechanism} 能否被拆成小样本验证，而不是把项目整体搬进生产。`,
+    whyItMatters: `${project} 本轮进入雷达，核心不是热度本身，而是它把「${userPain}」落到「${coreMechanism}」。当前 ${compact(repo.stargazers_count)} stars / ${compact(repo.forks_count)} forks；是否值得试点，取决于能否在「${safeEntry}」这个小样本里证明 ${successMetric}，并把「${productionRisk}」这类生产风险隔离。`,
     engineeringRead: `${primaryLang} · ${profile.installSurface}。建议按“入口示例 -> 数据/配置 -> 失败处理 -> CI/release -> issue 反例”的顺序读；重点回答 ${decisionQuestion}`,
     architectureSignals,
     valueHypothesis: [
@@ -3098,7 +3098,7 @@ function buildWhyItMatters({ repo, lens, profile, activity }) {
     return `${repo.full_name} 的热度来自“可持续维护的公共资料面”：${popularity}，${activity.freshness}。${readmeHook}，说明它的价值更多在分类、治理和更新节奏，而不是某个单点技术实现。`;
   }
   if (lens.domain.includes("AI")) {
-    return `${repo.full_name} 值得看，是因为 AI 项目真正的分水岭已经从“能跑 demo”转向“能被治理、能接工具、能失败恢复”。当前 ${popularity}，${activity.freshness}，足够进入 Agent 工程雷达。`;
+    return `${repo.full_name} 的关注点是 ${lens.domain}：它试图用「${lens.coreMechanism}」缓解「${lens.userPain}」。当前 ${popularity}，${activity.freshness}；是否进入试点取决于 ${lens.successMetric}，以及 ${lens.primaryRisk}`;
   }
   return `${repo.full_name} 处在 ${activity.stage} 区间：${popularity}，${activity.freshness}。${readmeHook}，适合判断它是否能在 ${lens.userPain} 上形成真实工程收益。`;
 }
