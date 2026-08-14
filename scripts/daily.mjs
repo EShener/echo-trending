@@ -6067,6 +6067,12 @@ function interpretAiNews(item) {
   if (text.includes("google cloud announced in ai this month")) return "平台整合信号：Google Cloud 把 Gemini、Agent API、代码/安全自动化和 Workspace 能力放进同一企业 AI 更新面，客户评估会从单模型能力转向托管平台边界。";
   if (text.includes("how agents are transforming work") || text.includes("codex 已占") || text.includes("99.8%") || (text.includes("codex") && (text.includes("economic research") || text.includes("output tokens")))) return "官方 Agent 采用信号：Codex 正从工程师工具扩展到跨部门长任务委托，重点看任务时长、并行 Agent、非技术岗位采用和组织级治理。";
   if (text.includes("computer use") && text.includes("gemini")) return "官方 Computer Use 信号：浏览器、移动和桌面操作正在被纳入模型原生工具链，关键看动作空间、安全策略和 prompt injection 防护。";
+  if (text.includes("gemini") && (text.includes("coding") || text.includes("编程") || text.includes("智能体") || text.includes("flash"))) return "Google 模型产品化信号：Gemini Flash 系列继续把编程、工具调用和智能体任务作为主战场，评估重点应放在真实仓库完成率、长上下文稳定性、延迟和 Workspace/Cloud 入口联动。";
+  if (text.includes("cursor") && (text.includes("builds") || text.includes("cloud") || text.includes("启动"))) return "AI IDE 执行面信号：Cursor builds 把云端开发环境启动、依赖恢复和 Agent 可用性做成产品能力，研发团队应关注冷启动时间、环境一致性、失败恢复和成本上限。";
+  if (text.includes("cursor") && (text.includes("aiuc") || text.includes("certification") || text.includes("认证"))) return "Coding Agent 治理信号：Cursor 将独立安全/可靠性认证纳入产品叙事，说明 AI IDE 竞争正在从补全能力延伸到权限、审计、供应链和企业准入证据。";
+  if (text.includes("chief revenue officer") || text.includes("首席营收官") || text.includes("dali rajic")) return "AI 商业化组织信号：模型平台开始强化收入、渠道和企业销售负责人配置，短期更影响采购节奏、价格包装、客户成功和生态合作，而不是直接改变模型能力。";
+  if (text.includes("unlearning") || text.includes("遗忘") || text.includes("low-influence")) return "模型训练效率信号：低影响力数据点 unlearning 把训练/更新成本问题拆到样本贡献度层面，适合关注数据治理、版权删除、持续训练和算力节省能否形成可复现评测。";
+  if (text.includes("strands") || text.includes("lerobot") || text.includes("storage buckets")) return "机器人数据闭环信号：Strands、LeRobot 与对象存储被串成采集、训练、部署链路，说明具身智能工程重点正在从单次 demo 转向可版本化数据、回放评测和部署回滚。";
   if (
     text.includes("third-party cyber evaluations") ||
     text.includes("cyber evaluations involving") ||
@@ -6112,7 +6118,7 @@ function interpretAiNews(item) {
   if (text.includes("model") || text.includes("benchmark")) return "模型能力或评测更新，建议关注是否改变内部模型选型和评估基线。";
   if (text.includes("agent") || text.includes("tool")) return "Agent/工具调用方向，适合评估能否进入研发工作流或数据分析流程。";
   if (text.includes("open source") || text.includes("release")) return "生态发布信号：先拆 license、部署入口、维护节奏和社区迁移成本，再判断是否进入候选池。";
-  return "待验证技术信号：先确认官方来源、可试用入口、影响对象和可量化指标，再决定是否进入周度雷达。";
+  return "AI 技术观察信号：这条动态需要按来源可信度、产品入口、影响对象、可量化指标和失败样本拆解，先进入观察池，再用小样本回放决定是否升级为试点。";
 }
 
 function enrichAiNews(item) {
@@ -6727,7 +6733,7 @@ function fallbackAiNewsItems() {
       publishedAt: new Date().toISOString(),
       summary: "建议持续跟踪模型能力边界、工具调用、评测基线和企业落地安全策略。",
       imageUrl: "https://www.google.com/s2/favicons?domain=openai.com&sz=128",
-      interpretation: "待验证技术信号：先确认官方来源、可试用入口、影响对象和可量化指标，再决定是否进入周度雷达。",
+      interpretation: "AI 技术观察信号：先核验官方来源、产品入口、影响对象、可量化指标和失败样本，再决定是否进入周度雷达。",
     },
   ];
 }
