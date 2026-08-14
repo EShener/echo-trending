@@ -168,6 +168,11 @@ function applyEditorialOverrides(report) {
       impact: "对研发团队的影响不是马上替换现有 Agent 平台，而是多 provider、多工具和多前端的适配成本会被下沉到插件边界；如果插件协议、沙箱和会话状态不稳，扩展性会变成调试成本。",
       action: "用一个小型研发任务做 2 小时 smoke test：接入一个模型、两个工具、文件沙箱和会话恢复，记录插件开发量、权限边界、错误回放、UI 可观测性和 MIT 许可下的二次开发风险。",
     },
+    "从0到1带你速通DeepSeek Harness。": {
+      signal: "DeepSeek Harness 上手教程信号：AIHOT 把“从 0 到 1 速通”放到头条，说明开发者关注点已经从模型 API 调用转向 Agent 运行时的模型、工具、技能、沙箱、文件系统、循环和 UI 如何被插件化组装。",
+      impact: "这类教程会降低团队尝试国产 Agent 框架的门槛，但也容易让早期试用忽略插件协议稳定性、权限隔离、会话恢复、错误可观测性、工具生态质量和与现有 CI/IDE/工单流程的耦合。",
+      action: "不要只跟着教程跑 demo：选一个低风险研发任务，按“模型接入 -> 工具白名单 -> 文件沙箱 -> 会话恢复 -> 错误回放 -> UI 观测”打点，记录 2 小时内能否完成闭环、失败点和二次开发成本。",
+    },
     "DeepSeek-V4-Pro 正式版上线，Agent 能力大幅增强": {
       signal: "国产模型 Agent 能力信号：DeepSeek-V4-Pro 同步开放 App、网页端和 API，并把 HLE、Terminal Bench 等工具/终端任务指标放到发布信息里，竞争点从聊天质量转向可执行任务能力。",
       impact: "团队会更容易把 DeepSeek 纳入 Agent 候选池，但 benchmark 提升不等于生产可靠；长任务稳定性、工具误用、上下文恢复、成本、限流和审计能力仍要用真实工作流验证。",
@@ -3632,9 +3637,13 @@ function curatedFrontierInterpretation(item) {
 }
 
 function buildFrontierDiagram(item, interpretation) {
+  const source = item.source || "Frontier";
+  const tags = (item.tags || []).slice(0, 4);
+  const title = item.title || "搜广推前沿";
   return {
-    title: `${item.source || "Frontier"} 搜广推机制图`,
-    caption: (item.tags || []).slice(0, 4).join(" / ") || item.sourceType || "frontier",
+    title: `${source} 搜广推机制图`,
+    caption: tags.join(" / ") || item.sourceType || "frontier",
+    summary: `围绕「${title}」拆解业务问题、系统机制、指标实验和采用边界，便于前端生成从场景矛盾到工程方案再到上线验收的工业级示意图。核心机制：${trimText(interpretation.systemMechanism, 120)}`,
     nodes: [
       { label: "业务问题", detail: interpretation.businessProblem, type: "input" },
       { label: "系统机制", detail: interpretation.systemMechanism, type: "core" },
@@ -4335,7 +4344,13 @@ function buildAnthropicSection(aiNews = {}) {
 }
 
 function buildSearchAdsRecSection(frontier = {}) {
-  const items = frontier.items || [];
+  const items = (frontier.items || []).map((item) => {
+    const interpretation = normalizeFrontierInterpretation(item);
+    return {
+      ...item,
+      diagram: item.diagram || buildFrontierDiagram(item, interpretation),
+    };
+  });
   const sources = uniqueList(items.map((item) => item.source).filter(Boolean)).slice(0, 12);
   return {
     title: "搜广推工程前沿",
