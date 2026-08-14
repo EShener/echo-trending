@@ -138,6 +138,12 @@ async function buildReport({ reportDate, limit, days, language }) {
 
 function applyEditorialOverrides(report) {
   const aiNewsOverrides = {
+    "GLM-5.3 发布：编程能力开源第一，并涌现网络安全能力": {
+      signal: "国产开源 Agent 编程模型信号：AIHOT 汇总智谱 GLM-5.3 发布，重点不是单个榜单名次，而是 743B 基座后训练 scaling、Terminal Bench/Agents' Last Exam、CyberGym、ZCode/AutoClaw 工具入口和分阶段开源被打包成同一条工程能力叙事。",
+      impact: "研发和安全团队会把 GLM-5.3 放进 Claude/OpenAI 之外的本地或国产模型候选池，但权重尚需等待分阶段开放；榜单和安全分数不能直接证明真实仓库修复、白盒审计、权限隔离或长任务恢复能力。",
+      action: "进入观察和回放池而不是立即替换：等官方模型卡/权重/API 稳定后，用同一批代码修复、终端排障、白盒审计、工具调用和长上下文任务记录完成率、误报/漏报、人工接管、成本、P95、许可证和安全评估限制。",
+      tags: ["Agent", "模型", "安全/可信", "工程/基础设施"],
+    },
     "Claude 接管应用日常维护：388 个 PR 的实践": {
       signal: "Coding Agent 维护能力信号：Boris Cherny 披露 Claude 参与应用日常维护并形成 388 个 PR，重点不是单次代码生成，而是长周期 issue 分解、补丁生成、review 循环和回归验证能否进入真实仓库节奏。",
       impact: "研发团队会更想把重复维护、依赖升级、测试修复和小功能交给 Agent，但风险会集中在批量 PR 质量、上下文漂移、测试覆盖错觉、review 堆积、权限边界和路线图被低价值改动挤占。",
@@ -595,6 +601,9 @@ function applyEditorialOverrides(report) {
     const override = aiNewsOverrides[item.title];
     if (!override) continue;
     Object.assign(item, override);
+    if (isWeakAiSummary(item.summary) && override.signal) {
+      item.summary = override.signal;
+    }
     if (item.interpretation && typeof item.interpretation === "object") {
       Object.assign(item.interpretation, override);
     }
@@ -608,9 +617,14 @@ function applyEditorialOverrides(report) {
         if (node.label === "动作") node.detail = override.action;
       }
       item.diagram.summary = buildAiNewsOverrideDiagramSummary(item, override);
+      if (Array.isArray(override.tags)) item.diagram.caption = override.tags.slice(0, 4).join(" / ");
     }
   }
   return sanitizeReportText(report);
+}
+
+function isWeakAiSummary(summary = "") {
+  return /待验证技术信号|行业动态信号|建议保留原文链接/.test(summary);
 }
 
 function buildAiNewsOverrideDiagramSummary(item, override) {
