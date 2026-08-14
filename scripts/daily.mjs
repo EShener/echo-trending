@@ -6350,6 +6350,16 @@ function curatedAiNewsOverride(item) {
       impact: "研发与 Agent 平台会多一个默认候选，但真正影响取决于工具调用稳定性、长任务恢复、代码修改质量、上下文窗口成本、Google Cloud/Workspace 入口和与现有 Claude/OpenAI 回放集的差异。",
       action: "把 Gemini 3.7 Flash 加入同一 Agent 评测：代码修复、仓库问答、浏览器任务、表格分析和长文档 RAG 各跑 20 条，记录通过率、人工接管、P95、成本、上下文遗漏和拒答/安全边界。",
     },
+    [normalizeTitle("Gemini 3.7 Flash 全面上线 Pro 与 Ultra 用户")]: {
+      signal: "Google 模型工作流下沉信号：Gemini 3.7 Flash 从模型公告进入 Pro/Ultra 用户可用入口，并绑定 Workspace 文件、邮件和 Gemini Spark 工具调用，说明快模型正在承担多步骤办公 Agent 的默认执行层。",
+      impact: "个人和企业团队会更容易把文档整合、邮件分析、表格处理和轻量 Agent 交给 Gemini，但真实价值不取决于聊天入口是否上线，而取决于跨应用权限、引用可追溯、长任务恢复、错误更正和 Google 生态锁定。",
+      action: "做一轮 Workspace 回放：选择 10 个真实但低风险的文件/邮件/表格任务，对比 Gemini、Claude 和现有人工流程，记录完成率、引用遗漏、工具误用、权限提示、人工接管、P95、成本和是否能导出可审计结果。",
+    },
+    [normalizeTitle("Claude 文本水印机制如何运作")]: {
+      signal: "AI 内容溯源合规信号：AIHOT 报道 Claude 文本水印机制，重点是 Anthropic 为欧盟 AI 法案等合规要求把生成内容识别嵌入模型输出，而不是把它当作模型能力升级。",
+      impact: "企业使用 Claude 生成外部文档、客服话术、营销内容和代码说明时，需要重新评估内容标识、合规披露、检测误差、跨模型混写和用户隐私；水印不能替代来源记录、审批和发布审计。",
+      action: "更新内容治理清单：区分内部草稿、对外发布、用户可见自动回复和合规留档四类输出，记录模型来源、编辑历史、检测结果、人工审核人、误报/漏报样本和地区法规要求。",
+    },
     [normalizeTitle("Google Sheets 推出 Sheets canvas：用 Gemini 将表格数据变为交互式迷你应用")]: {
       signal: "办公表格应用化信号：Sheets canvas 把 Gemini 放进表格数据到交互式 mini app 的转换链路，说明 spreadsheet 正从静态数据容器变成轻量业务工具生成入口。",
       impact: "业务、运营和数据分析团队会更容易把一次性表格变成可点击看板或小应用，但风险会集中在公式/数据口径错误、权限继承、版本漂移、交互逻辑不可审和临时应用泛滥。",
