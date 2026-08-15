@@ -6055,23 +6055,34 @@ function normalizeAiHotApiItem(item) {
     summary: trimText(item.summary || "", 210),
     category: labelAiHotCategory(item.category),
   };
+  const enriched = enrichAiNews(base);
   return {
     ...base,
-    signal: interpretAiNews(base),
-    tags: inferAiNewsTags(base),
+    signal: enriched.signal,
+    impact: enriched.impact,
+    action: enriched.action,
+    tags: enriched.tags,
+    diagram: enriched.diagram,
   };
 }
 
 function normalizeAiHotFeedItem(item) {
-  return {
+  const base = {
     title: item.title,
     url: item.url,
     source: item.sourceDetail || item.source,
     publishedAt: item.publishedAt,
     summary: trimText(item.summary || "", 210),
     category: "精选",
-    signal: interpretAiNews(item),
-    tags: inferAiNewsTags(item),
+  };
+  const enriched = enrichAiNews(base);
+  return {
+    ...base,
+    signal: enriched.signal,
+    impact: enriched.impact,
+    action: enriched.action,
+    tags: enriched.tags,
+    diagram: enriched.diagram,
   };
 }
 
@@ -6083,9 +6094,12 @@ function normalizeAiHotDailySection(section) {
       source: item.sourceName,
       summary: trimText(item.summary || "", 180),
     };
+    const enriched = enrichAiNews(base);
     return {
       ...base,
-      signal: interpretAiNews(base),
+      signal: enriched.signal,
+      impact: enriched.impact,
+      action: enriched.action,
     };
   });
   return {
@@ -6432,6 +6446,36 @@ function curatedAiNewsOverride(item) {
       signal: "AI 内容溯源合规信号：AIHOT 报道 Claude 文本水印机制，重点是 Anthropic 为欧盟 AI 法案等合规要求把生成内容识别嵌入模型输出，而不是把它当作模型能力升级。",
       impact: "企业使用 Claude 生成外部文档、客服话术、营销内容和代码说明时，需要重新评估内容标识、合规披露、检测误差、跨模型混写和用户隐私；水印不能替代来源记录、审批和发布审计。",
       action: "更新内容治理清单：区分内部草稿、对外发布、用户可见自动回复和合规留档四类输出，记录模型来源、编辑历史、检测结果、人工审核人、误报/漏报样本和地区法规要求。",
+    },
+    [normalizeTitle("AI生成书籍正淹没亚马逊，并拉低人类作者的单书收入")]: {
+      signal: "AI 内容供给冲击信号：AIHOT 把亚马逊图书收入压力放到头部，重点不是单个出版平台争议，而是生成式内容把供给量、搜索排序、作者分成、版权归属和读者信任同时推到平台治理层。",
+      impact: "内容平台和创作者工具会面对更高的低质内容过滤、作者认证、版权投诉和推荐排序压力；如果平台只按发布量和短期转化优化，会挤压原创作者收入并降低长尾内容质量。",
+      action: "把它转成内容生态风控清单：跟踪 AI 标识、作者身份、重复内容、版权投诉、单书收入、退款率、搜索曝光和推荐降权规则；内部内容产品不要只追求生成效率，还要评估原创激励和质量门槛。",
+    },
+    [normalizeTitle("Securing the frontier: How JetBrains evaluates and deploys Claude Fable 5")]: {
+      signal: "企业前沿模型准入信号：JetBrains 案例把 Claude Fable 5 的采用写成评估、部署、安全和开发者体验的组合流程，说明 A 社在推动前沿模型进入大型软件组织时，卖点已经从模型能力扩展到企业准入证据。",
+      impact: "IDE、代码审查和研发平台团队会更容易把 Claude 放进受控工作流，但真正影响取决于代码上下文、插件权限、日志留存、误改回滚、开发者接受度和采购合规。",
+      action: "复刻时按企业准入表验证：模型版本、代码访问范围、插件/工具权限、评测样本、失败回放、审计日志、用户分组、成本上限和退出方案必须分开记录。",
+    },
+    [normalizeTitle("Introducing Claude Sonnet 5")]: {
+      signal: "Claude 主力模型更新信号：Sonnet 5 是 A 社面向日常编码、长上下文分析和企业 Agent 的主力能力面，采用价值不应只看发布口径，而要拆成质量、延迟、成本、工具调用和安全边界。",
+      impact: "研发团队会倾向把 Sonnet 5 作为 Claude Code、Managed Agents 和内部助手的默认候选；风险集中在模型迁移回归、prompt 兼容、长任务稳定性、预算飙升和旧模型退役节奏。",
+      action: "做同一回放集升级评估：代码修复、仓库问答、数据分析、工具调用、长文档和拒答安全各 20 条，对比旧 Sonnet/Opus/OpenAI 候选，记录通过率、人工接管、P95、成本和失败样本。",
+    },
+    [normalizeTitle("Claude Code v2.1.233 发布：新增 GitLab MR 支持与内存 cgroup 限制")]: {
+      signal: "Claude Code 工程化细节信号：GitLab MR URL、worktree、agents 视图、forward_user_identity 和 cgroup 内存限制说明 Claude Code 正在补齐企业研发流程、成本归因和运行资源边界，而不是只更新模型能力。",
+      impact: "GitLab 团队和平台工程会更容易把 Claude Code 接入真实 MR 流程，但要同时处理用户身份透传、网关计费归因、容器内存上限、失败重试和多 agent 操作审计。",
+      action: "在一个 GitLab 非核心仓库做版本回放：记录 MR 识别率、worktree 隔离、内存限制触发、用户成本归因、agent 视图可读性、失败日志和回滚方式。",
+    },
+    [normalizeTitle("2026年夏季开源模型生态观察：中国前沿模型规模领先，AMD与NVIDIA主导发布量")]: {
+      signal: "开源模型生态集中度信号：Hugging Face 夏季观察显示仓库数量继续增长，但下载量高度集中，中国前沿模型规模和 AMD/NVIDIA 发布量成为供给侧变化，说明开放生态已经从“有没有模型”转向“谁有真实采用和硬件适配”。",
+      impact: "企业选开源模型不能被参数规模和仓库数量牵引；真正影响来自下载/issue 活跃度、license、模型卡、推理框架支持、GPU/加速器适配、量化质量和供应连续性。",
+      action: "更新开放模型候选池：按下载集中度、硬件后端、license、模型卡、eval 可复现、serving 支持、社区失败样本和替代供应商建立准入表。",
+    },
+    [normalizeTitle("Claude Code 会话如何最大化 token 价值")]: {
+      signal: "Claude Code 成本治理信号：会话上下文、/clear、模型/effort 切换和 prompt cache 命中直接影响 token 账单，说明 Coding Agent 的成本优化正在进入日常工作流规范，而不是只靠平台降价。",
+      impact: "团队若不管理会话边界，会在长任务、多人接力和大仓库上下文中产生隐性成本；同时过度清理上下文又可能丢失约束、导致返工或破坏缓存收益。",
+      action: "把成本动作写进 Agent 使用规范：任务开始固定模型/effort，阶段性使用 /clear，保留关键约束文件，记录 cache 命中、输入/输出 token、返工轮次、人工接管和单 PR 成本。",
     },
     [normalizeTitle("Google Sheets 推出 Sheets canvas：用 Gemini 将表格数据变为交互式迷你应用")]: {
       signal: "办公表格应用化信号：Sheets canvas 把 Gemini 放进表格数据到交互式 mini app 的转换链路，说明 spreadsheet 正从静态数据容器变成轻量业务工具生成入口。",
