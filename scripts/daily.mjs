@@ -1089,23 +1089,23 @@ function codexResearchRefresh({ repo, readme, languages, fallback }) {
   ];
 
   const deepDive = {
-    strategicValue: `${project} 的价值不应按 star 数直接外推；更合理的读法是把它当作 ${lens.domain} 的工程样本，判断其机制是否能降低你现有链路的复杂度、人工成本或质量波动。`,
+    strategicValue: `${project} 的战略价值在于把「${userPain}」收敛成「${coreMechanism}」。它适合先作为 ${lens.domain} 的工程样本评估，真正的收益应落到 ${businessValue}`,
     implementationPath: [
-      landingPath,
-      `用一个可回放样本验证 ${lens.successMetric}，同时记录接入时间、失败样本和回滚步骤。`,
-      `只在指标改善、维护 owner 明确、风险可隔离后，再从旁路验证扩大到核心流程。`,
+      `第一步读取实现边界：${inspectFirst}。`,
+      `第二步用旁路方式验证：${landingPath}`,
+      `第三步只围绕 ${successMetric} 做前后对比；指标没有改善时保留观察，不进入主链路。`,
     ],
     productionConcerns: [
       productionRisk,
-      `与现有 ${primaryLang} / ${profile.installSurface} 工具链的耦合要先做最小集成验证。`,
-      repo.open_issues_count > 300 ? "当前 open issues 偏高，必须抽查最近 issue 的响应质量和 release 节奏。" : "社区负载相对可控，但仍要关注 breaking change、license 和长期维护信号。",
+      `${repo.open_issues_count > 300 ? "当前 open issues 偏高" : "社区负载相对可控"}，试点前仍要抽查最近 issue、release 节奏、license、权限边界和回滚路径。`,
+      `与现有 ${primaryLang} / ${profile.installSurface} 工具链的耦合要先做最小集成验证，避免把 demo 依赖直接带入生产。`,
     ],
     decisionQuestions: [
-      decisionQuestion,
-      `如果两周 spike 只能证明“能跑”，不能证明 ${lens.successMetric} 改善，是否应降级为观察项？`,
-      "谁负责上线后的升级、告警、回滚和安全审计？",
+      `当前团队是否真的具备这个前提：${teamFit}`,
+      `如果场景更接近「${lens.badFit}」，是否应降级为资料观察而不是工程试点？`,
+      `谁负责 ${successMetric} 的验收、失败样本复盘、升级和回滚？`,
     ],
-    recommendedAction: `进入观察/试点池：${landingPath}`,
+    recommendedAction: `进入分层观察：先按「${safeEntry}」做小样本验证，验收面只看 ${successMetric}。`,
   };
 
   return {
@@ -1113,7 +1113,7 @@ function codexResearchRefresh({ repo, readme, languages, fallback }) {
     category: lens.domain,
     method: lens.editorialMethod || "codex-research-refresh",
     oneLiner: sharpenOneLiner(repo, lens, fallback.oneLiner),
-    whyItMatters: `${project} 本轮进入雷达，核心不是热度本身，而是它把「${userPain}」落到「${coreMechanism}」。当前 ${compact(repo.stargazers_count)} stars / ${compact(repo.forks_count)} forks；是否值得试点，取决于能否在「${safeEntry}」这个小样本里证明 ${successMetric}，并把「${productionRisk}」这类生产风险隔离。`,
+    whyItMatters: `${project} 本轮应按「${lens.domain}」来读：它针对的是「${userPain}」，核心机制是「${coreMechanism}」。判断价值时优先看 ${successMetric}，而不是把 ${compact(repo.stargazers_count)} stars / ${compact(repo.forks_count)} forks 当成生产成熟度。`,
     engineeringRead: `${primaryLang} · ${profile.installSurface}。建议按“入口示例 -> 数据/配置 -> 失败处理 -> CI/release -> issue 反例”的顺序读；重点回答 ${decisionQuestion}`,
     architectureSignals,
     valueHypothesis: [
@@ -2443,16 +2443,17 @@ function specializeLens(repo, lens) {
       primaryRisk: "图解容易把真实系统复杂度简化过度，培训时必须补充约束、反例、容量指标和事故案例。",
     },
     "usestrix/strix": {
+      editorialMethod: "manual-deep-update-2026-08-18",
       domain: "AI 安全测试 Agent / 应用漏洞发现与修复",
       userPain: "应用安全团队需要持续发现和修复业务逻辑、接口、认证和前端漏洞，但人工渗透测试覆盖有限、修复闭环慢",
-      coreMechanism: "AI hacker agent、目标扫描、浏览器/API 操作、漏洞假设生成、验证、补丁建议和安全报告输出",
+      coreMechanism: "Strix 将目标枚举、浏览器/API 探测、漏洞假设生成、PoC 验证、修复建议和报告输出串成 Agent 流程，让安全测试从一次性人工操作变成可回放任务",
       safeEntry: "只在授权测试环境和 staging 域名运行，先限定只读扫描与 PoC 生成，不允许破坏性写操作",
-      businessValue: "把安全测试从周期性人工项目扩展为持续辅助流程，提高低成本覆盖和修复建议速度",
-      successMetric: "有效漏洞率、误报率、严重级别分布、复现成功率、修复耗时、越权/破坏性操作拦截数",
-      inspectFirst: "先看授权边界、扫描动作空间、浏览器隔离、凭据处理、报告证据、补丁生成方式和审计日志",
-      bestFit: "有安全 owner、staging 环境、漏洞管理流程和人工复核机制的 SaaS/平台团队",
-      badFit: "未授权目标、生产破坏性测试、无安全复核或希望让 Agent 自动提交高风险修复",
-      primaryRisk: "安全 Agent 可能触发越权、数据破坏、误报和合规问题，必须限定范围、动作和人工确认。",
+      businessValue: "如果动作边界可控，它适合作为安全工程师的覆盖扩展层，优先补足重复探测、低危漏洞 triage 和修复建议草稿",
+      successMetric: "有效漏洞率、误报率、严重级别分布、复现成功率、修复耗时、越权/破坏性操作拦截数和人工复核通过率",
+      inspectFirst: "先看 agent action model、目标范围约束、浏览器/网络权限、PoC 生成方式、报告格式、误报处理、审计日志和最近安全 issue",
+      bestFit: "有授权测试资产、人工安全 reviewer、staging 隔离环境和修复闭环的 AppSec、红队辅助和 bug bounty triage 团队",
+      badFit: "生产域名直接扫描、缺少授权边界、不能承受误报/误操作，或希望 Agent 自动攻击并自动提交修复的场景",
+      primaryRisk: "安全 Agent 可能触发越权、数据破坏、误报和合规问题；必须限定域名、账号、动作、速率和人工确认。",
     },
     "diegosouzapw/OmniRoute": {
       domain: "多模型网关 / Coding Agent 路由与压缩层",
@@ -2875,15 +2876,16 @@ function specializeLens(repo, lens) {
       primaryRisk: "平台条款、账号风控、反爬变化、隐私边界和引用可追溯性是生产前置条件。",
     },
     "mukul975/Anthropic-Cybersecurity-Skills": {
+      editorialMethod: "manual-deep-update-2026-08-18",
       domain: "Agent 安全技能库 / 安全运营知识工程",
       userPain: "安全团队希望把 ATT&CK、NIST、ATLAS、D3FEND 等框架转成可被 Claude Code、Codex、Copilot 等 Agent 调用的结构化技能",
-      coreMechanism: "按安全域组织的技能文件、框架映射、检测/响应流程、工具提示边界和跨平台 Agent skill 标准",
+      coreMechanism: "该仓库把安全域、战术技术、检测响应步骤和工具提示边界封装成 skill 文件，并映射到多套安全框架，让 Agent 在研判、狩猎、响应和报告中按标准流程取用知识",
       safeEntry: "先选威胁狩猎、漏洞 triage 或事件响应中的一个低风险流程，作为只读辅助技能接入",
-      businessValue: "减少安全分析上下文装配成本，提高告警研判、证据收集和处置建议的一致性",
-      successMetric: "误报降噪率、研判耗时、MITRE 映射准确率、人工复核通过率、越权/误操作次数",
-      inspectFirst: "先看技能目录、框架映射表、输入输出边界、权限提示、审计记录和与现有 SOAR/SIEM 的接入方式",
-      bestFit: "有成熟安全流程、人工复核机制和框架化知识资产的 SOC、DevSecOps 或红蓝队平台团队",
-      badFit: "想让 Agent 自动执行高危处置、缺少审计闭环或安全知识库尚未标准化",
+      businessValue: "把安全知识从散落文档转成可版本化执行资产，减少 Agent 在安全任务里遗漏框架、乱用工具或输出不可审计建议的概率",
+      successMetric: "误报降噪率、研判耗时、MITRE 映射准确率、人工复核通过率、越权/误操作次数和技能版本回滚成本",
+      inspectFirst: "先看 skill schema、框架映射来源、命令权限、样例任务、红队/蓝队边界、敏感信息处理和不同 Agent 平台的加载差异",
+      bestFit: "已有安全运营流程、希望让 Agent 辅助研判但保留人工确认的 SOC、AppSec、威胁情报和事件响应团队",
+      badFit: "缺少安全 reviewer、希望自动执行高风险命令，或把公开技能当作组织内部安全基线的唯一来源",
       primaryRisk: "安全技能会放大 Agent 行为边界问题，必须限制凭据、网络、写操作和外部命令，并保留人工确认。",
     },
     "obra/superpowers": {
@@ -3028,7 +3030,8 @@ function specializeLens(repo, lens) {
       primaryRisk: "通用自主 Agent 会放大目标漂移、工具误用、成本失控和安全边界问题；必须以白名单、限额、审计和人工 gate 作为上线前提。",
     },
   };
-  return overrides[repo.full_name] ? { ...lens, ...overrides[repo.full_name] } : lens;
+  const override = overrides[repo.full_name] || overrides[String(repo.full_name || "").toLowerCase()];
+  return override ? { ...lens, ...override } : lens;
 }
 
 function sharpenOneLiner(repo, lens, fallbackLine) {
@@ -3495,6 +3498,9 @@ function buildOneLiner({ repo, lens, profile }) {
 function buildWhyItMatters({ repo, lens, profile, activity }) {
   const popularity = `${compact(repo.stargazers_count)} stars / ${compact(repo.forks_count)} forks`;
   const readmeHook = profile.headings.length ? `README 把重点放在「${profile.headings[0]}」` : profile.uniqueSignal;
+  if (lens.editorialMethod?.startsWith("manual-deep-update")) {
+    return `${repo.full_name} 本轮应按「${lens.domain}」来读：它针对的是「${lens.userPain}」，核心机制是「${lens.coreMechanism}」。判断价值时优先看 ${lens.successMetric}，而不是把热度当成生产成熟度。`;
+  }
   if (lens.domain.includes("学习") || lens.domain.includes("API")) {
     return `${repo.full_name} 的热度来自“可持续维护的公共资料面”：${popularity}，${activity.freshness}。${readmeHook}，说明它的价值更多在分类、治理和更新节奏，而不是某个单点技术实现。`;
   }
@@ -3542,6 +3548,27 @@ function buildWatchSignals({ lens, activity, profile }) {
 }
 
 function buildDeepDive({ repo, lens, profile, activity }) {
+  if (lens.editorialMethod?.startsWith("manual-deep-update")) {
+    return {
+      strategicValue: `${repo.full_name} 的战略价值在于把「${lens.userPain}」收敛成「${lens.coreMechanism}」。它适合先作为 ${lens.domain} 的工程样本评估，真正的收益应落到 ${lens.businessValue}`,
+      implementationPath: [
+        `第一步读取实现边界：${lens.inspectFirst}。`,
+        `第二步用旁路方式验证：${lens.safeEntry}`,
+        `第三步只围绕 ${lens.successMetric} 做前后对比；指标没有改善时保留观察，不进入主链路。`,
+      ],
+      productionConcerns: [
+        lens.primaryRisk,
+        `${activity.issueRead} 这决定了试点前必须看维护响应、迁移说明和失败样本，而不是只看 README 完整度。`,
+        `${activity.freshness}，但活跃并不等于稳定；仍需检查 release 节奏、license、权限边界和回滚路径。`,
+      ],
+      decisionQuestions: [
+        `当前团队是否真的具备这个前提：${lens.bestFit}`,
+        `如果场景更接近「${lens.badFit}」，是否应降级为资料观察而不是工程试点？`,
+        `谁负责 ${lens.successMetric} 的验收、失败样本复盘、升级和回滚？`,
+      ],
+      recommendedAction: `进入分层观察：先按「${lens.safeEntry}」做小样本验证，验收面只看 ${lens.successMetric}。`,
+    };
+  }
   return {
     strategicValue: `${lens.valueFrame} 对 ${repo.full_name} 来说，真正需要判断的是：它能否把「${lens.userPain}」变成可复用流程，而不是把一次性热度转化成长期维护负担。`,
     implementationPath: [
