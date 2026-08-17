@@ -138,6 +138,37 @@ async function buildReport({ reportDate, limit, days, language }) {
 
 function applyEditorialOverrides(report) {
   const aiNewsOverrides = {
+    "https://x.com/i/article/2089330332369588224": {
+      title: "Jensen Huang 发布 AI 基础设施长文（AIHOT 仅提供 X 链接）",
+      signal: "来源受限的算力基础设施信号：AIHOT 只暴露 Jensen Huang 的 X article 链接和转发入口，正文不可直接核验；这类高管长文仍值得观察，但不能把裸链接当成完整事实来源。",
+      impact: "对技术雷达的影响是先降权处理：它可能关联 NVIDIA、数据中心、电力容量或推理供应链叙事，但在缺少官方正文摘要前，不应据此调整模型供应商、算力采购或成本预测。",
+      action: "只做证据登记和复查：保留 AIHOT/X 链接，等待 NVIDIA 官方博客、新闻稿或可访问全文补充，再记录涉及的容量、电力、客户、时间表、约束条件和对 OpenAI/企业推理成本的影响。",
+      tags: ["NVIDIA", "算力基础设施", "来源核验", "供应链"],
+    },
+    "NVIDIA 与 SB Energy 合作锁定俄亥俄州 PORTS-Pike 园区电力容量，OpenAI 将入驻": {
+      signal: "AI 基础设施从 GPU 采购转向电力容量锁定：NVIDIA 与 SB Energy 围绕 PORTS-Pike 园区绑定电力和算力部署，OpenAI 作为租户出现，说明前沿模型供给瓶颈正在下沉到电网、园区和长期容量协议。",
+      impact: "模型成本与可用性会越来越受能源、园区建设、并网节奏和客户优先级影响；应用团队看到的 token 价格、配额和区域可用性，背后可能是基础设施容量分配，而不只是模型效率。",
+      action: "把基础设施信号纳入供应商评审：跟踪园区上线时间、电力容量、GPU 代际、租户结构、地区 SLA、价格变化和限流策略，不因单条合作新闻直接修改生产模型路由。",
+      tags: ["NVIDIA", "OpenAI", "电力容量", "模型供应链"],
+    },
+    "A 股迎来\"人形机器人第一股\"，宇树科技官宣 8 月 19 日科创板上市": {
+      signal: "具身智能商业化信号：宇树科技上市信息把营收、盈利、募资和高性能通用机器人放到资本市场披露语境里，说明机器人赛道正在从 demo 竞争转向规模交付、供应链和财务可验证阶段。",
+      impact: "产业团队会更重视机器人本体、运动控制、边缘推理、场景数据和售后网络的闭环能力；但上市叙事不等于通用机器人已经进入大规模生产场景，财务增长和真实客户复购要分开看。",
+      action: "建立具身智能观察表：跟踪招股书/公告、产品出货、毛利、研发投入、客户行业、事故/售后、模型能力和真实任务完成率，再判断是否进入供应链或应用试点。",
+      tags: ["具身智能", "机器人", "资本市场", "产业化"],
+    },
+    "OpenAI 如何用前沿智能加固自身防御：The Defender's Window": {
+      signal: "AI 防御工程信号：OpenAI 把前沿模型用于自身安全防御，重点是漏洞验证、告警分流、攻击路径枚举和可信防御者开放能力，而不是单纯发布更强模型。",
+      impact: "安全团队会把 Agent 从辅助问答升级为防御工作流参与者；风险在于模型可能误判告警、生成不可复跑修复、触碰敏感系统或在红队/蓝队边界上引入新权限问题。",
+      action: "先做防御影子流：选择代码漏洞验证、告警归因和攻击路径枚举三类任务，记录命中率、误报/漏报、证据链接、人工复核时间、权限触达、回滚路径和事故响应责任。",
+      tags: ["OpenAI", "AI 安全", "防御自动化", "Agent"],
+    },
+    "OpenRouter 推出 Activity 仪表盘与 Analytics API：按智能体、模型、请求追踪 AI 使用成本": {
+      signal: "多模型成本可观测性信号：OpenRouter 把 Activity 仪表盘和 Analytics API 做到 agent、model、request 维度，说明模型网关的竞争点正在从“能路由”转向“能解释成本、缓存、失败和使用归因”。",
+      impact: "应用团队可以更快发现异常 agent、贵模型误用、缓存失效和供应商成本漂移；但第三方网关也会引入日志留存、请求内容可见性、供应商 SLA 和审计边界问题。",
+      action: "把它当成本治理样本：对现有模型调用按任务、agent、模型、用户和缓存命中做同维度打点，记录单任务成本、P95、失败码、重试、降级和敏感日志保留策略。",
+      tags: ["OpenRouter", "模型网关", "成本治理", "可观测性"],
+    },
     "GLM-5.3 发布：编程能力开源第一，并涌现网络安全能力": {
       signal: "国产开源 Agent 编程模型信号：AIHOT 汇总智谱 GLM-5.3 发布，重点不是单个榜单名次，而是 743B 基座后训练 scaling、Terminal Bench/Agents' Last Exam、CyberGym、ZCode/AutoClaw 工具入口和分阶段开源被打包成同一条工程能力叙事。",
       impact: "研发和安全团队会把 GLM-5.3 放进 Claude/OpenAI 之外的本地或国产模型候选池，但权重尚需等待分阶段开放；榜单和安全分数不能直接证明真实仓库修复、白盒审计、权限隔离或长任务恢复能力。",
@@ -720,7 +751,7 @@ function applyEditorialOverrides(report) {
 }
 
 function isWeakAiSummary(summary = "") {
-  return /待验证技术信号|行业动态信号|建议保留原文链接|模型能力或评测更新，建议关注是否改变内部模型选型和评估基线/.test(summary);
+  return /待验证技术信号|行业动态信号|AI 技术观察信号|这条动态适合放进周度观察池|建议做最小证据登记|建议保留原文链接|建议纳入成本与架构评估|适合做 30 分钟产品体验验证|模型能力或评测更新，建议关注是否改变内部模型选型和评估基线/.test(summary);
 }
 
 function buildAiNewsOverrideDiagramSummary(item, override) {
