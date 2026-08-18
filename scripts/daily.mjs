@@ -730,6 +730,30 @@ function applyEditorialOverrides(report) {
       impact: "采购 Claude 或竞品时，安全判断要区分研究模型、公开模型、部署 safeguards 和监控策略，不能只看模型家族名称。",
       action: "在内部评测中强制记录模型版本、防护开关、工具权限、网络边界、监控命中和人工接管证据，形成可复跑的安全回归集。",
     },
+    "OpenAI 推出 ChatGPT for Teens：面向青少年的学习体验与更强安全保护": {
+      signal: "青少年 AI 产品化信号：OpenAI 把 13-17 岁用户从通用 ChatGPT 流量中拆出独立体验，默认叠加年龄估计、内容保护、Study Mode、作业提醒、家长控制和高风险通知，说明教育入口的竞争正在转向“能学、但不替学生完成”的产品边界。",
+      impact: "教育、内容和未成年人产品团队不能只评估模型回答质量；年龄识别误判、学业作弊绕过、心理健康风险、家长通知范围和隐私披露会一起决定是否能进入学校、家庭和监管场景。",
+      action: "把 Teen 模式当作未成年人 AI 上线基线样本：用作业求解、自残/饮食失调、敏感图片、长时间使用和年龄误判样本做回放，记录拒答率、误伤、家长提醒、Study Mode 留存和人工升级路径。",
+      tags: ["OpenAI", "青少年安全", "教育 AI", "家长控制"],
+    },
+    "Multi-Vector （Late Interaction） Embedding Models with Sentence Transformers": {
+      signal: "检索模型工程化信号：Hugging Face/Sentence Transformers 将 multi-vector、late interaction、MaxSim、retrieve-and-rerank、索引和多模态检索整合进通用库，说明 ColBERT 式能力正在从研究实现进入可被 Agent/RAG 团队直接调用的工程组件。",
+      impact: "企业搜索、推荐召回和 RAG 团队会获得比单向量 embedding 更细粒度的 token/patch 级匹配能力，但代价是索引体积、查询延迟、GPU/CPU serving、向量池化策略和评测口径都要重做。",
+      action: "先做双轨检索回放：同一批长文档、表格截图、代码片段和多模态样本对比 dense embedding、BM25/hybrid 与 multi-vector，记录 recall@k、MRR、P95、索引大小、重排成本和失败 query 类型。",
+      tags: ["检索", "Embedding", "RAG", "Multi-vector"],
+    },
+    "Partnering with CodeAI to prepare the first AI generation": {
+      signal: "AI 素养基础设施信号：OpenAI 与 CodeAI 合作把“会用 AI、会质疑输出、理解局限、负责任创造”推向 K-12/学生教育体系，重点不是新模型能力，而是把 AI literacy 变成课程、教师支持和长期用户培养入口。",
+      impact: "教育机构和企业培训会从禁止学生用 AI 转向教授可审计使用方法；但落地质量取决于教师培训、评价标准、隐私授权、地区合规和是否能避免把商业模型入口包装成中立课程。",
+      action: "把它作为 AI 教育治理样本跟踪：记录课程覆盖年级、教师材料、学生数据边界、评估 rubrics、家长/学校授权、误用案例和是否与 Study Mode/Teen safeguards 形成闭环。",
+      tags: ["OpenAI", "AI literacy", "教育", "CodeAI"],
+    },
+    "Asana cleared 5 years of engineering work in 2 weeks with Codex": {
+      signal: "Coding Agent 存量工程改造信号：Asana 案例把 Codex 用在过时测试系统替换上，声称两周完成原估五年的工程债处理且成本约 1.2 万美元，说明 Agent 的高价值入口不是炫技新功能，而是边界清楚、可测试、可批量拆分的遗留迁移。",
+      impact: "研发管理会重新估算技术债 ROI，但不能把案例线性外推；成功依赖测试基线、代码模块化、review 吞吐、回滚策略、上下文供给和任务能否拆成可验证 PR。",
+      action: "复刻前先选一个低风险技术债队列：拆成 20-50 个可独立验收任务，记录 Codex PR 可合并率、测试通过率、review 轮次、人工修正时间、成本、线上回归和未迁移残差。",
+      tags: ["OpenAI Codex", "技术债", "工程效率", "测试迁移"],
+    },
     "A global workspace in language models": {
       signal: "解释性研究信号：Anthropic 用 global workspace 视角观察语言模型内部信息广播，试图把抽象推理过程转成可检验机制。",
       impact: "这类研究短期不会直接提升产品指标，但会影响模型可解释性、安全诊断和复杂任务失败归因的方法论。",
