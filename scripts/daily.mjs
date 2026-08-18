@@ -138,6 +138,24 @@ async function buildReport({ reportDate, limit, days, language }) {
 
 function applyEditorialOverrides(report) {
   const aiNewsOverrides = {
+    "一个实用的深度思考Prompt：用\"双向钢人论证\"让AI帮你挖出最本质的答案": {
+      signal: "提示词工作流商品化信号：这类“双向钢人论证”Prompt 的价值不在神奇话术，而在把同一问题强制拆成正反最强论证、反驳、前提暴露和决策残差，说明知识工作团队正在把推理过程模板化、可复查化。",
+      impact: "对产品、策略和研究团队有帮助的是降低单边论证和确认偏误；风险是把 Prompt 当成结论引擎，忽略输入事实质量、利益相关方约束和最终责任人判断。",
+      action: "只放进高不确定性决策的辅助环节：选 10 个历史争议问题回放，记录是否发现新前提、反例质量、人工修正量、决策时间和事后结果，不把它接入自动执行或对外结论发布。",
+      tags: ["Prompt 工作流", "决策质量", "知识工作", "评测回放"],
+    },
+    "用 Google 的 Agent Development Kit 构建零信任 AI 智能体": {
+      signal: "Agent 安全架构信号：Google ADK 的零信任示例把身份、工具权限、策略检查、审计和运行时边界放进 Agent 开发流程，说明企业智能体竞争正在从“能调用工具”转向“每次调用都可授权、可追踪、可撤销”。",
+      impact: "采用 ADK 或类似框架时，安全团队会要求把用户身份、服务账号、数据作用域、工具白名单和日志留存纳入设计；否则 Agent 一旦串联内部系统，越权读写和提示注入会放大成流程事故。",
+      action: "做一个只读零信任样例：固定 3 个工具、2 类用户角色和 1 个敏感数据拒答场景，记录策略命中、误拒/误放、审计日志完整性、密钥暴露面和人工接管路径，再评估是否开放写操作。",
+      tags: ["Google ADK", "Agent 安全", "零信任", "权限治理"],
+    },
+    "Cursor 推出 Origin 代码托管服务，作为 GitHub 的替代方案": {
+      signal: "AI IDE 向代码托管上游扩张信号：Cursor Origin 把代码编辑、Agent 变更、review 和仓库托管放到同一产品叙事里，说明 AI 编程工具不满足于 IDE 插件位置，正在争夺开发工作流的系统入口。",
+      impact: "研发团队短期会看到更顺滑的 Agent PR、上下文保留和代码托管体验；长期风险是供应商锁定、权限模型不成熟、CI/安全扫描生态不足、迁移成本和与 GitHub/Jira/企业审计链的断裂。",
+      action: "只在非关键仓库做迁移演练：验证导入/导出、分支保护、review 规则、CI 集成、SSO/审计、Agent 权限、回滚和离开成本，不因 IDE 体验提升直接替换主代码托管。",
+      tags: ["Cursor", "代码托管", "AI IDE", "开发工作流"],
+    },
     "404 Media 追踪珍本图书流向：亚马逊批量购书扫描用于 AI 训练后销毁": {
       signal: "AI 训练数据供应链信号：404 Media 追踪的珍本图书流向把“买书、拆解/扫描、训练、销毁原件”这条链路暴露出来，说明高质量版权文本已经成为模型训练资产争夺对象，风险不只在网页爬取，也在实体内容被批量转成训练语料。",
       impact: "内容平台、出版社和知识库团队需要重新评估纸质/付费/稀缺内容的授权、溯源和审计边界；模型供应商若无法解释训练数据来源，会在版权、品牌信任和企业采购合规上遇到更高阻力。",
@@ -180,6 +198,12 @@ function applyEditorialOverrides(report) {
       impact: "产业团队会更重视机器人本体、运动控制、边缘推理、场景数据和售后网络的闭环能力；但上市叙事不等于通用机器人已经进入大规模生产场景，财务增长和真实客户复购要分开看。",
       action: "建立具身智能观察表：跟踪招股书/公告、产品出货、毛利、研发投入、客户行业、事故/售后、模型能力和真实任务完成率，再判断是否进入供应链或应用试点。",
       tags: ["具身智能", "机器人", "资本市场", "产业化"],
+    },
+    "PhotoScan：用智能手机照片估算胰岛素抵抗，精度接近DXA": {
+      signal: "手机影像健康评估信号：Google Research 的 PhotoScan 把普通手机照片、体型视觉特征和代谢风险估计连接起来，说明多模态健康 AI 正从可穿戴传感器扩展到低门槛图像筛查。",
+      impact: "健康、保险和公共卫生团队会关注低成本早筛，但这类模型不能替代临床诊断；肤色、体型、拍摄姿态、地区人群和隐私授权都会影响公平性、误报/漏报和合规边界。",
+      action: "只作为研究观察和离线评估：跟踪论文/模型卡、人群分层指标、与 DXA/血检对照、隐私处理、临床验证和监管声明；没有本地人群验证前不接入用户诊断或商业评分。",
+      tags: ["Google Research", "健康 AI", "多模态", "临床验证"],
     },
     "OpenAI 如何用前沿智能加固自身防御：The Defender's Window": {
       signal: "AI 防御工程信号：OpenAI 把前沿模型用于自身安全防御，重点是漏洞验证、告警分流、攻击路径枚举和可信防御者开放能力，而不是单纯发布更强模型。",
@@ -749,7 +773,7 @@ function applyEditorialOverrides(report) {
     ...aiHotSectionItems,
     ...(report.anthropic?.items || []),
   ]) {
-    const override = aiNewsOverrides[item.title];
+    const override = findAiNewsOverride(aiNewsOverrides, item.title);
     if (!override) continue;
     Object.assign(item, override);
     if (isWeakAiSummary(item.summary) && override.signal) {
@@ -772,6 +796,12 @@ function applyEditorialOverrides(report) {
     }
   }
   return sanitizeReportText(report);
+}
+
+function findAiNewsOverride(overrides, title = "") {
+  if (overrides[title]) return overrides[title];
+  const normalized = normalizeTitle(title);
+  return Object.entries(overrides).find(([key]) => normalizeTitle(key) === normalized)?.[1] || null;
 }
 
 function isWeakAiSummary(summary = "") {
