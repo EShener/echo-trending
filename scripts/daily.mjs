@@ -138,6 +138,12 @@ async function buildReport({ reportDate, limit, days, language }) {
 
 function applyEditorialOverrides(report) {
   const aiNewsOverrides = {
+    "设计 AI 评测：先求清晰，再谈可视化": {
+      signal: "AI 评测工程化信号：Google AI 这篇实践文把 Inspect AI、Harbor、Google Sheets 和 Data Studio 串成评测闭环，重点不是展示漂亮看板，而是先把任务定义、评分准则、样本集和失败归因固定下来。",
+      impact: "Agent 和工具调用进入真实流程后，团队会更依赖可重复评测来判断模型、提示词、工具链和权限策略是否真的改进；如果先做可视化而没有稳定 rubrics 和 replay set，看板会放大噪声而不是解释质量。",
+      action: "先建最小 eval harness：选 30 条真实任务，固定输入、期望行为、评分规则、人工仲裁和失败标签，再用 Sheets/Data Studio 展示通过率、错误类型、成本、延迟和版本差异；只有指标稳定后才扩大到自动回归。",
+      tags: ["AI 评测", "Agent", "Inspect AI", "实验回放"],
+    },
     "一个实用的深度思考Prompt：用\"双向钢人论证\"让AI帮你挖出最本质的答案": {
       signal: "提示词工作流商品化信号：这类“双向钢人论证”Prompt 的价值不在神奇话术，而在把同一问题强制拆成正反最强论证、反驳、前提暴露和决策残差，说明知识工作团队正在把推理过程模板化、可复查化。",
       impact: "对产品、策略和研究团队有帮助的是降低单边论证和确认偏误；风险是把 Prompt 当成结论引擎，忽略输入事实质量、利益相关方约束和最终责任人判断。",
