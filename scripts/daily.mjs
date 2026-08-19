@@ -3907,7 +3907,7 @@ async function buildFrontierSection(maxItems) {
     ],
     maxItems,
   ), industryItems, maxItems).map((item, index) => {
-    const interpretation = normalizeFrontierInterpretation(item);
+    const interpretation = withFrontierInterpretationAliases(normalizeFrontierInterpretation(item));
     return {
       ...item,
       interpretation,
@@ -3993,10 +3993,10 @@ function findFrontierCoverageReplacementIndex(items, prioritySources, targetSour
 
 function normalizeFrontierInterpretation(item) {
   if (item.interpretation && typeof item.interpretation === "object" && item.interpretation.businessProblem) {
-    return item.interpretation;
+    return withFrontierInterpretationAliases(item.interpretation);
   }
   const curated = curatedFrontierInterpretation(item);
-  if (curated) return curated;
+  if (curated) return withFrontierInterpretationAliases(curated);
   const text = `${item.title || ""} ${item.summary || ""} ${(item.tags || []).join(" ")}`.toLowerCase();
   const isAds = /\bads?\b|advertis|auction|bidding|\bctr\b|\bcvr\b|conversion|\bcpa\b|\bcpm\b|广告|竞价|出价|转化/.test(text);
   const isSearch = /search|retrieval|query|index|relevance|rag|搜索|检索|查询|索引/.test(text);
@@ -4004,47 +4004,57 @@ function normalizeFrontierInterpretation(item) {
   const isExperiment = /experiment|a\/b|lifecycle graph|model lifecycle|实验平台|模型生命周期/.test(text);
   const isLabeling = /label|judge|dspy|human/.test(text);
   if (isAds) {
-    return {
+    return withFrontierInterpretationAliases({
       businessProblem: "广告候选、排序和竞价需要同时控制转化价值、用户体验、延迟与算力成本，单点模型提升很难直接证明业务收益。",
       systemMechanism: "把用户行为序列、实时上下文、候选生成、轻量排序、精排/重排和预算约束拆成可观测阶段，并在高价值候选上投入更重模型。",
       metricsAndExperiment: "优先看 CTR、CVR、CPA/ROAS、广告质量、P95 延迟、推理成本和预算消耗；在线实验要同时观察广告主价值与用户负反馈。",
       borrowable: "可借鉴分阶段候选裁剪、实时特征注入、模型容量自适应和在线/离线差异诊断，把算力预算变成排序策略的一部分。",
       boundary: "流量小、转化回传慢、成本归因不清或缺少在线实验平台时，不适合直接复制大厂多阶段广告架构。",
-    };
+    });
   }
   if (isRec) {
-    return {
+    return withFrontierInterpretationAliases({
       businessProblem: "推荐系统需要在巨大候选池里兼顾兴趣匹配、新鲜度、多样性和商业目标，传统召回/排序割裂会造成离线提升难以上线转化。",
       systemMechanism: "把候选生成、向量/索引、用户序列、ranker 表征和反馈学习联合设计，让召回质量与后续排序目标保持一致。",
       metricsAndExperiment: "关注 recall@K、覆盖率、多样性、CTR/CVR、停留/满意度、延迟和索引刷新时延；实验要看离线召回是否转化为在线核心指标。",
       borrowable: "可借鉴模型化索引、可编辑生成式召回、多目标排序和实时行为特征，将推荐漏斗从组件拼接改为端到端协同。",
       boundary: "物料规模不大、业务目标单一或团队没有检索/排序联合 owner 时，复杂联合建模会增加维护成本。",
-    };
+    });
   }
   if (isSearch || isLabeling) {
-    return {
+    return withFrontierInterpretationAliases({
       businessProblem: "企业搜索和社区搜索的长尾查询、权限边界、语义漂移和标注稀缺会拉低相关性，人工标注又难以覆盖全部候选。",
       systemMechanism: "通过混合检索、模型化相关性评估、LLM 辅助标注或自动化 judge，把查询理解、召回、排序和质量评估串成闭环。",
       metricsAndExperiment: "重点看 NDCG/MRR、answer match、人工一致性、长尾覆盖、权限误召、P95 延迟和标注成本；线上需要观察搜索成功率与二次查询率。",
       borrowable: "适合迁移到企业知识库、RAG、客服搜索和社区内容搜索：先建立可靠评测集，再让 LLM 扩大标注覆盖。",
       boundary: "如果文档权限复杂但审计不足，或 LLM judge 没有金标校准，自动评估会把错误相关性放大到生产排序。",
-    };
+    });
   }
   if (isExperiment) {
-    return {
+    return withFrontierInterpretationAliases({
       businessProblem: "搜广推团队的模型、特征、训练、部署和实验资产关系复杂，单次实验成功后也容易在依赖、回滚和复用上失控。",
       systemMechanism: "用模型生命周期图或实验资产图谱记录数据、特征、模型、评测、服务和消费方关系，把影响面分析从人工经验转成系统能力。",
       metricsAndExperiment: "关注实验复用率、依赖定位时间、回滚时间、特征/模型血缘完整率、离线到线上指标一致性和事故恢复成本。",
       borrowable: "可借鉴到推荐/广告平台治理：先建轻量 lineage，再把实验报告、模型 registry、特征平台和线上指标串起来。",
       boundary: "团队规模小、模型数量少或没有统一平台 owner 时，完整生命周期图会变成维护负担。",
-    };
+    });
   }
-  return {
+  return withFrontierInterpretationAliases({
     businessProblem: "前沿论文或工程文章触及搜广推链路中的召回、排序、评测或系统效率问题，需要先判断它离真实业务目标有多近。",
     systemMechanism: "从任务定义、数据构造、模型结构、服务约束和评测协议五个层面拆解，避免只被单个 benchmark 指标吸引。",
     metricsAndExperiment: "优先补齐离线指标、线上代理指标、成本、延迟、稳定性和反例分析，再决定是否进入工程 spike。",
     borrowable: "适合沉淀为候选技术卡片：记录输入输出、依赖数据、可替换组件和最小验证路径。",
     boundary: "如果论文数据不可复现、业务指标不匹配或系统约束被简化，暂时只应观察，不应进入主链路。",
+  });
+}
+
+function withFrontierInterpretationAliases(interpretation) {
+  if (!interpretation || typeof interpretation !== "object") return interpretation;
+  return {
+    ...interpretation,
+    metricsExperiment: interpretation.metricsExperiment || interpretation.metricsAndExperiment,
+    borrowableIdeas: interpretation.borrowableIdeas || interpretation.borrowable,
+    unsuitableBoundary: interpretation.unsuitableBoundary || interpretation.boundary,
   };
 }
 
