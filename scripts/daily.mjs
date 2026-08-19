@@ -277,6 +277,12 @@ function applyEditorialOverrides(report) {
       action: "进入观察和回放池而不是立即替换：等官方模型卡/权重/API 稳定后，用同一批代码修复、终端排障、白盒审计、工具调用和长上下文任务记录完成率、误报/漏报、人工接管、成本、P95、许可证和安全评估限制。",
       tags: ["Agent", "模型", "安全/可信", "工程/基础设施"],
     },
+    "GLM-5.3上线：AA智能指数60分并列开源第一，成本更低": {
+      signal: "国产开源 Agent 模型产品化信号：智谱把 GLM-5.3 的复杂编码、防御性网络安全、长程任务、AA 智能指数和低成本 API 放在同一条发布叙事里，重点不是“追平某个闭源模型”，而是开源/国产候选能否进入真实工程回放池。",
+      impact: "研发和安全团队会把 GLM-5.3 放进 Claude、OpenAI、Kimi 等模型之外的候选组合，但 AA 指数、成本口径和即将开源不能直接证明真实仓库修复、白盒审计、工具权限隔离、长任务恢复或企业私有化稳定性。",
+      action: "先按候选模型处理：等待权重、模型卡和 API SLA 稳定后，用同一批代码修改、终端排障、防御性安全分析、长上下文检索和工具调用任务回放，记录完成率、人工接管、误报/漏报、成本、P95、license 和安全边界。",
+      tags: ["Agent", "国产模型", "开源模型", "安全/可信"],
+    },
     "Claude 接管应用日常维护：388 个 PR 的实践": {
       signal: "Coding Agent 维护能力信号：Boris Cherny 披露 Claude 参与应用日常维护并形成 388 个 PR，重点不是单次代码生成，而是长周期 issue 分解、补丁生成、review 循环和回归验证能否进入真实仓库节奏。",
       impact: "研发团队会更想把重复维护、依赖升级、测试修复和小功能交给 Agent，但风险会集中在批量 PR 质量、上下文漂移、测试覆盖错觉、review 堆积、权限边界和路线图被低价值改动挤占。",
@@ -783,6 +789,12 @@ function applyEditorialOverrides(report) {
       impact: "教育、内容和未成年人产品团队不能只评估模型回答质量；年龄识别误判、学业作弊绕过、心理健康风险、家长通知范围和隐私披露会一起决定是否能进入学校、家庭和监管场景。",
       action: "把 Teen 模式当作未成年人 AI 上线基线样本：用作业求解、自残/饮食失调、敏感图片、长时间使用和年龄误判样本做回放，记录拒答率、误伤、家长提醒、Study Mode 留存和人工升级路径。",
       tags: ["OpenAI", "青少年安全", "教育 AI", "家长控制"],
+    },
+    "ChatGPT Ads expands across Europe": {
+      signal: "AI 原生广告库存扩张信号：OpenAI 官方把 ChatGPT Ads 从美国测试推进到 31 个欧洲市场，说明搜索/问答入口的商业化正在从传统 SERP 迁移到对话决策面，并需要在欧洲隐私同意、广告标识和答案质量之间建立新约束。",
+      impact: "广告、搜索和增长团队会更关注 ChatGPT 这类 answer surface 的投放入口；风险是归因链路不成熟、内容供应方价值分配不清、GDPR/同意管理复杂、品牌安全和用户信任损耗，不能按普通搜索广告直接迁移预算。",
+      action: "先做小预算可观测试点：按国家、意图词、转化漏斗和品牌安全样本记录曝光、点击、有效会话、转化、CPA、用户反馈、广告标识可见性和内容引用风险，再决定是否扩大投放。",
+      tags: ["OpenAI", "AI 广告", "搜索商业化", "隐私合规"],
     },
     "Multi-Vector （Late Interaction） Embedding Models with Sentence Transformers": {
       signal: "检索模型工程化信号：Hugging Face/Sentence Transformers 将 multi-vector、late interaction、MaxSim、retrieve-and-rerank、索引和多模态检索整合进通用库，说明 ColBERT 式能力正在从研究实现进入可被 Agent/RAG 团队直接调用的工程组件。",
@@ -6688,6 +6700,7 @@ function interpretFrontier(item) {
 
 function interpretAiNews(item) {
   const text = `${item.title} ${item.summary}`.toLowerCase();
+  if (text.includes("glm-5.3")) return "国产开源 Agent 模型信号：GLM-5.3 把复杂编码、防御性网络安全、长程任务和低成本 API 打包成工程候选，评估重点应放在真实任务回放而不是单个榜单名次。";
   if (text.includes("gpt-5.6")) return "模型产品化信号：GPT-5.6 把前沿推理、浏览/computer use、artifact 生成、缓存断点和多 Agent 能力打包成面向知识工作的生产套件，竞争焦点从单次 benchmark 转到可交付任务。";
   if (text.includes("gpt-live")) return "实时语音 Agent 信号：OpenAI 把低延迟对话层与后台深度任务层拆开，语音入口不再只是聊天，而是可委托搜索、推理和操作的前台控制面。";
   if (text.includes("foundry managed compute")) return "开源模型企业部署信号：Hugging Face 模型进入 Foundry managed compute，说明开源权重分发正在和云端合规运行时、预置镜像、账单与观测能力绑定。";
