@@ -162,6 +162,30 @@ function applyEditorialOverrides(report) {
       action: "先做只读影子值班：接入 20 个历史 CI/CD 失败样本，要求 Claude Tag 输出证据链接、疑似根因、owner、下一步和置信度，记录命中率、误报、人工节省时间、权限触达、通知噪声和失败复盘。",
       tags: ["Claude Tag", "CI/CD", "研发效能", "Incident Response"],
     },
+    "突破 DeepSeek-V4-Pro 服务极限：H20 上的多场景优化方法": {
+      signal: "H20 推理服务工程信号：LMSYS/AIHOT 条目把 1.6T MoE、H20-141GB、场景化 batch/并行配置和 271 output tokens/s 放在同一张性能账本里，说明国产受限 GPU 的优化重点已经从“能不能跑”转向“按 workload 把吞吐、显存和延迟逼近高端卡”。",
+      impact: "模型平台团队会重新评估 H20 集群承接 DeepSeek-V4-Pro 级别 MoE 服务的可行性，但不能只看单节点 tokens/s；真实成本还取决于并发分布、prefill/decode 比例、专家路由抖动、KV cache 命中、网络拓扑和故障恢复。",
+      action: "用本地真实流量回放三类场景：短问答、高并发代码生成和长上下文分析，分别记录 TTFT、output tokens/s、P95/P99、显存水位、批处理等待、GPU 利用率、失败码和单位千 token 成本，再决定是否替换 B300/H100 路由。",
+      tags: ["DeepSeek-V4-Pro", "H20", "MoE Serving", "推理优化"],
+    },
+    "OpenRouter 加入 Stripe 加速多模型使命": {
+      signal: "模型网关并购信号：OpenRouter 披露每天处理 400 多个模型上的 10T+ token 并加入 Stripe，说明多模型路由、计费、开发者分发和支付基础设施开始被同一家公司整合。",
+      impact: "对企业 AI 应用的直接影响不是“多了一个供应商”，而是模型 marketplace 可能与计费、风控、商户工具和全球结算深度绑定；风险集中在路由中立性、供应商锁定、价格策略、审计透明度和故障时的跨模型回退。",
+      action: "把 OpenRouter 作为网关而非单模型供应商评估：回放同一批任务，记录模型选择理由、价格、缓存/路由命中、失败切换、账单明细、数据处理边界和退出迁移成本，等待交易完成与独立运营承诺落地后再扩大生产流量。",
+      tags: ["OpenRouter", "Stripe", "模型网关", "多模型路由"],
+    },
+    "OpenRouter 宣布加入 Stripe": {
+      signal: "模型网关并购信号：OpenRouter 官方公告强调 1000 万开发者与公司、400+ 模型和 10T+ daily tokens，关键变化是模型路由基础设施进入 Stripe 的支付、开发者平台和风控生态。",
+      impact: "AI 产品团队会看到更顺的模型接入和商业化路径，但也要重新评估账单归因、模型路由透明度、供应商议价、地区合规和 Stripe 平台策略变化对推理成本的影响。",
+      action: "先冻结关键生产链路的单点依赖：保留直连主模型供应商的 fallback，对 OpenRouter 路由做月度成本/可用性/质量审计，并跟踪交易完成后产品 SLA、数据政策和价格条款是否变化。",
+      tags: ["OpenRouter", "Stripe", "模型供应链", "计费基础设施"],
+    },
+    "Liquid AI 发布 LFM2.5 系列 QAD Q4_0 量化检查点，恢复 97% 精度损失": {
+      signal: "小模型量化交付信号：Liquid AI 在 Hugging Face 发布 LFM2.5 QAD Q4_0 GGUF 检查点，强调量化感知蒸馏恢复 BF16 到 Q4_0 的大部分精度损失，说明低比特部署正在从事后压缩转向训练期校准。",
+      impact: "端侧、私有化和低成本推理团队可以用更小显存承接 230M 到 2.6B 级模型，但收益不会自动迁移到业务任务；需要警惕不同语言、工具调用、长上下文、拒答边界和结构化输出在 Q4_0 下的回归。",
+      action: "建立量化回归表：同一批摘要、分类、代码补全、JSON 输出和安全拒答样本对比 BF16、普通 Q4_0 与 QAD Q4_0，记录准确率、格式错误、吞吐、峰值内存、冷启动时间和设备兼容性，再决定是否进入端侧包。",
+      tags: ["Liquid AI", "QAD", "GGUF", "端侧推理"],
+    },
     "Mojo 语言正式开源，编译器与工具链全面开放": {
       signal: "AI 原生系统语言开源信号：Mojo 将编译器和工具链开放，说明 AI/高性能计算栈的竞争从 Python 上层框架继续下沉到语言、编译器、硬件后端和包生态。",
       impact: "模型推理、数据处理和高性能 kernel 团队会多一个兼顾 Python 亲和与系统性能的候选，但开源不等于生态成熟；约束在 ABI 稳定、包管理、调试、CI、GPU 后端覆盖和团队学习成本。",
@@ -796,11 +820,35 @@ function applyEditorialOverrides(report) {
       action: "先做小预算可观测试点：按国家、意图词、转化漏斗和品牌安全样本记录曝光、点击、有效会话、转化、CPA、用户反馈、广告标识可见性和内容引用风险，再决定是否扩大投放。",
       tags: ["OpenAI", "AI 广告", "搜索商业化", "隐私合规"],
     },
+    "Offering Zero Data Retention for frontier models": {
+      signal: "前沿模型隐私承诺信号：OpenAI 将 Zero Data Retention 明确延伸到 eligible API customers 使用前沿模型的语境，并提出 Private Safety Processing，核心矛盾是企业既要最强模型能力，又要证明业务数据不会进入训练、日志或人工审查链路。",
+      impact: "金融、医疗、企业知识库和代码 Agent 团队会更愿意评估前沿模型 API，但采购门槛会转向合同可执行性、审计证据、安全处理例外、滥用监控边界和跨区域数据处理，而不是只看功能开关。",
+      action: "更新模型供应商 DPA/安全问卷：逐项核对 ZDR 适用模型、账号资格、保留例外、Private Safety Processing 的输入输出边界、日志可见性、事件响应和第三方审计；上线前用低敏 replay 验证引用、工具调用和数据外发路径。",
+      tags: ["OpenAI", "Zero Data Retention", "隐私合规", "模型采购"],
+    },
+    "Sentence Transformers v6.0 新增 MultiVectorEncoder，支持 ColBERT 风格多向量模型": {
+      signal: "检索库能力下沉信号：Sentence Transformers v6.0 把 MultiVectorEncoder、ColBERT/PyLate/ColPali 检查点和 late interaction 检索接入主流 embedding 工具链，说明多向量召回不再只停留在论文实现。",
+      impact: "RAG、企业搜索和推荐召回团队可以更容易比较单向量、BM25/hybrid 与 token/patch 级多向量匹配，但代价是索引体积、MaxSim 计算、重排延迟、向量服务成本和线上指标口径都要重做。",
+      action: "选 200 条长文档、表格截图、代码片段和歧义查询做离线回放：记录 recall@k、MRR、NDCG、P95、索引大小、重排成本、失败 query 类型和权限误召，再决定是否进入线上 shadow。",
+      tags: ["Sentence Transformers", "ColBERT", "Multi-vector", "RAG 检索"],
+    },
     "Multi-Vector （Late Interaction） Embedding Models with Sentence Transformers": {
       signal: "检索模型工程化信号：Hugging Face/Sentence Transformers 将 multi-vector、late interaction、MaxSim、retrieve-and-rerank、索引和多模态检索整合进通用库，说明 ColBERT 式能力正在从研究实现进入可被 Agent/RAG 团队直接调用的工程组件。",
       impact: "企业搜索、推荐召回和 RAG 团队会获得比单向量 embedding 更细粒度的 token/patch 级匹配能力，但代价是索引体积、查询延迟、GPU/CPU serving、向量池化策略和评测口径都要重做。",
       action: "先做双轨检索回放：同一批长文档、表格截图、代码片段和多模态样本对比 dense embedding、BM25/hybrid 与 multi-vector，记录 recall@k、MRR、P95、索引大小、重排成本和失败 query 类型。",
       tags: ["检索", "Embedding", "RAG", "Multi-vector"],
+    },
+    "OpenAI 启动新计划，强化国家安全领域 AI 的民主监督": {
+      signal: "国家安全 AI 治理信号：OpenAI 官方将 500 万美元培训、技术支持和 API credits 投向民主监督机构，重点是让授权审查员理解并检查 AI 辅助政府决策记录，而不是让模型直接承担监督职责。",
+      impact: "这会影响高敏行业采购叙事：供应商不仅要证明模型能力，也要证明审计、监督、记录留存和人类判断边界。风险在于公共部门使用 AI 时责任链不清、数据保密与透明监督互相冲突。",
+      action: "把它作为高敏 AI 治理样本跟踪：记录适用机构、训练材料、审计工具、数据访问范围、人工复核点、误用案例和公开报告节奏；内部项目则同步补齐决策日志、模型版本和责任人。",
+      tags: ["OpenAI", "国家安全", "民主监督", "AI 治理"],
+    },
+    "GRPO 超越英语：多语言与非英语环境下的大规模研究": {
+      signal: "多语言 RLVR 训练信号：Apple ML Research 的 GRPO 研究把训练语言、推理语言和奖励设置拆开比较，显示非英语推理训练未必显著落后于英语路径，挑战了“复杂推理必须先英语化”的默认假设。",
+      impact: "中文、日语、西语等业务团队可以重新评估本地语言数据的强化学习价值，但不能把论文结论直接外推到生产；真实差异会受基础模型、多语言语料质量、奖励模型偏差和任务类型影响。",
+      action: "为本地语言任务建立 RL 回放集：分别比较英语思维链、本地语言推理和混合提示，记录正确率、格式遵循、幻觉、推理长度、成本、人工偏好和跨语言迁移，再决定训练语料配比。",
+      tags: ["Apple ML", "GRPO", "多语言推理", "RLVR"],
     },
     "Partnering with CodeAI to prepare the first AI generation": {
       signal: "AI 素养基础设施信号：OpenAI 与 CodeAI 合作把“会用 AI、会质疑输出、理解局限、负责任创造”推向 K-12/学生教育体系，重点不是新模型能力，而是把 AI literacy 变成课程、教师支持和长期用户培养入口。",
@@ -1225,7 +1273,7 @@ function codexResearchRefresh({ repo, readme, languages, fallback }) {
       `如果场景更接近「${lens.badFit}」，是否应降级为资料观察而不是工程试点？`,
       `谁负责 ${successMetric} 的验收、失败样本复盘、升级和回滚？`,
     ],
-    recommendedAction: `进入分层观察：先按「${safeEntry}」做小样本验证，验收面只看 ${successMetric}。`,
+    recommendedAction: `进入分层观察：先按「${safeEntry}」做小样本验证，验收面只看 ${successMetric}；同时明确 owner、样本集、失败样本复盘、生产禁区和回滚条件，避免把热门仓库直接接入主链路。`,
   };
 
   return {
@@ -3394,6 +3442,9 @@ function mergeAnalysis(fallback, parsed, method) {
     ...fallback.deepDive,
     ...(parsed?.deepDive || {}),
   };
+  if (String(merged.deepDive.recommendedAction || "").trim().length < 70) {
+    merged.deepDive.recommendedAction = fallback.deepDive.recommendedAction;
+  }
   merged.diagram = normalizeDiagram(parsed?.diagram, fallback.diagram);
   merged.maturity = {
     ...fallback.maturity,
@@ -3787,8 +3838,8 @@ function buildDeepDive({ repo, lens, profile, activity }) {
     ],
     recommendedAction:
       repo.stargazers_count > 30000 && !lens.domain.includes("API") && !lens.domain.includes("学习")
-        ? `进入重点观察池：围绕 ${lens.successMetric} 安排一次小 spike。`
-        : `进入资料/趋势观察池：先沉淀可借鉴模式，再决定是否试点。`,
+        ? `进入重点观察池：围绕 ${lens.successMetric} 安排一次小 spike，并明确 owner、样本集、失败回滚和上线前不得触碰的生产边界。`
+        : `进入资料/趋势观察池：先沉淀可借鉴模式，再用「${lens.safeEntry}」验证 ${lens.successMetric}；没有可复现收益、维护 owner 和回滚路径前不进入主链路。`,
   };
 }
 
