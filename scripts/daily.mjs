@@ -138,6 +138,54 @@ async function buildReport({ reportDate, limit, days, language }) {
 
 function applyEditorialOverrides(report) {
   const aiNewsOverrides = {
+    "Claude 如何加速蛋白质设计与分析化学研究": {
+      signal: "Claude Science 进入湿实验前段信号：Anthropic 官方研究把 protein binder 设计、NMR/LC-MS 化学分析和 Claude Opus/Mythos 系列能力放在同一条证据链里，重点不再是聊天式科研助手，而是模型能否提出可实验验证的候选分子与分析推断。",
+      impact: "生命科学团队会更想把 Claude 接入药物发现、蛋白工程和分析化学流程，但风险集中在体外实验复现、数据泄露、双重用途生物安全、实验设计偏差和把模型自报成功率外推到本地靶点。",
+      action: "只进入受控科研回放：选择公开或低敏靶点与历史 NMR/LC-MS 数据，记录候选设计命中率、湿实验验证、专家修正、失败样本、安全门控、数据授权和模型版本，不把研究结果直接转成临床或生产决策。",
+      tags: ["Anthropic", "Claude Science", "蛋白质设计", "分析化学"],
+    },
+    "How Claude is accelerating protein design and analytical chemistry": {
+      signal: "Claude Science 进入湿实验前段信号：Anthropic 官方研究把 protein binder 设计、NMR/LC-MS 化学分析和 Claude Opus/Mythos 系列能力放在同一条证据链里，重点不再是聊天式科研助手，而是模型能否提出可实验验证的候选分子与分析推断。",
+      impact: "生命科学团队会更想把 Claude 接入药物发现、蛋白工程和分析化学流程，但风险集中在体外实验复现、数据泄露、双重用途生物安全、实验设计偏差和把模型自报成功率外推到本地靶点。",
+      action: "只进入受控科研回放：选择公开或低敏靶点与历史 NMR/LC-MS 数据，记录候选设计命中率、湿实验验证、专家修正、失败样本、安全门控、数据授权和模型版本，不把研究结果直接转成临床或生产决策。",
+      tags: ["Anthropic", "Claude Science", "蛋白质设计", "分析化学"],
+    },
+    "Claude Tag 如何担任 Anthropic CI/CD 故障的一线响应者": {
+      signal: "CI/CD on-call Agent 信号：Claude 官方博客把 Claude Tag 放进 Anthropic 内部构建失败响应链路，核心是让 Agent 读取失败上下文、定位 owner、总结日志和推动修复，而不是单纯在 Slack 里回答问题。",
+      impact: "研发平台团队会看到 on-call、CI triage 和 incident response 自动化的可迁移样本；风险是 Agent 误读失败根因、通知错误 owner、在敏感仓库越权读取日志，或把不完整结论扩散到发布流程。",
+      action: "先做只读影子值班：接入 20 个历史 CI/CD 失败样本，要求 Claude Tag 输出证据链接、疑似根因、owner、下一步和置信度，记录命中率、误报、人工节省时间、权限触达、通知噪声和失败复盘。",
+      tags: ["Claude Tag", "CI/CD", "研发效能", "Incident Response"],
+    },
+    "How Claude Tag serves as Anthropic’s first responder for CI/CD failures": {
+      signal: "CI/CD on-call Agent 信号：Claude 官方博客把 Claude Tag 放进 Anthropic 内部构建失败响应链路，核心是让 Agent 读取失败上下文、定位 owner、总结日志和推动修复，而不是单纯在 Slack 里回答问题。",
+      impact: "研发平台团队会看到 on-call、CI triage 和 incident response 自动化的可迁移样本；风险是 Agent 误读失败根因、通知错误 owner、在敏感仓库越权读取日志，或把不完整结论扩散到发布流程。",
+      action: "先做只读影子值班：接入 20 个历史 CI/CD 失败样本，要求 Claude Tag 输出证据链接、疑似根因、owner、下一步和置信度，记录命中率、误报、人工节省时间、权限触达、通知噪声和失败复盘。",
+      tags: ["Claude Tag", "CI/CD", "研发效能", "Incident Response"],
+    },
+    "Mojo 语言正式开源，编译器与工具链全面开放": {
+      signal: "AI 原生系统语言开源信号：Mojo 将编译器和工具链开放，说明 AI/高性能计算栈的竞争从 Python 上层框架继续下沉到语言、编译器、硬件后端和包生态。",
+      impact: "模型推理、数据处理和高性能 kernel 团队会多一个兼顾 Python 亲和与系统性能的候选，但开源不等于生态成熟；约束在 ABI 稳定、包管理、调试、CI、GPU 后端覆盖和团队学习成本。",
+      action: "用一个非核心算子或数据处理模块做迁移 spike：记录性能、编译时间、依赖可用性、调试体验、部署体积、CI 集成和回滚成本，再决定是否进入平台路线图。",
+      tags: ["Mojo", "编译器", "AI 基础设施", "开源工具链"],
+    },
+    "Claude 现已支持 Gmail 邮件与 Google Drive 文件管理": {
+      signal: "Claude 连接器执行面扩张信号：AIHOT 仅提供 Claude 官方 X 入口，但 Gmail/Google Drive 管理能力指向同一趋势：Claude 正从问答助手进入邮件、文件和协作资料的读写执行层。",
+      impact: "对知识工作团队的价值在跨邮件、Drive 文档和任务上下文里减少手工整理；风险是 OAuth 权限过宽、误发邮件、错误移动文件、敏感附件外泄和审计链不完整。",
+      action: "只用低敏账号做连接器回放：固定 10 个邮件整理、Drive 检索和草稿任务，记录权限提示、引用来源、误操作、撤销路径、人工确认点、审计日志和是否能按项目隔离数据。",
+      tags: ["Claude", "Gmail", "Google Drive", "连接器权限"],
+    },
+    "智能体记忆并非越多越好：八款模型评测显示剂量需按能力校准": {
+      signal: "Agent 记忆剂量校准信号：IBM Research/Hugging Face 的 ALTK-Evolve 评测显示记忆不是越多越好，不同能力层级模型在完整 guideline、核心记忆和按任务检索之间的收益/成本曲线不同。",
+      impact: "Agent 平台如果把所有历史经验无差别塞入上下文，会增加 token 成本、干扰弱模型和放大过期规则；记忆系统需要像模型路由一样按任务、模型和失败类型校准。",
+      action: "把记忆策略做成 A/B：同一批任务比较无记忆、核心记忆、检索记忆和全量记忆，记录完成率、token、延迟、过期命中、人工纠正和 prompt cache 收益，再确定默认剂量。",
+      tags: ["Agent Memory", "ALTK-Evolve", "评测", "成本治理"],
+    },
+    "OpenAI 在\"关键网络能力\"时代放缓模型开发节奏": {
+      signal: "前沿模型安全门槛信号：OpenAI 官方披露因 OpenAI-Hugging Face 事件和 Astra 可能触达 critical cybersecurity capability，暂停/放缓部分前沿 RL 与工具化推理工作负载来加固监控、隔离和对齐。",
+      impact: "这会改变企业对前沿模型发布节奏的预期：能力越接近可执行网络攻击，供应商越需要证明研究环境隔离、工具权限、chain-of-thought 监控、告警升级和外部评估，而不是只追求更快上线。",
+      action: "更新模型供应商安全评审：要求说明 cyber capability 分级、工具执行沙箱、网络隔离、30 分钟级告警/暂停机制、红队样本、事故披露和高风险工作负载迁移状态，再决定是否接入具备联网工具的 Agent。",
+      tags: ["OpenAI", "Cyber Safety", "Preparedness", "模型发布节奏"],
+    },
     "设计 AI 评测：先求清晰，再谈可视化": {
       signal: "AI 评测工程化信号：Google AI 这篇实践文把 Inspect AI、Harbor、Google Sheets 和 Data Studio 串成评测闭环，重点不是展示漂亮看板，而是先把任务定义、评分准则、样本集和失败归因固定下来。",
       impact: "Agent 和工具调用进入真实流程后，团队会更依赖可重复评测来判断模型、提示词、工具链和权限策略是否真的改进；如果先做可视化而没有稳定 rubrics 和 replay set，看板会放大噪声而不是解释质量。",
@@ -4944,6 +4992,8 @@ function buildEditorialReview({ reportDate, frontier = {}, aiNews = {} }) {
     "https://www.anthropic.com/research",
     "https://www.anthropic.com/engineering",
     "https://www.anthropic.com/research/multiagent-systems",
+    "https://www.anthropic.com/research/Claude-accelerates-protein-design",
+    "https://claude.com/blog/ai-ci-cd-on-call",
     "https://claude.com/blog/self-service-data-analytics-in-slack-how-anthropic-deploys-claude-tag-for-ad-hoc-questions",
     "https://claude.com/blog/claude-tag-now-reads-even-more-of-the-room",
     "https://claude.com/blog/how-jetbrains-evaluates-and-deploys-claude-fable-5",
@@ -5025,7 +5075,7 @@ function buildEditorialReview({ reportDate, frontier = {}, aiNews = {} }) {
     ],
     sourceNotes: [
       `Anthropic official coverage includes ${anthropicSources.join("、") || "official News/Research/Engineering"} with Claude Tag, Economic Index, Claude Code practice, model updates, partnerships and safety research.`,
-      "Anthropic/Claude pages checked this run: Aug 13 multiagent systems official research page, Aug 12 worker retraining evidence review, Aug 10 Claude math research official page, Aug 7 Claude Code auto mode default official blog, Aug 7 Fable 5 biology safeguards, Aug 6 Millennium risk analyst partnership, Aug 5 inference hooks / inline DLP, Aug 4 cost visibility and global affairs, Jul 30 cybersecurity evaluation incidents, Jul 28 MCP and cryptographic weaknesses, Jul 24 Claude Opus 5, plus Claude Code/Computer Use/Managed Agents coverage.",
+      "Anthropic/Claude pages checked this run: Aug 18 Claude protein design and analytical chemistry research, Aug 18 Claude Tag CI/CD on-call official blog, Aug 13 multiagent systems official research page, Aug 13 Claude Tag analytics/context updates, Aug 12 worker retraining evidence review and Claude Cowork browser update, Aug 11 Compliance API for Cowork/Code, Aug 10 Claude math research official page, Aug 7 Claude Code auto mode and Fable 5 safeguards, plus Claude Code/Computer Use/Managed Agents coverage.",
       `AIHOT ${reportDate} checked${aiHotTitles.length ? ` for ${aiHotTitles.join("、")}` : ""}; selected items are rewritten into concrete signal-impact-action recommendations.`,
       "Claude Platform release notes checked for Managed Agents lifecycle hooks, effort configuration, initial events, memory/environment webhooks and session thread deltas; Computer Use and multi-agent operator coverage is tracked through Claude Code Agent View and recent Claude model/browser-agent updates.",
       `Search/ads/recommendation coverage includes ${frontierSources.join("、") || frontier.source || "Big Tech Engineering/RSS + arXiv"} and is interpreted through business problem, system mechanism, metrics/experiments, borrowable patterns and unsuitable boundaries.`,
