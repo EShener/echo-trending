@@ -168,6 +168,12 @@ function applyEditorialOverrides(report) {
       action: "用本地真实流量回放三类场景：短问答、高并发代码生成和长上下文分析，分别记录 TTFT、output tokens/s、P95/P99、显存水位、批处理等待、GPU 利用率、失败码和单位千 token 成本，再决定是否替换 B300/H100 路由。",
       tags: ["DeepSeek-V4-Pro", "H20", "MoE Serving", "推理优化"],
     },
+    "FastMetal 让 Mac 本地 30 秒生成视频": {
+      signal: "端侧视频生成信号：FastMetal 把 FastWan-QAD、DiT/DMD 采样器和 MLX/Metal INT8 路径放进 Apple Silicon，本质是把 5 秒 480P/720P 视频生成从云端 GPU 演示推进到本地可回放的创作链路。",
+      impact: "内容和原型团队会看到低门槛离线视频生成入口，但生产价值不在 30 秒单样本速度，而在提示词稳定性、镜头一致性、人物/品牌形象漂移、Mac 内存占用、批量失败率、隐私与素材版权边界。",
+      action: "先做 30 条内部素材回放：按产品镜头、人物口播、场景转场三类 prompt 记录生成时长、峰值内存、重试次数、可用率、人工修片时间、版权/肖像风险和不可接受失败样本，再决定是否接入内容流水线。",
+      tags: ["FastMetal", "Apple Silicon", "端侧视频生成", "MLX"],
+    },
     "OpenRouter 加入 Stripe 加速多模型使命": {
       signal: "模型网关并购信号：OpenRouter 披露每天处理 400 多个模型上的 10T+ token 并加入 Stripe，说明多模型路由、计费、开发者分发和支付基础设施开始被同一家公司整合。",
       impact: "对企业 AI 应用的直接影响不是“多了一个供应商”，而是模型 marketplace 可能与计费、风控、商户工具和全球结算深度绑定；风险集中在路由中立性、供应商锁定、价格策略、审计透明度和故障时的跨模型回退。",
@@ -203,6 +209,12 @@ function applyEditorialOverrides(report) {
       impact: "对知识工作团队的价值在跨邮件、Drive 文档和任务上下文里减少手工整理；风险是 OAuth 权限过宽、误发邮件、错误移动文件、敏感附件外泄和审计链不完整。",
       action: "只用低敏账号做连接器回放：固定 10 个邮件整理、Drive 检索和草稿任务，记录权限提示、引用来源、误操作、撤销路径、人工确认点、审计日志和是否能按项目隔离数据。",
       tags: ["Claude", "Gmail", "Google Drive", "连接器权限"],
+    },
+    "Databricks 如何从单一提示词设计高效的 Genie Agents": {
+      signal: "数据分析 Agent 工程化信号：Databricks 把 Genie Agents 的设计重点放在一个高质量系统提示词、工具边界、业务语义和可复用指令上，说明企业数据 Agent 的瓶颈不只是模型能力，而是指标口径与执行权限能否被稳定编码。",
+      impact: "BI、数据平台和业务分析团队会更容易把自然语言问数接入 Lakehouse，但风险集中在 SQL 口径漂移、权限越界、幻觉解释、慢查询放大、指标 owner 缺失和用户把探索答案当成审计结论。",
+      action: "先用 20 个历史问数工单做离线回放：固定语义层、可用表、禁止动作和引用格式，记录正确率、SQL 运行成本、口径冲突、人工修正、权限拦截和不可回答问题，再决定是否开放给业务频道。",
+      tags: ["Databricks", "Genie Agents", "数据分析 Agent", "语义层"],
     },
     "智能体记忆并非越多越好：八款模型评测显示剂量需按能力校准": {
       signal: "Agent 记忆剂量校准信号：IBM Research/Hugging Face 的 ALTK-Evolve 评测显示记忆不是越多越好，不同能力层级模型在完整 guideline、核心记忆和按任务检索之间的收益/成本曲线不同。",
