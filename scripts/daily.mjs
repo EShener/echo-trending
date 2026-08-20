@@ -180,6 +180,12 @@ function applyEditorialOverrides(report) {
       action: "先冻结关键生产链路的单点依赖：保留直连主模型供应商的 fallback，对 OpenRouter 路由做月度成本/可用性/质量审计，并跟踪交易完成后产品 SLA、数据政策和价格条款是否变化。",
       tags: ["OpenRouter", "Stripe", "模型供应链", "计费基础设施"],
     },
+    "Stripe 收购 OpenRouter 并非因为\"奇点\"": {
+      signal: "模型网关商业化信号：TechCrunch 将 Stripe 收购 OpenRouter 解读为开发者分发、计费和多模型路由基础设施整合，而不是把它包装成通用 AGI 叙事；关键在于 OpenRouter 已成为大量应用连接 400+ 模型、管理请求和账单的中间层。",
+      impact: "企业 AI 团队会更容易把模型 marketplace、用量归因、支付和供应商切换放进同一条采购链，但第三方网关的中立性、日志保留、供应商议价、故障回退和地区合规会变成新的集中风险。",
+      action: "把 OpenRouter/Stripe 当作模型供应链事件评估：抽样回放高频任务，记录模型选择理由、单请求成本、缓存命中、失败切换、账单明细、数据处理边界和直连供应商 fallback；等交易条款与独立运营承诺明确后再扩大生产占比。",
+      tags: ["OpenRouter", "Stripe", "模型网关", "供应链风险"],
+    },
     "Liquid AI 发布 LFM2.5 系列 QAD Q4_0 量化检查点，恢复 97% 精度损失": {
       signal: "小模型量化交付信号：Liquid AI 在 Hugging Face 发布 LFM2.5 QAD Q4_0 GGUF 检查点，强调量化感知蒸馏恢复 BF16 到 Q4_0 的大部分精度损失，说明低比特部署正在从事后压缩转向训练期校准。",
       impact: "端侧、私有化和低成本推理团队可以用更小显存承接 230M 到 2.6B 级模型，但收益不会自动迁移到业务任务；需要警惕不同语言、工具调用、长上下文、拒答边界和结构化输出在 Q4_0 下的回归。",
