@@ -1203,17 +1203,31 @@ async function analyzeRepo({ repo, readme, languages }) {
 function preserveEditorialAnalysis(previousAnalysis, generatedAnalysis) {
   const previousMethod = String(previousAnalysis?.method || "");
   const generatedMethod = String(generatedAnalysis?.method || "");
-  if (!previousAnalysis || !previousMethod.includes("manual-deep-update")) return generatedAnalysis;
+  if (!previousAnalysis || !isEditorialAnalysisComplete(previousAnalysis)) return generatedAnalysis;
   if (!generatedMethod || generatedMethod === "llm") return generatedAnalysis;
   return {
-    ...generatedAnalysis,
-    method: previousAnalysis.method,
+    ...previousAnalysis,
+    method: previousMethod || "codex-editorial-preserved",
     maturity: {
       ...(previousAnalysis.maturity || {}),
       ...(generatedAnalysis?.maturity || {}),
     },
     score: generatedAnalysis?.score ?? previousAnalysis.score,
   };
+}
+
+function isEditorialAnalysisComplete(analysis = {}) {
+  const signals = (analysis.architectureSignals || []).join("\n");
+  const requiredSignals = ["架构机制", "适用团队", "落地路径", "生产风险", "决策问题", "观察信号"];
+  return (
+    requiredSignals.every((signal) => signals.includes(signal)) &&
+    Boolean(analysis.deepDive?.implementationPath?.length) &&
+    Boolean(analysis.deepDive?.productionConcerns?.length) &&
+    Boolean(analysis.deepDive?.decisionQuestions?.length) &&
+    Boolean(analysis.watchSignals?.length) &&
+    Boolean(analysis.diagram?.nodes?.length) &&
+    Boolean(analysis.diagram?.links?.length)
+  );
 }
 
 function cleanEmbeddedSentence(value = "") {
