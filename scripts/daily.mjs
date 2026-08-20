@@ -6981,7 +6981,7 @@ function curatedAiNewsOverride(item) {
     },
     [normalizeTitle("Google DeepMind 推出 Gemini 3.7 Flash：面向编程与智能体的最强工作模型")]: {
       signal: "Google 模型工作马信号：Gemini 3.7 Flash 官方定位为面向 coding 和 agents 的高性价比主力模型，说明厂商正在把“快模型”从低成本聊天升级为可执行任务底座。",
-      impact: "研发与 Agent 平台会多一个默认候选，但真正影响取决于工具调用稳定性、长任务恢复、代码修改质量、上下文窗口成本、Google Cloud/Workspace 入口和与现有 Claude/OpenAI 回放集的差异。",
+      impact: "研发与 Agent 平台会多一个默认候选；采用价值要用工具调用稳定性、长任务恢复、代码修改质量、上下文窗口成本、Google Cloud/Workspace 入口和与现有 Claude/OpenAI 回放集的差异来验收。",
       action: "把 Gemini 3.7 Flash 加入同一 Agent 评测：代码修复、仓库问答、浏览器任务、表格分析和长文档 RAG 各跑 20 条，记录通过率、人工接管、P95、成本、上下文遗漏和拒答/安全边界。",
     },
     [normalizeTitle("Gemini 3.7 Flash 全面上线 Pro 与 Ultra 用户")]: {
@@ -7001,7 +7001,7 @@ function curatedAiNewsOverride(item) {
     },
     [normalizeTitle("Securing the frontier: How JetBrains evaluates and deploys Claude Fable 5")]: {
       signal: "企业前沿模型准入信号：JetBrains 案例把 Claude Fable 5 的采用写成评估、部署、安全和开发者体验的组合流程，说明 A 社在推动前沿模型进入大型软件组织时，卖点已经从模型能力扩展到企业准入证据。",
-      impact: "IDE、代码审查和研发平台团队会更容易把 Claude 放进受控工作流，但真正影响取决于代码上下文、插件权限、日志留存、误改回滚、开发者接受度和采购合规。",
+      impact: "IDE、代码审查和研发平台团队会更容易把 Claude 放进受控工作流；准入价值要拆到代码上下文、插件权限、日志留存、误改回滚、开发者接受度和采购合规逐项验收。",
       action: "复刻时按企业准入表验证：模型版本、代码访问范围、插件/工具权限、评测样本、失败回放、审计日志、用户分组、成本上限和退出方案必须分开记录。",
     },
     [normalizeTitle("Introducing Claude Sonnet 5")]: {
