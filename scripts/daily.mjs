@@ -6888,10 +6888,10 @@ function interpretAiNews(item) {
   if (text.includes("workspace") || text.includes("gmail") || text.includes("docs")) return "办公产品化信号：AI 正从聊天入口渗透到具体文档、邮件和协作场景。";
   if (text.includes("meeting") || text.includes("beam")) return "协作界面信号：多模态会议体验会改变远程协作的数据采集、摘要和实时辅助空间。";
   if (text.includes("earth observation")) return "垂直模型信号：地理/遥感模型更新说明基础模型正在向行业数据模态扩散。";
-  if (text.includes("model") || text.includes("benchmark")) return "模型能力或评测更新，建议关注是否改变内部模型选型和评估基线。";
+  if (text.includes("model") || text.includes("benchmark")) return "模型评测信号：需要拆开任务类型、数据口径、推理成本和可复现证据，再判断它是否改变内部模型路由或候选池优先级。";
   if (text.includes("agent") || text.includes("tool")) return "Agent/工具调用方向，适合评估能否进入研发工作流或数据分析流程。";
   if (text.includes("open source") || text.includes("release")) return "生态发布信号：先拆 license、部署入口、维护节奏和社区迁移成本，再判断是否进入候选池。";
-  return "AI 技术观察信号：这条动态需要按来源可信度、产品入口、影响对象、可量化指标和失败样本拆解，先进入观察池，再用小样本回放决定是否升级为试点。";
+  return "来源分层信号：先区分官方发布、社区复现、媒体转述和单点演示，再围绕目标用户、可试用入口、失败样本和下一次复查条件建立证据链。";
 }
 
 function enrichAiNews(item) {
@@ -7131,7 +7131,7 @@ function buildAiNewsImpact(item, tags) {
   if (tags.includes("多模态")) return "多模态生成开始从玩具效果进入专业工作流，关键评估点会变成一致性、时长、成本和可编辑性。";
   if (tags.includes("工程/基础设施")) return "模型供应链会更像云资源管理：容量、缓存、路由和成本控制会成为应用护城河。";
   if (text.includes("education")) return "教育和国家级合作会扩大 AI 普及面，也会带来合规、内容质量和教师工作流重塑问题。";
-  return "这条动态适合放进周度观察池，重点看它是否会改变模型选型、产品入口或工程成本结构。";
+  return "短期影响主要体现在候选技术池和产品入口判断：需要看它是否改变模型选型、权限边界、工程成本、用户路径或供应商风险，而不是只记录标题热度。";
 }
 
 function buildAiNewsAction(item, tags) {
@@ -7162,12 +7162,12 @@ function buildAiNewsAction(item, tags) {
   if (text.includes("workload identity federation")) return "建议更新 Claude Platform 接入规范，优先验证短期凭据、最小权限、审计日志和密钥轮换流程。";
   if (text.includes("claude design")) return "建议让设计系统 owner 试跑一次品牌一致性流程，检查 token、组件、文案和 Claude Code 交付物是否可追踪。";
   if (tags.includes("A社/Claude")) return "建议更新 Claude 评测清单：模型能力、Claude Code/Agent 工作流、权限隔离、审计日志和供应连续性分开验证。";
-  if (tags.includes("Agent")) return "建议记录可试用入口、权限模型和是否支持长会话，适合做 30 分钟产品体验验证。";
+  if (tags.includes("Agent")) return "用一个低敏长任务做快速回放：记录可试用入口、权限模型、步骤失败、人工接管、长会话恢复和单位任务成本。";
   if (tags.includes("搜索")) return "建议加入搜广推/RAG 观察清单，重点看压缩率、召回质量、延迟和答案质量是否同时改善。";
   if (tags.includes("安全/可信")) return "建议沉淀到 AI 安全清单，跟踪攻击方式、检测指标和平台级防御策略。";
   if (tags.includes("多模态")) return "建议收集样例和失败案例，比较一致性、可控性、生成时长和商业版权风险。";
-  if (tags.includes("工程/基础设施")) return "建议纳入成本与架构评估，关注 API 价格、路由策略、缓存命中和供应商锁定。";
-  return "建议做最小证据登记：记录官方链接、目标用户、可试用状态、一个验证任务和下一次复查条件。";
+  if (tags.includes("工程/基础设施")) return "放入成本与架构评估表：记录 API 价格、路由策略、缓存命中、失败码、SLA、数据边界和退出迁移成本。";
+  return "建立最小证据卡：记录官方链接、目标用户、可试用状态、一个验证任务、失败样本和下一次复查触发条件。";
 }
 
 function buildAiHotSourceBrief() {
