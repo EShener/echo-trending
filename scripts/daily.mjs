@@ -1210,6 +1210,7 @@ function preserveEditorialAnalysis(previousAnalysis, generatedAnalysis) {
   const previousMethod = String(previousAnalysis?.method || "");
   const generatedMethod = String(generatedAnalysis?.method || "");
   if (!previousAnalysis || !isEditorialAnalysisComplete(previousAnalysis)) return generatedAnalysis;
+  if (generatedAnalysis?.editorialMethod) return generatedAnalysis;
   if (!generatedMethod || generatedMethod === "llm") return generatedAnalysis;
   return {
     ...previousAnalysis,
@@ -1467,6 +1468,32 @@ function specializeLens(repo, lens) {
       bestFit: "有内容审核 owner、版权边界清楚、需要高频生成草稿的短视频、教育、营销和账号运营团队。",
       badFit: "严肃新闻、医疗金融法律内容、品牌素材强管控或没有人工终审的自动发布场景。",
       primaryRisk: "生成式视频最容易把事实、版权、肖像和平台风控问题包装成完整成片；必须保留素材来源、人工终审和发布前回滚。",
+    },
+    "mahlernim/google-timeline-visualizer": {
+      editorialMethod: "manual-deep-update-2026-08-22",
+      domain: "Google Timeline 本地可视化 / 个人位置数据分析",
+      userPain: "Google Timeline 导出的 Location History 体量大、格式复杂，普通用户很难把一年出行轨迹、停留地点和旅行模式转成可解释的地图与时间线。",
+      coreMechanism: "Kotlin 桌面应用读取 Google Location History 导出文件，在本地解析时间、坐标和行程片段，再把位置点、路线与年度旅行统计可视化，避免把敏感位置数据上传到第三方服务。",
+      safeEntry: "先用个人导出的脱敏样本离线跑通导入、解析、地图渲染和大文件性能，不接入云同步、不处理他人位置数据。",
+      businessValue: "为个人数据可携带和隐私优先的可视化提供样本，也适合产品团队观察如何把平台导出数据转成可理解的用户回顾体验。",
+      successMetric: "导入成功率、轨迹解析准确率、大文件加载时间、地图交互流畅度、异常坐标过滤、离线数据留存和隐私删除路径",
+      inspectFirst: "先看 Google Takeout 文件 schema、坐标/时间区处理、地图瓦片依赖、离线缓存、Kotlin UI 状态管理、错误样本和隐私说明。",
+      bestFit: "需要个人数据回顾、旅行足迹分析、隐私优先桌面工具或位置数据可视化原型的个人和小团队。",
+      badFit: "企业级轨迹合规分析、多人位置共享、实时定位监控或缺少用户授权的位置数据处理场景。",
+      primaryRisk: "位置历史是高敏个人数据；任何日志、截图、地图瓦片请求和导入文件缓存都必须默认本地化、可删除且不进入外部服务。",
+    },
+    "AprilNEA/OpenLogi": {
+      editorialMethod: "manual-deep-update-2026-08-22",
+      domain: "本地优先外设控制 / Logitech HID++ 配置替代",
+      userPain: "Logitech Options+ 这类官方外设软件常伴随账号、后台服务、遥测和跨平台差异，开发者只想稳定设置鼠标按键、DPI、滚轮与 SmartShift。",
+      coreMechanism: "OpenLogi 用 Rust 原生客户端直接通过 HID++ 与 Logitech 设备通信，把按键映射、DPI、SmartShift 和设备状态配置放在本地执行，不依赖云账号或官方常驻套件。",
+      safeEntry: "先在一台非关键鼠标上验证读取设备、备份当前配置、修改单个按键和恢复默认值，暂不批量下发到工作设备。",
+      businessValue: "为隐私敏感和偏工程化的桌面外设管理提供开源替代，也可作为 Rust HID/桌面配置工具的工程样本。",
+      successMetric: "设备识别率、配置写入成功率、断连恢复、DPI/按键生效率、CPU/内存占用、跨系统兼容和恢复默认成功率",
+      inspectFirst: "先看 HID++ 协议覆盖、设备支持矩阵、权限申请、配置持久化、失败回滚、系统托盘/守护进程边界和 issue 中的误写配置案例。",
+      bestFit: "希望本地控制 Logitech 外设、能接受开源工具试验且愿意备份配置的开发者、Linux/macOS 高级用户和桌面工具团队。",
+      badFit: "企业大规模外设管控、需要官方支持 SLA、无权限安装驱动/辅助服务或无法接受设备配置异常的场景。",
+      primaryRisk: "外设配置写入失败会影响日常输入设备；生产前必须有默认配置备份、恢复路径、设备白名单和系统权限边界。",
     },
     "nautechsystems/nautilus_trader": {
       editorialMethod: "manual-deep-update-2026-08-18",
@@ -2291,6 +2318,19 @@ function specializeLens(repo, lens) {
       bestFit: "SaaS、增长团队、产品工程和希望自托管或统一产品数据工具链的组织",
       badFit: "强监管数据无脱敏方案、已有成熟埋点平台且迁移成本高，或团队没有实验 owner",
       primaryRisk: "产品数据平台的风险在隐私、埋点质量、统计误读和工具蔓延；上线前必须定义事件治理和实验决策规则。",
+    },
+    "microsoft/TypeScript": {
+      editorialMethod: "manual-deep-update-2026-08-22",
+      domain: "TypeScript 编译器平台 / JavaScript 类型系统基础设施",
+      userPain: "大型前端和 Node 代码库需要在 JavaScript 生态里获得可演进的类型约束、编辑器智能、增量构建和跨包 API 稳定性。",
+      coreMechanism: "TypeScript 以 parser、binder、checker、emitter、language service 和 project references 组成编译器与 IDE 双入口，把类型分析、增量构建、声明文件和编辑器反馈统一到同一套语义模型。",
+      safeEntry: "先在一个包或内部 SDK 上开启 strict 子集、project references 和声明文件检查，保留 JS 互操作与构建回滚，不一次性重写全仓。",
+      businessValue: "降低大型 JavaScript 项目的接口漂移和重构风险，让 API 设计、IDE 导航、代码生成和 CI 类型门禁形成共同约束。",
+      successMetric: "类型错误提前发现数、增量构建耗时、编辑器响应、声明文件质量、any 比例、升级回归和线上接口类缺陷",
+      inspectFirst: "先看版本 release notes、compilerOptions、moduleResolution、project references、语言服务性能、生态工具兼容和 breaking change。",
+      bestFit: "中大型 Web/Node/SDK 团队、公共 API 维护者、需要长期重构和编辑器智能的工程组织。",
+      badFit: "一次性脚本、团队不愿维护类型边界、动态数据无 schema 或构建链路已经被类型检查成本压垮的场景。",
+      primaryRisk: "TypeScript 的主要成本在配置复杂度、升级兼容、类型体操和构建性能；必须用分层 strict、性能基线和渐进迁移控制风险。",
     },
     "microsoft/terminal": {
       domain: "Windows 终端基础设施 / 开发者入口",
@@ -3199,6 +3239,19 @@ function specializeLens(repo, lens) {
       badFit: "强依赖可解释特征、业务规律突变或需要严格因果解释",
       primaryRisk: "分布漂移、节假日/促销外生因素、异常点和成本曲线必须纳入评测。",
     },
+    "modular/modular": {
+      editorialMethod: "manual-deep-update-2026-08-22",
+      domain: "MAX + Mojo AI 运行时 / 异构推理与系统编程平台",
+      userPain: "AI 工程团队希望同时获得 Python 生态易用性、底层系统性能和跨 CPU/GPU/加速器的推理优化，但常在框架 glue code、算子性能和部署一致性之间付出高成本。",
+      coreMechanism: "Modular 将 MAX 推理/部署平台、Mojo 语言、编译器栈、kernel/graph 优化和 Python 互操作放在同一仓库生态里，目标是把模型执行、系统编程和硬件适配统一到可优化运行时。",
+      safeEntry: "先用一个固定模型或算子 benchmark 对比现有 PyTorch/ONNX/TensorRT 路径，验证安装、吞吐、P95 延迟、输出一致性和回滚，不直接替换线上 serving。",
+      businessValue: "为推理成本敏感、需要自定义算子或多硬件部署的团队提供候选路径，让模型平台从框架拼装转向可控运行时优化。",
+      successMetric: "TTFT、tokens/s、P95/P99 延迟、算子覆盖、输出一致性、部署包大小、硬件利用率、升级回归和工程迁移工时",
+      inspectFirst: "先看 MAX 支持模型/硬件矩阵、Mojo 与 Python 互操作、编译缓存、benchmark 口径、license、API 稳定性和 issue 中的安装/驱动失败。",
+      bestFit: "有推理平台 owner、硬件成本压力、自定义 kernel 需求或愿意做底层性能验证的 AI 基础设施团队。",
+      badFit: "只调用托管 API、模型形态频繁变化但无人维护 runtime、或不能承担新语言/新平台学习成本的产品团队。",
+      primaryRisk: "新运行时的风险集中在生态成熟度、硬件兼容、调试工具、升级破坏性和与现有 MLOps 的衔接；必须保留双跑和降级路径。",
+    },
     "RocketChat/Rocket.Chat": {
       domain: "企业通讯 / 自托管协作平台",
       userPain: "高安全或受监管团队需要可自托管、可审计、可扩展的实时通讯系统",
@@ -3261,6 +3314,19 @@ function specializeLens(repo, lens) {
       badFit: "缺少统一代码规范、测试和 review 纪律，或把外部技能当一次性提示词集合直接复制的团队。",
       primaryRisk: "外部技能会携带作者的架构偏好；直接照搬可能与本地权限、测试、发布和代码风格冲突，必须经过本地化评审。",
     },
+    "TryGhost/Ghost": {
+      editorialMethod: "manual-deep-update-2026-08-22",
+      domain: "开源出版与会员平台 / Newsletter 订阅商业化栈",
+      userPain: "内容团队和独立出版者需要同时管理文章、newsletter、会员订阅、支付、主题和 SEO，但闭源平台会带来数据归属、定制能力和收入分成约束。",
+      coreMechanism: "Ghost 用 Node.js 后端、Admin 管理台、主题系统、会员/订阅、邮件分发、Stripe 集成和内容 API 组成自托管出版平台，把内容生产、受众经营和商业化放进同一运行栈。",
+      safeEntry: "先迁移一个低风险专栏或内部 newsletter，验证主题、导入导出、邮件送达、支付沙箱、备份恢复和编辑权限，不直接替换主站。",
+      businessValue: "让内容业务在保留品牌和数据控制权的同时获得会员收入、邮件触达和可扩展前端交付能力。",
+      successMetric: "发布成功率、邮件送达率、会员转化、付费失败率、页面性能、主题维护工时、备份恢复时间和编辑工作流满意度",
+      inspectFirst: "先看内容模型、主题 API、会员/支付状态机、邮件 provider、Docker/托管部署、升级路径、安全公告和数据导出格式。",
+      bestFit: "独立媒体、开发者社区、企业内容团队和需要自托管品牌站/newsletter 的增长团队。",
+      badFit: "复杂多租户 CMS、强审批新闻生产、已有企业 DXP 或无法维护邮件/支付/备份基础设施的组织。",
+      primaryRisk: "出版平台风险来自邮件送达、支付合规、备份恢复、主题升级和安全补丁；上线前必须有 staging、备份和回滚演练。",
+    },
     "goauthentik/authentik": {
       editorialMethod: "manual-deep-update-2026-08-07",
       domain: "身份访问管理 / 自托管 IAM 控制面",
@@ -3315,7 +3381,13 @@ function specializeLens(repo, lens) {
       primaryRisk: "通用自主 Agent 会放大目标漂移、工具误用、成本失控和安全边界问题；必须以白名单、限额、审计和人工 gate 作为上线前提。",
     },
   };
-  const override = overrides[repo.full_name] || overrides[String(repo.full_name || "").toLowerCase()];
+  const repoKeys = [
+    repo.full_name,
+    repo.fullName,
+    repo.nameWithOwner,
+    repo.owner && repo.name ? `${repo.owner}/${repo.name}` : "",
+  ].filter(Boolean);
+  const override = repoKeys.map((key) => overrides[key] || overrides[String(key).toLowerCase()]).find(Boolean);
   return override ? { ...lens, ...override } : lens;
 }
 
@@ -3431,11 +3503,12 @@ function fallbackAnalysis({ repo, readme, languages }) {
       : repo.open_issues_count > 120
         ? "Issue 数量中高，需要观察维护响应速度"
         : "Issue 压力相对可控";
-  const lens = inferProjectLens({ repo, readme, languages });
+  const lens = specializeLens(repo, inferProjectLens({ repo, readme, languages }));
   const activity = buildActivityProfile({ repo, pushedDays, issuePressure, freshness });
 
   return {
     method: "deterministic",
+    editorialMethod: lens.editorialMethod,
     category: lens.domain,
     oneLiner: buildOneLiner({ repo, lens, profile }),
     whyItMatters: buildWhyItMatters({ repo, lens, profile, activity }),
