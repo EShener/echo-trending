@@ -1,6 +1,6 @@
 {
   "date": "2026-08-23",
-  "generatedAt": "2026-08-22T18:23:48.065Z",
+  "generatedAt": "2026-08-22T21:21:58.709Z",
   "source": {
     "provider": "GitHub Trending daily + AIHOT + official AI feeds + Anthropic official pages + big-tech engineering blogs + Codex manual deep rewrite",
     "query": "pushed:>=2026-08-16 stars:>100 archived:false",
@@ -9,7 +9,7 @@
     "language": "all",
     "editorialReview": {
       "method": "script refresh + Codex multi-source editorial review",
-      "reviewedAt": "2026-08-22T18:23:48.065Z",
+      "reviewedAt": "2026-08-22T21:21:58.710Z",
       "reportDate": "2026-08-23",
       "focus": [
         "GitHub Trending daily metadata, repo README evidence and adoption risk review",
@@ -127,14 +127,14 @@
         "visualUrl": "https://opengraph.githubassets.com/20260823/openai/codex",
         "url": "https://github.com/openai/codex",
         "description": "Lightweight coding agent that runs in your terminal",
-        "stars": 112854,
+        "stars": 113120,
         "starsToday": 4159,
-        "forks": 17325,
+        "forks": 17347,
         "openIssues": 13476,
         "language": "Rust",
         "topics": [],
         "license": "Apache-2.0",
-        "pushedAt": "2026-08-22T05:57:03Z",
+        "pushedAt": "2026-08-22T20:41:26Z",
         "createdAt": "2025-04-13T05:37:54Z",
         "languages": {
           "Rust": 51623127,
@@ -159,7 +159,7 @@
         "editorialMethod": "manual-deep-update-2026-08-22",
         "category": "终端 Coding Agent / 本地执行与审计控制面",
         "oneLiner": "Lightweight coding agent that runs in your terminal；关键看 以 Codex 终端 CLI、本地工作区读写、命令执行沙箱、模型会话、补丁生成和任务状态流组成 coding agent 控制面，让代码修改、测试、审查和交付动作围绕同一个可回放会话发生，是否能被小范围验证。",
-        "whyItMatters": "openai/codex 本轮应按「终端 Coding Agent / 本地执行与审计控制面」来读：它针对的是「工程团队已经把代码理解、补丁生成、测试和 git 操作交给 Agent，但真正困难在于让 Agent 在本地仓库、终端命令、权限批准和长任务上下文之间保持可控、可审计和可恢复」，核心机制是「以 Codex 终端 CLI、本地工作区读写、命令执行沙箱、模型会话、补丁生成和任务状态流组成 coding agent 控制面，让代码修改、测试、审查和交付动作围绕同一个可回放会话发生」。判断价值时优先看 任务一次通过率、人工补充上下文次数、测试通过率、误改回滚次数、命令批准率、平均任务耗时和 review 缺陷密度，而不是把 112.9K stars / 17.3K forks 当成生产成熟度。",
+        "whyItMatters": "openai/codex 本轮应按「终端 Coding Agent / 本地执行与审计控制面」来读：它针对的是「工程团队已经把代码理解、补丁生成、测试和 git 操作交给 Agent，但真正困难在于让 Agent 在本地仓库、终端命令、权限批准和长任务上下文之间保持可控、可审计和可恢复」，核心机制是「以 Codex 终端 CLI、本地工作区读写、命令执行沙箱、模型会话、补丁生成和任务状态流组成 coding agent 控制面，让代码修改、测试、审查和交付动作围绕同一个可回放会话发生」。判断价值时优先看 任务一次通过率、人工补充上下文次数、测试通过率、误改回滚次数、命令批准率、平均任务耗时和 review 缺陷密度，而不是把 113.1K stars / 17.3K forks 当成生产成熟度。",
         "engineeringRead": "Rust · Node 包/前端工程。建议按“入口示例 -> 数据/配置 -> 失败处理 -> CI/release -> issue 反例”的顺序读；重点回答 它解决的是「工程团队已经把代码理解、补丁生成、测试和 git 操作交给 Agent，但真正困难在于让 Agent 在本地仓库、终端命令、权限批准和长任务上下文之间保持可控、可审计和可恢复。」的主矛盾，还是只会给现有流程增加新的维护面？",
         "architectureSignals": [
           "架构机制：以 Codex 终端 CLI、本地工作区读写、命令执行沙箱、模型会话、补丁生成和任务状态流组成 coding agent 控制面，让代码修改、测试、审查和交付动作围绕同一个可回放会话发生；阅读时把 Rust 代码入口、数据/配置形态、自动化脚本和边界条件连起来看，而不是只看 README 的安装示例。",
@@ -215,7 +215,7 @@
         },
         "diagram": {
           "title": "codex 工业级采用图解",
-          "caption": "终端 Coding Agent / 本地执行与审计控制面 · Rust · 112.9K stars",
+          "caption": "终端 Coding Agent / 本地执行与审计控制面 · Rust · 113.1K stars",
           "summary": "以 Codex 终端 CLI、本地工作区读写、命令执行沙箱、模型会话、补丁生成和任务状态流组成 coding agent 控制面，让代码修改、测试、审查和交付动作围绕同一个可回放会话发生，解决「工程团队已经把代码理解、补丁生成、测试和 git 操作交给 Agent，但真正困难在于让 Agent 在本地仓库、终端命令、权限批准和长任务上下文之间保持可控、可审计和可恢复」；先经由「先选择文档、测试补齐或小范围重构任务，要求 Codex 只在 feature branch 上执行，保留 diff review、测试命令、失败日志和人工批准点，不让它直接推主分支」验证 任务一次通过率、人工补充上下文次数、测试通过率、误改回滚次数、命令批准率、平均任务耗时和 review 缺陷密度，再决定是否扩大。",
           "nodes": [
             {
@@ -252,7 +252,7 @@
             "metrics": [
               {
                 "label": "Stars",
-                "value": "112.9K",
+                "value": "113.1K",
                 "note": "社区关注"
               },
               {
@@ -324,11 +324,11 @@
         },
         "maturity": {
           "community": 100,
-          "maintenance": 97,
-          "production": 85,
+          "maintenance": 100,
+          "production": 86,
           "complexity": 67
         },
-        "score": 91
+        "score": 92
       },
       "evidence": {
         "readmeExcerpt": "<p align=\"center\" <strong Codex CLI</strong is a coding agent from OpenAI that runs locally on your computer. <p align=\"center\" <img src=\"https://github.com/openai/codex/blob/main/.github/codex cli splash.png\" alt=\"Codex CLI splash\" width=\"80%\" / </p </br If you want Codex in your code editor (VS Code, Cursor, Windsurf), <a href=\"https://developers.openai.com/codex/ide\" install in your IDE.</a </br If you want the desktop app experience, run <code codex app</code or visit <a href=\"https://chatgpt.com/codex?app landing page=true\" the Codex App page</a . </br If you are looking for the <em cloud based agent</em from OpenAI, <strong Codex Web</strong , go to <a href=\"https://chatgpt.com/codex\" chatgpt.com/codex</a .</p Quickstart Installing and running Codex CLI Run the following on Mac or Linux to install Codex CLI: Run the following on Windows to install Codex CLI: The standalone installe...",
@@ -345,9 +345,9 @@
         "visualUrl": "https://opengraph.githubassets.com/20260823/mattpocock/skills",
         "url": "https://github.com/mattpocock/skills",
         "description": "Skills for Real Engineers. Straight from my .agents directory.",
-        "stars": 231539,
+        "stars": 231819,
         "starsToday": 2684,
-        "forks": 19766,
+        "forks": 19784,
         "openIssues": 381,
         "language": "Shell",
         "topics": [],
@@ -364,7 +364,7 @@
         "editorialMethod": "manual-deep-update-2026-08-07",
         "category": "工程师技能库 / AI 辅助开发方法",
         "oneLiner": "Skills for Real Engineers. Straight from my .agents directory.；关键看 以技能目录、任务说明、上下文约束、命令模式和可复制检查清单，把 TypeScript/前端/工程实践中的隐性判断包装成 Agent 可读取的工作流模块，是否能被小范围验证。",
-        "whyItMatters": "mattpocock/skills 本轮应按「工程师技能库 / AI 辅助开发方法」来读：它针对的是「个人工程经验分散在提示词、代码评审口头规则和零散笔记里，Agent 每次接任务都要重新解释上下文、技术偏好和验收标准」，核心机制是「以技能目录、任务说明、上下文约束、命令模式和可复制检查清单，把 TypeScript/前端/工程实践中的隐性判断包装成 Agent 可读取的工作流模块」。判断价值时优先看 技能调用成功率、上下文补充次数、PR 返工率、测试补齐率、任务完成时间、review 缺陷和维护 owner 清晰度，而不是把 231.5K stars / 19.8K forks 当成生产成熟度。",
+        "whyItMatters": "mattpocock/skills 本轮应按「工程师技能库 / AI 辅助开发方法」来读：它针对的是「个人工程经验分散在提示词、代码评审口头规则和零散笔记里，Agent 每次接任务都要重新解释上下文、技术偏好和验收标准」，核心机制是「以技能目录、任务说明、上下文约束、命令模式和可复制检查清单，把 TypeScript/前端/工程实践中的隐性判断包装成 Agent 可读取的工作流模块」。判断价值时优先看 技能调用成功率、上下文补充次数、PR 返工率、测试补齐率、任务完成时间、review 缺陷和维护 owner 清晰度，而不是把 231.8K stars / 19.8K forks 当成生产成熟度。",
         "engineeringRead": "Skill files · 阅读型或源码集成。建议按“入口示例 -> 数据/配置 -> 失败处理 -> CI/release -> issue 反例”的顺序读；重点回答 它解决的是「个人工程经验分散在提示词、代码评审口头规则和零散笔记里，Agent 每次接任务都要重新解释上下文、技术偏好和验收标准。」的主矛盾，还是只会给现有流程增加新的维护面？",
         "architectureSignals": [
           "架构机制：以技能目录、任务说明、上下文约束、命令模式和可复制检查清单，把 TypeScript/前端/工程实践中的隐性判断包装成 Agent 可读取的工作流模块；阅读时把 Skill files 代码入口、数据/配置形态、自动化脚本和边界条件连起来看，而不是只看 README 的安装示例。",
@@ -420,7 +420,7 @@
         },
         "diagram": {
           "title": "skills 工业级采用图解",
-          "caption": "工程师技能库 / AI 辅助开发方法 · Skill files · 231.5K stars",
+          "caption": "工程师技能库 / AI 辅助开发方法 · Skill files · 231.8K stars",
           "summary": "以技能目录、任务说明、上下文约束、命令模式和可复制检查清单，把 TypeScript/前端/工程实践中的隐性判断包装成 Agent 可读取的工作流模块，解决「个人工程经验分散在提示词、代码评审口头规则和零散笔记里，Agent 每次接任务都要重新解释上下文、技术偏好和验收标准」；先经由「挑两个高频任务，例如 TypeScript API 设计和测试补齐，把对应技能本地化到团队规范，在真实 PR 中对比有/无技能的返工差异」验证 技能调用成功率、上下文补充次数、PR 返工率、测试补齐率、任务完成时间、review 缺陷和维护 owner 清晰度，再决定是否扩大。",
           "nodes": [
             {
@@ -457,7 +457,7 @@
             "metrics": [
               {
                 "label": "Stars",
-                "value": "231.5K",
+                "value": "231.8K",
                 "note": "社区关注"
               },
               {
@@ -550,10 +550,10 @@
         "visualUrl": "https://opengraph.githubassets.com/20260823/affaan-m/ECC",
         "url": "https://github.com/affaan-m/ECC",
         "description": "The agent harness performance optimization system. Skills, instincts, memory, security, and research-first development for Claude Code, Codex, Opencode, Cursor and beyond.",
-        "stars": 242087,
+        "stars": 242130,
         "starsToday": 428,
-        "forks": 36694,
-        "openIssues": 149,
+        "forks": 36699,
+        "openIssues": 148,
         "language": "JavaScript",
         "topics": [
           "ai-agents",
@@ -688,7 +688,7 @@
               },
               {
                 "label": "Issues",
-                "value": "149",
+                "value": "148",
                 "note": "维护压力"
               },
               {
@@ -771,10 +771,10 @@
         "visualUrl": "https://opengraph.githubassets.com/20260823/obra/superpowers",
         "url": "https://github.com/obra/superpowers",
         "description": "An agentic skills framework & software development methodology that works.",
-        "stars": 276064,
+        "stars": 276133,
         "starsToday": 592,
-        "forks": 24687,
-        "openIssues": 303,
+        "forks": 24693,
+        "openIssues": 307,
         "language": "Shell",
         "topics": [
           "ai",
@@ -906,7 +906,7 @@
               },
               {
                 "label": "Issues",
-                "value": "303",
+                "value": "307",
                 "note": "维护压力"
               },
               {
@@ -989,10 +989,10 @@
         "visualUrl": "https://opengraph.githubassets.com/20260823/Wei-Shaw/sub2api",
         "url": "https://github.com/Wei-Shaw/sub2api",
         "description": "Sub2API 一站式开源中转服务，让 Claude、Openai 、Gemini、Grok订阅统一接入，支持拼车共享，更高效分摊成本，原生工具无缝使用。",
-        "stars": 38745,
+        "stars": 38766,
         "starsToday": 264,
-        "forks": 8035,
-        "openIssues": 2798,
+        "forks": 8037,
+        "openIssues": 2799,
         "language": "Go",
         "topics": [
           "2api",
@@ -1028,7 +1028,7 @@
         "editorialMethod": "manual-deep-update-2026-08-22",
         "category": "多模型订阅中转 / 个人与小团队 API 统一入口",
         "oneLiner": "Sub2API 一站式开源中转服务，让 Claude、Openai 、Gemini、Grok订阅统一接入，支持拼车共享，更高效分摊成本，原生工具无缝使用；关键看目录治理、可用性校验和来源合规，而不是条目数量。",
-        "whyItMatters": "Wei-Shaw/sub2api 本轮应按「多模型订阅中转 / 个人与小团队 API 统一入口」来读：它针对的是「个人和小团队常同时持有 Claude、OpenAI、Gemini、Grok 等订阅或拼车额度，但原生客户端和 API 协议割裂，成本、限流、凭据和工具能力难以统一治理」，核心机制是「以 Sub2API 的 Go 服务把多家订阅或账号资源包装成统一 API 中转层，处理 provider 适配、请求转发、模型映射、额度分摊和原生工具兼容」。判断价值时优先看 请求成功率、P95 延迟、限流失败率、单位任务成本、凭据轮换耗时、日志脱敏覆盖和 provider fallback 命中，而不是把 38.7K stars / 8K forks 当成生产成熟度。",
+        "whyItMatters": "Wei-Shaw/sub2api 本轮应按「多模型订阅中转 / 个人与小团队 API 统一入口」来读：它针对的是「个人和小团队常同时持有 Claude、OpenAI、Gemini、Grok 等订阅或拼车额度，但原生客户端和 API 协议割裂，成本、限流、凭据和工具能力难以统一治理」，核心机制是「以 Sub2API 的 Go 服务把多家订阅或账号资源包装成统一 API 中转层，处理 provider 适配、请求转发、模型映射、额度分摊和原生工具兼容」。判断价值时优先看 请求成功率、P95 延迟、限流失败率、单位任务成本、凭据轮换耗时、日志脱敏覆盖和 provider fallback 命中，而不是把 38.8K stars / 8K forks 当成生产成熟度。",
         "engineeringRead": "Go · 容器化部署。建议按“入口示例 -> 数据/配置 -> 失败处理 -> CI/release -> issue 反例”的顺序读；重点回答 它解决的是「个人和小团队常同时持有 Claude、OpenAI、Gemini、Grok 等订阅或拼车额度，但原生客户端和 API 协议割裂，成本、限流、凭据和工具能力难以统一治理。」的主矛盾，还是只会给现有流程增加新的维护面？",
         "architectureSignals": [
           "架构机制：以 Sub2API 的 Go 服务把多家订阅或账号资源包装成统一 API 中转层，处理 provider 适配、请求转发、模型映射、额度分摊和原生工具兼容；阅读时把 Go 代码入口、数据/配置形态、自动化脚本和边界条件连起来看，而不是只看 README 的安装示例。",
@@ -1084,7 +1084,7 @@
         },
         "diagram": {
           "title": "sub2api 工业级采用图解",
-          "caption": "多模型订阅中转 / 个人与小团队 API 统一入口 · Go · 38.7K stars",
+          "caption": "多模型订阅中转 / 个人与小团队 API 统一入口 · Go · 38.8K stars",
           "summary": "以 Sub2API 的 Go 服务把多家订阅或账号资源包装成统一 API 中转层，处理 provider 适配、请求转发、模型映射、额度分摊和原生工具兼容，解决「个人和小团队常同时持有 Claude、OpenAI、Gemini、Grok 等订阅或拼车额度，但原生客户端和 API 协议割裂，成本、限流、凭据和工具能力难以统一治理」；先经由「先在个人非敏感任务或内部玩具项目中接入，只代理低风险请求，关闭敏感日志，记录 provider 成功率、延迟、限流、成本和输出差异」验证 请求成功率、P95 延迟、限流失败率、单位任务成本、凭据轮换耗时、日志脱敏覆盖和 provider fallback 命中，再决定是否扩大。",
           "nodes": [
             {
@@ -1121,7 +1121,7 @@
             "metrics": [
               {
                 "label": "Stars",
-                "value": "38.7K",
+                "value": "38.8K",
                 "note": "社区关注"
               },
               {
@@ -1214,9 +1214,9 @@
         "visualUrl": "https://opengraph.githubassets.com/20260823/makeplane/plane",
         "url": "https://github.com/makeplane/plane",
         "description": "🔥🔥🔥 Open-source Jira, Linear, Monday, and ClickUp alternative. Plane is a modern project management platform to manage tasks, sprints, docs, and triage.",
-        "stars": 57142,
+        "stars": 57181,
         "starsToday": 263,
-        "forks": 5437,
+        "forks": 5438,
         "openIssues": 1081,
         "language": "TypeScript",
         "topics": [
@@ -1260,7 +1260,7 @@
         "editorialMethod": "manual-deep-update-2026-08-22",
         "category": "开源项目管理平台 / Issue-Sprint-Docs 协作栈",
         "oneLiner": "🔥🔥🔥 Open-source Jira, Linear, Monday, and ClickUp alternative. Plane is a modern project management platform to manage tasks, sprints, docs, and triage.；关键看 以 Plane 的 TypeScript 前端、后端服务、工作区/项目/issue 模型、sprint、docs、triage 和自托管部署把研发协作对象收敛到同一开源工作台，是否能被小范围验证。",
-        "whyItMatters": "makeplane/plane 本轮应按「开源项目管理平台 / Issue-Sprint-Docs 协作栈」来读：它针对的是「研发组织在 Jira、Linear、Notion、ClickUp 等工具之间切换时，issue、sprint、文档、triage 和产品上下文容易割裂，且商业 SaaS 的定制、数据归属和成本不可控」，核心机制是「以 Plane 的 TypeScript 前端、后端服务、工作区/项目/issue 模型、sprint、docs、triage 和自托管部署把研发协作对象收敛到同一开源工作台」。判断价值时优先看 issue 流转时间、triage 延迟、文档命中率、导入完整率、权限误配、通知丢失率和备份恢复时间，而不是把 57.1K stars / 5.4K forks 当成生产成熟度。",
+        "whyItMatters": "makeplane/plane 本轮应按「开源项目管理平台 / Issue-Sprint-Docs 协作栈」来读：它针对的是「研发组织在 Jira、Linear、Notion、ClickUp 等工具之间切换时，issue、sprint、文档、triage 和产品上下文容易割裂，且商业 SaaS 的定制、数据归属和成本不可控」，核心机制是「以 Plane 的 TypeScript 前端、后端服务、工作区/项目/issue 模型、sprint、docs、triage 和自托管部署把研发协作对象收敛到同一开源工作台」。判断价值时优先看 issue 流转时间、triage 延迟、文档命中率、导入完整率、权限误配、通知丢失率和备份恢复时间，而不是把 57.2K stars / 5.4K forks 当成生产成熟度。",
         "engineeringRead": "TypeScript · 容器化部署。建议按“入口示例 -> 数据/配置 -> 失败处理 -> CI/release -> issue 反例”的顺序读；重点回答 它解决的是「研发组织在 Jira、Linear、Notion、ClickUp 等工具之间切换时，issue、sprint、文档、triage 和产品上下文容易割裂，且商业 SaaS 的定制、数据归属和成本不可控。」的主矛盾，还是只会给现有流程增加新的维护面？",
         "architectureSignals": [
           "架构机制：以 Plane 的 TypeScript 前端、后端服务、工作区/项目/issue 模型、sprint、docs、triage 和自托管部署把研发协作对象收敛到同一开源工作台；阅读时把 TypeScript 代码入口、数据/配置形态、自动化脚本和边界条件连起来看，而不是只看 README 的安装示例。",
@@ -1316,7 +1316,7 @@
         },
         "diagram": {
           "title": "plane 工业级采用图解",
-          "caption": "开源项目管理平台 / Issue-Sprint-Docs 协作栈 · TypeScript · 57.1K stars",
+          "caption": "开源项目管理平台 / Issue-Sprint-Docs 协作栈 · TypeScript · 57.2K stars",
           "summary": "以 Plane 的 TypeScript 前端、后端服务、工作区/项目/issue 模型、sprint、docs、triage 和自托管部署把研发协作对象收敛到同一开源工作台，解决「研发组织在 Jira、Linear、Notion、ClickUp 等工具之间切换时，issue、sprint、文档、triage 和产品上下文容易割裂，且商业 SaaS 的定制、数据归属和成本不可控」；先经由「先迁入一个非核心团队或开源项目的 issue/文档流，验证导入、权限、通知、备份、移动端和与 GitHub/Slack 的连接，不一次性替换主项目管理系统」验证 issue 流转时间、triage 延迟、文档命中率、导入完整率、权限误配、通知丢失率和备份恢复时间，再决定是否扩大。",
           "nodes": [
             {
@@ -1353,7 +1353,7 @@
             "metrics": [
               {
                 "label": "Stars",
-                "value": "57.1K",
+                "value": "57.2K",
                 "note": "社区关注"
               },
               {
@@ -1446,10 +1446,10 @@
         "visualUrl": "https://opengraph.githubassets.com/20260823/n8n-io/n8n",
         "url": "https://github.com/n8n-io/n8n",
         "description": "Fair-code workflow automation platform with native AI capabilities. Combine visual building with custom code, self-host or cloud, 400+ integrations.",
-        "stars": 201708,
+        "stars": 201765,
         "starsToday": 202,
-        "forks": 60294,
-        "openIssues": 1066,
+        "forks": 60296,
+        "openIssues": 1071,
         "language": "TypeScript",
         "topics": [
           "ai",
@@ -1501,7 +1501,7 @@
         "editorialMethod": "manual-deep-update-2026-08-22",
         "category": "AI 工作流自动化 / 可视化编排与自托管集成层",
         "oneLiner": "Fair-code workflow automation platform with native AI capabilities. Combine visual building with custom code, self-host or cloud, 400+ integrations.；关键看 以 n8n 的可视化 workflow、节点生态、触发器、凭据管理、自托管运行时、代码节点和 AI 能力把跨系统任务编排成可版本化流程，是否能被小范围验证。",
-        "whyItMatters": "n8n-io/n8n 本轮应按「AI 工作流自动化 / 可视化编排与自托管集成层」来读：它针对的是「业务团队想把 SaaS、数据库、消息、脚本和 AI 节点串成自动化流程，但纯代码方案交付慢，纯 SaaS 自动化又受权限、审计、成本和可扩展性约束」，核心机制是「以 n8n 的可视化 workflow、节点生态、触发器、凭据管理、自托管运行时、代码节点和 AI 能力把跨系统任务编排成可版本化流程」。判断价值时优先看 流程成功率、人工节省时间、失败重试率、凭据误用数、节点维护成本、执行延迟和人工接管次数，而不是把 201.7K stars / 60.3K forks 当成生产成熟度。",
+        "whyItMatters": "n8n-io/n8n 本轮应按「AI 工作流自动化 / 可视化编排与自托管集成层」来读：它针对的是「业务团队想把 SaaS、数据库、消息、脚本和 AI 节点串成自动化流程，但纯代码方案交付慢，纯 SaaS 自动化又受权限、审计、成本和可扩展性约束」，核心机制是「以 n8n 的可视化 workflow、节点生态、触发器、凭据管理、自托管运行时、代码节点和 AI 能力把跨系统任务编排成可版本化流程」。判断价值时优先看 流程成功率、人工节省时间、失败重试率、凭据误用数、节点维护成本、执行延迟和人工接管次数，而不是把 201.8K stars / 60.3K forks 当成生产成熟度。",
         "engineeringRead": "TypeScript · 容器化部署。建议按“入口示例 -> 数据/配置 -> 失败处理 -> CI/release -> issue 反例”的顺序读；重点回答 它解决的是「业务团队想把 SaaS、数据库、消息、脚本和 AI 节点串成自动化流程，但纯代码方案交付慢，纯 SaaS 自动化又受权限、审计、成本和可扩展性约束。」的主矛盾，还是只会给现有流程增加新的维护面？",
         "architectureSignals": [
           "架构机制：以 n8n 的可视化 workflow、节点生态、触发器、凭据管理、自托管运行时、代码节点和 AI 能力把跨系统任务编排成可版本化流程；阅读时把 TypeScript 代码入口、数据/配置形态、自动化脚本和边界条件连起来看，而不是只看 README 的安装示例。",
@@ -1557,7 +1557,7 @@
         },
         "diagram": {
           "title": "n8n 工业级采用图解",
-          "caption": "AI 工作流自动化 / 可视化编排与自托管集成层 · TypeScript · 201.7K stars",
+          "caption": "AI 工作流自动化 / 可视化编排与自托管集成层 · TypeScript · 201.8K stars",
           "summary": "以 n8n 的可视化 workflow、节点生态、触发器、凭据管理、自托管运行时、代码节点和 AI 能力把跨系统任务编排成可版本化流程，解决「业务团队想把 SaaS、数据库、消息、脚本和 AI 节点串成自动化流程，但纯代码方案交付慢，纯 SaaS 自动化又受权限、审计、成本和可扩展性约束」；先经由「先选一个低风险运营或研发通知流程做旁路自动化，限制凭据范围、启用执行日志和人工确认，不直接连接支付、删除或生产写操作」验证 流程成功率、人工节省时间、失败重试率、凭据误用数、节点维护成本、执行延迟和人工接管次数，再决定是否扩大。",
           "nodes": [
             {
@@ -1594,7 +1594,7 @@
             "metrics": [
               {
                 "label": "Stars",
-                "value": "201.7K",
+                "value": "201.8K",
                 "note": "社区关注"
               },
               {
@@ -1687,9 +1687,9 @@
         "visualUrl": "https://opengraph.githubassets.com/20260823/anthropics/claude-code",
         "url": "https://github.com/anthropics/claude-code",
         "description": "Claude Code is an agentic coding tool that lives in your terminal, understands your codebase, and helps you code faster by executing routine tasks, explaining complex code, and handling git workflows - all through natural language commands.",
-        "stars": 142451,
+        "stars": 142496,
         "starsToday": 141,
-        "forks": 22833,
+        "forks": 22837,
         "openIssues": 15081,
         "language": "Python",
         "topics": [],
@@ -1895,10 +1895,10 @@
         "visualUrl": "https://opengraph.githubassets.com/20260823/AprilNEA/OpenLogi",
         "url": "https://github.com/AprilNEA/OpenLogi",
         "description": "⚡️A native, local-first alternative to Logitech Options+, written in Rust 🦀 — remap buttons, DPI, and SmartShift over HID++. No account, no telemetry.",
-        "stars": 13669,
+        "stars": 13796,
         "starsToday": 959,
-        "forks": 368,
-        "openIssues": 251,
+        "forks": 369,
+        "openIssues": 254,
         "language": "Rust",
         "topics": [
           "dpi",
@@ -1930,7 +1930,7 @@
         "editorialMethod": "manual-deep-update-2026-08-22",
         "category": "本地优先外设控制 / Logitech HID++ 配置替代",
         "oneLiner": "⚡️A native, local-first alternative to Logitech Options+, written in Rust 🦀 — remap buttons, DPI, and SmartShift over HID++. No account, no telemetry.；关键看 OpenLogi 用 Rust 原生客户端直接通过 HID++ 与 Logitech 设备通信，把按键映射、DPI、SmartShift 和设备状态配置放在本地执行，不依赖云账号或官方常驻套件，是否能被小范围验证。",
-        "whyItMatters": "AprilNEA/OpenLogi 本轮应按「本地优先外设控制 / Logitech HID++ 配置替代」来读：它针对的是「Logitech Options+ 这类官方外设软件常伴随账号、后台服务、遥测和跨平台差异，开发者只想稳定设置鼠标按键、DPI、滚轮与 SmartShift」，核心机制是「OpenLogi 用 Rust 原生客户端直接通过 HID++ 与 Logitech 设备通信，把按键映射、DPI、SmartShift 和设备状态配置放在本地执行，不依赖云账号或官方常驻套件」。判断价值时优先看 设备识别率、配置写入成功率、断连恢复、DPI/按键生效率、CPU/内存占用、跨系统兼容和恢复默认成功率，而不是把 13.7K stars / 368 forks 当成生产成熟度。",
+        "whyItMatters": "AprilNEA/OpenLogi 本轮应按「本地优先外设控制 / Logitech HID++ 配置替代」来读：它针对的是「Logitech Options+ 这类官方外设软件常伴随账号、后台服务、遥测和跨平台差异，开发者只想稳定设置鼠标按键、DPI、滚轮与 SmartShift」，核心机制是「OpenLogi 用 Rust 原生客户端直接通过 HID++ 与 Logitech 设备通信，把按键映射、DPI、SmartShift 和设备状态配置放在本地执行，不依赖云账号或官方常驻套件」。判断价值时优先看 设备识别率、配置写入成功率、断连恢复、DPI/按键生效率、CPU/内存占用、跨系统兼容和恢复默认成功率，而不是把 13.8K stars / 369 forks 当成生产成熟度。",
         "engineeringRead": "Rust · 本机 CLI 工具。建议按“入口示例 -> 数据/配置 -> 失败处理 -> CI/release -> issue 反例”的顺序读；重点回答 它解决的是「Logitech Options+ 这类官方外设软件常伴随账号、后台服务、遥测和跨平台差异，开发者只想稳定设置鼠标按键、DPI、滚轮与 SmartShift。」的主矛盾，还是只会给现有流程增加新的维护面？",
         "architectureSignals": [
           "架构机制：OpenLogi 用 Rust 原生客户端直接通过 HID++ 与 Logitech 设备通信，把按键映射、DPI、SmartShift 和设备状态配置放在本地执行，不依赖云账号或官方常驻套件；阅读时把 Rust 代码入口、数据/配置形态、自动化脚本和边界条件连起来看，而不是只看 README 的安装示例。",
@@ -1986,7 +1986,7 @@
         },
         "diagram": {
           "title": "OpenLogi 工业级采用图解",
-          "caption": "本地优先外设控制 / Logitech HID++ 配置替代 · Rust · 13.7K stars",
+          "caption": "本地优先外设控制 / Logitech HID++ 配置替代 · Rust · 13.8K stars",
           "summary": "用OpenLogi 用 Rust 原生客户端直接通过 HID++ 与 Logitech 设备通信，把按键映射、DPI、SmartShift 和设备状态配置放在本地执行，不依赖云账号或官方常驻套件，解决「Logitech Options+ 这类官方外设软件常伴随账号、后台服务、遥测和跨平台差异，开发者只想稳定设置鼠标按键、DPI、滚轮与 SmartShift」；先经由「先在一台非关键鼠标上验证读取设备、备份当前配置、修改单个按键和恢复默认值，暂不批量下发到工作设备」验证 设备识别率、配置写入成功率、断连恢复、DPI/按键生效率、CPU/内存占用、跨系统兼容和恢复默认成功率，再决定是否扩大。",
           "nodes": [
             {
@@ -2023,17 +2023,17 @@
             "metrics": [
               {
                 "label": "Stars",
-                "value": "13.7K",
+                "value": "13.8K",
                 "note": "社区关注"
               },
               {
                 "label": "Forks",
-                "value": "368",
+                "value": "369",
                 "note": "二次采用"
               },
               {
                 "label": "Issues",
-                "value": "251",
+                "value": "254",
                 "note": "维护压力"
               },
               {
@@ -2116,9 +2116,9 @@
         "visualUrl": "https://opengraph.githubassets.com/20260823/modular/modular",
         "url": "https://github.com/modular/modular",
         "description": "The Modular Platform (includes MAX & Mojo)",
-        "stars": 28806,
+        "stars": 28823,
         "starsToday": 395,
-        "forks": 3064,
+        "forks": 3066,
         "openIssues": 1111,
         "language": "Mojo",
         "topics": [
@@ -2131,15 +2131,15 @@
           "programming-language"
         ],
         "license": "NOASSERTION",
-        "pushedAt": "2026-08-21T06:34:12Z",
+        "pushedAt": "2026-08-22T20:19:58Z",
         "createdAt": "2023-04-28T22:17:24Z",
         "languages": {
-          "Mojo": 46268515,
-          "Python": 30889216,
-          "C++": 12348185,
-          "Starlark": 3274203,
-          "MLIR": 1819744,
-          "MDX": 1057157,
+          "Mojo": 46340086,
+          "Python": 31268825,
+          "C++": 12387238,
+          "Starlark": 3279339,
+          "MLIR": 1824224,
+          "MDX": 1057234,
           "HTML": 962824,
           "Shell": 149928,
           "C": 119304,
@@ -2327,11 +2327,11 @@
         },
         "maturity": {
           "community": 98,
-          "maintenance": 97,
-          "production": 84,
+          "maintenance": 100,
+          "production": 85,
           "complexity": 67
         },
-        "score": 91
+        "score": 92
       },
       "evidence": {
         "readmeExcerpt": "<! rumdl disable file MD033 MD041 MD075 <div align=\"center\" <img src=\"https://modular assets.s3.us east 1.amazonaws.com/images/modular banner github.png\" [About Modular] [MAX docs] [Mojo docs] [Contributing] </div Modular Platform This repo hosts open source components of the Modular Platform, a unified platform for AI development and deployment, including the MAX Framework 🧑‍🚀 and the Mojo Language 🔥. Get started To get started with the Modular Platform and serve a model using the MAX framework, see the MAX quickstart guide. To get started with the Mojo language, see the Mojo quickstart guide. About the repo We're constantly open sourcing more of the Modular Platform and you can find all of it in here. The main components include: Mojo compiler: /KGEN Mojo standard library: /mojo/stdlib MAX accelerator library: /max/kernels MAX inference server: /max/python/max/serve (OpenAI compatib...",
@@ -2348,9 +2348,9 @@
         "visualUrl": "https://opengraph.githubassets.com/20260823/multica-ai/andrej-karpathy-skills",
         "url": "https://github.com/multica-ai/andrej-karpathy-skills",
         "description": "A single CLAUDE.md file to improve Claude Code behavior, derived from Andrej Karpathy's observations on LLM coding pitfalls.",
-        "stars": 205194,
+        "stars": 205251,
         "starsToday": 379,
-        "forks": 21004,
+        "forks": 21005,
         "openIssues": 126,
         "language": "",
         "topics": [],
@@ -2364,7 +2364,7 @@
         "editorialMethod": "manual-deep-update-2026-08-22",
         "category": "Claude Code 行为规范 / 单文件技能化经验蒸馏",
         "oneLiner": "A single CLAUDE.md file to improve Claude Code behavior, derived from Andrej Karpathy's observations on LLM coding pitfalls.；关键看 将 Karpathy 关于 LLM coding pitfalls 的观察整理成单个 CLAUDE.md 行为规范，用简洁规则约束 Claude Code 的计划、实现、验证和自检方式，是否能被小范围验证。",
-        "whyItMatters": "multica-ai/andrej-karpathy-skills 本轮应按「Claude Code 行为规范 / 单文件技能化经验蒸馏」来读：它针对的是「Coding Agent 常犯的上下文遗漏、过度自信、漏测、无根据重构和输出漂移，通常靠资深工程师反复口头提醒，难以在每次会话稳定生效」，核心机制是「将 Karpathy 关于 LLM coding pitfalls 的观察整理成单个 CLAUDE.md 行为规范，用简洁规则约束 Claude Code 的计划、实现、验证和自检方式」。判断价值时优先看 规则命中率、漏测率、review 返工率、无关改动数、人工提示次数和规则冲突数，而不是把 205.2K stars / 21K forks 当成生产成熟度。",
+        "whyItMatters": "multica-ai/andrej-karpathy-skills 本轮应按「Claude Code 行为规范 / 单文件技能化经验蒸馏」来读：它针对的是「Coding Agent 常犯的上下文遗漏、过度自信、漏测、无根据重构和输出漂移，通常靠资深工程师反复口头提醒，难以在每次会话稳定生效」，核心机制是「将 Karpathy 关于 LLM coding pitfalls 的观察整理成单个 CLAUDE.md 行为规范，用简洁规则约束 Claude Code 的计划、实现、验证和自检方式」。判断价值时优先看 规则命中率、漏测率、review 返工率、无关改动数、人工提示次数和规则冲突数，而不是把 205.3K stars / 21K forks 当成生产成熟度。",
         "engineeringRead": "unknown · API/SDK 接入。建议按“入口示例 -> 数据/配置 -> 失败处理 -> CI/release -> issue 反例”的顺序读；重点回答 它解决的是「Coding Agent 常犯的上下文遗漏、过度自信、漏测、无根据重构和输出漂移，通常靠资深工程师反复口头提醒，难以在每次会话稳定生效。」的主矛盾，还是只会给现有流程增加新的维护面？",
         "architectureSignals": [
           "架构机制：将 Karpathy 关于 LLM coding pitfalls 的观察整理成单个 CLAUDE.md 行为规范，用简洁规则约束 Claude Code 的计划、实现、验证和自检方式；阅读时把 unknown 代码入口、数据/配置形态、自动化脚本和边界条件连起来看，而不是只看 README 的安装示例。",
@@ -2420,7 +2420,7 @@
         },
         "diagram": {
           "title": "andrej-karpathy-skills 工业级采用图解",
-          "caption": "Claude Code 行为规范 / 单文件技能化经验蒸馏 · unknown · 205.2K stars",
+          "caption": "Claude Code 行为规范 / 单文件技能化经验蒸馏 · unknown · 205.3K stars",
           "summary": "将 Karpathy 关于 LLM coding pitfalls 的观察整理成单个 CLAUDE.md 行为规范，用简洁规则约束 Claude Code 的计划、实现、验证和自检方式，解决「Coding Agent 常犯的上下文遗漏、过度自信、漏测、无根据重构和输出漂移，通常靠资深工程师反复口头提醒，难以在每次会话稳定生效」；先经由「先把它作为只读参考，抽取 5-8 条与本地工程规范不冲突的规则写入低风险仓库，再用历史任务回放比较漏测和返工差异」验证 规则命中率、漏测率、review 返工率、无关改动数、人工提示次数和规则冲突数，再决定是否扩大。",
           "nodes": [
             {
@@ -2457,7 +2457,7 @@
             "metrics": [
               {
                 "label": "Stars",
-                "value": "205.2K",
+                "value": "205.3K",
                 "note": "社区关注"
               },
               {
@@ -2550,9 +2550,9 @@
         "visualUrl": "https://opengraph.githubassets.com/20260823/mahlernim/google-timeline-visualizer",
         "url": "https://github.com/mahlernim/google-timeline-visualizer",
         "description": "Visualize your year in travel using your Google Location History (Timeline) data",
-        "stars": 2520,
+        "stars": 2546,
         "starsToday": 441,
-        "forks": 293,
+        "forks": 298,
         "openIssues": 6,
         "language": "Kotlin",
         "topics": [],
@@ -2573,7 +2573,7 @@
         "editorialMethod": "manual-deep-update-2026-08-22",
         "category": "Google Timeline 本地可视化 / 个人位置数据分析",
         "oneLiner": "Visualize your year in travel using your Google Location History (Timeline) data；关键看索引/查询机制、数据一致性和嵌入式运行成本。",
-        "whyItMatters": "mahlernim/google-timeline-visualizer 本轮应按「Google Timeline 本地可视化 / 个人位置数据分析」来读：它针对的是「Google Timeline 导出的 Location History 体量大、格式复杂，普通用户很难把一年出行轨迹、停留地点和旅行模式转成可解释的地图与时间线」，核心机制是「Kotlin 桌面应用读取 Google Location History 导出文件，在本地解析时间、坐标和行程片段，再把位置点、路线与年度旅行统计可视化，避免把敏感位置数据上传到第三方服务」。判断价值时优先看 导入成功率、轨迹解析准确率、大文件加载时间、地图交互流畅度、异常坐标过滤、离线数据留存和隐私删除路径，而不是把 2.5K stars / 293 forks 当成生产成熟度。",
+        "whyItMatters": "mahlernim/google-timeline-visualizer 本轮应按「Google Timeline 本地可视化 / 个人位置数据分析」来读：它针对的是「Google Timeline 导出的 Location History 体量大、格式复杂，普通用户很难把一年出行轨迹、停留地点和旅行模式转成可解释的地图与时间线」，核心机制是「Kotlin 桌面应用读取 Google Location History 导出文件，在本地解析时间、坐标和行程片段，再把位置点、路线与年度旅行统计可视化，避免把敏感位置数据上传到第三方服务」。判断价值时优先看 导入成功率、轨迹解析准确率、大文件加载时间、地图交互流畅度、异常坐标过滤、离线数据留存和隐私删除路径，而不是把 2.5K stars / 298 forks 当成生产成熟度。",
         "engineeringRead": "Kotlin · Python 包/脚本。建议按“入口示例 -> 数据/配置 -> 失败处理 -> CI/release -> issue 反例”的顺序读；重点回答 它解决的是「Google Timeline 导出的 Location History 体量大、格式复杂，普通用户很难把一年出行轨迹、停留地点和旅行模式转成可解释的地图与时间线。」的主矛盾，还是只会给现有流程增加新的维护面？",
         "architectureSignals": [
           "架构机制：Kotlin 桌面应用读取 Google Location History 导出文件，在本地解析时间、坐标和行程片段，再把位置点、路线与年度旅行统计可视化，避免把敏感位置数据上传到第三方服务；阅读时把 Kotlin 代码入口、数据/配置形态、自动化脚本和边界条件连起来看，而不是只看 README 的安装示例。",
@@ -2671,7 +2671,7 @@
               },
               {
                 "label": "Forks",
-                "value": "293",
+                "value": "298",
                 "note": "二次采用"
               },
               {
