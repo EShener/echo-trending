@@ -156,6 +156,12 @@ function applyEditorialOverrides(report) {
       action: "先做只读影子值班：接入 20 个历史 CI/CD 失败样本，要求 Claude Tag 输出证据链接、疑似根因、owner、下一步和置信度，记录命中率、误报、人工节省时间、权限触达、通知噪声和失败复盘。",
       tags: ["Claude Tag", "CI/CD", "研发效能", "Incident Response"],
     },
+    "Build production agents with computer use, the Skills API, and the Files API": {
+      signal: "Claude 平台执行面 GA 信号：Computer Use、Browser Use、Skills API 和 Files API 被官方放进同一套生产 Agent 交付链路，重点从模型回答转向“看屏幕/读 DOM、调用团队技能、读写文件、返回完成件”的闭环。",
+      impact: "保险、医疗、金融和内部 SaaS 自动化会更容易把 Claude 接到没有 API 的系统里，但风险也集中到网页提示注入、账号权限继承、HIPAA/BAA 边界、技能版本漂移、文件留存和人工接管。",
+      action: "先选 5 个低敏长流程做 shadow run：记录 multi-action computer use 成功率、browser tool 定位错误、skill 版本、Files API 留存、人工确认点、审计日志、失败恢复和单任务成本，再决定是否开放写操作。",
+      tags: ["Claude Platform", "Computer Use", "Browser Use", "Skills API"],
+    },
     "How Claude Tag serves as Anthropic’s first responder for CI/CD failures": {
       signal: "CI/CD on-call Agent 信号：Claude 官方博客把 Claude Tag 放进 Anthropic 内部构建失败响应链路，核心是让 Agent 读取失败上下文、定位 owner、总结日志和推动修复，而不是单纯在 Slack 里回答问题。",
       impact: "研发平台团队会看到 on-call、CI triage 和 incident response 自动化的可迁移样本；风险是 Agent 误读失败根因、通知错误 owner、在敏感仓库越权读取日志，或把不完整结论扩散到发布流程。",
@@ -5318,6 +5324,20 @@ async function fetchAnthropicNewsItems(maxItems) {
 function seedAnthropicOfficialItems() {
   const favicon = "https://www.google.com/s2/favicons?domain=anthropic.com&sz=128";
   return [
+    {
+      source: "A社 Claude",
+      sourceDetail: "Claude 官方 Blog / Platform Agents",
+      domain: "claude.com",
+      title: "Build production agents with computer use, the Skills API, and the Files API",
+      url: "https://claude.com/blog/computer-use-skills-api-files-api",
+      publishedAt: "2026-08-20T16:00:00Z",
+      summary: "Claude 官方博客宣布 Computer Use、Browser Use、Skills API 和 Files API 在 Claude Platform 进入 GA：Computer Use 支持单轮多动作，Browser Use 读取页面结构，Skills API 支持上传和版本化团队技能，Files API 支持持久文件读写与更高额度。信号是 Claude Agent 正从单点工具调用升级为可封装团队知识、操作遗留网页系统并交付文件产物的生产平台。",
+      imageUrl: "https://www.google.com/s2/favicons?domain=claude.com&sz=128",
+      priority: 31,
+      signal: "Claude 平台执行面 GA 信号：Computer Use、Browser Use、Skills API 和 Files API 被官方放进同一套生产 Agent 交付链路，重点从模型回答转向“看屏幕/读 DOM、调用团队技能、读写文件、返回完成件”的闭环。",
+      impact: "保险、医疗、金融和内部 SaaS 自动化会更容易把 Claude 接到没有 API 的系统里，但风险也集中到网页提示注入、账号权限继承、HIPAA/BAA 边界、技能版本漂移、文件留存和人工接管。",
+      action: "先选 5 个低敏长流程做 shadow run：记录 multi-action computer use 成功率、browser tool 定位错误、skill 版本、Files API 留存、人工确认点、审计日志、失败恢复和单任务成本，再决定是否开放写操作。",
+    },
     {
       source: "A社 Anthropic Research",
       sourceDetail: "Anthropic 官方 Research / Claude Science",
