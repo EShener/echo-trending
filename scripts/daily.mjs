@@ -198,6 +198,12 @@ function applyEditorialOverrides(report) {
       action: "先选 5 个低敏长流程做 shadow run：记录 multi-action computer use 成功率、browser tool 定位错误、skill 版本、Files API 留存、人工确认点、审计日志、失败恢复和单任务成本，再决定是否开放写操作。",
       tags: ["Claude Platform", "Computer Use", "Browser Use", "Skills API"],
     },
+    "Bringing the cybersecurity capabilities of Claude Mythos 5 to more defenders": {
+      signal: "Mythos 5 防御能力受控开放信号：Claude Security 开始用 Mythos 5 扫描企业自有代码并返回漏洞发现、CWE、置信度、严重性和补丁建议，同时通过伙伴工具、Defender Advantage Fund 和 Cyber Verification Program 扩大防御侧覆盖。",
+      impact: "安全团队会更快把 frontier 模型用于漏洞发现、开源软件修复和防御工具增强，但 Anthropic 明确把能力封装在特定输出里，避免用户直接提示 Mythos 生成双重用途攻击能力；企业风险转向代码授权、误报、补丁审查、模型不可见性、项目资助依赖和责任归属。",
+      action: "把它作为安全产品试点而非普通模型接入：只扫描自有或授权仓库，要求每条发现保留 CWE、证据、置信度、严重性、建议补丁、人审结论和回滚记录；开源基金与 Cyber Verification 只作为补充资源，不替代内部安全流程。",
+      tags: ["Claude Mythos 5", "Claude Security", "Cyber Defense", "Project Glasswing"],
+    },
     "How Claude Tag serves as Anthropic’s first responder for CI/CD failures": {
       signal: "CI/CD on-call Agent 信号：Claude 官方博客把 Claude Tag 放进 Anthropic 内部构建失败响应链路，核心是让 Agent 读取失败上下文、定位 owner、总结日志和推动修复，而不是单纯在 Slack 里回答问题。",
       impact: "研发平台团队会看到 on-call、CI triage 和 incident response 自动化的可迁移样本；风险是 Agent 误读失败根因、通知错误 owner、在敏感仓库越权读取日志，或把不完整结论扩散到发布流程。",
@@ -5511,6 +5517,20 @@ async function fetchAnthropicNewsItems(maxItems) {
 function seedAnthropicOfficialItems() {
   const favicon = "https://www.google.com/s2/favicons?domain=anthropic.com&sz=128";
   return [
+    {
+      source: "A社 Claude",
+      sourceDetail: "Claude 官方 Blog / Claude Security",
+      domain: "claude.com",
+      title: "Bringing the cybersecurity capabilities of Claude Mythos 5 to more defenders",
+      url: "https://claude.com/blog/bringing-claude-mythos-5-to-more-defenders",
+      publishedAt: "2026-08-21T16:00:00Z",
+      summary: "Claude 官方博客宣布 Mythos 5 已用于 Claude Security 扫描 Enterprise 客户自有代码库，输出漏洞发现、CWE、置信度、严重性和建议修复；同时推进伙伴安全工具集成、3500 万美元 Defender Advantage Fund 和 Cyber Verification Program 扩展。信号是 Anthropic 正把最强网络安全能力封装为防御产物，而不是开放直接模型访问。",
+      imageUrl: "https://www.google.com/s2/favicons?domain=claude.com&sz=128",
+      priority: 35,
+      signal: "Mythos 5 防御能力受控开放信号：A 社开始把 frontier cyber capability 放进 Claude Security 和伙伴工具，以漏洞发现与补丁建议这种限定输出交付给防御者。",
+      impact: "企业安全团队能更快获得高能力代码扫描和补丁建议，但模型能力并不等同于自动修复权限；误报、授权范围、补丁质量、人审责任和供应商封装透明度会成为验收重点。",
+      action: "先以只读扫描接入：限定自有仓库，保留 CWE、证据、置信度、严重性、建议补丁、人审结论和回滚记录，再决定是否把结果接入 Claude Code 或现有漏洞管理流程。",
+    },
     {
       source: "A社 Claude",
       sourceDetail: "Claude 官方 Blog / Platform Agents",
