@@ -1258,6 +1258,7 @@ function preserveEditorialAnalysis(previousAnalysis, generatedAnalysis) {
   const previousMethod = String(previousAnalysis?.method || "");
   const generatedMethod = String(generatedAnalysis?.method || "");
   if (!previousAnalysis || !isEditorialAnalysisComplete(previousAnalysis)) return generatedAnalysis;
+  if (hasWeakPreservedAnalysis(previousAnalysis)) return generatedAnalysis;
   if (generatedAnalysis?.editorialMethod) return generatedAnalysis;
   if (!generatedMethod || generatedMethod === "llm") return generatedAnalysis;
   return {
@@ -1269,6 +1270,11 @@ function preserveEditorialAnalysis(previousAnalysis, generatedAnalysis) {
     },
     score: generatedAnalysis?.score ?? previousAnalysis.score,
   };
+}
+
+function hasWeakPreservedAnalysis(analysis = {}) {
+  const oneLiner = String(analysis.oneLiner || "");
+  return oneLiner.includes("它把哪类人工流程转成");
 }
 
 function isEditorialAnalysisComplete(analysis = {}) {
@@ -3597,7 +3603,7 @@ function specializeLens(repo, lens) {
 
 function sharpenOneLiner(repo, lens, fallbackLine) {
   const base = repo.description || fallbackLine || repo.full_name;
-  if (lens.domain.includes("AI Agent")) return `${base}；关键看它把哪类人工流程转成可审计任务、工具权限和失败恢复机制。`;
+  if (lens.domain.includes("AI Agent")) return `${base}；关键看 ${lens.coreMechanism} 能否把「${lens.userPain}」转成有权限边界、状态记录和失败恢复的可回放流程。`;
   if (lens.domain.includes("数据")) return `${base}；关键看索引/查询机制、数据一致性和嵌入式运行成本。`;
   if (lens.domain.includes("开发者工具")) return `${base}；关键看它能否稳定缩短构建、测试、调试或自动化链路。`;
   if (lens.domain.includes("学习")) return `${base}；关键看内容 schema、评测、翻译和社区审校如何形成长期闭环。`;
@@ -7158,6 +7164,7 @@ function interpretFrontier(item) {
 
 function interpretAiNews(item) {
   const text = `${item.title} ${item.summary}`.toLowerCase();
+  if (text.includes("勒汉恩") || text.includes("ai 网络攻击") || text.includes("持续不断") || (text.includes("openai") && text.includes("网络攻击"))) return "AI 网络攻击准备信号：前沿模型能力、沙箱事故和政府安全标准被放进同一条风险叙事，企业需要把模型发布安全、Agent 权限和外部攻击面联动评估。";
   if (text.includes("glm-5.3")) return "国产开源 Agent 模型信号：GLM-5.3 把复杂编码、防御性网络安全、长程任务和低成本 API 打包成工程候选，评估重点应放在真实任务回放而不是单个榜单名次。";
   if (text.includes("gpt-5.6")) return "模型产品化信号：GPT-5.6 把前沿推理、浏览/computer use、artifact 生成、缓存断点和多 Agent 能力打包成面向知识工作的生产套件，竞争焦点从单次 benchmark 转到可交付任务。";
   if (text.includes("gpt-live")) return "实时语音 Agent 信号：OpenAI 把低延迟对话层与后台深度任务层拆开，语音入口不再只是聊天，而是可委托搜索、推理和操作的前台控制面。";
