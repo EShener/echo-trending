@@ -2265,6 +2265,58 @@ function specializeLens(repo, lens) {
       badFit: "强合规源码、企业集中审计、无人值守生产写操作或无法接受第三方 provider 不稳定的任务。",
       primaryRisk: "代理层会集中源码上下文和 provider 凭据；免费额度与非官方集成还会带来可靠性、条款和审计风险。",
     },
+    "MadsLorentzen/ai-job-search": {
+      editorialMethod: "manual-deep-update-2026-08-25",
+      domain: "本地 AI 求职流水线 / Claude Code 职业工作台",
+      userPain: "求职者需要反复筛职位、判断匹配度、改 CV、写 cover letter 和准备面试，但把这些材料交给云端黑盒工具又会遇到隐私、版本漂移和不可复盘问题。",
+      coreMechanism: "以本机 Python 框架和 Claude Code 工作流读取职位描述、个人履历与模板，生成匹配评分、定制 CV、求职信和面试准备材料，让求职动作从临时聊天变成可回放的文件流水线。",
+      safeEntry: "先用 5 个公开职位和一份脱敏简历离线回放，只生成草稿，不自动投递；记录每份材料的来源、改写点、人工修正和拒绝样本。",
+      businessValue: "把个人求职里的重复写作和岗位理解压缩成可审阅草稿流，适合验证 Agent 是否能处理高上下文、强个性化但低生产风险的办公任务。",
+      successMetric: "岗位匹配解释准确率、CV 事实错误率、人工修改时间、材料复用率、隐私泄露点、面试题命中率和最终投递采用率",
+      inspectFirst: "先看简历/职位输入 schema、LaTeX/文档模板、Claude Code 调用边界、文件写入路径、个人数据留存、失败样本和是否支持人工审阅 diff。",
+      bestFit: "个人高级求职者、职业教练、大学就业服务或需要本地化材料草稿的低敏办公自动化场景。",
+      badFit: "自动海投、虚构经历、直接处理高敏身份材料、替代人工事实审核或企业招聘系统的生产决策。",
+      primaryRisk: "求职 Agent 最容易把事实润色成事实错误；必须保留原始经历证据、人工审核、版本记录和自动投递禁区。",
+    },
+    "NousResearch/hermes-agent": {
+      editorialMethod: "manual-deep-update-2026-08-25",
+      domain: "自成长 Agent Runtime / Nous Research 模型应用层",
+      userPain: "个人和研究团队想把开源模型、Claude/OpenAI 接口、工具调用和长期偏好接成一个会随使用演化的 Agent，但普通聊天客户端缺少状态、技能、权限和回放机制。",
+      coreMechanism: "Hermes Agent 以 Python runtime 组织模型 provider、工具接口、记忆/偏好、任务状态和本地执行面，把 Nous Research 的模型生态从权重发布延伸到可交互 Agent 工作台。",
+      safeEntry: "先在隔离环境运行只读研究、摘要或代码解释任务，关闭生产账号写操作，记录工具轨迹、记忆写入、失败恢复和模型切换行为。",
+      businessValue: "为开源模型团队验证“模型能力 + Agent 外壳 + 用户长期状态”能否形成可持续产品入口，而不只是发布一次 benchmark。",
+      successMetric: "任务完成率、工具调用成功率、记忆命中/污染、人工接管次数、provider fallback、单任务成本、日志可审计性和越权拦截",
+      inspectFirst: "先看 provider 抽象、工具权限、memory schema、任务状态机、容器/本地运行、日志脱敏、失败重试和开源模型默认配置。",
+      bestFit: "开源模型研究、个人 Agent 原型、低敏知识工作流和有工程 owner 维护运行时的研发效率团队。",
+      badFit: "高敏企业数据、无人值守生产写操作、缺少日志审计或只想要稳定 SaaS 助手的普通团队。",
+      primaryRisk: "自成长 Agent 的风险是记忆污染、权限扩散和模型/provider 行为不一致；上线前必须限制动作面、保留可删除记忆和完整执行日志。",
+    },
+    "openclaw/openclaw": {
+      editorialMethod: "manual-deep-update-2026-08-25",
+      domain: "跨平台个人 AI 助手 / Own-your-data 本地入口",
+      userPain: "个人助手如果只存在某个模型 App 里，就很难跨 OS、设备和工作流保留个人数据控制权；一旦接入真实账号，又会遇到隐私、权限、同步和删除边界。",
+      coreMechanism: "OpenClaw 用 TypeScript 应用层把个人助手、跨平台客户端、数据归属、模型接口和可扩展工具连接起来，核心价值在于把 AI 助手从单一聊天窗口变成用户可控的本地/多端工作入口。",
+      safeEntry: "先在本机低敏资料和玩具工具上试用，只允许读取公开笔记、日程样例或测试文件，不接邮箱、财务、健康和生产账号。",
+      businessValue: "为个人 AI OS 观察提供样本：真正的竞争点不是回答质量，而是跨端连续性、数据可携带、权限确认和用户能否撤回助手记忆。",
+      successMetric: "跨端同步成功率、工具调用完成率、权限确认次数、数据导出/删除成功率、误读个人上下文、离线可用性和人工纠错次数",
+      inspectFirst: "先看数据存储位置、账号/同步模型、工具插件边界、权限提示、导入导出、删除语义、桌面/移动兼容和安全说明。",
+      bestFit: "愿意用低敏数据试验个人 AI 助手、关注数据归属和跨平台入口的高级个人用户或本地优先应用团队。",
+      badFit: "直接导入高敏个人数据、需要企业权限治理、无法审查本地存储，或希望助手自动操作真实账号的场景。",
+      primaryRisk: "个人助手一旦长期记住错误或泄露数据，影响会累积；必须先验证最小数据、明确授权、可删除、可导出和人工确认。",
+    },
+    "AgriciDaniel/claude-obsidian": {
+      editorialMethod: "manual-deep-update-2026-08-25",
+      domain: "Obsidian + Claude Code 第二大脑 / Markdown 知识图谱自动整理",
+      userPain: "个人知识库常积累大量网页、PDF、笔记和任务碎片，人工链接和归档成本高；直接让 Agent 自动整理又容易误分类、伪造关系或覆盖原始材料。",
+      coreMechanism: "以 Claude Code 技能/插件读取来源材料，在本地 Obsidian Markdown 库中生成链接、分类、摘要和知识图谱结构，把 Karpathy LLM Wiki 式整理流程封装成可运行的个人 PKM 工作流。",
+      safeEntry: "先复制一小份低敏 vault 做离线试跑，只允许新增草稿笔记和链接建议，不修改原始笔记；人工确认分类、引用和删除动作后再扩大范围。",
+      businessValue: "为个人和研究团队提供“可读文件 + Agent 整理 + 图谱导航”的长期记忆样本，降低知识沉淀和二次检索成本。",
+      successMetric: "引用准确率、链接有效率、误分类率、重复笔记减少、人工整理时间、原文保真、回滚成功率和过期笔记清理率",
+      inspectFirst: "先看 vault schema、Claude Code skill 入口、文件写入规则、引用格式、去重策略、回滚/备份、Obsidian 兼容和是否会覆盖用户原文。",
+      bestFit: "使用 Obsidian、偏本地文件、愿意人工 review Agent 写入的研究者、知识工作者和个人长期记忆团队。",
+      badFit: "高敏公司知识库、无备份 vault、需要强权限隔离，或希望 Agent 无审阅自动重构多年笔记的场景。",
+      primaryRisk: "知识库 Agent 的核心风险是把错误摘要和伪链接写成长期事实；必须使用复制库、来源引用、diff review 和可回滚写入。",
+    },
     "pascalorg/editor": {
       editorialMethod: "manual-deep-update-2026-07-28",
       domain: "建筑 3D 编辑器 / WebGPU 空间设计工具",
@@ -4445,6 +4497,13 @@ function withFrontierInterpretationAliases(interpretation) {
 function curatedFrontierInterpretation(item) {
   const title = normalizeTitle(item.title || "");
   const map = {
+    [normalizeTitle("MTIA 300: Meta's First Training Chip with Built-in NICs and Top-Bin HBM3E")]: {
+      businessProblem: "Meta 的 ranking/recommendation 训练已经被 embedding、all-reduce、参数同步和网络通信共同限制；继续堆通用 GPU 会让通信开销、机房功耗和训练 wall-clock 吃掉推荐模型扩展收益。",
+      systemMechanism: "MTIA 300 把 ranking/recommendation 训练芯片、内建 NIC chiplets、通信卸载 message engine、near-memory reduction 和 HCCL 通信库一起设计，把 collective communication 从外置网络/通用核心负担改成芯片一等公民。",
+      metricsAndExperiment: "生产验收不能只看峰值算力，应同时看分布式训练吞吐、scaling efficiency、all-reduce 时间占比、embedding 热点、模型收敛、训练成本、功耗、故障恢复和上线后 ranking/ads 指标是否兑现。",
+      borrowable: "可借鉴的是模型-芯片-通信协同设计思路：推荐平台先把训练 profile 拆成计算、embedding、通信、IO 和特征流水线账本，再判断瓶颈该由调度、通信库、存储还是专用硬件解决。",
+      boundary: "没有 hyperscale 训练规模、硬件软件协同团队和长期模型路线图时，不适合复制自研芯片路线；中大型团队更现实的是复用通信 profile、embedding sharding、训练扩展基线和成本归因方法。",
+    },
     [normalizeTitle("From User Sequences to Scaling Laws: A Multi-Stage Architecture for Meta’s Ads Ranking")]: {
       businessProblem: "Meta Ads 的排序漏斗要把用户长期行为序列、广告主目标、广告内容和实时请求上下文放进同一套多阶段链路；传统特征工程和单阶段 ranker 很难在序列长度、模型容量、延迟和广告 ROI 之间继续获得可预测收益。",
       systemMechanism: "LLaTTE 将广告排序拆成多阶段序列建模：前段保留用户行为序列的细粒度 token，后段用 query/ad token 与行为 token 交互，并通过与 LLM 类似的 attention、FFN、MoE/共享计算等扩展方向建立 scaling law，把“增加模型/数据/计算”转成可度量的排序收益。",
@@ -4773,6 +4832,16 @@ async function fetchIndustryFrontierItems(maxItems) {
 
 function seedIndustryFrontierItems() {
   return [
+    {
+      title: "MTIA 300: Meta's First Training Chip with Built-in NICs and Top-Bin HBM3E",
+      url: "https://engineering.fb.com/2026/08/24/networking-traffic/mtia-300-meta-training-chip-built-in-nics/",
+      publishedAt: "2026-08-24T16:00:00Z",
+      source: "Meta Engineering",
+      domain: "engineering.fb.com",
+      sourceType: "industry",
+      frontierScore: 72,
+      summary: "Meta Engineering 公开 MTIA 300：面向 ranking 与 recommendation 模型训练的自研加速器，通过内建 NIC chiplets、message engines、near-memory reduction 和 HCCL 通信库，把分布式训练通信从外部瓶颈改为硬件/软件协同设计对象。",
+    },
     {
       title: "From User Sequences to Scaling Laws: A Multi-Stage Architecture for Meta’s Ads Ranking",
       url: "https://engineering.fb.com/2026/08/05/ml-applications/from-user-sequences-to-scaling-laws-a-multi-stage-architecture-for-metas-ads-ranking/",
@@ -7224,7 +7293,7 @@ function interpretAiNews(item) {
   if (text.includes("model") || text.includes("benchmark")) return "模型评测信号：需要拆开任务类型、数据口径、推理成本和可复现证据，再判断它是否改变内部模型路由或候选池优先级。";
   if (text.includes("agent") || text.includes("tool")) return "Agent/工具调用方向，适合评估能否进入研发工作流或数据分析流程。";
   if (text.includes("open source") || text.includes("release")) return "生态发布信号：先拆 license、部署入口、维护节奏和社区迁移成本，再判断是否进入候选池。";
-  return "来源分层信号：先区分官方发布、社区复现、媒体转述和单点演示，再围绕目标用户、可试用入口、失败样本和下一次复查条件建立证据链。";
+  return "证据分层与复查信号：这类动态需要先拆官方原文、社区复现、媒体转述和单点演示，再把目标用户、可试用入口、失败样本、成本边界和下次复查条件写进观察卡。";
 }
 
 function enrichAiNews(item) {
@@ -7251,6 +7320,12 @@ function enrichAiNews(item) {
 function curatedAiNewsOverride(item) {
   const title = normalizeTitle(item.title || "");
   const map = {
+    [normalizeTitle("MetaRoCE：为 AI 规模以太网打造的全新 RDMA 传输协议")]: {
+      signal: "AI 规模网络协议信号：MetaRoCE 把 RDMA 传输从依赖无损以太网和 PFC 的传统路径，改造成端点智能、乱序交付、多路径、双向拥塞控制和 OCP 开放规范的训练网络基础设施。",
+      impact: "对大模型训练和推荐/广告 foundation model 的影响在通信层：百万 GPU 级集群如果继续被尾延迟、拥塞和网络配置复杂度限制，模型扩展收益会被 all-reduce、参数同步和故障恢复成本吞掉。",
+      action: "把它纳入 AI 网络栈评估表：记录现有 RDMA Verbs 兼容性、PFC 依赖、拥塞恢复、乱序容忍、多路径利用率、尾延迟、训练吞吐、OCP 实现成熟度和与 NCCL/HCCL/自研通信库的集成成本。",
+      tags: ["MetaRoCE", "RDMA", "AI Networking", "Training Infrastructure"],
+    },
     [normalizeTitle("统一 Radix 缓存：为混合模型前缀缓存构建单一树结构")]: {
       signal: "推理缓存架构信号：Unified Radix Cache 把 FULL、SWA、Mamba 等不同缓存语义收敛到单一 token-keyed radix 拓扑，说明混合模型 serving 的瓶颈正在从单模型 KV cache 扩展到多组件生命周期管理。",
       impact: "长上下文、MoE/SSM 混合模型和多租户推理会更依赖缓存复用、滑窗淘汰和检查点一致性；如果缓存抽象不统一，吞吐、尾延迟和显存碎片会直接抵消模型能力收益。",
