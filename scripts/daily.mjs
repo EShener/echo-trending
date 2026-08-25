@@ -4522,8 +4522,22 @@ function normalizeFrontierInterpretation(item) {
 
 function withFrontierInterpretationAliases(interpretation) {
   if (!interpretation || typeof interpretation !== "object") return interpretation;
+  const businessProblem = interpretation.businessProblem || "";
+  const systemMechanism = interpretation.systemMechanism || "";
+  const metricsAndExperiment = interpretation.metricsAndExperiment || interpretation.metricsExperiment || "";
+  const borrowable = interpretation.borrowable || interpretation.borrowableIdeas || "";
+  const boundary = interpretation.boundary || interpretation.unsuitableBoundary || "";
+  const framework = [
+    `业务问题：${businessProblem}`,
+    `系统机制：${systemMechanism}`,
+    `指标/实验：${metricsAndExperiment}`,
+    `可借鉴点：${borrowable}`,
+    `不适用边界：${boundary}`,
+  ].join(" -> ");
   return {
     ...interpretation,
+    framework,
+    frameworkText: framework,
     metricsExperiment: interpretation.metricsExperiment || interpretation.metricsAndExperiment,
     borrowableIdeas: interpretation.borrowableIdeas || interpretation.borrowable,
     unsuitableBoundary: interpretation.unsuitableBoundary || interpretation.boundary,
