@@ -5614,7 +5614,70 @@ function selectAnthropicCoverage(items, maxItems) {
     if (selected.length >= maxItems) break;
     if (!selected.some((seen) => normalizeTitle(seen.title) === normalizeTitle(item.title))) selected.push(item);
   }
-  return selected.slice(0, maxItems);
+  return ensureAnthropicRequiredCoverage(selected, ranked, maxItems);
+}
+
+function ensureAnthropicRequiredCoverage(selected, ranked, maxItems) {
+  const requirements = [
+    {
+      name: "official News",
+      matches: (item) => /Anthropic 官方 News|Claude 官方 Blog/i.test(`${item.sourceDetail || ""} ${item.source || ""}`),
+    },
+    {
+      name: "official Research",
+      matches: (item) => /Anthropic 官方 Research/i.test(`${item.sourceDetail || ""} ${item.source || ""}`),
+    },
+    {
+      name: "official Engineering",
+      matches: (item) => /Anthropic 官方 Engineering|A社 Anthropic Engineering/i.test(`${item.sourceDetail || ""} ${item.source || ""}`),
+    },
+    {
+      name: "Claude model",
+      matches: (item) => /Claude (Sonnet|Opus|Fable|Mythos|Haiku)|model update|模型/i.test(`${item.sourceDetail || ""} ${item.title || ""} ${item.summary || ""}`),
+    },
+    {
+      name: "Claude Code/Agent/Computer Use",
+      matches: (item) => /Claude Code|Computer Use|Browser Use|Skills API|Files API|Managed Agents|Agent View|Claude Tag/i.test(`${item.sourceDetail || ""} ${item.title || ""} ${item.summary || ""}`),
+    },
+    {
+      name: "enterprise cooperation",
+      matches: (item) => /Enterprise Partnership|Enterprise AI|Datadog|Rakuten|UST|TCS|Cognizant|Millennium|partnership|partner|regulated industries|合作/i.test(`${item.sourceDetail || ""} ${item.title || ""} ${item.summary || ""}`),
+    },
+    {
+      name: "safety research",
+      matches: (item) => /Security|Safeguards|cyber|jailbreak|contain|containment|watermark|dual use|Frontier Red Team|安全|红队/i.test(`${item.sourceDetail || ""} ${item.title || ""} ${item.summary || ""}`),
+    },
+  ];
+  const output = selected.slice(0, maxItems);
+  const has = (matches) => output.some(matches);
+  const sameTitle = (a, b) => normalizeTitle(a?.title) === normalizeTitle(b?.title);
+
+  for (const requirement of requirements) {
+    if (has(requirement.matches)) continue;
+    const candidate = ranked.find((item) => requirement.matches(item) && !output.some((seen) => sameTitle(seen, item)));
+    if (!candidate) continue;
+    if (output.length < maxItems) {
+      output.push(candidate);
+      continue;
+    }
+    const replaceIndex = findAnthropicCoverageReplacementIndex(output, requirements, requirement.matches);
+    if (replaceIndex !== -1) output[replaceIndex] = candidate;
+  }
+  return output.slice(0, maxItems).map((item, index) => ({ ...item, rank: index + 1 }));
+}
+
+function findAnthropicCoverageReplacementIndex(items, requirements, targetMatches) {
+  for (let index = items.length - 1; index >= 0; index -= 1) {
+    const item = items[index];
+    if (targetMatches(item)) continue;
+    const protectedCount = requirements.filter((requirement) => requirement.matches(item)).length;
+    if (protectedCount === 0) return index;
+  }
+  for (let index = items.length - 1; index >= 0; index -= 1) {
+    const item = items[index];
+    if (!targetMatches(item)) return index;
+  }
+  return -1;
 }
 
 async function fetchAnthropicNewsItems(maxItems) {
@@ -5670,7 +5733,7 @@ async function fetchAnthropicNewsItems(maxItems) {
     const items = results
       .flatMap((result) => (result.status === "fulfilled" ? [result.value] : []))
       .filter((item) => item.title && item.url);
-    if (items.length) return rankAnthropicItems([...seedAnthropicOfficialItems(), ...items]).slice(0, Math.max(maxItems, 24));
+    if (items.length) return rankAnthropicItems([...seedAnthropicOfficialItems(), ...items]).slice(0, Math.max(maxItems * 2, 48));
   } catch {
     // Fall through to community-maintained feed mirrors when the official site blocks or changes markup.
   }
@@ -5707,7 +5770,7 @@ async function fetchAnthropicNewsItems(maxItems) {
   return rankAnthropicItems([
     ...seedAnthropicOfficialItems(),
     ...results.flatMap((result) => (result.status === "fulfilled" ? result.value : [])),
-  ]).slice(0, maxItems);
+  ]).slice(0, Math.max(maxItems * 2, 48));
 }
 
 function seedAnthropicOfficialItems() {
