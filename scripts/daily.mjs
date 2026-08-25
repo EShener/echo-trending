@@ -180,6 +180,24 @@ function applyEditorialOverrides(report) {
       action: "把它作为具身智能观察池：只抽取可复现项目、官方成绩、失败类型、硬件配置、遥操作比例和任务完成率，形成下一轮仓储、巡检或服务机器人 PoC 的基准清单，不用赛事热度替代采购决策。",
       tags: ["Humanoid Robot", "具身智能", "机器人赛事", "硬件可靠性"],
     },
+    "Apple 发布 M6 与 M5 Ultra，性能与 AI 算力大幅跃升": {
+      signal: "端侧 AI 工作站规格上移信号：AIHOT 条目把 M6、M5 Ultra、Mac Studio 和 AI 算力提升放在一起，真正值得看的是本地长上下文、图像/视频生成、代码 Agent 与私有资料处理能否从云端回落到开发者桌面。",
+      impact: "创意生产、研究和工程团队会更容易用 Mac 做低敏本地推理、素材预处理和 Agent 回放，但芯片发布不能直接等同于生产吞吐；瓶颈仍在内存容量、Metal/MLX 支持、模型量化质量、散热、批处理和软件生态。",
+      action: "建立 Mac 本地 AI 回放基线：用同一组代码分析、RAG、图像生成和视频短样本记录 TTFT、tokens/s、峰值内存、功耗、失败率、人工等待时间和云端替代成本，再决定是否采购或迁移工作流。",
+      tags: ["Apple Silicon", "Local AI", "Mac Studio", "端侧推理"],
+    },
+    "单个污染页面即可影响LLM推荐：FORGE基准揭示检索增强推荐系统的脆弱性": {
+      signal: "RAG 推荐供应链污染信号：FORGE 把“单个污染页面”放进推荐结果操控场景，说明检索增强推荐的风险不只在模型幻觉，也在索引源、网页权重、候选召回和排序解释被外部内容劫持。",
+      impact: "内容推荐、商品推荐和企业搜索团队如果把开放网页或第三方知识源接入 RAG/RAR，会面对 SEO 式投毒、品牌操纵、恶意 prompt 注入和低频长尾 query 被污染的问题；传统离线 NDCG 未必能暴露这种攻击。",
+      action: "补一组污染鲁棒性评测：构造单页、相似页和高权重站点注入样本，记录召回命中、排序提升、答案引用、用户点击误导、过滤器拦截和人工举报回路，再决定外部网页能进入哪些推荐链路。",
+      tags: ["RAG", "Recommendation", "FORGE", "数据投毒"],
+    },
+    "Granite 4.2 LLMs: How They're Built": {
+      signal: "企业开源模型工程账本信号：Granite 4.2 的重点不是又一组权重，而是 IBM/Hugging Face 把数据配方、训练流程、许可证、部署目标和企业安全边界讲成可审查的模型供应链。",
+      impact: "企业平台团队会把 Granite 当成私有化、合规和成本可控模型的候选，但采用价值取决于本地任务评测、工具调用、长上下文、语言覆盖、推理成本和与现有 guardrail 的兼容。",
+      action: "用本地 eval 而非榜单筛选：选客服、检索问答、代码解释和结构化抽取四类任务，对比 Granite 4.2 与现有模型的准确率、拒答、格式错误、延迟、成本、许可证适配和失败样本。",
+      tags: ["Granite", "Hugging Face", "Enterprise LLM", "模型供应链"],
+    },
     "蚂蚁百灵为SGLang推出权重缓存守护进程": {
       signal: "大模型 serving 进入权重缓存治理信号：蚂蚁百灵把 SGLang 的权重加载、复用和守护进程做成独立能力，说明多模型/多 LoRA/多实例推理的瓶颈正在从单次生成速度转向冷启动、显存驻留和弹性调度。",
       impact: "模型平台如果频繁切换模型或租户，权重缓存会直接影响 TTFT、GPU 利用率和扩缩容成本；风险是缓存污染、版本错配、显存碎片、租户隔离不足和故障恢复时把错误权重带回线上。",
@@ -1310,7 +1328,11 @@ function preserveEditorialAnalysis(previousAnalysis, generatedAnalysis) {
 
 function hasWeakPreservedAnalysis(analysis = {}) {
   const oneLiner = String(analysis.oneLiner || "");
-  return oneLiner.includes("它把哪类人工流程转成");
+  return (
+    oneLiner.includes("它把哪类人工流程转成") ||
+    oneLiner.includes("是否能被小范围验证") ||
+    oneLiner.includes("模型接口、工具协议、上下文管理或推理工作流")
+  );
 }
 
 function isEditorialAnalysisComplete(analysis = {}) {
@@ -1519,6 +1541,19 @@ function specializeLens(repo, lens) {
       bestFit: "已经重度使用 Claude Code、任务模式稳定、愿意维护内部 skill registry 和安全审查流程的研发、文档、数据分析团队。",
       badFit: "任务尚未标准化、权限边界不清、或希望 Agent 绕过人工审批直接执行生产写操作的团队。",
       primaryRisk: "skill 会把执行习惯固化并扩大工具权限；必须做版本管理、来源审查、最小权限、日志留存和撤销机制。",
+    },
+    "anthropics/claude-plugins-community": {
+      editorialMethod: "manual-deep-update-2026-08-25",
+      domain: "Claude 插件社区目录 / Agent 能力分发治理面",
+      userPain: "Claude Cowork、Claude Code 和企业 Agent 需要连接外部工具、数据源和工作流，但插件如果只靠社区热度安装，会把来源、权限、依赖和维护状态风险带进执行环境。",
+      coreMechanism: "claude-plugins-community 作为只读镜像沉淀插件目录、提交入口、分类元数据和社区审核线索，让团队先做能力发现与准入评估，而不是把插件直接装进生产 Claude 环境。",
+      safeEntry: "先抽样 10 个候选插件，核验来源、权限、依赖、最近更新、数据出境和可替代方案，只在低敏沙箱里做读操作回放。",
+      businessValue: "帮助 Agent 平台团队建立插件白名单、风险分级和本地化迁移清单，把外部插件生态从“随手安装”转成可审查资产池。",
+      successMetric: "插件可用率、权限风险命中、来源可信度、本地化耗时、沙箱回放成功率、过期条目比例和维护 owner 清晰度",
+      inspectFirst: "先看目录 schema、提交规则、插件 manifest、权限声明、依赖脚本、license、更新节奏和是否能与内部审查流程对接。",
+      bestFit: "正在建设 Claude/Codex 插件治理、需要快速发现外部能力但有安全 owner 的研发效能、平台工程和高级个人团队。",
+      badFit: "希望一键安装社区插件、仓库含敏感数据、没有权限审查或让插件直接操作生产账号的场景。",
+      primaryRisk: "插件目录不是安全背书；恶意脚本、过期 API 和过宽权限会直接扩大 Agent 执行动作面，必须先审查、沙箱和本地化。",
     },
     "openai/codex": {
       editorialMethod: "manual-deep-update-2026-08-22",
@@ -2431,6 +2466,19 @@ function specializeLens(repo, lens) {
       badFit: "自动交易、合规投顾、真实资金风控、未经授权数据采集或把 awesome 条目直接当投资建议",
       primaryRisk: "目录无法验证收益真实性，交易策略还会受到过拟合、费用、滑点、数据偏差和合规限制影响；所有采用都必须停在研究辅助层。",
     },
+    "TauricResearch/TradingAgents": {
+      editorialMethod: "manual-deep-update-2026-08-25",
+      domain: "多智能体投研框架 / 金融 Agent 回测工作台",
+      userPain: "投研团队想让 LLM 分别扮演新闻分析、基本面、技术面、风险和交易决策角色，但真实困难在于把市场数据、证据引用、回测假设、交易成本和人工责任边界固定下来",
+      coreMechanism: "TradingAgents 用多角色 LLM agents、市场数据接口、研究辩论、风险审查和交易决策链路模拟投研会议，把单轮金融问答拆成可观察的观点生成、交叉质询和最终建议流程",
+      safeEntry: "只在历史数据和纸面组合里回放，不连接真实账户；先选 20 个历史事件，记录每个 agent 的证据来源、观点冲突、最终建议、回测收益、最大回撤和人工否决理由",
+      businessValue: "适合作为投研流程可解释性和 Agent 协作样本，帮助团队看清多角色推理是否能暴露反方观点，而不是直接替代持牌投资决策",
+      successMetric: "证据引用准确率、观点多样性、回测净收益、最大回撤、交易成本敏感性、人工否决率和合规审查缺陷",
+      inspectFirst: "先看数据源授权、agent 角色提示词、交易规则、回测假设、费用/滑点建模、日志留存、免责声明和是否默认连接外部 API key",
+      bestFit: "量化研究、金融教育、纸面交易实验和有合规 owner 的投研工具评估团队。",
+      badFit: "真实自动交易、持牌投顾替代、客户资金决策、缺少数据授权或无法做回测审计的场景。",
+      primaryRisk: "金融多 Agent 很容易把新闻叙事包装成交易信号；必须隔离真实资金、记录数据血缘、纳入费用/滑点，并保留人工最终责任。",
+    },
     "microsoft/agent-governance-toolkit": {
       editorialMethod: "manual-deep-update-2026-07-28",
       domain: "AI Agent 治理工具包 / 零信任与执行沙箱",
@@ -2800,6 +2848,7 @@ function specializeLens(repo, lens) {
       primaryRisk: "个人教材的准确性、完整性和更新节奏必须持续复核；用于团队培训时需要专家审校和勘误流程。",
     },
     "Shubhamsaboo/awesome-llm-apps": {
+      editorialMethod: "manual-deep-update-2026-08-25",
       domain: "LLM App 样例目录 / Agent 与 RAG 原型库",
       userPain: "团队想快速理解 Agent、RAG、多模态和工具调用能落到哪些应用，但从零找样例、跑依赖、判断质量很耗时",
       coreMechanism: "100+ 可运行 AI Agent/RAG 应用、分类目录、示例代码、模型/框架适配和 clone-customize-ship 路径，把应用模式沉淀为原型库",
@@ -3691,12 +3740,18 @@ function specializeLens(repo, lens) {
 
 function sharpenOneLiner(repo, lens, fallbackLine) {
   const base = repo.description || fallbackLine || repo.full_name;
-  if (lens.domain.includes("AI Agent")) return `${base}；关键看 ${lens.coreMechanism} 能否把「${lens.userPain}」转成有权限边界、状态记录和失败恢复的可回放流程。`;
-  if (lens.domain.includes("数据")) return `${base}；关键看索引/查询机制、数据一致性和嵌入式运行成本。`;
-  if (lens.domain.includes("开发者工具")) return `${base}；关键看它能否稳定缩短构建、测试、调试或自动化链路。`;
-  if (lens.domain.includes("学习")) return `${base}；关键看内容 schema、评测、翻译和社区审校如何形成长期闭环。`;
-  if (lens.domain.includes("API")) return `${base}；关键看目录治理、可用性校验和来源合规，而不是条目数量。`;
-  return `${base}；关键看 ${lens.coreMechanism} 是否能被小范围验证。`;
+  const coreMechanism = String(lens.coreMechanism || "").replace(/[。；;\\s]+$/u, "");
+  const userPain = String(lens.userPain || "").replace(/[。；;\\s]+$/u, "");
+  const metricBrief = String(lens.successMetric || "任务完成率、人工接管率、失败样本和生产风险")
+    .split(/[,，、]/)
+    .slice(0, 4)
+    .join("、");
+  if (lens.domain.includes("AI Agent")) return `${base}；重点看 ${coreMechanism} 是否把「${userPain}」收敛成可审计流程，验收落到 ${metricBrief}。`;
+  if (lens.domain.includes("数据")) return `${base}；重点看索引/查询机制、数据一致性和嵌入式运行成本，验收落到 ${metricBrief}。`;
+  if (lens.domain.includes("开发者工具")) return `${base}；重点看它对构建、测试、调试或自动化链路的稳定缩短，验收落到 ${metricBrief}。`;
+  if (lens.domain.includes("学习")) return `${base}；重点看内容 schema、评测、翻译和社区审校能否形成长期闭环，验收落到 ${metricBrief}。`;
+  if (lens.domain.includes("API")) return `${base}；重点看目录治理、可用性校验和来源合规，而不是条目数量，验收落到 ${metricBrief}。`;
+  return `${base}；重点看 ${coreMechanism} 的工程收敛效果，目标问题是「${userPain}」，验收落到 ${metricBrief}。`;
 }
 
 function describeTeamFit(lens, repo) {
