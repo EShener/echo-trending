@@ -5559,6 +5559,7 @@ function buildEditorialReview({ reportDate, frontier = {}, aiNews = {} }) {
     "https://www.anthropic.com/news",
     "https://www.anthropic.com/research",
     "https://www.anthropic.com/engineering",
+    "https://www.anthropic.com/news/wellbeing-research-grants",
     "https://www.anthropic.com/research/multiagent-systems",
     "https://www.anthropic.com/research/Claude-accelerates-protein-design",
     "https://www.anthropic.com/news/claude-text-watermark",
@@ -5845,6 +5846,20 @@ async function fetchAnthropicNewsItems(maxItems) {
 function seedAnthropicOfficialItems() {
   const favicon = "https://www.google.com/s2/favicons?domain=anthropic.com&sz=128";
   return [
+    {
+      source: "A社 Anthropic",
+      sourceDetail: "Anthropic 官方 News / Wellbeing Evaluations",
+      domain: "anthropic.com",
+      title: "Funding better evaluations of AI’s impact on wellbeing",
+      url: "https://www.anthropic.com/news/wellbeing-research-grants",
+      publishedAt: "2026-08-25T16:00:00Z",
+      summary: "Anthropic 官方宣布 500 万美元 grant program，资助独立研究者构建开源 wellbeing evaluations，重点覆盖 AI 对用户心理健康、陪伴关系、危机对话和长期多轮交互的影响；官方同时强调评测要有临床/领域专家参与、同时测试过度顺从和过度拒绝，并用真实专家校准 grader。",
+      imageUrl: favicon,
+      priority: 37,
+      signal: "AI wellbeing 评测基建信号：A 社把心理健康、陪伴和长期多轮对话风险从内容政策推进到外部独立 benchmark 与开源评测资助。",
+      impact: "教育、陪伴、客服和企业助手会被要求证明模型在用户脆弱状态下既不过度迎合也不过度拒绝；单轮安全拒答和普通满意度指标不足以覆盖长期 wellbeing 风险。",
+      action: "把 wellbeing 纳入高风险助手评测：构造多轮升级场景，记录过度顺从、过度拒绝、危机识别、专家一致性、人工升级、申诉和复查节奏；不把聊天留存当作健康影响的代理指标。",
+    },
     {
       source: "A社 Claude",
       sourceDetail: "Claude 官方 Blog / Claude Security",
@@ -7488,6 +7503,18 @@ function enrichAiNews(item) {
 function curatedAiNewsOverride(item) {
   const title = normalizeTitle(item.title || "");
   const map = {
+    [normalizeTitle("Funding better evaluations of AI’s impact on wellbeing")]: {
+      signal: "AI wellbeing 评测基建信号：A 社把心理健康、陪伴和长期多轮对话风险从内容政策推进到外部独立 benchmark 与开源评测资助。",
+      impact: "教育、陪伴、客服和企业助手会被要求证明模型在用户脆弱状态下既不过度迎合也不过度拒绝；单轮安全拒答和普通满意度指标不足以覆盖长期 wellbeing 风险。",
+      action: "把 wellbeing 纳入高风险助手评测：构造多轮升级场景，记录过度顺从、过度拒绝、危机识别、专家一致性、人工升级、申诉和复查节奏；不把聊天留存当作健康影响的代理指标。",
+      tags: ["Anthropic", "Wellbeing Eval", "AI Safety", "独立评测"],
+    },
+    [normalizeTitle("Maximizing the value of your Claude Code sessions")]: {
+      signal: "Claude Code 会话经济性信号：官方开始直接指导用户管理上下文、prompt cache、命令输出、子代理分工和长会话整理，说明 Agentic coding 的成熟度已进入成本/噪声/上下文治理阶段。",
+      impact: "团队采用 Claude Code 后，质量差异不只来自模型本身，也来自是否能控制日志洪水、重复上下文、缓存失效、无效工具调用和任务边界漂移；这些会直接放大 token 成本和人工 review 压力。",
+      action: "把 Claude Code 试点补上使用规范和指标：记录每类任务 token、缓存命中、命令输出行数、/clear 与 /compact 使用、subagent 分流、完成率和人工返工，再决定默认模式。",
+      tags: ["Claude Code", "Agent Cost", "Context Engineering", "研发效能"],
+    },
     [normalizeTitle("MetaRoCE：为 AI 规模以太网打造的全新 RDMA 传输协议")]: {
       signal: "AI 规模网络协议信号：MetaRoCE 把 RDMA 传输从依赖无损以太网和 PFC 的传统路径，改造成端点智能、乱序交付、多路径、双向拥塞控制和 OCP 开放规范的训练网络基础设施。",
       impact: "对大模型训练和推荐/广告 foundation model 的影响在通信层：百万 GPU 级集群如果继续被尾延迟、拥塞和网络配置复杂度限制，模型扩展收益会被 all-reduce、参数同步和故障恢复成本吞掉。",
@@ -7558,6 +7585,18 @@ function curatedAiNewsOverride(item) {
       signal: "垂直科学模型信号：WeatherNext 气旋模型把 AI 预测从通用天气基座推进到高影响灾害场景，核心价值是提前量、路径误差和预警可靠性。",
       impact: "保险、物流、能源、应急和内容平台会更关注可解释预警、地理粒度和误报成本；这不是普通大模型替换，而是专业数据、物理约束和业务响应链路的结合。",
       action: "跟踪官方基准和真实风暴复盘，记录提前量、路径/强度误差、地区覆盖、与传统数值天气模型差异、误报成本和下游调度动作。",
+    },
+    [normalizeTitle("WeatherNext 预测气旋：提前五天预警五级飓风")]: {
+      signal: "灾害预测专用模型信号：Google WeatherNext 2 把气旋路径、强度和风场结构联合预测，并在高影响飓风场景强调提前预警，而不是把通用 LLM 套到天气任务上。",
+      impact: "应急、保险、能源、物流和媒体预警团队会更早获得概率化情景，但误报、地区覆盖、与 NHC/ECMWF 等传统系统的冲突处理、模型开源后的复现质量和公众沟通责任会成为真正门槛。",
+      action: "只按官方论文/模型卡和真实风暴回放提高权重：记录提前量、路径误差、强度误差、风场结构、集合预报分布、误报成本、人工气象员介入点和下游调度是否因此改变。",
+      tags: ["Google DeepMind", "WeatherNext", "灾害预测", "开源模型"],
+    },
+    [normalizeTitle("Claude 记忆功能全面打通聊天与 Cowork，用户可逐条查看和编辑")]: {
+      signal: "Claude 记忆控制面信号：A 社把 memory 从单一聊天体验扩展到 Cowork/团队工作面，并强调用户可查看、编辑和删除具体记忆，说明 Agent 长期上下文正在从隐式历史变成可治理资产。",
+      impact: "企业和高级个人用户会更容易让 Claude 延续项目偏好、工作方式和协作语境，但风险也同步上升：过期记忆、跨项目污染、敏感信息留存、权限继承和“模型记得所以可信”的错觉都会影响 Agent 决策。",
+      action: "把 memory 当成可审计配置而不是背景魔法：建立项目级记忆命名、有效期、敏感字段禁止项、人工复核、删除流程和回放评测，记录记忆命中是否真的提升完成率并降低返工。",
+      tags: ["Claude Memory", "Claude Cowork", "Agent Context", "治理"],
     },
     [normalizeTitle("Seedance 2.5 API上线，视频生成开启「电影级长叙事」")]: {
       signal: "视频 API 工程信号：Seedance 2.5 从产品体验扩展到 API，说明视频生成正在进入可编排、可批量评测和可嵌入创作平台的阶段。",
