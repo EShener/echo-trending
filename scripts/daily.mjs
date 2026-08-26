@@ -5546,7 +5546,7 @@ function buildAnthropicSection(aiNews = {}) {
 
 function buildSearchAdsRecSection(frontier = {}) {
   const items = (frontier.items || []).map((item) => {
-    const interpretation = normalizeFrontierInterpretation(item);
+    const interpretation = withFrontierInterpretationAliases(normalizeFrontierInterpretation(item));
     return {
       ...item,
       businessProblem: interpretation.businessProblem,
@@ -5558,6 +5558,8 @@ function buildSearchAdsRecSection(frontier = {}) {
       borrowablePattern: interpretation.borrowable,
       boundary: interpretation.boundary,
       unsuitableBoundary: interpretation.unsuitableBoundary || interpretation.boundary,
+      framework: interpretation.framework,
+      frameworkText: interpretation.frameworkText,
       interpretation,
       diagram: item.diagram || buildFrontierDiagram(item, interpretation),
     };
