@@ -210,6 +210,18 @@ function applyEditorialOverrides(report) {
       action: "选一个低风险服务做 SDLC shadow run：每个阶段记录 Claude 输入、输出、人工修改、测试结果、审批点、失败样本、token/耗时和交接质量，用端到端缺陷率与 lead time 判断是否扩大。",
       tags: ["Claude", "SDLC", "Claude Code", "研发流程"],
     },
+    "Bain & Company joins the Claude Partner Network as a Global Premier partner": {
+      signal: "Claude 企业落地从工具采购转向咨询交付网络信号：Bain 加入 Claude Partner Network Global Premier partner，并把 1.9 万员工 rollout、Claude.ai/Cowork/Code/Excel/Microsoft 365 和客户代码现代化案例放进同一条采用证据链。",
+      impact: "大型企业会更容易把 Claude 从单点试用推进到跨部门转型项目，但真实价值取决于业务 owner、培训、治理、遗留系统上下文、数据权限和可审计收益；咨询伙伴背书不能替代本地任务回放。",
+      action: "把它作为企业 rollout 样本评估：按部门选择 20 个真实低敏任务，记录采用率、培训成本、模型/连接器权限、产出质量、代码现代化收益、人工复核和可量化业务指标，再决定是否扩大。",
+      tags: ["Anthropic", "Bain", "Claude Partner Network", "Enterprise AI"],
+    },
+    "Claude's memory works everywhere, and you decide what's in it": {
+      signal: "Claude 记忆控制面信号：A 社把 memory 从单一聊天体验扩展到 Cowork/团队工作面，并强调用户可查看、编辑和删除具体记忆，说明 Agent 长期上下文正在从隐式历史变成可治理资产。",
+      impact: "企业和高级个人用户会更容易让 Claude 延续项目偏好、工作方式和协作语境，但风险也同步上升：过期记忆、跨项目污染、敏感信息留存、权限继承和“模型记得所以可信”的错觉都会影响 Agent 决策。",
+      action: "把 memory 当成可审计配置而不是背景魔法：建立项目级记忆命名、有效期、敏感字段禁止项、人工复核、删除流程和回放评测，记录记忆命中是否真的提升完成率并降低返工。",
+      tags: ["Claude Memory", "Claude Cowork", "Agent Context", "治理"],
+    },
     "面壁智能 OpenBMB 推出 MathForm，面向 Lean 4 数学自动形式化的开源框架、数据集与模型": {
       signal: "形式化数学从模型 benchmark 走向工具链信号：MathForm 同时给出 Lean 4 框架、数据集和模型，说明自动形式化不再只是证明搜索比赛，而是在把自然语言数学、形式语言、验证器反馈和数据生成闭环打通。",
       impact: "科研、教育和高可靠软件团队会看到把论文/教材命题转成可检查 Lean 代码的入口；风险是自然语言歧义、证明目标错配、数据集泄漏、Lean 版本漂移和模型输出看似严谨但不可验证。",
@@ -5575,6 +5587,8 @@ function buildEditorialReview({ reportDate, frontier = {}, aiNews = {} }) {
     "https://www.anthropic.com/research",
     "https://www.anthropic.com/engineering",
     "https://www.anthropic.com/news/wellbeing-research-grants",
+    "https://claude.com/blog/claudes-memory-works-everywhere-and-you-decide-whats-in-it",
+    "https://claude.com/blog/bain-company-joins-the-claude-partner-network-as-a-global-premier-partner",
     "https://www.anthropic.com/research/multiagent-systems",
     "https://www.anthropic.com/research/Claude-accelerates-protein-design",
     "https://www.anthropic.com/news/claude-text-watermark",
@@ -5662,7 +5676,7 @@ function buildEditorialReview({ reportDate, frontier = {}, aiNews = {} }) {
     sourceNotes: [
       `Anthropic official coverage includes ${anthropicSources.join("、") || "official News/Research/Engineering"} with Claude Tag, Economic Index, Claude Code practice, model updates, partnerships and safety research.`,
       "Anthropic/Claude pages checked this run: Aug 18 Claude protein design and analytical chemistry research, Aug 15 Claude text watermarking, Aug 18 Claude Tag CI/CD on-call official blog, Aug 14 Claude Code session value/cost guidance, Aug 13 multiagent systems official research page, Aug 13 Claude Tag analytics/context updates, Aug 12 worker retraining evidence review and Claude Cowork browser update, Aug 11 Compliance API for Cowork/Code, Aug 10 Claude math research official page, Aug 7 Claude Code auto mode and Fable 5 safeguards, plus Claude Code/Computer Use/Managed Agents coverage.",
-      "Claude official announcement coverage refreshed with the Aug 20 Anthropic teaching and learning AI product-principles post from claude.com, alongside Aug 21 Mythos 5 cyber defense and Aug 20 production agents.",
+      "Claude official announcement coverage refreshed with the Aug 25 Claude memory control-plane post and Aug 25 Bain Global Premier partner announcement, alongside Aug 21 Mythos 5 cyber defense and Aug 20 production agents.",
       `AIHOT ${reportDate} checked${aiHotTitles.length ? ` for ${aiHotTitles.join("、")}` : ""}; selected items are rewritten into concrete signal-impact-action recommendations.`,
       "Claude Platform release notes checked for Managed Agents lifecycle hooks, effort configuration, initial events, memory/environment webhooks and session thread deltas; Computer Use and multi-agent operator coverage is tracked through Claude Code Agent View and recent Claude model/browser-agent updates.",
       `Search/ads/recommendation coverage includes ${frontierSources.join("、") || frontier.source || "Big Tech Engineering/RSS + arXiv"} and is interpreted through business problem, system mechanism, metrics/experiments, borrowable patterns and unsuitable boundaries.`,
@@ -5861,6 +5875,34 @@ async function fetchAnthropicNewsItems(maxItems) {
 function seedAnthropicOfficialItems() {
   const favicon = "https://www.google.com/s2/favicons?domain=anthropic.com&sz=128";
   return [
+    {
+      source: "A社 Claude",
+      sourceDetail: "Claude 官方 Blog / Claude Memory",
+      domain: "claude.com",
+      title: "Claude's memory works everywhere, and you decide what's in it",
+      url: "https://claude.com/blog/claudes-memory-works-everywhere-and-you-decide-whats-in-it",
+      publishedAt: "2026-08-25T18:02:04Z",
+      summary: "Claude 官方博客宣布 memory 在聊天与 Claude Cowork 间打通，用户可按 topic 查看、编辑或删除记忆，敏感主题默认不写入且需要用户主动开启。信号是长期上下文进入可治理控制面，而不是隐藏在会话历史里的模型偏好。",
+      imageUrl: "https://www.google.com/s2/favicons?domain=claude.com&sz=128",
+      priority: 39,
+      signal: "Claude 记忆控制面信号：A 社把 memory 从单一聊天体验扩展到 Cowork/团队工作面，并强调用户可查看、编辑和删除具体记忆，说明 Agent 长期上下文正在从隐式历史变成可治理资产。",
+      impact: "企业和高级个人用户会更容易让 Claude 延续项目偏好、工作方式和协作语境，但风险也同步上升：过期记忆、跨项目污染、敏感信息留存、权限继承和“模型记得所以可信”的错觉都会影响 Agent 决策。",
+      action: "把 memory 当成可审计配置而不是背景魔法：建立项目级记忆命名、有效期、敏感字段禁止项、人工复核、删除流程和回放评测，记录记忆命中是否真的提升完成率并降低返工。",
+    },
+    {
+      source: "A社 Claude",
+      sourceDetail: "Claude 官方 Blog / Enterprise Partnership",
+      domain: "claude.com",
+      title: "Bain & Company joins the Claude Partner Network as a Global Premier partner",
+      url: "https://claude.com/blog/bain-company-joins-the-claude-partner-network-as-a-global-premier-partner",
+      publishedAt: "2026-08-25T16:00:00Z",
+      summary: "Claude 官方博客宣布 Bain & Company 加入 Claude Partner Network 成为 Global Premier partner，双方将面向企业 AI strategy、technology modernization 和 AI-enabled operations 合作；Bain 已将 Claude 推给 1.9 万员工，并在 pilot 中出现 7000+ 活跃用户和 Claude for Excel 高采用。",
+      imageUrl: "https://www.google.com/s2/favicons?domain=claude.com&sz=128",
+      priority: 38,
+      signal: "Claude 企业落地从工具采购转向咨询交付网络信号：Bain 加入 Claude Partner Network Global Premier partner，并把 1.9 万员工 rollout、Claude.ai/Cowork/Code/Excel/Microsoft 365 和客户代码现代化案例放进同一条采用证据链。",
+      impact: "大型企业会更容易把 Claude 从单点试用推进到跨部门转型项目，但真实价值取决于业务 owner、培训、治理、遗留系统上下文、数据权限和可审计收益；咨询伙伴背书不能替代本地任务回放。",
+      action: "把它作为企业 rollout 样本评估：按部门选择 20 个真实低敏任务，记录采用率、培训成本、模型/连接器权限、产出质量、代码现代化收益、人工复核和可量化业务指标，再决定是否扩大。",
+    },
     {
       source: "A社 Anthropic",
       sourceDetail: "Anthropic 官方 News / Wellbeing Evaluations",
@@ -7523,6 +7565,24 @@ function curatedAiNewsOverride(item) {
       impact: "教育、陪伴、客服和企业助手会被要求证明模型在用户脆弱状态下既不过度迎合也不过度拒绝；单轮安全拒答和普通满意度指标不足以覆盖长期 wellbeing 风险。",
       action: "把 wellbeing 纳入高风险助手评测：构造多轮升级场景，记录过度顺从、过度拒绝、危机识别、专家一致性、人工升级、申诉和复查节奏；不把聊天留存当作健康影响的代理指标。",
       tags: ["Anthropic", "Wellbeing Eval", "AI Safety", "独立评测"],
+    },
+    [normalizeTitle("LangChain 与 Airbyte 集成：让数据摄取达到生产级就绪")]: {
+      signal: "Agent/RAG 数据摄取生产化信号：LangChain 与 Airbyte 把 connector 同步、增量摄取、文档切分和向量化入口接到同一条 pipeline，说明企业 RAG 的瓶颈正在从 prompt 编排前移到数据新鲜度、连接器可靠性和失败重放。",
+      impact: "知识库、客服和销售 Copilot 会更容易接入 SaaS/数据库数据，但生产风险集中在 schema 漂移、权限同步、重复文档、增量丢失、嵌入版本不一致和下游答案引用错配。",
+      action: "先用一个低敏数据源做端到端回放：记录 Airbyte sync 成功率、增量延迟、文档去重、embedding 版本、检索命中、引用准确率、失败补偿和权限过滤，再决定是否扩大到核心知识库。",
+      tags: ["LangChain", "Airbyte", "RAG Data Ingestion", "生产管线"],
+    },
+    [normalizeTitle("OpenWorker 新版发布，内置网络安全智能体")]: {
+      signal: "浏览器/桌面 Agent 安全能力打包信号：OpenWorker 把网络安全智能体作为内置能力推给自动化工作流，核心不是多一个安全 demo，而是通用 Agent 是否开始默认携带扫描、诊断和风险处置能力。",
+      impact: "运维、安全和开发者可以更快做低门槛排障，但双重用途边界会变窄；如果工具权限、目标授权、网络出口和日志审计不清，安全智能体可能把普通自动化任务推向越权探测。",
+      action: "只在授权资产和离线靶场做试点：固定工具白名单、网络范围、输出格式和人工审批点，记录误报、越权拦截、证据链、补救建议质量和是否触发安全升级流程。",
+      tags: ["OpenWorker", "Cyber Agent", "Agent Safety", "工具权限"],
+    },
+    [normalizeTitle("OpenAI 封禁俄罗斯虚假影响力行动账号")]: {
+      signal: "生成式 AI 影响力行动治理信号：OpenAI 把俄罗斯虚假影响力账号处置公开化，说明模型厂商正在把账号网络、生成内容、分发行为和平台协作纳入滥用检测，而不是只靠模型输出安全分类。",
+      impact: "内容平台、社媒运营和企业品牌安全会更依赖供应商滥用报告来识别 coordinated inauthentic behavior，但风险在于归因不完整、跨平台证据断裂、误封申诉和公开披露滞后。",
+      action: "更新内容安全监控：把异常账号关系、重复叙事、生成文本相似度、外链域名、投放地域和人工复核结果合并看，保留申诉与误报样本，不把单次封禁数量当成治理成效。",
+      tags: ["OpenAI", "Influence Operations", "平台治理", "滥用检测"],
     },
     [normalizeTitle("Maximizing the value of your Claude Code sessions")]: {
       signal: "Claude Code 会话经济性信号：官方开始直接指导用户管理上下文、prompt cache、命令输出、子代理分工和长会话整理，说明 Agentic coding 的成熟度已进入成本/噪声/上下文治理阶段。",
