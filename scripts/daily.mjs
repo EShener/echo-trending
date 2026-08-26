@@ -5629,6 +5629,7 @@ function buildEditorialReview({ reportDate, frontier = {}, aiNews = {} }) {
     "https://www.anthropic.com/news",
     "https://www.anthropic.com/research",
     "https://www.anthropic.com/engineering",
+    "https://claude.com/blog/1m-context-ga",
     "https://www.anthropic.com/news/wellbeing-research-grants",
     "https://claude.com/blog/claudes-memory-works-everywhere-and-you-decide-whats-in-it",
     "https://claude.com/blog/bain-company-joins-the-claude-partner-network-as-a-global-premier-partner",
@@ -5918,6 +5919,20 @@ async function fetchAnthropicNewsItems(maxItems) {
 function seedAnthropicOfficialItems() {
   const favicon = "https://www.google.com/s2/favicons?domain=anthropic.com&sz=128";
   return [
+    {
+      source: "A社 Claude",
+      sourceDetail: "Claude 官方 Blog / Model Context",
+      domain: "claude.com",
+      title: "1M context is now generally available for Opus 4.6 and Sonnet 4.6",
+      url: "https://claude.com/blog/1m-context-ga",
+      publishedAt: "2026-03-13T16:00:00Z",
+      summary: "Claude 官方博客宣布 Opus 4.6 与 Sonnet 4.6 的 1M context GA，200K 以上请求自动启用，不再需要 beta header；Claude Platform、Amazon Bedrock、Google Vertex AI、Microsoft Foundry 均可用，Claude Code Max/Team/Enterprise 在 Opus 4.6 上默认获得 1M context。",
+      imageUrl: "https://www.google.com/s2/favicons?domain=claude.com&sz=128",
+      priority: 12,
+      signal: "Claude 长上下文产品化信号：1M context 从 beta 进入 GA，并取消 200K 以上请求的额外接入门槛，说明长上下文正在从少数实验能力变成 Claude 平台默认能力面。",
+      impact: "Agent、代码库理解、长文档研究和多模态 PDF/图片处理会更容易把完整材料放进单次任务，但上下文变长也会放大检索噪声、引用漂移、成本预算、权限边界和审计压力。",
+      action: "把 1M context 当作受控能力而非无限上下文：用代码库问答、长 PR review、PDF 研究和跨文件改动四类任务回放，记录命中率、引用准确率、成本、P95、遗漏样本和敏感材料触达，再决定默认开启范围。",
+    },
     {
       source: "A社 Claude",
       sourceDetail: "Claude 官方 Blog / Claude Memory",
