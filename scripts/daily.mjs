@@ -4441,6 +4441,7 @@ async function buildFrontierSection(maxItems) {
       businessProblem: interpretation.businessProblem,
       systemMechanism: interpretation.systemMechanism,
       metricsAndExperiment: interpretation.metricsAndExperiment,
+      metricsAndExperiments: interpretation.metricsAndExperiment,
       metricsOrExperiment: interpretation.metricsAndExperiment,
       borrowable: interpretation.borrowable,
       borrowablePattern: interpretation.borrowable,
@@ -4593,6 +4594,10 @@ function withFrontierInterpretationAliases(interpretation) {
     ...interpretation,
     framework,
     frameworkText: framework,
+    metricsAndExperiment,
+    metricsAndExperiments: interpretation.metricsAndExperiments || metricsAndExperiment,
+    borrowable,
+    boundary,
     metricsExperiment: interpretation.metricsExperiment || interpretation.metricsAndExperiment,
     borrowableIdeas: interpretation.borrowableIdeas || interpretation.borrowable,
     unsuitableBoundary: interpretation.unsuitableBoundary || interpretation.boundary,
@@ -5532,6 +5537,16 @@ function buildSearchAdsRecSection(frontier = {}) {
     const interpretation = normalizeFrontierInterpretation(item);
     return {
       ...item,
+      businessProblem: interpretation.businessProblem,
+      systemMechanism: interpretation.systemMechanism,
+      metricsAndExperiment: interpretation.metricsAndExperiment,
+      metricsAndExperiments: interpretation.metricsAndExperiments || interpretation.metricsAndExperiment,
+      metricsOrExperiment: interpretation.metricsAndExperiment,
+      borrowable: interpretation.borrowable,
+      borrowablePattern: interpretation.borrowable,
+      boundary: interpretation.boundary,
+      unsuitableBoundary: interpretation.unsuitableBoundary || interpretation.boundary,
+      interpretation,
       diagram: item.diagram || buildFrontierDiagram(item, interpretation),
     };
   });
