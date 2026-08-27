@@ -1552,6 +1552,20 @@ function codexResearchRefresh({ repo, readme, languages, fallback }) {
 
 function specializeLens(repo, lens) {
   const overrides = {
+    "bilawalsidhu/gods-eye-view": {
+      editorialMethod: "manual-deep-update-2026-08-28",
+      primaryLang: "JavaScript/WebGL",
+      domain: "开源地理空间情报 / 浏览器 3D 地球态势面板",
+      userPain: "公开卫星、航班、海事、天气和地理空间数据分散在多个专业系统里；OSINT、研究和演示团队需要一个能在浏览器中把真实开放数据叠到同一 3D 地球上的低门槛观察入口。",
+      coreMechanism: "gods-eye-view 用 Cesium/WebGL 三维地球、开放数据源接入、实时图层、地理实体轨迹和前端交互，把公开空间情报从表格/API 调用转成可浏览、可演示、可截图的空间态势视图。",
+      safeEntry: "先只接公开、低敏、可再分发的数据图层，离线回放 3 个场景：航班/船舶轨迹、卫星或遥感图层、区域事件复盘；记录加载时延、图层缺失、坐标准确性和浏览器性能，不接入内部位置数据或实时运营决策。",
+      businessValue: "为开源情报、地理教育、媒体演示和应急研究提供统一空间视图，降低跨源地理数据理解成本，并帮助非 GIS 专家更快发现时间和空间关系。",
+      successMetric: "图层加载成功率、坐标/时间戳误差、P95 首屏时间、帧率、浏览器内存、数据刷新延迟、错误图层回退率、人工核验通过率和敏感数据误接入次数",
+      inspectFirst: "先看 Cesium 初始化、数据源列表、坐标转换、图层刷新策略、缓存/CDN、浏览器性能边界、license、公开数据再分发条款和是否有敏感或军事误用风险说明。",
+      bestFit: "需要把公开地理空间数据做研究、教学、媒体解释、OSINT 观察或低风险态势演示，并能接受人工核验和非生产 SLA 的团队。",
+      badFit: "需要权威测绘精度、内部位置数据、军事/执法实时指挥、商业级 GIS SLA、闭源数据授权或自动化决策闭环的场景。",
+      primaryRisk: "开源空间态势工具最容易把公开数据延迟、坐标误差和来源授权误读成实时真相；必须标明数据来源、刷新频率、精度边界和人工核验路径。",
+    },
     "zedeus/nitter": {
       editorialMethod: "manual-deep-update-2026-08-27",
       primaryLang: "Nim/Python",
