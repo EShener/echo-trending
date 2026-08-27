@@ -216,11 +216,23 @@ function applyEditorialOverrides(report) {
       action: "把它作为企业 rollout 样本评估：按部门选择 20 个真实低敏任务，记录采用率、培训成本、模型/连接器权限、产出质量、代码现代化收益、人工复核和可量化业务指标，再决定是否扩大。",
       tags: ["Anthropic", "Bain", "Claude Partner Network", "Enterprise AI"],
     },
+    "Claude in Chrome 正式全面上线": {
+      signal: "浏览器执行面放量信号：Claude in Chrome 从受限预览进入全面可用，意味着 A 社把 Claude/Cowork 推到真实网页、表单、账号上下文和跨站任务旁边，而不是只停在聊天窗口。",
+      impact: "知识工作、运营和销售团队会更想把浏览器重复操作交给 Claude，但风险集中在网页提示注入、账号权限继承、误点击、敏感页面读取、会话恢复和人工接管是否可审计。",
+      action: "先做只读/低风险浏览器任务灰度：用 20 个真实网页流程记录定位成功率、误操作、权限提示、引用证据、人工接管、撤销路径和审计日志，再决定是否开放写入动作。",
+      tags: ["Claude in Chrome", "Claude Cowork", "Browser Agent", "执行安全"],
+    },
     "Claude's memory works everywhere, and you decide what's in it": {
       signal: "Claude 记忆控制面信号：A 社把 memory 从单一聊天体验扩展到 Cowork/团队工作面，并强调用户可查看、编辑和删除具体记忆，说明 Agent 长期上下文正在从隐式历史变成可治理资产。",
       impact: "企业和高级个人用户会更容易让 Claude 延续项目偏好、工作方式和协作语境，但风险也同步上升：过期记忆、跨项目污染、敏感信息留存、权限继承和“模型记得所以可信”的错觉都会影响 Agent 决策。",
       action: "把 memory 当成可审计配置而不是背景魔法：建立项目级记忆命名、有效期、敏感字段禁止项、人工复核、删除流程和回放评测，记录记忆命中是否真的提升完成率并降低返工。",
       tags: ["Claude Memory", "Claude Cowork", "Agent Context", "治理"],
+    },
+    "Anthropic 开放 Claude 真实使用数据供外部独立研究，公布试点结果": {
+      signal: "真实使用数据开放信号：Anthropic 把 Claude usage 数据以受控方式交给外部独立研究，并公布试点结果，说明 A 社正在把 AI 影响评估从公司自报案例推进到可复核的数据访问和研究治理。",
+      impact: "企业和政策团队会更关注 Claude 对岗位、行业和地区采用的真实影响，但这些数据仍受抽样、隐私处理、任务分类和平台用户结构限制，不能直接外推到单个公司的收益或替代率。",
+      action: "把它作为供应商透明度样本：要求模型供应商说明数据访问边界、匿名化方式、研究者准入、指标口径、复现实验和负面结果披露；内部采用评估仍用本地任务日志和人工复核闭环。",
+      tags: ["Anthropic Research", "Claude Usage Data", "独立研究", "AI Impact"],
     },
     "面壁智能 OpenBMB 推出 MathForm，面向 Lean 4 数学自动形式化的开源框架、数据集与模型": {
       signal: "形式化数学从模型 benchmark 走向工具链信号：MathForm 同时给出 Lean 4 框架、数据集和模型，说明自动形式化不再只是证明搜索比赛，而是在把自然语言数学、形式语言、验证器反馈和数据生成闭环打通。",
