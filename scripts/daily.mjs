@@ -1093,24 +1093,30 @@ function applyEditorialOverrides(report) {
   ]) {
     const override = findAiNewsOverride(aiNewsOverrides, item.title);
     if (!override) continue;
-    Object.assign(item, override);
-    if (isWeakAiSummary(item.summary) && override.signal) {
-      item.summary = override.signal;
+    const formattedOverride = {
+      ...override,
+      signal: formatAiNewsStep("信号", override.signal),
+      impact: formatAiNewsStep("影响", override.impact),
+      action: formatAiNewsStep("动作", override.action),
+    };
+    Object.assign(item, formattedOverride);
+    if (isWeakAiSummary(item.summary) && formattedOverride.signal) {
+      item.summary = formattedOverride.signal;
     }
     if (item.interpretation && typeof item.interpretation === "object") {
-      Object.assign(item.interpretation, override);
+      Object.assign(item.interpretation, formattedOverride);
     }
     if (item.recommendation && typeof item.recommendation === "object") {
-      Object.assign(item.recommendation, override);
+      Object.assign(item.recommendation, formattedOverride);
     }
     if (item.diagram?.nodes?.length) {
       for (const node of item.diagram.nodes) {
-        if (node.label === "信号") node.detail = override.signal;
-        if (node.label === "影响") node.detail = override.impact;
-        if (node.label === "动作") node.detail = override.action;
+        if (node.label === "信号") node.detail = formattedOverride.signal;
+        if (node.label === "影响") node.detail = formattedOverride.impact;
+        if (node.label === "动作") node.detail = formattedOverride.action;
       }
-      item.diagram.summary = buildAiNewsOverrideDiagramSummary(item, override);
-      if (Array.isArray(override.tags)) item.diagram.caption = override.tags.slice(0, 4).join(" / ");
+      item.diagram.summary = buildAiNewsOverrideDiagramSummary(item, formattedOverride);
+      if (Array.isArray(formattedOverride.tags)) item.diagram.caption = formattedOverride.tags.slice(0, 4).join(" / ");
     }
   }
   return sanitizeReportText(report);
@@ -7712,9 +7718,9 @@ function interpretAiNews(item) {
 function enrichAiNews(item) {
   const tags = inferAiNewsTags(item);
   const curated = curatedAiNewsOverride(item);
-  const signal = curated?.signal || interpretAiNews(item);
-  const impact = curated?.impact || buildAiNewsImpact(item, tags);
-  const action = curated?.action || buildAiNewsAction(item, tags);
+  const signal = formatAiNewsStep("信号", curated?.signal || interpretAiNews(item));
+  const impact = formatAiNewsStep("影响", curated?.impact || buildAiNewsImpact(item, tags));
+  const action = formatAiNewsStep("动作", curated?.action || buildAiNewsAction(item, tags));
   const diagram = buildAiNewsDiagram(item, { signal, impact, action, tags });
   return {
     signal,
@@ -7728,6 +7734,13 @@ function enrichAiNews(item) {
     tags,
     diagram,
   };
+}
+
+function formatAiNewsStep(label, value) {
+  const text = String(value || "").trim();
+  if (!text) return `${label} -> 待补充可验证事实、影响范围和下一步复查动作。`;
+  const normalized = text.replace(new RegExp(`^${label}\\s*(?:->|：|:)\\s*`, "u"), "");
+  return `${label} -> ${normalized}`;
 }
 
 function curatedAiNewsOverride(item) {
