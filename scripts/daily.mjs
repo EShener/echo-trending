@@ -1367,7 +1367,7 @@ function preserveEditorialAnalysis(previousAnalysis, generatedAnalysis) {
   const generatedMethod = String(generatedAnalysis?.method || "");
   if (!previousAnalysis || !isEditorialAnalysisComplete(previousAnalysis)) return generatedAnalysis;
   if (hasWeakPreservedAnalysis(previousAnalysis)) return generatedAnalysis;
-  if (generatedAnalysis?.editorialMethod) return generatedAnalysis;
+  if (/^manual-deep-update/u.test(generatedMethod)) return generatedAnalysis;
   if (!generatedMethod || generatedMethod === "llm") return generatedAnalysis;
   return {
     ...previousAnalysis,
@@ -1385,7 +1385,10 @@ function hasWeakPreservedAnalysis(analysis = {}) {
   return (
     oneLiner.includes("它把哪类人工流程转成") ||
     oneLiner.includes("是否能被小范围验证") ||
-    oneLiner.includes("模型接口、工具协议、上下文管理或推理工作流")
+    oneLiner.includes("模型接口、工具协议、上下文管理或推理工作流") ||
+    oneLiner.includes("目录治理、可用性校验和来源合规") ||
+    oneLiner.includes("构建、测试、调试或自动化链路的稳定缩短") ||
+    oneLiner.includes("命令行、插件系统、构建管线或 SDK 抽象")
   );
 }
 
@@ -1543,6 +1546,76 @@ function codexResearchRefresh({ repo, readme, languages, fallback }) {
 
 function specializeLens(repo, lens) {
   const overrides = {
+    "zedeus/nitter": {
+      editorialMethod: "manual-deep-update-2026-08-27",
+      primaryLang: "Nim/Python",
+      domain: "隐私前端代理 / X/Twitter 只读浏览替代层",
+      userPain: "公开社媒内容检索和浏览越来越受登录墙、追踪脚本、API 限流和平台策略影响；研究、媒体监测和个人阅读场景需要一个更轻、更少追踪、可自托管的只读入口。",
+      coreMechanism: "Nitter 用 Nim 服务端渲染、Twitter/X 非官方数据抓取、实例配置、RSS/主题页面和轻量前端，把社媒浏览从官方客户端迁到可自托管代理层，并尽量减少客户端脚本和账号依赖。",
+      safeEntry: "只把它用于公开内容的低频只读观察，先部署测试实例或使用可信实例回放 20 个公开账号/关键词，记录可用率、限流、延迟和内容缺失，不接登录态、私信或生产采集任务。",
+      businessValue: "为开源情报、内容选题和隐私浏览提供一个低成本观察入口，帮助团队区分公开舆情信号和平台客户端噪声。",
+      successMetric: "公开页面可读率、RSS 成功率、P95 延迟、限流/封禁次数、内容缺失率、实例维护时间、合规风险命中和替代源回退率",
+      inspectFirst: "先看抓取路径、实例配置、缓存/限流、RSS 输出、Docker 部署、AGPL 义务、issue 中的平台封禁反馈和是否仍能稳定访问目标公开内容。",
+      bestFit: "需要低频读取公开 X/Twitter 内容、能接受实例运维和平台策略波动的研究、内容、舆情和个人隐私阅读场景。",
+      badFit: "需要官方 API 稳定 SLA、登录态数据、互动发帖、商业规模采集、合规审计证明或平台条款不允许的生产场景。",
+      primaryRisk: "非官方前端最大风险是平台反爬、实例被封、内容不完整和服务条款边界；必须准备官方 API、网页手工核验或其他公开源作为回退。",
+    },
+    "JetBrains/go-modern-guidelines": {
+      editorialMethod: "manual-deep-update-2026-08-27",
+      primaryLang: "Go/Markdown",
+      domain: "Go Coding Agent 规范 / 现代 Go 代码审查基线",
+      userPain: "AI coding agent 写 Go 时容易沿用过时 idiom、忽略 context/error/test/table-driven patterns，把可运行补丁交给 reviewer 后才暴露风格、并发和可维护性问题。",
+      coreMechanism: "JetBrains 把现代 Go 写法、agent 可消费的规则、示例代码、测试约束和工具链建议组织成 guidelines，让 Agent 在生成和修改 Go 代码前先对齐语言习惯与 review 口径。",
+      safeEntry: "先选 10 个历史 Go 小任务做回放，一组只用现有提示，一组加载该 guidelines，比较 go test、go vet、staticcheck、review 评论和无关 diff。",
+      businessValue: "降低 Go 项目中 Agent 补丁的 review 成本，把语言风格、错误处理、测试和并发约束前移到生成阶段。",
+      successMetric: "go test 一次通过率、go vet/staticcheck 命中、review 评论数、无关 diff 数、错误处理遗漏、context 传递问题和表驱动测试覆盖率",
+      inspectFirst: "先看规则目录、示例是否覆盖 context/error/concurrency/testing/module layout、与本地 AGENTS/CI 的冲突、更新节奏和 JetBrains 工具链假设。",
+      bestFit: "有 Go 服务或 SDK、正在让 Codex/Claude/Cursor 参与日常维护，并且具备 CI、lint 和人工 review 门禁的工程团队。",
+      badFit: "非 Go 项目、没有测试/lint 基线、需要产品探索或架构发散，或本地已有更严格且冲突的 Go 规范。",
+      primaryRisk: "语言 guideline 不能替代业务上下文；Agent 可能机械套规则导致过度改动，必须要求最小 diff、现有风格优先和测试证据。",
+    },
+    "K-Dense-AI/scientific-agent-skills": {
+      editorialMethod: "manual-deep-update-2026-08-27",
+      primaryLang: "Python",
+      domain: "科研 Agent Skills 库 / 生物化学计算工作流封装",
+      userPain: "科研团队把文献检索、序列分析、分子处理、可视化、数据库查询和实验记录交给 Agent 时，常缺少可复用工具说明、领域数据库边界和验证样本，导致结果难以复核。",
+      coreMechanism: "scientific-agent-skills 将 160+ 科研 skills、100+ 科学数据库入口、Python 脚本和领域任务说明封装成 Agent 可加载的能力库，面向生物、化学、医学、材料和药物发现工作流。",
+      safeEntry: "先挑 2 个低风险公开数据任务，例如蛋白序列注释和文献表格抽取，固定输入、数据库版本和人工金标准，只在离线环境回放 skill 输出。",
+      businessValue: "让科研 Agent 从自由聊天变成可复核的工具化助手，降低跨数据库查询、格式转换和重复分析的手工成本。",
+      successMetric: "数据库调用成功率、引用准确率、人工复核通过率、结果可复现率、脚本失败率、版本记录完整度、敏感数据隔离和错误结论召回率",
+      inspectFirst: "先看每个 skill 的输入输出、数据库来源和许可、依赖安装、版本锁定、错误处理、引用格式、医学/临床免责声明和是否能保留可复跑证据。",
+      bestFit: "有公开或脱敏科研数据、能提供领域专家复核，并希望把重复科学计算和资料整理技能化的研究工程团队。",
+      badFit: "临床诊断、监管提交、湿实验自动决策、敏感患者数据，或没有专家金标准和版本审计的生产科研流程。",
+      primaryRisk: "科研 Agent 容易把数据库过期、单位错误和统计误读包装成流畅结论；必须固定数据版本、保留引用和人工复核。",
+    },
+    "thedotmack/claude-mem": {
+      editorialMethod: "manual-deep-update-2026-08-27",
+      primaryLang: "JavaScript/TypeScript",
+      domain: "跨 Agent 长期记忆层 / 会话压缩与上下文注入",
+      userPain: "多种 coding agent 的会话记录、工具调用、决策和项目偏好分散在各自历史里，下一次任务仍要重新解释背景；直接全量注入又会带来过期记忆、隐私和上下文污染。",
+      coreMechanism: "claude-mem 通过会话捕获、AI 压缩、SQLite/ChromaDB/mem0 等存储、检索注入和多 Agent 适配，把历史执行记录转成可复用上下文。",
+      safeEntry: "先接入一个低敏测试仓库，只记录公开代码维护任务，手工审查压缩摘要和检索命中，禁止写入凭据、客户数据和私人聊天。",
+      businessValue: "减少跨会话重复交代项目规则和历史决策的成本，让 Agent 维护任务更快恢复上下文，同时为团队记忆治理提供样本。",
+      successMetric: "相关记忆命中率、过期记忆误召率、人工纠错次数、上下文 token 节省、敏感信息拦截、任务恢复时间、删除/导出成功率和记忆冲突数",
+      inspectFirst: "先看捕获范围、压缩提示、存储后端、检索排序、删除语义、敏感信息过滤、多 Agent 注入方式、权限边界和高 open issues 中的记忆污染案例。",
+      bestFit: "长期使用 Claude Code/Codex/Gemini/OpenCode、任务重复度高且能治理低敏项目记忆的个人开发者和研发效能团队。",
+      badFit: "含客户数据或凭据的仓库、强合规环境、没有记忆审查 owner，或希望让历史记忆自动覆盖当前用户指令的流程。",
+      primaryRisk: "长期记忆的风险会跨会话累积；过期事实、敏感片段和错误偏好一旦被反复注入，会比单次回答错误更难发现。",
+    },
+    "google/googletest": {
+      editorialMethod: "manual-deep-update-2026-08-27",
+      primaryLang: "C++/CMake",
+      domain: "C++ 测试框架 / 单元测试与 mock 基础设施",
+      userPain: "C++ 项目验证成本高，跨平台构建、fixture、mock、断言语义和 CI 集成如果没有统一框架，重构和 Agent 生成补丁都很难给出可信回归证据。",
+      coreMechanism: "GoogleTest 将 test runner、assertion、fixture、parameterized tests、GoogleMock、CMake/Bazel 集成和跨平台 CI 约定组合成 C++ 测试基础设施。",
+      safeEntry: "先把一个边界清楚的库模块接入 gtest/gmock，补 20-50 条单元测试和 mock 样例，与现有手工/集成测试并行一轮，不立即重写全仓测试体系。",
+      businessValue: "为 C++ 服务、SDK 和基础库建立可持续回归网，让重构、依赖升级和 Agent 自动补丁更容易被 CI 证据约束。",
+      successMetric: "单元测试覆盖率、失败定位时间、CI P95 时长、flaky test 比例、mock 维护成本、跨平台通过率、重构回归发现数和新增测试模板复用率",
+      inspectFirst: "先看构建系统接入、fixture 生命周期、gmock 使用边界、参数化测试、与现有 CMake/Bazel/CI 的兼容、license 和大版本升级破坏点。",
+      bestFit: "维护 C++ 基础库、客户端 SDK、系统组件或跨平台模块，并且需要让重构和 Agent 代码修改有快速单测反馈的工程团队。",
+      badFit: "纯脚本/前端项目、只靠端到端测试即可覆盖的小应用、无法改构建系统，或测试数据强依赖外部服务的流程。",
+      primaryRisk: "测试框架迁移会引入构建复杂度和 mock 误用；如果只追覆盖率而不保留真实失败样本，会制造虚假的安全感。",
+    },
     "tt-a1i/archify": {
       editorialMethod: "manual-deep-update-2026-08-26",
       primaryLang: "HTML/JavaScript",
