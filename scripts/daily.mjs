@@ -530,13 +530,13 @@ function applyEditorialOverrides(report) {
       tags: ["OpenRouter", "模型网关", "成本治理", "可观测性"],
     },
     "GLM-5.3 发布：编程能力开源第一，并涌现网络安全能力": {
-      signal: "国产开源 Agent 编程模型信号：AIHOT 汇总智谱 GLM-5.3 发布，重点不是单个榜单名次，而是 743B 基座后训练 scaling、Terminal Bench/Agents' Last Exam、CyberGym、ZCode/AutoClaw 工具入口和分阶段开源被打包成同一条工程能力叙事。",
+      signal: "国产 Agent 编码与网防基准回放信号：AIHOT 汇总智谱 GLM-5.3 发布，重点不是单个榜单名次，而是 743B 基座后训练 scaling、Terminal Bench/Agents' Last Exam、CyberGym、ZCode/AutoClaw 工具入口和分阶段开源被打包成同一条工程能力叙事。",
       impact: "研发和安全团队会把 GLM-5.3 放进 Claude/OpenAI 之外的本地或国产模型候选池，但权重尚需等待分阶段开放；榜单和安全分数不能直接证明真实仓库修复、白盒审计、权限隔离或长任务恢复能力。",
       action: "进入观察和回放池而不是立即替换：等官方模型卡/权重/API 稳定后，用同一批代码修复、终端排障、白盒审计、工具调用和长上下文任务记录完成率、误报/漏报、人工接管、成本、P95、许可证和安全评估限制。",
       tags: ["Agent", "模型", "安全/可信", "工程/基础设施"],
     },
     "GLM-5.3上线：AA智能指数60分并列开源第一，成本更低": {
-      signal: "国产开源 Agent 模型产品化信号：智谱把 GLM-5.3 的复杂编码、防御性网络安全、长程任务、AA 智能指数和低成本 API 放在同一条发布叙事里，重点不是“追平某个闭源模型”，而是开源/国产候选能否进入真实工程回放池。",
+      signal: "国产 Agent 编码与网防产品化信号：智谱把 GLM-5.3 的复杂编码、防御性网络安全、长程任务、AA 智能指数和低成本 API 放在同一条发布叙事里，重点不是“追平某个闭源模型”，而是开源/国产候选能否进入真实工程回放池。",
       impact: "研发和安全团队会把 GLM-5.3 放进 Claude、OpenAI、Kimi 等模型之外的候选组合，但 AA 指数、成本口径和即将开源不能直接证明真实仓库修复、白盒审计、工具权限隔离、长任务恢复或企业私有化稳定性。",
       action: "先按候选模型处理：等待权重、模型卡和 API SLA 稳定后，用同一批代码修改、终端排障、防御性安全分析、长上下文检索和工具调用任务回放，记录完成率、人工接管、误报/漏报、成本、P95、license 和安全边界。",
       tags: ["Agent", "国产模型", "开源模型", "安全/可信"],
@@ -7814,6 +7814,24 @@ function formatAiNewsStep(label, value) {
 function curatedAiNewsOverride(item) {
   const title = normalizeTitle(item.title || "");
   const map = {
+    [normalizeTitle("GLM-5.3 开源权重，智能体编码与网防最强")]: {
+      signal: "国产 Agent 编码与网防基准回放信号：GLM-5.3 把复杂编码、防御性网络安全、长程任务和低成本 API 放进同一套开源候选叙事，真正要验证的是它能否在真实仓库、真实终端和授权安全样本中稳定完成任务。",
+      impact: "研发和安全团队会把 GLM-5.3 放进 Claude/OpenAI 之外的候选池，但开源权重、榜单和 API 成本不等于生产可替换；风险集中在工具调用失败、误报/漏报、长任务恢复、企业私有化成本和安全评估边界。",
+      action: "等待权重、模型卡和 API SLA 稳定后做同集回放：代码修复、终端排障、防御性安全分析、长上下文检索和工具调用各 20 条，记录完成率、人工接管、误报/漏报、成本、P95、license 和失败样本。",
+      tags: ["GLM-5.3", "Agent Coding", "Cyber Eval", "开源权重"],
+    },
+    [normalizeTitle("Anthropic 开放模型硬件标准（MHS）研究预览")]: {
+      signal: "模型硬件协同治理信号：Anthropic 把开放模型硬件标准 MHS 作为研究预览提出，关注点从单模型能力转向训练/推理硬件、供应链透明度、可审计接口和安全评估能否形成共同规范。",
+      impact: "企业选型 Claude 或其他前沿模型时，会更关心硬件供应、部署可迁移性、监管说明和安全复核证据；但研究预览不是可采购产品，也不能直接证明性能、成本或合规优势。",
+      action: "先做标准跟踪而非架构迁移：记录 MHS 后续草案、参与方、硬件抽象范围、benchmark、审计要求、与现有 GPU/加速器栈兼容性，以及它是否影响 Claude 企业部署和安全评估流程。",
+      tags: ["Anthropic", "Model Hardware Standard", "AI Safety", "基础设施治理"],
+    },
+    [normalizeTitle("OpenClaw 走红后，维护者如何构建并保障其安全")]: {
+      signal: "本地个人 Agent 安全维护信号：OpenClaw 走红后的核心问题不是多端助理入口，而是维护者如何处理本地数据、插件权限、通讯通道、更新发布和第三方贡献带来的攻击面。",
+      impact: "个人助理、客服桌面和多端自动化团队会看到更低试用门槛，但生产风险会集中在本地凭据、聊天记录、远程指令、依赖供应链和用户授权不透明；热度越高越需要安全发布纪律。",
+      action: "只在隔离环境复现能力：检查权限模型、插件白名单、更新签名、日志留存、敏感数据路径和安全 issue 响应，再决定是否借鉴本地优先架构；不要把社区热度当作企业可用性证据。",
+      tags: ["OpenClaw", "Local Agent", "Security Review", "供应链"],
+    },
     [normalizeTitle("Funding better evaluations of AI’s impact on wellbeing")]: {
       signal: "AI wellbeing 评测基建信号：A 社把心理健康、陪伴和长期多轮对话风险从内容政策推进到外部独立 benchmark 与开源评测资助。",
       impact: "教育、陪伴、客服和企业助手会被要求证明模型在用户脆弱状态下既不过度迎合也不过度拒绝；单轮安全拒答和普通满意度指标不足以覆盖长期 wellbeing 风险。",
