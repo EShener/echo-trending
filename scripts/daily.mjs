@@ -240,6 +240,12 @@ function applyEditorialOverrides(report) {
       action: "重做 Agent eval 沙箱清单：隔离网络出口、包仓库、凭据和外部账号，记录每次工具调用、目标授权、人工审批和异常 kill switch；所有高分样本必须附可复现轨迹和越权检查。",
       tags: ["OpenAI", "Agent Eval", "Sandbox", "供应链安全"],
     },
+    "OpenAI 攻击 Hugging Face 事件的 5 个教训": {
+      signal: "Agent 评测越界信号：这条转述把 OpenAI 测试系统触达 Hugging Face、后续责任承认、METR 长报告和多家模型公司的类似越权样本放在一起，核心不是某家公司输赢，而是联网 Agent eval 会把沙箱假设扩散到真实第三方平台。",
+      impact: "安全、红队和模型评测团队需要重新界定授权目标、网络出口、凭据、日志和人工审批；如果只看任务成功率或把事件写成“模型失控”叙事，会漏掉数据处理管线、外部账号、CoT 监控和事件响应的工程责任。",
+      action: "把它转成评测隔离整改项：每个 cyber/browser/agent eval 记录目标授权、网络白名单、外部请求审计、凭据隔离、异常 kill switch、人工复核和第三方通知流程，并用失败回放验证修复。",
+      tags: ["OpenAI", "Hugging Face", "Agent Eval", "安全边界"],
+    },
     "AI 基础设施的牛鞭效应：从 GPU 到存储的连锁瓶颈": {
       signal: "AI 供给链瓶颈转移信号：Tom Tunguz 把 GPU、HBM/内存、SSD、CPU、nearline 存储、电力设备和数据中心建设成本串成牛鞭效应，说明 agent 需求增长会把短缺从训练芯片逐层传导到更慢扩产的基础设施环节。",
       impact: "AI 应用团队即使拿到模型 API，也会被上游容量、存储价格、机房交付和电力设备周期影响成本与 SLA；只盯 GPU 租赁价会低估数据保留、检索、日志、checkpoint 和推理扩容的长期压力。",
@@ -7705,6 +7711,8 @@ function normalizeAiHotDailySection(section) {
       signal: enriched.signal,
       impact: enriched.impact,
       action: enriched.action,
+      tags: enriched.tags,
+      diagram: enriched.diagram,
     };
   });
   return {
@@ -7971,6 +7979,24 @@ function formatAiNewsStep(label, value) {
 function curatedAiNewsOverride(item) {
   const title = normalizeTitle(item.title || "");
   const map = {
+    [normalizeTitle("Open ASR 排行榜新增首个全球南方语言：印地语与印度英语评测集")]: {
+      signal: "语音 AI 公平评测信号：Hugging Face 与 Voice Arena 把印地语和印度英语加入 Open ASR 排行榜，重点不是新增语言标签，而是用公开/私有分割、说话人属性和全球南方语种暴露 ASR 在地区、口音、年龄和性别上的偏差。",
+      impact: "客服、会议、字幕和语音 Agent 如果只用欧美英语或标准普通话样本验收，会在真实用户口音和低资源语言上产生漏识别、误转写和后续摘要错误；多语言覆盖必须从 demo 支持变成分群指标。",
+      action: "把语音评测按地区和口音分桶：记录 WER、实体错误、说话人属性、噪声、延迟、私有测试集表现和下游摘要影响，再决定哪些语言可以进入生产自动化。",
+      tags: ["Hugging Face", "ASR", "Voice Arena", "公平评测"],
+    },
+    [normalizeTitle("OpenAI 与泰国高教部推出八周加速器，支持泰国 AI 初创企业")]: {
+      signal: "国家级 AI 创业生态信号：OpenAI 与泰国高教部把 API 额度、前沿模型访问和一对一技术指导打包给医疗、健康、教育初创公司，说明模型厂商正在通过政府合作进入区域创新体系，而不是只卖开发者 API。",
+      impact: "东南亚市场会更快形成围绕 OpenAI 的应用样板和开发者关系，但真实产业价值取决于本地数据、合规、语言支持、医疗/教育责任边界和八周后能否转化为可持续产品。",
+      action: "把它作为区域生态观察项：跟踪入选团队、API 使用场景、合规边界、模型成本、上线客户、后续融资和政府采购路径，不用合作公告替代产品验证。",
+      tags: ["OpenAI", "Thailand", "Startup Accelerator", "区域生态"],
+    },
+    [normalizeTitle("Infer-forge：围绕 SGLang 的 Harness、Loop 与 Graph 工程")]: {
+      signal: "推理优化流程工程信号：LMSYS 把 SGLang 的模型、SLO、拓扑、运行时和加速平台约束沉淀为 Harness、Task Loop 与 Task Graph，说明大模型推理优化正在从一次性调参转向可复现、可审计的工程系统。",
+      impact: "模型平台团队能更稳定地比较 kernel、并行策略、缓存和部署变更，但如果没有统一任务图、指标口径和回滚证据，优化结果很容易停留在单机 benchmark，无法解释线上 P99、成本和故障恢复。",
+      action: "为推理链路建立回放 harness：固定模型、流量形态、SLO、硬件拓扑和失败注入，记录吞吐、TTFT、P99、GPU 利用率、显存、回滚时间和变更审计。",
+      tags: ["LMSYS", "SGLang", "Inference", "工程流程"],
+    },
     [normalizeTitle("联邦法官裁定特朗普政府将 Anthropic 列入黑名单违法")]: {
       signal: "AI 采购与监管边界信号：AIHOT 把 Anthropic 与政府黑名单诉讼放在同一条企业风险线上，真正要看的是模型供应商能否在公共部门采购、安全审查和司法复核之间保持可用性。",
       impact: "企业和公共部门不会只按模型能力选 Claude；合规、采购资格、数据地域、审计材料和政策变动都可能影响上线节奏。该条仍需以法院文件或官方声明复核，不能把转述当成定论。",
