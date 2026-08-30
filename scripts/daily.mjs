@@ -138,6 +138,12 @@ async function buildReport({ reportDate, limit, days, language }) {
 
 function applyEditorialOverrides(report) {
   const aiNewsOverrides = {
+    "索尼与华纳起诉Anthropic，指控其大规模盗用版权音乐训练Claude": {
+      signal: "Claude 训练数据版权风险升级信号：The Decoder 转述索尼、华纳等音乐版权方起诉 Anthropic，焦点不是模型能力，而是歌词等高版权密度语料进入训练集后，来源授权、删除请求、CEO/管理层责任和历史和解记录能否被审计证明。",
+      impact: "企业采用 Claude 时需要把版权与数据治理放进供应商尽调，而不是只看安全白皮书或模型分数；音乐、内容、广告和教育场景尤其要警惕输出相似性、训练数据追溯、侵权通知处理和合同赔偿边界。",
+      action: "把它转成采购与内容风控清单：要求供应商说明训练语料授权、版权过滤、删除/追溯机制、输出相似性检测、诉讼进展披露和企业赔偿条款；内部素材生成先保留人工审稿与版权记录，不把指控当作已定论。",
+      tags: ["Anthropic", "Claude", "版权诉讼", "训练数据治理"],
+    },
     "唐杰宣布GLM-5.3 Flash AA登顶OpenRouter": {
       signal: "国产模型进入真实路由份额竞争信号：这条不是单纯榜单成绩，而是 GLM-5.3 Flash AA 以低价、国产芯片供给和 OpenRouter 近 20% 周 token 份额进入开发者实际调用分布。",
       impact: "研发和安全团队会更愿意把国产模型放进 Claude/OpenAI 之外的候选池，但 X 帖和路由份额只能说明采用热度，不能证明真实仓库修复、长程 Agent、工具权限隔离或企业 SLA 已经可靠。",
@@ -1185,6 +1191,7 @@ function applyEditorialOverrides(report) {
     ...(report.aiNews?.items || []),
     ...(report.aiNews?.aihot?.selected || []),
     ...aiHotSectionItems,
+    ...(report.aiNews?.anthropicCoverage || []),
     ...(report.anthropic?.items || []),
   ]) {
     const override = findAiNewsOverride(aiNewsOverrides, item.title);
@@ -8078,6 +8085,12 @@ function formatAiNewsStep(label, value) {
 function curatedAiNewsOverride(item) {
   const title = normalizeTitle(item.title || "");
   const map = {
+    [normalizeTitle("索尼与华纳起诉Anthropic，指控其大规模盗用版权音乐训练Claude")]: {
+      signal: "Claude 训练数据版权风险升级信号：The Decoder 转述索尼、华纳等音乐版权方起诉 Anthropic，焦点不是模型能力，而是歌词等高版权密度语料进入训练集后，来源授权、删除请求、CEO/管理层责任和历史和解记录能否被审计证明。",
+      impact: "企业采用 Claude 时需要把版权与数据治理放进供应商尽调，而不是只看安全白皮书或模型分数；音乐、内容、广告和教育场景尤其要警惕输出相似性、训练数据追溯、侵权通知处理和合同赔偿边界。",
+      action: "把它转成采购与内容风控清单：要求供应商说明训练语料授权、版权过滤、删除/追溯机制、输出相似性检测、诉讼进展披露和企业赔偿条款；内部素材生成先保留人工审稿与版权记录，不把指控当作已定论。",
+      tags: ["Anthropic", "Claude", "版权诉讼", "训练数据治理"],
+    },
     [normalizeTitle("Uber 用 Agent 接管 70% 代码 PR，AI 账单零增长")]: {
       signal: "工程组织把 Agent 纳入主干交付信号：AIHOT 转述 Uber 让 Agent 参与约 70% 代码 PR、同时控制 AI 账单的案例，关键不在比例本身，而在代码生成、review、测试、成本治理和人工接管能否进入同一条工程账本。",
       impact: "研发平台团队会更想把 Coding Agent 从个人工具推到组织流程，但高 PR 覆盖率也会放大上下文误读、重复修改、测试幻觉、review 责任、密钥/数据触达和单位任务成本不可解释的问题；账单不涨必须和质量指标一起看。",
