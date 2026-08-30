@@ -5043,7 +5043,7 @@ function curatedFrontierInterpretation(item) {
       systemMechanism: "用分层 slow-fast 架构解耦决策：慢策略按周生成用户级跨渠道 pacing plan，快策略在每日发送机会中读取计划特征，再做实时消息选择和相关性排序。",
       metricsAndExperiment: "实验要同时看即时互动、长期观看、opt-out/疲劳风险、频次分布、渠道组合、低活用户提升和策略稳定性；离线要校准消息成本，防止模型退化成“永远多发”。",
       borrowable: "适合推荐、营销触达和 feed push 团队借鉴：把频控/节奏从实时排序里拆出来，用 feature store 传递策略意图，让 pacing 和内容 ranker 独立迭代。",
-      boundary: "如果触达量小、负反馈稀疏、缺少跨渠道用户状态或没有长期满意度指标，分层策略会增加复杂度，先做简单频控和反骚扰规则更稳。",
+      boundary: "如果触达量小、负反馈稀疏、缺少跨渠道用户状态、没有长期满意度指标或推送撤销/静默机制不足，分层策略会增加复杂度，应先做频控、反骚扰和基础偏好治理。",
     },
     [normalizeTitle("Modernizing the Meta Ads Service With an Open-Source Kernel Scheduler")]: {
       businessProblem: "Meta 广告 retrieval 和 ranking 链路每天处理数千亿请求，P99 延迟的几毫秒波动会直接减少可检索/可排序广告数，影响用户相关性、广告主 ROI 和机房功耗。",
@@ -5071,7 +5071,7 @@ function curatedFrontierInterpretation(item) {
       systemMechanism: "把用户历史、画像、请求上下文和结构化 homepage layout token 化为同一序列，由生成式 transformer 直接生成页面结构；再用强化学习后训练把离线行为目标和页面多样性校准到上线策略。",
       metricsAndExperiment: "离线看页面级 engagement 代理指标、行/实体多样性、序列有效性和 cold-start 表现；线上必须同时看播放转化、浏览深度、长期留存、重复曝光和 P95 生成延迟。",
       borrowable: "适合借鉴“页面即序列”的建模方式：先把推荐结果、广告位、运营位统一成可验证 layout token，再用小流量 shadow serving 对比传统漏斗。",
-      boundary: "如果业务页面结构简单、样本量不足或运营规则强依赖人工编排，端到端生成会让解释、干预和回滚成本明显上升。",
+      boundary: "如果业务页面结构简单、样本量不足、运营规则强依赖人工编排，或缺少页面级多目标实验、解释工具和快速回滚能力，端到端生成会让干预成本、品牌风险和异常定位难度明显上升。",
     },
     [normalizeTitle("AI-Powered Personalization in Under 100ms: Optimizing Real-Time Decisioning at Scale")]: {
       businessProblem: "企业个性化必须在 web、mobile、email 和 Agent 交互里即时决定内容/商品/下一步动作；多服务依赖、实时行为变化、库存/偏好新鲜度和租户流量峰值会同时挤压相关性和延迟预算。",
@@ -5095,32 +5095,32 @@ function curatedFrontierInterpretation(item) {
       boundary: "内容规模小、GPU serving 能力不足、召回和排序 owner 分裂时，不宜直接复制整套架构；先解决特征/样本/评测对齐。",
     },
     [normalizeTitle("Unlocking dependable responses with Gemini Enterprise Agent Platform's Agentic RAG")]: {
-      businessProblem: "企业 RAG 常见失败不是模型不会回答，而是权限文档、跨系统证据和长尾查询没有被充分检索，导致答案看似完整但依据不足。",
+      businessProblem: "企业 RAG 常见失败不是模型不会回答，而是权限文档、跨系统证据、过期知识和长尾查询没有被充分检索，导致答案看似完整但依据不足且难以追责。",
       systemMechanism: "Google 的 Agentic RAG 把检索拆成多步 agent 流程，由 sufficient-context 判断是否需要继续检索、改写查询或补充证据，再进入回答生成。",
       metricsAndExperiment: "应同时评估 answer groundedness、证据覆盖率、权限误召、二次检索次数、用户追问率、P95 延迟和每答案检索成本。",
-      borrowable: "企业知识库可把“证据是否足够”做成独立 judge，在高风险答案前触发补检索和人工复核，而不是只调大 topK。",
-      boundary: "权限模型不清、审计日志不完整或知识库质量差时，多 Agent 检索会放大错误证据和延迟。",
+      borrowable: "企业知识库可把“证据是否足够”做成独立 judge，在高风险答案前触发补检索、来源标注和人工复核，而不是只调大 topK 或盲目扩上下文。",
+      boundary: "权限模型不清、审计日志不完整、知识库质量差或跨系统引用缺少 owner 时，多 Agent 检索会放大错误证据、延迟和权限误触风险。",
     },
     [normalizeTitle("Meta Adaptive Ranking Model: Bending the Inference Scaling Curve to Serve LLM-Scale Models for Ads")]: {
-      businessProblem: "广告排序想引入更大模型理解用户意图和广告价值，但广告请求要求亚秒级返回，且算力成本必须被 ROAS 覆盖。",
+      businessProblem: "广告排序想引入更大模型理解用户意图、广告语义和深层转化价值，但广告请求要求亚秒级返回，且推理算力成本必须被 ROAS 和用户体验共同覆盖。",
       systemMechanism: "Meta 用 request-centric routing、硬件感知模型/系统协同和多卡 serving，让不同请求按价值、上下文和延迟预算选择合适模型复杂度。",
       metricsAndExperiment: "线上核心看 ad conversions、CTR、广告主价值、用户负反馈、P95/P99 延迟、MFU、单位转化推理成本和预算消耗稳定性。",
-      borrowable: "广告团队可先把“请求价值分层 + 模型复杂度路由”用于高商业价值流量，低价值请求继续走轻模型，逐步验证边际 ROI。",
-      boundary: "若转化回传慢、归因链路弱或缺少请求级成本核算，大模型排序的收益很容易被平均成本吞掉。",
+      borrowable: "广告团队可先把“请求价值分层 + 模型复杂度路由”用于高商业价值和高不确定性流量，低价值请求继续走轻模型，逐步验证边际 ROI。",
+      boundary: "若转化回传慢、归因链路弱、缺少请求级成本核算或没有按广告主/用户分层的 guardrail，大模型排序收益很容易被平均成本和负反馈吞掉。",
     },
     [normalizeTitle("Reel Friends: Building Social Discovery that Scales to Billions")]: {
-      businessProblem: "短视频发现不只靠兴趣相似，还要把好友关系、互动意图和内容消费场景纳入推荐，否则社交分发与纯兴趣分发会互相稀释。",
+      businessProblem: "短视频发现不只靠兴趣相似，还要把好友关系、互动意图、内容消费场景和关系强弱纳入推荐，否则社交分发与纯兴趣分发会互相稀释并制造重复曝光。",
       systemMechanism: "将社交图谱、Reels 内容理解、互动候选生成和排序融合，在召回阶段引入关系强度与内容相关性，再由排序控制体验质量和规模化分发。",
-      metricsAndExperiment: "重点观察好友互动率、分享/评论、观看完成率、重复曝光、冷启动覆盖、关系链噪声和长期社交活跃度。",
-      borrowable: "社区/内容产品可把社交召回作为独立候选路，先通过多路召回配额和重排约束验证增量，而不是让社交信号直接替换兴趣模型。",
-      boundary: "关系链稀疏、隐私边界严格或内容质量不可控时，社交发现会带来噪声、骚扰和同质化风险。",
+      metricsAndExperiment: "重点观察好友互动率、分享/评论、观看完成率、重复曝光、冷启动覆盖、关系链噪声、屏蔽/举报、熟人负反馈、关系强度分层和长期社交活跃度。",
+      borrowable: "社区/内容产品可把社交召回作为独立候选路，先通过多路召回配额、关系强度阈值和重排约束验证增量，而不是让社交信号直接替换兴趣模型。",
+      boundary: "关系链稀疏、隐私边界严格、内容质量不可控或缺少反骚扰治理时，社交发现会带来噪声、骚扰、同质化、熟人关系误用和过度曝光风险。",
     },
     [normalizeTitle("From Clicks to Conversions: Architecting Shopping Conversion Candidate Generation at Pinterest")]: {
-      businessProblem: "购物推荐如果只优化点击，会把流量导向好奇心内容而非购买意图；候选生成阶段必须更早感知转化概率和商品可购性。",
+      businessProblem: "购物推荐如果只优化点击，会把流量导向好奇心内容而非购买意图；候选生成阶段必须更早感知转化概率、商品可购性、库存价格和商家质量。",
       systemMechanism: "Pinterest 将 shopping conversion 目标前移到候选生成，用转化样本、商品上下文、用户购物行为和大规模 serving 约束共同训练候选路。",
       metricsAndExperiment: "除 CTR 外重点看 CVR、GMV/ROAS、add-to-cart、商品覆盖、新商家曝光、候选去重率和召回到精排的转化保真。",
-      borrowable: "电商和内容电商可拆出“转化候选路”，与点击候选路并行进入精排，通过配额、校准和重排避免点击目标绑架购买目标。",
-      boundary: "转化样本稀疏、商品库存/价格不稳定或归因窗口很长时，转化候选容易过拟合头部商家和短期促销。",
+      borrowable: "电商和内容电商可拆出“转化候选路”，与点击候选路并行进入精排，通过配额、校准、去重、商家分层和重排避免点击目标绑架购买目标。",
+      boundary: "转化样本稀疏、商品库存/价格不稳定、归因窗口很长或商家供给高度集中时，转化候选容易过拟合头部商家、短期促销和高频低价品类。",
     },
     [normalizeTitle("Modernizing the Facebook Groups Search to Unlock the Power of Community Knowledge")]: {
       businessProblem: "群组搜索面对口语化查询、社区语境、权限可见性和新旧帖子混杂，单纯关键词匹配难以找到真正可用的社区知识。",
@@ -5172,10 +5172,10 @@ function curatedFrontierInterpretation(item) {
       boundary: "如果查询意图高度专业、文档权限复杂或没有金标集，LLM 标注会把偏差系统性写进排序模型。",
     },
     [normalizeTitle("PAI-Rec 多路召回截断实践：用 PriorityAdjustCountFilter 和 SnakeFilter 控制精排入口数量")]: {
-      businessProblem: "多路召回能提高覆盖，但进入精排的候选过多会拖垮延迟，过少又会牺牲新内容、运营配额和多样性。",
-      systemMechanism: "PAI-Rec 用优先级截断和蛇形混排控制各召回路进入精排的数量，把业务配额、召回质量和精排成本变成可配置策略。",
-      metricsAndExperiment: "看各召回路贡献、精排入口规模、P95 延迟、CTR/CVR、覆盖率、多样性、运营位达成率和新内容冷启动表现。",
-      borrowable: "中小推荐团队可先把召回结果统一打标签，再用可解释的截断/混排策略替代隐式 if-else，便于实验和回滚。",
+      businessProblem: "多路召回能提高覆盖，但进入精排的候选过多会拖垮延迟、成本和模型资源，过少又会牺牲新内容、运营配额、多样性、长尾探索空间和策略可解释性。",
+      systemMechanism: "PAI-Rec 用优先级截断和蛇形混排控制各召回路进入精排的数量，把业务配额、召回质量、探索需求和精排成本变成可配置策略。",
+      metricsAndExperiment: "看各召回路贡献、精排入口规模、P95 延迟、CTR/CVR、覆盖率、多样性、运营位达成率、新内容冷启动、长尾内容曝光和策略回滚效果。",
+      borrowable: "中小推荐团队可先把召回结果统一打标签，再用可解释的截断/混排策略替代隐式 if-else，便于按召回源实验、归因、调参和回滚。",
       boundary: "如果召回路质量没有可观测归因，或者缺少按召回源、业务桶和用户分层的线上实验，截断策略会变成拍脑袋配额，长期压制探索、新路验证和长尾内容冷启动。",
     },
     [normalizeTitle("MTGR：美团外卖生成式推荐Scaling Law落地实践")]: {
@@ -5200,18 +5200,18 @@ function curatedFrontierInterpretation(item) {
       boundary: "若用户历史短、转化标签更稀疏、供给变化极快或无法承担离线 embedding 新鲜度治理，Transformer 序列化可能只会增加复杂度；应先验证序列覆盖、冷启动、延迟和供给侧公平。",
     },
     [normalizeTitle("推荐系统为啥都长一个样？聊聊「离线训练 + 在线召回 + 排序」这套大数据架构")]: {
-      businessProblem: "很多中小团队想上推荐系统时先追模型名字，却没有先处理海量候选、实时响应和复杂模型三者的基本矛盾。",
+      businessProblem: "很多中小团队想上推荐系统时先追模型名字，却没有先处理海量候选、实时响应、特征新鲜度、反馈闭环和复杂模型之间的基本工程矛盾。",
       systemMechanism: "文章用离线训练、在线召回、排序和反馈闭环解释经典推荐架构：离线负责全量特征和模型训练，在线召回快速缩小候选，排序/重排在延迟预算内优化业务目标。",
-      metricsAndExperiment: "应先建立召回覆盖、排序 CTR/CVR、P95 延迟、特征新鲜度、实验分桶和反馈闭环，而不是只看离线 AUC。",
-      borrowable: "适合作为团队共识材料：先把多路召回、粗排、精排、重排和实验平台的接口画清楚，再决定是否引入大模型或向量检索。",
-      boundary: "文章是架构校准而非具体大厂落地方案；对成熟平台来说价值在于查漏补缺，不足以替代真实流量实验。",
+      metricsAndExperiment: "应先建立召回覆盖、排序 CTR/CVR、P95 延迟、特征新鲜度、实验分桶、反馈闭环和负反馈监控，而不是只看离线 AUC。",
+      borrowable: "适合作为团队共识材料：先把多路召回、粗排、精排、重排、特征平台、埋点反馈和实验平台的接口画清楚，再决定是否引入大模型或向量检索。",
+      boundary: "文章是架构校准而非具体大厂落地方案；对成熟平台来说价值在于查漏补缺、统一语言和暴露缺口，不足以替代真实流量实验和线上分层验证。",
     },
     [normalizeTitle("Design and evaluation of whole-page experience optimization for e-commerce search")]: {
       businessProblem: "电商搜索不能只排商品列表，还要决定整页模块、筛选、推荐小组件和广告/自然结果的整体组合；单模块最优可能伤害页面级购买体验。",
       systemMechanism: "Amazon Science 将整页体验作为优化对象，在搜索请求层面评估页面元素组合、用户行为和业务目标，让 ranking 从 item-level 扩展到 page-level decisioning。",
       metricsAndExperiment: "关注页面级转化、GMV、query reformulation、筛选使用率、模块交互、广告/自然结果平衡、长期满意度和实验异质性，而不是只看单商品 NDCG 或 CTR。",
       borrowable: "Marketplace 搜索团队可先把页面模块、候选来源和业务约束统一成实验单元，再用分层实验观察不同 query/user segment 的页面级收益。",
-      boundary: "流量不足、页面模块强运营配置或缺少跨模块归因时，整页优化容易被单个模块 KPI 拉偏，实验解释成本很高。",
+      boundary: "流量不足、页面模块强运营配置、缺少跨模块归因或无法做 query/user 分层实验时，整页优化容易被单个模块 KPI 拉偏，解释和回滚成本很高。",
     },
   };
   return map[title] || null;
@@ -8078,6 +8078,18 @@ function formatAiNewsStep(label, value) {
 function curatedAiNewsOverride(item) {
   const title = normalizeTitle(item.title || "");
   const map = {
+    [normalizeTitle("Uber 用 Agent 接管 70% 代码 PR，AI 账单零增长")]: {
+      signal: "工程组织把 Agent 纳入主干交付信号：AIHOT 转述 Uber 让 Agent 参与约 70% 代码 PR、同时控制 AI 账单的案例，关键不在比例本身，而在代码生成、review、测试、成本治理和人工接管能否进入同一条工程账本。",
+      impact: "研发平台团队会更想把 Coding Agent 从个人工具推到组织流程，但高 PR 覆盖率也会放大上下文误读、重复修改、测试幻觉、review 责任、密钥/数据触达和单位任务成本不可解释的问题；账单不涨必须和质量指标一起看。",
+      action: "复刻时先做团队级 shadow run：抽取 30 个真实 issue，让 Agent 只在受控分支产出 PR，记录合入率、review 修改轮次、测试通过、回滚/事故、人工接管、token/工具成本和每类任务的节省时间。",
+      tags: ["AIHOT", "Coding Agent", "Engineering Productivity", "成本治理"],
+    },
+    [normalizeTitle("AI文明的兴衰：OpenAI训练中三个秘密AI文明相继兴起又被抹除")]: {
+      signal: "训练过程涌现叙事与证据边界信号：这条 AIHOT 热点把 OpenAI 训练中所谓“秘密 AI 文明”的兴衰作为故事线传播，真正应观察的是训练动态、自治行为、可解释证据和媒体转述之间的距离，而不是把拟人化标题当作已证实机制。",
+      impact: "安全、评测和传播团队会更关注大模型训练中的涌现行为，但如果缺少官方论文、实验日志、可复现实验或研究人员原文，很容易把复杂训练现象误读成确定能力；这会污染风险评估和公众沟通。",
+      action: "先按证据等级登记：区分官方原文、研究论文、访谈转述、社区解读和二次标题，只有拿到可验证实验设置、模型规模、观测指标和失败样本后，才进入 alignment/agent risk 评估清单。",
+      tags: ["AIHOT", "OpenAI", "AI Safety", "证据分层"],
+    },
     [normalizeTitle("开放世界多智能体环境中的自主数学发现")]: {
       signal: "数学研究 Agent 从解题演示进入可复核发现流程：Station 让多模型智能体自主选题、实验、写作并公开原始对话、证明和验证代码，价值不在“模型会数学”的口号，而在研究轨迹开始能被外部审计。",
       impact: "科研、算法和知识库团队可以借鉴其任务分解、共享文献池、形式化验证和负结果记录方式；但数学构造题的成功不能直接外推到业务策略、推荐排序或普通代码自治，专家复核仍是硬门槛。",
