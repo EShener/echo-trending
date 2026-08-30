@@ -608,6 +608,12 @@ function applyEditorialOverrides(report) {
       action: "把推理强度变成显式路由参数：按任务分桶设置 low/medium/high，记录答案质量、token 输出、P95、超时率、格式错误和人工修正，只有复杂推理、代码和长文档任务才默认升档。",
       tags: ["Qwen", "推理强度", "成本治理", "模型路由"],
     },
+    "在本地运行 Qwen3.8 27B：来自我的 Mac Studio 的实际数据": {
+      signal: "端侧中尺寸模型可用性信号：这条实测把 Qwen3.8 27B、Q4_K_M 量化、17GB 权重和 Mac Studio M3 Ultra 约 14 tokens/s 放在一起，说明本地 AI 的讨论已经从“能不能装”进入上下文长度、吞吐和任务适配账本。",
+      impact: "个人开发者和数据敏感团队会更愿意把代码解释、私有文档摘要和离线原型放到本地模型上跑，但 14 tokens/s 不能直接覆盖高并发 Agent、长链工具调用或严格 SLA；内存、散热、上下文退化和量化质量仍要分任务验证。",
+      action: "做本地模型准入回放：选中文长文档、代码修改、RAG 问答和结构化抽取各 20 条，对比云端 Claude/OpenAI 与本地 Qwen，记录质量、吞吐、P95、显存、失败样本、隐私收益和人工接管次数。",
+      tags: ["Qwen", "Local AI", "Apple Silicon", "模型评测"],
+    },
     "OpenAI and Anthropic in price war as Chinese AI rivals gain ground": {
       signal: "模型价格战信号：这条不是 A 社单点产品更新，而是海外媒体把 OpenAI、Anthropic 与中国模型供应商放进同一价格压力框架，说明前沿模型竞争正在从能力领先转向单位成本、供给弹性和企业采购议价。",
       impact: "应用团队短期会看到更低推理价格和更多供应商选择，但价格下降也可能伴随配额、缓存策略、模型退役、区域可用性和 SLA 变化；不能只按 token 单价重排生产流量。",
@@ -619,6 +625,12 @@ function applyEditorialOverrides(report) {
       impact: "团队若深度依赖 Cursor 的远程环境、插件、模型路由和上下文缓存，需要重新评估数据条款、价格、企业支持、模型路线、可迁移性和与 Claude/OpenAI 等外部模型的长期兼容。",
       action: "把 Cursor 从单一 IDE 选型项升级为供应商集中度评审：导出团队配置和插件清单，标记必须可替代的工作流，复查企业合同与数据边界，并为关键仓库保留 Claude Code、开源 IDE 或本地模型 fallback。",
       tags: ["AI IDE", "并购", "供应商集中度", "开发者工具"],
+    },
+    "OpenAI 终止与 Cursor 合作，11 月 12 日生效": {
+      signal: "AI IDE 模型供给中断信号：AIHOT 转述 OpenAI 与 Cursor 合作到期/终止时间点，真正值得看的是编码工具对上游模型 API、企业合同、BYOK 入口和用户迁移承诺的依赖被公开暴露。",
+      impact: "依赖 Cursor 默认模型路由的团队可能遇到模型可用性、上下文缓存、价格和合规条款变化；即便仍能用自有 OpenAI API key，也需要重新评估 IDE 层能力、组织密钥治理、日志审计和 Claude/Codex 等替代路径。",
+      action: "建立 Coding Agent 供应连续性清单：导出 Cursor 工作区配置和模型使用占比，用同一批 issue 在 Cursor、Claude Code、Codex 与本地模型上回放，记录完成率、迁移成本、权限差异、失败回退和合同退出条件。",
+      tags: ["Cursor", "OpenAI", "AI IDE", "供应连续性"],
     },
     "AI生成书籍正淹没亚马逊，并拉低人类作者的单书收入": {
       signal: "AI 内容供给冲击信号：AIHOT 将亚马逊图书平台上的 AI 生成书籍泛滥与作者收入下降放在一起，核心不是“AI 会写书”，而是低成本内容供应正在改变平台排序、审核、读者信任和创作者收益结构。",
@@ -8078,6 +8090,12 @@ function curatedAiNewsOverride(item) {
       action: "把编码 Agent 纳入供应连续性演练：用同一批 issue 在 Cursor、Claude Code、Codex 和本地候选上回放，记录模型可用性、任务完成率、迁移成本、缓存失效、权限差异和人工接管次数。",
       tags: ["Cursor", "OpenAI", "Coding Agent", "供应风险"],
     },
+    [normalizeTitle("OpenAI 终止与 Cursor 合作，11 月 12 日生效")]: {
+      signal: "AI IDE 模型供给中断信号：AIHOT 转述 OpenAI 与 Cursor 合作到期/终止时间点，真正值得看的是编码工具对上游模型 API、企业合同、BYOK 入口和用户迁移承诺的依赖被公开暴露。",
+      impact: "依赖 Cursor 默认模型路由的团队可能遇到模型可用性、上下文缓存、价格和合规条款变化；即便仍能用自有 OpenAI API key，也需要重新评估 IDE 层能力、组织密钥治理、日志审计和 Claude/Codex 等替代路径。",
+      action: "建立 Coding Agent 供应连续性清单：导出 Cursor 工作区配置和模型使用占比，用同一批 issue 在 Cursor、Claude Code、Codex 与本地模型上回放，记录完成率、迁移成本、权限差异、失败回退和合同退出条件。",
+      tags: ["Cursor", "OpenAI", "AI IDE", "供应连续性"],
+    },
     [normalizeTitle("Databricks Genie One 新增功能：将洞察转化为行动")]: {
       signal: "数据助手从问答走向操作闭环信号：Genie One 把自然语言洞察、业务语义层和后续行动连接起来，核心变化是 BI/湖仓助手不再停在解释图表，而是尝试进入任务分派、工作流触发和治理审计。",
       impact: "数据平台团队会更容易把常见经营问题交给助手处理，但风险集中在指标口径、权限继承、幻觉 SQL、动作误触发、责任归属和业务用户是否理解结果证据。",
@@ -8167,6 +8185,12 @@ function curatedAiNewsOverride(item) {
       impact: "学校和企业培训不能只看作业分数或 AI 使用率；ChatGPT 可能提升表达与结构，因果推理训练可能提升独特想法，真实风险在代写、评分口径、学习迁移和长期能力退化。",
       action: "把教育 AI 试点拆成两组指标：一组看成绩、完成时长和错误率，另一组看原创性、推理链、迁移测试和人工口试；同时记录是否需要禁止直接提交模型输出。",
       tags: ["OpenAI", "Education", "Causal Reasoning", "AI Literacy"],
+    },
+    [normalizeTitle("在本地运行 Qwen3.8 27B：来自我的 Mac Studio 的实际数据")]: {
+      signal: "端侧中尺寸模型可用性信号：这条实测把 Qwen3.8 27B、Q4_K_M 量化、17GB 权重和 Mac Studio M3 Ultra 约 14 tokens/s 放在一起，说明本地 AI 的讨论已经从“能不能装”进入上下文长度、吞吐和任务适配账本。",
+      impact: "个人开发者和数据敏感团队会更愿意把代码解释、私有文档摘要和离线原型放到本地模型上跑，但 14 tokens/s 不能直接覆盖高并发 Agent、长链工具调用或严格 SLA；内存、散热、上下文退化和量化质量仍要分任务验证。",
+      action: "做本地模型准入回放：选中文长文档、代码修改、RAG 问答和结构化抽取各 20 条，对比云端 Claude/OpenAI 与本地 Qwen，记录质量、吞吐、P95、显存、失败样本、隐私收益和人工接管次数。",
+      tags: ["Qwen", "Local AI", "Apple Silicon", "模型评测"],
     },
     [normalizeTitle("Anthropic 开放模型硬件标准（MHS）研究预览")]: {
       signal: "模型硬件协同治理信号：Anthropic 把开放模型硬件标准 MHS 作为研究预览提出，关注点从单模型能力转向训练/推理硬件、供应链透明度、可审计接口和安全评估能否形成共同规范。",
