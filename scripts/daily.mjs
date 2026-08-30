@@ -5283,6 +5283,13 @@ function curatedFrontierInterpretation(item) {
       borrowable: "中小推荐团队可先把召回结果统一打标签，再用可解释的截断/混排策略替代隐式 if-else，便于按召回源实验、归因、调参和回滚。",
       boundary: "如果召回路质量没有可观测归因，或者缺少按召回源、业务桶和用户分层的线上实验，截断策略会变成拍脑袋配额，长期压制探索、新路验证和长尾内容冷启动。",
     },
+    [normalizeTitle("美团搜索3.0：LLM 语义表征在排序模型的探索与应用")]: {
+      businessProblem: "本地生活搜索的 Query、POI 和 Deal 都有强长尾与语义 Gap：用户说法口语化，商家和商品描述非结构化，传统人工特征很难稳定覆盖服务零售里的意图、品类、地理和转化约束。",
+      systemMechanism: "美团搜索团队把 LLM 生成的 Query/POI/Deal 语义向量作为精排特征，以 cosine 相似度补强语义匹配，并经历特征验证、体系化表征建设、跨模块迁移复用三期迭代，让搜索 3.0 的语义能力从单点实验进入可复用排序底座。",
+      metricsAndExperiment: "官方披露从 2025 Q4 到 2026 Q2 完成 3 个 Launch Review 且均全量上线；验收应继续看 NDCG/相关性、CTR/CVR、搜索转化、长尾 Query 覆盖、语义向量刷新、跨场景迁移收益、P95 延迟和线上负反馈。",
+      borrowable: "可借鉴的是“LLM 表征先做排序增量特征，再沉淀为跨场景语义底座”的渐进路线：先离线构建 Query-Item 语义评测集，再在精排旁路注入向量相似度，最后复用到召回、粗排和 RAG/客服搜索。",
+      boundary: "如果业务缺少高质量 Query-Item 标签、商家/商品结构化治理、向量更新链路或正式线上实验，LLM 语义特征容易变成高成本黑盒补丁；不应直接替换原有精排主干和规则约束。",
+    },
     [normalizeTitle("MTGR：美团外卖生成式推荐Scaling Law落地实践")]: {
       businessProblem: "外卖推荐既有高频短周期兴趣，又有商家、时段、配送、价格和转化目标约束；传统 DLRM 特征体系能稳定上线，但难以充分吸收长行为序列和跨场景上下文。",
       systemMechanism: "美团基于 HSTU 构建 MTGR，在保留工业 DLRM 特征体系的同时统一建模多条行为序列，并用生成式推荐的 scaling law 思路扩大序列窗口、模型容量和在线推理效率。",
@@ -5749,6 +5756,16 @@ function seedIndustryFrontierItems() {
       sourceType: "industry",
       frontierScore: 35,
       summary: "阿里云 PAI-Rec 讨论多路召回后如何用优先级截断和蛇形混排控制进入精排的候选规模，核心是让召回覆盖、业务配额、精排成本和实时性在工程上可配置。",
+    },
+    {
+      title: "美团搜索3.0：LLM 语义表征在排序模型的探索与应用",
+      url: "https://tech.meituan.com/2026/08/20/01-meituan-Query-3.0.html",
+      publishedAt: "2026-08-20T00:00:00Z",
+      source: "Meituan Tech",
+      domain: "tech.meituan.com",
+      sourceType: "industry",
+      frontierScore: 62,
+      summary: "美团搜索 3.0 在服务零售排序中引入 LLM 语义表征：为 Query、POI 和 Deal 生成高质量向量，用 cosine 相似度补齐传统特征的语义理解缺口，并在 2025 Q4 到 2026 Q2 完成三期 Launch Review 和全量上线。",
     },
     {
       title: "MTGR：美团外卖生成式推荐Scaling Law落地实践",
