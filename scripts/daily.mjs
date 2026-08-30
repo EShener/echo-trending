@@ -1496,6 +1496,7 @@ function hasWeakPreservedAnalysis(analysis = {}) {
     oneLiner.includes("是否能被小范围验证") ||
     oneLiner.includes("模型接口、工具协议、上下文管理或推理工作流") ||
     oneLiner.includes("目录治理、可用性校验和来源合规") ||
+    oneLiner.includes("内容 schema、评测、翻译和社区审校") ||
     oneLiner.includes("构建、测试、调试或自动化链路的稳定缩短") ||
     oneLiner.includes("命令行、插件系统、构建管线或 SDK 抽象")
   );
@@ -4250,13 +4251,13 @@ function sharpenOneLiner(repo, lens, fallbackLine) {
   if (lens.domain.includes("AI Agent")) return `${base}；重点看 ${coreMechanism} 是否把「${userPain}」收敛成可审计流程，验收落到 ${metricBrief}。`;
   if (lens.domain.includes("数据")) return `${base}；重点看索引/查询机制、数据一致性和嵌入式运行成本，验收落到 ${metricBrief}。`;
   if (lens.domain.includes("开发者工具")) return `${base}；重点看它对构建、测试、调试或自动化链路的稳定缩短，验收落到 ${metricBrief}。`;
-  if (lens.domain.includes("学习")) return `${base}；重点看内容 schema、评测、翻译和社区审校能否形成长期闭环，验收落到 ${metricBrief}。`;
+  if (isLearningResourceDomain(lens.domain)) return `${base}；重点看内容 schema、评测、翻译和社区审校能否形成长期闭环，验收落到 ${metricBrief}。`;
   if (lens.domain.includes("API")) return `${base}；重点看目录治理、可用性校验和来源合规，而不是条目数量，验收落到 ${metricBrief}。`;
   return `${base}；重点看 ${coreMechanism} 的工程收敛效果，目标问题是「${userPain}」，验收落到 ${metricBrief}。`;
 }
 
 function describeTeamFit(lens, repo) {
-  if (lens.domain.includes("学习")) return "开发者教育、内部工程学院、技术社区和需要长期维护课程/认证的团队。";
+  if (isLearningResourceDomain(lens.domain)) return "开发者教育、内部工程学院、技术社区和需要长期维护课程/认证的团队。";
   if (lens.domain.includes("API")) return "做内容聚合、资源目录、原型调研或外部能力扫描的团队。";
   if (lens.domain.includes("开发者工具")) return "有明确构建、测试、浏览器自动化、编译或交付瓶颈的工程平台团队。";
   if (lens.domain.includes("云原生")) return "有平台 owner、可观测性体系和非核心环境试点窗口的基础设施团队。";
@@ -4267,7 +4268,7 @@ function describeTeamFit(lens, repo) {
 }
 
 function describeLandingPath(lens, repo, profile) {
-  if (lens.domain.includes("学习")) return "抽一条课程或知识路径，先复刻目录规范、校验脚本和审稿流程，再接入学习记录。";
+  if (isLearningResourceDomain(lens.domain)) return "抽一条课程或知识路径，先复刻目录规范、校验脚本和审稿流程，再接入学习记录。";
   if (lens.domain.includes("API")) return "抽样 20 个条目做可用性、授权、地域和刷新频率检查，再决定是否进入内部目录。";
   if (repo.full_name === "swc-project/swc") return "先选一个 Babel/TS 编译最慢的包做影子构建，对比构建耗时、source map、插件兼容和回滚成本。";
   if (repo.full_name === "puppeteer/puppeteer") return "先把一个高频浏览器验收或抓取任务迁到无头浏览器流水线，补齐截图、trace、重试和隔离策略。";
@@ -4682,6 +4683,10 @@ function compact(value = 0) {
   return new Intl.NumberFormat("en", { notation: "compact", maximumFractionDigits: 1 }).format(value || 0);
 }
 
+function isLearningResourceDomain(domain = "") {
+  return /课程|教程|学习资源|内容体系|知识库|社区协作/u.test(String(domain));
+}
+
 function fallbackLens() {
   return {
     domain: "通用开源工程",
@@ -4705,7 +4710,7 @@ function buildOneLiner({ repo, lens, profile }) {
   const description = repo.description || profile.firstSentence || "";
   if (!description) return `${repo.full_name} 是一个偏 ${lens.domain} 的开源项目。`;
   if (lens.domain.includes("API")) return `${description} 重点不是“代码库”，而是一个可复用的外部能力索引。`;
-  if (lens.domain.includes("学习")) return `${description} 更像一套内容生产和社区协作系统。`;
+  if (isLearningResourceDomain(lens.domain)) return `${description} 更像一套内容生产和社区协作系统。`;
   if (lens.domain.includes("AI")) return `${description} 需要从 Agent 可治理性和工具边界去读。`;
   return description;
 }
@@ -4716,7 +4721,7 @@ function buildWhyItMatters({ repo, lens, profile, activity }) {
   if (lens.editorialMethod?.startsWith("manual-deep-update")) {
     return `${repo.full_name} 本轮应按「${lens.domain}」来读：它针对的是「${lens.userPain}」，核心机制是「${lens.coreMechanism}」。判断价值时优先看 ${lens.successMetric}，而不是把热度当成生产成熟度。`;
   }
-  if (lens.domain.includes("学习") || lens.domain.includes("API")) {
+  if (isLearningResourceDomain(lens.domain) || lens.domain.includes("API")) {
     return `${repo.full_name} 的热度来自“可持续维护的公共资料面”：${popularity}，${activity.freshness}。${readmeHook}，说明它的价值更多在分类、治理和更新节奏，而不是某个单点技术实现。`;
   }
   if (lens.domain.includes("AI")) {
@@ -4733,7 +4738,7 @@ function buildEngineeringRead({ repo, lens, profile, topLanguages, topics, activ
 
 function buildSuggestedUseCases({ repo, lens, profile }) {
   const shortName = repo.name || repo.full_name;
-  if (lens.domain.includes("学习")) {
+  if (isLearningResourceDomain(lens.domain)) {
     return [
       `把 ${shortName} 当作内容体系样本，先拆目录层级和贡献规范。`,
       `抽样 ${profile.headings[0] || "核心栏目"} 下的 3 个条目，看它如何处理版本、语言和重复内容。`,
@@ -4802,7 +4807,7 @@ function buildDeepDive({ repo, lens, profile, activity }) {
       `如果 ${lens.badFit}，是否应该只收藏观察而不进入试点？`,
     ],
     recommendedAction:
-      repo.stargazers_count > 30000 && !lens.domain.includes("API") && !lens.domain.includes("学习")
+      repo.stargazers_count > 30000 && !lens.domain.includes("API") && !isLearningResourceDomain(lens.domain)
         ? `进入重点观察池：围绕 ${lens.successMetric} 安排一次小 spike，并明确 owner、样本集、失败回滚和上线前不得触碰的生产边界。`
         : `进入资料/趋势观察池：先沉淀可借鉴模式，再用「${lens.safeEntry}」验证 ${lens.successMetric}；没有可复现收益、维护 owner 和回滚路径前不进入主链路。`,
   };
