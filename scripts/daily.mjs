@@ -4244,16 +4244,16 @@ function sharpenOneLiner(repo, lens, fallbackLine) {
   const base = repo.description || fallbackLine || repo.full_name;
   const coreMechanism = String(lens.coreMechanism || "").replace(/[。；;\\s]+$/u, "");
   const userPain = String(lens.userPain || "").replace(/[。；;\\s]+$/u, "");
+  const specificLine =
+    coreMechanism && userPain
+      ? `${base}；重点看 ${coreMechanism} 的工程收敛效果，目标问题是「${userPain}」，验收落到 `
+      : `${base}；重点看真实代码入口、运行边界、失败样本和生产风险，验收落到 `;
   const metricBrief = String(lens.successMetric || "任务完成率、人工接管率、失败样本和生产风险")
     .split(/[,，、]/)
     .slice(0, 4)
     .join("、");
   if (lens.domain.includes("AI Agent")) return `${base}；重点看 ${coreMechanism} 是否把「${userPain}」收敛成可审计流程，验收落到 ${metricBrief}。`;
-  if (lens.domain.includes("数据")) return `${base}；重点看索引/查询机制、数据一致性和嵌入式运行成本，验收落到 ${metricBrief}。`;
-  if (lens.domain.includes("开发者工具")) return `${base}；重点看它对构建、测试、调试或自动化链路的稳定缩短，验收落到 ${metricBrief}。`;
-  if (isLearningResourceDomain(lens.domain)) return `${base}；重点看内容 schema、评测、翻译和社区审校能否形成长期闭环，验收落到 ${metricBrief}。`;
-  if (lens.domain.includes("API")) return `${base}；重点看目录治理、可用性校验和来源合规，而不是条目数量，验收落到 ${metricBrief}。`;
-  return `${base}；重点看 ${coreMechanism} 的工程收敛效果，目标问题是「${userPain}」，验收落到 ${metricBrief}。`;
+  return `${specificLine}${metricBrief}。`;
 }
 
 function describeTeamFit(lens, repo) {
