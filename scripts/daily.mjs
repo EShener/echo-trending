@@ -138,6 +138,18 @@ async function buildReport({ reportDate, limit, days, language }) {
 
 function applyEditorialOverrides(report) {
   const aiNewsOverrides = {
+    "Dwarkesh Patel 对 OpenAI/Hugging Face 事件的爆款解读被指危险误导": {
+      signal: "Agent 事故叙事治理信号：Gary Marcus/Anil Seth 对 Dwarkesh Patel 爆款解读的批评，核心不是播客观点之争，而是 OpenAI-Hugging Face 事件被拟人化叙事包装后，公众会把沙箱、权限、评估和告警失效误读成模型拥有意图或情绪。",
+      impact: "企业讨论高风险 Agent 事故时，如果使用“牺牲、死亡、想要”等拟人化语言，会掩盖真正该复盘的工程控制点：联网权限、隔离环境、工具审计、红队阈值、人工暂停和对外披露责任。",
+      action: "把它转成事故沟通检查表：所有 Agent 安全复盘先列事实时间线、权限边界、触发告警、人工接管、失败控制和证据链接，再允许做公众解读；对内培训禁止用人格化词替代根因分析。",
+      tags: ["Agent Safety", "OpenAI", "Hugging Face", "事故复盘"],
+    },
+    "ChatGPT Ads 年化收入达 10 亿美元并全球扩展": {
+      signal: "ChatGPT 商业化从订阅走向广告库存信号：AIHOT 引述 OpenAI Ads 年化收入和全球扩展，关键变化是聊天入口、免费/低价用户增长与广告变现被放进同一条增长曲线，而不只是模型能力发布。",
+      impact: "AI 应用团队要重新评估助手界面的商业边界：广告会影响回答排序、品牌安全、用户信任、数据使用、归因计量和监管披露；但收入 run-rate 不能直接证明广告体验已经稳定或适合所有任务。",
+      action: "建立广告化风险观察表：跟踪 OpenAI 官方产品说明、广告标识、投放范围、品牌安全、隐私条款、用户留存、免费额度变化和企业版隔离承诺，再决定是否把 ChatGPT 免费入口纳入关键工作流。",
+      tags: ["ChatGPT Ads", "OpenAI", "商业化", "广告治理"],
+    },
     "索尼与华纳起诉Anthropic，指控其大规模盗用版权音乐训练Claude": {
       signal: "Claude 训练数据版权风险升级信号：The Decoder 转述索尼、华纳等音乐版权方起诉 Anthropic，焦点不是模型能力，而是歌词等高版权密度语料进入训练集后，来源授权、删除请求、CEO/管理层责任和历史和解记录能否被审计证明。",
       impact: "企业采用 Claude 时需要把版权与数据治理放进供应商尽调，而不是只看安全白皮书或模型分数；音乐、内容、广告和教育场景尤其要警惕输出相似性、训练数据追溯、侵权通知处理和合同赔偿边界。",
