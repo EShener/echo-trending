@@ -1525,6 +1525,9 @@ function hasWeakPreservedAnalysis(analysis = {}) {
     oneLiner.includes("它把哪类人工流程转成") ||
     oneLiner.includes("是否能被小范围验证") ||
     oneLiner.includes("模型接口、工具协议、上下文管理或推理工作流") ||
+    oneLiner.includes("组件体系、渲染框架、状态管理或设计规范") ||
+    oneLiner.includes("分类、索引、准入规则和社区维护") ||
+    oneLiner.includes("原型阶段找数据源、第三方能力或集成灵感") ||
     oneLiner.includes("目录治理、可用性校验和来源合规") ||
     oneLiner.includes("内容 schema、评测、翻译和社区审校") ||
     oneLiner.includes("构建、测试、调试或自动化链路的稳定缩短") ||
@@ -1783,6 +1786,48 @@ function specializeLens(repo, lens) {
       bestFit: "已有移动测试资产管理、授权 app 版本归档或安全研究流程，并能隔离账号、设备和样本来源的团队。",
       badFit: "未授权第三方 app 下载、绕过商店付费/DRM、真实用户设备操作、生产证书混用，或希望把 CLI 当成内容分发渠道的场景。",
       primaryRisk: "App Store 包工具的核心风险是账号、版权、DRM 和平台条款；所有试点都应有授权清单、隔离 Apple ID、命令审计和样本销毁策略。",
+    },
+    "k1tbyte/Wand-Enhancer": {
+      editorialMethod: "manual-deep-update-2026-09-01",
+      primaryLang: "C#/WPF extension",
+      domain: "WeMod/Wand 桌面扩展 / Windows 客户端互操作增强",
+      userPain: "游戏修改器或桌面工具的高级功能常散落在封闭客户端、配置文件和手工补丁里；想改善 UX、快捷操作和互操作能力时，用户很难确认哪些能力只是本地界面增强，哪些会触碰平台条款、账号安全或反作弊边界。",
+      coreMechanism: "Wand-Enhancer 用 C#、WPF/Windows 客户端集成、配置补丁和互操作层把 Wand/WeMod 的高级入口、界面增强和自动化操作封装成可安装扩展，让桌面客户端的体验调整从手工改文件转成可版本化工具。",
+      safeEntry: "只在个人测试机和离线样本上阅读实现，先核对安装脚本、进程/文件访问、网络请求、账号数据和卸载路径；不把它接入公司设备、真实账号、多人在线游戏或任何可能违反平台条款的场景。",
+      businessValue: "对桌面客户端扩展、Windows 互操作和用户自定义体验有参考价值，能帮助工程团队理解封闭应用外围工具如何组织配置、注入边界、安装体验和回滚。",
+      successMetric: "安装成功率、卸载完整度、客户端版本兼容率、配置回滚成功率、误触平台条款次数、账号风险告警、异常崩溃率和用户可理解设置比例",
+      inspectFirst: "先看 C# 入口、WPF 界面、安装/卸载脚本、进程或文件访问权限、配置写入位置、网络行为、日志脱敏、license、WeMod/Wand 条款和反作弊风险说明。",
+      bestFit: "做 Windows 桌面客户端扩展、内部运维工具、配置面板或低风险互操作研究，且能限定设备、账号和使用边界的工程团队。",
+      badFit: "多人在线游戏、绕过付费/限制、真实账号自动化、企业生产终端、反作弊敏感环境，或没有法务/安全 owner 的场景。",
+      primaryRisk: "桌面互操作增强很容易越过用户体验优化边界，触发账号、平台条款、反作弊和供应链风险；任何试点都必须限定本地离线环境并保留卸载与审计记录。",
+    },
+    "jingyaogong/minimind": {
+      editorialMethod: "manual-deep-update-2026-09-01",
+      primaryLang: "Python/LLM training",
+      domain: "小参数 LLM 从零训练 / 教学型模型工程流水线",
+      userPain: "很多团队想理解大模型训练、tokenizer、数据清洗、预训练、SFT 和推理部署，但直接研究百亿参数模型成本太高；只看论文或调用 API 又很难建立端到端工程直觉。",
+      coreMechanism: "minimind 用 Python 训练脚本、小参数 Transformer、数据处理、tokenizer、预训练/SFT 流程和推理示例，把 64M 级 LLM 从零训练压缩成可在低成本设备上复跑的教学流水线。",
+      safeEntry: "先在隔离机器用公开数据复跑最小训练和推理样例，记录数据来源、训练耗时、loss 曲线、显存/内存、生成质量和失败样本；不把小模型输出接入生产问答或敏感决策。",
+      businessValue: "适合作为模型工程培训、端到端训练理解和轻量实验基线，让研发团队用较低成本掌握数据、训练、评估和部署之间的真实耦合。",
+      successMetric: "最小训练复现率、训练耗时、loss 收敛曲线、显存峰值、样例生成可用率、数据许可合规率、评估样本通过率和新成员上手时间",
+      inspectFirst: "先看数据下载与清洗、tokenizer 训练、模型结构、训练配置、SFT 脚本、checkpoint 保存、推理入口、评估样例、license 和是否清楚标注数据来源。",
+      bestFit: "做 LLM 工程培训、模型训练教学、低成本实验基线或内部能力建设，并能接受小参数模型质量边界的团队。",
+      badFit: "需要生产级通用助手、高可靠代码生成、强安全对齐、多租户推理 SLA，或没有数据许可与评估流程的场景。",
+      primaryRisk: "小参数可复跑不等于可生产；风险集中在训练数据许可、评估不足、生成质量幻觉和把教学样例误接到真实业务。",
+    },
+    "kaifcodec/user-scanner": {
+      editorialMethod: "manual-deep-update-2026-09-01",
+      primaryLang: "Python/OSINT tooling",
+      domain: "Email/Username OSINT 扫描套件 / 授权安全调查工具",
+      userPain: "安全研究和反欺诈团队常要围绕一个 email 或 username 核对公开足迹，但手工跨站搜索慢、结果不可复跑，也容易越过授权范围或采集过多个人信息。",
+      coreMechanism: "user-scanner 用 Python CLI、email/username 双入口、数百个扫描向量、站点适配器和结果汇总，把公开账号足迹查询组织成可批量、可记录、可复核的 OSINT 工作流。",
+      safeEntry: "只在授权调查、公司自有账号或演练样本上运行，先固定速率、输出脱敏、站点条款检查和保存周期；不扫描无关个人、不做骚扰、撞库、凭据验证或自动外联。",
+      businessValue: "可为安全研究、反欺诈线索核验、账号冒用排查和数字足迹教育提供可复跑工具，但价值必须建立在授权、最小化采集和人工复核上。",
+      successMetric: "授权样本覆盖率、站点命中准确率、误报率、失效扫描向量比例、请求限流次数、PII 最小化通过率、审计日志完整度和人工复核耗时",
+      inspectFirst: "先看扫描向量列表、请求速率、结果 schema、错误处理、代理/认证依赖、日志是否含 PII、站点条款、license、滥用警示和是否支持脱敏导出。",
+      bestFit: "有授权范围、调查 SOP、日志审计和隐私最小化要求的安全研究、反欺诈、账号保护或数字足迹教育团队。",
+      badFit: "无授权个人画像、营销获客、骚扰、撞库、凭据验证、绕过站点限制，或无法处理 PII 合规和删除请求的场景。",
+      primaryRisk: "OSINT 工具最重要的不是扫描数量，而是授权、隐私和滥用边界；必须把最小化采集、速率限制、脱敏保存和人工复核写进流程。",
     },
     "punkpeye/awesome-mcp-servers": {
       editorialMethod: "manual-deep-update-2026-08-30",
@@ -8235,6 +8280,18 @@ function formatAiNewsStep(label, value) {
 function curatedAiNewsOverride(item) {
   const title = normalizeTitle(item.title || "");
   const map = {
+    [normalizeTitle("Runway 发布 Solaris：首个界面世界模型，实时生成操作系统级交互界面")]: {
+      signal: "界面世界模型进入实时交互信号：Runway Solaris 不只是视频生成更新，而是把操作系统级界面、鼠标/窗口/控件反馈和连续状态变化放进 world model 叙事，指向“可操作 UI 环境”的生成式模拟。",
+      impact: "产品、测试和 Agent 团队会关注它能否生成可控 UI 原型、交互演示和训练环境，但风险也更明确：界面状态一致性、按钮语义、可访问性、品牌/版权素材、误导性 demo 和真实软件行为差异都不能靠视觉流畅度解决。",
+      action: "先按 UI 模拟器而非成片工具评估：选 5 个低敏产品流程，记录控件状态保持、点击反馈、文本可读性、错误恢复、生成延迟、人工修正时间和与真实前端截图 diff，再决定是否进入原型或 Agent 训练链路。",
+      tags: ["Runway Solaris", "World Model", "UI Simulation", "多模态交互"],
+    },
+    [normalizeTitle("DeepSeek-V4-Flash-Vision-Exp 模型已开源，多模态 Agent 能力接近 Opus-4.8")]: {
+      signal: "国产开源多模态模型进入 Agent 候选池信号：这条 AIHOT/IT之家线索的重点不是“接近 Opus”的口号，而是 DeepSeek-V4-Flash-Vision-Exp 以开源实验模型形态进入图像理解、长上下文、工具调用和低成本路由的备选讨论。",
+      impact: "模型平台可以把它加入多模态回放集，观察在截图理解、文档视觉问答、代码界面定位和低成本推理上的表现；但媒体 benchmark 与社区复测还不能证明企业 SLA、内容安全、许可证、稳定 API 或真实 Agent 完成率。",
+      action: "只做离线候选评估：用同一批截图问答、UI 定位、图表解析和多轮工具任务对比 Claude/OpenAI/本地模型，记录完成率、幻觉、延迟、显存/成本、失败样本、license 和安全拒答边界，不直接替换生产多模态路由。",
+      tags: ["DeepSeek", "Vision Model", "Multimodal Agent", "开源模型评估"],
+    },
     [normalizeTitle("基于 MiniMax H3 Max 的 24 小时 AI 直播网站上线了")]: {
       signal: "实时视频生成从 demo 走向连续节目形态信号：fal 基于 MiniMax H3 后训练 H3 Max，并把 5 秒 768p 生成压到约 3 秒级，还用聊天室 prompt 驱动 24 小时 AI 直播，说明视频模型竞争开始进入吞吐、排队、互动控制和内容安全的综合系统。",
       impact: "内容、直播和广告团队会看到“边生成边播放”的新入口，但生产风险也更集中：提示词注入、画面/音频不可控、版权素材、品牌安全、直播审核延迟、GPU 成本和观众输入治理都会同时上升。",
