@@ -8590,6 +8590,48 @@ function curatedAiNewsOverride(item) {
       action: "立刻做高风险会话审计回放：抽样自伤、暴力、武器、未成年人、妄想和持续依赖场景，记录触发规则、模型拒答、资源引导、人工升级、会话留痕、误报漏报和版本差异；法律结论只跟随法院文件和官方回应更新。",
       tags: ["OpenAI", "AI Safety", "诉讼", "高风险会话"],
     },
+    [normalizeTitle("Claude 在 Cowork 和 Claude Code 中支持后台操作电脑")]: {
+      signal: "Claude 从前台聊天进入后台电脑操作信号：Cowork 与 Claude Code 支持后台执行，说明 A 社正在把浏览器/终端任务从用户盯屏协作推向异步委托；关键变化是任务状态、权限确认、暂停恢复和结果审计会变成产品基础能力。",
+      impact: "知识工作和研发任务可以减少等待时间，但风险同步放大：后台 Agent 继承账号、文件、网页和终端上下文后，误点击、越权读取、长任务偏航、费用失控和结果不可追溯都会更难被即时发现。",
+      action: "先只开放低敏后台任务：限定只读网页、测试仓库和无生产凭据环境，记录任务开始/暂停/恢复、工具轨迹、人工接管、费用上限、敏感资源触达和最终产物可复核性，再决定是否接真实账号。",
+      tags: ["Claude Cowork", "Claude Code", "Background Agent", "权限审计"],
+    },
+    [normalizeTitle("GitHub Copilot 如何在不牺牲任务质量的前提下降低 AI 编码成本")]: {
+      signal: "Coding Agent 成本治理从模型价格转向系统调度信号：GitHub Copilot 把降本放在任务质量不下降的前提下讨论，说明 AI 编码平台的竞争点已经从单次补全转向模型路由、上下文裁剪、缓存、重试和任务分级的综合工程。",
+      impact: "研发平台可以用更便宜的模型和更短上下文覆盖简单任务，把强模型留给复杂修改；但如果没有质量回归集、按任务归因的成本账和失败重试上限，降本会变成隐性返工或 review 压力转移。",
+      action: "建立 AI 编码成本账本：按补全、解释、小修、跨文件重构和测试修复分桶，记录模型、上下文 token、缓存命中、一次通过率、review 修改、重试次数、P95 和单任务成本，再做路由调整。",
+      tags: ["GitHub Copilot", "Coding Agent", "成本治理", "模型路由"],
+    },
+    [normalizeTitle("美国司法部就 OpenAI 版权诉讼提交意见书支持训练属于合理使用")]: {
+      signal: "AI 训练版权战进入国家竞争叙事信号：美国司法部在 OpenAI 版权诉讼中支持训练可构成合理使用，把模型训练、转换性用途、国家安全和许可成本放进同一法律框架；关键不是“已经胜诉”，而是政府意见正在影响法院如何权衡 AI 训练与版权市场损害。",
+      impact: "模型供应商会更有动力主张训练合理使用，但企业客户不能把司法部意见当成最终免责；数据来源、输出相似性、检索增强素材、内容生成场景和合同赔偿仍会决定采购与上线风险。",
+      action: "把版权风险拆成诉讼跟踪与产品控制两张表：持续核对法院裁定、训练数据披露、opt-out/删除机制、输出相似性检测、企业 indemnity 条款和内部素材来源记录，不因单份意见书放松版权审查。",
+      tags: ["OpenAI", "版权诉讼", "Fair Use", "模型采购"],
+    },
+    [normalizeTitle("Anthropic 发布电商 Agent 架构与生产实践指南，并开源 commerce-agents 参考实现")]: {
+      signal: "电商 Agent 从单点客服走向交易链路架构信号：Anthropic 把购物/商家 Agent、工具调用、商品检索、购物车、订单和技能组织成参考实现，强调单 Agent 循环配合清晰工具边界，而不是把每个业务步骤拆成松散子 Agent。",
+      impact: "零售、旅游和本地生活团队会更容易把 Claude 接到导购、搜索、比价和售后流程，但交易场景的风险也更硬：库存价格一致性、支付/下单确认、用户隐私、越权推荐、佣金归因和错误订单责任都必须产品化处理。",
+      action: "做只读到半自动灰度：先接商品检索、问答和推荐解释，禁止自动支付/下单，记录检索命中、工具失败、价格库存差异、人工确认、转化漏斗、投诉样本和审计日志，再逐步开放动作。",
+      tags: ["Anthropic", "Commerce Agent", "Claude", "交易安全"],
+    },
+    [normalizeTitle("Google AI 团队分享如何为 LLM-as-a-Judge 评测编写可靠的评分标准")]: {
+      signal: "LLM-as-a-Judge 从提示技巧进入评测工程信号：Google AI 把评分标准拆成原子化布尔项、客观事实约束、显式需求边界和 golden set 校准，说明模型评审的瓶颈不只是换更强 judge，而是把 rubric 写成可复验的测试协议。",
+      impact: "Agent、RAG、客服和代码评测团队可以减少模糊评分带来的 token 浪费和判断漂移，但如果缺少专家标注集、负样本、版本回归和人类一致性指标，LLM judge 仍会把主观偏好包装成自动化质量分。",
+      action: "重写内部 eval rubric：每条标准只问一个可观察事实，用 MUST/SHOULD 标出硬约束，建立 golden set 与人工复核差异表，按模型版本记录一致率、误判样本、成本和触发人工复审的阈值。",
+      tags: ["LLM-as-a-Judge", "Eval", "Rubric", "Google AI"],
+    },
+    [normalizeTitle("Google 总结 AI Agents Challenge 中最强提交背后的 4 个工程模式")]: {
+      signal: "Agent 黑客松沉淀出工程模式信号：Google 从 AI Agents Challenge 头部提交中提炼双向 MCP、事件驱动并发、统一回退和分层路由，说明 Agent 应用的胜负点不只是 prompt，而是状态通信、工具协议、并发控制和失败降级。",
+      impact: "团队做内部 Agent 时可以直接借鉴这些模式，但比赛提交通常绕开了权限、审计、长期维护、成本上限和真实业务异常；把 hackathon 架构照搬进生产会放大不可观测失败。",
+      action: "把四个模式转成架构评审项：每个 Agent 项目必须说明工具协议、事件流、fallback、路由策略、幂等重试、日志、预算和人工接管，并用 10 个失败样本回放验证。",
+      tags: ["Google Agents", "MCP", "Agent Architecture", "失败降级"],
+    },
+    [normalizeTitle("什么是 harness 工程？Google 用 ADK 2.0 与 Antigravity SDK 演示自动修复编码循环")]: {
+      signal: "Agent harness 从提示词升级为可测试运行框架信号：Google 用 ADK 2.0 与 Antigravity SDK 演示自动修复循环，重点是把任务输入、工具调用、测试反馈、重试和停止条件包成 harness，而不是让模型在开放聊天里自由试错。",
+      impact: "Coding Agent 的质量会更依赖外层 harness：测试是否可复跑、失败日志是否结构化、重试是否有预算、工具权限是否收敛。没有这些控制，模型能力提升也会被环境漂移和无限循环抵消。",
+      action: "先为一个低风险代码任务做 harness 样板：固定 repo、测试命令、失败分类、最大重试、文件写入范围和人工暂停点，记录修复率、重试次数、误改文件、token 成本和失败原因。",
+      tags: ["Google ADK", "Harness Engineering", "Coding Agent", "测试回路"],
+    },
     [normalizeTitle("Anthropic 发布 Claude Fable 5.1 与 Claude Mythos 5.1，作者实测分享使用建议")]: {
       signal: "Claude 5.1 非官方实测扩散信号：这条 AIHOT 线索把 Fable 5.1、Mythos 5.1 和作者使用建议绑定传播，说明 Claude 升级讨论已经从官方模型卡进入开发者实际任务选择、成本感知和工作流迁移建议。",
       impact: "研发团队可以把实测当作试用线索，但不能把个人体验等同于企业可用性；真实决策仍要看官方访问条件、系统卡、安全边界、上下文稳定性、代码任务完成率、延迟和每任务成本。",
