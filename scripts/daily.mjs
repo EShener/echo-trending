@@ -138,6 +138,66 @@ async function buildReport({ reportDate, limit, days, language }) {
 
 function applyEditorialOverrides(report) {
   const aiNewsOverrides = {
+    "美团 LongCat-2.0 上线 Cline 免费试用": {
+      signal: "国产 coding model 进入 IDE 插件试用信号：美团 LongCat-2.0 通过 Cline 免费入口触达开发者，重点不是单次模型发布，而是国产模型开始争夺真实代码编辑、终端执行和插件工作流里的默认试用位。",
+      impact: "研发团队会更容易把 LongCat 放进 Claude、OpenAI、Qwen 之外的编码候选池，但免费试用只能证明获客入口，不证明仓库理解、测试修复、长任务恢复、企业权限和 SLA 已经稳定。",
+      action: "用同一批真实 issue 做小样本回放：记录 Cline 内任务完成率、测试通过、人工接管、token 成本、失败类型、隐私边界和与现有 coding agent 的切换成本，再决定是否扩大试用。",
+      tags: ["LongCat", "Cline", "Coding Agent", "国产模型"],
+    },
+    "Anthropic 发布 Claude Fable 5.1 与 Claude Mythos 5.1": {
+      signal: "Claude 5.1 双模型迭代信号：Fable 5.1 与 Mythos 5.1 同时出现，说明 A 社在把通用前沿能力、长任务 Agent、编码和安全/防御能力继续拆成不同产品面，而不是只用单一旗舰模型覆盖所有工作流。",
+      impact: "企业升级 Claude 时要按任务分桶评估：Fable 侧重复杂知识工作和 Agent 稳定性，Mythos 侧重安全能力边界；如果直接全量替换，会把成本、权限和安全策略变化混在一起。",
+      action: "建立 5.1 灰度矩阵：分别用代码修改、长文档研究、浏览器任务、安全分析和低敏办公任务回放，记录完成率、人工接管、P95、每任务成本、拒答/误放和审计证据。",
+      tags: ["Claude 5.1", "Fable", "Mythos", "模型灰度"],
+    },
+    "UU远程新版本上线：完整 TUI 渲染与多终端会话管理，强化远程 Vibe Coding 体验": {
+      signal: "远程 coding agent 控制面升级信号：UU 远程把完整 TUI 渲染、多终端会话和远程控制放到同一版更新里，说明 Vibe Coding 的竞争点正在从模型回答转向终端状态、会话恢复和跨设备接管体验。",
+      impact: "团队可以更顺畅地把远程开发机、终端 Agent 和移动端查看串起来，但风险也会集中到账号权限、终端误操作、敏感输出、多人会话冲突、审计日志和异常断线恢复。",
+      action: "先用沙箱开发机做 10 个低风险任务：记录 TUI 渲染完整性、命令误触、会话续接、权限提示、日志留存、人工接管和移动端回放证据，再判断是否接真实仓库。",
+      tags: ["Remote Coding", "TUI", "Agent Workflow", "权限审计"],
+    },
+    "Qwen3.8-Max-0902 登顶 Code Arena 并以 $5/MToken 领跑 Pareto 前沿": {
+      signal: "国产旗舰模型进入编码能力/成本前沿信号：Qwen3.8-Max-0902 同时强调 Code Arena 排名和 $5/MToken 价格，说明模型竞争正在把质量、价格和开发者路由放进同一张 Pareto 曲线。",
+      impact: "研发平台会更愿意把 Qwen 放进 coding agent fallback 或成本优化路径，但公开榜单和价格不能直接证明真实仓库可合并率、工具调用稳定性、长上下文保持和企业数据边界。",
+      action: "把 Qwen3.8-Max 加入固定回放集：覆盖代码修改、测试修复、长文档理解、终端排障和安全拒答，记录通过率、人工修改、P95、单位任务成本、上下文遗漏和供应商路由。",
+      tags: ["Qwen", "Coding Benchmark", "模型成本", "国产模型"],
+    },
+    "UC Berkeley 团队发布 Vero 基准：测试 AI 智能体能否构建形式化验证的软件仓库": {
+      signal: "形式化验证 Agent 基准信号：Vero 把 AI 智能体从写代码扩展到构建可被 Lean/证明器/测试链路验证的软件仓库，核心观察点是模型能否把规格、实现、证明和 CI 证据串成闭环。",
+      impact: "研发团队会看到比普通 coding benchmark 更接近高可靠软件的评测口径，但 Vero 分数不能直接外推到业务仓库；证明语言、环境依赖、规格质量和人工复核仍会决定落地成本。",
+      action: "把它作为高可靠代码回放样本：选 5-10 个小型规格任务，要求 Agent 输出实现、证明/测试、失败日志和修复轨迹，记录通过率、证明修正次数、环境问题和 reviewer 负担。",
+      tags: ["Vero", "Formal Verification", "Coding Agent", "Benchmark"],
+    },
+    "Nvidia 接近以 129 亿美元收购 Hugging Face": {
+      signal: "AI 基础设施与开放模型分发合流信号：NVIDIA 收购 Hugging Face 的传闻如果推进，焦点不是单笔交易金额，而是 GPU 供应商、模型仓库、推理入口和开发者生态可能被同一基础设施叙事整合。",
+      impact: "开放模型团队需要关注模型托管、下载、推理 API、硬件适配和商业条款是否变化；但 X/媒体线索阶段不能当作确定交易，也不能据此迁移模型资产或供应链策略。",
+      action: "降权为供应商集中度观察项：只跟踪 NVIDIA/Hugging Face 官方公告、监管文件、服务条款、模型下载限制、推理价格和开源治理承诺，生产链路保持镜像与备份。",
+      tags: ["NVIDIA", "Hugging Face", "开源模型", "供应商风险"],
+    },
+    "Claude Fable 5.1 登顶 Artificial Analysis 智能指数，但每任务成本比 Fable 5 高 20%": {
+      signal: "Claude 模型升级进入质量/成本权衡信号：Fable 5.1 排名上升同时伴随每任务成本增加，说明前沿模型升级已经不能只按榜单决策，必须把任务成功率、延迟和单位产出成本一起看。",
+      impact: "高难 coding、研究和 Agent 任务可能受益于 5.1，但普通摘要、检索和轻量自动化若默认升级，会放大预算压力；Artificial Analysis 也不能替代内部任务回放。",
+      action: "做分桶灰度而不是全量切换：复杂 Agent、代码重构和长研究任务试用 Fable 5.1，轻量任务保留低成本模型，记录完成率、人工接管、P95、每任务成本和失败差异。",
+      tags: ["Claude", "模型评测", "成本治理", "Agent"],
+    },
+    "Fable 5.1 系统卡披露隐蔽任务与监控难度上升等安全发现": {
+      signal: "前沿模型监控难度上升信号：Fable 5.1 系统卡把隐蔽任务、监控可见性和安全发现放到同一份发布材料里，说明模型能力提升正在增加传统日志、人工 review 和简单策略拦截的压力。",
+      impact: "企业采用更强 Claude 模型时，不能只升级能力，还要同步升级任务审计、工具权限、敏感操作确认和异常行为检测；否则长任务 Agent 的失败可能在更晚阶段才暴露。",
+      action: "把系统卡转成上线 gate：对高风险工具调用、文件写入、外部网络、代码执行和长会话任务增加日志采样、人工暂停点、红队样本和版本回归，确认监控跟得上再扩量。",
+      tags: ["Claude Fable 5.1", "System Card", "Agent Safety", "监控"],
+    },
+    "OpenAI 评定 Astra 达到网络安全 Critical 能力阈值，将受限发布": {
+      signal: "前沿模型能力门控信号：OpenAI 将 Astra 评为网络安全 Critical 能力阈值并受限发布，说明模型发布节奏正在受 capability eval、监控加固和访问分层共同约束。",
+      impact: "企业安全团队要区分公开可用模型、受限研究模型和内部评测结果；这类门控会影响供应连续性、红队样本、合规材料和高风险工具开放范围。",
+      action: "把它纳入供应商安全评审：记录官方系统卡、能力阈值定义、受限访问条件、监控措施、第三方评测、事故披露和内部高风险任务禁用策略。",
+      tags: ["OpenAI", "Cyber Safety", "模型发布", "能力门控"],
+    },
+    "路透社调查：美国 AI 数据中心现大量幽灵用电需求，得州等多州出手整治": {
+      signal: "AI 数据中心需求真实性治理信号：Reuters 调查显示部分 AI 数据中心用电申请存在幽灵需求，说明算力扩张的瓶颈不只在 GPU，也在电网接入、排队机制和项目真实性审查。",
+      impact: "模型供应商和云厂商的容量承诺可能受到地方电力审批、押金、并网节奏和虚假排队清理影响；应用团队看到的配额与价格波动背后可能是基础设施交付风险。",
+      action: "把电力容量列入模型供应风险表：跟踪数据中心区域、并网批准、实际开工、GPU 到货、云区域可用性和价格变化，不用单个扩建公告替代可交付容量。",
+      tags: ["AI Data Center", "电力容量", "基础设施", "供应风险"],
+    },
     "Dwarkesh Patel 对 OpenAI/Hugging Face 事件的爆款解读被指危险误导": {
       signal: "Agent 事故叙事治理信号：Gary Marcus/Anil Seth 对 Dwarkesh Patel 爆款解读的批评，核心不是播客观点之争，而是 OpenAI-Hugging Face 事件被拟人化叙事包装后，公众会把沙箱、权限、评估和告警失效误读成模型拥有意图或情绪。",
       impact: "企业讨论高风险 Agent 事故时，如果使用“牺牲、死亡、想要”等拟人化语言，会掩盖真正该复盘的工程控制点：联网权限、隔离环境、工具审计、红队阈值、人工暂停和对外披露责任。",
@@ -1262,7 +1322,7 @@ function findAiNewsOverride(overrides, title = "") {
 }
 
 function isWeakAiSummary(summary = "") {
-  return /待验证技术信号|行业动态信号|AI 技术观察信号|这条动态适合放进周度观察池|建议做最小证据登记|建议保留原文链接|建议纳入成本与架构评估|适合做 30 分钟产品体验验证|模型能力或评测更新，建议关注是否改变内部模型选型和评估基线/.test(summary);
+  return /待验证技术信号|行业动态信号|AI 技术观察信号|A 社模型信号|Agent 集成信号|官方 API 信号|外部 API 连接|来源分层信号|证据分层与复查信号|这类动态需要先拆官方原文|这条动态适合放进周度观察池|建议做最小证据登记|建议保留原文链接|建议纳入成本与架构评估|适合做 30 分钟产品体验验证|模型能力或评测更新，建议关注是否改变内部模型选型和评估基线/.test(summary);
 }
 
 function buildAiNewsOverrideDiagramSummary(item, override) {
