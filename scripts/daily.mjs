@@ -8536,6 +8536,24 @@ function formatAiNewsStep(label, value) {
 function curatedAiNewsOverride(item) {
   const title = normalizeTitle(item.title || "");
   const map = {
+    [normalizeTitle("Meta Muse Spark 1.3 在 Artificial Analysis 编码智能体指数中与 Claude 组合对比评测结果公布")]: {
+      signal: "Meta 编码智能体评测进入模型组合竞争信号：Muse Spark 1.3 被放到 Artificial Analysis 编码智能体指数中与 Claude 组合对比，重点不是单个分数，而是 Meta 开始争夺 coding agent 路由、科学推理和真实开发任务的默认候选位。",
+      impact: "研发平台会更愿意把 Meta 模型加入 Claude/OpenAI 之外的候选池，但榜单与社媒发布不能证明真实仓库可合并率、长任务恢复、工具调用稳定性、企业权限边界或单位任务成本已经可控。",
+      action: "把 Muse Spark 1.3 加入同一回放集：代码修复、测试补齐、跨文件重构、科学推理和工具调用各跑 10-20 条，记录通过率、人工接管、P95、成本、上下文遗漏、拒答/误放和供应商路由。",
+      tags: ["Meta", "Muse Spark", "Coding Agent", "模型评测"],
+    },
+    [normalizeTitle("Meta 发布 Muse Spark 1.3，Intelligence Index 得 61-62 分逼近 Claude 与 GPT-5.6")]: {
+      signal: "Meta 前沿模型进入高分竞品区间信号：Muse Spark 1.3 用 Intelligence Index 61-62 分对标 Claude 与 GPT-5.6，说明模型竞争正在从单项 benchmark 转向推理、编码、Agent 执行和成本的综合排序。",
+      impact: "模型选型会多一个强候选，但指数分数不能直接外推到企业任务；真实差异会落在长上下文保持、工具白名单、代码 review 成本、数据边界、服务稳定性和价格条款。",
+      action: "按任务分桶灰度：复杂代码、研究摘要、数据分析、浏览器任务和低敏办公各跑固定样本，对比 Claude/OpenAI/Meta 候选，记录完成率、人工修改、token 成本、延迟、失败类型和是否触发安全策略。",
+      tags: ["Meta", "Muse Spark", "Intelligence Index", "模型灰度"],
+    },
+    [normalizeTitle("Meta 发布 Muse Spark 1.3，智能体与科学推理能力提升")]: {
+      signal: "Meta 把 Agent 与科学推理打包升级信号：Muse Spark 1.3 的传播重点从聊天能力转向智能体任务和 scientific reasoning，说明前沿模型正在争夺可验证推理、工具执行和研究辅助场景。",
+      impact: "科研、算法和研发团队可以把它作为候选模型观察，但“能力提升”仍需要可复现实验支撑；科学推理尤其要看引用、计算步骤、负结果、代码/证明 artifact 和专家复核。",
+      action: "建立科学推理 smoke test：选择论文理解、实验设计、代码复现、数学推导和工具查询各一组任务，要求输出证据链与失败说明，记录正确率、可复现性、人工复核时间、成本和幻觉样本。",
+      tags: ["Meta", "Muse Spark", "Scientific Reasoning", "Agent"],
+    },
     [normalizeTitle("Runway 发布 Solaris：首个界面世界模型，实时生成操作系统级交互界面")]: {
       signal: "界面世界模型进入实时交互信号：Runway Solaris 不只是视频生成更新，而是把操作系统级界面、鼠标/窗口/控件反馈和连续状态变化放进 world model 叙事，指向“可操作 UI 环境”的生成式模拟。",
       impact: "产品、测试和 Agent 团队会关注它能否生成可控 UI 原型、交互演示和训练环境，但风险也更明确：界面状态一致性、按钮语义、可访问性、品牌/版权素材、误导性 demo 和真实软件行为差异都不能靠视觉流畅度解决。",
@@ -8607,6 +8625,12 @@ function curatedAiNewsOverride(item) {
       impact: "模型供应商会更有动力主张训练合理使用，但企业客户不能把司法部意见当成最终免责；数据来源、输出相似性、检索增强素材、内容生成场景和合同赔偿仍会决定采购与上线风险。",
       action: "把版权风险拆成诉讼跟踪与产品控制两张表：持续核对法院裁定、训练数据披露、opt-out/删除机制、输出相似性检测、企业 indemnity 条款和内部素材来源记录，不因单份意见书放松版权审查。",
       tags: ["OpenAI", "版权诉讼", "Fair Use", "模型采购"],
+    },
+    [normalizeTitle("美国司法部介入纽约时报诉 OpenAI 案，主张 AI 训练属合理使用")]: {
+      signal: "AI 训练版权诉讼进入政府意见影响阶段信号：美国司法部介入纽约时报诉 OpenAI 案并主张训练可构成合理使用，核心变化是模型训练、转换性使用、版权市场损害和国家竞争被放进同一司法权衡。",
+      impact: "模型供应商的 fair-use 叙事会被强化，但企业客户不能把政府意见当成最终判决；训练语料来源、输出相似性、RAG 素材授权、内容生成用途和合同赔偿边界仍然要单独审查。",
+      action: "更新版权风险跟踪表：按法院裁定、司法部意见、训练数据披露、opt-out/删除机制、输出相似性检测、企业 indemnity 和内部素材来源记录逐项复查，不因单条新闻放松上线审核。",
+      tags: ["OpenAI", "New York Times", "Fair Use", "版权治理"],
     },
     [normalizeTitle("Anthropic 发布电商 Agent 架构与生产实践指南，并开源 commerce-agents 参考实现")]: {
       signal: "电商 Agent 从单点客服走向交易链路架构信号：Anthropic 把购物/商家 Agent、工具调用、商品检索、购物车、订单和技能组织成参考实现，强调单 Agent 循环配合清晰工具边界，而不是把每个业务步骤拆成松散子 Agent。",
