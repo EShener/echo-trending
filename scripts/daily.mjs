@@ -169,6 +169,8 @@ function applyEditorialOverrides(report) {
       tags: ["Vero", "Formal Verification", "Coding Agent", "Benchmark"],
     },
     "Nvidia 接近以 129 亿美元收购 Hugging Face": {
+      title: "X 转述称 NVIDIA 接近收购 Hugging Face，仍需官方/监管文件核验",
+      summary: "X 账号转述 Bloomberg 线索称 NVIDIA 接近收购 Hugging Face；截至本轮生成仍按未确认传闻处理，需等待 NVIDIA、Hugging Face、监管文件或正式交易公告复核。",
       signal: "AI 基础设施与开放模型分发合流信号：NVIDIA 收购 Hugging Face 的传闻如果推进，焦点不是单笔交易金额，而是 GPU 供应商、模型仓库、推理入口和开发者生态可能被同一基础设施叙事整合。",
       impact: "开放模型团队需要关注模型托管、下载、推理 API、硬件适配和商业条款是否变化；但 X/媒体线索阶段不能当作确定交易，也不能据此迁移模型资产或供应链策略。",
       action: "降权为供应商集中度观察项：只跟踪 NVIDIA/Hugging Face 官方公告、监管文件、服务条款、模型下载限制、推理价格和开源治理承诺，生产链路保持镜像与备份。",
@@ -1293,6 +1295,8 @@ function applyEditorialOverrides(report) {
       action: formatAiNewsStep("动作", override.action),
     };
     Object.assign(item, formattedOverride);
+    if (override.title) item.title = override.title;
+    if (override.summary) item.summary = override.summary;
     if (isWeakAiSummary(item.summary) && formattedOverride.signal) {
       item.summary = formattedOverride.signal;
     }
