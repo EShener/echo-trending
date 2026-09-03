@@ -3098,6 +3098,45 @@ function specializeLens(repo, lens) {
       badFit: "流程很轻的一次性原型、没有测试/审查文化的团队，或希望 skill 替代人工产品判断和架构决策的场景。",
       primaryRisk: "skills 会固化流程偏好；如果检查清单陈旧、安装路径不一致或过度命令化，可能增加摩擦并让 Agent 机械执行错误规则。",
     },
+    "JuliusBrussee/caveman": {
+      editorialMethod: "manual-deep-update-2026-09-04",
+      domain: "Claude Code Token 压缩 Skill / Agent 输出治理",
+      userPain: "长任务 Coding Agent 容易把状态说明、计划复述和中间解释写得过长，导致上下文窗口、token 成本和人工扫描时间被无效占用。",
+      coreMechanism: "caveman 通过极简回复规则、固定沟通口径和 Claude Code skill 包装，强制 Agent 把过程话术压缩到少量任务状态、命令证据和下一步动作。",
+      safeEntry: "先只用于低风险个人仓库或内部工具维护任务，固定 5-10 个历史 issue 回放，对比启用前后的 token 消耗、人工追问、遗漏信息和最终 patch 质量。",
+      businessValue: "降低长会话 coding agent 的沟通成本和上下文占用，让人更快看出 Agent 是否真的推进了代码、测试和发布边界。",
+      successMetric: "单任务 token 数、有效证据行占比、人工追问次数、遗漏关键上下文次数、测试通过率、review 返工率和任务完成时间",
+      inspectFirst: "先看 skill 指令、安装方式、允许保留的信息类型、示例输出、与团队 AGENTS/CLAUDE 规则的冲突点，以及是否会压掉错误日志和风险说明。",
+      bestFit: "已经高频使用 Claude Code/Codex，任务证据和测试门禁清晰，只想压缩沟通噪音的个人高级开发者或研发效能团队。",
+      badFit: "需求仍在澄清、风险很多、需要教学解释、审计文本完整性要求高，或团队还没有统一验收格式的场景。",
+      primaryRisk: "过度压缩会把关键假设、失败原因和权限边界一起删掉；只能压缩表达，不能压缩证据、测试结果和风险提示。",
+    },
+    "blader/humanizer": {
+      editorialMethod: "manual-deep-update-2026-09-04",
+      domain: "AI 文本 Humanizer / 内容质量与合规风险样本",
+      userPain: "内容团队希望快速降低 AI 生成文本的机械感，但单纯追求“去 AI 痕迹”容易牺牲事实准确、品牌口径、版权边界和平台合规。",
+      coreMechanism: "humanizer 用 Python 文本改写流程处理 AI 生成痕迹，核心是句式重排、词汇替换、语气调整和批处理入口，把后期润色从人工逐段修改变成可重复管线。",
+      safeEntry: "只在低风险内部草稿、营销备选文案或社媒短文中旁路试用，保留原文和改写 diff，由人工逐条确认事实、语气、品牌禁词和版权风险。",
+      businessValue: "把高频文案润色变成可评估流程，帮助内容团队衡量 AI 草稿到可发布文本之间的人工编辑成本，而不是直接替代编辑。",
+      successMetric: "人工编辑耗时、事实错误率、品牌口径命中率、重复句式下降、平台审核通过率、相似度/版权风险和用户阅读反馈",
+      inspectFirst: "先看输入输出格式、改写规则、批处理接口、是否调用外部模型、日志留存、敏感文本处理、license 和样例里是否保留事实证据。",
+      bestFit: "有人工审稿、品牌口径表和低风险内容池的运营、营销、知识库或客服话术团队。",
+      badFit: "学术诚信、法律/医疗/财务建议、高版权密度内容、平台明确禁止规避检测，或任何需要可解释事实来源的正式材料。",
+      primaryRisk: "Humanizer 很容易被误用成规避检测工具；生产化前必须定义允许场景、禁止场景、人工复核和原始来源留档。",
+    },
+    "bannedbook/fanqiang": {
+      editorialMethod: "manual-deep-update-2026-09-04",
+      domain: "网络访问资料目录 / 高合规风险内容库",
+      userPain: "跨境研究、开源情报或个人网络资料常散落在论坛、镜像和脚本里，使用者难以判断来源、时效、可用性、法律边界和安全风险。",
+      coreMechanism: "fanqiang 以资料目录、客户端说明、镜像链接和社区更新沉淀网络访问方法，核心价值在信息聚合和更新节奏，而不是可直接复用的业务代码。",
+      safeEntry: "只作为公开资料目录和合规风险样本阅读，不在公司网络、生产设备或自动化链路中运行脚本；如需研究，先由安全/法务确认授权范围和记录方式。",
+      businessValue: "帮助安全、合规和研究团队理解灰色网络访问资料如何传播、更新和失效，从而建立更现实的风险识别和员工教育材料。",
+      successMetric: "来源可追溯率、链接失效率、恶意内容检出率、合规边界说明完整度、资料更新频率和误用风险提示覆盖",
+      inspectFirst: "先看目录结构、链接来源、更新记录、脚本或二进制下载面、license、issue 反馈、是否含敏感规避行为，以及是否能只读分析不执行。",
+      bestFit: "安全意识培训、网络风险研究、开源情报资料分类和合规边界教育。",
+      badFit: "公司生产网络使用、自动化代理接入、绕过平台或地区规则、下载未知二进制，或任何未经授权的网络访问活动。",
+      primaryRisk: "这类资料的主要风险不是代码质量，而是合规、安全和误用；必须把只读研究、授权边界和不执行未知脚本写清楚。",
+    },
     "TencentCloud/TencentDB-Agent-Memory": {
       domain: "团队级 Agent Memory / Chat-Skill-Wiki-CodeGraph 治理层",
       userPain: "团队使用多个 Agent 后，对话记忆、技能、文档知识和代码图谱分散在个人上下文里，无法共享、治理或跨工具复用。",
@@ -9055,13 +9094,55 @@ function curatedAiNewsOverride(item) {
       impact: "业务、运营和数据分析团队会更容易把一次性表格变成可点击看板或小应用，但风险会集中在公式/数据口径错误、权限继承、版本漂移、交互逻辑不可审和临时应用泛滥。",
       action: "选择 3 个真实表格用 shadow run 验证：周报看板、AB 指标跟踪、需求排期分别记录生成时间、口径错误、权限暴露、人工改动量、用户复用率和是否能导出/回滚。",
     },
+    [normalizeTitle("Cursor 推出 Self-Hosted Machines，云智能体可在企业自有机器上执行")]: {
+      signal: "云 Coding Agent 执行面回到企业环境信号：Cursor Self-Hosted Machines 把文件修改、终端命令、浏览器和本地 MCP 工具放到企业自有 worker 上执行，但 agent loop、推理和规划仍由 Cursor 云端编排。",
+      impact: "这能缓解私有代码、内网服务、自定义硬件和 Mac/iOS 构建环境接入问题，但不等于完全本地化；代码片段、工具结果、审计日志、worker 补丁、出站 HTTPS 和云端模型路由仍要进入安全评审。",
+      action: "先做企业灰度清单：用低敏仓库验证 worker pool、出站连接、secret 注入、命令白名单、浏览器权限、日志留存、成本和失败恢复，并和 Cursor 托管 Cloud Agents、私有隧道方案分别对比。",
+      tags: ["Cursor", "Cloud Agent", "Self-Hosted", "企业安全"],
+    },
     [normalizeTitle("Cursor 推出 builds：云智能体启动速度提升至 3 倍")]: {
       signal: "Coding Agent 环境预热信号：Cursor builds 把仓库 clone、依赖安装和环境准备从每次 cloud agent 启动前移到后台持续构建，竞争点从模型回答速度延伸到工程环境冷启动。",
       impact: "大型仓库的 Agent 体验会受益于更低启动延迟，但平台团队需要重新评估依赖缓存污染、构建脚本权限、secret 注入、环境新鲜度、成本和失败时的可解释性。",
       action: "在一个依赖重、启动慢的非核心仓库试用 builds：记录 agent 首步耗时、构建成功率、缓存命中、依赖漂移、secret 触达、失败恢复、额外成本和 PR 通过率。",
     },
   };
-  return map[title] || null;
+  const direct = map[title];
+  if (direct) return direct;
+
+  const text = `${item.title || ""} ${item.summary || ""}`.toLowerCase();
+  if (text.includes("gpt-6 astra") || text.includes("astra")) {
+    if (text.includes("perplexity") || text.includes("wandr")) {
+      return {
+        signal: "Astra 进入搜索答案产品路由信号：Perplexity 宣布接入 GPT-6 Astra 并强调 WANDR 排名，说明前沿模型发布会迅速影响 answer engine 的模型路由、复杂查询处理和高成本推理入口。",
+        impact: "搜索/RAG 产品会更想把 Astra 放到深度研究、浏览器任务和复杂答案生成里，但第三方接入声明不能证明引用准确率、延迟、成本、权限隔离和广告/答案排序边界已经稳定。",
+        action: "用同一批搜索任务做路由回放：记录查询改写、引用命中、答案正确率、P95、单问成本、失败样本、数据保留和 fallback 模型，再决定是否把 Astra 放入主搜索链路。",
+        tags: ["OpenAI Astra", "Perplexity", "Search", "模型路由"],
+      };
+    }
+    if (text.includes("system card") || text.includes("系统卡") || text.includes("critical") || text.includes("网络安全")) {
+      return {
+        signal: "Astra 安全系统卡进入上线门控信号：OpenAI 将 1.05M 上下文、computer use、Critical 网络安全阈值和受限访问写进发布材料，说明前沿模型能力已经必须和访问分层、监控和高风险工具权限一起评估。",
+        impact: "研发和安全团队可以关注 Astra 的长任务、代码和浏览器能力，但不能把最强能力默认开放给所有流程；真正风险在授权目标、工具白名单、网络出口、日志审计、拒答误放和人工暂停机制。",
+        action: "建立 Astra 灰度矩阵：普通知识工作、代码修复、浏览器任务、防御性安全和高风险 cyber 分开评测，记录访问资格、任务完成率、人工接管、P95、成本、误操作和审计证据。",
+        tags: ["OpenAI Astra", "System Card", "Cyber Safety", "Access Control"],
+      };
+    }
+    if (text.includes("arc-agi") || text.includes("sota") || text.includes("基准") || text.includes("benchmark")) {
+      return {
+        signal: "Astra 让通用推理基准快速接近饱和信号：ARC-AGI-3、SOTA 和高分传播的重点不是单个分数，而是 benchmark 区分度、工具 harness、推理成本和真实任务外推边界正在同时被挑战。",
+        impact: "模型选型不能按饱和榜单直接切换；当公开基准接近天花板，企业更该看代码、搜索、浏览器、安全和办公任务的本地回放，否则会把评测提升误判成业务可用性提升。",
+        action: "把 ARC-AGI-3 降为候选门槛：继续用内部任务集记录完成率、失败样本、动作数、P95、成本、人工接管和权限触发，并等待官方系统卡与第三方复测补齐。",
+        tags: ["OpenAI Astra", "ARC-AGI-3", "Benchmark", "模型评测"],
+      };
+    }
+    return {
+      signal: "Astra 从传闻观察进入可用性评估信号：OpenAI GPT-6 Astra 发布后，关注点应从标题热度转向 API/ChatGPT 开放节奏、上下文窗口、computer use、成本和安全门控如何共同影响真实工作流。",
+      impact: "团队会把 Astra 纳入 Claude、GPT-5.6 和开源模型的候选路由，但访问资格、价格、日志审计、数据边界和高风险能力限制会决定它能否进入生产，而不是发布口号本身。",
+      action: "先做低敏任务 smoke test：代码修复、长文档研究、表格分析、浏览器操作各选 5 条，记录完成率、人工修改、token 成本、P95、失败类型、权限提示和 fallback 条件。",
+      tags: ["OpenAI Astra", "GPT-6", "模型发布", "生产灰度"],
+    };
+  }
+  return null;
 }
 
 function buildAiNewsDiagram(item, { signal, impact, action, tags }) {
