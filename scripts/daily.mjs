@@ -1322,7 +1322,7 @@ function applyEditorialOverrides(report) {
 function findAiNewsOverride(overrides, title = "") {
   if (overrides[title]) return overrides[title];
   const normalized = normalizeTitle(title);
-  return Object.entries(overrides).find(([key]) => normalizeTitle(key) === normalized)?.[1] || null;
+  return Object.entries(overrides).find(([key]) => normalizeTitle(key) === normalized)?.[1] || curatedAiNewsOverride({ title }) || null;
 }
 
 function isWeakAiSummary(summary = "") {
@@ -8545,6 +8545,54 @@ function curatedAiNewsOverride(item) {
       impact: "开放模型团队需要重新评估 Hugging Face Hub、Spaces、Inference、模型下载和企业合同的供应商集中度；NVIDIA 承诺开放平台并不等于监管审批、硬件中立、云中立、费用结构和治理独立性已经没有风险。",
       action: "建立交易闭环观察表：跟踪 NVIDIA/Hugging Face 官方公告、监管审批、平台 ToS、模型托管迁移、下载/API 价格、硬件中立承诺、企业合同变更和关键模型镜像策略，生产链路保留备份与退出预案。",
       tags: ["NVIDIA", "Hugging Face", "Open Models", "供应商集中度"],
+    },
+    [normalizeTitle("NVIDIA 宣布收购 Hugging Face，黄仁勋与纳德拉表态开放模型生态")]: {
+      signal: "AI 基础设施与开放模型分发合流信号：NVIDIA 官方宣布收购 Hugging Face 后，微软等生态方公开表态，说明开放模型分发、GPU 优化、企业云入口和开发者社区正在被放进同一条平台供应链。",
+      impact: "Hugging Face 用户要重新评估 Hub、Spaces、Inference、私有仓库、企业合同和镜像策略的供应商集中度；生态方祝贺不能替代监管审批、硬件中立、价格稳定、数据治理和开源社区独立性的验证。",
+      action: "把它拆成交易、平台和云伙伴三张观察卡：跟踪 NVIDIA/Hugging Face 官方公告、监管节点、Hub 服务条款、Azure/AWS/GCP 入口、模型托管费用、下载限制和关键资产备份。",
+      tags: ["NVIDIA", "Hugging Face", "Microsoft", "Open Models"],
+    },
+    [normalizeTitle("NVIDIA 宣布收购 Hugging Face，Sundar Pichai 祝贺并称将强化开源模型生态")]: {
+      signal: "开放模型基础设施进入云厂商共同表态信号：Google 负责人对 NVIDIA/Hugging Face 交易的祝贺，显示云厂商会把开放模型生态、硬件加速和开发者入口视为同一类战略基础设施。",
+      impact: "这有利于 Hugging Face 继续维持跨云可见度，但也会让企业更关注平台是否仍保持云中立、硬件中立、模型治理透明和下载/API 可迁移；社媒祝贺不能替代合同与监管事实。",
+      action: "建立跨云中立性复查表：记录 Hugging Face 与 NVIDIA、Google、Microsoft、AWS 的入口变化、价格条款、企业 SLA、模型卡治理、私有仓库承诺和退出路径。",
+      tags: ["NVIDIA", "Hugging Face", "Google", "开源生态"],
+    },
+    [normalizeTitle("OpenAI 发布 GPT-6 Astra，基准全面超越 Claude Fable 5.1")]: {
+      signal: "Astra 从安全门控进入旗舰模型竞争信号：AIHOT 将 OpenAI GPT-6 Astra 的官方基准、ARC-AGI-3、ExploitBench 和 Claude Fable 5.1 对比放在一起，说明模型升级叙事正在同时争夺能力榜单、网络安全门槛和成本位置。",
+      impact: "研发和安全团队会想把 Astra 放进 Claude/OpenAI 路由对照，但高分 benchmark 不能直接证明真实仓库修复、浏览器任务、企业权限、审计日志或高风险 cyber 使用已经适合全量开放。",
+      action: "做分桶灰度而不是按榜单切换：代码修复、浏览器操作、长文档研究、防御性安全和低敏办公各跑固定样本，记录完成率、人工接管、P95、成本、拒答/误放、工具误用和访问条件。",
+      tags: ["OpenAI Astra", "GPT-6", "模型评测", "Claude 对比"],
+    },
+    [normalizeTitle("OpenAI 发布 GPT-6 Astra，先向受限网络安全客户开放")]: {
+      signal: "前沿 cyber 能力受控发布信号：Astra 先面向 Daybreak 网络安全客户开放，说明 OpenAI 把强网络安全能力放进 trusted access、能力评估和产品门控的组合机制里，而不是直接全量推给所有 API 用户。",
+      impact: "安全团队可以期待更强漏洞发现、验证和补丁辅助，但风险也更高：授权目标、工具权限、网络出口、凭据隔离、误报漏报和攻击性能力外溢都必须由产品层证明可控。",
+      action: "把 Astra 当安全产品灰度：只用授权资产和只读/沙箱环境，记录目标许可、工具调用、漏洞证据、人工确认、补丁回放、误报漏报、成本和审计日志，再逐步扩大范围。",
+      tags: ["OpenAI Astra", "Daybreak", "Cyber Safety", "受控发布"],
+    },
+    [normalizeTitle("OpenAI 发布 GPT-6 Astra，官方基准显示 ARC-AGI-3 得分 99.9%")]: {
+      signal: "通用推理 benchmark 接近饱和信号：ARC-AGI-3 近乎满分如果来自官方基准，关键不只是模型更强，而是评测是否还能区分真实泛化、工具辅助、数据污染、推理成本和任务外推边界。",
+      impact: "模型选型不能只按单个饱和分数排序；当 benchmark 接近天花板，企业更该看真实任务回放、失败样本、延迟、成本、审计和可解释证据，否则会把榜单提升误判成业务可用性提升。",
+      action: "把 ARC-AGI-3 只作为候选门槛：继续用内部代码、搜索、数据分析、浏览器和安全任务回放，记录每类失败样本与人工接管，等待官方系统卡、第三方复测和 API 访问条件补齐。",
+      tags: ["OpenAI Astra", "ARC-AGI-3", "Benchmark", "模型评测"],
+    },
+    [normalizeTitle("OpenAI 发布 GPT-6 Astra，初期仅向 Daybreak Access 组织开放")]: {
+      signal: "前沿模型访问权分层信号：Astra 初期只向 Daybreak Access 组织开放，说明最强模型发布正在被客户资质、风险等级、安全控制和供应能力共同分层，访问权本身变成模型竞争的一部分。",
+      impact: "企业不能假设公告等于可用；采购、评测和产品路线要区分 Daybreak、Plus/Pro、Enterprise、API 和云渠道的开放节奏，否则容易把不可访问能力写进短期方案。",
+      action: "建立访问条件矩阵：逐项记录账户资格、地区、API/ChatGPT/云入口、工具权限、价格、速率限制、数据保留、审计日志和退回模型，只有实际可用后才进入生产灰度。",
+      tags: ["OpenAI Astra", "Daybreak Access", "模型访问", "供应连续性"],
+    },
+    [normalizeTitle("OpenAI 发布新模型 Astra，主打计算机与浏览器操作但因 opaque recurrence 引发争议")]: {
+      signal: "浏览器/电脑 Agent 能力与安全争议同步升级信号：Astra 被描述为强化计算机和浏览器操作，同时出现 opaque recurrence 争议，说明前沿模型发布的核心矛盾已从回答质量转向长任务控制、可观测性和异常行为解释。",
+      impact: "Agent 产品会更想接入 Astra 执行网页、终端和跨应用任务，但如果递归行为、工具轨迹、暂停恢复、误操作和权限继承不可解释，企业很难把它放进高价值或不可逆流程。",
+      action: "先做只读浏览器/电脑任务回放：记录每一步工具调用、页面证据、权限提示、循环/偏航样本、人工接管、撤销路径、成本和审计日志，并把争议点单列为上线阻断项。",
+      tags: ["OpenAI Astra", "Computer Use", "Browser Agent", "Agent Safety"],
+    },
+    [normalizeTitle("OpenAI 发布 GPT-6 Astra，称已进入 AGI 时代")]: {
+      signal: "AGI 叙事与产品发布绑定信号：OpenAI 将 Astra 与“AGI 时代”表述绑定传播，说明前沿模型竞争正在把能力跃迁、公众预期、企业采购和安全门控一起推高。",
+      impact: "这会提高组织内部试用压力，但 AGI 口径不能替代任务级证据；真正影响上线的是模型能否稳定完成具体工作、留下证据、遵守权限、控制成本并在失败时可回滚。",
+      action: "把 AGI 叙事降维成任务验收：只按代码、研究、浏览器、数据分析、安全和办公流程分别评测，记录成功率、失败模式、成本、访问条件和人工责任边界，不把口号写入选型结论。",
+      tags: ["OpenAI Astra", "AGI 叙事", "模型发布", "评测治理"],
     },
     [normalizeTitle("NVIDIA 宣布收购 Hugging Face，Cohere CEO Aidan Gomez 称其为开源 AI 的强力组合")]: {
       signal: "开源 AI 平台交易进入生态背书信号：Cohere CEO 对 NVIDIA/Hugging Face 交易的公开祝贺，说明模型公司开始把 Hugging Face 视为开放模型分发、开发者触达和算力生态协同的关键基础设施，而不只是普通社区网站。",
