@@ -8540,6 +8540,30 @@ function formatAiNewsStep(label, value) {
 function curatedAiNewsOverride(item) {
   const title = normalizeTitle(item.title || "");
   const map = {
+    [normalizeTitle("NVIDIA 宣布以 129.303 亿美元收购 Hugging Face")]: {
+      signal: "AI 基础设施与开放模型分发合流信号：NVIDIA/Hugging Face 交易若按官方博客推进，关键不只是 129.303 亿美元价格，而是 GPU 供应商、模型仓库、推理基础设施、开源分发和企业开发者入口会被放进同一条平台链路。",
+      impact: "开放模型团队需要重新评估 Hugging Face Hub、Spaces、Inference、模型下载和企业合同的供应商集中度；NVIDIA 承诺开放平台并不等于监管审批、硬件中立、云中立、费用结构和治理独立性已经没有风险。",
+      action: "建立交易闭环观察表：跟踪 NVIDIA/Hugging Face 官方公告、监管审批、平台 ToS、模型托管迁移、下载/API 价格、硬件中立承诺、企业合同变更和关键模型镜像策略，生产链路保留备份与退出预案。",
+      tags: ["NVIDIA", "Hugging Face", "Open Models", "供应商集中度"],
+    },
+    [normalizeTitle("NVIDIA 宣布收购 Hugging Face，Cohere CEO Aidan Gomez 称其为开源 AI 的强力组合")]: {
+      signal: "开源 AI 平台交易进入生态背书信号：Cohere CEO 对 NVIDIA/Hugging Face 交易的公开祝贺，说明模型公司开始把 Hugging Face 视为开放模型分发、开发者触达和算力生态协同的关键基础设施，而不只是普通社区网站。",
+      impact: "这会强化 NVIDIA 在模型仓库、推理工具链、GPU 优化和企业开发者入口上的影响力；但生态背书不能消除监管审批、竞争中立、硬件锁定、开源治理和商业条款变化带来的不确定性。",
+      action: "把它拆成生态与监管两条线跟踪：生态线看模型公司迁移、Hub API、推理价格和硬件优化；监管线看反垄断审查、平台开放承诺、数据/模型治理和企业合同退出条件。",
+      tags: ["NVIDIA", "Hugging Face", "Cohere", "开源生态"],
+    },
+    [normalizeTitle("Hugging Face 发布开源工具 funes，为编码智能体提供可本地持有的记忆层")]: {
+      signal: "Coding Agent 记忆层从平台会话走向本地可持有信号：funes 把任务上下文、偏好、项目事实和长期工作记忆从单次聊天/云端会话抽成可开源运行的本地层，说明 Agent 竞争点正在从模型回答转向记忆治理、迁移和审计。",
+      impact: "研发团队可以降低重复解释仓库规范、用户偏好和任务背景的成本，但本地记忆也会带来新风险：过期事实、敏感信息落盘、跨项目污染、错误偏好固化、多人协作冲突和模型供应商之间的语义不一致。",
+      action: "先用低敏仓库做旁路试点：只写入公开项目规则、命令和失败样本，禁存凭据和客户数据；记录记忆命中率、过期率、人工纠错次数、跨模型可读性、清理机制和对 PR 返工的影响。",
+      tags: ["Hugging Face", "funes", "Coding Agent", "本地记忆"],
+    },
+    [normalizeTitle("NeoMME: an efficient Multimodal-native and Multilingual Encoder")]: {
+      signal: "多模态多语言编码器进入检索基座竞争信号：NeoMME 把图片、文本和多语言语义统一到 encoder 侧，说明 RAG、商品搜索、内容理解和跨语种推荐正在从纯文本 embedding 走向原生多模态表征。",
+      impact: "搜索/推荐/内容平台可以把它作为图文召回、跨语种相似度、视觉问答和多语言内容治理的候选；但 Hugging Face 博客不能直接证明线上延迟、向量库成本、长尾语言公平性、图片版权和业务指标收益。",
+      action: "用离线向量评测先做门槛验证：固定图文 pair、跨语言 query、冷门语言、噪声图片和业务负样本，对比现有 text/image encoder 的 Recall@K、nDCG、延迟、显存、索引大小和人工相关性分。",
+      tags: ["Hugging Face", "NeoMME", "Multimodal Encoder", "Embedding"],
+    },
     [normalizeTitle("Meta Muse Spark 1.3 在 Artificial Analysis 编码智能体指数中与 Claude 组合对比评测结果公布")]: {
       signal: "Meta 编码智能体评测进入模型组合竞争信号：Muse Spark 1.3 被放到 Artificial Analysis 编码智能体指数中与 Claude 组合对比，重点不是单个分数，而是 Meta 开始争夺 coding agent 路由、科学推理和真实开发任务的默认候选位。",
       impact: "研发平台会更愿意把 Meta 模型加入 Claude/OpenAI 之外的候选池，但榜单与社媒发布不能证明真实仓库可合并率、长任务恢复、工具调用稳定性、企业权限边界或单位任务成本已经可控。",
