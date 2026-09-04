@@ -6490,6 +6490,11 @@ function buildEditorialReview({ reportDate, frontier = {}, aiNews = {} }) {
     "https://www.anthropic.com/news",
     "https://www.anthropic.com/research",
     "https://www.anthropic.com/engineering",
+    "https://www.anthropic.com/claude-fable-and-mythos-5-1",
+    "https://www.anthropic.com/news/enterprise-frontier-safeguards",
+    "https://claude.com/blog/the-anatomy-of-effective-commerce-agents",
+    "https://claude.com/blog/claude-for-commerce-agents",
+    "https://claude.com/blog/how-anthropic-employees-use-claude-tag",
     "https://claude.com/blog/1m-context-ga",
     "https://www.anthropic.com/news/wellbeing-research-grants",
     "https://www.anthropic.com/research/automated-researchers-mitigate-alignment-failures",
@@ -6587,7 +6592,7 @@ function buildEditorialReview({ reportDate, frontier = {}, aiNews = {} }) {
     ],
     sourceNotes: [
       `Anthropic official coverage includes ${anthropicSources.join("、") || "official News/Research/Engineering"} with Claude Tag, Economic Index, Claude Code practice, model updates, partnerships and safety research.`,
-      "Anthropic/Claude pages checked this run: Aug 28 automated alignment researchers and Claude for schools/districts, Aug 26 independent Claude usage research and Cowork browser availability, Aug 25 Claude memory control-plane and Bain Global Premier partner, Aug 21 Mythos 5 cyber defense, Aug 20 production agents, Aug 18 Claude protein design and analytical chemistry research, Aug 14 text watermarking and Claude Code session value/cost guidance, Aug 13 multiagent systems and Claude Tag analytics/context updates, Aug 11 Compliance API for Cowork/Code, plus Claude Code/Computer Use/Managed Agents coverage.",
+      "Anthropic/Claude pages checked this run: Sep 2 commerce-agent architecture guidance, Sep 1 Claude Fable 5.1 / Mythos 5.1 and Enterprise Frontier Safeguards, Aug 31 alignment/security efforts, Aug 28 automated alignment researchers, Claude Tag usage and Claude for schools/districts, Aug 26 independent Claude usage research and Cowork browser availability, Aug 25 Claude memory control-plane and Bain Global Premier partner, Aug 21 Mythos 5 cyber defense, Aug 20 production agents, Aug 18 Claude protein design and analytical chemistry research, Aug 14 text watermarking and Claude Code session value/cost guidance, Aug 13 multiagent systems and Claude Tag analytics/context updates, Aug 11 Compliance API for Cowork/Code.",
       "Claude official announcement coverage refreshed with browser Agent, education rollout, memory governance, partner network, production Agent APIs, Compliance API and official safety research instead of relying only on AIHOT mirrors.",
       `AIHOT ${reportDate} checked${aiHotTitles.length ? ` for ${aiHotTitles.join("、")}` : ""}; selected items are rewritten into concrete signal-impact-action recommendations.`,
       "Claude Platform release notes checked for Managed Agents lifecycle hooks, effort configuration, initial events, memory/environment webhooks and session thread deltas; Computer Use and multi-agent operator coverage is tracked through Claude Code Agent View and recent Claude model/browser-agent updates.",
@@ -6787,6 +6792,76 @@ async function fetchAnthropicNewsItems(maxItems) {
 function seedAnthropicOfficialItems() {
   const favicon = "https://www.google.com/s2/favicons?domain=anthropic.com&sz=128";
   return [
+    {
+      source: "A社 Anthropic",
+      sourceDetail: "Anthropic 官方 Announcement / Claude 5.1",
+      domain: "anthropic.com",
+      title: "Introducing Claude Fable 5.1 and Claude Mythos 5.1",
+      url: "https://www.anthropic.com/claude-fable-and-mythos-5-1",
+      publishedAt: "2026-09-01T16:00:00Z",
+      summary: "Anthropic 官方发布 Claude Fable 5.1 与 Claude Mythos 5.1，强调 coding、knowledge work、scientific research、lower cache-read pricing、Enterprise Frontier Safeguards、cybersecurity 与 biology trusted access。信号是 A 社把同一底座模型按普通企业使用和高风险专业能力拆成不同防护面。",
+      imageUrl: favicon,
+      priority: 58,
+      signal: "Claude 5.1 模型分层信号：Fable 5.1 走通用 coding/knowledge work，Mythos 5.1 通过 trusted access 承接更高风险的 cyber 与 life sciences 能力。",
+      impact: "企业不能只按榜单升级 Claude；需要把任务类型、effort 档位、cache pricing、zero data retention、EFS、false-positive 下降和高风险能力访问条件拆开评估。",
+      action: "建立 Fable/Mythos 灰度矩阵：分别回放代码修复、长研究、浏览器 Agent、安全分析和生物/科学任务，记录完成率、P95、成本、拒答误放、数据保留和人工接管。",
+    },
+    {
+      source: "A社 Anthropic",
+      sourceDetail: "Anthropic 官方 News / Enterprise Frontier Safeguards",
+      domain: "anthropic.com",
+      title: "Developing Enterprise Frontier Safeguards with our customers",
+      url: "https://www.anthropic.com/news/enterprise-frontier-safeguards",
+      publishedAt: "2026-09-01T16:00:00Z",
+      summary: "Anthropic 官方介绍 Enterprise Frontier Safeguards，目标是在客户控制的云基础设施内完成安全分类和防护，让企业获得接近 zero data retention 的隐私边界，同时维持前沿模型滥用防护。信号是前沿模型安全开始从供应商托管策略下沉到企业部署控制面。",
+      imageUrl: favicon,
+      priority: 57,
+      signal: "企业前沿防护控制面信号：EFS 把高能力模型的安全检测、客户云、隐私边界和滥用拦截放进同一个企业架构问题。",
+      impact: "金融、医疗、研发和安全团队会更愿意试用 Fable/Mythos 等高能力模型，但采购评审会转向客户云隔离、日志可审计、误拦截、模型更新和责任边界。",
+      action: "把 EFS 当成安全架构评审项：核对部署位置、数据留存、分类器日志、绕过样本、误报率、供应商访问权限、事件响应和与现有 DLP/SIEM 的接入方式。",
+    },
+    {
+      source: "A社 Claude",
+      sourceDetail: "Claude 官方 Blog / Commerce Agents",
+      domain: "claude.com",
+      title: "A guide to the anatomy of effective commerce agents",
+      url: "https://claude.com/blog/the-anatomy-of-effective-commerce-agents",
+      publishedAt: "2026-09-02T16:00:00Z",
+      summary: "Claude 官方博客给出 commerce agents 的架构、latency/cost 技术和 eval 实践，把商品检索、工具调用、用户目标、购物车/订单动作和失败处理拆成可上线的交易型 Agent 设计问题。信号是 Agent 生产化从通用办公流进入高转化、高责任的电商闭环。",
+      imageUrl: "https://www.google.com/s2/favicons?domain=claude.com&sz=128",
+      priority: 56,
+      signal: "交易型 Agent 架构信号：Claude 把 commerce agent 的工具边界、延迟成本、评测和购买/售卖链路一起产品化，而不是只讨论客服问答。",
+      impact: "零售、本地生活和广告推荐团队可以借鉴检索、排序、推荐解释和交易确认链路，但价格库存一致性、支付授权、佣金归因、隐私和错误订单责任会成为上线门槛。",
+      action: "先做只读到半自动试点：接商品搜索、推荐解释和售后问答，禁止自动支付，下钻记录检索命中、工具失败、价格库存差异、转化漏斗、人工确认和投诉样本。",
+    },
+    {
+      source: "A社 Claude",
+      sourceDetail: "Claude 官方 Blog / Product Announcement",
+      domain: "claude.com",
+      title: "Building commerce agents with Claude",
+      url: "https://claude.com/blog/claude-for-commerce-agents",
+      publishedAt: "2026-09-02T16:00:00Z",
+      summary: "Claude 官方博客将 commerce agents 放到 Claude Platform 的产品实践里，强调让 AI 更容易帮助买卖双方完成任务。信号是 A 社把 Agent 从内容生成、coding 和浏览器任务延展到商业交易入口。",
+      imageUrl: "https://www.google.com/s2/favicons?domain=claude.com&sz=128",
+      priority: 55,
+      signal: "Claude 商业 Agent 产品化信号：commerce agents 被放进 Claude 官方产品叙事，说明电商、销售和市场交易会成为 Agent 争夺的下一类高频任务。",
+      impact: "业务团队会更想把 Claude 接进导购、销售辅助和售后，但这类 Agent 的失败成本更直接，必须解决工具权限、库存价格、下单确认、退款责任和用户信任。",
+      action: "用交易漏斗做灰度：先上线只读建议和人工确认动作，按会话记录转化、误导推荐、工具失败、订单撤销、人工接管和合规审计，再逐步放开动作权限。",
+    },
+    {
+      source: "A社 Claude",
+      sourceDetail: "Claude 官方 Blog / Claude Tag",
+      domain: "claude.com",
+      title: "How Anthropic employees use Claude Tag",
+      url: "https://claude.com/blog/how-anthropic-employees-use-claude-tag",
+      publishedAt: "2026-08-28T16:00:00Z",
+      summary: "Claude 官方博客展示 Anthropic 员工如何在内部工作里使用 Claude Tag，把企业知识、上下文和协作入口接到日常任务中。信号是 @Claude/Claude Tag 从功能发布进入真实组织采用案例。",
+      imageUrl: "https://www.google.com/s2/favicons?domain=claude.com&sz=128",
+      priority: 44,
+      signal: "组织内 Agent 采用信号：Claude Tag 开始以员工实践案例解释如何进入日常协作，而不是停留在功能列表。",
+      impact: "企业内部知识问答、跨团队协作和轻量自动化会更容易启动，但要防止上下文过量、权限继承、答案不可追溯和员工把内部示例误当成通用最佳实践。",
+      action: "先按团队场景建样板：选择销售更新、文档检索、项目问答和运营整理四类任务，记录引用证据、权限拦截、人工修改、重复使用率和失败样本。",
+    },
     {
       source: "A社 Anthropic Research",
       sourceDetail: "Anthropic 官方 Research / Alignment",
@@ -8551,9 +8626,9 @@ function interpretAiNews(item) {
 function enrichAiNews(item) {
   const tags = inferAiNewsTags(item);
   const curated = curatedAiNewsOverride(item);
-  const signal = formatAiNewsStep("信号", curated?.signal || interpretAiNews(item));
-  const impact = formatAiNewsStep("影响", curated?.impact || buildAiNewsImpact(item, tags));
-  const action = formatAiNewsStep("动作", curated?.action || buildAiNewsAction(item, tags));
+  const signal = formatAiNewsStep("信号", curated?.signal || item.signal || interpretAiNews(item));
+  const impact = formatAiNewsStep("影响", curated?.impact || item.impact || buildAiNewsImpact(item, tags));
+  const action = formatAiNewsStep("动作", curated?.action || item.action || buildAiNewsAction(item, tags));
   const diagram = buildAiNewsDiagram(item, { signal, impact, action, tags });
   return {
     signal,
