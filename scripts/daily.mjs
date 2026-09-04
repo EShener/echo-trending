@@ -8591,6 +8591,12 @@ function curatedAiNewsOverride(item) {
       action: "把它拆成交易与平台两张跟踪表：交易线看监管审批、关闭条件和生态承诺；平台线看 Hub API、模型下载限制、推理价格、私有仓库 SLA、跨云入口和内部镜像备份。",
       tags: ["NVIDIA", "Hugging Face", "Open Models", "基础设施"],
     },
+    [normalizeTitle("英伟达拟以 129.3 亿美元收购 Hugging Face，黄仁勋承诺维持开放平台")]: {
+      signal: "开放模型平台被算力供应商并购信号：IT之家转述 NVIDIA/Hugging Face 交易和黄仁勋开放承诺，真正需要观察的是模型仓库、数据集、Spaces、Inference API、GPU 优化和企业开发者入口是否被并入同一条基础设施供应链。",
+      impact: "对依赖 Hugging Face 的团队，短期影响不是立刻迁移模型，而是重新评估供应商集中度、硬件/云中立、私有仓库 SLA、模型下载限制、托管推理价格和监管审批不确定性；开放承诺只能作为观察起点，不能替代合同与可迁移验证。",
+      action: "把这条新闻降解为交易复查清单：分别跟踪 NVIDIA/Hugging Face 官方公告、监管节点、Hub 服务条款、Inference/Spaces 价格、私有仓库权限、关键模型镜像和退出演练，避免生产链路被单一平台变化卡住。",
+      tags: ["NVIDIA", "Hugging Face", "Open Models", "供应商集中度"],
+    },
     [normalizeTitle("NVIDIA 宣布收购 Hugging Face，黄仁勋与纳德拉表态开放模型生态")]: {
       signal: "AI 基础设施与开放模型分发合流信号：NVIDIA 官方宣布收购 Hugging Face 后，微软等生态方公开表态，说明开放模型分发、GPU 优化、企业云入口和开发者社区正在被放进同一条平台供应链。",
       impact: "Hugging Face 用户要重新评估 Hub、Spaces、Inference、私有仓库、企业合同和镜像策略的供应商集中度；生态方祝贺不能替代监管审批、硬件中立、价格稳定、数据治理和开源社区独立性的验证。",
