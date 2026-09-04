@@ -8585,6 +8585,12 @@ function curatedAiNewsOverride(item) {
       action: "建立交易闭环观察表：跟踪 NVIDIA/Hugging Face 官方公告、监管审批、平台 ToS、模型托管迁移、下载/API 价格、硬件中立承诺、企业合同变更和关键模型镜像策略，生产链路保留备份与退出预案。",
       tags: ["NVIDIA", "Hugging Face", "Open Models", "供应商集中度"],
     },
+    [normalizeTitle("NVIDIA 宣布收购 Hugging Face，黄仁勋称开放模型将受益于这桩联姻")]: {
+      signal: "开放模型平台被算力供应商并购信号：NVIDIA 官方博客把 Hugging Face 交易表述为扩展平台、强化基础设施和扩大开发者访问，说明模型分发、数据集、推理入口和 GPU 生态正在进入同一条基础设施供应链。",
+      impact: "企业使用 Hugging Face Hub、私有仓库、Spaces、Inference 或模型镜像时，需要重新评估供应商集中度、硬件/云中立、监管审批、服务条款和关键模型可迁移性；黄仁勋的开放承诺是观察起点，不是生产风险已经消失。",
+      action: "把它拆成交易与平台两张跟踪表：交易线看监管审批、关闭条件和生态承诺；平台线看 Hub API、模型下载限制、推理价格、私有仓库 SLA、跨云入口和内部镜像备份。",
+      tags: ["NVIDIA", "Hugging Face", "Open Models", "基础设施"],
+    },
     [normalizeTitle("NVIDIA 宣布收购 Hugging Face，黄仁勋与纳德拉表态开放模型生态")]: {
       signal: "AI 基础设施与开放模型分发合流信号：NVIDIA 官方宣布收购 Hugging Face 后，微软等生态方公开表态，说明开放模型分发、GPU 优化、企业云入口和开发者社区正在被放进同一条平台供应链。",
       impact: "Hugging Face 用户要重新评估 Hub、Spaces、Inference、私有仓库、企业合同和镜像策略的供应商集中度；生态方祝贺不能替代监管审批、硬件中立、价格稳定、数据治理和开源社区独立性的验证。",
@@ -8644,6 +8650,12 @@ function curatedAiNewsOverride(item) {
       impact: "研发团队可以降低重复解释仓库规范、用户偏好和任务背景的成本，但本地记忆也会带来新风险：过期事实、敏感信息落盘、跨项目污染、错误偏好固化、多人协作冲突和模型供应商之间的语义不一致。",
       action: "先用低敏仓库做旁路试点：只写入公开项目规则、命令和失败样本，禁存凭据和客户数据；记录记忆命中率、过期率、人工纠错次数、跨模型可读性、清理机制和对 PR 返工的影响。",
       tags: ["Hugging Face", "funes", "Coding Agent", "本地记忆"],
+    },
+    [normalizeTitle("开发者用 Claude Fable 5 在 Claude Code 中将 1993 年 Amiga 游戏 Babylonian Twins 移植到 Godot")]: {
+      signal: "Claude Code 长任务迁移能力样本信号：把 1993 年 Amiga 游戏移植到 Godot 的案例，重点不是怀旧 demo，而是 Agent 能否读取旧代码/素材约束、理解游戏循环、迁移引擎 API、修复构建问题并持续留下一条可复核的工程轨迹。",
+      impact: "游戏、客户端和遗留系统团队会看到用 coding agent 做迁移 spike 的入口，但单个开发者案例不能证明版权素材、玩法一致性、性能、自动测试、多人 review 和长期维护成本已经可控。",
+      action: "把它作为遗留迁移回放样本：选一个低风险旧模块，要求 Claude Code 输出迁移计划、构建日志、功能 diff、失败修复记录和人工审查点，记录可运行率、返工行数、测试缺口、素材授权和回滚路径。",
+      tags: ["Claude Code", "Legacy Migration", "Godot", "Coding Agent"],
     },
     [normalizeTitle("NeoMME: an efficient Multimodal-native and Multilingual Encoder")]: {
       signal: "多模态多语言编码器进入检索基座竞争信号：NeoMME 把图片、文本和多语言语义统一到 encoder 侧，说明 RAG、商品搜索、内容理解和跨语种推荐正在从纯文本 embedding 走向原生多模态表征。",
