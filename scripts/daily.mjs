@@ -8685,7 +8685,7 @@ function curatedAiNewsOverride(item) {
       tags: ["GitHub Copilot", "HydraFusion", "Model Routing", "Coding Agent"],
     },
     [normalizeTitle("英伟达两年从零建起近千亿美元股权投资组合")]: {
-      signal: "AI 算力供应商从卖芯片扩展到资本生态信号：NVIDIA 投资组合快速膨胀说明它正在通过股权、云伙伴、模型公司和基础设施公司巩固需求侧入口，而不只是等待客户采购 GPU。",
+      signal: "AI 算力供应商从卖芯片扩展到资本控制面扩张信号：NVIDIA 投资组合快速膨胀说明它正在通过股权、云伙伴、模型公司和基础设施公司巩固需求侧入口，而不只是等待客户采购 GPU。",
       impact: "这会影响 AI 供应链判断：模型、云、数据中心和应用公司的融资关系可能反过来影响芯片供给、平台优化、采购议价和生态中立性；但媒体估值口径需复查，不能直接当作可交易资产规模或收益。",
       action: "建立供应链关系图：跟踪 NVIDIA 官方披露、SEC/财报口径、被投公司业务、云/模型合作、独家条款、GPU 供货变化和监管审查，把它作为供应商集中度风险而不是短线投资结论。",
       tags: ["NVIDIA", "AI Infrastructure", "供应链", "资本生态"],
