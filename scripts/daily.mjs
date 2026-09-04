@@ -8657,6 +8657,12 @@ function curatedAiNewsOverride(item) {
       action: "先用低敏仓库做旁路试点：只写入公开项目规则、命令和失败样本，禁存凭据和客户数据；记录记忆命中率、过期率、人工纠错次数、跨模型可读性、清理机制和对 PR 返工的影响。",
       tags: ["Hugging Face", "funes", "Coding Agent", "本地记忆"],
     },
+    [normalizeTitle("xAI 设计 Grok Bot：为持久化智能体重构交互界面")]: {
+      signal: "持久化 Agent 交互对象化信号：xAI 把 Grok Bot 设计成有身份、记忆、状态、工具和工作区的长期对象，重点从单次对话框转向可观察、可接管、可恢复的任务执行界面。",
+      impact: "这会影响 Agent 产品的信息架构：用户需要看到 Bot 正在空闲、等待、阻塞、思考还是完成，也需要在预览、接管和权限授予之间切换；没有状态透明度时，长任务很难进入真实办公或客服流程。",
+      action: "用一个低敏长任务做交互回放：记录状态展示、任务预览、人工接管、权限弹窗、失败恢复、记忆引用、工具轨迹和单位任务成本，再判断是否值得把类似 Bot 对象引入现有 Agent 产品。",
+      tags: ["xAI", "Grok Bot", "Agent UX", "持久化智能体"],
+    },
     [normalizeTitle("开发者用 Claude Fable 5 在 Claude Code 中将 1993 年 Amiga 游戏 Babylonian Twins 移植到 Godot")]: {
       signal: "Claude Code 长任务迁移能力样本信号：把 1993 年 Amiga 游戏移植到 Godot 的案例，重点不是怀旧 demo，而是 Agent 能否读取旧代码/素材约束、理解游戏循环、迁移引擎 API、修复构建问题并持续留下一条可复核的工程轨迹。",
       impact: "游戏、客户端和遗留系统团队会看到用 coding agent 做迁移 spike 的入口，但单个开发者案例不能证明版权素材、玩法一致性、性能、自动测试、多人 review 和长期维护成本已经可控。",
