@@ -6293,6 +6293,69 @@ function pickUniqueItems(items, maxItems) {
   return selected;
 }
 
+function pickUniqueAiNewsItems(items, maxItems) {
+  const selected = [];
+  const seenExact = new Set();
+  const topicIndexes = new Map();
+  for (const item of items) {
+    const exactKey = canonicalItemKey(item);
+    if (exactKey && seenExact.has(exactKey)) continue;
+    if (exactKey) seenExact.add(exactKey);
+
+    const topicKey = aiNewsTopicKey(item);
+    const existingIndex = topicIndexes.get(topicKey);
+    if (existingIndex !== undefined) {
+      if (aiNewsSourceQualityScore(item) > aiNewsSourceQualityScore(selected[existingIndex])) {
+        selected[existingIndex] = item;
+      }
+      continue;
+    }
+
+    if (selected.length >= maxItems) continue;
+    topicIndexes.set(topicKey, selected.length);
+    selected.push(item);
+  }
+  return selected;
+}
+
+function aiNewsTopicKey(item = {}) {
+  const text = `${item.title || ""} ${item.summary || ""} ${item.url || ""}`.toLowerCase();
+  if (text.includes("openai") && /(wiki|维基|德语|德国)/i.test(text) && /(incident|事件|接管|misalignment|错位|披露)/i.test(text)) {
+    return "topic:openai-wiki-incident";
+  }
+  if (text.includes("openai") && /(school shooting|校园枪击|塔姆布勒岭|tumbler ridge)/i.test(text)) {
+    return "topic:openai-school-shooting-lawsuits";
+  }
+  if (/(gpt[-\s]?6|gpt6|astra)/i.test(text) && /(prompt|提示词|slop|blocklist|屏蔽)/i.test(text)) {
+    return "topic:gpt-6-astra-prompting";
+  }
+  if (/(gpt[-\s]?6|gpt6|astra)/i.test(text) && /(benchmark|实测|速度|code|代码|能力对比)/i.test(text)) {
+    return "topic:gpt-6-astra-benchmark";
+  }
+  if (/(fermat|费马)/i.test(text) && /(lean|proof|证明)/i.test(text)) {
+    return "topic:fermat-lean-proof";
+  }
+  if (/(fable\s*5\.1|mythos\s*5\.1|fable 5\.1|mythos 5\.1)/i.test(text)) {
+    return "topic:claude-fable-mythos-5-1";
+  }
+  return canonicalItemKey(item) || `title:${normalizeTitle(item.title || item.url || "")}`;
+}
+
+function aiNewsSourceQualityScore(item = {}) {
+  const host = hostnameFromUrl(item.url || "").replace(/^www\./, "");
+  const source = `${item.source || ""} ${item.sourceDetail || ""}`.toLowerCase();
+  const officialDomains = ["openai.com", "anthropic.com", "claude.com", "docs.anthropic.com", "blog.google", "huggingface.co"];
+  const reportingDomains = ["reuters.com", "bloomberg.com", "apnews.com", "techcrunch.com", "theverge.com", "wired.com"];
+  const cnTechDomains = ["ithome.com", "infoq.cn", "qbitai.com", "jiqizhixin.com", "mp.weixin.qq.com"];
+  let score = Number(item.priority || 0);
+  if (officialDomains.some((domain) => host === domain || host.endsWith(`.${domain}`))) score += 100;
+  else if (reportingDomains.some((domain) => host === domain || host.endsWith(`.${domain}`))) score += 70;
+  else if (cnTechDomains.some((domain) => host === domain || host.endsWith(`.${domain}`))) score += 45;
+  else if (host === "x.com" || host === "twitter.com") score += 15;
+  if (source.includes("官方")) score += 20;
+  return score;
+}
+
 async function buildAiNewsSection(maxItems) {
   const feeds = [
     { source: "AIHOT 精选", url: "https://aihot.virxact.com/feed.xml", domain: "aihot.virxact.com", priority: 3 },
@@ -6311,8 +6374,7 @@ async function buildAiNewsSection(maxItems) {
     fetchAnthropicNewsItems(Math.max(12, maxItems)).catch(() => []),
   ]);
   const aiHotDigest = await buildAiHotDigest();
-  const aiHotItems = (aiHotDigest.selected || [])
-    .slice(0, Math.min(8, maxItems))
+  const aiHotItems = pickUniqueAiNewsItems(aiHotDigest.selected || [], Math.min(8, maxItems))
     .map((item) => {
       const sourceMeta = normalizeAiHotItemSource(item);
       return {
@@ -6338,7 +6400,7 @@ async function buildAiNewsSection(maxItems) {
   const anthropicQuota = Math.min(18, Math.max(14, Math.ceil(maxItems * 0.9)));
   const anthropicItems = selectAnthropicCoverage(rawItems.filter(isAnthropicItem), anthropicQuota);
   const recentNonAnthropic = rawItems.filter((item) => !isAnthropicItem(item));
-  const items = pickUniqueItems(
+  const items = pickUniqueAiNewsItems(
     [
       ...aiHotItems,
       ...recentNonAnthropic.slice(0, Math.max(6, maxItems - anthropicItems.length)),
@@ -8300,7 +8362,7 @@ async function buildAiHotDigest() {
     }
   }
 
-  const selected = (selectedPayload?.items || []).slice(0, 10).map(normalizeAiHotApiItem);
+  const selected = pickUniqueAiNewsItems((selectedPayload?.items || []).map(normalizeAiHotApiItem), 10);
   const sections = (dailyPayload?.sections || []).map(normalizeAiHotDailySection);
   const storyCount = sections.reduce((sum, section) => sum + section.count, 0);
   const topSections = sections
