@@ -8587,10 +8587,11 @@ function interpretAiNews(item) {
   if (isAnthropicOfficialItem(item) || text.includes("anthropic")) {
     if (text.includes("claude code") && (text.includes("sandbox") || text.includes("filesystem") || text.includes("network isolation"))) return "A 社 Claude Code 基建信号：sandboxing 把文件系统、网络和权限提示变成 Agent 自主性的前置条件，适合直接转成企业编码 Agent 安全基线。";
     if (text.includes("agent") || text.includes("computer") || text.includes("tool")) return "A 社 Agent 信号：Claude 正在把工具使用、电脑操作和企业流程连接起来，重点看权限、审计和失败接管。";
+    if (text.includes("ipo") || text.includes("上市") || text.includes("估值") || text.includes("路演")) return "A 社资本化节奏信号：Anthropic 上市窗口、估值叙事和企业收入预期会影响 Claude 生态投入、渠道合作、采购谈判和模型供给连续性。";
     if (text.includes("partnership") || text.includes("office") || text.includes("ecosystem") || text.includes("enterprise") || text.includes("compute")) return "A 社企业生态信号：合作、算力和区域办公室会影响 Claude 的可用额度、企业采购路径和本地生态扩散。";
-    if (text.includes("research") || text.includes("alignment") || text.includes("safety") || text.includes("contain")) return "A 社安全研究信号：值得跟进其评测、可解释性和对齐方法是否能转化为内部模型治理清单。";
+    if (text.includes("research") || text.includes("alignment") || text.includes("safety") || text.includes("contain")) return "A 社安全研究信号：Anthropic 正把评测、可解释性、对齐缓解和 containment 经验转成模型治理素材，落地时要看可复现证据和内部控制清单。";
     if (text.includes("opus") || text.includes("sonnet") || text.includes("fable") || text.includes("mythos") || text.includes("model")) return "A 社模型信号：Claude 系列更新需要重点拆编码能力、长任务稳定性、上下文管理和企业成本边界。";
-    return "A 社生态信号：Anthropic 的产品、研究和企业合作会影响 Claude 生态、模型选型和 Agent 工作流落地节奏。";
+    return "A 社产品/研究分层信号：Anthropic 动态需要拆成 Claude 模型能力、Agent 执行面、企业合作、安全研究和采购风险，分别进入评测、权限和供应商治理清单。";
   }
   if (text.includes("openclaw") || text.includes("grok")) return "开源 Agent 生态信号：模型厂商正在把能力接入本地优先的个人助理和多端通讯入口。";
   if (text.includes("ai results") || text.includes("操纵")) return "AI 搜索安全信号：生成式搜索开始面对 SEO 式操纵，可信排序和反作弊会成为基础能力。";
