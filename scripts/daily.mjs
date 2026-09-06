@@ -6380,7 +6380,9 @@ function aiNewsTopicKey(item = {}) {
   if (/(fable\s*5\.1|mythos\s*5\.1|fable 5\.1|mythos 5\.1)/i.test(text)) {
     return "topic:claude-fable-mythos-5-1";
   }
-  return canonicalItemKey(item) || `title:${normalizeTitle(item.title || item.url || "")}`;
+  const titleKey = normalizeTitle(item.title || "");
+  if (titleKey) return `title:${titleKey}`;
+  return canonicalItemKey(item) || `url:${normalizeTitle(item.url || "")}`;
 }
 
 function aiNewsSourceQualityScore(item = {}) {
