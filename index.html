@@ -1,0 +1,276 @@
+<!doctype html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>技术雷达日报</title>
+    <link rel="icon" href="assets/wxy-logo.svg" type="image/svg+xml" />
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <div class="app-shell">
+      <aside class="sidebar">
+        <div class="brand">
+          <img class="brand-mark" src="assets/wxy-logo.svg" alt="WXY logo" />
+          <div>
+            <h1>技术雷达日报</h1>
+            <p>GitHub · 搜广推 · AI 新闻</p>
+            <span class="brand-signature">by wxy</span>
+          </div>
+        </div>
+
+        <label class="field">
+          <span>日报日期</span>
+          <select id="reportSelect"></select>
+        </label>
+
+        <label class="field">
+          <span>关键词过滤</span>
+          <input id="searchInput" type="search" placeholder="agent, rust, database..." />
+        </label>
+
+        <div class="summary-panel">
+          <span class="summary-label">今日样本</span>
+          <strong id="repoCount">0</strong>
+          <span id="sourceInfo">等待加载</span>
+        </div>
+
+        <nav class="section-nav" aria-label="页面导航">
+          <a href="#repoSection">热门项目</a>
+          <a href="#frontierSection">搜广推前沿</a>
+          <a href="#newsSection">AI 新闻</a>
+        </nav>
+
+        <div class="creator-card">
+          <img src="assets/wxy-logo.svg" alt="" aria-hidden="true" />
+          <div>
+            <span>Personal radar</span>
+            <strong>by wxy</strong>
+          </div>
+        </div>
+      </aside>
+
+      <main class="content">
+        <header id="topSection" class="topbar" data-toc-target>
+          <div>
+            <p class="eyebrow">Daily Technology Intelligence</p>
+            <h2 id="reportTitle">加载中</h2>
+          </div>
+          <div class="top-actions">
+            <span class="signature-pill">
+              <img src="assets/wxy-logo.svg" alt="" aria-hidden="true" />
+              by wxy
+            </span>
+            <a class="github-link" href="https://github.com/trending" target="_blank" rel="noreferrer">GitHub Trending</a>
+          </div>
+        </header>
+
+        <section id="briefingSection" class="briefing" aria-label="今日简报" data-toc-target>
+          <div>
+            <span>今日判断</span>
+            <div id="briefHeadline" class="brief-headline">等待加载</div>
+          </div>
+          <div id="heroVisual" class="hero-visual" aria-label="今日热点视觉摘要"></div>
+          <ul id="briefBullets"></ul>
+        </section>
+
+        <section id="metricsSection" class="metrics" aria-label="日报指标" data-toc-target>
+          <div>
+            <span>平均热度</span>
+            <strong id="avgScore">-</strong>
+          </div>
+          <div>
+            <span>最高 Stars</span>
+            <strong id="maxStars">-</strong>
+          </div>
+          <div>
+            <span>主要语言</span>
+            <strong id="topLanguage">-</strong>
+          </div>
+          <div>
+            <span>情报来源</span>
+            <strong id="intelSources">-</strong>
+          </div>
+        </section>
+
+        <section id="repoSection" class="section-block" data-toc-target>
+          <div class="section-head">
+            <div>
+              <p class="eyebrow">Open Source Radar</p>
+              <h3>GitHub 热门项目深度解读</h3>
+            </div>
+            <span id="repoSectionMeta">-</span>
+          </div>
+          <section id="repoGrid" class="repo-grid" aria-live="polite"></section>
+        </section>
+
+        <section id="frontierSection" class="section-block" data-toc-target>
+          <div class="section-head">
+            <div>
+              <p class="eyebrow">Search · Ads · Recommendation</p>
+              <h3>搜广推技术前沿</h3>
+            </div>
+            <span id="frontierMeta">-</span>
+          </div>
+          <section id="frontierGrid" class="insight-grid"></section>
+        </section>
+
+        <section id="newsSection" class="section-block" data-toc-target>
+          <div class="section-head">
+            <div>
+              <p class="eyebrow">AI Industry Watch</p>
+              <h3>AI 新闻</h3>
+            </div>
+            <span id="newsMeta">-</span>
+          </div>
+          <section id="newsBrief" class="source-brief" hidden></section>
+          <section id="aiHotDigest" class="aihot-digest" hidden></section>
+          <section id="newsGrid" class="news-grid"></section>
+        </section>
+
+        <section id="emptyState" class="empty-state" hidden>
+          <h3>暂无可展示日报</h3>
+          <p>先运行 <code>npm run sample</code> 或 <code>npm run daily</code> 生成报告数据。</p>
+        </section>
+      </main>
+    </div>
+
+    <nav class="floating-toc" aria-label="快速目录">
+      <div class="toc-progress" aria-hidden="true"><span id="pageProgress"></span></div>
+      <div class="toc-label">RADAR INDEX</div>
+      <div class="toc-links">
+        <a href="#topSection" data-toc-link="topSection">总览</a>
+        <a href="#briefingSection" data-toc-link="briefingSection">简报</a>
+        <a href="#metricsSection" data-toc-link="metricsSection">指标</a>
+        <a href="#repoSection" data-toc-link="repoSection">项目</a>
+        <a href="#frontierSection" data-toc-link="frontierSection">搜广推</a>
+        <a href="#newsSection" data-toc-link="newsSection">AI</a>
+      </div>
+      <div class="toc-controls" aria-label="滚动控制">
+        <button id="scrollPrevBtn" class="toc-button" type="button" title="上一段" aria-label="上一段">&#8593;</button>
+        <button id="scrollNextBtn" class="toc-button" type="button" title="下一段" aria-label="下一段">&#8595;</button>
+        <button id="scrollTopBtn" class="toc-button toc-button-secondary" type="button" title="回到顶部" aria-label="回到顶部">&#8679;</button>
+        <button id="scrollBottomBtn" class="toc-button toc-button-secondary" type="button" title="到底部" aria-label="到底部">&#8681;</button>
+      </div>
+    </nav>
+
+    <script>
+      (() => {
+        const reportPayloads = {
+          "reports/2026-09-07.json": "reports/payloads/2026-09-07.json.gz.b64.part",
+          "reports/2026-09-06.json": "reports/payloads/2026-09-06.json.gz.b64.part",
+          "reports/2026-09-05.json": "reports/payloads/2026-09-05.json.gz.b64.part",
+          "reports/2026-09-04.json": "reports/payloads/2026-09-04.json.gz.b64.part",
+          "reports/2026-09-03.json": "reports/payloads/2026-09-03.json.gz.b64.part",
+          "reports/2026-09-02.json": "reports/payloads/2026-09-02.json.gz.b64.part",
+          "reports/2026-09-01.json": "reports/payloads/2026-09-01.json.gz.b64.part",
+          "reports/2026-08-31.json": "reports/payloads/2026-08-31.json.gz.b64.part",
+          "reports/2026-08-30.json": "reports/payloads/2026-08-30.json.gz.b64.part",
+          "reports/2026-08-29.json": "reports/payloads/2026-08-29.json.gz.b64.part",
+          "reports/2026-08-28.json": "reports/payloads/2026-08-28.json.gz.b64.part",
+          "reports/2026-08-27.json": "reports/payloads/2026-08-27.json.gz.b64.part",
+          "reports/2026-08-26.json": "reports/payloads/2026-08-26.json.gz.b64.part",
+          "reports/2026-08-25.json": "reports/payloads/2026-08-25.json.gz.b64.part",
+          "reports/2026-08-24.json": "reports/payloads/2026-08-24.json.gz.b64.part",
+          "reports/2026-08-23.json": "reports/payloads/2026-08-23.json.gz.b64.part",
+          "reports/2026-08-22.json": "reports/payloads/2026-08-22.json.gz.b64.part",
+          "reports/2026-08-21.json": "reports/payloads/2026-08-21.json.gz.b64.part",
+          "reports/2026-08-20.json": "reports/payloads/2026-08-20.json.gz.b64.part",
+          "reports/2026-08-19.json": "reports/payloads/2026-08-19.json.gz.b64.part",
+          "reports/2026-08-18.json": "reports/payloads/2026-08-18.json.gz.b64.part",
+          "reports/2026-08-17.json": "reports/payloads/2026-08-17.json.gz.b64.part",
+          "reports/2026-08-16.json": "reports/payloads/2026-08-16.json.gz.b64.part",
+          "reports/2026-08-15.json": "reports/payloads/2026-08-15.json.gz.b64.part",
+          "reports/2026-08-14.json": "reports/payloads/2026-08-14.json.gz.b64.part",
+          "reports/2026-08-13.json": "reports/payloads/2026-08-13.json.gz.b64.part",
+          "reports/2026-08-12.json": "reports/payloads/2026-08-12.json.gz.b64.part",
+          "reports/2026-08-11.json": "reports/payloads/2026-08-11.json.gz.b64.part",
+          "reports/2026-08-07.json": "reports/payloads/2026-08-07.json.gz.b64.part",
+          "reports/2026-08-06.json": "reports/payloads/2026-08-06.json.gz.b64.part",
+          "reports/2026-08-05.json": "reports/payloads/2026-08-05.json.gz.b64.part",
+          "reports/2026-08-04.json": "reports/payloads/2026-08-04.json.gz.b64.part",
+          "reports/2026-08-03.json": "reports/payloads/2026-08-03.json.gz.b64.part",
+          "reports/2026-07-31.json": "reports/payloads/2026-07-31.json.gz.b64.part",
+          "reports/2026-07-30.json": "reports/payloads/2026-07-30.json.gz.b64.part",
+          "reports/2026-07-29.json": "reports/payloads/2026-07-29.json.gz.b64.part",
+          "reports/2026-07-28.json": "reports/payloads/2026-07-28.json.gz.b64.part",
+          "reports/2026-07-27.json": "reports/payloads/2026-07-27.json.gz.b64.part",
+          "reports/2026-07-26.json": "reports/payloads/2026-07-26.json.gz.b64.part",
+          "reports/2026-07-25.json": "reports/payloads/2026-07-25.json.gz.b64.part",
+          "reports/2026-07-24.json": "reports/payloads/2026-07-24.json.gz.b64.part",
+          "reports/2026-07-23.json": "reports/payloads/2026-07-23.json.gz.b64.part",
+          "reports/2026-07-22.json": "reports/payloads/2026-07-22.json.gz.b64.part",
+          "reports/2026-07-21.json": "reports/payloads/2026-07-21.json.gz.b64.part",
+          "reports/2026-07-20.json": "reports/payloads/2026-07-20.json.gz.b64.part",
+          "reports/2026-07-19.json": "reports/payloads/2026-07-19.json.gz.b64.part",
+          "reports/2026-07-18.json": "reports/payloads/2026-07-18.json.gz.b64.part",
+          "reports/2026-07-17.json": "reports/payloads/2026-07-17.json.gz.b64.part",
+          "reports/2026-07-16.json": "reports/payloads/2026-07-16.json.gz.b64.part",
+          "reports/2026-07-15.json": "reports/payloads/2026-07-15.json.gz.b64.part",
+          "reports/2026-07-14.json": "reports/payloads/2026-07-14.json.gz.b64.part",
+          "reports/2026-07-13.json": "reports/payloads/2026-07-13.json.gz.b64.part",
+          "reports/2026-07-12.json": "reports/payloads/2026-07-12.json.gz.b64.part",
+          "reports/2026-07-11.json": "reports/payloads/2026-07-11.json.gz.b64.part",
+          "reports/2026-07-10.json": "reports/payloads/2026-07-10.json.gz.b64.part",
+          "reports/2026-07-09.json": "reports/payloads/2026-07-09.json.gz.b64.part",
+          "reports/2026-07-08.json": "reports/payloads/2026-07-08.json.gz.b64.part",
+          "reports/2026-07-07.json": "reports/payloads/2026-07-07.json.gz.b64.part",
+          "reports/2026-07-06.json": "reports/payloads/2026-07-06.json.gz.b64.part",
+          "reports/2026-07-05.json": "reports/payloads/2026-07-05.json.gz.b64.part",
+          "reports/2026-07-04.json": "reports/payloads/2026-07-04.json.gz.b64.part",
+          "reports/2026-07-03.json": "reports/payloads/2026-07-03.json.gz.b64.part",
+          "reports/2026-07-02.json": "reports/payloads/2026-07-02.json.gz.b64.part",
+          "reports/2026-07-01.json": "reports/payloads/2026-07-01.json.gz.b64.part",
+          "reports/2026-06-30.json": "reports/payloads/2026-06-30.json.gz.b64.part",
+          "reports/2026-06-29.json": "reports/payloads/2026-06-29.json.gz.b64.part",
+          "reports/2026-06-28.json": "reports/payloads/2026-06-28.json.gz.b64.part",
+          "reports/2026-06-27.json": "reports/payloads/2026-06-27.json.gz.b64.part",
+          "reports/2026-06-26.json": "reports/payloads/2026-06-26.json.gz.b64.part",
+          "reports/2026-06-25.json": "reports/payloads/2026-06-25.json.gz.b64.part",
+          "reports/2026-06-24.json": "reports/payloads/2026-06-24.json.gz.b64.part",
+          "reports/2026-06-23.json": "reports/payloads/2026-06-23.json.gz.b64.part",
+          "reports/2026-06-22.json": "reports/payloads/2026-06-22.json.gz.b64.part",
+          "reports/2026-06-19.json": "reports/payloads/2026-06-19.json.gz.b64.part",
+          "reports/2026-06-18.json": "reports/payloads/2026-06-18.json.gz.b64.part",
+          "reports/2026-06-17.json": "reports/payloads/2026-06-17.json.gz.b64.part",
+          "reports/2026-06-16.json": "reports/payloads/2026-06-16.json.gz.b64.part",
+          "reports/2026-06-15.json": "reports/payloads/2026-06-15.json.gz.b64.part",
+          "reports/2026-06-14.json": "reports/payloads/2026-06-14.json.gz.b64.part",
+          "reports/2026-06-13.json": "reports/payloads/2026-06-13.json.gz.b64.part",
+          "reports/2026-06-12.json": "reports/payloads/2026-06-12.json.gz.b64.part",
+          "reports/2026-06-11.json": "reports/payloads/2026-06-11.json.gz.b64.part",
+          "reports/2026-06-10.json": "reports/payloads/2026-06-10.json.gz.b64.part",
+        };
+        const nativeFetch = window.fetch.bind(window);
+
+        window.fetch = async (input, init) => {
+          const requestUrl = typeof input === "string" ? input : input.url;
+          const payloadPrefix = Object.entries(reportPayloads).find(([reportPath]) => requestUrl.endsWith(reportPath))?.[1];
+          if (!payloadPrefix || !("DecompressionStream" in window)) return nativeFetch(input, init);
+
+          const chunks = [];
+          for (let index = 0; index < 100; index += 1) {
+            const partPath = `${payloadPrefix}${String(index).padStart(2, "0")}`;
+            const response = await nativeFetch(partPath, { cache: "no-store" });
+            if (response.status === 404) break;
+            if (!response.ok) return nativeFetch(input, init);
+            chunks.push(await response.text());
+          }
+          if (!chunks.length) return nativeFetch(input, init);
+
+          const encoded = chunks.join("").replace(/\s+/g, "");
+          const compressed = Uint8Array.from(atob(encoded), (char) => char.charCodeAt(0));
+          const stream = new Blob([compressed]).stream().pipeThrough(new DecompressionStream("gzip"));
+          const reportText = await new Response(stream).text();
+          return new Response(reportText, {
+            headers: {
+              "content-type": "application/json; charset=utf-8",
+              "x-echo-trending-payload": "compressed",
+            },
+          });
+        };
+      })();
+    </script>
+    <script src="app.js" type="module"></script>
+  </body>
+</html>
