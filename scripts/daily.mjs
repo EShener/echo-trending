@@ -138,6 +138,30 @@ async function buildReport({ reportDate, limit, days, language }) {
 
 function applyEditorialOverrides(report) {
   const aiNewsOverrides = {
+    "Anthropic 据报道签约高达 5170 亿美元算力协议，锁定至少 14.8 GW 算力": {
+      signal: "A 社算力供给从模型发布进入电力级合约竞争信号：AIHOT 引述 The Decoder 称 Anthropic 签下高额算力协议并锁定 14.8 GW 级容量，焦点是 Claude 路线图开始被数据中心、电力、融资和长期云供给共同约束。",
+      impact: "企业采用 Claude 时需要把模型质量和供应连续性一起评估；如果算力交付、并网、融资或监管节奏变化，API 配额、区域可用性、价格和企业优先级都会受到影响，但媒体转述仍不能替代官方合同和监管文件。",
+      action: "把它列入供应商容量风险表：跟踪 Anthropic 官方公告、云/数据中心伙伴、电力并网、融资条款、模型访问配额、价格变动和区域 SLA，不把协议规模直接等同于可交付推理容量。",
+      tags: ["Anthropic", "Compute", "Data Center", "供应连续性"],
+    },
+    "GPT-6 Astra爆火后，卡兹克谈执行能力贬值与判断力断层": {
+      signal: "Astra 热度触发组织能力重估信号：这条讨论把 GPT-6 Astra 的执行能力提升与“判断力断层”放在一起，真正变化是模型会压低普通执行任务的稀缺性，同时放大问题定义、验收标准和责任判断的价值。",
+      impact: "团队不能只把 Astra 当更强执行器采购；如果没有清晰 owner、目标分解、风险边界和验收证据，更强的执行能力会更快地产生错误产物、权限误用和方向偏航。",
+      action: "把试用任务拆成执行层和判断层：执行层看代码、文档、浏览器任务完成率；判断层要求人类定义目标、停止条件、风险阈值和复盘样本，记录模型何时需要被接管。",
+      tags: ["OpenAI Astra", "Agent", "组织能力", "判断力"],
+    },
+    "OpenAI 长文阐述对齐与监测困境，称 CoT 监控能力正在减弱": {
+      signal: "CoT 监控可靠性下降信号：OpenAI 对齐文章强调链式思考可监控性正在变弱，说明前沿模型安全不能继续默认依赖读到的 reasoning 文本来判断真实意图、工具风险或隐藏策略。",
+      impact: "Agent 平台和安全团队需要把监控从“看模型怎么想”转到“看模型做了什么”：工具调用、外部请求、文件写入、权限触发和结果差异会比单段 CoT 更接近可审计证据。",
+      action: "升级上线 gate：为高风险工具增加行为日志、策略拦截、影子评测、人工暂停点和回放样本，分别记录 CoT 可见性、行为异常、误报漏报和策略绕过。",
+      tags: ["OpenAI", "CoT Monitoring", "Alignment", "Agent Safety"],
+    },
+    "实测GPT-6 Astra：速度、前端与代码能力对比GPT-5.6 Sol的全面升级": {
+      signal: "Astra 从发布热度进入开发者实测信号：速度、前端和代码能力对比 GPT-5.6 Sol 的重点不是单次样例胜出，而是新模型是否能在真实仓库、UI 细节、测试修复和长任务恢复里稳定降低人工返工。",
+      impact: "研发团队会想把 Astra 放进 coding agent 默认路由，但公开实测样本通常覆盖面窄；真实采用仍受访问资格、成本、P95、工具调用稳定性、代码可合并率和安全策略影响。",
+      action: "用固定 issue 回放而不是凭体验迁移：前端还原、后端修复、测试补齐、文档重构各跑同样样本，对比 GPT-5.6 Sol、Claude 和现有默认模型，记录通过率、人工修改、耗时、成本和失败类型。",
+      tags: ["OpenAI Astra", "Coding Agent", "前端", "模型评测"],
+    },
     "美团 LongCat-2.0 上线 Cline 免费试用": {
       signal: "国产 coding model 进入 IDE 插件试用信号：美团 LongCat-2.0 通过 Cline 免费入口触达开发者，重点不是单次模型发布，而是国产模型开始争夺真实代码编辑、终端执行和插件工作流里的默认试用位。",
       impact: "研发团队会更容易把 LongCat 放进 Claude、OpenAI、Qwen 之外的编码候选池，但免费试用只能证明获客入口，不证明仓库理解、测试修复、长任务恢复、企业权限和 SLA 已经稳定。",
@@ -9570,8 +9594,8 @@ function curatedAiNewsOverride(item) {
       };
     }
     return {
-      signal: "Astra 从传闻观察进入可用性评估信号：OpenAI GPT-6 Astra 发布后，关注点应从标题热度转向 API/ChatGPT 开放节奏、上下文窗口、computer use、成本和安全门控如何共同影响真实工作流。",
-      impact: "团队会把 Astra 纳入 Claude、GPT-5.6 和开源模型的候选路由，但访问资格、价格、日志审计、数据边界和高风险能力限制会决定它能否进入生产，而不是发布口号本身。",
+      signal: "Astra 可用性评估信号：凡是围绕 GPT-6 Astra 的新动态，都应拆成访问入口、上下文窗口、computer use、成本、安全门控和真实任务表现，而不是停留在标题热度。",
+      impact: "团队会把 Astra 纳入 Claude、GPT-5.6 和开源模型的候选路由，但能否进入生产取决于访问资格、价格、日志审计、数据边界、高风险能力限制和固定回放集结果。",
       action: "先做低敏任务 smoke test：代码修复、长文档研究、表格分析、浏览器操作各选 5 条，记录完成率、人工修改、token 成本、P95、失败类型、权限提示和 fallback 条件。",
       tags: ["OpenAI Astra", "GPT-6", "模型发布", "生产灰度"],
     };
