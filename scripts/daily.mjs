@@ -9769,7 +9769,7 @@ function normalizeRepo(repo, languages, reportDate) {
     avatarUrl: repo.owner?.avatar_url,
     visualUrl: `https://opengraph.githubassets.com/${reportDate.replaceAll("-", "")}/${repo.full_name}`,
     url: repo.html_url,
-    description: repo.description || "",
+    description: cleanupXml(repo.description || ""),
     stars: repo.stargazers_count,
     starsToday: repo.trending?.starsToday || 0,
     forks: repo.forks_count,
@@ -9784,9 +9784,10 @@ function normalizeRepo(repo, languages, reportDate) {
 }
 
 function mergeRepoWithPrevious(repo, previousRepo = {}) {
-  if (!previousRepo?.fullName) return repo;
+  const cleanedDescription = cleanupXml(repo.description || "");
+  if (!previousRepo?.fullName) return { ...repo, description: cleanedDescription };
   const isFallbackRepo = !repo.created_at || !repo.license || !(repo.topics || []).length;
-  if (!isFallbackRepo) return repo;
+  if (!isFallbackRepo) return { ...repo, description: cleanedDescription };
 
   return {
     ...repo,
@@ -9795,7 +9796,7 @@ function mergeRepoWithPrevious(repo, previousRepo = {}) {
       login: repo.owner?.login || previousRepo.owner,
       avatar_url: previousRepo.avatarUrl || repo.owner?.avatar_url,
     },
-    description: cleanupXml(repo.description || "") || previousRepo.description || "",
+    description: cleanedDescription || previousRepo.description || "",
     forks_count: repo.forks_count || previousRepo.forks || 0,
     open_issues_count: previousRepo.openIssues ?? repo.open_issues_count ?? 0,
     topics: (repo.topics || []).length ? repo.topics : previousRepo.topics || [],
