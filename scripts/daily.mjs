@@ -138,6 +138,12 @@ async function buildReport({ reportDate, limit, days, language }) {
 
 function applyEditorialOverrides(report) {
   const aiNewsOverrides = {
+    "Mistral 完成 30 亿欧元 D 轮融资，估值超 210 亿欧元": {
+      signal: "欧洲主权开源模型进入资本加速信号：Mistral 的 30 亿欧元 D 轮融资把开源权重、企业部署、欧洲数据主权和前沿模型研发放到同一条资金线上，说明非美模型供应商正在争夺政府与大型企业的可信替代入口。",
+      impact: "企业会更愿意把 Mistral 纳入 Claude/OpenAI/Gemini 之外的候选池，尤其是本地化、私有化和合规敏感场景；但融资规模不能直接证明模型质量、推理成本、工具调用稳定性或长期 SLA 已经领先。",
+      action: "把它纳入供应商分层评估：跟踪新资金投向、开源权重许可、企业部署能力、欧洲云伙伴、模型 benchmark、真实任务回放、价格和数据治理条款，再决定是否进入生产 fallback。",
+      tags: ["Mistral", "Open Weight", "Sovereign AI", "融资"],
+    },
     "Anthropic 据报道签约高达 5170 亿美元算力协议，锁定至少 14.8 GW 算力": {
       signal: "A 社算力供给从模型发布进入电力级合约竞争信号：AIHOT 引述 The Decoder 称 Anthropic 签下高额算力协议并锁定 14.8 GW 级容量，焦点是 Claude 路线图开始被数据中心、电力、融资和长期云供给共同约束。",
       impact: "企业采用 Claude 时需要把模型质量和供应连续性一起评估；如果算力交付、并网、融资或监管节奏变化，API 配额、区域可用性、价格和企业优先级都会受到影响，但媒体转述仍不能替代官方合同和监管文件。",
