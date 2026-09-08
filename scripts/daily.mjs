@@ -198,6 +198,18 @@ function applyEditorialOverrides(report) {
       action: "把它作为高可靠代码回放样本：选 5-10 个小型规格任务，要求 Agent 输出实现、证明/测试、失败日志和修复轨迹，记录通过率、证明修正次数、环境问题和 reviewer 负担。",
       tags: ["Vero", "Formal Verification", "Coding Agent", "Benchmark"],
     },
+    "Berkeley RDI 发布开源平台 CUA-Lite，面向计算机使用智能体": {
+      signal: "CUA 评测基础设施标准化信号：Berkeley RDI 的 CUA-Lite 把环境接口、监督数据格式和模型 harness 拆成三个抽象，并覆盖桌面、浏览器和移动端基准，说明计算机使用智能体开始从单点 demo 走向可复现实验平台。",
+      impact: "Agent 团队可以用统一 harness 对比 Claude、OpenAI、开源模型和自研策略在真实 UI 任务上的表现，但 30k+ 可验证任务和免 VM 沙箱仍不能替代企业内部登录态、权限、慢页面和异常流程回放。",
+      action: "把 CUA-Lite 放进浏览器/桌面 Agent 准入链：先选 20 个低风险 UI 任务跑同一模型集合，记录完成率、误点击、人工接管、环境失败、任务可复现性和审计日志，再决定是否接内部系统。",
+      tags: ["CUA-Lite", "Computer Use", "Agent Benchmark", "UI Automation"],
+    },
+    "Safety for Whom? Refusing the Right Subset of a Topic, Not the Whole Topic": {
+      signal: "安全拒答粒度治理信号：Hugging Face 这篇文章把安全策略从整类主题拒答推进到子主题级判断，关键变化是模型需要区分同一话题里的教育、研究、求助、滥用和高风险操作，而不是用粗粒度关键词封锁。",
+      impact: "企业客服、教育、健康和开发者平台会减少误拒带来的可用性损失，但更细粒度的拒答也会提高策略设计、标注一致性、红队样本和上线监控成本；公开博客结论仍需在本地业务语料复测。",
+      action: "把它转成策略回放集：按主题构造允许、限制、拒绝三类样本，记录误拒、误放、解释质量、升级人工比例和用户申诉率，并把策略版本与模型版本一起进入发布审计。",
+      tags: ["Hugging Face", "AI Safety", "Refusal Policy", "治理"],
+    },
     "Nvidia 接近以 129 亿美元收购 Hugging Face": {
       title: "X 转述称 NVIDIA 接近收购 Hugging Face，仍需官方/监管文件核验",
       summary: "X 账号转述 Bloomberg 线索称 NVIDIA 接近收购 Hugging Face；截至本轮生成仍按未确认传闻处理，需等待 NVIDIA、Hugging Face、监管文件或正式交易公告复核。",
