@@ -1789,6 +1789,20 @@ function codexResearchRefresh({ repo, readme, languages, fallback }) {
 
 function specializeLens(repo, lens) {
   const overrides = {
+    "ayghri/i-have-adhd": {
+      editorialMethod: "manual-deep-update-2026-09-08",
+      primaryLang: "Python/Claude skill",
+      domain: "ADHD-friendly Agent 输出规范 / Claude Code Skill",
+      userPain: "Coding Agent 常把关键结论埋在长段背景、过程叙述和无关细节里；对注意力负担高、需要快速执行的人来说，这会增加阅读成本、遗漏风险和追问次数。",
+      coreMechanism: "i-have-adhd 把 ADHD-friendly 输出约束封装成 Claude Code skill，用更短的层级、明确答案优先、行动项和状态边界来约束 Agent 回答，让输出更适合快速扫描和继续执行。",
+      safeEntry: "先在个人或小团队的低风险任务里启用：挑 20 条代码解释、排障和计划输出，对比启用前后的结论定位时间、追问次数、漏读问题和用户主观负担。",
+      businessValue: "适合作为 Agent 输出体验和可访问性治理样本，帮助研发效能、支持和内容团队减少长回答带来的认知成本，而不是替代专业医疗或无障碍评估。",
+      successMetric: "结论定位时间、追问次数、任务继续执行率、漏读关键约束数、用户主观负担、输出长度、人工重写次数和失败样本复盘数",
+      inspectFirst: "先看 SKILL.md 触发条件、输出格式约束、多语言 README、安装方式、是否修改全局行为、与本地 AGENTS 规则的冲突、license 和 issue 中的负面反馈。",
+      bestFit: "高频使用 Claude Code/Codex、觉得 Agent 回答过长且愿意用小样本比较输出质量的个人开发者、研发效能团队和技术支持团队。",
+      badFit: "需要完整审计链、法务措辞、医疗建议、复杂方案论证或必须保留全部背景推理的正式交付场景。",
+      primaryRisk: "过度压缩可能丢掉证据、前提和边界；必须保留用户可展开的细节、文件引用和失败原因，不能把简短等同于准确。",
+    },
     "heygen-com/hyperframes": {
       editorialMethod: "manual-deep-update-2026-09-08",
       primaryLang: "TypeScript/HTML video runtime",
@@ -1858,6 +1872,20 @@ function specializeLens(repo, lens) {
       bestFit: "个人学习、前端部署样本、媒体 UI 原型和非商业自托管体验评估，且能人工核验版权边界的场景。",
       badFit: "企业内容产品、商业化播放站、广告变现、公开视频分发或无法说明内容授权来源的团队。",
       primaryRisk: "影视聚合类项目最大风险是版权和协议边界；即使技术可部署，也必须把非商业、署名、同协议和内容来源审查放在第一位。",
+    },
+    "browser-use/browser-use": {
+      editorialMethod: "manual-deep-update-2026-09-08",
+      primaryLang: "Python/Playwright browser agent",
+      domain: "Browser Agent 运行层 / 网站可访问自动化框架",
+      userPain: "LLM 要完成网页任务时，DOM、视觉状态、登录态、弹窗、表单和导航失败都会让模型难以稳定操作；手写 Playwright 脚本又缺少自然语言任务分解和错误恢复。",
+      coreMechanism: "browser-use 把 Playwright 浏览器控制、页面状态提取、动作规划、LLM 调用和任务循环封装成 Agent 运行层，让模型可以把网站理解为可观察、可执行、可回放的操作环境。",
+      safeEntry: "先用公开低风险网站做 20 个只读或可撤销流程：搜索、表单草稿、价格核对和后台巡检，禁止付款、发帖、删除、改权限和批量抓取。",
+      businessValue: "适合把人工网页巡检、竞争情报采样、后台 QA 和轻量运营流程变成可审计 Agent 试点，为后续 Claude/Computer Use/自建浏览器 Agent 评测提供基线。",
+      successMetric: "任务完成率、误点击率、页面状态识别准确率、人工接管次数、失败恢复率、P95 步骤耗时、权限提示命中、日志可回放性和被风控次数",
+      inspectFirst: "先看浏览器生命周期、action schema、DOM/截图上下文提取、LLM provider 配置、登录态隔离、失败重试、任务日志、MCP/CLI 入口、license 和安全说明。",
+      bestFit: "有明确授权页面、低风险动作白名单、人工接管和日志审计要求的 QA、运营自动化、研究采样和 Agent 平台团队。",
+      badFit: "支付下单、账号安全操作、批量抓取、绕过风控、敏感客户数据后台或缺少人工确认的生产流程。",
+      primaryRisk: "网页 Agent 的风险集中在误操作、prompt injection、登录态泄露和平台条款；必须限制动作空间、隔离账号、保留日志并提供人工暂停点。",
     },
     "The-Swarm-Corporation/AutoHedge": {
       editorialMethod: "manual-deep-update-2026-09-08",
