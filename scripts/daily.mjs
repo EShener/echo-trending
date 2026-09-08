@@ -1932,18 +1932,23 @@ function specializeLens(repo, lens) {
       primaryRisk: "金融 Agent 最容易把流畅分析误读成可交易信号；必须隔离实盘权限、保留回测假设和人工风控审批。",
     },
     "openai/skills": {
-      editorialMethod: "manual-deep-update-2026-09-08",
+      editorialMethod: "manual-deep-update-2026-09-09",
       primaryLang: "Python/Markdown skill catalog",
-      domain: "Codex Skills 官方目录 / Agent 能力发现与本地化样本库",
-      userPain: "团队想让 Codex 在文档、表格、前端、研究等任务里调用专门技能，但如果没有目录、触发条件、脚本边界和本地化流程，skills 会变成散落提示词和隐式权限。",
-      coreMechanism: "openai/skills 用官方 skill catalog、Markdown 指令、脚本/模板资产和触发说明展示 Codex 如何按任务加载专门能力，把 Agent 能力从单次提示提升为可审查资源包。",
-      safeEntry: "先只抽样 2-3 个低权限 skill 做本地试跑，检查 SKILL.md、脚本依赖、文件读写范围和输出验收；再按团队规范改写成本地版本，不批量安装未知能力。",
-      businessValue: "为研发效能、内容生产和知识工程团队提供技能治理样本：能力目录、触发规则、资产复用、验证步骤和权限审查可以被版本化。",
-      successMetric: "skill 命中率、任务一次通过率、本地化耗时、脚本权限风险、输出格式错误、人工追问次数、复用次数和过期 skill 比例",
-      inspectFirst: "先看目录结构、每个 SKILL.md 的触发条件、脚本/模板依赖、外部服务调用、license、测试样例、安装方式和与本地 AGENTS 规则的冲突。",
-      bestFit: "已经高频使用 Codex，想建立内部 skill registry、任务模板和权限审查流程的个人或平台工程团队。",
-      badFit: "希望一键安装大量外部 skill、仓库含高敏数据、没有脚本审查，或任务还没有稳定到值得技能化的场景。",
-      primaryRisk: "skills 会改变 Agent 行为和工具权限；外部目录只能当样本，必须本地化、最小权限、逐项验证和保留人工 review。",
+      domain: "已 deprecated 的 Codex Skills 目录 / 迁移参考样本",
+      userPain: "团队想学习 Codex skill 的目录、触发说明、脚本资产和权限审查方式，但这个仓库 README 已明确提示 deprecated，当前示例应迁往 OpenAI Plugins / Build plugins guide，而不是继续当作生产依赖。",
+      coreMechanism: "openai/skills 保留了一批旧版 skill 目录、Markdown 指令和脚本/模板组织方式，可用于理解 skill package 的组成；真正落地要转向当前插件指南、官方系统 skill 和本地受控 skill registry。",
+      safeEntry: "只把它当迁移对照材料：抽 2-3 个低权限 skill 阅读结构，映射到当前 Build plugins guide 和本地 skill 规范，不从该仓库批量安装或继承旧依赖。",
+      businessValue: "价值在于做历史样本和迁移清单，帮助团队识别 skill 资产、触发条件和权限边界如何版本化；不适合作为新的生产能力来源。",
+      successMetric: "deprecated 样本识别率、可迁移 skill 数、迁移后任务一次通过率、旧依赖清理数、脚本权限风险、本地化耗时和过期引用比例",
+      inspectFirst: "先看 README 的 deprecated 提示、指向的 OpenAI Plugins / Build plugins guide、各 SKILL.md 的触发条件、脚本依赖、外部服务调用、license 和与当前 Codex skill 规范的差异。",
+      bestFit: "已经维护旧 skill 或需要给团队讲清 skill package 结构、迁移边界和权限审查流程的研发效能/平台团队。",
+      badFit: "希望寻找可直接安装的新能力、没有迁移 owner、仓库含高敏数据，或打算把 deprecated 示例直接接进生产 Agent 流程的场景。",
+      primaryRisk: "deprecated 仓库最大的风险是把旧示例误当当前官方落地路径；必须以当前插件指南和本地审查为准，逐项迁移、最小权限验证并清理过期引用。",
+      maturityOverride: {
+        maintenance: 45,
+        production: 38,
+      },
+      scoreOverride: 68,
     },
     "lightpanda-io/browser": {
       editorialMethod: "manual-deep-update-2026-09-08",
@@ -5015,8 +5020,11 @@ function fallbackAnalysis({ repo, readme, languages }) {
     watchSignals: buildWatchSignals({ lens, activity, profile }),
     deepDive: buildDeepDive({ repo, lens, profile, activity }),
     diagram: buildProjectDiagram({ repo, lens, topLanguages, topics }),
-    maturity: buildMaturity({ repo, lens }),
-    score: scoreRepo(repo),
+    maturity: {
+      ...buildMaturity({ repo, lens }),
+      ...(lens.maturityOverride || {}),
+    },
+    score: lens.scoreOverride ?? scoreRepo(repo),
   };
 }
 
