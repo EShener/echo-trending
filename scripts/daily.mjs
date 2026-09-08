@@ -248,6 +248,18 @@ function applyEditorialOverrides(report) {
       action: "把这类主张转成内部业务回放：选择 3-5 个重复知识工作场景，记录端到端完成率、人工复核时间、错误成本、权限触点、每任务成本和用户接受度，再决定是否扩到核心流程。",
       tags: ["OpenAI", "AI Productivity", "Enterprise AI", "ROI"],
     },
+    "Noam Brown 评 OpenAI 用智能体求解 Navier-Stokes 千禧年难题：成本会快速下降": {
+      signal: "科学 Agent 成本曲线信号：Noam Brown 把 Navier-Stokes 证明的百万美元级算力消耗，与 o3、IMO 和 Astra 后续成本下降放在同一条经验曲线上，说明前沿科学发现正在从单次高价突破转向可预期的重复成本下降。",
+      impact: "科研、算法和模型平台团队会更愿意规划大规模 Agent 协同实验，但这不等于普通企业马上能复制；真实约束仍在证明可验性、并行协调、专家复核、数据来源、预算上限和学术信用边界。",
+      action: "建立科学 Agent 成本账本：按任务记录 agent 数、wall time、token/算力、专家复核小时、形式化验证进度、失败分支和争议信号，只在成本下降且证据链可复验后扩大投入。",
+      tags: ["OpenAI", "Navier-Stokes", "Scientific Agent", "成本曲线"],
+    },
+    "Dwarkesh Patel 研究：预训练进步主要来自数据改进": {
+      signal: "预训练效率归因信号：Dwarkesh Patel 的实验把 2019-2025 年代表模型配方与数据语料放到同等 FLOPs 预算下回放，结论指向数据改进贡献大于模型配方本身，训练红利正在更多来自数据筛选、清洗和课程设计。",
+      impact: "模型团队不能只追结构、参数量或推理技巧；如果数据质量才是主要效率来源，企业内训、领域模型和 RAG 也要把样本去重、覆盖度、难例、污染检查和评测切分前置。",
+      action: "把它转成数据治理回放：选一个内部语料子集，分别比较原始数据、清洗数据和难例重采样在固定算力/固定模型上的 loss、下游任务、污染率、人工标注成本和失败样本。",
+      tags: ["Pretraining", "Data Quality", "Scaling Laws", "模型训练"],
+    },
     "路透社调查：美国 AI 数据中心现大量幽灵用电需求，得州等多州出手整治": {
       signal: "AI 数据中心需求真实性治理信号：Reuters 调查显示部分 AI 数据中心用电申请存在幽灵需求，说明算力扩张的瓶颈不只在 GPU，也在电网接入、排队机制和项目真实性审查。",
       impact: "模型供应商和云厂商的容量承诺可能受到地方电力审批、押金、并网节奏和虚假排队清理影响；应用团队看到的配额与价格波动背后可能是基础设施交付风险。",
@@ -6955,6 +6967,10 @@ function ensureAnthropicRequiredCoverage(selected, ranked, maxItems) {
     {
       name: "Claude Code/Agent/Computer Use",
       matches: (item) => /Claude Code|Computer Use|Browser Use|Skills API|Files API|Managed Agents|Agent View|Claude Tag/i.test(`${item.sourceDetail || ""} ${item.title || ""} ${item.summary || ""}`),
+    },
+    {
+      name: "Managed Agents runtime",
+      matches: (item) => /Managed Agents|claude-managed-agents|lifecycle webhooks|self-hosted sandboxes|MCP tunnels/i.test(`${item.sourceDetail || ""} ${item.title || ""} ${item.summary || ""}`),
     },
     {
       name: "enterprise cooperation",
