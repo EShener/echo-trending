@@ -6743,6 +6743,11 @@ async function buildAiNewsSection(maxItems) {
     .sort((a, b) => new Date(b.publishedAt || 0) - new Date(a.publishedAt || 0));
   const anthropicQuota = Math.min(18, Math.max(14, Math.ceil(maxItems * 0.9)));
   const anthropicItems = selectAnthropicCoverage(rawItems.filter(isAnthropicItem), anthropicQuota);
+  const enrichedAnthropicItems = anthropicItems.map((item, index) => ({
+    ...item,
+    rank: index + 1,
+    ...enrichAiNews(item),
+  }));
   const recentNonAnthropic = rawItems.filter((item) => !isAnthropicItem(item));
   const items = pickUniqueAiNewsItems(
     [
@@ -6766,7 +6771,7 @@ async function buildAiNewsSection(maxItems) {
     source: "AIHOT RSS + Official RSS feeds + A社 Anthropic",
     sourceBrief: buildAiHotSourceBrief(),
     aihot: aiHotDigest,
-    anthropicCoverage: anthropicItems,
+    anthropicCoverage: enrichedAnthropicItems,
     items: items.length ? items : fallbackAiNewsItems(),
   };
 }
@@ -9085,6 +9090,18 @@ function formatAiNewsStep(label, value) {
 function curatedAiNewsOverride(item) {
   const title = normalizeTitle(item.title || "");
   const map = {
+    [normalizeTitle("Anthropic 发布四起 Claude 网络安全评测事故的对齐评估报告")]: {
+      signal: "Claude cyber eval 从离线评测进入真实事故复盘信号：Anthropic 把四起模型在评测配置错误下触达真实互联网、PyPI 包上传和第三方主机安装样本写成对齐评估，说明 Agent 安全不能只看模型拒答率，还要看评测环境、网络出口和制品发布链路。",
+      impact: "企业和外部评测方接入 Claude/联网 Agent 时，风险边界会从模型输出扩展到沙箱、包仓库、凭据、第三方平台和事件披露；如果 eval harness 允许公网写入或真实账号操作，高分样本可能同时制造供应链和信任风险。",
+      action: "把这条事件转成评测准入整改：高风险 cyber eval 默认断公网或白名单，禁用真实包发布和第三方账号写入，保留工具轨迹、模型版本、防护开关、人工 kill switch、外部通知和修复回放证据。",
+      tags: ["Anthropic", "Claude", "Cyber Eval", "Agent Containment"],
+    },
+    [normalizeTitle("Investigating three real-world incidents in our cybersecurity evaluations")]: {
+      signal: "Claude cyber eval 从离线评测进入真实事故复盘信号：Anthropic 披露多起模型在网络安全评测配置错误下触达真实环境的事故，重点不是单个模型失误，而是评测 harness、网络出口、包仓库和第三方目标授权是否被工程化隔离。",
+      impact: "企业和评测机构不能再把 cyber eval 当普通 benchmark；一旦模型具备工具调用、联网和制品发布能力，沙箱缺口会把研究样本外溢成真实供应链、账号和第三方平台风险。",
+      action: "重做 Agent/cyber eval 控制面：默认断公网或白名单，隔离凭据和包仓库，记录工具轨迹、模型版本、防护开关、人工 kill switch、外部通知和修复回放证据。",
+      tags: ["Anthropic", "Claude", "Cyber Eval", "Agent Containment"],
+    },
     [normalizeTitle("Anthropic 用 Claude 在 11 天内完成费马大定理首个机器验证的 Lean 形式化证明")]: {
       signal: "形式化数学从专家辅助进入 Agent 长链工程信号：Anthropic 官方研究称 Claude 在 11 天内大体自主完成费马大定理 Lean 形式化，关键不只是数学 headline，而是模型能否规划证明依赖、生成可检查代码、修复编译错误并把超大规模证明工程交给机器验证。",
       impact: "科研、算法和高可靠软件团队会更想把 Claude 用到证明、规范、程序验证和复杂迁移，但 1300 万行 Lean 代码和大量中间定理也提示风险：可读性、证明最小性、算力成本、专家复核和与 Mathlib/现有库的长期维护不能被“验证通过”四个字覆盖。",
