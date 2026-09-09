@@ -254,6 +254,36 @@ function applyEditorialOverrides(report) {
       action: "建立科学 Agent 成本账本：按任务记录 agent 数、wall time、token/算力、专家复核小时、形式化验证进度、失败分支和争议信号，只在成本下降且证据链可复验后扩大投入。",
       tags: ["OpenAI", "Navier-Stokes", "Scientific Agent", "成本曲线"],
     },
+    "OpenAI 宣布以内部 AI 系统给出 Navier–Stokes 千禧年问题解答": {
+      signal: "科学证明 Agent 官方化信号：OpenAI 把 Navier-Stokes 千禧年问题、证明文稿和 Lean 形式化验证放到同一条官方动态里，说明前沿模型实验正在尝试从自然语言推导进入可机器复核的数学证据链。",
+      impact: "科研和算法团队会更关注 AI 参与高难证明的路径，但官方宣布仍需要独立数学社区、形式化验证环境和同行评议复核；不能把单个证明声明直接外推成通用科学发现能力。",
+      action: "把它放入高风险科研复核清单：跟踪证明稿、Lean 仓库/版本、第三方专家评论、错误修订、算力成本和可复现实验记录，再决定是否投入内部科学 Agent 试点。",
+      tags: ["OpenAI", "Navier-Stokes", "Lean", "Scientific Agent"],
+    },
+    "Simon Willison 评 OpenAI 用未发布模型求解 Navier-Stokes 千禧年大奖难题之争": {
+      signal: "科学突破叙事复核信号：Simon Willison 对 OpenAI 未发布模型求解 Navier-Stokes 的争议做技术传播层复盘，重点是把官方声明、数学证明、Lean 验证、外部质疑和模型能力宣传拆开看。",
+      impact: "开发者和科研团队容易被“未发布模型解决千禧年难题”的标题带偏；真正影响在于科学 Agent 成果如何公开证据、接受独立复现，并避免把尚未验证的证明包装成产品能力。",
+      action: "按证据层登记：分列 OpenAI 原文、证明稿、Lean artifacts、数学社区评论、Simon 的技术解读和后续修订，只在独立复核通过后再进入科研 Agent 路线判断。",
+      tags: ["OpenAI", "Navier-Stokes", "Scientific Agent", "证据复核"],
+    },
+    "Sam Altman 回应与 Anthropic 研究员的 Navier-Stokes 证明发布争议": {
+      signal: "前沿 AI 科研信用边界信号：Sam Altman 对 Anthropic 研究员质疑作出回应，说明模型公司发布高影响科学结果时，技术证据、竞争叙事和研究共同体信用会同时被放大检验。",
+      impact: "企业不能只看模型公司口径或竞品质疑来判断能力；这类争议会影响供应商可信度、科研协作方式、论文/证明发布流程和高风险 PR 的审查标准。",
+      action: "建立争议复盘表：记录双方原始表述、可公开 artifacts、第三方专家意见、时间线、修订记录和最终验证状态，把社交媒体回应降权为背景而非结论证据。",
+      tags: ["OpenAI", "Anthropic", "Navier-Stokes", "科研信用"],
+    },
+    "Emad Mostaque 称 OpenAI 智能体求解 Navier-Stokes 千禧年难题是迈向 ASI 的里程碑": {
+      signal: "ASI 叙事放大信号：Emad Mostaque 把 OpenAI 智能体求解 Navier-Stokes 解读为迈向 ASI 的里程碑，体现社区会快速把单个科学证明事件外推成通用智能路线判断。",
+      impact: "这种观点有传播价值，但对工程决策风险很高：它不能替代证明复核、任务可迁移性、成本曲线和失败样本分析，容易让团队把科研突破叙事误当成立即可用的 Agent 能力。",
+      action: "把它降权为舆论温度指标：跟踪是否出现独立证明验证、可复现实验、类似任务重复成功和成本下降证据；没有这些证据前，不因 ASI 叙事调整模型选型或预算。",
+      tags: ["OpenAI", "Navier-Stokes", "ASI Narrative", "证据边界"],
+    },
+    "Meta 智能体产品 Muse 开放体验，官方回应用户好评": {
+      signal: "消费级 Agent 入口产品化信号：Meta Muse 开放体验并由 Alexandr Wang 回应用户反馈，说明 Meta 正把浏览器式 Agent、个性化上下文和社交产品分发优势组合成面向普通用户的试用入口。",
+      impact: "Agent 产品竞争会从模型能力转向体验、速度、记忆命名、feed 相关性和生态集成；但当前主要来自 X 反馈和早期试用，不能证明留存、任务完成率、隐私边界或大规模稳定性已经过关。",
+      action: "做轻量产品体验复盘：记录 onboarding、权限提示、浏览器任务完成率、Instagram/Meta 集成点、用户可理解术语、失败样本和隐私说明，等官方文档或开放范围扩大后再评估生产借鉴。",
+      tags: ["Meta", "Muse", "Consumer Agent", "产品体验"],
+    },
     "Dwarkesh Patel 研究：预训练进步主要来自数据改进": {
       signal: "预训练效率归因信号：Dwarkesh Patel 的实验把 2019-2025 年代表模型配方与数据语料放到同等 FLOPs 预算下回放，结论指向数据改进贡献大于模型配方本身，训练红利正在更多来自数据筛选、清洗和课程设计。",
       impact: "模型团队不能只追结构、参数量或推理技巧；如果数据质量才是主要效率来源，企业内训、领域模型和 RAG 也要把样本去重、覆盖度、难例、污染检查和评测切分前置。",
