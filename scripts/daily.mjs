@@ -9151,6 +9151,30 @@ function curatedAiNewsOverride(item) {
       action: "做一次公网写入风险盘点：列出浏览器、API、issue、wiki、论坛、邮件等可写工具，逐项加 allowlist、审批、日志、速率限制、撤销方案和异常上报责任人。",
       tags: ["OpenAI", "AI Misalignment", "Wiki Incident", "权限治理"],
     },
+    [normalizeTitle("NSA、FBI 和 CISA 指控 DeepSeek、月之暗面等六家中国 AI 公司大规模提取美国模型知识")]: {
+      signal: "模型蒸馏争议进入政府联合通告信号：NSA、FBI 和 CISA 将 DeepSeek、月之暗面、阿里、MiniMax、阶跃星辰和 Z.ai 的大规模蒸馏指控写成安全事件，重点从商业 ToS 争议升级到账号风控、跨平台路由、出口管制和模型能力外溢。",
+      impact: "闭源模型供应商会强化批量调用识别、账号验证、速率策略和可疑训练流量共享；模型使用方则要区分合法蒸馏、授权数据合成和绕过访问限制，否则训练成本优势可能转成合规、供应中断和制裁风险。",
+      action: "建立蒸馏合规清单：逐项记录 teacher 模型授权、API ToS、训练数据来源、账号主体、调用规模、路由链路、日志留存和下游模型披露，把未授权闭源输出训练列为上线阻断项。",
+      tags: ["AI Distillation", "CISA", "NSA", "模型治理"],
+    },
+    [normalizeTitle("美国政府指控 DeepSeek 等 6 家中国 AI 公司工业规模蒸馏美国模型")]: {
+      signal: "工业化蒸馏被安全机构点名信号：AA26-251A 类联合公告把 24/7 高吞吐调用、代理账号、缓存优化和模型输出再训练放进同一套风险识别框架，说明模型访问策略正在从单用户滥用治理转向训练供应链治理。",
+      impact: "这会改变中美模型生态的可用性和采购评审：海外模型 API 可能提高 KYC、降低可疑账号质量或收紧企业用途证明，依赖闭源 teacher 做数据合成的团队需要准备审计证据和替代模型池。",
+      action: "把数据合成任务分成可授权、需审批和禁止三档：保留供应商许可、调用日志、提示模板、输出用途、模型训练记录和风控告警；同时准备开源/自研 teacher 的回退方案。",
+      tags: ["AI Distillation", "Model Supply Chain", "合规", "风控"],
+    },
+    [normalizeTitle("《The Intercept》披露美国国防部曾要求 OpenAI 提供对军事指令最低拒绝率的特别版 AI")]: {
+      signal: "军用模型拒答率成为合同条款争议信号：FOIA 文件、The Intercept 报道和 OpenAI/五角大楼否认之间存在口径差异，真正需要跟踪的是安全策略是否会因国防客户被定制、谁能审计拒答阈值、以及合同草案到正式协议的变更链路。",
+      impact: "企业采购前沿模型时不能只看供应商公开 usage policy；高风险行业会要求合同层说明模型变体、安全红线、拒答策略、分类网络部署、客户定制和第三方审计，否则同一品牌模型在不同客户侧可能有不同安全行为。",
+      action: "更新供应商尽调问题：询问是否存在客户专属安全策略、拒答率目标、军事/执法用途边界、模型版本标识、系统卡差异、审计日志和合同变更记录；内部高风险场景先做拒答/误放回放测试。",
+      tags: ["OpenAI", "Defense AI", "Model Policy", "供应商治理"],
+    },
+    [normalizeTitle("Recreating a 70-year love story frame by frame")]: {
+      signal: "生成式影视从单镜头 demo 进入受控叙事制作信号：Google/DeepMind 把历史照片、导演意图和生成模型用于逐帧复原未被记录的私人记忆，重点是多镜头一致性、素材出处、人物授权和创作团队如何把 AI 纳入后期管线。",
+      impact: "品牌、短剧和纪录片团队会更容易把 AI 用在补镜头、历史重建和风格延展，但真实生产风险集中在肖像权、家属授权、事实边界、情绪操控、生成痕迹和模型对同一人物跨镜头的一致性。",
+      action: "做影视 AI 试点时先限定低风险素材：要求原始素材清单、授权证明、镜头脚本、生成参数、人工修帧记录、事实标注和观众披露策略，再比较传统后期与 AI 工作流的周期、成本和返工率。",
+      tags: ["Google DeepMind", "Generative Video", "Creative Workflow", "版权治理"],
+    },
     [normalizeTitle("GitHub 发布 Project HydraFusion 研究预览，用多模型运行时编排降低 Copilot 成本")]: {
       signal: "Coding Agent 从单模型调用进入运行时路由信号：GitHub Project HydraFusion 把 frontier-quality、任务分解、多模型选择和成本控制放在 Copilot 运行时层，说明编码助手竞争点正在从“哪个模型最强”转向“每一步该用哪个模型、何时升级、如何回退”。",
       impact: "研发平台可以借鉴多模型编排降低单位任务成本，但预览研究不能直接证明真实仓库合并率、延迟、审计、供应商锁定和失败回退已经稳定；错误路由还可能让简单任务过度升级或复杂任务被廉价模型误处理。",
