@@ -7057,7 +7057,7 @@ function ensureAnthropicRequiredCoverage(selected, ranked, maxItems) {
     },
     {
       name: "official Engineering",
-      matches: (item) => /Anthropic 官方 Engineering|A社 Anthropic Engineering/i.test(`${item.sourceDetail || ""} ${item.source || ""}`),
+      matches: (item) => /Anthropic 官方 Engineering|A社 Anthropic Engineering|\/engineering\//i.test(`${item.sourceDetail || ""} ${item.source || ""} ${item.url || ""}`),
     },
     {
       name: "Claude model",
@@ -7249,6 +7249,20 @@ function seedAnthropicOfficialItems() {
       signal: "企业前沿防护控制面信号：EFS 把高能力模型的安全检测、客户云、隐私边界和滥用拦截放进同一个企业架构问题。",
       impact: "金融、医疗、研发和安全团队会更愿意试用 Fable/Mythos 等高能力模型，但采购评审会转向客户云隔离、日志可审计、误拦截、模型更新和责任边界。",
       action: "把 EFS 当成安全架构评审项：核对部署位置、数据留存、分类器日志、绕过样本、误报率、供应商访问权限、事件响应和与现有 DLP/SIEM 的接入方式。",
+    },
+    {
+      source: "A社 Anthropic Engineering",
+      sourceDetail: "Anthropic 官方 Engineering / Product Architecture",
+      domain: "anthropic.com",
+      title: "How we contain Claude across products",
+      url: "https://www.anthropic.com/engineering/how-we-contain-claude",
+      publishedAt: "2026-05-25T16:00:00Z",
+      summary: "Anthropic Engineering 解释如何在不同产品里隔离 Claude 的执行面、权限和上下文，重点是把模型能力、工具调用、产品控制面和安全约束拆成可治理边界。信号是 A 社的 Agent 生产化不只靠模型能力，也依赖工程层面的 containment、审计和回滚设计。",
+      imageUrl: favicon,
+      priority: 45,
+      signal: "Claude 产品隔离工程信号：Anthropic 把模型、工具、产品会话和安全策略放进同一套 containment 设计，而不是只在模型层做拒答。",
+      impact: "企业部署 Claude Code、Cowork、浏览器 Agent 或 Managed Agents 时，需要同步评估执行环境、数据边界、工具权限和异常恢复；否则模型升级会放大越权和上下文泄露风险。",
+      action: "把 containment 作为 Agent 上线 gate：列出每个产品面的工具权限、文件/网页访问、日志留存、撤销路径、人工接管和安全测试样本，再决定是否扩大自动执行范围。",
     },
     {
       source: "A社 Claude",
