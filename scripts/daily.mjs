@@ -1899,6 +1899,20 @@ function specializeLens(repo, lens) {
       badFit: "需要完整审计链、法务措辞、医疗建议、复杂方案论证或必须保留全部背景推理的正式交付场景。",
       primaryRisk: "过度压缩可能丢掉证据、前提和边界；必须保留用户可展开的细节、文件引用和失败原因，不能把简短等同于准确。",
     },
+    "nab138/iloader": {
+      editorialMethod: "manual-deep-update-2026-09-11",
+      primaryLang: "TypeScript/Rust iOS sideloading desktop tool",
+      domain: "iOS 侧载引导器 / SideStore 配对文件导入与设备连接工作台",
+      userPain: "iOS 侧载流程通常卡在 pairing file、usbmuxd、平台依赖、下载入口真假和设备连接状态上；普通用户很难判断自己是在官方链路、社区包管理器还是可疑镜像里安装工具。",
+      coreMechanism: "iloader 用 TypeScript 前端、Rust/系统连接层和官方 iloader.app 分发入口，把 SideStore 或其他 app 的安装、配对文件导入、设备连接检查和跨平台依赖提示收敛成面向用户的侧载向导。",
+      safeEntry: "先只在自有测试机和测试 Apple ID 上跑离线安装流程：固定 OS 版本、设备型号、usbmuxd/iTunes 依赖、pairing file 来源和回滚步骤，不接企业证书、客户设备或批量分发。",
+      businessValue: "适合作为跨平台设备工具、安装引导和信任提示设计样本，帮助工具团队理解如何把复杂的本地依赖、设备连接和安全来源校验做成可解释的用户流程。",
+      successMetric: "安装成功率、pairing file 导入成功率、设备识别率、失败原因可读性、官方来源命中率、错误下载拦截、回滚成功率、用户完成时长和 issue 中平台兼容问题",
+      inspectFirst: "先看 iloader.app 官方入口说明、README 的下载警告、SideStore 安装路径、usbmuxd/iTunes 依赖、pairing file 处理、Rust/TypeScript 边界、签名/发布流程、license 和 issue 中的连接失败反馈。",
+      bestFit: "有自有测试设备、愿意遵守平台条款并需要研究设备连接向导、侧载 UX 或跨平台安装器的个人开发者和工具团队。",
+      badFit: "企业批量分发、绕过平台政策、未授权客户设备、证书租售、灰产装机或无法核验下载来源和配对文件安全性的场景。",
+      primaryRisk: "侧载工具的核心风险不是 UI 好不好用，而是平台条款、证书、配对文件、设备信任和下载来源；必须把官方入口、最小权限、用户确认和回滚写进采用边界。",
+    },
     "Tencent/teamai-cli": {
       editorialMethod: "manual-deep-update-2026-09-09",
       primaryLang: "TypeScript/CLI",
@@ -9182,6 +9196,24 @@ function formatAiNewsStep(label, value) {
 function curatedAiNewsOverride(item) {
   const title = normalizeTitle(item.title || "");
   const map = {
+    [normalizeTitle("实测 DeepSeek V4.1 Flash：价格大降、原生带视觉，作者用游戏与城市生成任务验证表现")]: {
+      signal: "国产低价多模态模型进入真实任务替换窗口信号：这条 AIHOT 线索把 DeepSeek V4.1 Flash 的缓存命中输入降价、输出降价、原生视觉和 9 月 14 日 v4-pro 请求强制路由放在一起，重点不是单次游戏/城市生成 demo，而是价格、路由和多模态能力会同时改变模型分桶。",
+      impact: "团队会倾向把它放进中文办公、代码辅助、图像理解和低成本 Agent 任务，但强制路由也意味着兼容性、响应风格、工具调用、视觉输入、成本账单和失败样本需要重新回放；如果只看便宜，容易把高风险任务迁到尚未验证的新模型。",
+      action: "建立 48 小时灰度回放清单：用现有 v4-pro 样本按文本、代码、图像理解、长上下文和工具调用分桶，对比成功率、人工修改、延迟、缓存命中成本、拒答/误答和失败样本；9 月 14 日前准备回退模型与预算告警。",
+      tags: ["DeepSeek", "V4.1 Flash", "Multimodal", "成本治理"],
+    },
+    [normalizeTitle("Cursor 推出 Projects：协调者智能体管理数千个子智能体处理大型开发任务")]: {
+      signal: "Coding Agent 从单任务执行走向多智能体项目编排信号：Cursor Projects 的重点不是“更多子智能体”，而是用 coordinator 把功能开发、迁移和长期维护拆成可并行、可回收、可复查的工作单元，开始挑战传统 issue/PR 队列。",
+      impact: "大型代码库会看到迁移、重构和测试补齐的吞吐想象，但风险也同步放大：上下文切分、子任务一致性、重复修改、代码所有权、成本预算和 review 汇总会成为真正瓶颈。",
+      action: "只用低风险迁移做旁路回放：固定 20-50 个相似改动，让 coordinator 生成任务树、子智能体 diff、测试结果和冲突清单，记录可合并率、重复劳动、review 时间、成本和人工接管点，再决定是否扩大。",
+      tags: ["Cursor", "Multi-Agent", "Coding Agent", "项目编排"],
+    },
+    [normalizeTitle("Cognition 工程师用 Devin 智能体完成 RSA-260 因式分解，刷新公开纪录")]: {
+      signal: "Agent 参与高性能科研工程信号：Devin 团队用多个智能体构建 GPU 格子筛完成 RSA-260 因式分解，关键不是“AI 解出数学题”，而是 Agent 能否在长周期 HPC 工程里协助算法实现、性能优化、批量实验和错误排查。",
+      impact: "科研计算、密码分析和算法工程会更愿意让 Agent 参与工程实现，但单个公开纪录不能证明通用自主研发能力；瓶颈仍在领域专家设定路线、验证结果、管理算力和复核每次优化是否真实有效。",
+      action: "转成科研工程试点模板：选一个低敏算法优化任务，让 Agent 输出实验计划、GPU kernel 变更、benchmark、失败日志和复现实验脚本，记录性能提升、人工修正、算力成本、结果可复现性和错误归因质量。",
+      tags: ["Devin", "Cognition", "HPC", "科研 Agent"],
+    },
     [normalizeTitle("Grok Bot 摘要 SpaceX CFO Bret Johnsen 在 Goldman Sachs Communacopia 的演讲要点")]: {
       signal: "AIHOT/X 转述进入证据降权区信号：这条内容的可见变化不是模型发布，而是 Grok Bot 把 SpaceX CFO 资本市场演讲做成社交平台摘要；它能说明 AI 摘要正在成为 X 信息分发入口，但不能直接当作 AI 技术或模型能力新闻。",
       impact: "对技术雷达的影响主要是信息源治理：AI 生成摘要会更快放大企业融资、供应链和算力叙事，但原始演讲、主办方记录和公司公告未核验前，不适合把摘要里的数字或战略表述写成确定事实。",
