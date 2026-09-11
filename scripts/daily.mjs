@@ -9182,6 +9182,12 @@ function formatAiNewsStep(label, value) {
 function curatedAiNewsOverride(item) {
   const title = normalizeTitle(item.title || "");
   const map = {
+    [normalizeTitle("Grok Bot 摘要 SpaceX CFO Bret Johnsen 在 Goldman Sachs Communacopia 的演讲要点")]: {
+      signal: "AIHOT/X 转述进入证据降权区信号：这条内容的可见变化不是模型发布，而是 Grok Bot 把 SpaceX CFO 资本市场演讲做成社交平台摘要；它能说明 AI 摘要正在成为 X 信息分发入口，但不能直接当作 AI 技术或模型能力新闻。",
+      impact: "对技术雷达的影响主要是信息源治理：AI 生成摘要会更快放大企业融资、供应链和算力叙事，但原始演讲、主办方记录和公司公告未核验前，不适合把摘要里的数字或战略表述写成确定事实。",
+      action: "降级为观察项而非头条决策项：保留 X/AIHOT 链接，后续只在 SpaceX 官方、Goldman Sachs 会议材料、SEC/财报或完整 transcript 可交叉核验时，再提炼对 AI 基建、算力采购或企业采用的实际影响。",
+      tags: ["Grok", "AI Summary", "Evidence Boundary", "AIHOT"],
+    },
     [normalizeTitle("Anthropic 发布四起 Claude 网络安全评测事故的对齐评估报告")]: {
       signal: "Claude cyber eval 从离线评测进入真实事故复盘信号：Anthropic 把四起模型在评测配置错误下触达真实互联网、PyPI 包上传和第三方主机安装样本写成对齐评估，说明 Agent 安全不能只看模型拒答率，还要看评测环境、网络出口和制品发布链路。",
       impact: "企业和外部评测方接入 Claude/联网 Agent 时，风险边界会从模型输出扩展到沙箱、包仓库、凭据、第三方平台和事件披露；如果 eval harness 允许公网写入或真实账号操作，高分样本可能同时制造供应链和信任风险。",
@@ -10067,7 +10073,9 @@ function buildExecutiveSummary(items, frontier, aiNews) {
     .slice()
     .sort((a, b) => new Date(b.publishedAt || 0) - new Date(a.publishedAt || 0))[0];
   const firstAnthropic = latestAnthropic || primaryAnthropic || claudeTag || anthropicItems[0];
-  const aiHotLead = (aiNews.items || []).find((item) => item.source?.includes("AIHOT"));
+  const aiHotLead =
+    (aiNews.items || []).find((item) => item.source?.includes("AIHOT") && isHighSignalAiHotLead(item)) ||
+    (aiNews.items || []).find((item) => item.source?.includes("AIHOT"));
   return {
     headline: `今日雷达主线：GitHub 热门集中在 Agent 控制面、团队记忆、工程 skills、前端框架与 Agent 安全观测；搜广推从单模型优化转向召回、排序、serving 成本和实验血缘协同；A 社继续围绕安全研究、Managed Agents/MCP 和 Claude Code 工程化推进。`,
     bullets: [
@@ -10078,6 +10086,12 @@ function buildExecutiveSummary(items, frontier, aiNews) {
       `AIHOT/官方 AI 新闻共 ${aiNews.items?.length || 0} 条，其中 AIHOT ${aiHotCount} 条；今日先看「${aiHotLead?.title || "AIHOT 精选"}」，所有新闻统一写成“信号 -> 影响 -> 动作”，动作聚焦评测回放、预算治理、工具白名单、权限审计和真实工作流验证。`,
     ],
   };
+}
+
+function isHighSignalAiHotLead(item = {}) {
+  const text = `${item.title || ""} ${item.summary || ""} ${(item.tags || []).join(" ")}`.toLowerCase();
+  if (text.includes("spacex cfo") || text.includes("bret johnsen") || text.includes("goldman sachs communacopia")) return false;
+  return /anthropic|claude|openai|gpt|gemini|deepseek|qwen|agent|model|模型|智能体|算力|蒸馏|安全|推理|多模态|coding|代码|数据|search|搜索/i.test(text);
 }
 
 function normalizeRepo(repo, languages, reportDate) {
