@@ -1,0 +1,3627 @@
+{
+  "date": "2026-06-17",
+  "generatedAt": "2026-06-17T13:26:27.190Z",
+  "source": {
+    "provider": "GitHub Trending daily + Codex deep research + Big Tech engineering blogs + AIHOT/Official AI/Anthropic",
+    "query": "pushed:>=2026-06-10 stars:>100 archived:false",
+    "since": "2026-06-10",
+    "limit": 12,
+    "language": "all"
+  },
+  "summary": {
+    "headline": "今日雷达主线：Agent 基础设施继续升温，搜广推进入“模型化索引 + 实时上下文 + LLM 评测”阶段。",
+    "bullets": [
+      "GitHub 热门项目里，codebase-memory-mcp、iroh、Agent-Reach、Continue 都指向同一件事：Agent 需要更低成本的上下文、更可靠的工具边界和可治理的外部世界入口。",
+      "搜广推最强信号来自 Meta SilverTorch、Pinterest 转化候选生成/实时广告上下文、Dropbox LLM 标注扩增与 Spotify 实验漏斗：大厂正在把召回、排序、评测和成本压进同一条可观测链路。",
+      "A 社 Anthropic 更新覆盖模型、Claude Code 使用研究、企业合作和安全/工程治理；对团队的动作不是追新模型，而是补齐 agent 权限、评测、审计和失败接管。",
+      "AIHOT 今日线索偏多模态视频、数字世界生成、机器人 Agent、长任务模型和广告视频生产，适合进入产品体验池，但不应跳过成本、版权和可靠性验证。"
+    ]
+  },
+  "items": [
+    {
+      "rank": 1,
+      "repo": {
+        "fullName": "DeusData/codebase-memory-mcp",
+        "name": "codebase-memory-mcp",
+        "owner": "DeusData",
+        "avatarUrl": "https://avatars.githubusercontent.com/u/81762164?v=4",
+        "visualUrl": "https://opengraph.githubassets.com/20260617/DeusData/codebase-memory-mcp",
+        "url": "https://github.com/DeusData/codebase-memory-mcp",
+        "description": "High-performance code intelligence MCP server. Indexes codebases into a persistent knowledge graph — average repo in milliseconds. 158 languages, sub-ms queries, 99% fewer tokens. Single static binary, zero dependencies.",
+        "stars": 4302,
+        "starsToday": 367,
+        "forks": 430,
+        "openIssues": 85,
+        "language": "C",
+        "topics": [
+          "aider",
+          "ast",
+          "claude-code",
+          "code-analysis",
+          "code-intelligence",
+          "codex",
+          "cursor",
+          "cypher",
+          "developer-tools",
+          "gemini-cli",
+          "graph-visualization",
+          "kilocode",
+          "knowledge-graph",
+          "mcp",
+          "mcp-server",
+          "model-context-protocol",
+          "opencode",
+          "sqlite",
+          "tree-sitter",
+          "windsurf"
+        ],
+        "license": "MIT",
+        "pushedAt": "2026-06-13T05:43:03Z",
+        "createdAt": "2026-02-24T22:01:00Z",
+        "languages": {
+          "C": 30770009,
+          "C++": 3664816,
+          "Shell": 238523,
+          "TypeScript": 110832,
+          "Python": 68319,
+          "JavaScript": 23296,
+          "PowerShell": 17020,
+          "Go": 7817,
+          "Roff": 3926,
+          "Objective-C": 3783,
+          "Dockerfile": 2184,
+          "Nix": 1976,
+          "Ruby": 1793,
+          "Assembly": 1291,
+          "CSS": 1109,
+          "HTML": 664
+        }
+      },
+      "analysis": {
+        "method": "codex-deep-research",
+        "category": "代码知识图谱 / MCP 基础设施",
+        "oneLiner": "High-performance code intelligence MCP server. Indexes codebases into a persistent knowledge graph — average repo in milliseconds. 158 languages, sub-ms queries, 99% fewer tokens. Single static binary, zero dependencies.；本次更值得看的不是热度，而是它能否用「C 静态二进制把代码解析为持久知识图谱，再通过 MCP 暴露符号、引用、文件关系和低延迟查询」解决「Agent 读大型代码库时上下文成本高、符号定位慢、跨文件关系容易丢失」。",
+        "whyItMatters": "DeusData/codebase-memory-mcp 进入雷达，是因为它把 Agent 读大型代码库时上下文成本高、符号定位慢、跨文件关系容易丢失 这个具体工程问题显性化。对生产团队而言，价值不在 star 数，而在能否把 C 静态二进制把代码解析为持久知识图谱，再通过 MCP 暴露符号、引用、文件关系和低延迟查询 拆成小样本验证，并用 symbol recall、跳转准确率、索引更新时间、P95 查询延迟、Agent token 节省和错误引用率 判断是否真的改善。",
+        "engineeringRead": "C · 代码知识图谱 / MCP 基础设施。阅读顺序建议：先看入口/协议，再看状态与权限边界，然后读失败处理、部署方式和最近 issue；试点只围绕「先对一个服务仓库做只读索引，接入 IDE/Agent 的检索前置层，记录命中代码行是否减少人工翻文件」展开。",
+        "architectureSignals": [
+          "架构机制：C 静态二进制把代码解析为持久知识图谱，再通过 MCP 暴露符号、引用、文件关系和低延迟查询",
+          "适用团队：维护中大型仓库、正在建设 coding agent 或内部代码问答能力的平台团队",
+          "落地路径：先对一个服务仓库做只读索引，接入 IDE/Agent 的检索前置层，记录命中代码行是否减少人工翻文件",
+          "生产风险：索引陈旧、语言解析覆盖、私有代码泄露、MCP 权限边界和增量更新失败会直接影响可信度",
+          "决策问题：它减少的是无效上下文，还是只是把 Agent 的误读换成图谱里的误索引？",
+          "观察信号：symbol recall、跳转准确率、索引更新时间、P95 查询延迟、Agent token 节省和错误引用率"
+        ],
+        "valueHypothesis": [
+          "若团队真实痛点是「Agent 读大型代码库时上下文成本高、符号定位慢、跨文件关系容易丢失」，它的收益应体现在 symbol recall、跳转准确率、索引更新时间、P95 查询延迟、Agent token 节省和错误引用率 的改善，而不是只证明 demo 能跑。",
+          "适合先复制机制、接口或流程，不适合在未评估权限、维护和回滚之前进入主链路。",
+          "如果现有流程没有 owner 或无法做离线/旁路验证，应降级为观察项。"
+        ],
+        "technicalTakeaways": [
+          "把 README 的安装示例拆成输入、状态、执行边界和输出证据四块读。",
+          "图解重点应呈现「Agent 读大型代码库时上下文成本高、符号定位慢、跨文件关系容易丢失 -> C 静态二进制把代码解析为持久知识图谱，再通过 MCP 暴露符号、引用、文件关系和低延迟查询 -> symbol recall、跳转准确率、索引更新时间、P95 查询延迟、Agent token 节省和错误引用率」，让前端能画出工业链路而不是概念海报。",
+          "验收必须同时记录正样本、失败样本、成本、延迟、权限和回滚步骤。"
+        ],
+        "adoptionRisks": [
+          "索引陈旧、语言解析覆盖、私有代码泄露、MCP 权限边界和增量更新失败会直接影响可信度",
+          "与现有 C 工具链集成前，要确认 license、升级节奏、配置持久化和日志可观测性。",
+          "热门项目的社区信号只能说明关注度，不能替代生产环境里的稳定性和安全评估。"
+        ],
+        "suggestedUseCases": [
+          "先对一个服务仓库做只读索引，接入 IDE/Agent 的检索前置层，记录命中代码行是否减少人工翻文件",
+          "设计一个两周以内可结束的 spike：只接入非核心路径，提前定义停止条件。",
+          "把 symbol recall、跳转准确率、索引更新时间、P95 查询延迟、Agent token 节省和错误引用率 写进验收表，避免用主观体验替代工程证据。"
+        ],
+        "watchSignals": [
+          "symbol recall、跳转准确率、索引更新时间、P95 查询延迟、Agent token 节省和错误引用率",
+          "最近 release 是否解释 代码知识图谱 / MCP 基础设施 的关键能力演进，issue 是否出现与你场景相近的失败反馈。",
+          "社区讨论是否开始从“能用”转向“如何治理、观测、扩展和回滚”。"
+        ],
+        "deepDive": {
+          "strategicValue": "DeusData/codebase-memory-mcp 的战略价值在于为「Agent 读大型代码库时上下文成本高、符号定位慢、跨文件关系容易丢失」提供一个可拆解机制。采用判断应从机制适配性出发，而不是从项目名气出发。",
+          "implementationPath": [
+            "先对一个服务仓库做只读索引，接入 IDE/Agent 的检索前置层，记录命中代码行是否减少人工翻文件",
+            "把接入范围限制在旁路或只读链路，先产出基线数据，再决定是否扩大。",
+            "复盘失败样本，确认问题来自数据、权限、模型/索引、网络还是人机流程。"
+          ],
+          "productionConcerns": [
+            "索引陈旧、语言解析覆盖、私有代码泄露、MCP 权限边界和增量更新失败会直接影响可信度",
+            "上线前必须明确 owner、升级窗口、回滚方式、告警指标和合规边界。",
+            "如果缺少 symbol recall、跳转准确率、索引更新时间、P95 查询延迟、Agent token 节省和错误引用率 的连续观测，不应进入核心业务链路。"
+          ],
+          "decisionQuestions": [
+            "它减少的是无效上下文，还是只是把 Agent 的误读换成图谱里的误索引？",
+            "有没有一个不用改主链路也能验证 symbol recall、跳转准确率、索引更新时间、P95 查询延迟、Agent token 节省和错误引用率 的最小实验？",
+            "谁负责上线后的维护、审计、成本和失败接管？"
+          ],
+          "recommendedAction": "进入试点/观察池：先对一个服务仓库做只读索引，接入 IDE/Agent 的检索前置层，记录命中代码行是否减少人工翻文件"
+        },
+        "diagram": {
+          "title": "codebase-memory-mcp 工业级采用图解",
+          "caption": "代码知识图谱 / MCP 基础设施 · C · 4.3K stars",
+          "summary": "把「Agent 读大型代码库时上下文成本高、符号定位慢、跨文件关系容易丢失」通过「C 静态二进制把代码解析为持久知识图谱，再通过 MCP 暴露符号、引用、文件关系和低延迟查询」转化为可观测的「symbol recall、跳转准确率、索引更新时间、P95 查询延迟、Agent token 节省和错误引用率」。",
+          "nodes": [
+            {
+              "label": "架构机制",
+              "detail": "C 静态二进制把代码解析为持久知识图谱，再通过 MCP 暴露符号、引用、文件关系和低延迟查询",
+              "type": "core"
+            },
+            {
+              "label": "适用团队",
+              "detail": "维护中大型仓库、正在建设 coding agent 或内部代码问答能力的平台团队",
+              "type": "input"
+            },
+            {
+              "label": "落地路径",
+              "detail": "先对一个服务仓库做只读索引，接入 IDE/Agent 的检索前置层，记录命中代码行是否减少人工翻文件",
+              "type": "integration"
+            },
+            {
+              "label": "观察信号",
+              "detail": "symbol recall、跳转准确率、索引更新时间、P95 查询延迟、Agent token 节省和错误引用率",
+              "type": "measure"
+            }
+          ],
+          "links": [
+            "定义痛点",
+            "拆解机制",
+            "指标验收"
+          ],
+          "poster": {
+            "eyebrow": "Project Blueprint",
+            "headline": "代码知识图谱 / MCP 基础设施",
+            "subhead": "DeusData/codebase-memory-mcp · C",
+            "thesis": "用「C 静态二进制把代码解析为持久知识图谱，再通过 MCP 暴露符号、引用、文件关系和低延迟查询」解决「Agent 读大型代码库时上下文成本高、符号定位慢、跨文件关系容易丢失」，再用「symbol recall、跳转准确率、索引更新时间、P95 查询延迟、Agent token 节省和错误引用率」决定是否进入生产。",
+            "metrics": [
+              {
+                "label": "Stars",
+                "value": "4.3K",
+                "note": "社区关注"
+              },
+              {
+                "label": "Forks",
+                "value": "430",
+                "note": "二次采用"
+              },
+              {
+                "label": "Issues",
+                "value": "85",
+                "note": "维护压力"
+              },
+              {
+                "label": "Score",
+                "value": "95",
+                "note": "雷达评分"
+              }
+            ],
+            "lanes": [
+              {
+                "label": "架构机制",
+                "detail": "C 静态二进制把代码解析为持久知识图谱，再通过 MCP 暴露符号、引用、文件关系和低延迟查询",
+                "type": "core",
+                "step": "01",
+                "signal": "Agent 读大型代码库时上下文成本高、符号定位慢、跨文件关系容易丢失"
+              },
+              {
+                "label": "适用团队",
+                "detail": "维护中大型仓库、正在建设 coding agent 或内部代码问答能力的平台团队",
+                "type": "input",
+                "step": "02",
+                "signal": "C 静态二进制把代码解析为持久知识图谱，再通过 MCP 暴露符号、引用、文件关系和低延迟查询"
+              },
+              {
+                "label": "落地路径",
+                "detail": "先对一个服务仓库做只读索引，接入 IDE/Agent 的检索前置层，记录命中代码行是否减少人工翻文件",
+                "type": "integration",
+                "step": "03",
+                "signal": "先对一个服务仓库做只读索引，接入 IDE/Agent 的检索前置层，记录命中代码行是否减少人工翻文件"
+              },
+              {
+                "label": "观察信号",
+                "detail": "symbol recall、跳转准确率、索引更新时间、P95 查询延迟、Agent token 节省和错误引用率",
+                "type": "measure",
+                "step": "04",
+                "signal": "symbol recall、跳转准确率、索引更新时间、P95 查询延迟、Agent token 节省和错误引用率"
+              }
+            ],
+            "adoption": [
+              {
+                "label": "试点入口",
+                "detail": "先对一个服务仓库做只读索引，接入 IDE/Agent 的检索前置层，记录命中代码行是否减少人工翻文件"
+              },
+              {
+                "label": "验收指标",
+                "detail": "symbol recall、跳转准确率、索引更新时间、P95 查询延迟、Agent token 节省和错误引用率"
+              },
+              {
+                "label": "生产风险",
+                "detail": "索引陈旧、语言解析覆盖、私有代码泄露、MCP 权限边界和增量更新失败会直接影响可信度"
+              },
+              {
+                "label": "决策问题",
+                "detail": "它减少的是无效上下文，还是只是把 Agent 的误读换成图谱里的误索引？"
+              }
+            ],
+            "warning": "索引陈旧、语言解析覆盖、私有代码泄露、MCP 权限边界和增量更新失败会直接影响可信度"
+          }
+        },
+        "maturity": {
+          "community": 80,
+          "maintenance": 88,
+          "production": 83,
+          "complexity": 55
+        },
+        "score": 95
+      },
+      "evidence": {
+        "readmeExcerpt": "codebase memory mcp The fastest and most efficient code intelligence engine for AI coding agents. Full indexes an average repository in milliseconds, the Linux kernel (28M LOC, 75K files) in 3 minutes. Answers structural queries in under 1ms. Ships as a single static binary for macOS, Linux, and Windows — download, run install , done. High quality parsing through tree sitter AST analysis across all 158 languages, enhanced with Hybrid LSP semantic type resolution for Python, TypeScript / JavaScript / JSX / TSX, PHP, C , Go, C, C++, Java, Kotlin, and Rust — producing a persistent knowledge graph of functions, classes, call chains, HTTP routes, and cross service links. 14 MCP tools. Zero dependencies. Plug and play across 11 coding agents. Research — The design and benchmarks behind this project are described in the preprint Codebase Memory: Tree Sitter Based Knowledge Graphs for LLM Code E...",
+        "githubUrl": "https://github.com/DeusData/codebase-memory-mcp"
+      }
+    },
+    {
+      "rank": 2,
+      "repo": {
+        "fullName": "n0-computer/iroh",
+        "name": "iroh",
+        "owner": "n0-computer",
+        "avatarUrl": "https://avatars.githubusercontent.com/u/101023307?v=4",
+        "visualUrl": "https://opengraph.githubassets.com/20260617/n0-computer/iroh",
+        "url": "https://github.com/n0-computer/iroh",
+        "description": "IP addresses break, dial keys instead. Modular networking stack in Rust.",
+        "stars": 9492,
+        "starsToday": 422,
+        "forks": 442,
+        "openIssues": 145,
+        "language": "Rust",
+        "topics": [
+          "does-anyone-read-these",
+          "holepunching",
+          "memes",
+          "multipath",
+          "p2p",
+          "quic",
+          "realtime",
+          "rust",
+          "tags",
+          "tagsoftags"
+        ],
+        "license": "Apache-2.0",
+        "pushedAt": "2026-06-17T12:36:37Z",
+        "createdAt": "2022-03-14T19:30:08Z",
+        "languages": {
+          "Rust": 1989548,
+          "Shell": 6850,
+          "Dockerfile": 1492
+        }
+      },
+      "analysis": {
+        "method": "codex-deep-research",
+        "category": "点对点网络 / Local-first 同步",
+        "oneLiner": "IP addresses break, dial keys instead. Modular networking stack in Rust.；本次更值得看的不是热度，而是它能否用「以 dial key 替代地址假设，组合 QUIC、节点发现、中继和加密连接形成模块化 Rust 网络栈」解决「移动端、边缘设备和个人节点难以依赖稳定 IP，NAT、发现和中继让同步链路复杂化」。",
+        "whyItMatters": "n0-computer/iroh 进入雷达，是因为它把 移动端、边缘设备和个人节点难以依赖稳定 IP，NAT、发现和中继让同步链路复杂化 这个具体工程问题显性化。对生产团队而言，价值不在 star 数，而在能否把 以 dial key 替代地址假设，组合 QUIC、节点发现、中继和加密连接形成模块化 Rust 网络栈 拆成小样本验证，并用 首次连接耗时、重连成功率、中继占比、吞吐、端到端加密审计和断网恢复行为 判断是否真的改善。",
+        "engineeringRead": "Rust · 点对点网络 / Local-first 同步。阅读顺序建议：先看入口/协议，再看状态与权限边界，然后读失败处理、部署方式和最近 issue；试点只围绕「用一个非核心文件同步或设备心跳场景验证连接成功率，再决定是否承接业务数据复制」展开。",
+        "architectureSignals": [
+          "架构机制：以 dial key 替代地址假设，组合 QUIC、节点发现、中继和加密连接形成模块化 Rust 网络栈",
+          "适用团队：做本地优先应用、边缘同步、个人云、协作编辑或设备互联的基础设施团队",
+          "落地路径：用一个非核心文件同步或设备心跳场景验证连接成功率，再决定是否承接业务数据复制",
+          "生产风险：NAT 穿透失败、中继成本、密钥轮换、移动网络抖动和可观测性不足会放大线上排障成本",
+          "决策问题：业务真正需要 P2P 拓扑，还是用托管同步服务能以更低复杂度解决？",
+          "观察信号：首次连接耗时、重连成功率、中继占比、吞吐、端到端加密审计和断网恢复行为"
+        ],
+        "valueHypothesis": [
+          "若团队真实痛点是「移动端、边缘设备和个人节点难以依赖稳定 IP，NAT、发现和中继让同步链路复杂化」，它的收益应体现在 首次连接耗时、重连成功率、中继占比、吞吐、端到端加密审计和断网恢复行为 的改善，而不是只证明 demo 能跑。",
+          "适合先复制机制、接口或流程，不适合在未评估权限、维护和回滚之前进入主链路。",
+          "如果现有流程没有 owner 或无法做离线/旁路验证，应降级为观察项。"
+        ],
+        "technicalTakeaways": [
+          "把 README 的安装示例拆成输入、状态、执行边界和输出证据四块读。",
+          "图解重点应呈现「移动端、边缘设备和个人节点难以依赖稳定 IP，NAT、发现和中继让同步链路复杂化 -> 以 dial key 替代地址假设，组合 QUIC、节点发现、中继和加密连接形成模块化 Rust 网络栈 -> 首次连接耗时、重连成功率、中继占比、吞吐、端到端加密审计和断网恢复行为」，让前端能画出工业链路而不是概念海报。",
+          "验收必须同时记录正样本、失败样本、成本、延迟、权限和回滚步骤。"
+        ],
+        "adoptionRisks": [
+          "NAT 穿透失败、中继成本、密钥轮换、移动网络抖动和可观测性不足会放大线上排障成本",
+          "与现有 Rust 工具链集成前，要确认 license、升级节奏、配置持久化和日志可观测性。",
+          "热门项目的社区信号只能说明关注度，不能替代生产环境里的稳定性和安全评估。"
+        ],
+        "suggestedUseCases": [
+          "用一个非核心文件同步或设备心跳场景验证连接成功率，再决定是否承接业务数据复制",
+          "设计一个两周以内可结束的 spike：只接入非核心路径，提前定义停止条件。",
+          "把 首次连接耗时、重连成功率、中继占比、吞吐、端到端加密审计和断网恢复行为 写进验收表，避免用主观体验替代工程证据。"
+        ],
+        "watchSignals": [
+          "首次连接耗时、重连成功率、中继占比、吞吐、端到端加密审计和断网恢复行为",
+          "最近 release 是否解释 点对点网络 / Local-first 同步 的关键能力演进，issue 是否出现与你场景相近的失败反馈。",
+          "社区讨论是否开始从“能用”转向“如何治理、观测、扩展和回滚”。"
+        ],
+        "deepDive": {
+          "strategicValue": "n0-computer/iroh 的战略价值在于为「移动端、边缘设备和个人节点难以依赖稳定 IP，NAT、发现和中继让同步链路复杂化」提供一个可拆解机制。采用判断应从机制适配性出发，而不是从项目名气出发。",
+          "implementationPath": [
+            "用一个非核心文件同步或设备心跳场景验证连接成功率，再决定是否承接业务数据复制",
+            "把接入范围限制在旁路或只读链路，先产出基线数据，再决定是否扩大。",
+            "复盘失败样本，确认问题来自数据、权限、模型/索引、网络还是人机流程。"
+          ],
+          "productionConcerns": [
+            "NAT 穿透失败、中继成本、密钥轮换、移动网络抖动和可观测性不足会放大线上排障成本",
+            "上线前必须明确 owner、升级窗口、回滚方式、告警指标和合规边界。",
+            "如果缺少 首次连接耗时、重连成功率、中继占比、吞吐、端到端加密审计和断网恢复行为 的连续观测，不应进入核心业务链路。"
+          ],
+          "decisionQuestions": [
+            "业务真正需要 P2P 拓扑，还是用托管同步服务能以更低复杂度解决？",
+            "有没有一个不用改主链路也能验证 首次连接耗时、重连成功率、中继占比、吞吐、端到端加密审计和断网恢复行为 的最小实验？",
+            "谁负责上线后的维护、审计、成本和失败接管？"
+          ],
+          "recommendedAction": "进入试点/观察池：用一个非核心文件同步或设备心跳场景验证连接成功率，再决定是否承接业务数据复制"
+        },
+        "diagram": {
+          "title": "iroh 工业级采用图解",
+          "caption": "点对点网络 / Local-first 同步 · Rust · 9.5K stars",
+          "summary": "把「移动端、边缘设备和个人节点难以依赖稳定 IP，NAT、发现和中继让同步链路复杂化」通过「以 dial key 替代地址假设，组合 QUIC、节点发现、中继和加密连接形成模块化 Rust 网络栈」转化为可观测的「首次连接耗时、重连成功率、中继占比、吞吐、端到端加密审计和断网恢复行为」。",
+          "nodes": [
+            {
+              "label": "架构机制",
+              "detail": "以 dial key 替代地址假设，组合 QUIC、节点发现、中继和加密连接形成模块化 Rust 网络栈",
+              "type": "core"
+            },
+            {
+              "label": "适用团队",
+              "detail": "做本地优先应用、边缘同步、个人云、协作编辑或设备互联的基础设施团队",
+              "type": "input"
+            },
+            {
+              "label": "落地路径",
+              "detail": "用一个非核心文件同步或设备心跳场景验证连接成功率，再决定是否承接业务数据复制",
+              "type": "integration"
+            },
+            {
+              "label": "观察信号",
+              "detail": "首次连接耗时、重连成功率、中继占比、吞吐、端到端加密审计和断网恢复行为",
+              "type": "measure"
+            }
+          ],
+          "links": [
+            "定义痛点",
+            "拆解机制",
+            "指标验收"
+          ],
+          "poster": {
+            "eyebrow": "Project Blueprint",
+            "headline": "点对点网络 / Local-first 同步",
+            "subhead": "n0-computer/iroh · Rust",
+            "thesis": "用「以 dial key 替代地址假设，组合 QUIC、节点发现、中继和加密连接形成模块化 Rust 网络栈」解决「移动端、边缘设备和个人节点难以依赖稳定 IP，NAT、发现和中继让同步链路复杂化」，再用「首次连接耗时、重连成功率、中继占比、吞吐、端到端加密审计和断网恢复行为」决定是否进入生产。",
+            "metrics": [
+              {
+                "label": "Stars",
+                "value": "9.5K",
+                "note": "社区关注"
+              },
+              {
+                "label": "Forks",
+                "value": "442",
+                "note": "二次采用"
+              },
+              {
+                "label": "Issues",
+                "value": "145",
+                "note": "维护压力"
+              },
+              {
+                "label": "Score",
+                "value": "96",
+                "note": "雷达评分"
+              }
+            ],
+            "lanes": [
+              {
+                "label": "架构机制",
+                "detail": "以 dial key 替代地址假设，组合 QUIC、节点发现、中继和加密连接形成模块化 Rust 网络栈",
+                "type": "core",
+                "step": "01",
+                "signal": "移动端、边缘设备和个人节点难以依赖稳定 IP，NAT、发现和中继让同步链路复杂化"
+              },
+              {
+                "label": "适用团队",
+                "detail": "做本地优先应用、边缘同步、个人云、协作编辑或设备互联的基础设施团队",
+                "type": "input",
+                "step": "02",
+                "signal": "以 dial key 替代地址假设，组合 QUIC、节点发现、中继和加密连接形成模块化 Rust 网络栈"
+              },
+              {
+                "label": "落地路径",
+                "detail": "用一个非核心文件同步或设备心跳场景验证连接成功率，再决定是否承接业务数据复制",
+                "type": "integration",
+                "step": "03",
+                "signal": "用一个非核心文件同步或设备心跳场景验证连接成功率，再决定是否承接业务数据复制"
+              },
+              {
+                "label": "观察信号",
+                "detail": "首次连接耗时、重连成功率、中继占比、吞吐、端到端加密审计和断网恢复行为",
+                "type": "measure",
+                "step": "04",
+                "signal": "首次连接耗时、重连成功率、中继占比、吞吐、端到端加密审计和断网恢复行为"
+              }
+            ],
+            "adoption": [
+              {
+                "label": "试点入口",
+                "detail": "用一个非核心文件同步或设备心跳场景验证连接成功率，再决定是否承接业务数据复制"
+              },
+              {
+                "label": "验收指标",
+                "detail": "首次连接耗时、重连成功率、中继占比、吞吐、端到端加密审计和断网恢复行为"
+              },
+              {
+                "label": "生产风险",
+                "detail": "NAT 穿透失败、中继成本、密钥轮换、移动网络抖动和可观测性不足会放大线上排障成本"
+              },
+              {
+                "label": "决策问题",
+                "detail": "业务真正需要 P2P 拓扑，还是用托管同步服务能以更低复杂度解决？"
+              }
+            ],
+            "warning": "NAT 穿透失败、中继成本、密钥轮换、移动网络抖动和可观测性不足会放大线上排障成本"
+          }
+        },
+        "maturity": {
+          "community": 88,
+          "maintenance": 100,
+          "production": 91,
+          "complexity": 72
+        },
+        "score": 96
+      },
+      "evidence": {
+        "readmeExcerpt": "<h1 align=\"center\" <a href=\"https://iroh.computer\" <img alt=\"iroh\" src=\"./.img/iroh wordmark.svg\" width=\"100\" / </a </h1 <h3 align=\"center\" less net work for networks </h3 <div align=\"center\" <h3 <a href=\"https://iroh.computer/docs\" Docs Site </a <span </span <a href=\"https://docs.rs/iroh\" Rust Docs </a </h3 </div <br/ What is iroh? Iroh gives you an API for dialing by public key. You say “connect to that phone”, iroh will find & maintain the fastest connection for you, regardless of where it is. Hole punching The fastest route is a direct connection, so if necessary, iroh tries to hole punch. Should this fail, it can fall back to an open ecosystem of public relay servers. To ensure these connections are as fast as possible, we [continuously measure iroh][iroh perf]. Built on [QUIC] Iroh uses [noq] to establish [QUIC] connections between endpoints. This way you get authenticated encrypti...",
+        "githubUrl": "https://github.com/n0-computer/iroh"
+      }
+    },
+    {
+      "rank": 3,
+      "repo": {
+        "fullName": "Panniantong/Agent-Reach",
+        "name": "Agent-Reach",
+        "owner": "Panniantong",
+        "avatarUrl": "https://avatars.githubusercontent.com/u/73925474?v=4",
+        "visualUrl": "https://opengraph.githubassets.com/20260617/Panniantong/Agent-Reach",
+        "url": "https://github.com/Panniantong/Agent-Reach",
+        "description": "Give your AI agent eyes to see the entire internet. Read & search Twitter, Reddit, YouTube, GitHub, Bilibili, XiaoHongShu — one CLI, zero API fees.",
+        "stars": 32689,
+        "starsToday": 2025,
+        "forks": 2637,
+        "openIssues": 62,
+        "language": "Python",
+        "topics": [
+          "agent-infrastructure",
+          "ai-agent",
+          "ai-search",
+          "automation",
+          "bilibili",
+          "claude-code",
+          "cli",
+          "cursor",
+          "free-api",
+          "llm-tools",
+          "mcp",
+          "python",
+          "reddit-scraper",
+          "twitter-scraper",
+          "web-scraper",
+          "xiaohongshu",
+          "youtube-transcript"
+        ],
+        "license": "MIT",
+        "pushedAt": "2026-06-16T12:45:59Z",
+        "createdAt": "2026-02-24T02:10:24Z",
+        "languages": {
+          "Python": 283552,
+          "Shell": 14841
+        }
+      },
+      "analysis": {
+        "method": "codex-deep-research",
+        "category": "Agent 开放网页/社媒检索入口",
+        "oneLiner": "Give your AI agent eyes to see the entire internet. Read & search Twitter, Reddit, YouTube, GitHub, Bilibili, XiaoHongShu — one CLI, zero API fees.；本次更值得看的不是热度，而是它能否用「用 CLI 把多平台搜索、读取和结构化输出封装为 Agent 可调用工具，强调零 API 费用和跨站点覆盖」解决「研究型 Agent 需要读取 Twitter、Reddit、YouTube、GitHub、B 站和小红书等信号，但官方 API 成本和限制高」。",
+        "whyItMatters": "Panniantong/Agent-Reach 进入雷达，是因为它把 研究型 Agent 需要读取 Twitter、Reddit、YouTube、GitHub、B 站和小红书等信号，但官方 API 成本和限制高 这个具体工程问题显性化。对生产团队而言，价值不在 star 数，而在能否把 用 CLI 把多平台搜索、读取和结构化输出封装为 Agent 可调用工具，强调零 API 费用和跨站点覆盖 拆成小样本验证，并用 站点成功率、结果去重率、来源可追溯性、账号风控事件、人工核验一致率和失败重试成本 判断是否真的改善。",
+        "engineeringRead": "Python · Agent 开放网页/社媒检索入口。阅读顺序建议：先看入口/协议，再看状态与权限边界，然后读失败处理、部署方式和最近 issue；试点只围绕「先在隔离账号和低频任务里跑 20 个查询，比较覆盖率、失败率、反爬触发和人工核验成本」展开。",
+        "architectureSignals": [
+          "架构机制：用 CLI 把多平台搜索、读取和结构化输出封装为 Agent 可调用工具，强调零 API 费用和跨站点覆盖",
+          "适用团队：做舆情、竞品、开发者社区监控和多源研究助手的增长/研究/Agent 团队",
+          "落地路径：先在隔离账号和低频任务里跑 20 个查询，比较覆盖率、失败率、反爬触发和人工核验成本",
+          "生产风险：平台服务条款、登录态保管、反爬变化、内容版权和隐私数据进入 Agent 上下文都是生产风险",
+          "决策问题：我们是在补充公开情报，还是在把不稳定抓取链路伪装成可靠数据源？",
+          "观察信号：站点成功率、结果去重率、来源可追溯性、账号风控事件、人工核验一致率和失败重试成本"
+        ],
+        "valueHypothesis": [
+          "若团队真实痛点是「研究型 Agent 需要读取 Twitter、Reddit、YouTube、GitHub、B 站和小红书等信号，但官方 API 成本和限制高」，它的收益应体现在 站点成功率、结果去重率、来源可追溯性、账号风控事件、人工核验一致率和失败重试成本 的改善，而不是只证明 demo 能跑。",
+          "适合先复制机制、接口或流程，不适合在未评估权限、维护和回滚之前进入主链路。",
+          "如果现有流程没有 owner 或无法做离线/旁路验证，应降级为观察项。"
+        ],
+        "technicalTakeaways": [
+          "把 README 的安装示例拆成输入、状态、执行边界和输出证据四块读。",
+          "图解重点应呈现「研究型 Agent 需要读取 Twitter、Reddit、YouTube、GitHub、B 站和小红书等信号，但官方 API 成本和限制高 -> 用 CLI 把多平台搜索、读取和结构化输出封装为 Agent 可调用工具，强调零 API 费用和跨站点覆盖 -> 站点成功率、结果去重率、来源可追溯性、账号风控事件、人工核验一致率和失败重试成本」，让前端能画出工业链路而不是概念海报。",
+          "验收必须同时记录正样本、失败样本、成本、延迟、权限和回滚步骤。"
+        ],
+        "adoptionRisks": [
+          "平台服务条款、登录态保管、反爬变化、内容版权和隐私数据进入 Agent 上下文都是生产风险",
+          "与现有 Python 工具链集成前，要确认 license、升级节奏、配置持久化和日志可观测性。",
+          "热门项目的社区信号只能说明关注度，不能替代生产环境里的稳定性和安全评估。"
+        ],
+        "suggestedUseCases": [
+          "先在隔离账号和低频任务里跑 20 个查询，比较覆盖率、失败率、反爬触发和人工核验成本",
+          "设计一个两周以内可结束的 spike：只接入非核心路径，提前定义停止条件。",
+          "把 站点成功率、结果去重率、来源可追溯性、账号风控事件、人工核验一致率和失败重试成本 写进验收表，避免用主观体验替代工程证据。"
+        ],
+        "watchSignals": [
+          "站点成功率、结果去重率、来源可追溯性、账号风控事件、人工核验一致率和失败重试成本",
+          "最近 release 是否解释 Agent 开放网页/社媒检索入口 的关键能力演进，issue 是否出现与你场景相近的失败反馈。",
+          "社区讨论是否开始从“能用”转向“如何治理、观测、扩展和回滚”。"
+        ],
+        "deepDive": {
+          "strategicValue": "Panniantong/Agent-Reach 的战略价值在于为「研究型 Agent 需要读取 Twitter、Reddit、YouTube、GitHub、B 站和小红书等信号，但官方 API 成本和限制高」提供一个可拆解机制。采用判断应从机制适配性出发，而不是从项目名气出发。",
+          "implementationPath": [
+            "先在隔离账号和低频任务里跑 20 个查询，比较覆盖率、失败率、反爬触发和人工核验成本",
+            "把接入范围限制在旁路或只读链路，先产出基线数据，再决定是否扩大。",
+            "复盘失败样本，确认问题来自数据、权限、模型/索引、网络还是人机流程。"
+          ],
+          "productionConcerns": [
+            "平台服务条款、登录态保管、反爬变化、内容版权和隐私数据进入 Agent 上下文都是生产风险",
+            "上线前必须明确 owner、升级窗口、回滚方式、告警指标和合规边界。",
+            "如果缺少 站点成功率、结果去重率、来源可追溯性、账号风控事件、人工核验一致率和失败重试成本 的连续观测，不应进入核心业务链路。"
+          ],
+          "decisionQuestions": [
+            "我们是在补充公开情报，还是在把不稳定抓取链路伪装成可靠数据源？",
+            "有没有一个不用改主链路也能验证 站点成功率、结果去重率、来源可追溯性、账号风控事件、人工核验一致率和失败重试成本 的最小实验？",
+            "谁负责上线后的维护、审计、成本和失败接管？"
+          ],
+          "recommendedAction": "进入试点/观察池：先在隔离账号和低频任务里跑 20 个查询，比较覆盖率、失败率、反爬触发和人工核验成本"
+        },
+        "diagram": {
+          "title": "Agent-Reach 工业级采用图解",
+          "caption": "Agent 开放网页/社媒检索入口 · Python · 32.7K stars",
+          "summary": "把「研究型 Agent 需要读取 Twitter、Reddit、YouTube、GitHub、B 站和小红书等信号，但官方 API 成本和限制高」通过「用 CLI 把多平台搜索、读取和结构化输出封装为 Agent 可调用工具，强调零 API 费用和跨站点覆盖」转化为可观测的「站点成功率、结果去重率、来源可追溯性、账号风控事件、人工核验一致率和失败重试成本」。",
+          "nodes": [
+            {
+              "label": "架构机制",
+              "detail": "用 CLI 把多平台搜索、读取和结构化输出封装为 Agent 可调用工具，强调零 API 费用和跨站点覆盖",
+              "type": "core"
+            },
+            {
+              "label": "适用团队",
+              "detail": "做舆情、竞品、开发者社区监控和多源研究助手的增长/研究/Agent 团队",
+              "type": "input"
+            },
+            {
+              "label": "落地路径",
+              "detail": "先在隔离账号和低频任务里跑 20 个查询，比较覆盖率、失败率、反爬触发和人工核验成本",
+              "type": "integration"
+            },
+            {
+              "label": "观察信号",
+              "detail": "站点成功率、结果去重率、来源可追溯性、账号风控事件、人工核验一致率和失败重试成本",
+              "type": "measure"
+            }
+          ],
+          "links": [
+            "定义痛点",
+            "拆解机制",
+            "指标验收"
+          ],
+          "poster": {
+            "eyebrow": "Project Blueprint",
+            "headline": "Agent 开放网页/社媒检索入口",
+            "subhead": "Panniantong/Agent-Reach · Python",
+            "thesis": "用「用 CLI 把多平台搜索、读取和结构化输出封装为 Agent 可调用工具，强调零 API 费用和跨站点覆盖」解决「研究型 Agent 需要读取 Twitter、Reddit、YouTube、GitHub、B 站和小红书等信号，但官方 API 成本和限制高」，再用「站点成功率、结果去重率、来源可追溯性、账号风控事件、人工核验一致率和失败重试成本」决定是否进入生产。",
+            "metrics": [
+              {
+                "label": "Stars",
+                "value": "32.7K",
+                "note": "社区关注"
+              },
+              {
+                "label": "Forks",
+                "value": "2.6K",
+                "note": "二次采用"
+              },
+              {
+                "label": "Issues",
+                "value": "62",
+                "note": "维护压力"
+              },
+              {
+                "label": "Score",
+                "value": "99",
+                "note": "雷达评分"
+              }
+            ],
+            "lanes": [
+              {
+                "label": "架构机制",
+                "detail": "用 CLI 把多平台搜索、读取和结构化输出封装为 Agent 可调用工具，强调零 API 费用和跨站点覆盖",
+                "type": "core",
+                "step": "01",
+                "signal": "研究型 Agent 需要读取 Twitter、Reddit、YouTube、GitHub、B 站和小红书等信号，但官方 API 成本和限制高"
+              },
+              {
+                "label": "适用团队",
+                "detail": "做舆情、竞品、开发者社区监控和多源研究助手的增长/研究/Agent 团队",
+                "type": "input",
+                "step": "02",
+                "signal": "用 CLI 把多平台搜索、读取和结构化输出封装为 Agent 可调用工具，强调零 API 费用和跨站点覆盖"
+              },
+              {
+                "label": "落地路径",
+                "detail": "先在隔离账号和低频任务里跑 20 个查询，比较覆盖率、失败率、反爬触发和人工核验成本",
+                "type": "integration",
+                "step": "03",
+                "signal": "先在隔离账号和低频任务里跑 20 个查询，比较覆盖率、失败率、反爬触发和人工核验成本"
+              },
+              {
+                "label": "观察信号",
+                "detail": "站点成功率、结果去重率、来源可追溯性、账号风控事件、人工核验一致率和失败重试成本",
+                "type": "measure",
+                "step": "04",
+                "signal": "站点成功率、结果去重率、来源可追溯性、账号风控事件、人工核验一致率和失败重试成本"
+              }
+            ],
+            "adoption": [
+              {
+                "label": "试点入口",
+                "detail": "先在隔离账号和低频任务里跑 20 个查询，比较覆盖率、失败率、反爬触发和人工核验成本"
+              },
+              {
+                "label": "验收指标",
+                "detail": "站点成功率、结果去重率、来源可追溯性、账号风控事件、人工核验一致率和失败重试成本"
+              },
+              {
+                "label": "生产风险",
+                "detail": "平台服务条款、登录态保管、反爬变化、内容版权和隐私数据进入 Agent 上下文都是生产风险"
+              },
+              {
+                "label": "决策问题",
+                "detail": "我们是在补充公开情报，还是在把不稳定抓取链路伪装成可靠数据源？"
+              }
+            ],
+            "warning": "平台服务条款、登录态保管、反爬变化、内容版权和隐私数据进入 Agent 上下文都是生产风险"
+          }
+        },
+        "maturity": {
+          "community": 99,
+          "maintenance": 97,
+          "production": 94,
+          "complexity": 55
+        },
+        "score": 99
+      },
+      "evidence": {
+        "readmeExcerpt": "<h1 align=\"center\" 👁️ Agent Reach</h1 <p align=\"center\" <strong 给你的 AI Agent 一键装上互联网能力</strong </p <p align=\"center\" 当下最稳的接入方式，替你选好、装好、体检好——接入方式会换代，你不用操心 </p <p align=\"center\" <a href=\"LICENSE\" <img src=\"https://img.shields.io/badge/License MIT blue.svg?style=for the badge\" alt=\"MIT License\" </a <a href=\"https://www.python.org/\" <img src=\"https://img.shields.io/badge/Python 3.10+ green.svg?style=for the badge&logo=python&logoColor=white\" alt=\"Python 3.10+\" </a <a href=\"https://github.com/Panniantong/agent reach/stargazers\" <img src=\"https://img.shields.io/github/stars/Panniantong/agent reach?style=for the badge\" alt=\"GitHub Stars\" </a <a href=\"https://trendshift.io/repositories/24387\" <img src=\"https://trendshift.io/api/badge/repositories/24387\" alt=\"Trendshift GitHub Trending 1 Repository of the Day\" </a </p <p align=\"center\" <a href=\" 快速上手\" 快速开始</a · <a href=\"docs/README en.md\" Englis...",
+        "githubUrl": "https://github.com/Panniantong/Agent-Reach"
+      }
+    },
+    {
+      "rank": 4,
+      "repo": {
+        "fullName": "meshery/meshery",
+        "name": "meshery",
+        "owner": "meshery",
+        "avatarUrl": "https://avatars.githubusercontent.com/u/52376019?v=4",
+        "visualUrl": "https://opengraph.githubassets.com/20260617/meshery/meshery",
+        "url": "https://github.com/meshery/meshery",
+        "description": "Meshery, the cloud native manager",
+        "stars": 10947,
+        "starsToday": 199,
+        "forks": 3454,
+        "openIssues": 1515,
+        "language": "TypeScript",
+        "topics": [
+          "cloud-native",
+          "cncf",
+          "control-plane",
+          "docker",
+          "gitops",
+          "golang",
+          "gsoc",
+          "hacktoberfest",
+          "infrastructure-as-code",
+          "internal-developer-platform",
+          "kanvas",
+          "kubernetes",
+          "kubernetes-operator",
+          "management-plane",
+          "meshery",
+          "opa",
+          "platform-engineering",
+          "reactjs",
+          "visualization",
+          "webassembly"
+        ],
+        "license": "Apache-2.0",
+        "pushedAt": "2026-06-17T12:35:45Z",
+        "createdAt": "2018-11-14T13:41:00Z",
+        "languages": {
+          "TypeScript": 4340643,
+          "Go": 3648435,
+          "JavaScript": 1656899,
+          "Open Policy Agent": 125088,
+          "Shell": 87481,
+          "Makefile": 40704,
+          "CSS": 25670,
+          "Mustache": 22149,
+          "HTML": 20885,
+          "Dockerfile": 16066,
+          "Python": 10981,
+          "Go Template": 499
+        }
+      },
+      "analysis": {
+        "method": "codex-deep-research",
+        "category": "云原生控制面 / 服务网格管理",
+        "oneLiner": "Meshery, the cloud native manager；本次更值得看的不是热度，而是它能否用「通过适配器、模型、可视化拓扑和策略工作流管理 Kubernetes 与 service mesh 资源」解决「多集群、多服务网格和云原生组件的配置漂移、可视化和策略治理难以统一」。",
+        "whyItMatters": "meshery/meshery 进入雷达，是因为它把 多集群、多服务网格和云原生组件的配置漂移、可视化和策略治理难以统一 这个具体工程问题显性化。对生产团队而言，价值不在 star 数，而在能否把 通过适配器、模型、可视化拓扑和策略工作流管理 Kubernetes 与 service mesh 资源 拆成小样本验证，并用 发现资源准确率、策略误报、权限最小化、适配器健康、升级兼容性和回滚路径 判断是否真的改善。",
+        "engineeringRead": "TypeScript · 云原生控制面 / 服务网格管理。阅读顺序建议：先看入口/协议，再看状态与权限边界，然后读失败处理、部署方式和最近 issue；试点只围绕「先接入一个测试集群，只读扫描拓扑和配置，再逐步打开策略校验与变更建议」展开。",
+        "architectureSignals": [
+          "架构机制：通过适配器、模型、可视化拓扑和策略工作流管理 Kubernetes 与 service mesh 资源",
+          "适用团队：已有平台工程 owner、服务网格治理需求和非生产集群试点窗口的基础设施团队",
+          "落地路径：先接入一个测试集群，只读扫描拓扑和配置，再逐步打开策略校验与变更建议",
+          "生产风险：控制面权限过大、CRD 版本漂移、适配器质量和多集群写操作会扩大故障半径",
+          "决策问题：Meshery 是治理入口，还是会成为另一个需要治理的控制面？",
+          "观察信号：发现资源准确率、策略误报、权限最小化、适配器健康、升级兼容性和回滚路径"
+        ],
+        "valueHypothesis": [
+          "若团队真实痛点是「多集群、多服务网格和云原生组件的配置漂移、可视化和策略治理难以统一」，它的收益应体现在 发现资源准确率、策略误报、权限最小化、适配器健康、升级兼容性和回滚路径 的改善，而不是只证明 demo 能跑。",
+          "适合先复制机制、接口或流程，不适合在未评估权限、维护和回滚之前进入主链路。",
+          "如果现有流程没有 owner 或无法做离线/旁路验证，应降级为观察项。"
+        ],
+        "technicalTakeaways": [
+          "把 README 的安装示例拆成输入、状态、执行边界和输出证据四块读。",
+          "图解重点应呈现「多集群、多服务网格和云原生组件的配置漂移、可视化和策略治理难以统一 -> 通过适配器、模型、可视化拓扑和策略工作流管理 Kubernetes 与 service mesh 资源 -> 发现资源准确率、策略误报、权限最小化、适配器健康、升级兼容性和回滚路径」，让前端能画出工业链路而不是概念海报。",
+          "验收必须同时记录正样本、失败样本、成本、延迟、权限和回滚步骤。"
+        ],
+        "adoptionRisks": [
+          "控制面权限过大、CRD 版本漂移、适配器质量和多集群写操作会扩大故障半径",
+          "与现有 TypeScript 工具链集成前，要确认 license、升级节奏、配置持久化和日志可观测性。",
+          "热门项目的社区信号只能说明关注度，不能替代生产环境里的稳定性和安全评估。"
+        ],
+        "suggestedUseCases": [
+          "先接入一个测试集群，只读扫描拓扑和配置，再逐步打开策略校验与变更建议",
+          "设计一个两周以内可结束的 spike：只接入非核心路径，提前定义停止条件。",
+          "把 发现资源准确率、策略误报、权限最小化、适配器健康、升级兼容性和回滚路径 写进验收表，避免用主观体验替代工程证据。"
+        ],
+        "watchSignals": [
+          "发现资源准确率、策略误报、权限最小化、适配器健康、升级兼容性和回滚路径",
+          "最近 release 是否解释 云原生控制面 / 服务网格管理 的关键能力演进，issue 是否出现与你场景相近的失败反馈。",
+          "社区讨论是否开始从“能用”转向“如何治理、观测、扩展和回滚”。"
+        ],
+        "deepDive": {
+          "strategicValue": "meshery/meshery 的战略价值在于为「多集群、多服务网格和云原生组件的配置漂移、可视化和策略治理难以统一」提供一个可拆解机制。采用判断应从机制适配性出发，而不是从项目名气出发。",
+          "implementationPath": [
+            "先接入一个测试集群，只读扫描拓扑和配置，再逐步打开策略校验与变更建议",
+            "把接入范围限制在旁路或只读链路，先产出基线数据，再决定是否扩大。",
+            "复盘失败样本，确认问题来自数据、权限、模型/索引、网络还是人机流程。"
+          ],
+          "productionConcerns": [
+            "控制面权限过大、CRD 版本漂移、适配器质量和多集群写操作会扩大故障半径",
+            "上线前必须明确 owner、升级窗口、回滚方式、告警指标和合规边界。",
+            "如果缺少 发现资源准确率、策略误报、权限最小化、适配器健康、升级兼容性和回滚路径 的连续观测，不应进入核心业务链路。"
+          ],
+          "decisionQuestions": [
+            "Meshery 是治理入口，还是会成为另一个需要治理的控制面？",
+            "有没有一个不用改主链路也能验证 发现资源准确率、策略误报、权限最小化、适配器健康、升级兼容性和回滚路径 的最小实验？",
+            "谁负责上线后的维护、审计、成本和失败接管？"
+          ],
+          "recommendedAction": "进入试点/观察池：先接入一个测试集群，只读扫描拓扑和配置，再逐步打开策略校验与变更建议"
+        },
+        "diagram": {
+          "title": "meshery 工业级采用图解",
+          "caption": "云原生控制面 / 服务网格管理 · TypeScript · 10.9K stars",
+          "summary": "把「多集群、多服务网格和云原生组件的配置漂移、可视化和策略治理难以统一」通过「通过适配器、模型、可视化拓扑和策略工作流管理 Kubernetes 与 service mesh 资源」转化为可观测的「发现资源准确率、策略误报、权限最小化、适配器健康、升级兼容性和回滚路径」。",
+          "nodes": [
+            {
+              "label": "架构机制",
+              "detail": "通过适配器、模型、可视化拓扑和策略工作流管理 Kubernetes 与 service mesh 资源",
+              "type": "core"
+            },
+            {
+              "label": "适用团队",
+              "detail": "已有平台工程 owner、服务网格治理需求和非生产集群试点窗口的基础设施团队",
+              "type": "input"
+            },
+            {
+              "label": "落地路径",
+              "detail": "先接入一个测试集群，只读扫描拓扑和配置，再逐步打开策略校验与变更建议",
+              "type": "integration"
+            },
+            {
+              "label": "观察信号",
+              "detail": "发现资源准确率、策略误报、权限最小化、适配器健康、升级兼容性和回滚路径",
+              "type": "measure"
+            }
+          ],
+          "links": [
+            "定义痛点",
+            "拆解机制",
+            "指标验收"
+          ],
+          "poster": {
+            "eyebrow": "Project Blueprint",
+            "headline": "云原生控制面 / 服务网格管理",
+            "subhead": "meshery/meshery · TypeScript",
+            "thesis": "用「通过适配器、模型、可视化拓扑和策略工作流管理 Kubernetes 与 service mesh 资源」解决「多集群、多服务网格和云原生组件的配置漂移、可视化和策略治理难以统一」，再用「发现资源准确率、策略误报、权限最小化、适配器健康、升级兼容性和回滚路径」决定是否进入生产。",
+            "metrics": [
+              {
+                "label": "Stars",
+                "value": "10.9K",
+                "note": "社区关注"
+              },
+              {
+                "label": "Forks",
+                "value": "3.5K",
+                "note": "二次采用"
+              },
+              {
+                "label": "Issues",
+                "value": "1.5K",
+                "note": "维护压力"
+              },
+              {
+                "label": "Score",
+                "value": "92",
+                "note": "雷达评分"
+              }
+            ],
+            "lanes": [
+              {
+                "label": "架构机制",
+                "detail": "通过适配器、模型、可视化拓扑和策略工作流管理 Kubernetes 与 service mesh 资源",
+                "type": "core",
+                "step": "01",
+                "signal": "多集群、多服务网格和云原生组件的配置漂移、可视化和策略治理难以统一"
+              },
+              {
+                "label": "适用团队",
+                "detail": "已有平台工程 owner、服务网格治理需求和非生产集群试点窗口的基础设施团队",
+                "type": "input",
+                "step": "02",
+                "signal": "通过适配器、模型、可视化拓扑和策略工作流管理 Kubernetes 与 service mesh 资源"
+              },
+              {
+                "label": "落地路径",
+                "detail": "先接入一个测试集群，只读扫描拓扑和配置，再逐步打开策略校验与变更建议",
+                "type": "integration",
+                "step": "03",
+                "signal": "先接入一个测试集群，只读扫描拓扑和配置，再逐步打开策略校验与变更建议"
+              },
+              {
+                "label": "观察信号",
+                "detail": "发现资源准确率、策略误报、权限最小化、适配器健康、升级兼容性和回滚路径",
+                "type": "measure",
+                "step": "04",
+                "signal": "发现资源准确率、策略误报、权限最小化、适配器健康、升级兼容性和回滚路径"
+              }
+            ],
+            "adoption": [
+              {
+                "label": "试点入口",
+                "detail": "先接入一个测试集群，只读扫描拓扑和配置，再逐步打开策略校验与变更建议"
+              },
+              {
+                "label": "验收指标",
+                "detail": "发现资源准确率、策略误报、权限最小化、适配器健康、升级兼容性和回滚路径"
+              },
+              {
+                "label": "生产风险",
+                "detail": "控制面权限过大、CRD 版本漂移、适配器质量和多集群写操作会扩大故障半径"
+              },
+              {
+                "label": "决策问题",
+                "detail": "Meshery 是治理入口，还是会成为另一个需要治理的控制面？"
+              }
+            ],
+            "warning": "控制面权限过大、CRD 版本漂移、适配器质量和多集群写操作会扩大故障半径"
+          }
+        },
+        "maturity": {
+          "community": 89,
+          "maintenance": 100,
+          "production": 81,
+          "complexity": 84
+        },
+        "score": 92
+      },
+      "evidence": {
+        "readmeExcerpt": "<p style=\"text align:center;\" align=\"center\" <a href=\"https://meshery.io\" <picture <source media=\"(prefers color scheme: dark)\" srcset=\"https://raw.githubusercontent.com/meshery/meshery/master/.github/assets/images/readme/meshery logo light text side.svg\" <source media=\"(prefers color scheme: light)\" srcset=\"https://raw.githubusercontent.com/meshery/meshery/master/.github/assets/images/readme/meshery logo dark text side.svg\" <img src=\"https://raw.githubusercontent.com/meshery/meshery/master/.github/assets/images/readme/meshery logo dark text side.svg\" alt=\"Meshery Logo\" width=\"70%\" / </picture </a <br / <br / </p <p align=\"center\" <a href=\"https://hub.docker.com/r/meshery/meshery\" alt=\"Docker pulls\" <img src=\"https://img.shields.io/docker/pulls/meshery/meshery.svg\" / </a <a href=\"https://github.com/issues?q=is%3Aopen%20is%3Aissue%20archived%3Afalse%20(org%3Ameshery%20OR%20org%3Aservice m...",
+        "githubUrl": "https://github.com/meshery/meshery"
+      }
+    },
+    {
+      "rank": 5,
+      "repo": {
+        "fullName": "obra/superpowers",
+        "name": "superpowers",
+        "owner": "obra",
+        "avatarUrl": "https://avatars.githubusercontent.com/u/45416?v=4",
+        "visualUrl": "https://opengraph.githubassets.com/20260617/obra/superpowers",
+        "url": "https://github.com/obra/superpowers",
+        "description": "An agentic skills framework & software development methodology that works.",
+        "stars": 230562,
+        "starsToday": 1109,
+        "forks": 20504,
+        "openIssues": 287,
+        "language": "Shell",
+        "topics": [],
+        "license": "MIT",
+        "pushedAt": "2026-06-17T05:46:48Z",
+        "createdAt": "2025-10-09T19:45:18Z",
+        "languages": {
+          "Shell": 180313,
+          "JavaScript": 148563,
+          "TypeScript": 9337,
+          "HTML": 8094,
+          "Python": 6733,
+          "Batchfile": 1460
+        }
+      },
+      "analysis": {
+        "method": "codex-deep-research",
+        "category": "Agentic 软件工程方法论",
+        "oneLiner": "An agentic skills framework & software development methodology that works.；本次更值得看的不是热度，而是它能否用「把工程方法拆成技能、检查点和执行纪律，让 Agent 在调研、TDD、调试、评审、收尾时遵循明确步骤」解决「团队使用 coding agent 时缺少可复用流程，容易在调试、评审、验证和计划阶段出现随意性」。",
+        "whyItMatters": "obra/superpowers 进入雷达，是因为它把 团队使用 coding agent 时缺少可复用流程，容易在调试、评审、验证和计划阶段出现随意性 这个具体工程问题显性化。对生产团队而言，价值不在 star 数，而在能否把 把工程方法拆成技能、检查点和执行纪律，让 Agent 在调研、TDD、调试、评审、收尾时遵循明确步骤 拆成小样本验证，并用 返工率、评审缺陷数、测试前后失败定位时间、任务完成证据质量和团队采纳率 判断是否真的改善。",
+        "engineeringRead": "Shell · Agentic 软件工程方法论。阅读顺序建议：先看入口/协议，再看状态与权限边界，然后读失败处理、部署方式和最近 issue；试点只围绕「只抽取 2-3 个高频技能进入现有流程，例如系统化调试、验证前置和代码评审，再记录差异」展开。",
+        "architectureSignals": [
+          "架构机制：把工程方法拆成技能、检查点和执行纪律，让 Agent 在调研、TDD、调试、评审、收尾时遵循明确步骤",
+          "适用团队：已经把 Agent 接入真实开发、但想提升任务成功率和代码审查质量的工程团队",
+          "落地路径：只抽取 2-3 个高频技能进入现有流程，例如系统化调试、验证前置和代码评审，再记录差异",
+          "生产风险：流程过重、技能互相冲突、团队只复制文本不改变验收标准，会让方法论变成提示词装饰",
+          "决策问题：这些技能能提升可验证产出，还是只增加了 Agent 的自我叙述？",
+          "观察信号：返工率、评审缺陷数、测试前后失败定位时间、任务完成证据质量和团队采纳率"
+        ],
+        "valueHypothesis": [
+          "若团队真实痛点是「团队使用 coding agent 时缺少可复用流程，容易在调试、评审、验证和计划阶段出现随意性」，它的收益应体现在 返工率、评审缺陷数、测试前后失败定位时间、任务完成证据质量和团队采纳率 的改善，而不是只证明 demo 能跑。",
+          "适合先复制机制、接口或流程，不适合在未评估权限、维护和回滚之前进入主链路。",
+          "如果现有流程没有 owner 或无法做离线/旁路验证，应降级为观察项。"
+        ],
+        "technicalTakeaways": [
+          "把 README 的安装示例拆成输入、状态、执行边界和输出证据四块读。",
+          "图解重点应呈现「团队使用 coding agent 时缺少可复用流程，容易在调试、评审、验证和计划阶段出现随意性 -> 把工程方法拆成技能、检查点和执行纪律，让 Agent 在调研、TDD、调试、评审、收尾时遵循明确步骤 -> 返工率、评审缺陷数、测试前后失败定位时间、任务完成证据质量和团队采纳率」，让前端能画出工业链路而不是概念海报。",
+          "验收必须同时记录正样本、失败样本、成本、延迟、权限和回滚步骤。"
+        ],
+        "adoptionRisks": [
+          "流程过重、技能互相冲突、团队只复制文本不改变验收标准，会让方法论变成提示词装饰",
+          "与现有 Shell 工具链集成前，要确认 license、升级节奏、配置持久化和日志可观测性。",
+          "热门项目的社区信号只能说明关注度，不能替代生产环境里的稳定性和安全评估。"
+        ],
+        "suggestedUseCases": [
+          "只抽取 2-3 个高频技能进入现有流程，例如系统化调试、验证前置和代码评审，再记录差异",
+          "设计一个两周以内可结束的 spike：只接入非核心路径，提前定义停止条件。",
+          "把 返工率、评审缺陷数、测试前后失败定位时间、任务完成证据质量和团队采纳率 写进验收表，避免用主观体验替代工程证据。"
+        ],
+        "watchSignals": [
+          "返工率、评审缺陷数、测试前后失败定位时间、任务完成证据质量和团队采纳率",
+          "最近 release 是否解释 Agentic 软件工程方法论 的关键能力演进，issue 是否出现与你场景相近的失败反馈。",
+          "社区讨论是否开始从“能用”转向“如何治理、观测、扩展和回滚”。"
+        ],
+        "deepDive": {
+          "strategicValue": "obra/superpowers 的战略价值在于为「团队使用 coding agent 时缺少可复用流程，容易在调试、评审、验证和计划阶段出现随意性」提供一个可拆解机制。采用判断应从机制适配性出发，而不是从项目名气出发。",
+          "implementationPath": [
+            "只抽取 2-3 个高频技能进入现有流程，例如系统化调试、验证前置和代码评审，再记录差异",
+            "把接入范围限制在旁路或只读链路，先产出基线数据，再决定是否扩大。",
+            "复盘失败样本，确认问题来自数据、权限、模型/索引、网络还是人机流程。"
+          ],
+          "productionConcerns": [
+            "流程过重、技能互相冲突、团队只复制文本不改变验收标准，会让方法论变成提示词装饰",
+            "上线前必须明确 owner、升级窗口、回滚方式、告警指标和合规边界。",
+            "如果缺少 返工率、评审缺陷数、测试前后失败定位时间、任务完成证据质量和团队采纳率 的连续观测，不应进入核心业务链路。"
+          ],
+          "decisionQuestions": [
+            "这些技能能提升可验证产出，还是只增加了 Agent 的自我叙述？",
+            "有没有一个不用改主链路也能验证 返工率、评审缺陷数、测试前后失败定位时间、任务完成证据质量和团队采纳率 的最小实验？",
+            "谁负责上线后的维护、审计、成本和失败接管？"
+          ],
+          "recommendedAction": "进入试点/观察池：只抽取 2-3 个高频技能进入现有流程，例如系统化调试、验证前置和代码评审，再记录差异"
+        },
+        "diagram": {
+          "title": "superpowers 工业级采用图解",
+          "caption": "Agentic 软件工程方法论 · Shell · 230.6K stars",
+          "summary": "把「团队使用 coding agent 时缺少可复用流程，容易在调试、评审、验证和计划阶段出现随意性」通过「把工程方法拆成技能、检查点和执行纪律，让 Agent 在调研、TDD、调试、评审、收尾时遵循明确步骤」转化为可观测的「返工率、评审缺陷数、测试前后失败定位时间、任务完成证据质量和团队采纳率」。",
+          "nodes": [
+            {
+              "label": "架构机制",
+              "detail": "把工程方法拆成技能、检查点和执行纪律，让 Agent 在调研、TDD、调试、评审、收尾时遵循明确步骤",
+              "type": "core"
+            },
+            {
+              "label": "适用团队",
+              "detail": "已经把 Agent 接入真实开发、但想提升任务成功率和代码审查质量的工程团队",
+              "type": "input"
+            },
+            {
+              "label": "落地路径",
+              "detail": "只抽取 2-3 个高频技能进入现有流程，例如系统化调试、验证前置和代码评审，再记录差异",
+              "type": "integration"
+            },
+            {
+              "label": "观察信号",
+              "detail": "返工率、评审缺陷数、测试前后失败定位时间、任务完成证据质量和团队采纳率",
+              "type": "measure"
+            }
+          ],
+          "links": [
+            "定义痛点",
+            "拆解机制",
+            "指标验收"
+          ],
+          "poster": {
+            "eyebrow": "Project Blueprint",
+            "headline": "Agentic 软件工程方法论",
+            "subhead": "obra/superpowers · Shell",
+            "thesis": "用「把工程方法拆成技能、检查点和执行纪律，让 Agent 在调研、TDD、调试、评审、收尾时遵循明确步骤」解决「团队使用 coding agent 时缺少可复用流程，容易在调试、评审、验证和计划阶段出现随意性」，再用「返工率、评审缺陷数、测试前后失败定位时间、任务完成证据质量和团队采纳率」决定是否进入生产。",
+            "metrics": [
+              {
+                "label": "Stars",
+                "value": "230.6K",
+                "note": "社区关注"
+              },
+              {
+                "label": "Forks",
+                "value": "20.5K",
+                "note": "二次采用"
+              },
+              {
+                "label": "Issues",
+                "value": "287",
+                "note": "维护压力"
+              },
+              {
+                "label": "Score",
+                "value": "96",
+                "note": "雷达评分"
+              }
+            ],
+            "lanes": [
+              {
+                "label": "架构机制",
+                "detail": "把工程方法拆成技能、检查点和执行纪律，让 Agent 在调研、TDD、调试、评审、收尾时遵循明确步骤",
+                "type": "core",
+                "step": "01",
+                "signal": "团队使用 coding agent 时缺少可复用流程，容易在调试、评审、验证和计划阶段出现随意性"
+              },
+              {
+                "label": "适用团队",
+                "detail": "已经把 Agent 接入真实开发、但想提升任务成功率和代码审查质量的工程团队",
+                "type": "input",
+                "step": "02",
+                "signal": "把工程方法拆成技能、检查点和执行纪律，让 Agent 在调研、TDD、调试、评审、收尾时遵循明确步骤"
+              },
+              {
+                "label": "落地路径",
+                "detail": "只抽取 2-3 个高频技能进入现有流程，例如系统化调试、验证前置和代码评审，再记录差异",
+                "type": "integration",
+                "step": "03",
+                "signal": "只抽取 2-3 个高频技能进入现有流程，例如系统化调试、验证前置和代码评审，再记录差异"
+              },
+              {
+                "label": "观察信号",
+                "detail": "返工率、评审缺陷数、测试前后失败定位时间、任务完成证据质量和团队采纳率",
+                "type": "measure",
+                "step": "04",
+                "signal": "返工率、评审缺陷数、测试前后失败定位时间、任务完成证据质量和团队采纳率"
+              }
+            ],
+            "adoption": [
+              {
+                "label": "试点入口",
+                "detail": "只抽取 2-3 个高频技能进入现有流程，例如系统化调试、验证前置和代码评审，再记录差异"
+              },
+              {
+                "label": "验收指标",
+                "detail": "返工率、评审缺陷数、测试前后失败定位时间、任务完成证据质量和团队采纳率"
+              },
+              {
+                "label": "生产风险",
+                "detail": "流程过重、技能互相冲突、团队只复制文本不改变验收标准，会让方法论变成提示词装饰"
+              },
+              {
+                "label": "决策问题",
+                "detail": "这些技能能提升可验证产出，还是只增加了 Agent 的自我叙述？"
+              }
+            ],
+            "warning": "流程过重、技能互相冲突、团队只复制文本不改变验收标准，会让方法论变成提示词装饰"
+          }
+        },
+        "maturity": {
+          "community": 100,
+          "maintenance": 100,
+          "production": 95,
+          "complexity": 55
+        },
+        "score": 96
+      },
+      "evidence": {
+        "readmeExcerpt": "Superpowers Superpowers is a complete software development methodology for your coding agents, built on top of a set of composable skills and some initial instructions that make sure your agent uses them. We're Hiring! We're hiring someone to help out full time with Superpowers community and code work. You can read about the job at https://primeradiant.com/jobs/superpowers community engineer/ If this sounds like someone you know, definitely send them our way. Quickstart Give your agent Superpowers: Claude Code, Antigravity, Codex App, Codex CLI, Cursor, Factory Droid, Gemini CLI, GitHub Copilot CLI, Kimi Code, OpenCode, Pi. How it works It starts from the moment you fire up your coding agent. As soon as it sees that you're building something, it doesn't just jump into trying to write code. Instead, it steps back and asks you what you're really trying to do. Once it's teased a spec out of...",
+        "githubUrl": "https://github.com/obra/superpowers"
+      }
+    },
+    {
+      "rank": 6,
+      "repo": {
+        "fullName": "google-research/timesfm",
+        "name": "timesfm",
+        "owner": "google-research",
+        "avatarUrl": "https://avatars.githubusercontent.com/u/43830688?v=4",
+        "visualUrl": "https://opengraph.githubassets.com/20260617/google-research/timesfm",
+        "url": "https://github.com/google-research/timesfm",
+        "description": "TimesFM (Time Series Foundation Model) is a pretrained time-series foundation model developed by Google Research for time-series forecasting.",
+        "stars": 21538,
+        "starsToday": 84,
+        "forks": 2107,
+        "openIssues": 214,
+        "language": "Python",
+        "topics": [],
+        "license": "Apache-2.0",
+        "pushedAt": "2026-06-17T13:11:09Z",
+        "createdAt": "2024-04-29T21:26:26Z",
+        "languages": {
+          "Python": 514567,
+          "HTML": 153063,
+          "Jupyter Notebook": 57674,
+          "Shell": 2489
+        }
+      },
+      "analysis": {
+        "method": "codex-deep-research",
+        "category": "时间序列基础模型 / 预测平台",
+        "oneLiner": "TimesFM (Time Series Foundation Model) is a pretrained time-series foundation model developed by Google Research for time-series forecasting.；本次更值得看的不是热度，而是它能否用「Google Research 预训练时间序列 foundation model，通过统一表征和 forecasting head 覆盖多领域预测任务」解决「需求、容量、金融、供应链和运维预测场景常因数据稀疏、季节性变化和模型维护成本而碎片化」。",
+        "whyItMatters": "google-research/timesfm 进入雷达，是因为它把 需求、容量、金融、供应链和运维预测场景常因数据稀疏、季节性变化和模型维护成本而碎片化 这个具体工程问题显性化。对生产团队而言，价值不在 star 数，而在能否把 Google Research 预训练时间序列 foundation model，通过统一表征和 forecasting head 覆盖多领域预测任务 拆成小样本验证，并用 MAPE/sMAPE、分层误差、异常期表现、重训练频率、推理延迟和失败序列聚类 判断是否真的改善。",
+        "engineeringRead": "Python · 时间序列基础模型 / 预测平台。阅读顺序建议：先看入口/协议，再看状态与权限边界，然后读失败处理、部署方式和最近 issue；试点只围绕「先离线复现 3 类内部序列，与 Prophet/ARIMA/LightGBM/现有深度模型比较 MAPE、P90 和冷启动表现」展开。",
+        "architectureSignals": [
+          "架构机制：Google Research 预训练时间序列 foundation model，通过统一表征和 forecasting head 覆盖多领域预测任务",
+          "适用团队：有大量历史时序数据、需要快速建立预测基线的数据科学、供应链、SRE 或增长团队",
+          "落地路径：先离线复现 3 类内部序列，与 Prophet/ARIMA/LightGBM/现有深度模型比较 MAPE、P90 和冷启动表现",
+          "生产风险：分布漂移、外生变量缺失、节假日/促销因子、长尾 SKU 和推理成本可能让通用模型不如业务模型稳定",
+          "决策问题：Foundation model 带来的冷启动收益是否能覆盖特征工程和业务解释性的损失？",
+          "观察信号：MAPE/sMAPE、分层误差、异常期表现、重训练频率、推理延迟和失败序列聚类"
+        ],
+        "valueHypothesis": [
+          "若团队真实痛点是「需求、容量、金融、供应链和运维预测场景常因数据稀疏、季节性变化和模型维护成本而碎片化」，它的收益应体现在 MAPE/sMAPE、分层误差、异常期表现、重训练频率、推理延迟和失败序列聚类 的改善，而不是只证明 demo 能跑。",
+          "适合先复制机制、接口或流程，不适合在未评估权限、维护和回滚之前进入主链路。",
+          "如果现有流程没有 owner 或无法做离线/旁路验证，应降级为观察项。"
+        ],
+        "technicalTakeaways": [
+          "把 README 的安装示例拆成输入、状态、执行边界和输出证据四块读。",
+          "图解重点应呈现「需求、容量、金融、供应链和运维预测场景常因数据稀疏、季节性变化和模型维护成本而碎片化 -> Google Research 预训练时间序列 foundation model，通过统一表征和 forecasting head 覆盖多领域预测任务 -> MAPE/sMAPE、分层误差、异常期表现、重训练频率、推理延迟和失败序列聚类」，让前端能画出工业链路而不是概念海报。",
+          "验收必须同时记录正样本、失败样本、成本、延迟、权限和回滚步骤。"
+        ],
+        "adoptionRisks": [
+          "分布漂移、外生变量缺失、节假日/促销因子、长尾 SKU 和推理成本可能让通用模型不如业务模型稳定",
+          "与现有 Python 工具链集成前，要确认 license、升级节奏、配置持久化和日志可观测性。",
+          "热门项目的社区信号只能说明关注度，不能替代生产环境里的稳定性和安全评估。"
+        ],
+        "suggestedUseCases": [
+          "先离线复现 3 类内部序列，与 Prophet/ARIMA/LightGBM/现有深度模型比较 MAPE、P90 和冷启动表现",
+          "设计一个两周以内可结束的 spike：只接入非核心路径，提前定义停止条件。",
+          "把 MAPE/sMAPE、分层误差、异常期表现、重训练频率、推理延迟和失败序列聚类 写进验收表，避免用主观体验替代工程证据。"
+        ],
+        "watchSignals": [
+          "MAPE/sMAPE、分层误差、异常期表现、重训练频率、推理延迟和失败序列聚类",
+          "最近 release 是否解释 时间序列基础模型 / 预测平台 的关键能力演进，issue 是否出现与你场景相近的失败反馈。",
+          "社区讨论是否开始从“能用”转向“如何治理、观测、扩展和回滚”。"
+        ],
+        "deepDive": {
+          "strategicValue": "google-research/timesfm 的战略价值在于为「需求、容量、金融、供应链和运维预测场景常因数据稀疏、季节性变化和模型维护成本而碎片化」提供一个可拆解机制。采用判断应从机制适配性出发，而不是从项目名气出发。",
+          "implementationPath": [
+            "先离线复现 3 类内部序列，与 Prophet/ARIMA/LightGBM/现有深度模型比较 MAPE、P90 和冷启动表现",
+            "把接入范围限制在旁路或只读链路，先产出基线数据，再决定是否扩大。",
+            "复盘失败样本，确认问题来自数据、权限、模型/索引、网络还是人机流程。"
+          ],
+          "productionConcerns": [
+            "分布漂移、外生变量缺失、节假日/促销因子、长尾 SKU 和推理成本可能让通用模型不如业务模型稳定",
+            "上线前必须明确 owner、升级窗口、回滚方式、告警指标和合规边界。",
+            "如果缺少 MAPE/sMAPE、分层误差、异常期表现、重训练频率、推理延迟和失败序列聚类 的连续观测，不应进入核心业务链路。"
+          ],
+          "decisionQuestions": [
+            "Foundation model 带来的冷启动收益是否能覆盖特征工程和业务解释性的损失？",
+            "有没有一个不用改主链路也能验证 MAPE/sMAPE、分层误差、异常期表现、重训练频率、推理延迟和失败序列聚类 的最小实验？",
+            "谁负责上线后的维护、审计、成本和失败接管？"
+          ],
+          "recommendedAction": "进入试点/观察池：先离线复现 3 类内部序列，与 Prophet/ARIMA/LightGBM/现有深度模型比较 MAPE、P90 和冷启动表现"
+        },
+        "diagram": {
+          "title": "timesfm 工业级采用图解",
+          "caption": "时间序列基础模型 / 预测平台 · Python · 21.5K stars",
+          "summary": "把「需求、容量、金融、供应链和运维预测场景常因数据稀疏、季节性变化和模型维护成本而碎片化」通过「Google Research 预训练时间序列 foundation model，通过统一表征和 forecasting head 覆盖多领域预测任务」转化为可观测的「MAPE/sMAPE、分层误差、异常期表现、重训练频率、推理延迟和失败序列聚类」。",
+          "nodes": [
+            {
+              "label": "架构机制",
+              "detail": "Google Research 预训练时间序列 foundation model，通过统一表征和 forecasting head 覆盖多领域预测任务",
+              "type": "core"
+            },
+            {
+              "label": "适用团队",
+              "detail": "有大量历史时序数据、需要快速建立预测基线的数据科学、供应链、SRE 或增长团队",
+              "type": "input"
+            },
+            {
+              "label": "落地路径",
+              "detail": "先离线复现 3 类内部序列，与 Prophet/ARIMA/LightGBM/现有深度模型比较 MAPE、P90 和冷启动表现",
+              "type": "integration"
+            },
+            {
+              "label": "观察信号",
+              "detail": "MAPE/sMAPE、分层误差、异常期表现、重训练频率、推理延迟和失败序列聚类",
+              "type": "measure"
+            }
+          ],
+          "links": [
+            "定义痛点",
+            "拆解机制",
+            "指标验收"
+          ],
+          "poster": {
+            "eyebrow": "Project Blueprint",
+            "headline": "时间序列基础模型 / 预测平台",
+            "subhead": "google-research/timesfm · Python",
+            "thesis": "用「Google Research 预训练时间序列 foundation model，通过统一表征和 forecasting head 覆盖多领域预测任务」解决「需求、容量、金融、供应链和运维预测场景常因数据稀疏、季节性变化和模型维护成本而碎片化」，再用「MAPE/sMAPE、分层误差、异常期表现、重训练频率、推理延迟和失败序列聚类」决定是否进入生产。",
+            "metrics": [
+              {
+                "label": "Stars",
+                "value": "21.5K",
+                "note": "社区关注"
+              },
+              {
+                "label": "Forks",
+                "value": "2.1K",
+                "note": "二次采用"
+              },
+              {
+                "label": "Issues",
+                "value": "214",
+                "note": "维护压力"
+              },
+              {
+                "label": "Score",
+                "value": "96",
+                "note": "雷达评分"
+              }
+            ],
+            "lanes": [
+              {
+                "label": "架构机制",
+                "detail": "Google Research 预训练时间序列 foundation model，通过统一表征和 forecasting head 覆盖多领域预测任务",
+                "type": "core",
+                "step": "01",
+                "signal": "需求、容量、金融、供应链和运维预测场景常因数据稀疏、季节性变化和模型维护成本而碎片化"
+              },
+              {
+                "label": "适用团队",
+                "detail": "有大量历史时序数据、需要快速建立预测基线的数据科学、供应链、SRE 或增长团队",
+                "type": "input",
+                "step": "02",
+                "signal": "Google Research 预训练时间序列 foundation model，通过统一表征和 forecasting head 覆盖多领域预测任务"
+              },
+              {
+                "label": "落地路径",
+                "detail": "先离线复现 3 类内部序列，与 Prophet/ARIMA/LightGBM/现有深度模型比较 MAPE、P90 和冷启动表现",
+                "type": "integration",
+                "step": "03",
+                "signal": "先离线复现 3 类内部序列，与 Prophet/ARIMA/LightGBM/现有深度模型比较 MAPE、P90 和冷启动表现"
+              },
+              {
+                "label": "观察信号",
+                "detail": "MAPE/sMAPE、分层误差、异常期表现、重训练频率、推理延迟和失败序列聚类",
+                "type": "measure",
+                "step": "04",
+                "signal": "MAPE/sMAPE、分层误差、异常期表现、重训练频率、推理延迟和失败序列聚类"
+              }
+            ],
+            "adoption": [
+              {
+                "label": "试点入口",
+                "detail": "先离线复现 3 类内部序列，与 Prophet/ARIMA/LightGBM/现有深度模型比较 MAPE、P90 和冷启动表现"
+              },
+              {
+                "label": "验收指标",
+                "detail": "MAPE/sMAPE、分层误差、异常期表现、重训练频率、推理延迟和失败序列聚类"
+              },
+              {
+                "label": "生产风险",
+                "detail": "分布漂移、外生变量缺失、节假日/促销因子、长尾 SKU 和推理成本可能让通用模型不如业务模型稳定"
+              },
+              {
+                "label": "决策问题",
+                "detail": "Foundation model 带来的冷启动收益是否能覆盖特征工程和业务解释性的损失？"
+              }
+            ],
+            "warning": "分布漂移、外生变量缺失、节假日/促销因子、长尾 SKU 和推理成本可能让通用模型不如业务模型稳定"
+          }
+        },
+        "maturity": {
+          "community": 95,
+          "maintenance": 100,
+          "production": 94,
+          "complexity": 55
+        },
+        "score": 96
+      },
+      "evidence": {
+        "readmeExcerpt": "TimesFM TimesFM (Time Series Foundation Model) is a pretrained time series foundation model developed by Google Research for time series forecasting. Paper: A decoder only foundation model for time series forecasting, ICML 2024. All checkpoints: TimesFM Hugging Face Collection. Google Research blog. TimesFM in Google 1P Products: BigQuery ML: Enterprise level SQL queries for scalability and reliability. Google Sheets: For your daily spreadsheet. Vertex Model Garden: Dockerized endpoint for agentic calling. This open version is not an officially supported Google product. Latest Model Version: TimesFM 2.5 Archived Model Versions: 1.0 and 2.0: relevant code archived in the sub directory v1 . You can pip install timesfm==1.3.0 to install an older version of this package to load them. Update June 5, 2026 Updated PyPI to timesfm=2.0.0 . See Install. Update Apr. 9, 2026 Added fine tuning exampl...",
+        "githubUrl": "https://github.com/google-research/timesfm"
+      }
+    },
+    {
+      "rank": 7,
+      "repo": {
+        "fullName": "RocketChat/Rocket.Chat",
+        "name": "Rocket.Chat",
+        "owner": "RocketChat",
+        "avatarUrl": "https://avatars.githubusercontent.com/u/12508788?v=4",
+        "visualUrl": "https://opengraph.githubassets.com/20260617/RocketChat/Rocket.Chat",
+        "url": "https://github.com/RocketChat/Rocket.Chat",
+        "description": "The Secure CommsOS™ for mission-critical operations",
+        "stars": 45505,
+        "starsToday": 15,
+        "forks": 13656,
+        "openIssues": 3770,
+        "language": "TypeScript",
+        "topics": [
+          "chat",
+          "collaboration",
+          "foss",
+          "free",
+          "hacktoberfest",
+          "javascript",
+          "meteor",
+          "mit",
+          "real-time",
+          "slack",
+          "webrtc"
+        ],
+        "license": "NOASSERTION",
+        "pushedAt": "2026-06-17T13:01:17Z",
+        "createdAt": "2015-05-19T07:36:09Z",
+        "languages": {
+          "TypeScript": 22853906,
+          "CSS": 517897,
+          "JavaScript": 501603,
+          "HTML": 229253,
+          "SCSS": 54428,
+          "PEG.js": 32922,
+          "Dockerfile": 30974,
+          "Shell": 21416,
+          "PHP": 7750,
+          "Smarty": 1052,
+          "Batchfile": 549,
+          "Handlebars": 463,
+          "EJS": 179
+        }
+      },
+      "analysis": {
+        "method": "codex-deep-research",
+        "category": "自托管安全通讯 / 企业协作",
+        "oneLiner": "The Secure CommsOS™ for mission-critical operations；本次更值得看的不是热度，而是它能否用「以自托管消息服务、频道/权限、集成市场、移动端和企业安全能力组成可控通讯 OS」解决「受监管行业需要掌握数据边界、审计、身份集成和任务关键通讯，而普通 SaaS 聊天工具难以满足」。",
+        "whyItMatters": "RocketChat/Rocket.Chat 进入雷达，是因为它把 受监管行业需要掌握数据边界、审计、身份集成和任务关键通讯，而普通 SaaS 聊天工具难以满足 这个具体工程问题显性化。对生产团队而言，价值不在 star 数，而在能否把 以自托管消息服务、频道/权限、集成市场、移动端和企业安全能力组成可控通讯 OS 拆成小样本验证，并用 消息送达率、搜索延迟、移动通知可靠性、审计覆盖、备份恢复时间和插件安全事件 判断是否真的改善。",
+        "engineeringRead": "TypeScript · 自托管安全通讯 / 企业协作。阅读顺序建议：先看入口/协议，再看状态与权限边界，然后读失败处理、部署方式和最近 issue；试点只围绕「先迁移一个低风险工作组，接入 SSO、审计日志和备份恢复，再评估移动端与通知稳定性」展开。",
+        "architectureSignals": [
+          "架构机制：以自托管消息服务、频道/权限、集成市场、移动端和企业安全能力组成可控通讯 OS",
+          "适用团队：政府、金融、能源、医疗或有强数据驻留要求的 IT/安全/协作平台团队",
+          "落地路径：先迁移一个低风险工作组，接入 SSO、审计日志和备份恢复，再评估移动端与通知稳定性",
+          "生产风险：升级运维、消息搜索、移动推送、合规留存和插件安全会决定长期 TCO",
+          "决策问题：自托管带来的控制权是否值得承担完整通讯平台的运维责任？",
+          "观察信号：消息送达率、搜索延迟、移动通知可靠性、审计覆盖、备份恢复时间和插件安全事件"
+        ],
+        "valueHypothesis": [
+          "若团队真实痛点是「受监管行业需要掌握数据边界、审计、身份集成和任务关键通讯，而普通 SaaS 聊天工具难以满足」，它的收益应体现在 消息送达率、搜索延迟、移动通知可靠性、审计覆盖、备份恢复时间和插件安全事件 的改善，而不是只证明 demo 能跑。",
+          "适合先复制机制、接口或流程，不适合在未评估权限、维护和回滚之前进入主链路。",
+          "如果现有流程没有 owner 或无法做离线/旁路验证，应降级为观察项。"
+        ],
+        "technicalTakeaways": [
+          "把 README 的安装示例拆成输入、状态、执行边界和输出证据四块读。",
+          "图解重点应呈现「受监管行业需要掌握数据边界、审计、身份集成和任务关键通讯，而普通 SaaS 聊天工具难以满足 -> 以自托管消息服务、频道/权限、集成市场、移动端和企业安全能力组成可控通讯 OS -> 消息送达率、搜索延迟、移动通知可靠性、审计覆盖、备份恢复时间和插件安全事件」，让前端能画出工业链路而不是概念海报。",
+          "验收必须同时记录正样本、失败样本、成本、延迟、权限和回滚步骤。"
+        ],
+        "adoptionRisks": [
+          "升级运维、消息搜索、移动推送、合规留存和插件安全会决定长期 TCO",
+          "与现有 TypeScript 工具链集成前，要确认 license、升级节奏、配置持久化和日志可观测性。",
+          "热门项目的社区信号只能说明关注度，不能替代生产环境里的稳定性和安全评估。"
+        ],
+        "suggestedUseCases": [
+          "先迁移一个低风险工作组，接入 SSO、审计日志和备份恢复，再评估移动端与通知稳定性",
+          "设计一个两周以内可结束的 spike：只接入非核心路径，提前定义停止条件。",
+          "把 消息送达率、搜索延迟、移动通知可靠性、审计覆盖、备份恢复时间和插件安全事件 写进验收表，避免用主观体验替代工程证据。"
+        ],
+        "watchSignals": [
+          "消息送达率、搜索延迟、移动通知可靠性、审计覆盖、备份恢复时间和插件安全事件",
+          "最近 release 是否解释 自托管安全通讯 / 企业协作 的关键能力演进，issue 是否出现与你场景相近的失败反馈。",
+          "社区讨论是否开始从“能用”转向“如何治理、观测、扩展和回滚”。"
+        ],
+        "deepDive": {
+          "strategicValue": "RocketChat/Rocket.Chat 的战略价值在于为「受监管行业需要掌握数据边界、审计、身份集成和任务关键通讯，而普通 SaaS 聊天工具难以满足」提供一个可拆解机制。采用判断应从机制适配性出发，而不是从项目名气出发。",
+          "implementationPath": [
+            "先迁移一个低风险工作组，接入 SSO、审计日志和备份恢复，再评估移动端与通知稳定性",
+            "把接入范围限制在旁路或只读链路，先产出基线数据，再决定是否扩大。",
+            "复盘失败样本，确认问题来自数据、权限、模型/索引、网络还是人机流程。"
+          ],
+          "productionConcerns": [
+            "升级运维、消息搜索、移动推送、合规留存和插件安全会决定长期 TCO",
+            "上线前必须明确 owner、升级窗口、回滚方式、告警指标和合规边界。",
+            "如果缺少 消息送达率、搜索延迟、移动通知可靠性、审计覆盖、备份恢复时间和插件安全事件 的连续观测，不应进入核心业务链路。"
+          ],
+          "decisionQuestions": [
+            "自托管带来的控制权是否值得承担完整通讯平台的运维责任？",
+            "有没有一个不用改主链路也能验证 消息送达率、搜索延迟、移动通知可靠性、审计覆盖、备份恢复时间和插件安全事件 的最小实验？",
+            "谁负责上线后的维护、审计、成本和失败接管？"
+          ],
+          "recommendedAction": "进入试点/观察池：先迁移一个低风险工作组，接入 SSO、审计日志和备份恢复，再评估移动端与通知稳定性"
+        },
+        "diagram": {
+          "title": "Rocket.Chat 工业级采用图解",
+          "caption": "自托管安全通讯 / 企业协作 · TypeScript · 45.5K stars",
+          "summary": "把「受监管行业需要掌握数据边界、审计、身份集成和任务关键通讯，而普通 SaaS 聊天工具难以满足」通过「以自托管消息服务、频道/权限、集成市场、移动端和企业安全能力组成可控通讯 OS」转化为可观测的「消息送达率、搜索延迟、移动通知可靠性、审计覆盖、备份恢复时间和插件安全事件」。",
+          "nodes": [
+            {
+              "label": "架构机制",
+              "detail": "以自托管消息服务、频道/权限、集成市场、移动端和企业安全能力组成可控通讯 OS",
+              "type": "core"
+            },
+            {
+              "label": "适用团队",
+              "detail": "政府、金融、能源、医疗或有强数据驻留要求的 IT/安全/协作平台团队",
+              "type": "input"
+            },
+            {
+              "label": "落地路径",
+              "detail": "先迁移一个低风险工作组，接入 SSO、审计日志和备份恢复，再评估移动端与通知稳定性",
+              "type": "integration"
+            },
+            {
+              "label": "观察信号",
+              "detail": "消息送达率、搜索延迟、移动通知可靠性、审计覆盖、备份恢复时间和插件安全事件",
+              "type": "measure"
+            }
+          ],
+          "links": [
+            "定义痛点",
+            "拆解机制",
+            "指标验收"
+          ],
+          "poster": {
+            "eyebrow": "Project Blueprint",
+            "headline": "自托管安全通讯 / 企业协作",
+            "subhead": "RocketChat/Rocket.Chat · TypeScript",
+            "thesis": "用「以自托管消息服务、频道/权限、集成市场、移动端和企业安全能力组成可控通讯 OS」解决「受监管行业需要掌握数据边界、审计、身份集成和任务关键通讯，而普通 SaaS 聊天工具难以满足」，再用「消息送达率、搜索延迟、移动通知可靠性、审计覆盖、备份恢复时间和插件安全事件」决定是否进入生产。",
+            "metrics": [
+              {
+                "label": "Stars",
+                "value": "45.5K",
+                "note": "社区关注"
+              },
+              {
+                "label": "Forks",
+                "value": "13.7K",
+                "note": "二次采用"
+              },
+              {
+                "label": "Issues",
+                "value": "3.8K",
+                "note": "维护压力"
+              },
+              {
+                "label": "Score",
+                "value": "92",
+                "note": "雷达评分"
+              }
+            ],
+            "lanes": [
+              {
+                "label": "架构机制",
+                "detail": "以自托管消息服务、频道/权限、集成市场、移动端和企业安全能力组成可控通讯 OS",
+                "type": "core",
+                "step": "01",
+                "signal": "受监管行业需要掌握数据边界、审计、身份集成和任务关键通讯，而普通 SaaS 聊天工具难以满足"
+              },
+              {
+                "label": "适用团队",
+                "detail": "政府、金融、能源、医疗或有强数据驻留要求的 IT/安全/协作平台团队",
+                "type": "input",
+                "step": "02",
+                "signal": "以自托管消息服务、频道/权限、集成市场、移动端和企业安全能力组成可控通讯 OS"
+              },
+              {
+                "label": "落地路径",
+                "detail": "先迁移一个低风险工作组，接入 SSO、审计日志和备份恢复，再评估移动端与通知稳定性",
+                "type": "integration",
+                "step": "03",
+                "signal": "先迁移一个低风险工作组，接入 SSO、审计日志和备份恢复，再评估移动端与通知稳定性"
+              },
+              {
+                "label": "观察信号",
+                "detail": "消息送达率、搜索延迟、移动通知可靠性、审计覆盖、备份恢复时间和插件安全事件",
+                "type": "measure",
+                "step": "04",
+                "signal": "消息送达率、搜索延迟、移动通知可靠性、审计覆盖、备份恢复时间和插件安全事件"
+              }
+            ],
+            "adoption": [
+              {
+                "label": "试点入口",
+                "detail": "先迁移一个低风险工作组，接入 SSO、审计日志和备份恢复，再评估移动端与通知稳定性"
+              },
+              {
+                "label": "验收指标",
+                "detail": "消息送达率、搜索延迟、移动通知可靠性、审计覆盖、备份恢复时间和插件安全事件"
+              },
+              {
+                "label": "生产风险",
+                "detail": "升级运维、消息搜索、移动推送、合规留存和插件安全会决定长期 TCO"
+              },
+              {
+                "label": "决策问题",
+                "detail": "自托管带来的控制权是否值得承担完整通讯平台的运维责任？"
+              }
+            ],
+            "warning": "升级运维、消息搜索、移动推送、合规留存和插件安全会决定长期 TCO"
+          }
+        },
+        "maturity": {
+          "community": 100,
+          "maintenance": 100,
+          "production": 86,
+          "complexity": 84
+        },
+        "score": 92
+      },
+      "evidence": {
+        "readmeExcerpt": "<p align=\"center\" <img src=\"https://github.com/RocketChat/Rocket.Chat.Artwork/raw/master/Logos/2020/png/logo horizontal red.png\" data canonical src=\"https://github.com/RocketChat/Rocket.Chat.Artwork/raw/master/Logos/2020/png/logo horizontal red.png\" width=\"400\" / </p <h1 align=\"center\" The ultimate secure open source solution for team communications </h1 <p align=\"center\" <img src=\"https://img.shields.io/github/v/release/RocketChat/Rocket.Chat?label=version\" <img src=\"https://img.shields.io/github/actions/workflow/status/RocketChat/Rocket.Chat/build and test.yml\" <img src=\"https://img.shields.io/badge/license MIT green\" <img alt=\"Codecov branch\" src=\"https://img.shields.io/codecov/c/github/RocketChat/Rocket.Chat/develop\" </p Rocket.Chat is an open source, secure, fully customizable communications platform developed in TypeScript for organizations with high standards of data protection. W...",
+        "githubUrl": "https://github.com/RocketChat/Rocket.Chat"
+      }
+    },
+    {
+      "rank": 8,
+      "repo": {
+        "fullName": "continuedev/continue",
+        "name": "continue",
+        "owner": "continuedev",
+        "avatarUrl": "https://avatars.githubusercontent.com/u/127876214?v=4",
+        "visualUrl": "https://opengraph.githubassets.com/20260617/continuedev/continue",
+        "url": "https://github.com/continuedev/continue",
+        "description": "open-source coding agent",
+        "stars": 33775,
+        "starsToday": 38,
+        "forks": 4683,
+        "openIssues": 825,
+        "language": "TypeScript",
+        "topics": [
+          "agent",
+          "ai",
+          "cli",
+          "developer-tools",
+          "open-source"
+        ],
+        "license": "Apache-2.0",
+        "pushedAt": "2026-06-17T12:00:54Z",
+        "createdAt": "2023-05-24T03:39:39Z",
+        "languages": {
+          "TypeScript": 8890132,
+          "JavaScript": 821584,
+          "Kotlin": 407414,
+          "Python": 249328,
+          "Rust": 76465,
+          "CSS": 59775,
+          "Tree-sitter Query": 57082,
+          "Shell": 36934,
+          "PowerShell": 17001,
+          "Java": 4898,
+          "HTML": 3606,
+          "PHP": 1460,
+          "C#": 673,
+          "Jupyter Notebook": 541,
+          "Scheme": 441,
+          "Ruby": 363,
+          "Dockerfile": 347,
+          "Go": 166
+        }
+      },
+      "analysis": {
+        "method": "codex-deep-research",
+        "category": "开源 Coding Agent / IDE 编排",
+        "oneLiner": "open-source coding agent；本次更值得看的不是热度，而是它能否用「通过 IDE 插件、模型路由、上下文提供器、工具调用和本地/远程索引，把编码辅助变成可配置工作台」解决「团队想在 IDE 中使用自选模型和私有上下文，但闭源 coding agent 难以满足数据边界和工作流定制」。",
+        "whyItMatters": "continuedev/continue 进入雷达，是因为它把 团队想在 IDE 中使用自选模型和私有上下文，但闭源 coding agent 难以满足数据边界和工作流定制 这个具体工程问题显性化。对生产团队而言，价值不在 star 数，而在能否把 通过 IDE 插件、模型路由、上下文提供器、工具调用和本地/远程索引，把编码辅助变成可配置工作台 拆成小样本验证，并用 任务完成率、采纳率、误改率、上下文命中率、模型成本、prompt injection 触发和开发者留存 判断是否真的改善。",
+        "engineeringRead": "TypeScript · 开源 Coding Agent / IDE 编排。阅读顺序建议：先看入口/协议，再看状态与权限边界，然后读失败处理、部署方式和最近 issue；试点只围绕「先给 5-10 名工程师接入只读上下文和内部模型，限制写操作，比较代码审查前后的缺陷与耗时」展开。",
+        "architectureSignals": [
+          "架构机制：通过 IDE 插件、模型路由、上下文提供器、工具调用和本地/远程索引，把编码辅助变成可配置工作台",
+          "适用团队：有内部模型网关、私有代码合规要求或需要定制开发者工作流的平台工程团队",
+          "落地路径：先给 5-10 名工程师接入只读上下文和内部模型，限制写操作，比较代码审查前后的缺陷与耗时",
+          "生产风险：代码外传、提示注入、模型质量波动、上下文污染和 IDE 插件稳定性需要前置治理",
+          "决策问题：开放可控性是否足以弥补自建配置、评测和支持成本？",
+          "观察信号：任务完成率、采纳率、误改率、上下文命中率、模型成本、prompt injection 触发和开发者留存"
+        ],
+        "valueHypothesis": [
+          "若团队真实痛点是「团队想在 IDE 中使用自选模型和私有上下文，但闭源 coding agent 难以满足数据边界和工作流定制」，它的收益应体现在 任务完成率、采纳率、误改率、上下文命中率、模型成本、prompt injection 触发和开发者留存 的改善，而不是只证明 demo 能跑。",
+          "适合先复制机制、接口或流程，不适合在未评估权限、维护和回滚之前进入主链路。",
+          "如果现有流程没有 owner 或无法做离线/旁路验证，应降级为观察项。"
+        ],
+        "technicalTakeaways": [
+          "把 README 的安装示例拆成输入、状态、执行边界和输出证据四块读。",
+          "图解重点应呈现「团队想在 IDE 中使用自选模型和私有上下文，但闭源 coding agent 难以满足数据边界和工作流定制 -> 通过 IDE 插件、模型路由、上下文提供器、工具调用和本地/远程索引，把编码辅助变成可配置工作台 -> 任务完成率、采纳率、误改率、上下文命中率、模型成本、prompt injection 触发和开发者留存」，让前端能画出工业链路而不是概念海报。",
+          "验收必须同时记录正样本、失败样本、成本、延迟、权限和回滚步骤。"
+        ],
+        "adoptionRisks": [
+          "代码外传、提示注入、模型质量波动、上下文污染和 IDE 插件稳定性需要前置治理",
+          "与现有 TypeScript 工具链集成前，要确认 license、升级节奏、配置持久化和日志可观测性。",
+          "热门项目的社区信号只能说明关注度，不能替代生产环境里的稳定性和安全评估。"
+        ],
+        "suggestedUseCases": [
+          "先给 5-10 名工程师接入只读上下文和内部模型，限制写操作，比较代码审查前后的缺陷与耗时",
+          "设计一个两周以内可结束的 spike：只接入非核心路径，提前定义停止条件。",
+          "把 任务完成率、采纳率、误改率、上下文命中率、模型成本、prompt injection 触发和开发者留存 写进验收表，避免用主观体验替代工程证据。"
+        ],
+        "watchSignals": [
+          "任务完成率、采纳率、误改率、上下文命中率、模型成本、prompt injection 触发和开发者留存",
+          "最近 release 是否解释 开源 Coding Agent / IDE 编排 的关键能力演进，issue 是否出现与你场景相近的失败反馈。",
+          "社区讨论是否开始从“能用”转向“如何治理、观测、扩展和回滚”。"
+        ],
+        "deepDive": {
+          "strategicValue": "continuedev/continue 的战略价值在于为「团队想在 IDE 中使用自选模型和私有上下文，但闭源 coding agent 难以满足数据边界和工作流定制」提供一个可拆解机制。采用判断应从机制适配性出发，而不是从项目名气出发。",
+          "implementationPath": [
+            "先给 5-10 名工程师接入只读上下文和内部模型，限制写操作，比较代码审查前后的缺陷与耗时",
+            "把接入范围限制在旁路或只读链路，先产出基线数据，再决定是否扩大。",
+            "复盘失败样本，确认问题来自数据、权限、模型/索引、网络还是人机流程。"
+          ],
+          "productionConcerns": [
+            "代码外传、提示注入、模型质量波动、上下文污染和 IDE 插件稳定性需要前置治理",
+            "上线前必须明确 owner、升级窗口、回滚方式、告警指标和合规边界。",
+            "如果缺少 任务完成率、采纳率、误改率、上下文命中率、模型成本、prompt injection 触发和开发者留存 的连续观测，不应进入核心业务链路。"
+          ],
+          "decisionQuestions": [
+            "开放可控性是否足以弥补自建配置、评测和支持成本？",
+            "有没有一个不用改主链路也能验证 任务完成率、采纳率、误改率、上下文命中率、模型成本、prompt injection 触发和开发者留存 的最小实验？",
+            "谁负责上线后的维护、审计、成本和失败接管？"
+          ],
+          "recommendedAction": "进入试点/观察池：先给 5-10 名工程师接入只读上下文和内部模型，限制写操作，比较代码审查前后的缺陷与耗时"
+        },
+        "diagram": {
+          "title": "continue 工业级采用图解",
+          "caption": "开源 Coding Agent / IDE 编排 · TypeScript · 33.8K stars",
+          "summary": "把「团队想在 IDE 中使用自选模型和私有上下文，但闭源 coding agent 难以满足数据边界和工作流定制」通过「通过 IDE 插件、模型路由、上下文提供器、工具调用和本地/远程索引，把编码辅助变成可配置工作台」转化为可观测的「任务完成率、采纳率、误改率、上下文命中率、模型成本、prompt injection 触发和开发者留存」。",
+          "nodes": [
+            {
+              "label": "架构机制",
+              "detail": "通过 IDE 插件、模型路由、上下文提供器、工具调用和本地/远程索引，把编码辅助变成可配置工作台",
+              "type": "core"
+            },
+            {
+              "label": "适用团队",
+              "detail": "有内部模型网关、私有代码合规要求或需要定制开发者工作流的平台工程团队",
+              "type": "input"
+            },
+            {
+              "label": "落地路径",
+              "detail": "先给 5-10 名工程师接入只读上下文和内部模型，限制写操作，比较代码审查前后的缺陷与耗时",
+              "type": "integration"
+            },
+            {
+              "label": "观察信号",
+              "detail": "任务完成率、采纳率、误改率、上下文命中率、模型成本、prompt injection 触发和开发者留存",
+              "type": "measure"
+            }
+          ],
+          "links": [
+            "定义痛点",
+            "拆解机制",
+            "指标验收"
+          ],
+          "poster": {
+            "eyebrow": "Project Blueprint",
+            "headline": "开源 Coding Agent / IDE 编排",
+            "subhead": "continuedev/continue · TypeScript",
+            "thesis": "用「通过 IDE 插件、模型路由、上下文提供器、工具调用和本地/远程索引，把编码辅助变成可配置工作台」解决「团队想在 IDE 中使用自选模型和私有上下文，但闭源 coding agent 难以满足数据边界和工作流定制」，再用「任务完成率、采纳率、误改率、上下文命中率、模型成本、prompt injection 触发和开发者留存」决定是否进入生产。",
+            "metrics": [
+              {
+                "label": "Stars",
+                "value": "33.8K",
+                "note": "社区关注"
+              },
+              {
+                "label": "Forks",
+                "value": "4.7K",
+                "note": "二次采用"
+              },
+              {
+                "label": "Issues",
+                "value": "825",
+                "note": "维护压力"
+              },
+              {
+                "label": "Score",
+                "value": "92",
+                "note": "雷达评分"
+              }
+            ],
+            "lanes": [
+              {
+                "label": "架构机制",
+                "detail": "通过 IDE 插件、模型路由、上下文提供器、工具调用和本地/远程索引，把编码辅助变成可配置工作台",
+                "type": "core",
+                "step": "01",
+                "signal": "团队想在 IDE 中使用自选模型和私有上下文，但闭源 coding agent 难以满足数据边界和工作流定制"
+              },
+              {
+                "label": "适用团队",
+                "detail": "有内部模型网关、私有代码合规要求或需要定制开发者工作流的平台工程团队",
+                "type": "input",
+                "step": "02",
+                "signal": "通过 IDE 插件、模型路由、上下文提供器、工具调用和本地/远程索引，把编码辅助变成可配置工作台"
+              },
+              {
+                "label": "落地路径",
+                "detail": "先给 5-10 名工程师接入只读上下文和内部模型，限制写操作，比较代码审查前后的缺陷与耗时",
+                "type": "integration",
+                "step": "03",
+                "signal": "先给 5-10 名工程师接入只读上下文和内部模型，限制写操作，比较代码审查前后的缺陷与耗时"
+              },
+              {
+                "label": "观察信号",
+                "detail": "任务完成率、采纳率、误改率、上下文命中率、模型成本、prompt injection 触发和开发者留存",
+                "type": "measure",
+                "step": "04",
+                "signal": "任务完成率、采纳率、误改率、上下文命中率、模型成本、prompt injection 触发和开发者留存"
+              }
+            ],
+            "adoption": [
+              {
+                "label": "试点入口",
+                "detail": "先给 5-10 名工程师接入只读上下文和内部模型，限制写操作，比较代码审查前后的缺陷与耗时"
+              },
+              {
+                "label": "验收指标",
+                "detail": "任务完成率、采纳率、误改率、上下文命中率、模型成本、prompt injection 触发和开发者留存"
+              },
+              {
+                "label": "生产风险",
+                "detail": "代码外传、提示注入、模型质量波动、上下文污染和 IDE 插件稳定性需要前置治理"
+              },
+              {
+                "label": "决策问题",
+                "detail": "开放可控性是否足以弥补自建配置、评测和支持成本？"
+              }
+            ],
+            "warning": "代码外传、提示注入、模型质量波动、上下文污染和 IDE 插件稳定性需要前置治理"
+          }
+        },
+        "maturity": {
+          "community": 100,
+          "maintenance": 100,
+          "production": 86,
+          "complexity": 67
+        },
+        "score": 92
+      },
+      "evidence": {
+        "readmeExcerpt": "<h1 align=\"center\" Continue</h1 <p align=\"center\" Pioneering open source coding agent</p <div align=\"center\" <a href=\"https://opensource.org/licenses/Apache 2.0\" <img src=\"https://img.shields.io/badge/License Apache 2.0 blue.svg\" / </a <a href=\"https://docs.continue.dev\" <img src=\"https://img.shields.io/badge/Docs docs.continue.dev blue\" / </a <a href=\"https://github.com/continuedev/continue/releases\" <img src=\"https://img.shields.io/badge/Changelog GitHub Releases blue\" / </a </div <p align=\"center\" <img src=\"media/github readme.png\" alt=\"Banner\" / </p What is Continue? Note: The continuedev/continue repository is no longer actively maintained and is read only for all users. Continue is a coding agent available as a CLI, VS Code extension, and JetBrains plugin. Documentation To learn how to configure Continue, how it works, and how to customize it, check out the Continue Docs. Final 2.0...",
+        "githubUrl": "https://github.com/continuedev/continue"
+      }
+    },
+    {
+      "rank": 9,
+      "repo": {
+        "fullName": "penpot/penpot",
+        "name": "penpot",
+        "owner": "penpot",
+        "avatarUrl": "https://avatars.githubusercontent.com/u/30179644?v=4",
+        "visualUrl": "https://opengraph.githubassets.com/20260617/penpot/penpot",
+        "url": "https://github.com/penpot/penpot",
+        "description": "Penpot: The open-source design tool for design and code collaboration",
+        "stars": 49914,
+        "starsToday": 94,
+        "forks": 3226,
+        "openIssues": 689,
+        "language": "Clojure",
+        "topics": [
+          "clojure",
+          "clojurescript",
+          "design",
+          "prototyping",
+          "ui",
+          "ux-design",
+          "ux-experience"
+        ],
+        "license": "MPL-2.0",
+        "pushedAt": "2026-06-17T13:09:33Z",
+        "createdAt": "2015-12-29T22:09:07Z",
+        "languages": {
+          "Clojure": 11760216,
+          "JavaScript": 1213684,
+          "Rust": 1024581,
+          "SCSS": 783876,
+          "TypeScript": 431267,
+          "HTML": 275342,
+          "Shell": 104905,
+          "CSS": 93519,
+          "Python": 66364,
+          "MDX": 47052,
+          "Java": 28483,
+          "Go Template": 28061,
+          "Dockerfile": 21443,
+          "PLpgSQL": 10424,
+          "Mustache": 4846,
+          "XSLT": 1575,
+          "Lua": 1261,
+          "Vim Script": 309
+        }
+      },
+      "analysis": {
+        "method": "codex-deep-research",
+        "category": "开源设计协作 / Design-to-code",
+        "oneLiner": "Penpot: The open-source design tool for design and code collaboration；本次更值得看的不是热度，而是它能否用「用 Clojure/前端协作画布、组件、设计系统和开放文件模型支持浏览器内设计与交付」解决「设计系统和工程实现之间常被专有工具锁定，团队希望拥有开放格式、可托管和更强开发协作能力」。",
+        "whyItMatters": "penpot/penpot 进入雷达，是因为它把 设计系统和工程实现之间常被专有工具锁定，团队希望拥有开放格式、可托管和更强开发协作能力 这个具体工程问题显性化。对生产团队而言，价值不在 star 数，而在能否把 用 Clojure/前端协作画布、组件、设计系统和开放文件模型支持浏览器内设计与交付 拆成小样本验证，并用 文件打开速度、组件复用率、导出准确性、设计评审周期、资产迁移缺陷和设计师满意度 判断是否真的改善。",
+        "engineeringRead": "Clojure · 开源设计协作 / Design-to-code。阅读顺序建议：先看入口/协议，再看状态与权限边界，然后读失败处理、部署方式和最近 issue；试点只围绕「先导入一个真实产品模块，验证组件复用、标注、导出、评论和与现有设计系统的映射」展开。",
+        "architectureSignals": [
+          "架构机制：用 Clojure/前端协作画布、组件、设计系统和开放文件模型支持浏览器内设计与交付",
+          "适用团队：重视开源、自托管、设计系统治理或希望减少专有设计工具锁定的产品工程团队",
+          "落地路径：先导入一个真实产品模块，验证组件复用、标注、导出、评论和与现有设计系统的映射",
+          "生产风险：迁移成本、插件生态、设计师学习曲线、复杂文件性能和与 Figma 资产互操作会影响采用",
+          "决策问题：开放格式和自托管价值是否高于团队切换主设计工具的摩擦？",
+          "观察信号：文件打开速度、组件复用率、导出准确性、设计评审周期、资产迁移缺陷和设计师满意度"
+        ],
+        "valueHypothesis": [
+          "若团队真实痛点是「设计系统和工程实现之间常被专有工具锁定，团队希望拥有开放格式、可托管和更强开发协作能力」，它的收益应体现在 文件打开速度、组件复用率、导出准确性、设计评审周期、资产迁移缺陷和设计师满意度 的改善，而不是只证明 demo 能跑。",
+          "适合先复制机制、接口或流程，不适合在未评估权限、维护和回滚之前进入主链路。",
+          "如果现有流程没有 owner 或无法做离线/旁路验证，应降级为观察项。"
+        ],
+        "technicalTakeaways": [
+          "把 README 的安装示例拆成输入、状态、执行边界和输出证据四块读。",
+          "图解重点应呈现「设计系统和工程实现之间常被专有工具锁定，团队希望拥有开放格式、可托管和更强开发协作能力 -> 用 Clojure/前端协作画布、组件、设计系统和开放文件模型支持浏览器内设计与交付 -> 文件打开速度、组件复用率、导出准确性、设计评审周期、资产迁移缺陷和设计师满意度」，让前端能画出工业链路而不是概念海报。",
+          "验收必须同时记录正样本、失败样本、成本、延迟、权限和回滚步骤。"
+        ],
+        "adoptionRisks": [
+          "迁移成本、插件生态、设计师学习曲线、复杂文件性能和与 Figma 资产互操作会影响采用",
+          "与现有 Clojure 工具链集成前，要确认 license、升级节奏、配置持久化和日志可观测性。",
+          "热门项目的社区信号只能说明关注度，不能替代生产环境里的稳定性和安全评估。"
+        ],
+        "suggestedUseCases": [
+          "先导入一个真实产品模块，验证组件复用、标注、导出、评论和与现有设计系统的映射",
+          "设计一个两周以内可结束的 spike：只接入非核心路径，提前定义停止条件。",
+          "把 文件打开速度、组件复用率、导出准确性、设计评审周期、资产迁移缺陷和设计师满意度 写进验收表，避免用主观体验替代工程证据。"
+        ],
+        "watchSignals": [
+          "文件打开速度、组件复用率、导出准确性、设计评审周期、资产迁移缺陷和设计师满意度",
+          "最近 release 是否解释 开源设计协作 / Design-to-code 的关键能力演进，issue 是否出现与你场景相近的失败反馈。",
+          "社区讨论是否开始从“能用”转向“如何治理、观测、扩展和回滚”。"
+        ],
+        "deepDive": {
+          "strategicValue": "penpot/penpot 的战略价值在于为「设计系统和工程实现之间常被专有工具锁定，团队希望拥有开放格式、可托管和更强开发协作能力」提供一个可拆解机制。采用判断应从机制适配性出发，而不是从项目名气出发。",
+          "implementationPath": [
+            "先导入一个真实产品模块，验证组件复用、标注、导出、评论和与现有设计系统的映射",
+            "把接入范围限制在旁路或只读链路，先产出基线数据，再决定是否扩大。",
+            "复盘失败样本，确认问题来自数据、权限、模型/索引、网络还是人机流程。"
+          ],
+          "productionConcerns": [
+            "迁移成本、插件生态、设计师学习曲线、复杂文件性能和与 Figma 资产互操作会影响采用",
+            "上线前必须明确 owner、升级窗口、回滚方式、告警指标和合规边界。",
+            "如果缺少 文件打开速度、组件复用率、导出准确性、设计评审周期、资产迁移缺陷和设计师满意度 的连续观测，不应进入核心业务链路。"
+          ],
+          "decisionQuestions": [
+            "开放格式和自托管价值是否高于团队切换主设计工具的摩擦？",
+            "有没有一个不用改主链路也能验证 文件打开速度、组件复用率、导出准确性、设计评审周期、资产迁移缺陷和设计师满意度 的最小实验？",
+            "谁负责上线后的维护、审计、成本和失败接管？"
+          ],
+          "recommendedAction": "进入试点/观察池：先导入一个真实产品模块，验证组件复用、标注、导出、评论和与现有设计系统的映射"
+        },
+        "diagram": {
+          "title": "penpot 工业级采用图解",
+          "caption": "开源设计协作 / Design-to-code · Clojure · 49.9K stars",
+          "summary": "把「设计系统和工程实现之间常被专有工具锁定，团队希望拥有开放格式、可托管和更强开发协作能力」通过「用 Clojure/前端协作画布、组件、设计系统和开放文件模型支持浏览器内设计与交付」转化为可观测的「文件打开速度、组件复用率、导出准确性、设计评审周期、资产迁移缺陷和设计师满意度」。",
+          "nodes": [
+            {
+              "label": "架构机制",
+              "detail": "用 Clojure/前端协作画布、组件、设计系统和开放文件模型支持浏览器内设计与交付",
+              "type": "core"
+            },
+            {
+              "label": "适用团队",
+              "detail": "重视开源、自托管、设计系统治理或希望减少专有设计工具锁定的产品工程团队",
+              "type": "input"
+            },
+            {
+              "label": "落地路径",
+              "detail": "先导入一个真实产品模块，验证组件复用、标注、导出、评论和与现有设计系统的映射",
+              "type": "integration"
+            },
+            {
+              "label": "观察信号",
+              "detail": "文件打开速度、组件复用率、导出准确性、设计评审周期、资产迁移缺陷和设计师满意度",
+              "type": "measure"
+            }
+          ],
+          "links": [
+            "定义痛点",
+            "拆解机制",
+            "指标验收"
+          ],
+          "poster": {
+            "eyebrow": "Project Blueprint",
+            "headline": "开源设计协作 / Design-to-code",
+            "subhead": "penpot/penpot · Clojure",
+            "thesis": "用「用 Clojure/前端协作画布、组件、设计系统和开放文件模型支持浏览器内设计与交付」解决「设计系统和工程实现之间常被专有工具锁定，团队希望拥有开放格式、可托管和更强开发协作能力」，再用「文件打开速度、组件复用率、导出准确性、设计评审周期、资产迁移缺陷和设计师满意度」决定是否进入生产。",
+            "metrics": [
+              {
+                "label": "Stars",
+                "value": "49.9K",
+                "note": "社区关注"
+              },
+              {
+                "label": "Forks",
+                "value": "3.2K",
+                "note": "二次采用"
+              },
+              {
+                "label": "Issues",
+                "value": "689",
+                "note": "维护压力"
+              },
+              {
+                "label": "Score",
+                "value": "92",
+                "note": "雷达评分"
+              }
+            ],
+            "lanes": [
+              {
+                "label": "架构机制",
+                "detail": "用 Clojure/前端协作画布、组件、设计系统和开放文件模型支持浏览器内设计与交付",
+                "type": "core",
+                "step": "01",
+                "signal": "设计系统和工程实现之间常被专有工具锁定，团队希望拥有开放格式、可托管和更强开发协作能力"
+              },
+              {
+                "label": "适用团队",
+                "detail": "重视开源、自托管、设计系统治理或希望减少专有设计工具锁定的产品工程团队",
+                "type": "input",
+                "step": "02",
+                "signal": "用 Clojure/前端协作画布、组件、设计系统和开放文件模型支持浏览器内设计与交付"
+              },
+              {
+                "label": "落地路径",
+                "detail": "先导入一个真实产品模块，验证组件复用、标注、导出、评论和与现有设计系统的映射",
+                "type": "integration",
+                "step": "03",
+                "signal": "先导入一个真实产品模块，验证组件复用、标注、导出、评论和与现有设计系统的映射"
+              },
+              {
+                "label": "观察信号",
+                "detail": "文件打开速度、组件复用率、导出准确性、设计评审周期、资产迁移缺陷和设计师满意度",
+                "type": "measure",
+                "step": "04",
+                "signal": "文件打开速度、组件复用率、导出准确性、设计评审周期、资产迁移缺陷和设计师满意度"
+              }
+            ],
+            "adoption": [
+              {
+                "label": "试点入口",
+                "detail": "先导入一个真实产品模块，验证组件复用、标注、导出、评论和与现有设计系统的映射"
+              },
+              {
+                "label": "验收指标",
+                "detail": "文件打开速度、组件复用率、导出准确性、设计评审周期、资产迁移缺陷和设计师满意度"
+              },
+              {
+                "label": "生产风险",
+                "detail": "迁移成本、插件生态、设计师学习曲线、复杂文件性能和与 Figma 资产互操作会影响采用"
+              },
+              {
+                "label": "决策问题",
+                "detail": "开放格式和自托管价值是否高于团队切换主设计工具的摩擦？"
+              }
+            ],
+            "warning": "迁移成本、插件生态、设计师学习曲线、复杂文件性能和与 Figma 资产互操作会影响采用"
+          }
+        },
+        "maturity": {
+          "community": 100,
+          "maintenance": 100,
+          "production": 86,
+          "complexity": 84
+        },
+        "score": 92
+      },
+      "evidence": {
+        "readmeExcerpt": "<img width=\"100%\" src=\"https://github.com/user attachments/assets/da17b160 f289 436f b140 972083a08602\" / [uri license]: https://www.mozilla.org/en US/MPL/2.0 [uri license image]: https://img.shields.io/badge/MPL 2.0 blue.svg <p align=\"center\" <a href=\"https://www.digitalpublicgoods.net/r/penpot\" rel=\"nofollow\" <img alt=\"Verified DPG\" src=\"https://img.shields.io/badge/Verified DPG 3333AB?logo=data:image/svg%2bxml;base64,PHN2ZyB3aWR0aD0iMzEiIGhlaWdodD0iMzMiIHZpZXdCb3g9IjAgMCAzMSAzMyIgZmlsbD0ibm9uZSIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj4KPHBhdGggZD0iTTE0LjIwMDggMjEuMzY3OEwxMC4xNzM2IDE4LjAxMjRMMTEuNTIxOSAxNi40MDAzTDEzLjk5MjggMTguNDU5TDE5LjYyNjkgMTIuMjExMUwyMS4xOTA5IDEzLjYxNkwxNC4yMDA4IDIxLjM2NzhaTTI0LjYyNDEgOS4zNTEyN0wyNC44MDcxIDMuMDcyOTdMMTguODgxIDUuMTg2NjJMMTUuMzMxNCAtMi4zMzA4MmUtMDVMMTEuNzgyMSA1LjE4NjYyTDUuODU2MDEgMy4wNzI5N0w2LjAzOTA2IDkuMzUxMjdMMCAxMS4xMTc3TDMuODQ1MjEgMTYuMDg5...",
+        "githubUrl": "https://github.com/penpot/penpot"
+      }
+    },
+    {
+      "rank": 10,
+      "repo": {
+        "fullName": "krahets/hello-algo",
+        "name": "hello-algo",
+        "owner": "krahets",
+        "avatarUrl": "https://avatars.githubusercontent.com/u/26993056?v=4",
+        "visualUrl": "https://opengraph.githubassets.com/20260617/krahets/hello-algo",
+        "url": "https://github.com/krahets/hello-algo",
+        "description": "《Hello 算法》：动画图解、一键运行的数据结构与算法教程。支持简中、繁中、English、日本語，提供 Python, Java, C++, C, C#, JS, Go, Swift, Rust, Ruby, Kotlin, TS, Dart 等代码实现",
+        "stars": 127362,
+        "starsToday": 516,
+        "forks": 15175,
+        "openIssues": 38,
+        "language": "Java",
+        "topics": [
+          "algo",
+          "algorithm",
+          "algorithms",
+          "book",
+          "data-structure",
+          "data-structures",
+          "data-structures-and-algorithms",
+          "dsa",
+          "education",
+          "leetcode",
+          "programming"
+        ],
+        "license": "NOASSERTION",
+        "pushedAt": "2026-04-18T18:23:33Z",
+        "createdAt": "2022-11-04T11:08:34Z",
+        "languages": {
+          "Java": 1094232,
+          "Swift": 1092456,
+          "C++": 1020460,
+          "JavaScript": 936476,
+          "Go": 926949,
+          "Python": 914957,
+          "Ruby": 783190,
+          "CMake": 43525,
+          "Dockerfile": 4689
+        }
+      },
+      "analysis": {
+        "method": "codex-deep-research",
+        "category": "算法教育 / 多语言可运行教程",
+        "oneLiner": "《Hello 算法》：动画图解、一键运行的数据结构与算法教程。支持简中、繁中、English、日本語，提供 Python, Java, C++, C, C#, JS, Go, Swift, Rust, Ruby, Kotlin, TS, Dart 等代码实现；本次更值得看的不是热度，而是它能否用「以动画图解、一键运行代码和多语言实现组织知识点，让概念、复杂度和实现形成闭环」解决「工程团队和学生学习数据结构算法时常停留在文字解释，缺少动画、代码和多语言对照的统一材料」。",
+        "whyItMatters": "krahets/hello-algo 进入雷达，是因为它把 工程团队和学生学习数据结构算法时常停留在文字解释，缺少动画、代码和多语言对照的统一材料 这个具体工程问题显性化。对生产团队而言，价值不在 star 数，而在能否把 以动画图解、一键运行代码和多语言实现组织知识点，让概念、复杂度和实现形成闭环 拆成小样本验证，并用 完成率、练习通过率、代码评审质量、知识点复测、语言覆盖和内容更新频率 判断是否真的改善。",
+        "engineeringRead": "Java · 算法教育 / 多语言可运行教程。阅读顺序建议：先看入口/协议，再看状态与权限边界，然后读失败处理、部署方式和最近 issue；试点只围绕「抽取 3 个高频知识点做内部学习路径，补上团队业务里的真实练习和代码评审标准」展开。",
+        "architectureSignals": [
+          "架构机制：以动画图解、一键运行代码和多语言实现组织知识点，让概念、复杂度和实现形成闭环",
+          "适用团队：做新人训练营、校招培养、内部工程学院或算法基础补课的技术教育团队",
+          "落地路径：抽取 3 个高频知识点做内部学习路径，补上团队业务里的真实练习和代码评审标准",
+          "生产风险：内容教育价值高，但不能替代业务代码训练；多语言同步和版本更新也需要内容 owner",
+          "决策问题：我们需要的是通用算法资料，还是围绕团队技术栈定制训练题？",
+          "观察信号：完成率、练习通过率、代码评审质量、知识点复测、语言覆盖和内容更新频率"
+        ],
+        "valueHypothesis": [
+          "若团队真实痛点是「工程团队和学生学习数据结构算法时常停留在文字解释，缺少动画、代码和多语言对照的统一材料」，它的收益应体现在 完成率、练习通过率、代码评审质量、知识点复测、语言覆盖和内容更新频率 的改善，而不是只证明 demo 能跑。",
+          "适合先复制机制、接口或流程，不适合在未评估权限、维护和回滚之前进入主链路。",
+          "如果现有流程没有 owner 或无法做离线/旁路验证，应降级为观察项。"
+        ],
+        "technicalTakeaways": [
+          "把 README 的安装示例拆成输入、状态、执行边界和输出证据四块读。",
+          "图解重点应呈现「工程团队和学生学习数据结构算法时常停留在文字解释，缺少动画、代码和多语言对照的统一材料 -> 以动画图解、一键运行代码和多语言实现组织知识点，让概念、复杂度和实现形成闭环 -> 完成率、练习通过率、代码评审质量、知识点复测、语言覆盖和内容更新频率」，让前端能画出工业链路而不是概念海报。",
+          "验收必须同时记录正样本、失败样本、成本、延迟、权限和回滚步骤。"
+        ],
+        "adoptionRisks": [
+          "内容教育价值高，但不能替代业务代码训练；多语言同步和版本更新也需要内容 owner",
+          "与现有 Java 工具链集成前，要确认 license、升级节奏、配置持久化和日志可观测性。",
+          "热门项目的社区信号只能说明关注度，不能替代生产环境里的稳定性和安全评估。"
+        ],
+        "suggestedUseCases": [
+          "抽取 3 个高频知识点做内部学习路径，补上团队业务里的真实练习和代码评审标准",
+          "设计一个两周以内可结束的 spike：只接入非核心路径，提前定义停止条件。",
+          "把 完成率、练习通过率、代码评审质量、知识点复测、语言覆盖和内容更新频率 写进验收表，避免用主观体验替代工程证据。"
+        ],
+        "watchSignals": [
+          "完成率、练习通过率、代码评审质量、知识点复测、语言覆盖和内容更新频率",
+          "最近 release 是否解释 算法教育 / 多语言可运行教程 的关键能力演进，issue 是否出现与你场景相近的失败反馈。",
+          "社区讨论是否开始从“能用”转向“如何治理、观测、扩展和回滚”。"
+        ],
+        "deepDive": {
+          "strategicValue": "krahets/hello-algo 的战略价值在于为「工程团队和学生学习数据结构算法时常停留在文字解释，缺少动画、代码和多语言对照的统一材料」提供一个可拆解机制。采用判断应从机制适配性出发，而不是从项目名气出发。",
+          "implementationPath": [
+            "抽取 3 个高频知识点做内部学习路径，补上团队业务里的真实练习和代码评审标准",
+            "把接入范围限制在旁路或只读链路，先产出基线数据，再决定是否扩大。",
+            "复盘失败样本，确认问题来自数据、权限、模型/索引、网络还是人机流程。"
+          ],
+          "productionConcerns": [
+            "内容教育价值高，但不能替代业务代码训练；多语言同步和版本更新也需要内容 owner",
+            "上线前必须明确 owner、升级窗口、回滚方式、告警指标和合规边界。",
+            "如果缺少 完成率、练习通过率、代码评审质量、知识点复测、语言覆盖和内容更新频率 的连续观测，不应进入核心业务链路。"
+          ],
+          "decisionQuestions": [
+            "我们需要的是通用算法资料，还是围绕团队技术栈定制训练题？",
+            "有没有一个不用改主链路也能验证 完成率、练习通过率、代码评审质量、知识点复测、语言覆盖和内容更新频率 的最小实验？",
+            "谁负责上线后的维护、审计、成本和失败接管？"
+          ],
+          "recommendedAction": "进入试点/观察池：抽取 3 个高频知识点做内部学习路径，补上团队业务里的真实练习和代码评审标准"
+        },
+        "diagram": {
+          "title": "hello-algo 工业级采用图解",
+          "caption": "算法教育 / 多语言可运行教程 · Java · 127.4K stars",
+          "summary": "把「工程团队和学生学习数据结构算法时常停留在文字解释，缺少动画、代码和多语言对照的统一材料」通过「以动画图解、一键运行代码和多语言实现组织知识点，让概念、复杂度和实现形成闭环」转化为可观测的「完成率、练习通过率、代码评审质量、知识点复测、语言覆盖和内容更新频率」。",
+          "nodes": [
+            {
+              "label": "架构机制",
+              "detail": "以动画图解、一键运行代码和多语言实现组织知识点，让概念、复杂度和实现形成闭环",
+              "type": "core"
+            },
+            {
+              "label": "适用团队",
+              "detail": "做新人训练营、校招培养、内部工程学院或算法基础补课的技术教育团队",
+              "type": "input"
+            },
+            {
+              "label": "落地路径",
+              "detail": "抽取 3 个高频知识点做内部学习路径，补上团队业务里的真实练习和代码评审标准",
+              "type": "integration"
+            },
+            {
+              "label": "观察信号",
+              "detail": "完成率、练习通过率、代码评审质量、知识点复测、语言覆盖和内容更新频率",
+              "type": "measure"
+            }
+          ],
+          "links": [
+            "定义痛点",
+            "拆解机制",
+            "指标验收"
+          ],
+          "poster": {
+            "eyebrow": "Project Blueprint",
+            "headline": "算法教育 / 多语言可运行教程",
+            "subhead": "krahets/hello-algo · Java",
+            "thesis": "用「以动画图解、一键运行代码和多语言实现组织知识点，让概念、复杂度和实现形成闭环」解决「工程团队和学生学习数据结构算法时常停留在文字解释，缺少动画、代码和多语言对照的统一材料」，再用「完成率、练习通过率、代码评审质量、知识点复测、语言覆盖和内容更新频率」决定是否进入生产。",
+            "metrics": [
+              {
+                "label": "Stars",
+                "value": "127.4K",
+                "note": "社区关注"
+              },
+              {
+                "label": "Forks",
+                "value": "15.2K",
+                "note": "二次采用"
+              },
+              {
+                "label": "Issues",
+                "value": "38",
+                "note": "维护压力"
+              },
+              {
+                "label": "Score",
+                "value": "80",
+                "note": "雷达评分"
+              }
+            ],
+            "lanes": [
+              {
+                "label": "架构机制",
+                "detail": "以动画图解、一键运行代码和多语言实现组织知识点，让概念、复杂度和实现形成闭环",
+                "type": "core",
+                "step": "01",
+                "signal": "工程团队和学生学习数据结构算法时常停留在文字解释，缺少动画、代码和多语言对照的统一材料"
+              },
+              {
+                "label": "适用团队",
+                "detail": "做新人训练营、校招培养、内部工程学院或算法基础补课的技术教育团队",
+                "type": "input",
+                "step": "02",
+                "signal": "以动画图解、一键运行代码和多语言实现组织知识点，让概念、复杂度和实现形成闭环"
+              },
+              {
+                "label": "落地路径",
+                "detail": "抽取 3 个高频知识点做内部学习路径，补上团队业务里的真实练习和代码评审标准",
+                "type": "integration",
+                "step": "03",
+                "signal": "抽取 3 个高频知识点做内部学习路径，补上团队业务里的真实练习和代码评审标准"
+              },
+              {
+                "label": "观察信号",
+                "detail": "完成率、练习通过率、代码评审质量、知识点复测、语言覆盖和内容更新频率",
+                "type": "measure",
+                "step": "04",
+                "signal": "完成率、练习通过率、代码评审质量、知识点复测、语言覆盖和内容更新频率"
+              }
+            ],
+            "adoption": [
+              {
+                "label": "试点入口",
+                "detail": "抽取 3 个高频知识点做内部学习路径，补上团队业务里的真实练习和代码评审标准"
+              },
+              {
+                "label": "验收指标",
+                "detail": "完成率、练习通过率、代码评审质量、知识点复测、语言覆盖和内容更新频率"
+              },
+              {
+                "label": "生产风险",
+                "detail": "内容教育价值高，但不能替代业务代码训练；多语言同步和版本更新也需要内容 owner"
+              },
+              {
+                "label": "决策问题",
+                "detail": "我们需要的是通用算法资料，还是围绕团队技术栈定制训练题？"
+              }
+            ],
+            "warning": "内容教育价值高，但不能替代业务代码训练；多语言同步和版本更新也需要内容 owner"
+          }
+        },
+        "maturity": {
+          "community": 100,
+          "maintenance": 30,
+          "production": 69,
+          "complexity": 55
+        },
+        "score": 80
+      },
+      "evidence": {
+        "readmeExcerpt": "<p align=\"center\" <a href=\"https://www.hello algo.com/\" <img src=\"https://www.hello algo.com/index.assets/hello algo header.png\" width=\"450\" </a </p <p align=\"center\" <img style=\"height: 60px;\" src=\"https://readme typing svg.demolab.com?font=Noto+Sans+SC&weight=400&duration=3500&pause=2000&color=21C8B8&center=true&vCenter=true&random=false&width=200&lines=Hello%2C+%E7%AE%97%E6%B3%95+!\" alt=\"hello algo typing svg\" / </br 动画图解、一键运行的数据结构与算法教程 </p <p align=\"center\" <a href=\"https://www.hello algo.com/\" <img src=\"https://www.hello algo.com/index.assets/btn read online dark.svg\" height=\"45\" </a <a href=\"https://github.com/krahets/hello algo/releases\" <img src=\"https://www.hello algo.com/index.assets/btn download pdf epub dark.svg\" height=\"45\" </a </p <p align=\"center\" <img src=\"https://www.hello algo.com/index.assets/animation.gif\" width=\"395\" <img src=\"https://www.hello algo.com/index.assets/...",
+        "githubUrl": "https://github.com/krahets/hello-algo"
+      }
+    },
+    {
+      "rank": 11,
+      "repo": {
+        "fullName": "Universal-Debloater-Alliance/universal-android-debloater-next-generation",
+        "name": "universal-android-debloater-next-generation",
+        "owner": "Universal-Debloater-Alliance",
+        "avatarUrl": "https://avatars.githubusercontent.com/u/149629021?v=4",
+        "visualUrl": "https://opengraph.githubassets.com/20260617/Universal-Debloater-Alliance/universal-android-debloater-next-generation",
+        "url": "https://github.com/Universal-Debloater-Alliance/universal-android-debloater-next-generation",
+        "description": "Cross-platform GUI written in Rust using ADB to debloat non-rooted Android devices. Improve your privacy, the security and battery life of your device.",
+        "stars": 7537,
+        "starsToday": 465,
+        "forks": 323,
+        "openIssues": 247,
+        "language": "Rust",
+        "topics": [
+          "adb",
+          "android",
+          "bloatware-list",
+          "bloatware-removal",
+          "debloat",
+          "debloater",
+          "debloating",
+          "privacy"
+        ],
+        "license": "GPL-3.0",
+        "pushedAt": "2026-06-07T22:15:38Z",
+        "createdAt": "2023-10-26T17:00:49Z",
+        "languages": {
+          "Rust": 237622,
+          "Nix": 1782
+        }
+      },
+      "analysis": {
+        "method": "codex-deep-research",
+        "category": "Android 设备治理 / 隐私工具",
+        "oneLiner": "Cross-platform GUI written in Rust using ADB to debloat non-rooted Android devices. Improve your privacy, the security and battery life of your device.；本次更值得看的不是热度，而是它能否用「Rust 跨平台 GUI 包装 ADB 操作、设备识别、应用清单和推荐级别，帮助用户可控禁用/卸载包」解决「非 root Android 设备预装应用影响隐私、安全和电池，但手工 ADB 去包容易误删关键组件」。",
+        "whyItMatters": "Universal-Debloater-Alliance/universal-android-debloater-next-generation 进入雷达，是因为它把 非 root Android 设备预装应用影响隐私、安全和电池，但手工 ADB 去包容易误删关键组件 这个具体工程问题显性化。对生产团队而言，价值不在 star 数，而在能否把 Rust 跨平台 GUI 包装 ADB 操作、设备识别、应用清单和推荐级别，帮助用户可控禁用/卸载包 拆成小样本验证，并用 机型兼容率、回滚成功率、电池改善、崩溃/通知异常、OTA 后状态和用户误操作率 判断是否真的改善。",
+        "engineeringRead": "Rust · Android 设备治理 / 隐私工具。阅读顺序建议：先看入口/协议，再看状态与权限边界，然后读失败处理、部署方式和最近 issue；试点只围绕「先在单一机型实验，导出完整包清单和回滚脚本，再扩大到同批设备」展开。",
+        "architectureSignals": [
+          "架构机制：Rust 跨平台 GUI 包装 ADB 操作、设备识别、应用清单和推荐级别，帮助用户可控禁用/卸载包",
+          "适用团队：个人隐私用户、移动安全研究、企业设备管理或需要维护机型白名单的 IT 团队",
+          "落地路径：先在单一机型实验，导出完整包清单和回滚脚本，再扩大到同批设备",
+          "生产风险：OEM 差异、误删系统组件、OTA 变化、保修和数据丢失风险必须通过白名单和备份控制",
+          "决策问题：这适合做个人工具，还是应该纳入受控 MDM/设备管理流程？",
+          "观察信号：机型兼容率、回滚成功率、电池改善、崩溃/通知异常、OTA 后状态和用户误操作率"
+        ],
+        "valueHypothesis": [
+          "若团队真实痛点是「非 root Android 设备预装应用影响隐私、安全和电池，但手工 ADB 去包容易误删关键组件」，它的收益应体现在 机型兼容率、回滚成功率、电池改善、崩溃/通知异常、OTA 后状态和用户误操作率 的改善，而不是只证明 demo 能跑。",
+          "适合先复制机制、接口或流程，不适合在未评估权限、维护和回滚之前进入主链路。",
+          "如果现有流程没有 owner 或无法做离线/旁路验证，应降级为观察项。"
+        ],
+        "technicalTakeaways": [
+          "把 README 的安装示例拆成输入、状态、执行边界和输出证据四块读。",
+          "图解重点应呈现「非 root Android 设备预装应用影响隐私、安全和电池，但手工 ADB 去包容易误删关键组件 -> Rust 跨平台 GUI 包装 ADB 操作、设备识别、应用清单和推荐级别，帮助用户可控禁用/卸载包 -> 机型兼容率、回滚成功率、电池改善、崩溃/通知异常、OTA 后状态和用户误操作率」，让前端能画出工业链路而不是概念海报。",
+          "验收必须同时记录正样本、失败样本、成本、延迟、权限和回滚步骤。"
+        ],
+        "adoptionRisks": [
+          "OEM 差异、误删系统组件、OTA 变化、保修和数据丢失风险必须通过白名单和备份控制",
+          "与现有 Rust 工具链集成前，要确认 license、升级节奏、配置持久化和日志可观测性。",
+          "热门项目的社区信号只能说明关注度，不能替代生产环境里的稳定性和安全评估。"
+        ],
+        "suggestedUseCases": [
+          "先在单一机型实验，导出完整包清单和回滚脚本，再扩大到同批设备",
+          "设计一个两周以内可结束的 spike：只接入非核心路径，提前定义停止条件。",
+          "把 机型兼容率、回滚成功率、电池改善、崩溃/通知异常、OTA 后状态和用户误操作率 写进验收表，避免用主观体验替代工程证据。"
+        ],
+        "watchSignals": [
+          "机型兼容率、回滚成功率、电池改善、崩溃/通知异常、OTA 后状态和用户误操作率",
+          "最近 release 是否解释 Android 设备治理 / 隐私工具 的关键能力演进，issue 是否出现与你场景相近的失败反馈。",
+          "社区讨论是否开始从“能用”转向“如何治理、观测、扩展和回滚”。"
+        ],
+        "deepDive": {
+          "strategicValue": "Universal-Debloater-Alliance/universal-android-debloater-next-generation 的战略价值在于为「非 root Android 设备预装应用影响隐私、安全和电池，但手工 ADB 去包容易误删关键组件」提供一个可拆解机制。采用判断应从机制适配性出发，而不是从项目名气出发。",
+          "implementationPath": [
+            "先在单一机型实验，导出完整包清单和回滚脚本，再扩大到同批设备",
+            "把接入范围限制在旁路或只读链路，先产出基线数据，再决定是否扩大。",
+            "复盘失败样本，确认问题来自数据、权限、模型/索引、网络还是人机流程。"
+          ],
+          "productionConcerns": [
+            "OEM 差异、误删系统组件、OTA 变化、保修和数据丢失风险必须通过白名单和备份控制",
+            "上线前必须明确 owner、升级窗口、回滚方式、告警指标和合规边界。",
+            "如果缺少 机型兼容率、回滚成功率、电池改善、崩溃/通知异常、OTA 后状态和用户误操作率 的连续观测，不应进入核心业务链路。"
+          ],
+          "decisionQuestions": [
+            "这适合做个人工具，还是应该纳入受控 MDM/设备管理流程？",
+            "有没有一个不用改主链路也能验证 机型兼容率、回滚成功率、电池改善、崩溃/通知异常、OTA 后状态和用户误操作率 的最小实验？",
+            "谁负责上线后的维护、审计、成本和失败接管？"
+          ],
+          "recommendedAction": "进入试点/观察池：先在单一机型实验，导出完整包清单和回滚脚本，再扩大到同批设备"
+        },
+        "diagram": {
+          "title": "universal-android-debloater-next-generation 工业级采用图解",
+          "caption": "Android 设备治理 / 隐私工具 · Rust · 7.5K stars",
+          "summary": "把「非 root Android 设备预装应用影响隐私、安全和电池，但手工 ADB 去包容易误删关键组件」通过「Rust 跨平台 GUI 包装 ADB 操作、设备识别、应用清单和推荐级别，帮助用户可控禁用/卸载包」转化为可观测的「机型兼容率、回滚成功率、电池改善、崩溃/通知异常、OTA 后状态和用户误操作率」。",
+          "nodes": [
+            {
+              "label": "架构机制",
+              "detail": "Rust 跨平台 GUI 包装 ADB 操作、设备识别、应用清单和推荐级别，帮助用户可控禁用/卸载包",
+              "type": "core"
+            },
+            {
+              "label": "适用团队",
+              "detail": "个人隐私用户、移动安全研究、企业设备管理或需要维护机型白名单的 IT 团队",
+              "type": "input"
+            },
+            {
+              "label": "落地路径",
+              "detail": "先在单一机型实验，导出完整包清单和回滚脚本，再扩大到同批设备",
+              "type": "integration"
+            },
+            {
+              "label": "观察信号",
+              "detail": "机型兼容率、回滚成功率、电池改善、崩溃/通知异常、OTA 后状态和用户误操作率",
+              "type": "measure"
+            }
+          ],
+          "links": [
+            "定义痛点",
+            "拆解机制",
+            "指标验收"
+          ],
+          "poster": {
+            "eyebrow": "Project Blueprint",
+            "headline": "Android 设备治理 / 隐私工具",
+            "subhead": "Universal-Debloater-Alliance/universal-android-debloater-next-generation · Rust",
+            "thesis": "用「Rust 跨平台 GUI 包装 ADB 操作、设备识别、应用清单和推荐级别，帮助用户可控禁用/卸载包」解决「非 root Android 设备预装应用影响隐私、安全和电池，但手工 ADB 去包容易误删关键组件」，再用「机型兼容率、回滚成功率、电池改善、崩溃/通知异常、OTA 后状态和用户误操作率」决定是否进入生产。",
+            "metrics": [
+              {
+                "label": "Stars",
+                "value": "7.5K",
+                "note": "社区关注"
+              },
+              {
+                "label": "Forks",
+                "value": "323",
+                "note": "二次采用"
+              },
+              {
+                "label": "Issues",
+                "value": "247",
+                "note": "维护压力"
+              },
+              {
+                "label": "Score",
+                "value": "86",
+                "note": "雷达评分"
+              }
+            ],
+            "lanes": [
+              {
+                "label": "架构机制",
+                "detail": "Rust 跨平台 GUI 包装 ADB 操作、设备识别、应用清单和推荐级别，帮助用户可控禁用/卸载包",
+                "type": "core",
+                "step": "01",
+                "signal": "非 root Android 设备预装应用影响隐私、安全和电池，但手工 ADB 去包容易误删关键组件"
+              },
+              {
+                "label": "适用团队",
+                "detail": "个人隐私用户、移动安全研究、企业设备管理或需要维护机型白名单的 IT 团队",
+                "type": "input",
+                "step": "02",
+                "signal": "Rust 跨平台 GUI 包装 ADB 操作、设备识别、应用清单和推荐级别，帮助用户可控禁用/卸载包"
+              },
+              {
+                "label": "落地路径",
+                "detail": "先在单一机型实验，导出完整包清单和回滚脚本，再扩大到同批设备",
+                "type": "integration",
+                "step": "03",
+                "signal": "先在单一机型实验，导出完整包清单和回滚脚本，再扩大到同批设备"
+              },
+              {
+                "label": "观察信号",
+                "detail": "机型兼容率、回滚成功率、电池改善、崩溃/通知异常、OTA 后状态和用户误操作率",
+                "type": "measure",
+                "step": "04",
+                "signal": "机型兼容率、回滚成功率、电池改善、崩溃/通知异常、OTA 后状态和用户误操作率"
+              }
+            ],
+            "adoption": [
+              {
+                "label": "试点入口",
+                "detail": "先在单一机型实验，导出完整包清单和回滚脚本，再扩大到同批设备"
+              },
+              {
+                "label": "验收指标",
+                "detail": "机型兼容率、回滚成功率、电池改善、崩溃/通知异常、OTA 后状态和用户误操作率"
+              },
+              {
+                "label": "生产风险",
+                "detail": "OEM 差异、误删系统组件、OTA 变化、保修和数据丢失风险必须通过白名单和备份控制"
+              },
+              {
+                "label": "决策问题",
+                "detail": "这适合做个人工具，还是应该纳入受控 MDM/设备管理流程？"
+              }
+            ],
+            "warning": "OEM 差异、误删系统组件、OTA 变化、保修和数据丢失风险必须通过白名单和备份控制"
+          }
+        },
+        "maturity": {
+          "community": 85,
+          "maintenance": 70,
+          "production": 78,
+          "complexity": 55
+        },
+        "score": 86
+      },
+      "evidence": {
+        "readmeExcerpt": "Universal Android Debloater Next Generation [!warning] DISCLAIMER : Use at your own risk. We're not responsible for anything that could happen to your devices. <div align=center <img width=75% alt=\"screenshot of apps view\" src=./resources/screenshots/v1.0.2.png </div This is a detached fork of the UAD project. This aims to improve privacy and efficiency (energy, speed, memory) by removing unnecessary and obscure system apps. This can also improve security by reducing the attack surface. Read the wiki for more details. Documentation Everything about UAD ng (and related stuff) can be found on the Wiki, such as: Getting started Features of this app Usage guide Suggested Android app replacements How to get the cutting edge version by building the source code Weird things OEMs do Suggested apps for analyzing APKs Privacy UAD ng does not collect or transmit any user data. The only external con...",
+        "githubUrl": "https://github.com/Universal-Debloater-Alliance/universal-android-debloater-next-generation"
+      }
+    },
+    {
+      "rank": 12,
+      "repo": {
+        "fullName": "mattpocock/skills",
+        "name": "skills",
+        "owner": "mattpocock",
+        "avatarUrl": "https://avatars.githubusercontent.com/u/28293365?v=4",
+        "visualUrl": "https://opengraph.githubassets.com/20260617/mattpocock/skills",
+        "url": "https://github.com/mattpocock/skills",
+        "description": "Skills for Real Engineers. Straight from my .claude directory.",
+        "stars": 132831,
+        "starsToday": 1849,
+        "forks": 11549,
+        "openIssues": 79,
+        "language": "Shell",
+        "topics": [],
+        "license": "MIT",
+        "pushedAt": "2026-06-17T13:18:08Z",
+        "createdAt": "2026-02-03T11:15:53Z",
+        "languages": {
+          "Shell": 2956
+        }
+      },
+      "analysis": {
+        "method": "codex-deep-research",
+        "category": "工程技能库 / Agent 工作流素材",
+        "oneLiner": "Skills for Real Engineers. Straight from my .claude directory.；本次更值得看的不是热度，而是它能否用「把真实工程师的 Claude 技能整理成文件化流程，覆盖 TypeScript、评审、调试、写作和工具使用」解决「高质量工程判断散落在个人习惯里，Agent 复用时缺少可读、可迭代、可审查的技能单元」。",
+        "whyItMatters": "mattpocock/skills 进入雷达，是因为它把 高质量工程判断散落在个人习惯里，Agent 复用时缺少可读、可迭代、可审查的技能单元 这个具体工程问题显性化。对生产团队而言，价值不在 star 数，而在能否把 把真实工程师的 Claude 技能整理成文件化流程，覆盖 TypeScript、评审、调试、写作和工具使用 拆成小样本验证，并用 技能调用频率、任务成功率、违反本地规范次数、维护 owner、更新记录和评审反馈 判断是否真的改善。",
+        "engineeringRead": "Shell · 工程技能库 / Agent 工作流素材。阅读顺序建议：先看入口/协议，再看状态与权限边界，然后读失败处理、部署方式和最近 issue；试点只围绕「只挑与团队栈匹配的技能做改写，配套加入示例、反例和验证命令，不直接全量复制」展开。",
+        "architectureSignals": [
+          "架构机制：把真实工程师的 Claude 技能整理成文件化流程，覆盖 TypeScript、评审、调试、写作和工具使用",
+          "适用团队：正在建设内部 Agent skill 库、想标准化工程实践的前端/平台/开发者体验团队",
+          "落地路径：只挑与团队栈匹配的技能做改写，配套加入示例、反例和验证命令，不直接全量复制",
+          "生产风险：个人经验迁移到团队时可能与本地规范冲突；技能不维护会快速变成过期提示词",
+          "决策问题：这些技能是否能沉淀为团队规范，还是只适合个人偏好？",
+          "观察信号：技能调用频率、任务成功率、违反本地规范次数、维护 owner、更新记录和评审反馈"
+        ],
+        "valueHypothesis": [
+          "若团队真实痛点是「高质量工程判断散落在个人习惯里，Agent 复用时缺少可读、可迭代、可审查的技能单元」，它的收益应体现在 技能调用频率、任务成功率、违反本地规范次数、维护 owner、更新记录和评审反馈 的改善，而不是只证明 demo 能跑。",
+          "适合先复制机制、接口或流程，不适合在未评估权限、维护和回滚之前进入主链路。",
+          "如果现有流程没有 owner 或无法做离线/旁路验证，应降级为观察项。"
+        ],
+        "technicalTakeaways": [
+          "把 README 的安装示例拆成输入、状态、执行边界和输出证据四块读。",
+          "图解重点应呈现「高质量工程判断散落在个人习惯里，Agent 复用时缺少可读、可迭代、可审查的技能单元 -> 把真实工程师的 Claude 技能整理成文件化流程，覆盖 TypeScript、评审、调试、写作和工具使用 -> 技能调用频率、任务成功率、违反本地规范次数、维护 owner、更新记录和评审反馈」，让前端能画出工业链路而不是概念海报。",
+          "验收必须同时记录正样本、失败样本、成本、延迟、权限和回滚步骤。"
+        ],
+        "adoptionRisks": [
+          "个人经验迁移到团队时可能与本地规范冲突；技能不维护会快速变成过期提示词",
+          "与现有 Shell 工具链集成前，要确认 license、升级节奏、配置持久化和日志可观测性。",
+          "热门项目的社区信号只能说明关注度，不能替代生产环境里的稳定性和安全评估。"
+        ],
+        "suggestedUseCases": [
+          "只挑与团队栈匹配的技能做改写，配套加入示例、反例和验证命令，不直接全量复制",
+          "设计一个两周以内可结束的 spike：只接入非核心路径，提前定义停止条件。",
+          "把 技能调用频率、任务成功率、违反本地规范次数、维护 owner、更新记录和评审反馈 写进验收表，避免用主观体验替代工程证据。"
+        ],
+        "watchSignals": [
+          "技能调用频率、任务成功率、违反本地规范次数、维护 owner、更新记录和评审反馈",
+          "最近 release 是否解释 工程技能库 / Agent 工作流素材 的关键能力演进，issue 是否出现与你场景相近的失败反馈。",
+          "社区讨论是否开始从“能用”转向“如何治理、观测、扩展和回滚”。"
+        ],
+        "deepDive": {
+          "strategicValue": "mattpocock/skills 的战略价值在于为「高质量工程判断散落在个人习惯里，Agent 复用时缺少可读、可迭代、可审查的技能单元」提供一个可拆解机制。采用判断应从机制适配性出发，而不是从项目名气出发。",
+          "implementationPath": [
+            "只挑与团队栈匹配的技能做改写，配套加入示例、反例和验证命令，不直接全量复制",
+            "把接入范围限制在旁路或只读链路，先产出基线数据，再决定是否扩大。",
+            "复盘失败样本，确认问题来自数据、权限、模型/索引、网络还是人机流程。"
+          ],
+          "productionConcerns": [
+            "个人经验迁移到团队时可能与本地规范冲突；技能不维护会快速变成过期提示词",
+            "上线前必须明确 owner、升级窗口、回滚方式、告警指标和合规边界。",
+            "如果缺少 技能调用频率、任务成功率、违反本地规范次数、维护 owner、更新记录和评审反馈 的连续观测，不应进入核心业务链路。"
+          ],
+          "decisionQuestions": [
+            "这些技能是否能沉淀为团队规范，还是只适合个人偏好？",
+            "有没有一个不用改主链路也能验证 技能调用频率、任务成功率、违反本地规范次数、维护 owner、更新记录和评审反馈 的最小实验？",
+            "谁负责上线后的维护、审计、成本和失败接管？"
+          ],
+          "recommendedAction": "进入试点/观察池：只挑与团队栈匹配的技能做改写，配套加入示例、反例和验证命令，不直接全量复制"
+        },
+        "diagram": {
+          "title": "skills 工业级采用图解",
+          "caption": "工程技能库 / Agent 工作流素材 · Shell · 132.8K stars",
+          "summary": "把「高质量工程判断散落在个人习惯里，Agent 复用时缺少可读、可迭代、可审查的技能单元」通过「把真实工程师的 Claude 技能整理成文件化流程，覆盖 TypeScript、评审、调试、写作和工具使用」转化为可观测的「技能调用频率、任务成功率、违反本地规范次数、维护 owner、更新记录和评审反馈」。",
+          "nodes": [
+            {
+              "label": "架构机制",
+              "detail": "把真实工程师的 Claude 技能整理成文件化流程，覆盖 TypeScript、评审、调试、写作和工具使用",
+              "type": "core"
+            },
+            {
+              "label": "适用团队",
+              "detail": "正在建设内部 Agent skill 库、想标准化工程实践的前端/平台/开发者体验团队",
+              "type": "input"
+            },
+            {
+              "label": "落地路径",
+              "detail": "只挑与团队栈匹配的技能做改写，配套加入示例、反例和验证命令，不直接全量复制",
+              "type": "integration"
+            },
+            {
+              "label": "观察信号",
+              "detail": "技能调用频率、任务成功率、违反本地规范次数、维护 owner、更新记录和评审反馈",
+              "type": "measure"
+            }
+          ],
+          "links": [
+            "定义痛点",
+            "拆解机制",
+            "指标验收"
+          ],
+          "poster": {
+            "eyebrow": "Project Blueprint",
+            "headline": "工程技能库 / Agent 工作流素材",
+            "subhead": "mattpocock/skills · Shell",
+            "thesis": "用「把真实工程师的 Claude 技能整理成文件化流程，覆盖 TypeScript、评审、调试、写作和工具使用」解决「高质量工程判断散落在个人习惯里，Agent 复用时缺少可读、可迭代、可审查的技能单元」，再用「技能调用频率、任务成功率、违反本地规范次数、维护 owner、更新记录和评审反馈」决定是否进入生产。",
+            "metrics": [
+              {
+                "label": "Stars",
+                "value": "132.8K",
+                "note": "社区关注"
+              },
+              {
+                "label": "Forks",
+                "value": "11.5K",
+                "note": "二次采用"
+              },
+              {
+                "label": "Issues",
+                "value": "79",
+                "note": "维护压力"
+              },
+              {
+                "label": "Score",
+                "value": "100",
+                "note": "雷达评分"
+              }
+            ],
+            "lanes": [
+              {
+                "label": "架构机制",
+                "detail": "把真实工程师的 Claude 技能整理成文件化流程，覆盖 TypeScript、评审、调试、写作和工具使用",
+                "type": "core",
+                "step": "01",
+                "signal": "高质量工程判断散落在个人习惯里，Agent 复用时缺少可读、可迭代、可审查的技能单元"
+              },
+              {
+                "label": "适用团队",
+                "detail": "正在建设内部 Agent skill 库、想标准化工程实践的前端/平台/开发者体验团队",
+                "type": "input",
+                "step": "02",
+                "signal": "把真实工程师的 Claude 技能整理成文件化流程，覆盖 TypeScript、评审、调试、写作和工具使用"
+              },
+              {
+                "label": "落地路径",
+                "detail": "只挑与团队栈匹配的技能做改写，配套加入示例、反例和验证命令，不直接全量复制",
+                "type": "integration",
+                "step": "03",
+                "signal": "只挑与团队栈匹配的技能做改写，配套加入示例、反例和验证命令，不直接全量复制"
+              },
+              {
+                "label": "观察信号",
+                "detail": "技能调用频率、任务成功率、违反本地规范次数、维护 owner、更新记录和评审反馈",
+                "type": "measure",
+                "step": "04",
+                "signal": "技能调用频率、任务成功率、违反本地规范次数、维护 owner、更新记录和评审反馈"
+              }
+            ],
+            "adoption": [
+              {
+                "label": "试点入口",
+                "detail": "只挑与团队栈匹配的技能做改写，配套加入示例、反例和验证命令，不直接全量复制"
+              },
+              {
+                "label": "验收指标",
+                "detail": "技能调用频率、任务成功率、违反本地规范次数、维护 owner、更新记录和评审反馈"
+              },
+              {
+                "label": "生产风险",
+                "detail": "个人经验迁移到团队时可能与本地规范冲突；技能不维护会快速变成过期提示词"
+              },
+              {
+                "label": "决策问题",
+                "detail": "这些技能是否能沉淀为团队规范，还是只适合个人偏好？"
+              }
+            ],
+            "warning": "个人经验迁移到团队时可能与本地规范冲突；技能不维护会快速变成过期提示词"
+          }
+        },
+        "maturity": {
+          "community": 100,
+          "maintenance": 100,
+          "production": 95,
+          "complexity": 55
+        },
+        "score": 100
+      },
+      "evidence": {
+        "readmeExcerpt": "<p <a href=\"https://www.aihero.dev/s/skills newsletter\" <picture <source media=\"(prefers color scheme: dark)\" srcset=\"https://res.cloudinary.com/total typescript/image/upload/v1777382277/skills repo dark 2x.png\" <source media=\"(prefers color scheme: light)\" srcset=\"https://res.cloudinary.com/total typescript/image/upload/v1777382277/skill repo light 2x.png\" <img alt=\"Skills\" src=\"https://res.cloudinary.com/total typescript/image/upload/v1777382277/skill repo light 2x.png\" width=\"369\" </picture </a </p Skills For Real Engineers My agent skills that I use every day to do real engineering not vibe coding. Developing real applications is hard. Approaches like GSD, BMAD, and Spec Kit try to help by owning the process. But while doing so, they take away your control and make bugs in the process hard to resolve. These skills are designed to be small, easy to adapt, and composable. They work wit...",
+        "githubUrl": "https://github.com/mattpocock/skills"
+      }
+    }
+  ],
+  "frontier": {
+    "title": "搜广推技术前沿",
+    "subtitle": "聚焦搜索、广告、推荐、召回、排序、实验平台和大厂工程博客，按业务问题 -> 系统机制 -> 指标/实验 -> 可借鉴点 -> 不适用边界拆解。",
+    "source": "Meta Engineering + Pinterest Engineering + Dropbox Tech + Spotify Engineering + Netflix TechBlog + Alibaba/Amazon + arXiv",
+    "items": [
+      {
+        "title": "Using LLMs to amplify human labeling and improve Dash search relevance",
+        "source": "Dropbox Tech",
+        "url": "https://dropbox.tech/machine-learning",
+        "publishedAt": "2026-02-26T17:00:00Z",
+        "sourceType": "industry",
+        "imageUrl": "https://www.google.com/s2/favicons?domain=dropbox.tech&sz=128",
+        "tags": [
+          "ranking",
+          "retrieval",
+          "llm"
+        ],
+        "summary": "Dropbox Dash 面对企业搜索标注稀缺，采用 LLM 放大人工标注，服务搜索相关性模型训练。",
+        "interpretation": {
+          "businessProblem": "企业搜索长尾查询和权限语境复杂，纯人工标注覆盖不足，相关性模型缺少高质量训练信号。",
+          "systemMechanism": "用少量人工金标校准 LLM judge/labeler，再扩增候选文档的相关性标签，形成检索、排序、评测的闭环。",
+          "metricsAndExperiment": "关注 NDCG/MRR、人工一致性、标注成本、长尾覆盖、权限误召和上线后二次搜索率。",
+          "borrowable": "适合企业知识库和 RAG：先建小而准的金标集，再用 LLM 扩标，所有自动标签都保留置信度和抽检机制。",
+          "boundary": "权限体系复杂但审计不足、金标太少或查询意图高度主观时，LLM 标注会把偏差放大到排序模型。"
+        },
+        "rank": 1,
+        "diagram": {
+          "title": "Dropbox Tech 搜广推机制图",
+          "caption": "ranking / retrieval / llm",
+          "nodes": [
+            {
+              "label": "业务问题",
+              "detail": "企业搜索长尾查询和权限语境复杂，纯人工标注覆盖不足，相关性模型缺少高质量训练信号。",
+              "type": "input"
+            },
+            {
+              "label": "系统机制",
+              "detail": "用少量人工金标校准 LLM judge/labeler，再扩增候选文档的相关性标签，形成检索、排序、评测的闭环。",
+              "type": "core"
+            },
+            {
+              "label": "指标实验",
+              "detail": "关注 NDCG/MRR、人工一致性、标注成本、长尾覆盖、权限误召和上线后二次搜索率。",
+              "type": "measure"
+            },
+            {
+              "label": "采用边界",
+              "detail": "权限体系复杂但审计不足、金标太少或查询意图高度主观时，LLM 标注会把偏差放大到排序模型。",
+              "type": "risk"
+            }
+          ],
+          "links": [
+            "定义目标",
+            "拆解链路",
+            "实验验收"
+          ]
+        }
+      },
+      {
+        "title": "From Clicks to Conversions: Architecting Shopping Conversion Candidate Generation at Pinterest",
+        "source": "Pinterest Engineering",
+        "url": "https://medium.com/pinterest-engineering/from-clicks-to-conversions-architecting-shopping-conversion-candidate-generation-at-pinterest-04cae5e1455b",
+        "publishedAt": "2026-04-27T16:01:05Z",
+        "sourceType": "industry",
+        "imageUrl": "https://www.google.com/s2/favicons?domain=medium.com&sz=128",
+        "tags": [
+          "recsys",
+          "ads",
+          "candidate"
+        ],
+        "summary": "Pinterest 从点击优化走向购物转化候选生成，把实时意图、长期偏好和转化稀疏问题放进同一召回链路。",
+        "interpretation": {
+          "businessProblem": "购物转化比点击更稀疏且延迟更长，候选生成如果只追点击，会错过真正高转化商品。",
+          "systemMechanism": "拆分实时上下文特征和长期偏好特征，用序列模型/embedding 生成购物候选，再交给排序层平衡转化目标。",
+          "metricsAndExperiment": "关注 CVR、GMV/ROAS、候选覆盖、召回新鲜度、长尾商品曝光、P95 延迟和转化回传滞后。",
+          "borrowable": "电商推荐可借鉴“点击候选”和“转化候选”分层，不要把互动信号直接当购买意图。",
+          "boundary": "转化回传慢、商品池小或缺少广告主/商家价值口径时，不适合直接复制复杂候选生成栈。"
+        },
+        "rank": 2,
+        "diagram": {
+          "title": "Pinterest Engineering 搜广推机制图",
+          "caption": "recsys / ads / candidate",
+          "nodes": [
+            {
+              "label": "业务问题",
+              "detail": "购物转化比点击更稀疏且延迟更长，候选生成如果只追点击，会错过真正高转化商品。",
+              "type": "input"
+            },
+            {
+              "label": "系统机制",
+              "detail": "拆分实时上下文特征和长期偏好特征，用序列模型/embedding 生成购物候选，再交给排序层平衡转化目标。",
+              "type": "core"
+            },
+            {
+              "label": "指标实验",
+              "detail": "关注 CVR、GMV/ROAS、候选覆盖、召回新鲜度、长尾商品曝光、P95 延迟和转化回传滞后。",
+              "type": "measure"
+            },
+            {
+              "label": "采用边界",
+              "detail": "转化回传慢、商品池小或缺少广告主/商家价值口径时，不适合直接复制复杂候选生成栈。",
+              "type": "risk"
+            }
+          ],
+          "links": [
+            "定义目标",
+            "拆解链路",
+            "实验验收"
+          ]
+        }
+      },
+      {
+        "title": "SilverTorch: Index as Model — A New Retrieval Paradigm for Recommendation Systems",
+        "source": "Meta Engineering",
+        "url": "https://engineering.fb.com/2026/05/26/ml-applications/silvertorch-index-as-model-new-retrieval-paradigm-recommendation-systems/",
+        "publishedAt": "2026-05-26T16:00:01Z",
+        "sourceType": "industry",
+        "imageUrl": "https://www.google.com/s2/favicons?domain=engineering.fb.com&sz=128",
+        "tags": [
+          "recsys",
+          "retrieval",
+          "index"
+        ],
+        "summary": "Meta SilverTorch 把推荐检索索引模型化，目标是降低多服务检索架构的吞吐和 TCO 压力。",
+        "interpretation": {
+          "businessProblem": "传统推荐召回依赖 ANN、特征服务和多级候选服务拼接，吞吐、成本和模型目标一致性难以同时优化。",
+          "systemMechanism": "把索引能力纳入 PyTorch 模型推理图，让召回从独立服务转为模型内 tensor 计算和统一部署。",
+          "metricsAndExperiment": "重点看 QPS、TCO、recall@K、在线 CTR/观看时长、模型更新成本、索引刷新和回滚能力。",
+          "borrowable": "适合超大候选池团队思考“索引即模型”，让召回服务与排序目标共享训练和部署边界。",
+          "boundary": "规模未到多服务召回瓶颈，或团队缺少模型服务与检索系统联合 owner 时，收益可能抵不过重构成本。"
+        },
+        "rank": 3,
+        "diagram": {
+          "title": "Meta Engineering 搜广推机制图",
+          "caption": "recsys / retrieval / index",
+          "nodes": [
+            {
+              "label": "业务问题",
+              "detail": "传统推荐召回依赖 ANN、特征服务和多级候选服务拼接，吞吐、成本和模型目标一致性难以同时优化。",
+              "type": "input"
+            },
+            {
+              "label": "系统机制",
+              "detail": "把索引能力纳入 PyTorch 模型推理图，让召回从独立服务转为模型内 tensor 计算和统一部署。",
+              "type": "core"
+            },
+            {
+              "label": "指标实验",
+              "detail": "重点看 QPS、TCO、recall@K、在线 CTR/观看时长、模型更新成本、索引刷新和回滚能力。",
+              "type": "measure"
+            },
+            {
+              "label": "采用边界",
+              "detail": "规模未到多服务召回瓶颈，或团队缺少模型服务与检索系统联合 owner 时，收益可能抵不过重构成本。",
+              "type": "risk"
+            }
+          ],
+          "links": [
+            "定义目标",
+            "拆解链路",
+            "实验验收"
+          ]
+        }
+      },
+      {
+        "title": "Enhancing Ad Relevance: Integrating Real-Time Context into Sequential Recommender Models",
+        "source": "Pinterest Engineering",
+        "url": "https://medium.com/pinterest-engineering/enhancing-ad-relevance-integrating-real-time-context-into-sequential-recommender-models-bc3a2f9b682e",
+        "publishedAt": "2026-05-08T19:01:00Z",
+        "sourceType": "industry",
+        "imageUrl": "https://www.google.com/s2/favicons?domain=medium.com&sz=128",
+        "tags": [
+          "ads",
+          "recsys",
+          "real-time"
+        ],
+        "summary": "Pinterest 广告把实时上下文并入序列推荐，以缓解长期兴趣与当下意图错位。",
+        "interpretation": {
+          "businessProblem": "广告排序只看长期用户历史会忽略当下场景，导致广告相关性和用户体验下降。",
+          "systemMechanism": "在序列模型中注入当前 Pin、搜索或会话上下文，让用户历史 embedding 与实时意图共同影响广告候选和排序。",
+          "metricsAndExperiment": "关注 CTR、CVR、hide/report、广告质量、实时特征延迟、特征缺失率和在线实验分层。",
+          "borrowable": "可在广告/推荐中把实时意图作为独立特征通道，避免长期画像吞掉短期需求。",
+          "boundary": "实时特征链路不稳定、延迟预算紧或缺少负反馈监控时，实时上下文可能带来更大波动。"
+        },
+        "rank": 4,
+        "diagram": {
+          "title": "Pinterest Engineering 搜广推机制图",
+          "caption": "ads / recsys / real-time",
+          "nodes": [
+            {
+              "label": "业务问题",
+              "detail": "广告排序只看长期用户历史会忽略当下场景，导致广告相关性和用户体验下降。",
+              "type": "input"
+            },
+            {
+              "label": "系统机制",
+              "detail": "在序列模型中注入当前 Pin、搜索或会话上下文，让用户历史 embedding 与实时意图共同影响广告候选和排序。",
+              "type": "core"
+            },
+            {
+              "label": "指标实验",
+              "detail": "关注 CTR、CVR、hide/report、广告质量、实时特征延迟、特征缺失率和在线实验分层。",
+              "type": "measure"
+            },
+            {
+              "label": "采用边界",
+              "detail": "实时特征链路不稳定、延迟预算紧或缺少负反馈监控时，实时上下文可能带来更大波动。",
+              "type": "risk"
+            }
+          ],
+          "links": [
+            "定义目标",
+            "拆解链路",
+            "实验验收"
+          ]
+        }
+      },
+      {
+        "title": "Modernizing the Facebook Groups Search to Unlock the Power of Community Knowledge",
+        "source": "Meta Engineering",
+        "url": "https://engineering.fb.com/",
+        "publishedAt": "2026-04-21T16:00:19Z",
+        "sourceType": "industry",
+        "imageUrl": "https://www.google.com/s2/favicons?domain=engineering.fb.com&sz=128",
+        "tags": [
+          "search",
+          "retrieval",
+          "ranking"
+        ],
+        "summary": "Meta Groups Search 代表社区知识搜索的现代化：查询理解、权限、召回和排序必须同时处理。",
+        "interpretation": {
+          "businessProblem": "社区内容搜索需要在非结构化帖子、群组权限和长尾查询之间找到相关答案。",
+          "systemMechanism": "现代化查询理解、召回索引、语义排序和社区知识结构，让用户从群组内容里找可行动信息。",
+          "metricsAndExperiment": "关注搜索成功率、二次查询率、结果点击、权限误召、投诉率、长尾覆盖和 P95 延迟。",
+          "borrowable": "适合内部社区、客服知识库和开发者论坛：搜索现代化必须把权限和评价集放在第一天。",
+          "boundary": "内容权限、隐私和审核边界不清时，语义召回越强，误召风险越大。"
+        },
+        "rank": 5,
+        "diagram": {
+          "title": "Meta Engineering 搜广推机制图",
+          "caption": "search / retrieval / ranking",
+          "nodes": [
+            {
+              "label": "业务问题",
+              "detail": "社区内容搜索需要在非结构化帖子、群组权限和长尾查询之间找到相关答案。",
+              "type": "input"
+            },
+            {
+              "label": "系统机制",
+              "detail": "现代化查询理解、召回索引、语义排序和社区知识结构，让用户从群组内容里找可行动信息。",
+              "type": "core"
+            },
+            {
+              "label": "指标实验",
+              "detail": "关注搜索成功率、二次查询率、结果点击、权限误召、投诉率、长尾覆盖和 P95 延迟。",
+              "type": "measure"
+            },
+            {
+              "label": "采用边界",
+              "detail": "内容权限、隐私和审核边界不清时，语义召回越强，误召风险越大。",
+              "type": "risk"
+            }
+          ],
+          "links": [
+            "定义目标",
+            "拆解链路",
+            "实验验收"
+          ]
+        }
+      },
+      {
+        "title": "Better Experiments with LLM Evals — A funnel, not a fork",
+        "source": "Spotify Engineering",
+        "url": "https://engineering.atspotify.com/2026/5/better-experiments-with-llm-evals-a-funnel-not-a-fork",
+        "publishedAt": "2026-05-18T13:27:23Z",
+        "sourceType": "industry",
+        "imageUrl": "https://www.google.com/s2/favicons?domain=engineering.atspotify.com&sz=128",
+        "tags": [
+          "experiment",
+          "llm",
+          "evaluation"
+        ],
+        "summary": "Spotify 把 LLM eval 当作在线实验漏斗的前置筛选，而不是 A/B 的替代品。",
+        "interpretation": {
+          "businessProblem": "搜广推和生成式体验迭代成本高，所有方案都直接上 A/B 会浪费流量和实验周期。",
+          "systemMechanism": "用 LLM eval 预筛内容质量、相关性和一致性，再把高潜方案送入在线实验验证真实用户行为。",
+          "metricsAndExperiment": "关注 eval-human 相关性、实验命中率、误杀/漏放、在线 uplift、长期留存和评估成本。",
+          "borrowable": "可把 LLM eval 作为推荐文案、搜索答案、RAG 摘要和 feed 质量的实验入口，提升 A/B 命中率。",
+          "boundary": "LLM judge 未校准或业务目标靠长期行为体现时，离线 eval 只能筛风险，不能证明业务收益。"
+        },
+        "rank": 6,
+        "diagram": {
+          "title": "Spotify Engineering 搜广推机制图",
+          "caption": "experiment / llm / evaluation",
+          "nodes": [
+            {
+              "label": "业务问题",
+              "detail": "搜广推和生成式体验迭代成本高，所有方案都直接上 A/B 会浪费流量和实验周期。",
+              "type": "input"
+            },
+            {
+              "label": "系统机制",
+              "detail": "用 LLM eval 预筛内容质量、相关性和一致性，再把高潜方案送入在线实验验证真实用户行为。",
+              "type": "core"
+            },
+            {
+              "label": "指标实验",
+              "detail": "关注 eval-human 相关性、实验命中率、误杀/漏放、在线 uplift、长期留存和评估成本。",
+              "type": "measure"
+            },
+            {
+              "label": "采用边界",
+              "detail": "LLM judge 未校准或业务目标靠长期行为体现时，离线 eval 只能筛风险，不能证明业务收益。",
+              "type": "risk"
+            }
+          ],
+          "links": [
+            "定义目标",
+            "拆解链路",
+            "实验验收"
+          ]
+        }
+      },
+      {
+        "title": "Powering Multimodal Intelligence for Video Search",
+        "source": "Netflix TechBlog",
+        "url": "https://netflixtechblog.com/powering-multimodal-intelligence-for-video-search-3e0020cf1202",
+        "publishedAt": "2026-04-10T12:00:00Z",
+        "sourceType": "industry",
+        "imageUrl": "https://www.google.com/s2/favicons?domain=netflixtechblog.com&sz=128",
+        "tags": [
+          "search",
+          "multimodal",
+          "retrieval"
+        ],
+        "summary": "Netflix 视频搜索强调多模态理解、检索和个性化权重，适合观察长视频内容发现链路。",
+        "interpretation": {
+          "businessProblem": "视频搜索不只匹配标题，用户常以场景、情绪、角色和模糊描述表达需求。",
+          "systemMechanism": "把视觉、文本、音频和元数据 embedding 融合到检索链路，并根据用户上下文调节搜索权重。",
+          "metricsAndExperiment": "关注搜索播放转化、query reformulation、结果多样性、冷启动内容曝光、向量刷新和延迟。",
+          "borrowable": "内容平台可借鉴多模态召回 + 个性化重排，把不可搜索的视频语义转成可检索资产。",
+          "boundary": "版权元数据不足、视频理解成本高或查询量小的产品，不宜一开始就建设全量多模态索引。"
+        },
+        "rank": 7,
+        "diagram": {
+          "title": "Netflix TechBlog 搜广推机制图",
+          "caption": "search / multimodal / retrieval",
+          "nodes": [
+            {
+              "label": "业务问题",
+              "detail": "视频搜索不只匹配标题，用户常以场景、情绪、角色和模糊描述表达需求。",
+              "type": "input"
+            },
+            {
+              "label": "系统机制",
+              "detail": "把视觉、文本、音频和元数据 embedding 融合到检索链路，并根据用户上下文调节搜索权重。",
+              "type": "core"
+            },
+            {
+              "label": "指标实验",
+              "detail": "关注搜索播放转化、query reformulation、结果多样性、冷启动内容曝光、向量刷新和延迟。",
+              "type": "measure"
+            },
+            {
+              "label": "采用边界",
+              "detail": "版权元数据不足、视频理解成本高或查询量小的产品，不宜一开始就建设全量多模态索引。",
+              "type": "risk"
+            }
+          ],
+          "links": [
+            "定义目标",
+            "拆解链路",
+            "实验验收"
+          ]
+        }
+      },
+      {
+        "title": "PAI-Rec 推荐开发平台：企业级智能推荐解决方案，驱动业务全域增长",
+        "source": "Alibaba Cloud Developer",
+        "url": "https://developer.aliyun.com/article/1724027",
+        "publishedAt": "2026-04-04T00:00:00Z",
+        "sourceType": "industry",
+        "imageUrl": "https://www.google.com/s2/favicons?domain=developer.aliyun.com&sz=128",
+        "tags": [
+          "recsys",
+          "ranking",
+          "platform"
+        ],
+        "summary": "阿里 PAI-Rec 文章体现推荐平台化方向：多路召回、多目标精排、GPU 推理和实验迭代要成体系。",
+        "interpretation": {
+          "businessProblem": "企业推荐常卡在从离线模型到在线服务的工程化：召回、排序、特征、实验和推理资源割裂。",
+          "systemMechanism": "平台化封装多路召回、多目标精排、GPU 推理、配置化实验和行业模板，降低从模型到业务指标的路径成本。",
+          "metricsAndExperiment": "关注 CTR/CVR、ROI、延迟、GPU 利用率、实验迭代周期、特征上线时间和多目标权衡。",
+          "borrowable": "中型团队可先搭“召回-粗排-精排-实验”的最小平台骨架，而不是每个业务线重复造链路。",
+          "boundary": "数据规模小、目标单一或没有平台 owner 时，推荐平台化会变成额外运维负担。"
+        },
+        "rank": 8,
+        "diagram": {
+          "title": "Alibaba Cloud Developer 搜广推机制图",
+          "caption": "recsys / ranking / platform",
+          "nodes": [
+            {
+              "label": "业务问题",
+              "detail": "企业推荐常卡在从离线模型到在线服务的工程化：召回、排序、特征、实验和推理资源割裂。",
+              "type": "input"
+            },
+            {
+              "label": "系统机制",
+              "detail": "平台化封装多路召回、多目标精排、GPU 推理、配置化实验和行业模板，降低从模型到业务指标的路径成本。",
+              "type": "core"
+            },
+            {
+              "label": "指标实验",
+              "detail": "关注 CTR/CVR、ROI、延迟、GPU 利用率、实验迭代周期、特征上线时间和多目标权衡。",
+              "type": "measure"
+            },
+            {
+              "label": "采用边界",
+              "detail": "数据规模小、目标单一或没有平台 owner 时，推荐平台化会变成额外运维负担。",
+              "type": "risk"
+            }
+          ],
+          "links": [
+            "定义目标",
+            "拆解链路",
+            "实验验收"
+          ]
+        }
+      },
+      {
+        "title": "DiAL: Diversity aware listwise ranking for query auto-complete",
+        "source": "Amazon Science",
+        "url": "https://www.amazon.science/publications/dial-diversity-aware-listwise-ranking-for-query-auto-complete",
+        "publishedAt": "2026-06-01T00:00:00Z",
+        "sourceType": "industry",
+        "imageUrl": "https://www.google.com/s2/favicons?domain=www.amazon.science&sz=128",
+        "tags": [
+          "search",
+          "ranking",
+          "query"
+        ],
+        "summary": "Amazon Science 的 QAC 多样性排序提醒搜索入口不能只追历史点击，还要避免建议词同质化。",
+        "interpretation": {
+          "businessProblem": "电商查询自动补全如果只按点击学习，容易产生重复建议，限制用户探索品牌、品类和属性。",
+          "systemMechanism": "用 diversity-aware listwise ranking 在候选建议词排序时同时考虑相关性和列表多样性。",
+          "metricsAndExperiment": "关注 QAC 点击率、query reformulation、suggestion diversity、搜索转化、无结果率和导航类查询覆盖。",
+          "borrowable": "搜索团队可把多样性作为列表级约束，而不是在单条候选打分后做简单规则去重。",
+          "boundary": "强导航查询和高意图短 query 不一定需要多样化，过度多样会降低精准到达。"
+        },
+        "rank": 9,
+        "diagram": {
+          "title": "Amazon Science 搜广推机制图",
+          "caption": "search / ranking / query",
+          "nodes": [
+            {
+              "label": "业务问题",
+              "detail": "电商查询自动补全如果只按点击学习，容易产生重复建议，限制用户探索品牌、品类和属性。",
+              "type": "input"
+            },
+            {
+              "label": "系统机制",
+              "detail": "用 diversity-aware listwise ranking 在候选建议词排序时同时考虑相关性和列表多样性。",
+              "type": "core"
+            },
+            {
+              "label": "指标实验",
+              "detail": "关注 QAC 点击率、query reformulation、suggestion diversity、搜索转化、无结果率和导航类查询覆盖。",
+              "type": "measure"
+            },
+            {
+              "label": "采用边界",
+              "detail": "强导航查询和高意图短 query 不一定需要多样化，过度多样会降低精准到达。",
+              "type": "risk"
+            }
+          ],
+          "links": [
+            "定义目标",
+            "拆解链路",
+            "实验验收"
+          ]
+        }
+      },
+      {
+        "title": "OneRank: Unified Transformer-Native Ranking Architecture for Multi-Task Recommendation",
+        "source": "arXiv",
+        "url": "https://arxiv.org/search/?query=OneRank+Unified+Transformer-Native+Ranking+Architecture+for+Multi-Task+Recommendation&searchtype=all",
+        "publishedAt": "2026-06-15T15:16:17Z",
+        "sourceType": "paper",
+        "imageUrl": "https://www.google.com/s2/favicons?domain=arxiv.org&sz=128",
+        "tags": [
+          "recsys",
+          "ranking",
+          "multi-task"
+        ],
+        "summary": "OneRank 代表论文侧对统一排序架构的探索，适合作为多任务推荐 ranker 的观察项。",
+        "interpretation": {
+          "businessProblem": "多任务推荐常在点击、转化、留存、满意度之间拉扯，不同 ranker 分裂会造成训练和上线口径不一致。",
+          "systemMechanism": "用 Transformer-native 架构统一多任务排序表征，让不同目标共享序列建模能力并在任务头上分化。",
+          "metricsAndExperiment": "关注多目标 Pareto、负迁移、在线 CTR/CVR/留存、推理成本、特征重要性和任务间稳定性。",
+          "borrowable": "适合有多目标 ranker 的团队做离线基线，观察统一序列模型能否减少维护和特征重复。",
+          "boundary": "若业务目标还没定义清楚，统一架构只会把目标冲突隐藏到模型内部。"
+        },
+        "rank": 10,
+        "diagram": {
+          "title": "arXiv 搜广推机制图",
+          "caption": "recsys / ranking / multi-task",
+          "nodes": [
+            {
+              "label": "业务问题",
+              "detail": "多任务推荐常在点击、转化、留存、满意度之间拉扯，不同 ranker 分裂会造成训练和上线口径不一致。",
+              "type": "input"
+            },
+            {
+              "label": "系统机制",
+              "detail": "用 Transformer-native 架构统一多任务排序表征，让不同目标共享序列建模能力并在任务头上分化。",
+              "type": "core"
+            },
+            {
+              "label": "指标实验",
+              "detail": "关注多目标 Pareto、负迁移、在线 CTR/CVR/留存、推理成本、特征重要性和任务间稳定性。",
+              "type": "measure"
+            },
+            {
+              "label": "采用边界",
+              "detail": "若业务目标还没定义清楚，统一架构只会把目标冲突隐藏到模型内部。",
+              "type": "risk"
+            }
+          ],
+          "links": [
+            "定义目标",
+            "拆解链路",
+            "实验验收"
+          ]
+        }
+      }
+    ]
+  },
+  "aiNews": {
+    "title": "AI 新闻",
+    "subtitle": "汇总 AIHOT、官方 AI 博客和 A 社 Anthropic News/Research/Engineering，按信号、影响和动作拆解。",
+    "source": "AIHOT RSS/API + OpenAI/Hugging Face 官方 + Anthropic 官方页面",
+    "sourceBrief": {
+      "kicker": "AIHOT Source",
+      "title": "AIHOT 可作为 AI 资讯上游：日报、精选、分类、RSS/API/Skill",
+      "url": "https://aihot.virxact.com/",
+      "summary": "AIHOT 适合做上游线索池，本次结合精选 RSS/API 与官方来源交叉核验，避免只复述单条热榜。",
+      "takeaways": [
+        "精选流用于捕捉当天产品和模型信号，官方博客用于核验模型、安全和工程发布。",
+        "A 社部分优先抓 Anthropic News、Research、Engineering 页面，覆盖模型、Claude Code、企业合作和安全研究。",
+        "每条新闻都写成信号、影响、动作，便于进入周报、选型或试用清单。",
+        "不把热度等同于采用建议，必须等待可试用入口、价格、限制和开发者反馈。"
+      ]
+    },
+    "aihot": {
+      "title": "AIHOT 内容抓取",
+      "source": "AIHOT RSS/API + Codex 复核",
+      "date": "2026-06-17",
+      "generatedAt": "2026-06-17T13:26:27.190Z",
+      "summary": "今日 AIHOT 线索集中在视频生成、交互式数字世界、机器人 Agent、长任务模型和广告视频生产；已筛入下方 AI 新闻流并补充官方来源交叉判断。",
+      "stats": [
+        {
+          "label": "精选条目",
+          "value": "5+"
+        },
+        {
+          "label": "官方复核",
+          "value": "7"
+        },
+        {
+          "label": "A社覆盖",
+          "value": "6"
+        },
+        {
+          "label": "刷新频率",
+          "value": "3h"
+        }
+      ],
+      "sections": [
+        {
+          "label": "模型/Agent",
+          "count": 4,
+          "items": [
+            {
+              "title": "GLM-5.2: Built for Long-Horizon Tasks",
+              "url": "https://huggingface.co/blog/zai-org/glm-52-blog",
+              "source": "Hugging Face",
+              "signal": "长任务模型竞争升温，重点看工具调用稳定性。"
+            },
+            {
+              "title": "Strands Robots SDK",
+              "url": "https://huggingface.co/blog/amazon/strands-lerobot-hub-to-hardware",
+              "source": "Hugging Face",
+              "signal": "Agent 正进入硬件动作链路，权限和接管更重要。"
+            }
+          ]
+        },
+        {
+          "label": "多模态/视频",
+          "count": 3,
+          "items": [
+            {
+              "title": "Grok Imagine Video 1.5 实测",
+              "url": "https://x.com/AYi_AInotes/status/2067227900399562775",
+              "source": "AIHOT",
+              "signal": "低价视频生成会推动营销素材快速实验。"
+            },
+            {
+              "title": "HappyOyster 1.0",
+              "url": "https://www.ithome.com/0/965/652.htm",
+              "source": "IT之家/AIHOT",
+              "signal": "交互式数字世界生成进入产品化观察期。"
+            }
+          ]
+        },
+        {
+          "label": "广告创意",
+          "count": 1,
+          "items": [
+            {
+              "title": "Kickart 3.0",
+              "url": "https://mp.weixin.qq.com/s/e6SOMeRbdMB_zATsNcYmUQ",
+              "source": "AIHOT",
+              "signal": "广告视频创意生产需要和 CTR/CVR 实验闭环绑定。"
+            }
+          ]
+        }
+      ],
+      "selected": [
+        {
+          "title": "Grok Imagine Video 1.5 实测",
+          "url": "https://x.com/AYi_AInotes/status/2067227900399562775",
+          "source": "AIHOT",
+          "publishedAt": "2026-06-17T12:48:33Z",
+          "category": "多模态",
+          "signal": "低成本视频生成进入营销内容观察池。"
+        },
+        {
+          "title": "HappyOyster 1.0",
+          "url": "https://www.ithome.com/0/965/652.htm",
+          "source": "AIHOT",
+          "publishedAt": "2026-06-17T12:46:59Z",
+          "category": "产品更新",
+          "signal": "一句话生成交互世界，关注资产可控和运行性能。"
+        },
+        {
+          "title": "Strands Robots SDK",
+          "url": "https://huggingface.co/blog/amazon/strands-lerobot-hub-to-hardware",
+          "source": "Hugging Face",
+          "publishedAt": "2026-06-17T10:18:05Z",
+          "category": "Agent",
+          "signal": "Agent 从软件工具走向硬件动作链路。"
+        },
+        {
+          "title": "GLM-5.2",
+          "url": "https://huggingface.co/blog/zai-org/glm-52-blog",
+          "source": "Hugging Face",
+          "publishedAt": "2026-06-17T09:01:25Z",
+          "category": "模型发布",
+          "signal": "长任务能力需要真实工作流 eval。"
+        }
+      ],
+      "recentDailies": [
+        {
+          "date": "2026-06-17",
+          "title": "AIHOT 今日精选",
+          "url": "https://aihot.virxact.com/daily"
+        }
+      ],
+      "entrypoints": [
+        {
+          "label": "精选",
+          "detail": "高价值时间流",
+          "url": "https://aihot.virxact.com/"
+        },
+        {
+          "label": "AI 日报",
+          "detail": "按类别整理",
+          "url": "https://aihot.virxact.com/daily"
+        },
+        {
+          "label": "Agent 接入",
+          "detail": "RSS/API/Skill",
+          "url": "https://aihot.virxact.com/agent"
+        }
+      ]
+    },
+    "items": [
+      {
+        "title": "Predicting model behavior before release by simulating deployment",
+        "source": "OpenAI",
+        "sourceDetail": "OpenAI 官方 Research",
+        "url": "https://openai.com/index/deployment-simulation/",
+        "publishedAt": "2026-06-16T00:00:00Z",
+        "summary": "OpenAI 发布 Deployment Simulation，用真实会话数据模拟部署前模型行为，尤其用于 agentic rollout 风险评估。",
+        "imageUrl": "https://www.google.com/s2/favicons?domain=openai.com&sz=128",
+        "tags": [
+          "安全/可信",
+          "评测"
+        ],
+        "signal": "模型发布前评估从静态 benchmark 转向接近真实部署的行为模拟。",
+        "impact": "高风险模型和 Agent 上线需要把用户分布、工具使用和测试感知纳入评估，否则离线安全结论会偏乐观。",
+        "action": "把内部模型上线流程补一项 deployment simulation：抽真实匿名样本、定义不良行为率、记录新型失败。",
+        "rank": 1,
+        "interpretation": {
+          "signal": "模型发布前评估从静态 benchmark 转向接近真实部署的行为模拟。",
+          "impact": "高风险模型和 Agent 上线需要把用户分布、工具使用和测试感知纳入评估，否则离线安全结论会偏乐观。",
+          "action": "把内部模型上线流程补一项 deployment simulation：抽真实匿名样本、定义不良行为率、记录新型失败。"
+        }
+      },
+      {
+        "title": "Agentic coding and persistent returns to expertise",
+        "source": "A社 Anthropic Research",
+        "sourceDetail": "Anthropic 官方 Research",
+        "url": "https://www.anthropic.com/research/claude-code-expertise",
+        "publishedAt": "2026-06-16T00:00:00Z",
+        "summary": "Anthropic 基于约 40 万次 Claude Code 交互会话分析，讨论 coding agent 使用中的专业能力回报。",
+        "imageUrl": "https://www.google.com/s2/favicons?domain=www.anthropic.com&sz=128",
+        "tags": [
+          "A社/Claude",
+          "Agent",
+          "研发效率"
+        ],
+        "signal": "Claude Code 的价值不只是替代低阶任务，专家仍能通过任务分解、审查和判断获得更高收益。",
+        "impact": "团队采用 coding agent 时不应只追自动化率，还要训练高级工程师如何设置目标、验证输出和管理上下文。",
+        "action": "把试点评估拆成初级/高级工程师两组，记录任务完成率、返工率和代码审查缺陷，不用平均值掩盖差异。",
+        "rank": 2,
+        "interpretation": {
+          "signal": "Claude Code 的价值不只是替代低阶任务，专家仍能通过任务分解、审查和判断获得更高收益。",
+          "impact": "团队采用 coding agent 时不应只追自动化率，还要训练高级工程师如何设置目标、验证输出和管理上下文。",
+          "action": "把试点评估拆成初级/高级工程师两组，记录任务完成率、返工率和代码审查缺陷，不用平均值掩盖差异。"
+        }
+      },
+      {
+        "title": "Introducing Claude Opus 4.8",
+        "source": "A社 Anthropic",
+        "sourceDetail": "Anthropic 官方 News",
+        "url": "https://www.anthropic.com/news/claude-opus-4-8",
+        "publishedAt": "2026-06-03T00:00:00Z",
+        "summary": "Anthropic 发布 Opus 4.8，重点强调编码、agentic tasks、computer use/browser agent 和诚实性改进。",
+        "imageUrl": "https://www.google.com/s2/favicons?domain=www.anthropic.com&sz=128",
+        "tags": [
+          "A社/Claude",
+          "模型",
+          "Computer Use"
+        ],
+        "signal": "Claude 模型竞争焦点继续向长任务、浏览器/电脑操作和诚实失败报告迁移。",
+        "impact": "如果模型更愿意暴露不确定性，Agent 工作流可以降低盲目成功声明，但仍需要外部验证和权限控制。",
+        "action": "在内部 eval 加入 browser/computer-use 长链任务和 unsupported-claim 检查，再决定是否替换生产模型。",
+        "rank": 3,
+        "interpretation": {
+          "signal": "Claude 模型竞争焦点继续向长任务、浏览器/电脑操作和诚实失败报告迁移。",
+          "impact": "如果模型更愿意暴露不确定性，Agent 工作流可以降低盲目成功声明，但仍需要外部验证和权限控制。",
+          "action": "在内部 eval 加入 browser/computer-use 长链任务和 unsupported-claim 检查，再决定是否替换生产模型。"
+        }
+      },
+      {
+        "title": "Claude Fable 5 and Claude Mythos 5 access unavailable",
+        "source": "A社 Anthropic",
+        "sourceDetail": "Anthropic 官方 News",
+        "url": "https://www.anthropic.com/news/claude-fable-5-mythos-5",
+        "publishedAt": "2026-06-12T00:00:00Z",
+        "summary": "Anthropic 宣布按美国政府指令暂停 Fable 5 和 Mythos 5 访问，相关模型此前强调强网络安全能力与 trusted access。",
+        "imageUrl": "https://www.google.com/s2/favicons?domain=www.anthropic.com&sz=128",
+        "tags": [
+          "A社/Claude",
+          "安全/可信",
+          "政策"
+        ],
+        "signal": "前沿模型能力、国家安全和访问控制正在更紧密绑定，模型可用性本身成为供应链风险。",
+        "impact": "企业选型不能只看能力和价格，还要评估地区、行业、访问计划和政策变化导致的突然不可用。",
+        "action": "为关键 Agent 流程准备模型降级/替代方案，并在供应商风险表中加入政策访问约束。",
+        "rank": 4,
+        "interpretation": {
+          "signal": "前沿模型能力、国家安全和访问控制正在更紧密绑定，模型可用性本身成为供应链风险。",
+          "impact": "企业选型不能只看能力和价格，还要评估地区、行业、访问计划和政策变化导致的突然不可用。",
+          "action": "为关键 Agent 流程准备模型降级/替代方案，并在供应商风险表中加入政策访问约束。"
+        }
+      },
+      {
+        "title": "TCS and Anthropic partner to bring Claude to regulated industries",
+        "source": "A社 Anthropic",
+        "sourceDetail": "Anthropic 官方 News",
+        "url": "https://www.anthropic.com/news/tcs-anthropic-partnership",
+        "publishedAt": "2026-06-12T00:00:00Z",
+        "summary": "TCS 与 Anthropic 合作把 Claude 引入受监管行业，面向企业 AI 转型和行业流程。",
+        "imageUrl": "https://www.google.com/s2/favicons?domain=www.anthropic.com&sz=128",
+        "tags": [
+          "A社/Claude",
+          "企业合作"
+        ],
+        "signal": "Claude 生态正在通过系统集成商进入金融、医疗、制造等受监管场景。",
+        "impact": "企业落地会更依赖集成商的方法论、合规模板和行业连接器，而不是单纯 API 能力。",
+        "action": "关注合作落地案例中的数据驻留、审计、权限隔离和行业评测，判断是否可复用到本组织。",
+        "rank": 5,
+        "interpretation": {
+          "signal": "Claude 生态正在通过系统集成商进入金融、医疗、制造等受监管场景。",
+          "impact": "企业落地会更依赖集成商的方法论、合规模板和行业连接器，而不是单纯 API 能力。",
+          "action": "关注合作落地案例中的数据驻留、审计、权限隔离和行业评测，判断是否可复用到本组织。"
+        }
+      },
+      {
+        "title": "How we contain Claude across products",
+        "source": "A社 Anthropic Engineering",
+        "sourceDetail": "Anthropic 官方 Engineering",
+        "url": "https://www.anthropic.com/engineering/how-we-contain-claude",
+        "publishedAt": "2026-05-30T00:00:00Z",
+        "summary": "Anthropic Engineering 介绍跨产品 containment 思路，强调 Claude 在产品内执行时的边界和隔离。",
+        "imageUrl": "https://www.google.com/s2/favicons?domain=www.anthropic.com&sz=128",
+        "tags": [
+          "A社/Claude",
+          "工程/基础设施",
+          "安全/可信"
+        ],
+        "signal": "Agent 能力越强，产品级 containment、沙箱和权限隔离越关键。",
+        "impact": "企业 Agent 不应只靠提示词约束，必须有系统级边界、工具 allowlist、审计和数据隔离。",
+        "action": "把现有 Agent 工具按读/写/外发/高危操作分层，补齐隔离、日志和人工接管。",
+        "rank": 6,
+        "interpretation": {
+          "signal": "Agent 能力越强，产品级 containment、沙箱和权限隔离越关键。",
+          "impact": "企业 Agent 不应只靠提示词约束，必须有系统级边界、工具 allowlist、审计和数据隔离。",
+          "action": "把现有 Agent 工具按读/写/外发/高危操作分层，补齐隔离、日志和人工接管。"
+        }
+      },
+      {
+        "title": "What we learned mapping a year’s worth of AI-enabled cyber threats",
+        "source": "A社 Anthropic Research",
+        "sourceDetail": "Anthropic 官方 Research",
+        "url": "https://www.anthropic.com/research/ai-enabled-cyber-threats",
+        "publishedAt": "2026-06-03T00:00:00Z",
+        "summary": "Anthropic 总结一年 AI-enabled cyber threats 映射经验，用于理解滥用模式和防御优先级。",
+        "imageUrl": "https://www.google.com/s2/favicons?domain=www.anthropic.com&sz=128",
+        "tags": [
+          "A社/Claude",
+          "安全/可信"
+        ],
+        "signal": "AI 安全研究正在从原则讨论转向滥用案例库和威胁地图。",
+        "impact": "安全团队可以把这些模式转成检测规则、使用政策、红队场景和客户风险分级。",
+        "action": "把报告中的攻击链映射到内部日志字段，检查是否能发现 prompt abuse、凭据外泄和自动化攻击准备。",
+        "rank": 7,
+        "interpretation": {
+          "signal": "AI 安全研究正在从原则讨论转向滥用案例库和威胁地图。",
+          "impact": "安全团队可以把这些模式转成检测规则、使用政策、红队场景和客户风险分级。",
+          "action": "把报告中的攻击链映射到内部日志字段，检查是否能发现 prompt abuse、凭据外泄和自动化攻击准备。"
+        }
+      },
+      {
+        "title": "Strands Robots SDK: from Hugging Face Hub to robot hardware",
+        "source": "Hugging Face",
+        "sourceDetail": "Hugging Face 官方 Blog",
+        "url": "https://huggingface.co/blog/amazon/strands-lerobot-hub-to-hardware",
+        "publishedAt": "2026-06-17T10:18:05Z",
+        "summary": "Hugging Face/Amazon Strands Robots SDK 把 Hub 模型、LeRobot 和硬件控制连成单智能体流程。",
+        "imageUrl": "https://www.google.com/s2/favicons?domain=huggingface.co&sz=128",
+        "tags": [
+          "Agent",
+          "机器人",
+          "工程/基础设施"
+        ],
+        "signal": "Agent 工具调用正在走向物理世界，软件动作失败会变成真实设备风险。",
+        "impact": "机器人 Agent 需要更严格的权限、仿真、限位、急停和遥测，而不是沿用网页 Agent 的执行假设。",
+        "action": "只在仿真或低风险硬件上试用，记录动作约束、恢复机制和人工接管延迟。",
+        "rank": 8,
+        "interpretation": {
+          "signal": "Agent 工具调用正在走向物理世界，软件动作失败会变成真实设备风险。",
+          "impact": "机器人 Agent 需要更严格的权限、仿真、限位、急停和遥测，而不是沿用网页 Agent 的执行假设。",
+          "action": "只在仿真或低风险硬件上试用，记录动作约束、恢复机制和人工接管延迟。"
+        }
+      },
+      {
+        "title": "GLM-5.2: Built for Long-Horizon Tasks",
+        "source": "Hugging Face",
+        "sourceDetail": "Hugging Face 官方 Blog",
+        "url": "https://huggingface.co/blog/zai-org/glm-52-blog",
+        "publishedAt": "2026-06-17T09:01:25Z",
+        "summary": "GLM-5.2 强调 long-horizon tasks，进入长任务 Agent 和复杂推理模型竞争。",
+        "imageUrl": "https://www.google.com/s2/favicons?domain=huggingface.co&sz=128",
+        "tags": [
+          "模型",
+          "Agent"
+        ],
+        "signal": "模型厂商继续把多步骤任务坚持度、工具使用和长上下文作为差异化能力。",
+        "impact": "长任务能力必须用真实工作流评测，单轮 benchmark 很难反映中途偏航、成本和恢复能力。",
+        "action": "加入 30-60 分钟长链任务 eval，记录中断恢复、步骤可解释性、成本和人工干预点。",
+        "rank": 9,
+        "interpretation": {
+          "signal": "模型厂商继续把多步骤任务坚持度、工具使用和长上下文作为差异化能力。",
+          "impact": "长任务能力必须用真实工作流评测，单轮 benchmark 很难反映中途偏航、成本和恢复能力。",
+          "action": "加入 30-60 分钟长链任务 eval，记录中断恢复、步骤可解释性、成本和人工干预点。"
+        }
+      },
+      {
+        "title": "Grok Imagine Video 1.5 实测：一键复刻高质量视频，价格低廉",
+        "source": "AIHOT 精选",
+        "sourceDetail": "AIHOT RSS",
+        "url": "https://x.com/AYi_AInotes/status/2067227900399562775",
+        "publishedAt": "2026-06-17T12:48:33Z",
+        "summary": "AIHOT 收录 Grok Imagine Video 1.5 实测，关注低成本视频生成和风格复刻效果。",
+        "imageUrl": "https://www.google.com/s2/favicons?domain=x.com&sz=128",
+        "tags": [
+          "多模态",
+          "视频"
+        ],
+        "signal": "视频生成继续从演示能力转向低价、高质量和可复制风格。",
+        "impact": "营销和内容团队会更快采用，但版权、肖像、风格复刻和品牌一致性风险同步上升。",
+        "action": "建立视频生成样例库，按版权风险、可编辑性、时长、成本和失败率做评估。",
+        "rank": 10,
+        "interpretation": {
+          "signal": "视频生成继续从演示能力转向低价、高质量和可复制风格。",
+          "impact": "营销和内容团队会更快采用，但版权、肖像、风格复刻和品牌一致性风险同步上升。",
+          "action": "建立视频生成样例库，按版权风险、可编辑性、时长、成本和失败率做评估。"
+        }
+      },
+      {
+        "title": "阿里云发布 HappyOyster 1.0：一句话生成可实时交互的数字世界",
+        "source": "AIHOT 精选",
+        "sourceDetail": "AIHOT RSS/IT之家",
+        "url": "https://www.ithome.com/0/965/652.htm",
+        "publishedAt": "2026-06-17T12:46:59Z",
+        "summary": "阿里云 HappyOyster 1.0 主打一段话生成可实时交互数字世界。",
+        "imageUrl": "https://www.google.com/s2/favicons?domain=www.ithome.com&sz=128",
+        "tags": [
+          "多模态",
+          "3D/世界模型"
+        ],
+        "signal": "生成式 AI 正从图文视频扩展到可交互空间，逼近游戏、仿真和教育内容生产。",
+        "impact": "真正价值不在炫酷 demo，而在资产可控、交互稳定、导出格式和多人协作能力。",
+        "action": "用一个低风险 3D/培训场景体验，记录编辑粒度、运行性能、资产版权和二次开发接口。",
+        "rank": 11,
+        "interpretation": {
+          "signal": "生成式 AI 正从图文视频扩展到可交互空间，逼近游戏、仿真和教育内容生产。",
+          "impact": "真正价值不在炫酷 demo，而在资产可控、交互稳定、导出格式和多人协作能力。",
+          "action": "用一个低风险 3D/培训场景体验，记录编辑粒度、运行性能、资产版权和二次开发接口。"
+        }
+      },
+      {
+        "title": "Kickart 3.0 发布，让广告视频创作更精准高效",
+        "source": "AIHOT 精选",
+        "sourceDetail": "AIHOT RSS/微信公众号",
+        "url": "https://mp.weixin.qq.com/s/e6SOMeRbdMB_zATsNcYmUQ",
+        "publishedAt": "2026-06-17T09:45:29Z",
+        "summary": "Kickart 3.0 聚焦广告视频创作效率和精准度。",
+        "imageUrl": "https://www.google.com/s2/favicons?domain=mp.weixin.qq.com&sz=128",
+        "tags": [
+          "多模态",
+          "广告",
+          "营销技术"
+        ],
+        "signal": "生成式视频开始贴近广告投放链路，创意生产、素材变体和实验会加速。",
+        "impact": "搜广推团队需要把创意生成与投放指标连接，避免只优化素材产量而不看 CVR/CPA。",
+        "action": "选择一个广告系列做创意 A/B，记录素材生成成本、审核耗时、CTR/CVR 和品牌合规问题。",
+        "rank": 12,
+        "interpretation": {
+          "signal": "生成式视频开始贴近广告投放链路，创意生产、素材变体和实验会加速。",
+          "impact": "搜广推团队需要把创意生成与投放指标连接，避免只优化素材产量而不看 CVR/CPA。",
+          "action": "选择一个广告系列做创意 A/B，记录素材生成成本、审核耗时、CTR/CVR 和品牌合规问题。"
+        }
+      }
+    ]
+  }
+}
