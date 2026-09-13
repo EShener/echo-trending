@@ -138,6 +138,30 @@ async function buildReport({ reportDate, limit, days, language }) {
 
 function applyEditorialOverrides(report) {
   const aiNewsOverrides = {
+    "Agent 长任务上下文工程解析：用预算控制、压缩、todo-state 和记忆对抗上下文溢出与目标丢失": {
+      signal: "长任务 Agent 进入 harness 工程化信号：这条 AIHOT 线索的核心不是又一种 prompt 技巧，而是把上下文预算、外部状态卸载、压缩摘要、todo-state 复述和跨会话记忆当作运行时能力，专门对抗目标漂移、上下文溢出和中途遗忘。",
+      impact: "真正受影响的是 coding agent、浏览器 agent、数据分析 agent 这类多小时任务：如果没有状态账本、压缩策略和恢复点，模型升级也会在长链执行里丢目标、重复动作或把旧约束覆盖掉；但过度记忆又会带来隐私、成本和错误状态污染。",
+      action: "用一条低敏长任务做回放：固定目标、约束、文件、todo 和验收脚本，分别测试无压缩、摘要压缩、外部 todo-state、跨会话记忆四种配置；记录目标保持率、重复步骤、人工接管次数、恢复成功率、token 成本和错误记忆清理成本。",
+      tags: ["Agent Harness", "Context Engineering", "Long Tasks", "Memory"],
+    },
+    "Dario Amodei 发文呼吁 AI 行业放慢前沿速度并公布三步计划": {
+      signal: "前沿模型治理从公司安全声明升级为行业节奏议题信号：Dario Amodei 的放缓主张把独立评估者访问、系统加固和社会讨论时间放在同一框架内，说明 A 社不只在谈模型能力，也在争夺“谁来定义安全上线节奏”的话语权。",
+      impact: "企业采购 Claude/OpenAI/Gemini 时会更频繁遇到模型访问限制、评估门槛、地区策略和安全审查要求；但单方倡议不能直接等同于监管共识，仍要看其他实验室回应、政府态度和实际 API/产品节奏是否变化。",
+      action: "把它列入供应商治理观察表：跟踪 Anthropic 原文、OpenAI/Google/Meta 回应、独立评估者访问政策、模型发布间隔、安全报告和企业配额变化；内部不要因此停用模型，而是补齐高风险任务评测与上线暂停机制。",
+      tags: ["Anthropic", "AI Governance", "Frontier Models", "安全评估"],
+    },
+    "Thariq 支持 Dario Amodei 的放缓前沿 AI 倡议，呼吁给系统加固和社会讨论留出时间": {
+      signal: "AI 安全讨论出现从实验室负责人到开发者社区扩散的共识信号：Thariq 支持 Dario Amodei 的倡议，重点不是个人表态，而是“系统加固优先于继续加速”的叙事开始进入实践者讨论。",
+      impact: "Agent 产品团队会被要求解释自己如何处理权限、审计、长任务失控、提示注入和事故沟通；如果只拿模型能力截图做发布，很容易在企业安全评审和公众舆论里失分。",
+      action: "把社区讨论转成产品 checklist：每个高能力 Agent 发布前补齐权限最小化、敏感动作人工确认、日志回放、kill switch、红队样本和事故公告模板，并记录哪些能力因为安全门槛暂缓开放。",
+      tags: ["AI Safety", "Agent Governance", "Product Readiness", "社区信号"],
+    },
+    "Minitap 指控 Google Artemis 未署名使用其开源项目 mobile-use 代码": {
+      signal: "Agent 工具链供应链信用风险信号：Minitap 对 Google Artemis 的指控把移动端 computer-use、开源代码复用、署名和许可证边界绑在一起，说明大厂 Agent demo 也会被追问底层实现来源。",
+      impact: "企业复用开源 mobile/browser agent 组件时，法律风险不只来自模型输出，也来自测试 harness、自动化脚本、样例代码和数据集的许可证；未经审计的复制会影响品牌、采购和合作可信度。",
+      action: "先按指控未定论处理：保留双方原始链接、commit/许可证证据和后续回应；内部则立即给 Agent 原型做依赖来源审计，检查 LICENSE、NOTICE、fork 关系、署名义务和是否有不可商用条款。",
+      tags: ["Open Source Compliance", "Mobile Agent", "Google Artemis", "供应链"],
+    },
     "GitHub 日韩营销负责人如何用 GitHub Copilot 把活动运营自动化": {
       signal: "非研发团队开始把 Copilot 用进运营执行信号：这条 AIHOT 线索的价值不在“营销也用 AI”这句口号，而是 GitHub 内部市场团队把活动素材、邮件、落地页、数据整理和跨区域复盘拆成可由 Copilot 辅助的工作包，说明 coding assistant 的边界正在外溢到 GTM 自动化。",
       impact: "增长、开发者关系和区域市场团队会更愿意把 Copilot 当作内容与运营协作入口，但如果没有品牌审稿、事实核验、地区合规和 CRM/活动系统权限控制，自动化会更快放大错误文案、重复触达和数据口径问题。",
