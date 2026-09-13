@@ -1,6 +1,6 @@
 {
   "date": "2026-09-14",
-  "generatedAt": "2026-09-13T20:28:55.448Z",
+  "generatedAt": "2026-09-13T23:30:38.472Z",
   "source": {
     "provider": "GitHub Trending daily + AIHOT + official AI feeds + Anthropic official pages + big-tech engineering blogs + Codex manual deep rewrite",
     "query": "pushed:>=2026-09-07 stars:>100 archived:false",
@@ -9,7 +9,7 @@
     "language": "all",
     "editorialReview": {
       "method": "script refresh + Codex multi-source editorial review",
-      "reviewedAt": "2026-09-13T20:28:55.449Z",
+      "reviewedAt": "2026-09-13T23:30:38.472Z",
       "reportDate": "2026-09-14",
       "focus": [
         "GitHub Trending daily metadata, repo README evidence and adoption risk review",
@@ -145,14 +145,14 @@
         "visualUrl": "https://opengraph.githubassets.com/20260914/JustVugg/colibri",
         "url": "https://github.com/JustVugg/colibri",
         "description": "Run frontier MoE models on hardware you already own — pure C, zero deps, experts streamed from disk. Tiny engine, immense model. 🐦",
-        "stars": 29533,
+        "stars": 29737,
         "starsToday": 960,
-        "forks": 3215,
+        "forks": 3241,
         "openIssues": 118,
         "language": "C",
         "topics": [],
         "license": "Apache-2.0",
-        "pushedAt": "2026-09-13T19:46:10Z",
+        "pushedAt": "2026-09-13T20:43:54Z",
         "createdAt": "2026-07-01T12:27:49Z",
         "languages": {
           "C": 5790884,
@@ -178,7 +178,7 @@
         "editorialMethod": "manual-deep-update-2026-09-11",
         "category": "本地 MoE 推理引擎 / 磁盘流式专家加载",
         "oneLiner": "Run frontier MoE models on hardware you already own — pure C, zero deps, experts streamed from disk. Tiny engine, immense model. 🐦；重点看 colibri 用纯 C、零依赖运行时和专家权重磁盘流式读取，把 MoE 推理拆成小核心执行引擎、专家按需加载和本地硬件资源调度，目标是在有限内存设备上试跑更大的稀疏模型 的工程收敛效果，目标问题是「想在普通硬件上运行前沿 MoE 模型时，显存和内存经常被全部专家权重吞掉；团队需要判断“专家按需从磁盘流式加载”能否把本地推理门槛降下来，而不是只看 demo 能不能跑起来」，验收落到 模型加载成功率、内存峰值、磁盘 I/O、首 token 延迟。",
-        "whyItMatters": "JustVugg/colibri 本轮应按「本地 MoE 推理引擎 / 磁盘流式专家加载」来读：它针对的是「想在普通硬件上运行前沿 MoE 模型时，显存和内存经常被全部专家权重吞掉；团队需要判断“专家按需从磁盘流式加载”能否把本地推理门槛降下来，而不是只看 demo 能不能跑起来」，核心机制是「colibri 用纯 C、零依赖运行时和专家权重磁盘流式读取，把 MoE 推理拆成小核心执行引擎、专家按需加载和本地硬件资源调度，目标是在有限内存设备上试跑更大的稀疏模型」。判断价值时优先看 模型加载成功率、内存峰值、磁盘 I/O、首 token 延迟、tokens/s、长上下文稳定性、输出质量抽检、崩溃恢复、模型格式兼容和单位推理成本，而不是把 29.5K stars / 3.2K forks 当成生产成熟度。",
+        "whyItMatters": "JustVugg/colibri 本轮应按「本地 MoE 推理引擎 / 磁盘流式专家加载」来读：它针对的是「想在普通硬件上运行前沿 MoE 模型时，显存和内存经常被全部专家权重吞掉；团队需要判断“专家按需从磁盘流式加载”能否把本地推理门槛降下来，而不是只看 demo 能不能跑起来」，核心机制是「colibri 用纯 C、零依赖运行时和专家权重磁盘流式读取，把 MoE 推理拆成小核心执行引擎、专家按需加载和本地硬件资源调度，目标是在有限内存设备上试跑更大的稀疏模型」。判断价值时优先看 模型加载成功率、内存峰值、磁盘 I/O、首 token 延迟、tokens/s、长上下文稳定性、输出质量抽检、崩溃恢复、模型格式兼容和单位推理成本，而不是把 29.7K stars / 3.2K forks 当成生产成熟度。",
         "engineeringRead": "C/local MoE inference · 容器化部署。建议按“入口示例 -> 数据/配置 -> 失败处理 -> CI/release -> issue 反例”的顺序读；重点回答 它解决的是「想在普通硬件上运行前沿 MoE 模型时，显存和内存经常被全部专家权重吞掉；团队需要判断“专家按需从磁盘流式加载”能否把本地推理门槛降下来，而不是只看 demo 能不能跑起来。」的主矛盾，还是只会给现有流程增加新的维护面？",
         "architectureSignals": [
           "架构机制：colibri 用纯 C、零依赖运行时和专家权重磁盘流式读取，把 MoE 推理拆成小核心执行引擎、专家按需加载和本地硬件资源调度，目标是在有限内存设备上试跑更大的稀疏模型；阅读时把 C/local MoE inference 代码入口、数据/配置形态、自动化脚本和边界条件连起来看，而不是只看 README 的安装示例。",
@@ -234,7 +234,7 @@
         },
         "diagram": {
           "title": "colibri 工业级采用图解",
-          "caption": "本地 MoE 推理引擎 / 磁盘流式专家加载 · C/local MoE inference · 29.5K stars",
+          "caption": "本地 MoE 推理引擎 / 磁盘流式专家加载 · C/local MoE inference · 29.7K stars",
           "summary": "用colibri 用纯 C、零依赖运行时和专家权重磁盘流式读取，把 MoE 推理拆成小核心执行引擎、专家按需加载和本地硬件资源调度，目标是在有限内存设备上试跑更大的稀疏模型，解决「想在普通硬件上运行前沿 MoE 模型时，显存和内存经常被全部专家权重吞掉；团队需要判断“专家按需从磁盘流式加载”能否把本地推理门槛降下来，而不是只看 demo 能不能跑起来」；先经由「先选一个公开小到中型 MoE checkpoint，在隔离机器上跑固定 prompt、上下文长度和批量大小；记录首 token、tokens/s、磁盘 I/O、内存峰值、质量退化和崩溃样本，不接生产 Agent 路由」验证 模型加载成功率、内存峰值、磁盘 I/O、首 token 延迟、tokens/s、长上下文稳定性、输出质量抽检、崩溃恢复、模型格式兼容和单位推理成本，再决定是否扩大。",
           "nodes": [
             {
@@ -271,7 +271,7 @@
             "metrics": [
               {
                 "label": "Stars",
-                "value": "29.5K",
+                "value": "29.7K",
                 "note": "社区关注"
               },
               {
@@ -364,10 +364,10 @@
         "visualUrl": "https://opengraph.githubassets.com/20260914/ever-co/ever-gauzy",
         "url": "https://github.com/ever-co/ever-gauzy",
         "description": "Ever® Gauzy™ - Open Business Management Platform (ERP/CRM/HRM/ATS/PM) - https://gauzy.co",
-        "stars": 4919,
+        "stars": 5027,
         "starsToday": 58,
-        "forks": 932,
-        "openIssues": 455,
+        "forks": 940,
+        "openIssues": 456,
         "language": "TypeScript",
         "topics": [
           "accounting",
@@ -392,10 +392,10 @@
           "timetracking"
         ],
         "license": "AGPL-3.0",
-        "pushedAt": "2026-09-13T18:08:39Z",
+        "pushedAt": "2026-09-13T23:10:34Z",
         "createdAt": "2019-06-02T09:47:13Z",
         "languages": {
-          "TypeScript": 43552511,
+          "TypeScript": 43572249,
           "SCSS": 2828481,
           "HTML": 2549378,
           "JavaScript": 199348,
@@ -413,7 +413,7 @@
         "method": "codex-research-refresh",
         "category": "前端 / 产品体验",
         "oneLiner": "Ever® Gauzy™ - Open Business Management Platform (ERP/CRM/HRM/ATS/PM) - https://gauzy.co；重点看 组件体系、渲染框架、状态管理或设计规范 的工程收敛效果，目标问题是「产品界面交付、组件复用或交互体验一致性」，验收落到 复用率、包体积、交互一致性、缺陷回归数。",
-        "whyItMatters": "ever-co/ever-gauzy 本轮应按「前端 / 产品体验」来读：它针对的是「产品界面交付、组件复用或交互体验一致性」，核心机制是「组件体系、渲染框架、状态管理或设计规范」。判断价值时优先看 复用率、包体积、交互一致性、缺陷回归数，而不是把 4.9K stars / 932 forks 当成生产成熟度。",
+        "whyItMatters": "ever-co/ever-gauzy 本轮应按「前端 / 产品体验」来读：它针对的是「产品界面交付、组件复用或交互体验一致性」，核心机制是「组件体系、渲染框架、状态管理或设计规范」。判断价值时优先看 复用率、包体积、交互一致性、缺陷回归数，而不是把 5K stars / 940 forks 当成生产成熟度。",
         "engineeringRead": "TypeScript · 容器化部署。建议按“入口示例 -> 数据/配置 -> 失败处理 -> CI/release -> issue 反例”的顺序读；重点回答 它解决的是「产品界面交付、组件复用或交互体验一致性」的主矛盾，还是只会给现有流程增加新的维护面？",
         "architectureSignals": [
           "架构机制：组件体系、渲染框架、状态管理或设计规范；阅读时把 TypeScript 代码入口、数据/配置形态、自动化脚本和边界条件连起来看，而不是只看 README 的安装示例。",
@@ -469,7 +469,7 @@
         },
         "diagram": {
           "title": "ever-gauzy 工业级采用图解",
-          "caption": "前端 / 产品体验 · TypeScript · 4.9K stars",
+          "caption": "前端 / 产品体验 · TypeScript · 5K stars",
           "summary": "用组件体系、渲染框架、状态管理或设计规范，解决「产品界面交付、组件复用或交互体验一致性」；先经由「新页面、内部工具或低风险模块」验证 复用率、包体积、交互一致性、缺陷回归数，再决定是否扩大。",
           "nodes": [
             {
@@ -506,17 +506,17 @@
             "metrics": [
               {
                 "label": "Stars",
-                "value": "4.9K",
+                "value": "5K",
                 "note": "社区关注"
               },
               {
                 "label": "Forks",
-                "value": "932",
+                "value": "940",
                 "note": "二次采用"
               },
               {
                 "label": "Issues",
-                "value": "455",
+                "value": "456",
                 "note": "维护压力"
               },
               {
@@ -599,10 +599,10 @@
         "visualUrl": "https://opengraph.githubassets.com/20260914/bilawalsidhu/gods-eye-view",
         "url": "https://github.com/bilawalsidhu/gods-eye-view",
         "description": "A spy satellite simulator in your browser, except the data is real. Live open source spatial intelligence on a photorealistic 3D globe.",
-        "stars": 31629,
+        "stars": 31812,
         "starsToday": 2898,
-        "forks": 6350,
-        "openIssues": 225,
+        "forks": 6387,
+        "openIssues": 204,
         "language": "JavaScript",
         "topics": [
           "3d-globe",
@@ -619,11 +619,11 @@
           "worldview"
         ],
         "license": "NOASSERTION",
-        "pushedAt": "2026-09-13T20:16:20Z",
+        "pushedAt": "2026-09-13T23:28:39Z",
         "createdAt": "2026-06-22T23:37:22Z",
         "languages": {
-          "JavaScript": 9620541,
-          "CSS": 249315,
+          "JavaScript": 9734376,
+          "CSS": 249559,
           "HTML": 67733,
           "Shell": 26157
         }
@@ -633,7 +633,7 @@
         "editorialMethod": "manual-deep-update-2026-08-28",
         "category": "开源地理空间情报 / 浏览器 3D 地球态势面板",
         "oneLiner": "A spy satellite simulator in your browser, except the data is real. Live open source spatial intelligence on a photorealistic 3D globe.；重点看 gods-eye-view 用 Cesium/WebGL 三维地球、开放数据源接入、实时图层、地理实体轨迹和前端交互，把公开空间情报从表格/API 调用转成可浏览、可演示、可截图的空间态势视图 的工程收敛效果，目标问题是「公开卫星、航班、海事、天气和地理空间数据分散在多个专业系统里；OSINT、研究和演示团队需要一个能在浏览器中把真实开放数据叠到同一 3D 地球上的低门槛观察入口」，验收落到 图层加载成功率、坐标/时间戳误差、P95 首屏时间、帧率。",
-        "whyItMatters": "bilawalsidhu/gods-eye-view 本轮应按「开源地理空间情报 / 浏览器 3D 地球态势面板」来读：它针对的是「公开卫星、航班、海事、天气和地理空间数据分散在多个专业系统里；OSINT、研究和演示团队需要一个能在浏览器中把真实开放数据叠到同一 3D 地球上的低门槛观察入口」，核心机制是「gods-eye-view 用 Cesium/WebGL 三维地球、开放数据源接入、实时图层、地理实体轨迹和前端交互，把公开空间情报从表格/API 调用转成可浏览、可演示、可截图的空间态势视图」。判断价值时优先看 图层加载成功率、坐标/时间戳误差、P95 首屏时间、帧率、浏览器内存、数据刷新延迟、错误图层回退率、人工核验通过率和敏感数据误接入次数，而不是把 31.6K stars / 6.4K forks 当成生产成熟度。",
+        "whyItMatters": "bilawalsidhu/gods-eye-view 本轮应按「开源地理空间情报 / 浏览器 3D 地球态势面板」来读：它针对的是「公开卫星、航班、海事、天气和地理空间数据分散在多个专业系统里；OSINT、研究和演示团队需要一个能在浏览器中把真实开放数据叠到同一 3D 地球上的低门槛观察入口」，核心机制是「gods-eye-view 用 Cesium/WebGL 三维地球、开放数据源接入、实时图层、地理实体轨迹和前端交互，把公开空间情报从表格/API 调用转成可浏览、可演示、可截图的空间态势视图」。判断价值时优先看 图层加载成功率、坐标/时间戳误差、P95 首屏时间、帧率、浏览器内存、数据刷新延迟、错误图层回退率、人工核验通过率和敏感数据误接入次数，而不是把 31.8K stars / 6.4K forks 当成生产成熟度。",
         "engineeringRead": "JavaScript/WebGL · API/SDK 接入。建议按“入口示例 -> 数据/配置 -> 失败处理 -> CI/release -> issue 反例”的顺序读；重点回答 它解决的是「公开卫星、航班、海事、天气和地理空间数据分散在多个专业系统里；OSINT、研究和演示团队需要一个能在浏览器中把真实开放数据叠到同一 3D 地球上的低门槛观察入口。」的主矛盾，还是只会给现有流程增加新的维护面？",
         "architectureSignals": [
           "架构机制：gods-eye-view 用 Cesium/WebGL 三维地球、开放数据源接入、实时图层、地理实体轨迹和前端交互，把公开空间情报从表格/API 调用转成可浏览、可演示、可截图的空间态势视图；阅读时把 JavaScript/WebGL 代码入口、数据/配置形态、自动化脚本和边界条件连起来看，而不是只看 README 的安装示例。",
@@ -689,7 +689,7 @@
         },
         "diagram": {
           "title": "gods-eye-view 工业级采用图解",
-          "caption": "开源地理空间情报 / 浏览器 3D 地球态势面板 · JavaScript/WebGL · 31.6K stars",
+          "caption": "开源地理空间情报 / 浏览器 3D 地球态势面板 · JavaScript/WebGL · 31.8K stars",
           "summary": "用gods-eye-view 用 Cesium/WebGL 三维地球、开放数据源接入、实时图层、地理实体轨迹和前端交互，把公开空间情报从表格/API 调用转成可浏览、可演示、可截图的空间态势视图，解决「公开卫星、航班、海事、天气和地理空间数据分散在多个专业系统里；OSINT、研究和演示团队需要一个能在浏览器中把真实开放数据叠到同一 3D 地球上的低门槛观察入口」；先经由「先只接公开、低敏、可再分发的数据图层，离线回放 3 个场景：航班/船舶轨迹、卫星或遥感图层、区域事件复盘；记录加载时延、图层缺失、坐标准确性和浏览器性能，不接入内部位置数据或实时运营决策」验证 图层加载成功率、坐标/时间戳误差、P95 首屏时间、帧率、浏览器内存、数据刷新延迟、错误图层回退率、人工核验通过率和敏感数据误接入次数，再决定是否扩大。",
           "nodes": [
             {
@@ -726,7 +726,7 @@
             "metrics": [
               {
                 "label": "Stars",
-                "value": "31.6K",
+                "value": "31.8K",
                 "note": "社区关注"
               },
               {
@@ -736,7 +736,7 @@
               },
               {
                 "label": "Issues",
-                "value": "225",
+                "value": "204",
                 "note": "维护压力"
               },
               {
@@ -819,9 +819,9 @@
         "visualUrl": "https://opengraph.githubassets.com/20260914/tech-leads-club/agent-skills",
         "url": "https://github.com/tech-leads-club/agent-skills",
         "description": "The secure, validated skill registry for professional AI coding agents. Extend Antigravity, Claude Code, Cursor, Copilot and more with absolute confidence.",
-        "stars": 5571,
+        "stars": 5625,
         "starsToday": 215,
-        "forks": 498,
+        "forks": 499,
         "openIssues": 30,
         "language": "TypeScript",
         "topics": [
@@ -849,7 +849,7 @@
         "method": "codex-research-refresh",
         "category": "AI Agent / LLM 工程",
         "oneLiner": "The secure, validated skill registry for professional AI coding agents. Extend Antigravity, Claude Code, Cursor, Copilot and more with absolute confidence.；重点看 模型接口、工具协议、上下文管理或推理工作流 是否把「AI 应用编排、工具接入或模型调用复杂度」收敛成可审计流程，验收落到 任务完成率、人工接管率、单次任务成本。",
-        "whyItMatters": "tech-leads-club/agent-skills 本轮应按「AI Agent / LLM 工程」来读：它针对的是「AI 应用编排、工具接入或模型调用复杂度」，核心机制是「模型接口、工具协议、上下文管理或推理工作流」。判断价值时优先看 任务完成率、人工接管率、单次任务成本，而不是把 5.6K stars / 498 forks 当成生产成熟度。",
+        "whyItMatters": "tech-leads-club/agent-skills 本轮应按「AI Agent / LLM 工程」来读：它针对的是「AI 应用编排、工具接入或模型调用复杂度」，核心机制是「模型接口、工具协议、上下文管理或推理工作流」。判断价值时优先看 任务完成率、人工接管率、单次任务成本，而不是把 5.6K stars / 499 forks 当成生产成熟度。",
         "engineeringRead": "TypeScript · Node 包/前端工程。建议按“入口示例 -> 数据/配置 -> 失败处理 -> CI/release -> issue 反例”的顺序读；重点回答 它解决的是「AI 应用编排、工具接入或模型调用复杂度」的主矛盾，还是只会给现有流程增加新的维护面？",
         "architectureSignals": [
           "架构机制：模型接口、工具协议、上下文管理或推理工作流；阅读时把 TypeScript 代码入口、数据/配置形态、自动化脚本和边界条件连起来看，而不是只看 README 的安装示例。",
@@ -947,7 +947,7 @@
               },
               {
                 "label": "Forks",
-                "value": "498",
+                "value": "499",
                 "note": "二次采用"
               },
               {
@@ -1013,9 +1013,9 @@
           }
         },
         "maturity": {
-          "community": 82,
+          "community": 83,
           "maintenance": 97,
-          "production": 87,
+          "production": 88,
           "complexity": 55
         },
         "score": 99
@@ -1035,10 +1035,10 @@
         "visualUrl": "https://opengraph.githubassets.com/20260914/melgarafael/DeskcommCRM",
         "url": "https://github.com/melgarafael/DeskcommCRM",
         "description": "Open-source AI sales OS — self-hosted CRM with native AI agents + WhatsApp (WAHA). Open alternative to Kommo, Octadesk & Intercom for any business that sells by chat. MCP-ready, multi-tenant, LGPD.",
-        "stars": 2127,
+        "stars": 2169,
         "starsToday": 444,
-        "forks": 581,
-        "openIssues": 129,
+        "forks": 589,
+        "openIssues": 130,
         "language": "TypeScript",
         "topics": [
           "ai",
@@ -1081,7 +1081,7 @@
         "editorialMethod": "manual-deep-update-2026-09-12",
         "category": "自托管 AI 销售 OS / WhatsApp CRM 与 MCP-ready 客服销售工作台",
         "oneLiner": "Open-source AI sales OS — self-hosted CRM with native AI agents + WhatsApp (WAHA). Open alternative to Kommo, Octadesk & Intercom for any business that sells by chat. MCP-ready, multi-tenant, LGPD.；重点看 DeskcommCRM 用 TypeScript 多租户 CRM、WAHA WhatsApp 接入、原生 AI agents、MCP-ready 工具边界和自托管部署，把聊天线索、客户状态、销售动作和自动化助手收敛到一个可审计的销售工作台 的工程收敛效果，目标问题是「以 WhatsApp/聊天为主的销售团队常在 CRM、客服系统、线索分配、跟进记录和 AI 助手之间来回切换；SaaS 方案又可能卡在多租户隔离、LGPD/隐私、MCP 工具接入和本地化部署要求上」，验收落到 线索响应时长、人工接管率、草稿采用率、跟进记录完整度。",
-        "whyItMatters": "melgarafael/DeskcommCRM 本轮应按「自托管 AI 销售 OS / WhatsApp CRM 与 MCP-ready 客服销售工作台」来读：它针对的是「以 WhatsApp/聊天为主的销售团队常在 CRM、客服系统、线索分配、跟进记录和 AI 助手之间来回切换；SaaS 方案又可能卡在多租户隔离、LGPD/隐私、MCP 工具接入和本地化部署要求上」，核心机制是「DeskcommCRM 用 TypeScript 多租户 CRM、WAHA WhatsApp 接入、原生 AI agents、MCP-ready 工具边界和自托管部署，把聊天线索、客户状态、销售动作和自动化助手收敛到一个可审计的销售工作台」。判断价值时优先看 线索响应时长、人工接管率、草稿采用率、跟进记录完整度、WhatsApp 连接稳定性、多租户权限误配、AI 建议误导率、CRM 字段一致性和合规审计通过率，而不是把 2.1K stars / 581 forks 当成生产成熟度。",
+        "whyItMatters": "melgarafael/DeskcommCRM 本轮应按「自托管 AI 销售 OS / WhatsApp CRM 与 MCP-ready 客服销售工作台」来读：它针对的是「以 WhatsApp/聊天为主的销售团队常在 CRM、客服系统、线索分配、跟进记录和 AI 助手之间来回切换；SaaS 方案又可能卡在多租户隔离、LGPD/隐私、MCP 工具接入和本地化部署要求上」，核心机制是「DeskcommCRM 用 TypeScript 多租户 CRM、WAHA WhatsApp 接入、原生 AI agents、MCP-ready 工具边界和自托管部署，把聊天线索、客户状态、销售动作和自动化助手收敛到一个可审计的销售工作台」。判断价值时优先看 线索响应时长、人工接管率、草稿采用率、跟进记录完整度、WhatsApp 连接稳定性、多租户权限误配、AI 建议误导率、CRM 字段一致性和合规审计通过率，而不是把 2.2K stars / 589 forks 当成生产成熟度。",
         "engineeringRead": "TypeScript/self-hosted CRM · 容器化部署。建议按“入口示例 -> 数据/配置 -> 失败处理 -> CI/release -> issue 反例”的顺序读；重点回答 它解决的是「以 WhatsApp/聊天为主的销售团队常在 CRM、客服系统、线索分配、跟进记录和 AI 助手之间来回切换；SaaS 方案又可能卡在多租户隔离、LGPD/隐私、MCP 工具接入和本地化部署要求上。」的主矛盾，还是只会给现有流程增加新的维护面？",
         "architectureSignals": [
           "架构机制：DeskcommCRM 用 TypeScript 多租户 CRM、WAHA WhatsApp 接入、原生 AI agents、MCP-ready 工具边界和自托管部署，把聊天线索、客户状态、销售动作和自动化助手收敛到一个可审计的销售工作台；阅读时把 TypeScript/self-hosted CRM 代码入口、数据/配置形态、自动化脚本和边界条件连起来看，而不是只看 README 的安装示例。",
@@ -1137,7 +1137,7 @@
         },
         "diagram": {
           "title": "DeskcommCRM 工业级采用图解",
-          "caption": "自托管 AI 销售 OS / WhatsApp CRM 与 MCP-ready 客服销售工作台 · TypeScript/self-hosted CRM · 2.1K stars",
+          "caption": "自托管 AI 销售 OS / WhatsApp CRM 与 MCP-ready 客服销售工作台 · TypeScript/self-hosted CRM · 2.2K stars",
           "summary": "用DeskcommCRM 用 TypeScript 多租户 CRM、WAHA WhatsApp 接入、原生 AI agents、MCP-ready 工具边界和自托管部署，把聊天线索、客户状态、销售动作和自动化助手收敛到一个可审计的销售工作台，解决「以 WhatsApp/聊天为主的销售团队常在 CRM、客服系统、线索分配、跟进记录和 AI 助手之间来回切换；SaaS 方案又可能卡在多租户隔离、LGPD/隐私、MCP 工具接入和本地化部署要求上」；先经由「先接一个低敏销售队列做只读/半自动试点：导入测试客户或脱敏历史会话，只允许 AI 生成摘要、下一步建议和草稿回复，禁止自动发送消息或改写订单状态」验证 线索响应时长、人工接管率、草稿采用率、跟进记录完整度、WhatsApp 连接稳定性、多租户权限误配、AI 建议误导率、CRM 字段一致性和合规审计通过率，再决定是否扩大。",
           "nodes": [
             {
@@ -1174,17 +1174,17 @@
             "metrics": [
               {
                 "label": "Stars",
-                "value": "2.1K",
+                "value": "2.2K",
                 "note": "社区关注"
               },
               {
                 "label": "Forks",
-                "value": "581",
+                "value": "589",
                 "note": "二次采用"
               },
               {
                 "label": "Issues",
-                "value": "129",
+                "value": "130",
                 "note": "维护压力"
               },
               {
@@ -1267,9 +1267,9 @@
         "visualUrl": "https://opengraph.githubassets.com/20260914/calesthio/OpenMontage",
         "url": "https://github.com/calesthio/OpenMontage",
         "description": "World's first open-source, agentic video production system. 12 production pipelines, 100+ tools, 700+ agent skill and production-knowledge files. Turn your AI coding assistant into a full video production studio.",
-        "stars": 58323,
+        "stars": 58398,
         "starsToday": 383,
-        "forks": 7345,
+        "forks": 7350,
         "openIssues": 320,
         "language": "Python",
         "topics": [
@@ -1496,9 +1496,9 @@
         "visualUrl": "https://opengraph.githubassets.com/20260914/asgeirtj/system_prompts_leaks",
         "url": "https://github.com/asgeirtj/system_prompts_leaks",
         "description": "Extracted system prompts from Anthropic - Claude Fable 5.1, Opus 5, Claude Design, Claude Code. OpenAI - ChatGPT GPT-6-Astra, Codex. Google - Gemini 3.8 Flash, 3.1 Pro, Antigravity. xAI - Grok, Grok Bot, Cursor, Kimi and more! Updated regularly.",
-        "stars": 65936,
+        "stars": 65998,
         "starsToday": 727,
-        "forks": 10793,
+        "forks": 10797,
         "openIssues": 56,
         "language": "JavaScript",
         "topics": [
@@ -1535,7 +1535,7 @@
         "method": "codex-research-refresh",
         "category": "AI Agent / LLM 工程",
         "oneLiner": "Extracted system prompts from Anthropic - Claude Fable 5.1, Opus 5, Claude Design, Claude Code. OpenAI - ChatGPT GPT-6-Astra, Codex. Google - Gemini 3.8 Flash, 3.1 Pro, Antigravity. xAI - Grok, Grok Bot, Cursor, Kimi and more! Updated regularly.；重点看 模型接口、工具协议、上下文管理或推理工作流 是否把「AI 应用编排、工具接入或模型调用复杂度」收敛成可审计流程，验收落到 任务完成率、人工接管率、单次任务成本。",
-        "whyItMatters": "asgeirtj/system_prompts_leaks 本轮应按「AI Agent / LLM 工程」来读：它针对的是「AI 应用编排、工具接入或模型调用复杂度」，核心机制是「模型接口、工具协议、上下文管理或推理工作流」。判断价值时优先看 任务完成率、人工接管率、单次任务成本，而不是把 65.9K stars / 10.8K forks 当成生产成熟度。",
+        "whyItMatters": "asgeirtj/system_prompts_leaks 本轮应按「AI Agent / LLM 工程」来读：它针对的是「AI 应用编排、工具接入或模型调用复杂度」，核心机制是「模型接口、工具协议、上下文管理或推理工作流」。判断价值时优先看 任务完成率、人工接管率、单次任务成本，而不是把 66K stars / 10.8K forks 当成生产成熟度。",
         "engineeringRead": "JavaScript · 容器化部署。建议按“入口示例 -> 数据/配置 -> 失败处理 -> CI/release -> issue 反例”的顺序读；重点回答 它解决的是「AI 应用编排、工具接入或模型调用复杂度」的主矛盾，还是只会给现有流程增加新的维护面？",
         "architectureSignals": [
           "架构机制：模型接口、工具协议、上下文管理或推理工作流；阅读时把 JavaScript 代码入口、数据/配置形态、自动化脚本和边界条件连起来看，而不是只看 README 的安装示例。",
@@ -1591,7 +1591,7 @@
         },
         "diagram": {
           "title": "system_prompts_leaks 工业级采用图解",
-          "caption": "AI Agent / LLM 工程 · JavaScript · 65.9K stars",
+          "caption": "AI Agent / LLM 工程 · JavaScript · 66K stars",
           "summary": "用模型接口、工具协议、上下文管理或推理工作流，解决「AI 应用编排、工具接入或模型调用复杂度」；先经由「内部效率工具或旁路助手」验证 任务完成率、人工接管率、单次任务成本，再决定是否扩大。",
           "nodes": [
             {
@@ -1628,7 +1628,7 @@
             "metrics": [
               {
                 "label": "Stars",
-                "value": "65.9K",
+                "value": "66K",
                 "note": "社区关注"
               },
               {
@@ -1721,9 +1721,9 @@
         "visualUrl": "https://opengraph.githubassets.com/20260914/vxcontrol/pentagi",
         "url": "https://github.com/vxcontrol/pentagi",
         "description": "Fully autonomous AI Agents system capable of performing complex penetration testing tasks",
-        "stars": 23882,
+        "stars": 23949,
         "starsToday": 613,
-        "forks": 3091,
+        "forks": 3094,
         "openIssues": 62,
         "language": "Go",
         "topics": [
@@ -1952,9 +1952,9 @@
         "visualUrl": "https://opengraph.githubassets.com/20260914/multimodal-art-projection/YuE",
         "url": "https://github.com/multimodal-art-projection/YuE",
         "description": "YuE2: frontier music generation with symbolic planning, zero-shot covers, and agentic music editing.",
-        "stars": 7673,
+        "stars": 7719,
         "starsToday": 500,
-        "forks": 858,
+        "forks": 863,
         "openIssues": 13,
         "language": "Python",
         "topics": [
@@ -1981,7 +1981,7 @@
         "method": "codex-research-refresh",
         "category": "AI Agent / LLM 工程",
         "oneLiner": "YuE2: frontier music generation with symbolic planning, zero-shot covers, and agentic music editing.；重点看 模型接口、工具协议、上下文管理或推理工作流 是否把「AI 应用编排、工具接入或模型调用复杂度」收敛成可审计流程，验收落到 任务完成率、人工接管率、单次任务成本。",
-        "whyItMatters": "multimodal-art-projection/YuE 本轮应按「AI Agent / LLM 工程」来读：它针对的是「AI 应用编排、工具接入或模型调用复杂度」，核心机制是「模型接口、工具协议、上下文管理或推理工作流」。判断价值时优先看 任务完成率、人工接管率、单次任务成本，而不是把 7.7K stars / 858 forks 当成生产成熟度。",
+        "whyItMatters": "multimodal-art-projection/YuE 本轮应按「AI Agent / LLM 工程」来读：它针对的是「AI 应用编排、工具接入或模型调用复杂度」，核心机制是「模型接口、工具协议、上下文管理或推理工作流」。判断价值时优先看 任务完成率、人工接管率、单次任务成本，而不是把 7.7K stars / 863 forks 当成生产成熟度。",
         "engineeringRead": "Python · Python 包/脚本。建议按“入口示例 -> 数据/配置 -> 失败处理 -> CI/release -> issue 反例”的顺序读；重点回答 它解决的是「AI 应用编排、工具接入或模型调用复杂度」的主矛盾，还是只会给现有流程增加新的维护面？",
         "architectureSignals": [
           "架构机制：模型接口、工具协议、上下文管理或推理工作流；阅读时把 Python 代码入口、数据/配置形态、自动化脚本和边界条件连起来看，而不是只看 README 的安装示例。",
@@ -2079,7 +2079,7 @@
               },
               {
                 "label": "Forks",
-                "value": "858",
+                "value": "863",
                 "note": "二次采用"
               },
               {
@@ -2145,9 +2145,9 @@
           }
         },
         "maturity": {
-          "community": 85,
+          "community": 86,
           "maintenance": 94,
-          "production": 87,
+          "production": 88,
           "complexity": 55
         },
         "score": 98
@@ -2167,9 +2167,9 @@
         "visualUrl": "https://opengraph.githubassets.com/20260914/yuliskov/SmartTube",
         "url": "https://github.com/yuliskov/SmartTube",
         "description": "Browse media content with your own rules on Android TV",
-        "stars": 33409,
+        "stars": 33437,
         "starsToday": 238,
-        "forks": 2029,
+        "forks": 2032,
         "openIssues": 712,
         "language": "Java",
         "topics": [
@@ -2182,10 +2182,10 @@
           "rxjava-android"
         ],
         "license": "MIT",
-        "pushedAt": "2026-09-13T00:11:44Z",
+        "pushedAt": "2026-09-13T23:24:51Z",
         "createdAt": "2020-07-28T12:53:52Z",
         "languages": {
-          "Java": 14979309,
+          "Java": 14979736,
           "C++": 75253,
           "Kotlin": 58378,
           "Makefile": 13595,
@@ -2361,11 +2361,11 @@
         },
         "maturity": {
           "community": 100,
-          "maintenance": 97,
-          "production": 85,
+          "maintenance": 100,
+          "production": 86,
           "complexity": 67
         },
-        "score": 91
+        "score": 92
       },
       "evidence": {
         "readmeExcerpt": "<img src=\"images/badge fdroid.png\" alt=\"Get it on F Droid\" height=\"80\" <img src=\"images/badge github.png\" alt=\"Get it on GitHub\" height=\"80\" Important announcement about the app My development environment was infected by unknown malicious software, as a result of which a few builds may have been affected. Once the issue was detected, I secured everything with a full disk wipe, restored a clean setup, and now all builds are scanned with VirusTotal. The F Droid version will also be verified before release. Public keys may have been compromised, which is why I am sharing this issue. You can download the new version and the new public key below, and instructions for restoring backups are provided. No extra actions are required since the app uses one time connection codes . These codes have very limited permissions (for example, they cannot change your password). Still, you can revoke them if...",
@@ -2382,9 +2382,9 @@
         "visualUrl": "https://opengraph.githubassets.com/20260914/alphaXiv/OpenResearch",
         "url": "https://github.com/alphaXiv/OpenResearch",
         "description": "Run parallel research agents with any model",
-        "stars": 1978,
+        "stars": 2032,
         "starsToday": 304,
-        "forks": 143,
+        "forks": 144,
         "openIssues": 10,
         "language": "Rust",
         "topics": [],
@@ -2406,7 +2406,7 @@
         "method": "codex-research-refresh",
         "category": "AI Agent / LLM 工程",
         "oneLiner": "Run parallel research agents with any model；重点看 模型接口、工具协议、上下文管理或推理工作流 是否把「AI 应用编排、工具接入或模型调用复杂度」收敛成可审计流程，验收落到 任务完成率、人工接管率、单次任务成本。",
-        "whyItMatters": "alphaXiv/OpenResearch 本轮应按「AI Agent / LLM 工程」来读：它针对的是「AI 应用编排、工具接入或模型调用复杂度」，核心机制是「模型接口、工具协议、上下文管理或推理工作流」。判断价值时优先看 任务完成率、人工接管率、单次任务成本，而不是把 2K stars / 143 forks 当成生产成熟度。",
+        "whyItMatters": "alphaXiv/OpenResearch 本轮应按「AI Agent / LLM 工程」来读：它针对的是「AI 应用编排、工具接入或模型调用复杂度」，核心机制是「模型接口、工具协议、上下文管理或推理工作流」。判断价值时优先看 任务完成率、人工接管率、单次任务成本，而不是把 2K stars / 144 forks 当成生产成熟度。",
         "engineeringRead": "Rust · 阅读型或源码集成。建议按“入口示例 -> 数据/配置 -> 失败处理 -> CI/release -> issue 反例”的顺序读；重点回答 它解决的是「AI 应用编排、工具接入或模型调用复杂度」的主矛盾，还是只会给现有流程增加新的维护面？",
         "architectureSignals": [
           "架构机制：模型接口、工具协议、上下文管理或推理工作流；阅读时把 Rust 代码入口、数据/配置形态、自动化脚本和边界条件连起来看，而不是只看 README 的安装示例。",
@@ -2504,7 +2504,7 @@
               },
               {
                 "label": "Forks",
-                "value": "143",
+                "value": "144",
                 "note": "二次采用"
               },
               {
@@ -2592,10 +2592,10 @@
         "visualUrl": "https://opengraph.githubassets.com/20260914/debpalash/VoiceStudio",
         "url": "https://github.com/debpalash/VoiceStudio",
         "description": "VoiceStudio is the open-source, fully-local ElevenLabs alternative — voice cloning, voice design, video dubbing, dictation, transcription & audiobook creation in 646 languages.",
-        "stars": 26403,
+        "stars": 26687,
         "starsToday": 2546,
-        "forks": 3262,
-        "openIssues": 35,
+        "forks": 3298,
+        "openIssues": 36,
         "language": "Python",
         "topics": [
           "ai",
@@ -2641,7 +2641,7 @@
         "editorialMethod": "manual-deep-update-2026-09-01",
         "category": "本地语音克隆与配音工作台 / ElevenLabs 替代方案",
         "oneLiner": "VoiceStudio is the open-source, fully-local ElevenLabs alternative — voice cloning, voice design, video dubbing, dictation, transcription & audiobook creation in 646 languages.；重点看 VoiceStudio 把本地语音克隆、voice design、视频配音、听写、转写和 audiobook 生成封装到统一工作台，核心是让音频输入、模型推理、字幕/转写和导出在本机闭环运行 的工程收敛效果，目标问题是「内容团队需要配音、转写、听书和多语言 dubbing，但云端语音服务会带来成本、隐私、声音授权和批量生产排队问题；同时声音克隆如果缺少授权边界很容易触发合规风险」，验收落到 转写准确率、配音可懂度、说话人相似度人工评分、单分钟生成成本。",
-        "whyItMatters": "debpalash/VoiceStudio 本轮应按「本地语音克隆与配音工作台 / ElevenLabs 替代方案」来读：它针对的是「内容团队需要配音、转写、听书和多语言 dubbing，但云端语音服务会带来成本、隐私、声音授权和批量生产排队问题；同时声音克隆如果缺少授权边界很容易触发合规风险」，核心机制是「VoiceStudio 把本地语音克隆、voice design、视频配音、听写、转写和 audiobook 生成封装到统一工作台，核心是让音频输入、模型推理、字幕/转写和导出在本机闭环运行」。判断价值时优先看 转写准确率、配音可懂度、说话人相似度人工评分、单分钟生成成本、P95 生成耗时、授权材料完整率、失败重试率和违规声音拦截次数，而不是把 26.4K stars / 3.3K forks 当成生产成熟度。",
+        "whyItMatters": "debpalash/VoiceStudio 本轮应按「本地语音克隆与配音工作台 / ElevenLabs 替代方案」来读：它针对的是「内容团队需要配音、转写、听书和多语言 dubbing，但云端语音服务会带来成本、隐私、声音授权和批量生产排队问题；同时声音克隆如果缺少授权边界很容易触发合规风险」，核心机制是「VoiceStudio 把本地语音克隆、voice design、视频配音、听写、转写和 audiobook 生成封装到统一工作台，核心是让音频输入、模型推理、字幕/转写和导出在本机闭环运行」。判断价值时优先看 转写准确率、配音可懂度、说话人相似度人工评分、单分钟生成成本、P95 生成耗时、授权材料完整率、失败重试率和违规声音拦截次数，而不是把 26.7K stars / 3.3K forks 当成生产成熟度。",
         "engineeringRead": "Python/Local voice AI · 容器化部署。建议按“入口示例 -> 数据/配置 -> 失败处理 -> CI/release -> issue 反例”的顺序读；重点回答 它解决的是「内容团队需要配音、转写、听书和多语言 dubbing，但云端语音服务会带来成本、隐私、声音授权和批量生产排队问题；同时声音克隆如果缺少授权边界很容易触发合规风险。」的主矛盾，还是只会给现有流程增加新的维护面？",
         "architectureSignals": [
           "架构机制：VoiceStudio 把本地语音克隆、voice design、视频配音、听写、转写和 audiobook 生成封装到统一工作台，核心是让音频输入、模型推理、字幕/转写和导出在本机闭环运行；阅读时把 Python/Local voice AI 代码入口、数据/配置形态、自动化脚本和边界条件连起来看，而不是只看 README 的安装示例。",
@@ -2697,7 +2697,7 @@
         },
         "diagram": {
           "title": "VoiceStudio 工业级采用图解",
-          "caption": "本地语音克隆与配音工作台 / ElevenLabs 替代方案 · Python/Local voice AI · 26.4K stars",
+          "caption": "本地语音克隆与配音工作台 / ElevenLabs 替代方案 · Python/Local voice AI · 26.7K stars",
           "summary": "用VoiceStudio 把本地语音克隆、voice design、视频配音、听写、转写和 audiobook 生成封装到统一工作台，核心是让音频输入、模型推理、字幕/转写和导出在本机闭环运行，解决「内容团队需要配音、转写、听书和多语言 dubbing，但云端语音服务会带来成本、隐私、声音授权和批量生产排队问题；同时声音克隆如果缺少授权边界很容易触发合规风险」；先经由「先用自有声音或明确授权素材做 3 条内部短音频，记录语音相似度、可懂度、生成耗时、噪声样本和授权证明；不处理公众人物、员工私音频或未授权客户素材」验证 转写准确率、配音可懂度、说话人相似度人工评分、单分钟生成成本、P95 生成耗时、授权材料完整率、失败重试率和违规声音拦截次数，再决定是否扩大。",
           "nodes": [
             {
@@ -2734,7 +2734,7 @@
             "metrics": [
               {
                 "label": "Stars",
-                "value": "26.4K",
+                "value": "26.7K",
                 "note": "社区关注"
               },
               {
@@ -2744,7 +2744,7 @@
               },
               {
                 "label": "Issues",
-                "value": "35",
+                "value": "36",
                 "note": "维护压力"
               },
               {
