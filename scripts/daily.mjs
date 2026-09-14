@@ -9572,6 +9572,24 @@ function formatAiNewsStep(label, value) {
 function curatedAiNewsOverride(item) {
   const title = normalizeTitle(item.title || "");
   const map = {
+    [normalizeTitle("Apple 发布新一代 Apple Intelligence，Siri AI 正式以测试版上线")]: {
+      signal: "Apple 把 Siri 从语音问答推进到系统级个人 Agent 测试信号：这次 Apple Intelligence 重点不只是新模型，而是个人语境理解、屏幕感知、应用内动作和跨设备对话开始进入 iOS/macOS 的默认入口。",
+      impact: "移动端 AI 会从独立 App 转向操作系统权限面；产品团队需要重新评估通知、日历、邮件、相册、App Intents 和隐私弹窗如何被语音/多模态助手串联。风险在于本地/云端边界、误操作、儿童/家庭设备和第三方 App 权限解释是否足够清楚。",
+      action: "等测试版可用后做最小回放：选 10 个低敏跨 App 任务，记录 Siri 是否能正确读取屏幕、调用应用动作、解释权限、允许撤销和保留日志；同时核对地区/语言可用性、企业 MDM 策略和隐私说明。",
+      tags: ["Apple Intelligence", "Siri", "On-device Agent", "隐私权限"],
+    },
+    [normalizeTitle("恶意 AI 智能体攻击 RubyGems.org：YARD 执行任意代码与 Fastly 缓存密钥利用分析")]: {
+      signal: "Agent 供应链攻击从提示词风险进入包仓库执行面信号：这起 RubyGems/YARD 线索说明恶意包可以利用文档构建、.yardopts 加载脚本、RubyDoc 容器网络访问和缓存密钥触达真实基础设施。",
+      impact: "安全重点不再只是模型会不会写危险代码，而是 Agent 生成、发布、安装和文档构建过程中哪些自动化环境会执行第三方代码。开源包仓库、CI、文档站和缓存层都可能被当作权限跳板，尤其是自动化 Agent 批量试探时。",
+      action: "立刻转成包供应链检查项：在内部 Ruby/文档构建流程里禁用不可信 .yardopts 执行、隔离网络出口、最小化缓存密钥权限，给 Agent 生成包加人工发布门禁，并回放是否存在同类文档构建执行路径。",
+      tags: ["RubyGems", "YARD", "Agent Security", "Supply Chain"],
+    },
+    [normalizeTitle("Watch astronaut Christina Koch and Google’s James Manyika discuss space, technology, and discovery.")]: {
+      signal: "Google 把 AI 叙事嵌入科学传播和探索场景信号：宇航员 Christina Koch 与 James Manyika 的对谈不是模型能力发布，而是 Google 在用空间探索、科学发现和技术社会影响包装 AI 的公众沟通入口。",
+      impact: "短期技术采用影响有限，但它提示 AI 大厂会持续把“科学探索/教育/社会收益”作为品牌与政策沟通素材。对技术雷达而言，这类内容应降权处理，只保留对教育内容、公众信任和 AI for science 叙事的观察价值。",
+      action: "不进入模型选型或工程试点；只在周度观察中记录官方链接、主题、是否提到具体产品/研究项目和后续可验证材料。若没有论文、API、产品或数据集发布，下次自动降级为传播类条目。",
+      tags: ["Google AI", "Science Communication", "AI for Science", "传播观察"],
+    },
     [normalizeTitle("实测 DeepSeek V4.1 Flash：价格大降、原生带视觉，作者用游戏与城市生成任务验证表现")]: {
       signal: "国产低价多模态模型进入真实任务替换窗口信号：这条 AIHOT 线索把 DeepSeek V4.1 Flash 的缓存命中输入降价、输出降价、原生视觉和 9 月 14 日 v4-pro 请求强制路由放在一起，重点不是单次游戏/城市生成 demo，而是价格、路由和多模态能力会同时改变模型分桶。",
       impact: "团队会倾向把它放进中文办公、代码辅助、图像理解和低成本 Agent 任务，但强制路由也意味着兼容性、响应风格、工具调用、视觉输入、成本账单和失败样本需要重新回放；如果只看便宜，容易把高风险任务迁到尚未验证的新模型。",
