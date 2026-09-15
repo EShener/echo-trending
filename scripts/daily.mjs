@@ -9478,6 +9478,7 @@ function interpretFrontier(item) {
 function interpretAiNews(item) {
   const text = `${item.title} ${item.summary}`.toLowerCase();
   if (text.includes("勒汉恩") || text.includes("ai 网络攻击") || text.includes("持续不断") || (text.includes("openai") && text.includes("网络攻击"))) return "AI 网络攻击准备信号：前沿模型能力、沙箱事故和政府安全标准被放进同一条风险叙事，企业需要把模型发布安全、Agent 权限和外部攻击面联动评估。";
+  if ((text.includes("slowdown") || text.includes("放缓")) && (text.includes("cartel") || text.includes("卡特尔") || text.includes("safety pact") || text.includes("安全共识"))) return "AI 治理与竞争边界信号：头部实验室把安全审计、开发节奏和监管安排放到同一张桌上，争议点是公共安全协作会不会同时变成限制开源和后来者竞争的行业壁垒。";
   if (text.includes("glm-5.3")) return "国产开源 Agent 模型信号：GLM-5.3 把复杂编码、防御性网络安全、长程任务和低成本 API 打包成工程候选，评估重点应放在真实任务回放而不是单个榜单名次。";
   if (text.includes("gpt-5.6")) return "模型产品化信号：GPT-5.6 把前沿推理、浏览/computer use、artifact 生成、缓存断点和多 Agent 能力打包成面向知识工作的生产套件，竞争焦点从单次 benchmark 转到可交付任务。";
   if (text.includes("gpt-live")) return "实时语音 Agent 信号：OpenAI 把低延迟对话层与后台深度任务层拆开，语音入口不再只是聊天，而是可委托搜索、推理和操作的前台控制面。";
@@ -9538,7 +9539,7 @@ function interpretAiNews(item) {
   if (text.includes("model") || text.includes("benchmark")) return "模型评测信号：需要拆开任务类型、数据口径、推理成本和可复现证据，再判断它是否改变内部模型路由或候选池优先级。";
   if (text.includes("agent") || text.includes("tool")) return "Agent/工具调用方向，适合评估能否进入研发工作流或数据分析流程。";
   if (text.includes("open source") || text.includes("release")) return "生态发布信号：先拆 license、部署入口、维护节奏和社区迁移成本，再判断是否进入候选池。";
-  return "证据分层与复查信号：这类动态需要先拆官方原文、社区复现、媒体转述和单点演示，再把目标用户、可试用入口、失败样本、成本边界和下次复查条件写进观察卡。";
+  return "来源核验信号：这类动态先按官方原文、媒体转述、社区复现和单点演示分级，再决定是否进入模型选型、产品试点或安全治理清单。";
 }
 
 function enrichAiNews(item) {
@@ -9595,6 +9596,12 @@ function curatedAiNewsOverride(item) {
       impact: "团队会倾向把它放进中文办公、代码辅助、图像理解和低成本 Agent 任务，但强制路由也意味着兼容性、响应风格、工具调用、视觉输入、成本账单和失败样本需要重新回放；如果只看便宜，容易把高风险任务迁到尚未验证的新模型。",
       action: "建立 48 小时灰度回放清单：用现有 v4-pro 样本按文本、代码、图像理解、长上下文和工具调用分桶，对比成功率、人工修改、延迟、缓存命中成本、拒答/误答和失败样本；9 月 14 日前准备回退模型与预算告警。",
       tags: ["DeepSeek", "V4.1 Flash", "Multimodal", "成本治理"],
+    },
+    [normalizeTitle("科技巨头放缓 AI 开发的口头协议是安全共识还是卡特尔")]: {
+      signal: "前沿 AI 治理从公司自律进入竞争法争议信号：Sam Altman、Dario Amodei、Demis Hassabis、Elon Musk 等人关于放慢开发、第三方审计和监管实验室的口头共识，真正的焦点是安全协作和市场排他之间的边界。",
+      impact: "如果安全放缓变成行业共识，企业会看到更强的审计、发布门槛和监管叙事；但开源模型、后发实验室和应用公司也会担心头部厂商借安全名义锁住算力、数据、分发和合规话语权。",
+      action: "按政策风险观察处理：跟踪原始会议/访谈材料、各公司正式声明、监管部门态度、开源社区回应和是否出现可执行协议；内部模型路线不要因单条媒体报道调整，只补充供应商治理和开源替代评估。",
+      tags: ["AI Governance", "Competition", "Model Safety", "开源生态"],
     },
     [normalizeTitle("Cursor 推出 Projects：协调者智能体管理数千个子智能体处理大型开发任务")]: {
       signal: "Coding Agent 从单任务执行走向多智能体项目编排信号：Cursor Projects 的重点不是“更多子智能体”，而是用 coordinator 把功能开发、迁移和长期维护拆成可并行、可回收、可复查的工作单元，开始挑战传统 issue/PR 队列。",
