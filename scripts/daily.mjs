@@ -9615,6 +9615,18 @@ function formatAiNewsStep(label, value) {
 function curatedAiNewsOverride(item) {
   const title = normalizeTitle(item.title || "");
   const map = {
+    [normalizeTitle("Perplexity 自研 CobbleDB 替代 AWS DynamoDB，每年最多可节省一亿美元")]: {
+      signal: "AI 搜索公司开始把核心存储层从托管数据库迁回自研系统信号：Perplexity CobbleDB 的重点不是普通降云成本，而是把 prepared pages、低延迟读取、写放大、可用性和查询成本放进 AI search 的主链路重新设计。",
+      impact: "高频 AI 搜索、RAG 和 Agent 检索服务会更重视“模型外状态”的单位经济：DynamoDB 等托管服务降低运维负担，但当访问模式稳定且规模足够大时，专用存储可能同时改善延迟和成本；风险是自研数据库会把 pager、备份、容量规划和一致性事故重新带回团队。",
+      action: "不要按 headline 直接迁库；先做存储画像：统计 prepared-page/向量元数据/会话状态的 QPS、P95/P99、热 key、读写比、TTL、跨区恢复和月账单，再用 shadow read 对比 DynamoDB、RocksDB/LSM、自研方案的延迟、错误率、运维人力和回滚时间。",
+      tags: ["Perplexity", "CobbleDB", "AI Search", "Storage Cost"],
+    },
+    [normalizeTitle("Claude for Small Business 新增 43 个工作流和 27 个集成，并推出免费培训计划")]: {
+      signal: "A 社把 Claude 从企业大客户扩到 SMB 工具栈的分发信号：43 个工作流、27 个集成和培训计划说明 Anthropic 不只卖模型，而是在 QuickBooks、Shopify、Stripe、Zoom 等业务入口里包装可直接上手的 agentic starter pack。",
+      impact: "中小企业 AI 采用会从“买一个聊天助手”转向“把财务、销售、客服、排班、内容和会议工具串起来”；但 SMB 缺少 IT owner，权限误配、账务误操作、客户数据进入模型、培训质量和人工审核会比大企业更脆弱。",
+      action: "把它作为 Claude 生态落地样本跟踪：选 3 个低风险工作流做演示回放，分别记录连接器授权范围、可撤销动作、引用证据、人工确认点、培训材料质量、失败样本和每月订阅/集成成本，再判断是否值得推荐给真实小团队。",
+      tags: ["Anthropic", "Claude SMB", "Agentic Workflows", "Integrations"],
+    },
     [normalizeTitle("Apple 发布新一代 Apple Intelligence，Siri AI 正式以测试版上线")]: {
       signal: "Apple 把 Siri 从语音问答推进到系统级个人 Agent 测试信号：这次 Apple Intelligence 重点不只是新模型，而是个人语境理解、屏幕感知、应用内动作和跨设备对话开始进入 iOS/macOS 的默认入口。",
       impact: "移动端 AI 会从独立 App 转向操作系统权限面；产品团队需要重新评估通知、日历、邮件、相册、App Intents 和隐私弹窗如何被语音/多模态助手串联。风险在于本地/云端边界、误操作、儿童/家庭设备和第三方 App 权限解释是否足够清楚。",
