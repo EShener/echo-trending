@@ -1523,7 +1523,13 @@ function isWeakAiSummary(summary = "") {
 
 function buildAiNewsOverrideDiagramSummary(item, override) {
   const tags = Array.isArray(item.tags) && item.tags.length ? item.tags.slice(0, 3).join("、") : "AI 技术雷达";
-  return `从「${item.title}」抽取信号、影响和动作三段证据，围绕 ${tags} 展示观察对象、业务影响、验证指标和下一步决策边界。核心信号：${trimText(override.signal, 90)}`;
+  const signal = stripAiNewsStepLabel(override.signal);
+  const action = stripAiNewsStepLabel(override.action);
+  return `「${item.title}」图解聚焦 ${tags}：先看 ${trimText(signal, 86)}，再落到影响范围、验证指标和下一步动作；建议动作是 ${trimText(action, 72)}`;
+}
+
+function stripAiNewsStepLabel(value = "") {
+  return String(value || "").replace(/^(信号|影响|动作)\s*(?:->|：|:)\s*/u, "").trim();
 }
 
 function sanitizeReportText(value) {
@@ -10393,10 +10399,12 @@ function curatedAiNewsOverride(item) {
 
 function buildAiNewsDiagram(item, { signal, impact, action, tags }) {
   const watchMetric = buildAiNewsWatchMetric(item, tags);
+  const cleanSignal = stripAiNewsStepLabel(signal);
+  const cleanAction = stripAiNewsStepLabel(action);
   return {
     title: `${item.source || "AI News"} 信号图解`,
     caption: (tags || []).slice(0, 4).join(" / ") || item.sourceDetail || "AI",
-    summary: `从「${item.title}」抽取信号、影响、动作和观察指标，便于前端生成新闻事件到团队行动的示意图。`,
+    summary: `「${item.title}」图解聚焦 ${trimText(cleanSignal, 86)}；前端可串起影响判断、观察指标和 ${trimText(cleanAction, 72)}。`,
     nodes: [
       { label: "信号", detail: signal, type: "input" },
       { label: "影响", detail: impact, type: "core" },
