@@ -1518,7 +1518,7 @@ function findAiNewsOverride(overrides, title = "") {
 }
 
 function isWeakAiSummary(summary = "") {
-  return /待验证技术信号|行业动态信号|AI 技术观察信号|A 社模型信号|Agent 集成信号|官方 API 信号|外部 API 连接|来源分层信号|证据分层与复查信号|这类动态需要先拆官方原文|这条动态适合放进周度观察池|建议做最小证据登记|建议保留原文链接|建议纳入成本与架构评估|适合做 30 分钟产品体验验证|模型能力或评测更新，建议关注是否改变内部模型选型和评估基线/.test(summary);
+  return /待验证技术信号|行业动态信号|AI 技术观察信号|A 社模型信号|Agent 集成信号|官方 API 信号|外部 API 连接|来源分层信号|来源核验信号|证据分层与复查信号|这类动态需要先拆官方原文|这条动态适合放进周度观察池|建议做最小证据登记|建议保留原文链接|建议纳入成本与架构评估|适合做 30 分钟产品体验验证|模型能力或评测更新，建议关注是否改变内部模型选型和评估基线/.test(summary);
 }
 
 function buildAiNewsOverrideDiagramSummary(item, override) {
@@ -1978,6 +1978,48 @@ function specializeLens(repo, lens) {
       bestFit: "有自有测试设备、愿意遵守平台条款并需要研究设备连接向导、侧载 UX 或跨平台安装器的个人开发者和工具团队。",
       badFit: "企业批量分发、绕过平台政策、未授权客户设备、证书租售、灰产装机或无法核验下载来源和配对文件安全性的场景。",
       primaryRisk: "侧载工具的核心风险不是 UI 好不好用，而是平台条款、证书、配对文件、设备信任和下载来源；必须把官方入口、最小权限、用户确认和回滚写进采用边界。",
+    },
+    "cloudflare/security-audit-skill": {
+      editorialMethod: "manual-deep-update-2026-09-16",
+      primaryLang: "JavaScript/Codex skill security harness",
+      domain: "多阶段安全审计 Agent Skill / 覆盖率驱动漏洞发现",
+      userPain: "安全审计常卡在侦察范围不清、猎手重复检查、候选漏洞未经独立验证、发现记录不可机器读取，导致 Agent 能报很多线索却难进入真实 triage 和修复队列。",
+      coreMechanism: "security-audit-skill 把审计拆成 reconnaissance、coverage-led hunting、candidate validation、structured output、independent record verification 和 target-neutral reporting 六段，用 coverage ledger 与隔离 hunter/critic 让 Agent 先覆盖攻击面，再把候选发现交给独立验证链路。",
+      safeEntry: "先选一个已授权、低敏、历史漏洞已知的小服务离线回放：限制网络出口和写操作，只允许产出 ledger、候选发现和机器可读报告，不让 Agent 直接改代码或触达生产资产。",
+      businessValue: "适合作为安全团队构建 Agent 漏洞发现 harness 的蓝本，帮助把人工审计经验拆成可分派、可覆盖、可复核的流程，而不是让单个模型凭直觉扫全仓。",
+      successMetric: "攻击面覆盖率、重复检查比例、候选漏洞独立复现率、误报率、漏报回归、每条有效发现成本、报告字段完整度、审计耗时和人工 triage 接受率",
+      inspectFirst: "先看 skill 的六阶段提示、coverage ledger schema、architecture.md、candidate verification 规则、target-neutral reporting 输出、机器可读字段、Cloudflare harness 文章关联和 license。",
+      bestFit: "已有授权测试范围、能提供历史漏洞样本和安全 reviewer 的 AppSec、平台安全、开源项目安全审计团队。",
+      badFit: "未授权目标、红队攻击执行、没有人类安全 reviewer、缺少资产边界，或期望 Agent 无人值守判断高危漏洞是否真实的场景。",
+      primaryRisk: "安全审计 Agent 的风险在于把未复现线索包装成高危发现，或在错误范围内执行探索；必须把授权范围、隔离环境、独立复现、证据最小化和人工签核作为硬门槛。",
+    },
+    "abue-ammar/tinycast": {
+      editorialMethod: "manual-deep-update-2026-09-16",
+      primaryLang: "Swift 6 native macOS launcher",
+      domain: "原生 macOS 启动器 / 热键、剪贴板与轻量工作流入口",
+      userPain: "Mac 用户的启动器、剪贴板、快捷命令和日常搜索常被多个常驻工具拆散；重型工具会带来内存占用、隐私采集、快捷键冲突和体验不一致，小团队也难判断是否值得自研本机效率入口。",
+      coreMechanism: "Tinycast 用 Swift 6 和 macOS 15+ 原生能力实现一个小于 100MB RAM 的本机 launcher，把全局热键、快速搜索、剪贴板历史和可扩展动作入口收敛到单一轻量控制面。",
+      safeEntry: "先只在个人开发机或内部工具组做 2 周旁路试用：禁用敏感剪贴板同步，固定快捷键冲突处理，记录启动速度、内存、崩溃、误触和日常命令覆盖率。",
+      businessValue: "适合作为原生桌面效率工具和轻量 UX 的样本，帮助团队评估能否用更低资源占用承载高频入口、剪贴板和热键，而不是把所有工作流塞进浏览器或 Electron 壳。",
+      successMetric: "冷启动时间、常驻内存、命令命中率、剪贴板检索成功率、快捷键冲突数、崩溃率、隐私误采样本、用户日活和替代工具卸载率",
+      inspectFirst: "先看 Swift 6 代码结构、hotkey 监听、clipboard 存储位置、权限请求、macOS 版本要求、AGPL-3.0 license、release 签名、CI 和 issue 中的卡顿/崩溃反馈。",
+      bestFit: "重视本机体验、低资源常驻、可审查权限和内部效率入口的个人高级用户、桌面工具团队或研发效能团队。",
+      badFit: "需要跨平台统一客户端、企业集中管控、云同步、多用户审计，或不能接受 AGPL 二次分发约束的商业产品。",
+      primaryRisk: "启动器与剪贴板工具天然靠近敏感输入；采用前必须确认本地存储、权限提示、清理策略、license 义务和快捷键冲突回滚。",
+    },
+    "anthropics/knowledge-work-plugins": {
+      editorialMethod: "manual-deep-update-2026-09-16",
+      primaryLang: "Python/plugin repository for Claude Cowork",
+      domain: "知识工作者 Claude 插件库 / Skills、连接器与岗位工作流打包",
+      userPain: "企业知识工作者想让 Claude 直接完成销售、财务、HR、运营等岗位任务，但如果只给通用聊天入口，工具、数据源、术语、审批动作和 slash command 都散在个人习惯里，结果很难复制和治理。",
+      coreMechanism: "knowledge-work-plugins 把技能说明、连接器、slash commands、子 Agent 和岗位流程打包成 Claude Cowork/Codex 可复用插件，让团队能从开箱的 11 类岗位模板出发，再替换成公司自己的工具、术语和审批边界。",
+      safeEntry: "先选一个低风险岗位插件做只读试点：只接公开样本文档或脱敏数据，关闭外部发送和写操作，要求输出引用来源、工具调用记录和人工审批点。",
+      businessValue: "适合作为岗位级 Agent 产品化和插件治理样本，帮助团队把零散 prompt 沉淀成可安装、可版本化、可审查的工作流资产，并评估 Cowork 生态的分发方式。",
+      successMetric: "插件安装成功率、任务完成率、人工重写率、工具授权误配、引用准确率、审批拦截数、岗位模板复用率、用户留存和每次任务成本",
+      inspectFirst: "先看插件 manifest、skills 目录、connector 依赖、slash command 权限、子 Agent 边界、Cowork 兼容说明、公司定制入口、license 和是否包含会触达第三方账户的动作。",
+      bestFit: "已有岗位 SOP、工具 owner 和审批纪律，想把 Claude/Codex 用法沉淀成团队可复用模板的运营、销售、财务、人事和研发支持团队。",
+      badFit: "流程还未标准化、数据权限不清、需要无人值守写入业务系统，或没有人负责插件版本、审计和禁用回滚的团队。",
+      primaryRisk: "岗位插件会把模型能力直接连到业务工具；必须把连接器权限、敏感数据、外发动作、审批节点和插件版本锁定做成上线前检查。",
     },
     "Tencent/teamai-cli": {
       editorialMethod: "manual-deep-update-2026-09-09",
@@ -9620,6 +9662,24 @@ function formatAiNewsStep(label, value) {
 function curatedAiNewsOverride(item) {
   const title = normalizeTitle(item.title || "");
   const map = {
+    [normalizeTitle("微软 AI CEO 警告\"模型福利\"论调")]: {
+      signal: "AI 拟人化治理争论进入大厂负责人公开表态信号：Mustafa Suleyman 反对“模型福利”叙事，核心不是哲学口水战，而是把 AI 是否有意识、是否应被赋予受照料权，与模型对齐、控制权和产品责任边界直接绑定。",
+      impact: "多轮陪伴、人格化助手和角色 Agent 会受到影响：如果产品把模型包装成会痛苦、会被伤害或需要权利保护的对象，用户信任、青少年保护、心理依赖、客服话术和监管解释都会变复杂；反过来，完全否认用户情感体验也可能低估人机关系风险。",
+      action: "把它转成产品文案和安全策略审查：检查助手是否暗示自我意识、痛苦、权利或情感勒索；对陪伴类场景补充用户依赖风险、未成年人提示、人格化边界和人工求助转接，不把单条 X 发言当作科学结论。",
+      tags: ["Microsoft AI", "AI Consciousness", "Product Safety", "拟人化"],
+    },
+    [normalizeTitle("Google 发布 TranslateGemma 等多语言 AI 成果，语言技术覆盖 300 多种语言")]: {
+      signal: "多语言 AI 从主流语种 benchmark 扩展到长尾语言覆盖信号：TranslateGemma 和 Google 的语言技术组合把 300+ 语言、低资源翻译、开源/研究模型与产品化翻译能力放到同一叙事里，重点是语言覆盖和本地文化语境，而不是又一个通用模型发布。",
+      impact: "全球化产品、内容审核、客服和社区运营会受益于更广语言覆盖，但长尾语言最容易出现语义漂移、文化误读、专业术语错译和安全策略漏检；覆盖数量不能直接证明每个语种都可进入生产自动化。",
+      action: "为目标市场做语言分桶回放：按高流量语种、低资源语种、敏感内容、客服工单和产品文案各抽样，记录 BLEU/人工偏好、术语错误、文化误读、安全漏检、延迟和人工回退比例，再决定是否替换现有翻译链路。",
+      tags: ["Google", "TranslateGemma", "Multilingual AI", "Localization"],
+    },
+    [normalizeTitle("404 Media 曝光 OpenAI 莉莉计划：人工审核 ChatGPT 聊天记录以优化模型")]: {
+      signal: "模型改进数据治理重新进入公众审视信号：404 Media 报道的 OpenAI “Lilly” 计划把人工审核聊天记录、模型优化、隐私承诺和用户预期放到同一条证据链上，焦点是聊天数据何时会被人看见、如何脱敏、谁能访问和用户是否能理解。",
+      impact: "企业与个人用户会更敏感地审查数据保留、人工标注和训练使用条款；即使人工审核能改善安全和质量，如果说明不清或 opt-out 不透明，也会影响采购、合规和高敏工作流采用。",
+      action: "按媒体报道待核验处理，同时更新供应商问卷：要求说明聊天记录人工审核范围、脱敏方式、访问控制、保留周期、训练使用、企业隔离、删除请求和审计日志；内部高敏任务继续默认关闭训练与外部标注。",
+      tags: ["OpenAI", "Privacy", "Human Review", "Data Governance"],
+    },
     [normalizeTitle("Perplexity 自研 CobbleDB 替代 AWS DynamoDB，每年最多可节省一亿美元")]: {
       signal: "AI 搜索公司开始把核心存储层从托管数据库迁回自研系统信号：Perplexity CobbleDB 的重点不是普通降云成本，而是把 prepared pages、低延迟读取、写放大、可用性和查询成本放进 AI search 的主链路重新设计。",
       impact: "高频 AI 搜索、RAG 和 Agent 检索服务会更重视“模型外状态”的单位经济：DynamoDB 等托管服务降低运维负担，但当访问模式稳定且规模足够大时，专用存储可能同时改善延迟和成本；风险是自研数据库会把 pager、备份、容量规划和一致性事故重新带回团队。",
