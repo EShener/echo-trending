@@ -9612,10 +9612,9 @@ function enrichAiNews(item) {
 }
 
 function formatAiNewsStep(label, value) {
-  const text = String(value || "").trim();
-  if (!text) return `${label} -> 待补充可验证事实、影响范围和下一步复查动作。`;
-  const normalized = text.replace(new RegExp(`^${label}\\s*(?:->|：|:)\\s*`, "u"), "");
-  return `${label} -> ${normalized}`;
+  const text = stripAiNewsStepLabel(value);
+  if (!text) return "待补充可验证事实、影响范围和下一步复查动作。";
+  return text;
 }
 
 function curatedAiNewsOverride(item) {
@@ -10578,7 +10577,7 @@ function buildExecutiveSummary(items, frontier, aiNews) {
       firstRepoAction ? `开源项目解读已按“架构机制 -> 适用团队 -> 落地路径 -> 生产风险 -> 决策问题 -> 观察信号”展开；本轮更适合旁路 spike 的入口是：${trimText(firstRepoAction, 120)}` : "开源项目先按架构机制、适用团队、落地路径和生产风险做小样本验证。",
       firstFrontier ? `搜广推收录 ${frontierItems.length} 条工程/研究信号，覆盖 ${frontierSources.join("、") || frontier.source}；重点从「${firstFrontier.title}」延伸到广告排序、实时上下文、企业搜索 relevance judge、模型生命周期图和工业搜索属性推荐。` : `搜广推板块收录 ${frontierItems.length} 条前沿论文/研究信号。`,
       firstAnthropic ? `A 社覆盖 ${anthropicItems.length} 条官方 News/Research/Engineering 动态，最新重点是「${firstAnthropic.title}」；安全研究主线继续观察「${primaryAnthropic?.title || "off switch / global workspace / safeguards"}」，Claude Code 相关信号包括 ${claudeCodeSignals.join("、") || "sandboxing、managed agents、auto mode"}，评估动作应拆成模型能力、权限隔离、长任务恢复、团队协作记忆、预算上限和审计边界。` : "A 社动态本次未抓到足够官方条目，下次优先重试 Anthropic News/Research/Engineering 页面。",
-      `AIHOT/官方 AI 新闻共 ${aiNews.items?.length || 0} 条，其中 AIHOT ${aiHotCount} 条；今日先看「${aiHotLead?.title || "AIHOT 精选"}」，所有新闻统一写成“信号 -> 影响 -> 动作”，动作聚焦评测回放、预算治理、工具白名单、权限审计和真实工作流验证。`,
+      `AIHOT/官方 AI 新闻共 ${aiNews.items?.length || 0} 条，其中 AIHOT ${aiHotCount} 条；今日先看「${aiHotLead?.title || "AIHOT 精选"}」，解读按变化信号、影响范围和可执行动作展开，动作聚焦评测回放、预算治理、工具白名单、权限审计和真实工作流验证。`,
     ],
   };
 }
