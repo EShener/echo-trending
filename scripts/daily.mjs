@@ -246,6 +246,12 @@ function applyEditorialOverrides(report) {
       action: "升级上线 gate：为高风险工具增加行为日志、策略拦截、影子评测、人工暂停点和回放样本，分别记录 CoT 可见性、行为异常、误报漏报和策略绕过。",
       tags: ["OpenAI", "CoT Monitoring", "Alignment", "Agent Safety"],
     },
+    [normalizeTitle("OpenAI 发布模型失准披露框架并公开六份失准报告")]: {
+      signal: "模型安全披露从单次事故说明走向标准化报告信号：OpenAI 公开失准报告框架和多份案例，核心不是“又一组安全文档”，而是把异常行为定义、证据链、影响范围、缓解措施和后续复查拆成可被外部追问的披露单元。",
+      impact: "企业评估前沿模型时会更关注供应商能否解释模型失准、工具越权、目标漂移和上线回滚，而不是只看安全白皮书；但供应商自披露仍需要第三方复核、复现实验和产品版本对应关系，否则容易变成 PR 口径。",
+      action: "把六份报告转成供应商治理 checklist：逐条登记触发条件、受影响模型/产品、检测方式、修复动作、残余风险、第三方验证和是否改变内部高风险 Agent 的准入门槛。",
+      tags: ["OpenAI", "Misalignment", "Safety Disclosure", "Agent Governance"],
+    },
     "实测GPT-6 Astra：速度、前端与代码能力对比GPT-5.6 Sol的全面升级": {
       signal: "Astra 从发布热度进入开发者实测信号：速度、前端和代码能力对比 GPT-5.6 Sol 的重点不是单次样例胜出，而是新模型是否能在真实仓库、UI 细节、测试修复和长任务恢复里稳定降低人工返工。",
       impact: "研发团队会想把 Astra 放进 coding agent 默认路由，但公开实测样本通常覆盖面窄；真实采用仍受访问资格、成本、P95、工具调用稳定性、代码可合并率和安全策略影响。",
