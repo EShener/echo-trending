@@ -2,6 +2,7 @@
 
 import fs from "node:fs/promises";
 import path from "node:path";
+import { execFile } from "node:child_process";
 import { promisify } from "node:util";
 import { fileURLToPath } from "node:url";
 import { gzip } from "node:zlib";
@@ -13,6 +14,7 @@ const dataReportsDir = path.join(rootDir, "data", "reports");
 const publicPayloadsDir = path.join(publicReportsDir, "payloads");
 const publicIndexHtmlPath = path.join(rootDir, "public", "index.html");
 const gzipAsync = promisify(gzip);
+const execFileAsync = promisify(execFile);
 const browserUserAgent =
   "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/124.0.0.0 Safari/537.36";
 
@@ -68,6 +70,8 @@ async function buildReport({ reportDate, limit, days, language }) {
   const languageQuery = language ? ` language:${language}` : "";
   const query = `pushed:>=${since} stars:>100 archived:false${languageQuery}`;
   const previousReport = await readExistingReport(reportDate);
+  const latestPriorReport = await readLatestReportBefore(reportDate);
+  const previousAiNews = previousReport?.aiNews?.aihot?.selected?.length ? previousReport.aiNews : latestPriorReport?.aiNews;
   let repoSource = await fetchTrendingRepos({ limit, language }).catch(async (error) => ({
     provider: `GitHub Trending daily failed: ${String(error.message || error).slice(0, 120)}`,
     repos: [],
@@ -126,7 +130,7 @@ async function buildReport({ reportDate, limit, days, language }) {
 
   const [frontier, aiNews] = await Promise.all([
     buildFrontierSection(frontierLimit),
-    buildAiNewsSection(newsLimit, previousReport?.aiNews),
+    buildAiNewsSection(newsLimit, previousAiNews),
   ]);
   const anthropic = buildAnthropicSection(aiNews);
   const searchAdsRec = buildSearchAdsRecSection(frontier);
@@ -1667,7 +1671,34 @@ async function readExistingReport(reportDate) {
   return null;
 }
 
+async function readLatestReportBefore(reportDate) {
+  try {
+    const entries = await fs.readdir(dataReportsDir);
+    const candidates = entries
+      .filter((entry) => /^\d{4}-\d{2}-\d{2}\.json$/.test(entry))
+      .map((entry) => entry.slice(0, 10))
+      .filter((date) => date < reportDate)
+      .sort()
+      .reverse();
+    for (const date of candidates) {
+      const report = await readExistingReport(date);
+      if (report) return report;
+    }
+  } catch {
+    // Prior reports are only used as an editorial fallback.
+  }
+  return null;
+}
+
 async function fetchTrendingRepos({ limit, language }) {
+  const snapshotRepos = await loadTrendingSnapshotRepos(limit);
+  if (snapshotRepos.length) {
+    return {
+      provider: `GitHub Trending manual snapshot (${path.basename(process.env.TRENDING_SNAPSHOT_FILE)})`,
+      repos: snapshotRepos,
+    };
+  }
+
   const languagePath = language ? `/${encodeURIComponent(language)}` : "";
   const url = `https://github.com/trending${languagePath}?since=daily`;
   const html = await fetchText(url);
@@ -1690,6 +1721,53 @@ async function fetchTrendingRepos({ limit, language }) {
     .slice(0, limit);
   if (!repos.length) throw new Error("GitHub Trending metadata fetch returned no repositories");
   return { provider: "GitHub Trending daily", repos };
+}
+
+async function loadTrendingSnapshotRepos(limit) {
+  const snapshotFile = process.env.TRENDING_SNAPSHOT_FILE;
+  if (!snapshotFile) return [];
+  try {
+    const snapshotPath = path.resolve(rootDir, snapshotFile);
+    const payload = JSON.parse(await fs.readFile(snapshotPath, "utf8"));
+    const repos = Array.isArray(payload) ? payload : payload.repos || [];
+    return repos.slice(0, limit).map((repo, index) => normalizeSnapshotRepo(repo, index));
+  } catch {
+    return [];
+  }
+}
+
+function normalizeSnapshotRepo(repo, index) {
+  const fullName = repo.full_name || repo.fullName;
+  const [owner, name] = fullName.split("/");
+  const starsToday = Number(repo.starsToday || repo.stars_today || 0);
+  return {
+    full_name: fullName,
+    name: repo.name || name,
+    owner: {
+      login: repo.owner?.login || owner,
+      avatar_url: repo.owner?.avatar_url || `https://github.com/${owner}.png`,
+    },
+    html_url: repo.html_url || `https://github.com/${fullName}`,
+    description: repo.description || "",
+    stargazers_count: Number(repo.stargazers_count || repo.stars || 0),
+    forks_count: Number(repo.forks_count || repo.forks || 0),
+    open_issues_count: Number(repo.open_issues_count || 0),
+    language: repo.language || "",
+    topics: Array.isArray(repo.topics) ? repo.topics : [],
+    license: repo.license || null,
+    pushed_at: repo.pushed_at || new Date().toISOString(),
+    created_at: repo.created_at || "",
+    default_branch: repo.default_branch || "main",
+    trending: {
+      fullName,
+      stars: Number(repo.stars || repo.stargazers_count || 0),
+      forks: Number(repo.forks || repo.forks_count || 0),
+      starsToday,
+      description: repo.description || "",
+      language: repo.language || "",
+      rank: Number(repo.rank || index + 1),
+    },
+  };
 }
 
 function repoFromTrendingCandidate(candidate) {
@@ -1770,12 +1848,33 @@ async function githubJson(url) {
   const token = process.env.GITHUB_TOKEN || process.env.GH_TOKEN;
   if (token) headers.Authorization = `Bearer ${token}`;
 
-  const response = await fetch(url, { headers });
-  if (!response.ok) {
-    const body = await response.text();
-    throw new Error(`GitHub request failed ${response.status}: ${body.slice(0, 500)}`);
+  try {
+    const response = await fetch(url, { headers });
+    if (!response.ok) {
+      const body = await response.text();
+      throw new Error(`GitHub request failed ${response.status}: ${body.slice(0, 500)}`);
+    }
+    return response.json();
+  } catch (error) {
+    return githubJsonViaGh(url, error);
   }
-  return response.json();
+}
+
+async function githubJsonViaGh(url, originalError) {
+  const parsed = new URL(url);
+  if (parsed.hostname !== "api.github.com") throw originalError;
+  const endpoint = `${parsed.pathname.replace(/^\/+/, "")}${parsed.search}`;
+  try {
+    const { stdout } = await execFileAsync("gh", ["api", endpoint], {
+      maxBuffer: 24 * 1024 * 1024,
+      timeout: 30000,
+    });
+    return JSON.parse(stdout);
+  } catch (fallbackError) {
+    const primary = originalError?.message || String(originalError);
+    const fallback = fallbackError?.message || String(fallbackError);
+    throw new Error(`GitHub request failed via fetch and gh api: ${primary}; ${fallback}`);
+  }
 }
 
 async function fetchText(url) {
@@ -7392,9 +7491,9 @@ async function buildAiNewsSection(maxItems, previousAiNews = {}) {
   if (!aiHotDigest.selected?.length && previousAiNews?.aihot?.selected?.length) {
     aiHotDigest = {
       ...previousAiNews.aihot,
-      source: `${aiHotDigest.source || "AIHOT unavailable"}; preserved from prior same-day report`,
+      source: `${aiHotDigest.source || "AIHOT unavailable"}; preserved from prior report`,
       generatedAt: new Date().toISOString(),
-      summary: `${aiHotDigest.summary || "AIHOT 内容暂时不可抓取"}；本次沿用上一份同日报告的 AIHOT 精选，避免发布空精选占位。`,
+      summary: `${aiHotDigest.summary || "AIHOT 内容暂时不可抓取"}；本次沿用上一份报告的 AIHOT 精选，避免发布空精选占位。`,
     };
   }
   const aiHotItems = pickUniqueAiNewsItems(aiHotDigest.selected || [], Math.min(8, maxItems))
