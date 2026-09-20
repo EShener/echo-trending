@@ -86,6 +86,21 @@ async function buildReport({ reportDate, limit, days, language }) {
   const repos = repoSource.repos || [];
   const items = [];
 
+  if (!repos.length && previousReport?.items?.length) {
+    repoSource = {
+      ...repoSource,
+      provider: `${repoSource.provider}; preserved GitHub project cards from prior same-day report because current discovery returned no repositories`,
+    };
+    items.push(
+      ...previousReport.items.map((item, index) => ({
+        ...item,
+        rank: index + 1,
+      })),
+    );
+  } else if (!repos.length) {
+    throw new Error("No GitHub project data and no same-day fallback; refusing to write an empty project report");
+  }
+
   for (const [index, repo] of repos.entries()) {
     const fullName = repo.full_name;
     const previousItem = previousReport?.items?.find((item) => item.repo?.fullName === fullName);
@@ -111,7 +126,7 @@ async function buildReport({ reportDate, limit, days, language }) {
 
   const [frontier, aiNews] = await Promise.all([
     buildFrontierSection(frontierLimit),
-    buildAiNewsSection(newsLimit),
+    buildAiNewsSection(newsLimit, previousReport?.aiNews),
   ]);
   const anthropic = buildAnthropicSection(aiNews);
   const searchAdsRec = buildSearchAdsRecSection(frontier);
@@ -7326,7 +7341,7 @@ function aiNewsSourceQualityScore(item = {}) {
   return score;
 }
 
-async function buildAiNewsSection(maxItems) {
+async function buildAiNewsSection(maxItems, previousAiNews = {}) {
   const feeds = [
     { source: "AIHOT 精选", url: "https://aihot.virxact.com/feed.xml", domain: "aihot.virxact.com", priority: 3 },
     { source: "OpenAI", url: "https://openai.com/news/rss.xml", domain: "openai.com" },
@@ -7343,7 +7358,15 @@ async function buildAiNewsSection(maxItems) {
     ),
     fetchAnthropicNewsItems(Math.max(12, maxItems)).catch(() => []),
   ]);
-  const aiHotDigest = await buildAiHotDigest();
+  let aiHotDigest = await buildAiHotDigest();
+  if (!aiHotDigest.selected?.length && previousAiNews?.aihot?.selected?.length) {
+    aiHotDigest = {
+      ...previousAiNews.aihot,
+      source: `${aiHotDigest.source || "AIHOT unavailable"}; preserved from prior same-day report`,
+      generatedAt: new Date().toISOString(),
+      summary: `${aiHotDigest.summary || "AIHOT 内容暂时不可抓取"}；本次沿用上一份同日报告的 AIHOT 精选，避免发布空精选占位。`,
+    };
+  }
   const aiHotItems = pickUniqueAiNewsItems(aiHotDigest.selected || [], Math.min(8, maxItems))
     .map((item) => {
       const sourceMeta = normalizeAiHotItemSource(item);
@@ -7503,7 +7526,7 @@ function buildSearchAdsRecSection(frontier = {}) {
       diagram: item.diagram || buildFrontierDiagram(item, interpretation),
     };
   });
-  const sources = uniqueList(items.map((item) => item.source).filter(Boolean)).slice(0, 12);
+  const sources = uniqueList(items.map((item) => item.source).filter(Boolean));
   return {
     title: "搜广推工程前沿",
     subtitle: "聚焦 recommendation/recommender、ranking、retrieval、search、ads、auction、personalization、feed、embedding/vector、CTR/CVR 与实验平台。",
@@ -7513,7 +7536,7 @@ function buildSearchAdsRecSection(frontier = {}) {
 }
 
 function buildEditorialReview({ reportDate, frontier = {}, aiNews = {} }) {
-  const frontierSources = uniqueList((frontier.items || []).map((item) => item.source).filter(Boolean)).slice(0, 12);
+  const frontierSources = uniqueList((frontier.items || []).map((item) => item.source).filter(Boolean));
   const anthropicSources = uniqueList(((aiNews.anthropicCoverage || aiNews.items || []))
     .filter(isAnthropicItem)
     .map((item) => item.sourceDetail || item.source)
@@ -10705,7 +10728,7 @@ function buildExecutiveSummary(items, frontier, aiNews) {
     .filter(Boolean);
   const repoSignalText = uniqueList(repoSignals).join("、") || "当前项目的架构机制、落地路径和生产风险";
   const frontierItems = frontier.items || [];
-  const frontierSources = prioritizeFrontierSummarySources(frontierItems.map((item) => item.source).filter(Boolean)).slice(0, 12);
+  const frontierSources = prioritizeFrontierSummarySources(frontierItems.map((item) => item.source).filter(Boolean));
   const frontierTags = uniqueList(frontierItems.flatMap((item) => item.tags || [])).slice(0, 5);
   const anthropicItems = (aiNews.anthropicCoverage || aiNews.items || []).filter((item) => isAnthropicItem(item));
   const aiHotCount = (aiNews.items || []).filter((item) => item.source?.includes("AIHOT") || item.upstreamSource?.includes("AIHOT")).length;
