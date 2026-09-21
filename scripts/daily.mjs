@@ -2084,7 +2084,7 @@ function codexResearchRefresh({ repo, readme, languages, fallback }) {
       `如果场景更接近「${lens.badFit}」，是否应降级为资料观察而不是工程试点？`,
       `谁负责 ${successMetric} 的验收、失败样本复盘、升级和回滚？`,
     ],
-    recommendedAction: `进入分层观察：先按「${safeEntry}」做小样本验证，验收面只看 ${successMetric}；同时明确 owner、样本集、失败样本复盘、生产禁区和回滚条件，避免把热门仓库直接接入主链路。`,
+    recommendedAction: `先用「${safeEntry}」跑一组可回放样本，只围绕 ${successMetric} 验收；同时明确 owner、样本集、失败样本复盘、生产禁区和回滚条件，指标没有改善就停在观察层。`,
   };
 
   return {
@@ -6236,7 +6236,7 @@ function buildDeepDive({ repo, lens, profile, activity }) {
         `如果场景更接近「${lens.badFit}」，是否应降级为资料观察而不是工程试点？`,
         `谁负责 ${lens.successMetric} 的验收、失败样本复盘、升级和回滚？`,
       ],
-      recommendedAction: `进入分层观察：先按「${lens.safeEntry}」做小样本验证，验收面只看 ${lens.successMetric}。`,
+      recommendedAction: `先按「${lens.safeEntry}」做一次可回放 spike，只看 ${lens.successMetric}；如果失败样本无法解释、owner 不清或回滚条件缺失，就不要进入主链路。`,
     };
   }
   return {
