@@ -6586,6 +6586,13 @@ function curatedFrontierInterpretation(item) {
       borrowable: "可借鉴“模型容量、稀疏特征、训练系统共同设计”的路线：先把 embedding table、序列窗口、负采样、特征 join、训练吞吐和成本归因做成可观测面板，再决定扩大模型或调整目标。",
       boundary: "没有超大样本、稳定转化回传、GPU/存储平台、实验流量和成本归因能力的团队不应照搬 GEM；更现实的迁移是复用特征治理、分布式 embedding、训练 profile 和模型成本核算方法。",
     },
+    [normalizeTitle("Bypassing inference bottlenecks: Accelerating complex AI search with Retrieve-for-Train")]: {
+      businessProblem: "复杂搜索和推荐 slate 需要一次返回互补、覆盖充分且贴合库存/语料的结果集合；让通用 LLM 在每次请求里做 query fan-out 会消耗大量 thinking budget，并把搜索框延迟推到生产不可接受区间。",
+      systemMechanism: "Retrieve-for-Train 先用离线 RL 训练 fan-out language model，根据 groundedness、diversity 和 alignment 等集合级奖励探索高质量子查询，再把探索行为蒸馏成 53.9M 参数 diffusion retriever，使线上检索从自回归文本生成变成一次非自回归 embedding 方向采样。",
+      metricsAndExperiment: "官方重点报告是 diffusion retriever 相比自回归 fan-out 有 12-20x 推理加速；落地还要看 set-level diversity、alignment、groundedness、recall、重复率、P95/P99、召回到排序转化、离线 reward 与线上满意度是否一致。",
+      borrowable: "可借鉴“离线奖励探索 + 线上轻量检索器”的架构：对电商套装、音乐歌单、旅行行程、内容集合推荐等集合检索任务，先定义集合级目标，再把昂贵推理编译到训练阶段。",
+      boundary: "不适合库存/语料很小、集合级目标不清、没有稳定 embedding 空间或无法构造 reward 的团队；若业务只需单点精确匹配，扩散式 fan-out 会增加解释、训练和校准成本。",
+    },
     [normalizeTitle("Monolith: Real Time Recommendation System With Collisionless Embedding Table")]: {
       businessProblem: "字节系短视频和广告推荐对热点、兴趣漂移与稀疏 ID 特征极其敏感；离线训练与在线 serving 分离会让模型更新滞后，而 embedding hash collision 又会污染高基数特征表达。",
       systemMechanism: "Monolith 把 collisionless embedding table、可过期 embedding、频次过滤、parameter server 和近实时 online training 串成推荐训练/服务闭环，让新行为更快进入模型，同时控制稀疏特征内存与容错。",
@@ -6957,6 +6964,16 @@ function seedIndustryFrontierItems() {
       sourceType: "industry",
       frontierScore: 66,
       summary: "Meta 最新拆解 GEM 训练栈：广告推荐基础模型采用 trillions 级 sparse embedding 参数与 billions 级 dense 参数的混合架构，融合用户行为序列、广告内容和非序列特征，并通过 embedding sharding、分布式训练、硬件利用率优化和训练稳定性治理，把 LLM-scale 推荐从论文式扩参推进到广告系统可持续迭代。",
+    },
+    {
+      title: "Bypassing inference bottlenecks: Accelerating complex AI search with Retrieve-for-Train",
+      url: "https://research.google/blog/bypassing-inference-bottlenecks-accelerating-complex-ai-search-with-retrieve-for-train/",
+      publishedAt: "2026-09-15T16:00:00Z",
+      source: "Google Research",
+      domain: "research.google",
+      sourceType: "industry",
+      frontierScore: 65,
+      summary: "Google Research 提出 Retrieve-for-Train：先用离线 RL 训练 fan-out language model，把多样性、groundedness 和 alignment 等集合级搜索奖励编译成监督数据，再训练 53.9M 参数 diffusion retriever 在一次非自回归前向里生成互补检索方向；官方报告相比自回归 fan-out 有 12-20x 推理加速，适合观察复杂搜索、推荐 slate 构建和多模态召回如何摆脱在线 thinking budget。",
     },
     {
       title: "MAPS: Netflix's Multimodal Asset Personalization at Scale",
