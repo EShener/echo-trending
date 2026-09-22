@@ -8077,6 +8077,7 @@ function buildEditorialReview({ reportDate, frontier = {}, aiNews = {} }) {
     "https://www.anthropic.com/news",
     "https://www.anthropic.com/research",
     "https://www.anthropic.com/engineering",
+    "https://www.anthropic.com/claude-opus-5-5",
     "https://www.anthropic.com/news/accenture-embedded-evaluation",
     "https://www.anthropic.com/institute/measuring-pace-of-ai-development",
     "https://www.anthropic.com/news/life-sciences-verification-program",
@@ -8184,7 +8185,7 @@ function buildEditorialReview({ reportDate, frontier = {}, aiNews = {} }) {
     ],
     sourceNotes: [
       `Anthropic official coverage includes ${anthropicSources.join("、") || "official News/Research/Engineering"} with Claude Tag, Economic Index, Claude Code practice, model updates, partnerships and safety research.`,
-      "Anthropic/Claude pages checked this run: Sep 18 Accenture embedded evaluation partnership, Sep 17 frontier-lab pace measurements, Life Sciences Verification Program and Claude biomolecular modeling optimization, Sep 10 misuse/threat intelligence and tactical intelligence evaluations, Sep 4 Fermat's Last Theorem formalization, Sep 2 commerce-agent architecture guidance, Sep 1 Claude Fable 5.1 / Mythos 5.1 and Enterprise Frontier Safeguards, Aug 31 alignment/security efforts, Aug 28 automated alignment researchers, Claude Tag usage and Claude for schools/districts, Aug 26 independent Claude usage research and Cowork browser availability, Aug 25 Claude memory control-plane and Bain Global Premier partner, Aug 21 Mythos 5 cyber defense, Aug 20 production agents, Aug 14 text watermarking and Claude Code session value/cost guidance, Aug 13 multiagent systems and Claude Tag analytics/context updates, Aug 11 Compliance API for Cowork/Code.",
+      "Anthropic/Claude pages checked this run: Sep 22 Claude Opus 5.5 model update, Sep 18 Accenture embedded evaluation partnership, Sep 17 frontier-lab pace measurements, Life Sciences Verification Program and Claude biomolecular modeling optimization, Sep 10 misuse/threat intelligence and tactical intelligence evaluations, Sep 4 Fermat's Last Theorem formalization, Sep 2 commerce-agent architecture guidance, Sep 1 Claude Fable 5.1 / Mythos 5.1 and Enterprise Frontier Safeguards, Aug 31 alignment/security efforts, Aug 28 automated alignment researchers, Claude Tag usage and Claude for schools/districts, Aug 26 independent Claude usage research and Cowork browser availability, Aug 25 Claude memory control-plane and Bain Global Premier partner, Aug 21 Mythos 5 cyber defense, Aug 20 production agents, Aug 14 text watermarking and Claude Code session value/cost guidance, Aug 13 multiagent systems and Claude Tag analytics/context updates, Aug 11 Compliance API for Cowork/Code.",
       "Claude official announcement coverage refreshed with browser Agent, education rollout, memory governance, partner network, production Agent APIs, Compliance API and official safety research instead of relying only on AIHOT mirrors.",
       `AIHOT ${reportDate} checked${aiHotTitles.length ? ` for ${aiHotTitles.join("、")}` : ""}; selected items are rewritten into concrete signal-impact-action recommendations.`,
       "Claude Platform release notes checked for Managed Agents lifecycle hooks, effort configuration, initial events, memory/environment webhooks and session thread deltas; Computer Use and multi-agent operator coverage is tracked through Claude Code Agent View and recent Claude model/browser-agent updates.",
@@ -8388,6 +8389,20 @@ async function fetchAnthropicNewsItems(maxItems) {
 function seedAnthropicOfficialItems() {
   const favicon = "https://www.google.com/s2/favicons?domain=anthropic.com&sz=128";
   return [
+    {
+      source: "A社 Anthropic",
+      sourceDetail: "Anthropic 官方 News / Model",
+      domain: "anthropic.com",
+      title: "Claude Opus 5.5",
+      url: "https://www.anthropic.com/claude-opus-5-5",
+      publishedAt: "2026-09-22T16:00:00Z",
+      summary: "Anthropic 官方发布 Claude Opus 5.5，称其在多数工作上达到 Fable 5.1 水平，同时比 Opus 5 运行成本低 40%；官方强调 agentic coding、computer use、知识工作、prompt injection 防护、外部评估和更低 token/cache 价格。信号是旗舰模型竞争正在从单点 benchmark 转向任务级成本、长任务稳定性和部署 safeguards 的组合。",
+      imageUrl: favicon,
+      priority: 72,
+      signal: "Claude 模型效率曲线升级信号：Opus 5.5 把高能力 agentic coding、computer use 和知识工作压到更低 token/cache 成本，同时把外部评估、行为审计、prompt injection 防护和高风险领域 safeguards 放进发布叙事。",
+      impact: "企业会更愿意把长代码迁移、复杂审计、研究报告和多工具任务迁到 Opus 档，但不能只按官方 benchmark 升级；真实收益取决于任务完成率、人工接管、缓存命中、权限隔离、安全拦截和单位任务成本是否同时改善。",
+      action: "用现有 Claude Code、数据分析和业务 Agent 样本做 A/B 回放：对比 Opus 5、Fable 5.1、竞品和 Opus 5.5 的成功率、轮次、P95、token/cache 成本、失败样本、注入防护命中和人工修正时间，再决定是否扩大到生产流程。",
+    },
     {
       source: "A社 Anthropic",
       sourceDetail: "Anthropic 官方 News / Embedded Evaluation",
