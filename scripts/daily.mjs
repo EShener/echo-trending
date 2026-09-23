@@ -1691,11 +1691,11 @@ async function readLatestReportBefore(reportDate) {
 }
 
 async function fetchTrendingRepos({ limit, language }) {
-  const snapshotRepos = await loadTrendingSnapshotRepos(limit);
-  if (snapshotRepos.length) {
+  const snapshot = await loadTrendingSnapshotRepos(limit);
+  if (snapshot.repos.length) {
     return {
-      provider: `GitHub Trending manual snapshot (${path.basename(process.env.TRENDING_SNAPSHOT_FILE)})`,
-      repos: snapshotRepos,
+      provider: snapshot.provider || `GitHub Trending manual snapshot (${path.basename(process.env.TRENDING_SNAPSHOT_FILE)})`,
+      repos: snapshot.repos,
     };
   }
 
@@ -1725,14 +1725,17 @@ async function fetchTrendingRepos({ limit, language }) {
 
 async function loadTrendingSnapshotRepos(limit) {
   const snapshotFile = process.env.TRENDING_SNAPSHOT_FILE;
-  if (!snapshotFile) return [];
+  if (!snapshotFile) return { provider: "", repos: [] };
   try {
     const snapshotPath = path.resolve(rootDir, snapshotFile);
     const payload = JSON.parse(await fs.readFile(snapshotPath, "utf8"));
     const repos = Array.isArray(payload) ? payload : payload.repos || [];
-    return repos.slice(0, limit).map((repo, index) => normalizeSnapshotRepo(repo, index));
+    return {
+      provider: Array.isArray(payload) ? "" : payload.provider || "",
+      repos: repos.slice(0, limit).map((repo, index) => normalizeSnapshotRepo(repo, index)),
+    };
   } catch {
-    return [];
+    return { provider: "", repos: [] };
   }
 }
 
