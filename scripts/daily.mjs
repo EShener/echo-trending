@@ -8072,6 +8072,11 @@ function buildEditorialReview({ reportDate, frontier = {}, aiNews = {} }) {
     .map((item) => item.title)
     .filter(Boolean))
     .slice(0, 8);
+  const aiHotSource = String(aiNews.aihot?.source || "");
+  const aiHotPreserved = /fallback|failed|unavailable|preserved/i.test(aiHotSource);
+  const aiHotNote = aiHotPreserved
+    ? `AIHOT ${reportDate} live fetch unavailable (${aiHotSource || "unknown source status"}); preserved same-day/prior selected items${aiHotTitles.length ? `: ${aiHotTitles.join("、")}` : ""}, and rewrote them only as retained signal-impact-action recommendations.`
+    : `AIHOT ${reportDate} checked${aiHotTitles.length ? ` for ${aiHotTitles.join("、")}` : ""}; selected items are rewritten into concrete signal-impact-action recommendations.`;
   const verifiedLinks = [
     "https://github.com/trending?since=daily",
     "https://www.anthropic.com/news",
@@ -8187,7 +8192,7 @@ function buildEditorialReview({ reportDate, frontier = {}, aiNews = {} }) {
       `Anthropic official coverage includes ${anthropicSources.join("、") || "official News/Research/Engineering"} with Claude Tag, Economic Index, Claude Code practice, model updates, partnerships and safety research.`,
       "Anthropic/Claude pages checked this run: Sep 22 Claude Opus 5.5 model update, Sep 18 Accenture embedded evaluation partnership, Sep 17 frontier-lab pace measurements, Life Sciences Verification Program and Claude biomolecular modeling optimization, Sep 10 misuse/threat intelligence and tactical intelligence evaluations, Sep 4 Fermat's Last Theorem formalization, Sep 2 commerce-agent architecture guidance, Sep 1 Claude Fable 5.1 / Mythos 5.1 and Enterprise Frontier Safeguards, Aug 31 alignment/security efforts, Aug 28 automated alignment researchers, Claude Tag usage and Claude for schools/districts, Aug 26 independent Claude usage research and Cowork browser availability, Aug 25 Claude memory control-plane and Bain Global Premier partner, Aug 21 Mythos 5 cyber defense, Aug 20 production agents, Aug 14 text watermarking and Claude Code session value/cost guidance, Aug 13 multiagent systems and Claude Tag analytics/context updates, Aug 11 Compliance API for Cowork/Code.",
       "Claude official announcement coverage refreshed with browser Agent, education rollout, memory governance, partner network, production Agent APIs, Compliance API and official safety research instead of relying only on AIHOT mirrors.",
-      `AIHOT ${reportDate} checked${aiHotTitles.length ? ` for ${aiHotTitles.join("、")}` : ""}; selected items are rewritten into concrete signal-impact-action recommendations.`,
+      aiHotNote,
       "Claude Platform release notes checked for Managed Agents lifecycle hooks, effort configuration, initial events, memory/environment webhooks and session thread deltas; Computer Use and multi-agent operator coverage is tracked through Claude Code Agent View and recent Claude model/browser-agent updates.",
       `Search/ads/recommendation coverage includes ${frontierSources.join("、") || frontier.source || "Big Tech Engineering/RSS + arXiv"} and is interpreted through business problem, system mechanism, metrics/experiments, borrowable patterns and unsuitable boundaries.`,
       "Project reads distinguish architecture mechanism, team fit, landing path, production risk, decision question and watch signal; generic metadata summaries are treated as fallback only.",
