@@ -91,9 +91,14 @@ async function buildReport({ reportDate, limit, days, language }) {
   const items = [];
 
   if (!repos.length && previousReport?.items?.length) {
+    const previousProvider = String(previousReport?.source?.provider || "");
+    const preservedProvider =
+      /GitHub Trending daily page verified/i.test(previousProvider)
+        ? previousProvider.replace(/\s+\+\s+AIHOT[\s\S]*$/u, "")
+        : repoSource.provider;
     repoSource = {
       ...repoSource,
-      provider: `${repoSource.provider}; preserved GitHub project cards from prior same-day report because current discovery returned no repositories`,
+      provider: `${preservedProvider}; current automated GitHub discovery failed (${repoSource.provider}); preserved GitHub project cards from prior same-day report because current discovery returned no repositories`,
     };
     items.push(
       ...previousReport.items.map((item, index) => ({
@@ -8085,6 +8090,7 @@ function buildEditorialReview({ reportDate, frontier = {}, aiNews = {} }) {
     "https://www.anthropic.com/news",
     "https://www.anthropic.com/research",
     "https://www.anthropic.com/engineering",
+    "https://www.anthropic.com/news/claude-discovers-novel-enzyme-system",
     "https://www.anthropic.com/claude-opus-5-5",
     "https://www.anthropic.com/news/accenture-embedded-evaluation",
     "https://www.anthropic.com/institute/measuring-pace-of-ai-development",
@@ -8193,7 +8199,7 @@ function buildEditorialReview({ reportDate, frontier = {}, aiNews = {} }) {
     ],
     sourceNotes: [
       `Anthropic official coverage includes ${anthropicSources.join("、") || "official News/Research/Engineering"} with Claude Tag, Economic Index, Claude Code practice, model updates, partnerships and safety research.`,
-      "Anthropic/Claude pages checked this run: Sep 22 Claude Opus 5.5 model update, Sep 18 Accenture embedded evaluation partnership, Sep 17 frontier-lab pace measurements, Life Sciences Verification Program and Claude biomolecular modeling optimization, Sep 10 misuse/threat intelligence and tactical intelligence evaluations, Sep 4 Fermat's Last Theorem formalization, Sep 2 commerce-agent architecture guidance, Sep 1 Claude Fable 5.1 / Mythos 5.1 and Enterprise Frontier Safeguards, Aug 31 alignment/security efforts, Aug 28 automated alignment researchers, Claude Tag usage and Claude for schools/districts, Aug 26 independent Claude usage research and Cowork browser availability, Aug 25 Claude memory control-plane and Bain Global Premier partner, Aug 21 Mythos 5 cyber defense, Aug 20 production agents, Aug 14 text watermarking and Claude Code session value/cost guidance, Aug 13 multiagent systems and Claude Tag analytics/context updates, Aug 11 Compliance API for Cowork/Code.",
+      "Anthropic/Claude pages checked this run: Sep 23 Claude discovers a novel enzyme system with CRISPR-like repeats, Sep 22 Claude Opus 5.5 model update, Sep 18 Accenture embedded evaluation partnership, Sep 17 frontier-lab pace measurements, Life Sciences Verification Program and Claude biomolecular modeling optimization, Sep 10 misuse/threat intelligence and tactical intelligence evaluations, Sep 4 Fermat's Last Theorem formalization, Sep 2 commerce-agent architecture guidance, Sep 1 Claude Fable 5.1 / Mythos 5.1 and Enterprise Frontier Safeguards, Aug 31 alignment/security efforts, Aug 28 automated alignment researchers, Claude Tag usage and Claude for schools/districts, Aug 26 independent Claude usage research and Cowork browser availability, Aug 25 Claude memory control-plane and Bain Global Premier partner, Aug 21 Mythos 5 cyber defense, Aug 20 production agents, Aug 14 text watermarking and Claude Code session value/cost guidance, Aug 13 multiagent systems and Claude Tag analytics/context updates, Aug 11 Compliance API for Cowork/Code.",
       "Claude official announcement coverage refreshed with browser Agent, education rollout, memory governance, partner network, production Agent APIs, Compliance API and official safety research instead of relying only on AIHOT mirrors.",
       aiHotNote,
       "Claude Platform release notes checked for Managed Agents lifecycle hooks, effort configuration, initial events, memory/environment webhooks and session thread deltas; Computer Use and multi-agent operator coverage is tracked through Claude Code Agent View and recent Claude model/browser-agent updates.",
@@ -8397,6 +8403,20 @@ async function fetchAnthropicNewsItems(maxItems) {
 function seedAnthropicOfficialItems() {
   const favicon = "https://www.google.com/s2/favicons?domain=anthropic.com&sz=128";
   return [
+    {
+      source: "A社 Anthropic",
+      sourceDetail: "Anthropic 官方 News / Science",
+      domain: "anthropic.com",
+      title: "Claude discovers a novel enzyme system with CRISPR-like repeats",
+      url: "https://www.anthropic.com/news/claude-discovers-novel-enzyme-system",
+      publishedAt: "2026-09-23T16:00:00Z",
+      summary: "Anthropic 官方介绍新成立的生命科学研究组和实验室，称 Claude 在人类科学家高层指导与后续湿实验复核下，从大规模 DNA/蛋白序列中发现一种带有 CRISPR-like repeats 的新酶系统候选。信号是科学 Agent 正从文献综述、代码辅助和模型优化，推进到“提出候选机制 -> 人类专家筛选 -> 实验室验证”的闭环。",
+      imageUrl: favicon,
+      priority: 75,
+      signal: "科学发现 Agent 闭环信号：Claude 被放进真实分子生物学研究流程，不只是总结论文，而是筛选未表征蛋白家族、生成候选报告，并由人类科学家决定哪些进入实验验证。",
+      impact: "生命科学团队会更积极评估 Claude Science/Claude Code 参与假设生成、序列筛选和实验解释，但这条案例仍依赖专家品味、实验室验证、BSL-1/2 低风险边界和人工最终判断，不能外推为模型可独立完成开放式科研。",
+      action: "把它转成科研 Agent 试点评估表：固定公开数据集、候选筛选标准、专家复核、湿实验前置安全审查、失败候选记录、可复现脚本和成果归因；先验证候选质量与人工节省时间，再讨论自动化扩大。",
+    },
     {
       source: "A社 Anthropic",
       sourceDetail: "Anthropic 官方 News / Model",
