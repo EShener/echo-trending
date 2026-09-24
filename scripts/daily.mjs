@@ -92,10 +92,7 @@ async function buildReport({ reportDate, limit, days, language }) {
 
   if (!repos.length && previousReport?.items?.length) {
     const previousProvider = String(previousReport?.source?.provider || "");
-    const preservedProvider =
-      /GitHub Trending daily page verified/i.test(previousProvider)
-        ? previousProvider.replace(/\s+\+\s+AIHOT[\s\S]*$/u, "")
-        : repoSource.provider;
+    const preservedProvider = sanitizePreservedRepoProvider(previousProvider, repoSource.provider);
     repoSource = {
       ...repoSource,
       provider: `${preservedProvider}; current automated GitHub discovery failed (${repoSource.provider}); preserved GitHub project cards from prior same-day report because current discovery returned no repositories`,
@@ -1693,6 +1690,14 @@ async function readLatestReportBefore(reportDate) {
     // Prior reports are only used as an editorial fallback.
   }
   return null;
+}
+
+function sanitizePreservedRepoProvider(previousProvider, fallbackProvider) {
+  if (!/GitHub Trending daily page verified/i.test(previousProvider)) return fallbackProvider;
+  return previousProvider
+    .replace(/\s+\+\s+AIHOT[\s\S]*$/u, "")
+    .replace(/;\s*current automated GitHub discovery failed[\s\S]*$/u, "")
+    .trim();
 }
 
 async function fetchTrendingRepos({ limit, language }) {
